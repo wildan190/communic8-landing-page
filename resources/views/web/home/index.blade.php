@@ -396,4 +396,94 @@
     </div>
 </section>
 
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Section Title -->
+    <h2 class="text-center text-2xl md:text-3xl lg:text-4xl tracking-[0.3em] text-gray-700 mb-16">
+      INSIGHTS FOR <br /> STRATEGIC MIND
+    </h2>
+
+    <!-- Masonry Layout -->
+    <div class="columns-1 md:columns-3 gap-6 space-y-6">
+      
+      <!-- Card 1 -->
+      <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
+        <p class="text-sm text-gray-500">Branding</p>
+        <a href="#" class="block">
+          <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
+            SOMA: Dynamic Branding & Visual Identity by Made by Ruda
+          </h3>
+        </a>
+        <img src="{{ asset('assets/img/blog1.png') }}" alt="Blog Image" class="w-full rounded-xl object-cover">
+      </div>
+
+      <!-- Card 2 -->
+      <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
+        <p class="text-sm text-gray-500">Design</p>
+        <a href="#" class="block">
+          <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
+            Get Ready for the Next Wave of Visual Design: Wallpaper Forged with Figma's Progressive Blur Effects That Will Redefine Motion Branding
+          </h3>
+        </a>
+        <img src="{{ asset('assets/img/blog1.png') }}" alt="Blog Image" class="w-full rounded-xl object-cover">
+      </div>
+
+      <!-- Card 3 -->
+      <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
+        <p class="text-sm text-gray-500">Motion</p>
+        <a href="#" class="block">
+          <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
+            Exploring Minimal One-Line Motion
+          </h3>
+        </a>
+        <img src="{{ asset('assets/img/blog1.png') }}" alt="Blog Image" class="w-full rounded-xl object-cover">
+      </div>
+
+      <!-- Card 4 -->
+      <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
+        <p class="text-sm text-gray-500">Strategy</p>
+        <a href="#" class="block">
+          <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
+            Why Storytelling is the Future of Branding in the Digital Age
+          </h3>
+        </a>
+        <img src="{{ asset('assets/img/blog1.png') }}" alt="Blog Image" class="w-full rounded-xl object-cover">
+      </div>
+
+      <!-- Card 5 -->
+      <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
+        <p class="text-sm text-gray-500">Marketing</p>
+        <a href="#" class="block">
+          <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
+            Micro-Influencers: The Secret Weapon for Authentic Engagement
+          </h3>
+        </a>
+        <img src="{{ asset('assets/img/blog1.png') }}" alt="Blog Image" class="w-full rounded-xl object-cover">
+      </div>
+
+      <!-- Card 6 -->
+      <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
+        <p class="text-sm text-gray-500">Technology</p>
+        <a href="#" class="block">
+          <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
+            The Rise of AI-Driven Design Tools: Opportunities & Challenges
+          </h3>
+        </a>
+        <img src="{{ asset('assets/img/blog1.png') }}" alt="Blog Image" class="w-full rounded-xl object-cover">
+      </div>
+
+    </div>
+
+    <!-- Read More Button -->
+    <div class="text-center mt-12">
+      <a href="#"
+        class="inline-block bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition">
+        Read More
+      </a>
+    </div>
+
+  </div>
+</section>
+
 @endsection
