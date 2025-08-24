@@ -17,11 +17,8 @@
             {{-- Lampu (Layer Bawah & Atas) --}}
             <div class="flex justify-center">
                 <div class="relative">
-                    {{-- Layer Bawah --}}
-                    <img src="{{ asset('assets/img/layerbawah.png') }}" alt="Layer Bawah"
-                        class="max-w-[240px] sm:max-w-[260px] md:max-w-[280px] lg:max-w-[300px] relative z-0">
-                    {{-- Layer Atas --}}
-                    <img src="{{ asset('assets/img/layeratas.png') }}" alt="Layer Atas"
+                    
+                    <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
                         class="max-w-[200px] sm:max-w-[220px] md:max-w-[240px] lg:max-w-[260px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
                 </div>
             </div>
