@@ -53,9 +53,11 @@
     {{-- Section Quotes --}}
     <section class="relative w-full bg-cover bg-center"
         style="background-image: url('{{ asset('assets/img/quotes.png') }}')">
-        <div class="w-full h-full bg-black bg-opacity-40 flex items-center justify-center text-center py-20 sm:py-24 md:py-32">
+        <div
+            class="w-full h-full bg-black bg-opacity-40 flex items-center justify-center text-center py-20 sm:py-24 md:py-32">
             <div class="text-white px-4 sm:px-6">
-                <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-[0.2em] sm:tracking-[0.3em] uppercase leading-tight">
+                <h2
+                    class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-[0.2em] sm:tracking-[0.3em] uppercase leading-tight">
                     Creativity is intelligence<br>having fun
                 </h2>
                 <p class="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base italic">Albert Einstein</p>
@@ -143,165 +145,255 @@
 
             {{-- Title Section --}}
             <div class="text-center mb-8 sm:mb-12 md:mb-16">
-                <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl tracking-[0.3em] sm:tracking-[0.5em] text-gray-700 font-extrabold uppercase leading-tight mt-6 sm:mt-8 md:mt-12 px-4">
+                <h2
+                    class="text-xl sm:text-2xl md:text-3xl lg:text-4xl tracking-[0.3em] sm:tracking-[0.5em] text-gray-700 font-extrabold uppercase leading-tight mt-6 sm:mt-8 md:mt-12 px-4">
                     WHAT WE CAN<br>DO FOR YOU
                 </h2>
             </div>
 
             {{-- Mobile: Single Column Stack --}}
             <div class="md:hidden space-y-6">
-                {{-- Card 1: Brand Forge --}}
-                <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col items-center p-4 mx-auto max-w-sm">
-                    <img src="{{ asset('assets/img/forge.png') }}" alt="Brand Forge"
-                        class="w-full max-w-60 h-48 sm:h-60 object-cover rounded-md mb-4">
-                    <div class="flex flex-col items-center text-center w-full">
-                        <h3 class="text-lg sm:text-xl font-bold text-gray-700 mb-2">Brand Forge</h3>
-                        <p class="text-gray-600 mb-4 text-sm leading-relaxed px-2">
-                            We build and fortify compelling brands that resonate deeply with the market and audience.
-                            From establishing your unique identity to cultivating lasting trust and value, we ensure
-                            your brand stands out and makes a memorable impact.
-                        </p>
-                        <button class="bg-gray-800 text-white px-4 py-2 text-sm rounded-full hover:bg-gray-700 transition-colors mt-auto">
-                            Find your brand's identity
-                        </button>
-                    </div>
-                </div>
+                @php
+                    $cardsMobile = [
+                        [
+                            'img' => 'forge.png',
+                            'title' => 'Brand Forge',
+                            'desc' =>
+                                'We build and fortify compelling brands that resonate deeply with the market and audience. From establishing your unique identity to cultivating lasting trust and value, we ensure your brand stands out and makes a memorable impact.',
+                            'btn' => 'Find your brand\'s identity',
+                        ],
+                        [
+                            'img' => 'digital.png',
+                            'title' => 'Public Presence',
+                            'desc' =>
+                                'Build powerful, real-world brand awareness by going beyond the screen. We make your brand unmissable, elevating its public stature and impact. Our strategic placements in OOH, DOOH, and Transit Media ensure your message connects with your target audience in the right space.',
+                            'btn' => 'Be seen and heard',
+                        ],
+                        [
+                            'img' => 'compass.png',
+                            'title' => 'Digital Compass',
+                            'desc' =>
+                                'Amplify your reach and boost your business with our intelligent digital marketing strategies. We connect you with your target audience across diverse online channels, and drive meaningful engagement.',
+                            'btn' => 'Get found & get growing',
+                        ],
+                        [
+                            'img' => 'digital.png',
+                            'title' => 'Digital Architecture',
+                            'desc' =>
+                                'Navigate the digital transformation and build your digital backbone with confidence. Our expert team provides digital consultancy, designing and developing sophisticated websites, applications, and platforms that enhance your operational efficiency and user experience.',
+                            'btn' => 'Unlock digital possibilities',
+                        ],
+                    ];
+                @endphp
 
-                {{-- Card 2: Public Presence --}}
-                <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col items-center p-4 mx-auto max-w-sm">
-                    <img src="{{ asset('assets/img/digital.png') }}" alt="Public Presence"
-                        class="w-full max-w-60 h-48 sm:h-60 object-cover rounded-md mb-4">
-                    <div class="flex flex-col items-center text-center w-full">
-                        <h3 class="text-lg sm:text-xl font-bold text-gray-700 mb-2">Public Presence</h3>
-                        <p class="text-gray-600 mb-4 text-sm leading-relaxed px-2">
-                            Build powerful, real-world brand awareness by going beyond the screen. We make your brand
-                            unmissable, elevating its public stature and impact.
-                            Our strategic placements in OOH, DOOH, and Transit Media ensure your message connects with
-                            your target audience in the right space.
-                        </p>
-                        <button class="bg-gray-800 text-white px-4 py-2 text-sm rounded-full hover:bg-gray-700 transition-colors mt-auto">
-                            Be seen and heard
-                        </button>
+                @foreach ($cardsMobile as $card)
+                    <div
+                        class="bg-white border border-gray-300 rounded-[16px] flex flex-col items-center p-4 mx-auto max-w-sm">
+                        <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
+                            class="w-full max-w-60 h-48 sm:h-60 object-cover rounded-md mb-4 filter grayscale hover:grayscale-0 transition duration-500">
+                        <div class="flex flex-col items-center text-center w-full">
+                            <h3 class="text-lg sm:text-xl font-bold text-gray-700 mb-2">{{ $card['title'] }}</h3>
+                            <p class="text-gray-600 mb-4 text-sm leading-relaxed px-2">{{ $card['desc'] }}</p>
+                            <button
+                                class="bg-gray-800 text-white px-4 py-2 text-sm rounded-full hover:bg-gray-700 transition-colors mt-auto">
+                                {{ $card['btn'] }}
+                            </button>
+                        </div>
                     </div>
-                </div>
-
-                {{-- Card 3: Digital Compass --}}
-                <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col items-center p-4 mx-auto max-w-sm">
-                    <img src="{{ asset('assets/img/compass.png') }}" alt="Digital Compass"
-                        class="w-full max-w-60 h-48 sm:h-60 object-cover rounded-md mb-4">
-                    <div class="flex flex-col items-center text-center w-full">
-                        <h3 class="text-lg sm:text-xl font-bold text-gray-700 mb-2">Digital Compass</h3>
-                        <p class="text-gray-600 mb-4 text-sm leading-relaxed px-2">
-                            Amplify your reach and boost your business with our intelligent digital marketing
-                            strategies.
-                            We connect you with your target audience across diverse online channels, and drive
-                            meaningful engagement.
-                        </p>
-                        <button class="bg-gray-800 text-white px-4 py-2 text-sm rounded-full hover:bg-gray-700 transition-colors mt-auto">
-                            Get found & get growing
-                        </button>
-                    </div>
-                </div>
-
-                {{-- Card 4: Digital Architecture --}}
-                <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col items-center p-4 mx-auto max-w-sm">
-                    <img src="{{ asset('assets/img/digital.png') }}" alt="Digital Architecture"
-                        class="w-full max-w-60 h-48 sm:h-60 object-cover rounded-md mb-4">
-                    <div class="flex flex-col items-center text-center w-full">
-                        <h3 class="text-lg sm:text-xl font-bold text-gray-700 mb-2">Digital Architecture</h3>
-                        <p class="text-gray-600 mb-4 text-sm leading-relaxed px-2">
-                            Navigate the digital transformation and build your digital backbone with confidence.
-                            Our expert team provides digital consultancy, designing and developing sophisticated
-                            websites, applications, and platforms that enhance your operational efficiency and user
-                            experience.
-                        </p>
-                        <button class="bg-gray-800 text-white px-4 py-2 text-sm rounded-full hover:bg-gray-700 transition-colors mt-auto">
-                            Unlock digital possibilities
-                        </button>
-                    </div>
-                </div>
+                @endforeach
             </div>
 
             {{-- Desktop: 2x2 Grid Layout --}}
             <div class="hidden md:block">
+                @php
+                    $cardsDesktop = $cardsMobile; // sama data
+                @endphp
+
                 {{-- Row 1 --}}
                 <div class="flex flex-wrap justify-center gap-[10px] mb-2">
-                    {{-- Card 1: Brand Forge --}}
-                    <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col items-center p-4 w-72">
-                        <img src="{{ asset('assets/img/forge.png') }}" alt="Brand Forge"
-                            class="w-60 h-60 object-cover rounded-md mb-4">
-                        <div class="flex flex-col items-center text-center w-60 h-full">
-                            <h3 class="text-xl font-bold text-gray-700 mb-2">Brand Forge</h3>
-                            <p class="text-gray-600 mb-4 text-sm flex-auto">
-                                We build and fortify compelling brands that resonate deeply with the market and audience.
-                                From establishing your unique identity to cultivating lasting trust and value, we ensure
-                                your brand stands out and makes a memorable impact.
-                            </p>
-                            <button class="bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors">
-                                Find your brand's identity
-                            </button>
+                    @for ($i = 0; $i < 2; $i++)
+                        <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col items-center p-4 w-72">
+                            <img src="{{ asset('assets/img/' . $cardsDesktop[$i]['img']) }}"
+                                alt="{{ $cardsDesktop[$i]['title'] }}"
+                                class="w-60 h-60 object-cover rounded-md mb-4 filter grayscale hover:grayscale-0 transition duration-500">
+                            <div class="flex flex-col items-center text-center w-60 h-full">
+                                <h3 class="text-xl font-bold text-gray-700 mb-2">{{ $cardsDesktop[$i]['title'] }}</h3>
+                                <p class="text-gray-600 mb-4 text-sm flex-auto">{{ $cardsDesktop[$i]['desc'] }}</p>
+                                <button
+                                    class="bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors">
+                                    {{ $cardsDesktop[$i]['btn'] }}
+                                </button>
+                            </div>
                         </div>
-                    </div>
-
-                    {{-- Card 2: Public Presence --}}
-                    <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col items-center p-4 w-72">
-                        <img src="{{ asset('assets/img/digital.png') }}" alt="Public Presence"
-                            class="w-60 h-60 object-cover rounded-md mb-4">
-                        <div class="flex flex-col items-center text-center w-60 h-full">
-                            <h3 class="text-xl font-bold text-gray-700 mb-2">Public Presence</h3>
-                            <p class="text-gray-600 mb-4 text-sm flex-auto">
-                                Build powerful, real-world brand awareness by going beyond the screen. We make your brand
-                                unmissable, elevating its public stature and impact.
-                                Our strategic placements in OOH, DOOH, and Transit Media ensure your message connects with
-                                your target audience in the right space.
-                            </p>
-                            <button class="bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors">
-                                Be seen and heard
-                            </button>
-                        </div>
-                    </div>
+                    @endfor
                 </div>
 
                 {{-- Row 2 --}}
                 <div class="flex flex-wrap justify-center gap-[10px] mt-2">
-                    {{-- Card 3: Digital Compass --}}
-                    <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col items-center p-4 w-72">
-                        <img src="{{ asset('assets/img/compass.png') }}" alt="Digital Compass"
-                            class="w-60 h-60 object-cover rounded-md mb-4">
-                        <div class="flex flex-col items-center text-center w-60 h-full">
-                            <h3 class="text-xl font-bold text-gray-700 mb-2">Digital Compass</h3>
-                            <p class="text-gray-600 mb-4 text-sm flex-auto">
-                                Amplify your reach and boost your business with our intelligent digital marketing
-                                strategies.
-                                We connect you with your target audience across diverse online channels, and drive
-                                meaningful engagement.
-                            </p>
-                            <button class="bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors">
-                                Get found & get growing
-                            </button>
+                    @for ($i = 2; $i < 4; $i++)
+                        <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col items-center p-4 w-72">
+                            <img src="{{ asset('assets/img/' . $cardsDesktop[$i]['img']) }}"
+                                alt="{{ $cardsDesktop[$i]['title'] }}"
+                                class="w-60 h-60 object-cover rounded-md mb-4 filter grayscale hover:grayscale-0 transition duration-500">
+                            <div class="flex flex-col items-center text-center w-60 h-full">
+                                <h3 class="text-xl font-bold text-gray-700 mb-2">{{ $cardsDesktop[$i]['title'] }}</h3>
+                                <p class="text-gray-600 mb-4 text-sm flex-auto">{{ $cardsDesktop[$i]['desc'] }}</p>
+                                <button
+                                    class="bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors">
+                                    {{ $cardsDesktop[$i]['btn'] }}
+                                </button>
+                            </div>
                         </div>
-                    </div>
-
-                    {{-- Card 4: Digital Architecture --}}
-                    <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col items-center p-4 w-72">
-                        <img src="{{ asset('assets/img/digital.png') }}" alt="Digital Architecture"
-                            class="w-60 h-60 object-cover rounded-md mb-4">
-                        <div class="flex flex-col items-center text-center w-60 h-full">
-                            <h3 class="text-xl font-bold text-gray-700 mb-2">Digital Architecture</h3>
-                            <p class="text-gray-600 mb-4 text-sm flex-auto">
-                                Navigate the digital transformation and build your digital backbone with confidence.
-                                Our expert team provides digital consultancy, designing and developing sophisticated
-                                websites, applications, and platforms that enhance your operational efficiency and user
-                                experience.
-                            </p>
-                            <button class="bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors">
-                                Unlock digital possibilities
-                            </button>
-                        </div>
-                    </div>
+                    @endfor
                 </div>
             </div>
 
         </div>
     </section>
+
+    {{-- Section TRUSTED BY --}}
+    <section class="relative bg-white py-20">
+        <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            {{-- Title Section --}}
+            <div class="text-center mb-16">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl tracking-[0.3em] text-gray-700 mb-6">
+                    T R U S T E D &nbsp; B Y
+                </h2>
+                <p class="text-gray-600">We’ve been privileged to partner with a diverse range of leading brands, and across
+                    industries.</p>
+            </div>
+
+            {{-- Grid --}}
+            <div class="grid grid-cols-6 gap-6">
+
+                {{-- Row 1: 2 big cards --}}
+                <div class="col-span-6 md:col-span-3 border border-gray-200 rounded-2xl p-4 flex flex-col">
+                    <div class="flex justify-between items-center mb-2">
+                        <p class="text-xs text-gray-500">Lorem ipsum</p>
+                        <a href="https://dummyurl.com" target="_blank" class="text-gray-400 hover:text-gray-600">
+                            ↗
+                        </a>
+                    </div>
+                    <h3 class="font-semibold text-gray-700 mb-3">Mercedes-Benz</h3>
+                    <div class="rounded-xl overflow-hidden">
+                        <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Mercedes"
+                            class="w-full object-cover">
+                    </div>
+                </div>
+
+                <div class="col-span-6 md:col-span-3 border border-gray-200 rounded-2xl p-4 flex flex-col">
+                    <div class="flex justify-between items-center mb-2">
+                        <p class="text-xs text-gray-500">Lorem ipsum</p>
+                        <a href="https://dummyurl.com" target="_blank" class="text-gray-400 hover:text-gray-600">
+                            <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
+                        </a>
+                    </div>
+                    <h3 class="font-semibold text-gray-700 mb-3">Daikin</h3>
+                    <div class="rounded-xl overflow-hidden">
+                        <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Daikin"
+                            class="w-full object-cover">
+                    </div>
+                </div>
+
+                {{-- Row 2: 3 smaller cards --}}
+                <div class="col-span-6 md:col-span-2 border border-gray-200 rounded-2xl p-4 flex flex-col">
+                    <div class="flex justify-between items-center mb-2">
+                        <p class="text-xs text-gray-500">Lorem ipsum</p>
+                        <a href="https://dummyurl.com" target="_blank" class="text-gray-400 hover:text-gray-600">
+                            ↗
+                        </a>
+                    </div>
+                    <h3 class="font-semibold text-gray-700 mb-3">Borong</h3>
+                    <div class="rounded-xl overflow-hidden">
+                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Borong"
+                            class="w-full object-cover">
+                    </div>
+                </div>
+
+                <div class="col-span-6 md:col-span-2 border border-gray-200 rounded-2xl p-4 flex flex-col">
+                    <div class="flex justify-between items-center mb-2">
+                        <p class="text-xs text-gray-500">Lorem ipsum</p>
+                        <a href="https://dummyurl.com" target="_blank" class="text-gray-400 hover:text-gray-600">
+                            ↗
+                        </a>
+                    </div>
+                    <h3 class="font-semibold text-gray-700 mb-3">Adira</h3>
+                    <div class="rounded-xl overflow-hidden">
+                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Adira"
+                            class="w-full object-cover">
+                    </div>
+                </div>
+
+                <div class="col-span-6 md:col-span-2 border border-gray-200 rounded-2xl p-4 flex flex-col">
+                    <div class="flex justify-between items-center mb-2">
+                        <p class="text-xs text-gray-500">Lorem ipsum</p>
+                        <a href="https://dummyurl.com" target="_blank" class="text-gray-400 hover:text-gray-600">
+                            ↗
+                        </a>
+                    </div>
+                    <h3 class="font-semibold text-gray-700 mb-3">MSIG</h3>
+                    <div class="rounded-xl overflow-hidden">
+                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="MSIG"
+                            class="w-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            {{-- Button --}}
+            <div class="flex justify-center mt-12">
+                <button class="bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition-colors">
+                    Explore more
+                </button>
+            </div>
+
+            {{-- Clients logo row --}}
+            <div class="flex flex-wrap justify-center items-center gap-7 mt-12">
+                <img src="{{ asset('assets/img/clients/mercedes.png') }}" class="h-12" alt="Mercedes">
+                <img src="{{ asset('assets/img/clients/pertamina.png') }}" class="h-12" alt="Pertamina">
+                <img src="{{ asset('assets/img/clients/repsol.png') }}" class="h-12" alt="Repsol">
+                <img src="{{ asset('assets/img/clients/sanken.png') }}" class="h-12" alt="Sanken">
+                <img src="{{ asset('assets/img/clients/adira.png') }}" class="h-12" alt="Adira">
+                <img src="{{ asset('assets/img/clients/daikin.png') }}" class="h-12" alt="Daikin">
+                <img src="{{ asset('assets/img/clients/bri.png') }}" class="h-12" alt="BRI">
+                <img src="{{ asset('assets/img/clients/daihatsu.png') }}" class="h-12" alt="Daihatsu">
+                <img src="{{ asset('assets/img/clients/ot.png') }}" class="h-12" alt="OT">
+                <img src="{{ asset('assets/img/clients/msig.png') }}" class="h-12" alt="MSIG">
+            </div>
+
+        </div>
+    </section>
+
+    {{-- CTA Section --}}
+<section class="relative bg-cover bg-center text-white font-poppins" style="background-image: url('/assets/img/cta-bg.png');">
+    <div class="absolute inset-0 bg-black/40"></div> {{-- Overlay biar teks jelas --}}
+
+    <div class="relative max-w-screen-xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center md:items-start justify-between">
+        
+        {{-- Left Big Text --}}
+        <div class="mb-12 md:mb-0">
+            <h2 class="text-4xl md:text-6xl leading-relaxed tracking-[0.5em]">
+                <span class="font-thin block">DREAM</span>
+                <span class="font-bold block">BOLDER</span>
+                <span class="font-thin block">ACHIEVE</span>
+                <span class="font-bold block">BIGGER</span>
+            </h2>
+        </div>
+
+        {{-- Right Content --}}
+        <div class="max-w-lg">
+            <h3 class="text-2xl md:text-3xl font-semibold mb-4">Let’s ignite your growth!</h3>
+            <p class="text-base md:text-lg mb-6 leading-relaxed">
+                Partner with Communic8's 20 years of creative strategic expertise. 
+                We're dedicated to understanding your unique goals and crafting innovative digital solutions 
+                that deliver exceptional results across Southeast Asia.
+            </p>
+            <a href="#"
+               class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
+               Begin Your Ascent
+            </a>
+        </div>
+    </div>
+</section>
+
 @endsection
