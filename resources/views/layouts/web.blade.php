@@ -45,8 +45,8 @@
 
             {{-- Desktop Navigation --}}
             <nav class="hidden md:flex items-center space-x-8 text-gray-700 font-medium">
-                <a href="#" class="hover:text-orange-500">Home</a>
-                <a href="#" class="hover:text-orange-500">About</a>
+                <a href="{{ url('/')}}" class="hover:text-orange-500">Home</a>
+                <a href="{{ route('about.index') }}" class="hover:text-orange-500">About</a>
                 <a href="#" class="hover:text-orange-500">Services</a>
                 <a href="#" class="hover:text-orange-500">Portfolio</a>
                 <a href="#" class="hover:text-orange-500">Insight</a>

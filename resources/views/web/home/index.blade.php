@@ -17,7 +17,7 @@
             {{-- Lampu (Layer Bawah & Atas) --}}
             <div class="flex justify-center">
                 <div class="relative">
-                    
+
                     <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
                         class="max-w-[200px] sm:max-w-[220px] md:max-w-[240px] lg:max-w-[260px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
                 </div>
@@ -269,7 +269,7 @@
                     <div class="flex justify-between items-center mb-2">
                         <p class="text-xs text-gray-500">Lorem ipsum</p>
                         <a href="https://dummyurl.com" target="_blank" class="text-gray-400 hover:text-gray-600">
-                            ↗
+                            <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
                         </a>
                     </div>
                     <h3 class="font-semibold text-gray-700 mb-3">Mercedes-Benz</h3>
@@ -298,7 +298,7 @@
                     <div class="flex justify-between items-center mb-2">
                         <p class="text-xs text-gray-500">Lorem ipsum</p>
                         <a href="https://dummyurl.com" target="_blank" class="text-gray-400 hover:text-gray-600">
-                            ↗
+                            <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
                         </a>
                     </div>
                     <h3 class="font-semibold text-gray-700 mb-3">Borong</h3>
@@ -312,7 +312,7 @@
                     <div class="flex justify-between items-center mb-2">
                         <p class="text-xs text-gray-500">Lorem ipsum</p>
                         <a href="https://dummyurl.com" target="_blank" class="text-gray-400 hover:text-gray-600">
-                            ↗
+                            <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
                         </a>
                     </div>
                     <h3 class="font-semibold text-gray-700 mb-3">Adira</h3>
@@ -326,7 +326,7 @@
                     <div class="flex justify-between items-center mb-2">
                         <p class="text-xs text-gray-500">Lorem ipsum</p>
                         <a href="https://dummyurl.com" target="_blank" class="text-gray-400 hover:text-gray-600">
-                            ↗
+                            <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
                         </a>
                     </div>
                     <h3 class="font-semibold text-gray-700 mb-3">MSIG</h3>
@@ -362,125 +362,133 @@
     </section>
 
     {{-- CTA Section --}}
-<section class="relative bg-cover bg-center text-white font-poppins" style="background-image: url('/assets/img/cta-bg.png');">
-    <div class="absolute inset-0 bg-black/40"></div> {{-- Overlay biar teks jelas --}}
+    <section class="relative bg-cover bg-center text-white font-poppins"
+        style="background-image: url('/assets/img/cta-bg.png');">
+        <div class="absolute inset-0 bg-black/40"></div> {{-- Overlay biar teks jelas --}}
 
-    <div class="relative max-w-screen-xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center md:items-start justify-between">
-        
-        {{-- Left Big Text --}}
-        <div class="mb-12 md:mb-0">
-            <h2 class="text-4xl md:text-6xl leading-relaxed tracking-[0.5em]">
-                <span class="font-thin block">DREAM</span>
-                <span class="font-bold block">BOLDER</span>
-                <span class="font-thin block">ACHIEVE</span>
-                <span class="font-bold block">BIGGER</span>
+        <div
+            class="relative max-w-screen-xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center md:items-start justify-between">
+
+            {{-- Left Big Text --}}
+            <div class="mb-12 md:mb-0">
+                <h2 class="text-4xl md:text-6xl leading-relaxed tracking-[0.5em]">
+                    <span class="font-thin block">DREAM</span>
+                    <span class="font-bold block">BOLDER</span>
+                    <span class="font-thin block">ACHIEVE</span>
+                    <span class="font-bold block">BIGGER</span>
+                </h2>
+            </div>
+
+            {{-- Right Content --}}
+            <div class="max-w-lg">
+                <h3 class="text-2xl md:text-3xl font-semibold mb-4">Let’s ignite your growth!</h3>
+                <p class="text-base md:text-lg mb-6 leading-relaxed">
+                    Partner with Communic8's 20 years of creative strategic expertise.
+                    We're dedicated to understanding your unique goals and crafting innovative digital solutions
+                    that deliver exceptional results across Southeast Asia.
+                </p>
+                <a href="#"
+                    class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
+                    Begin Your Ascent
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <!-- Section Title -->
+            <h2 class="text-center text-2xl md:text-3xl lg:text-4xl tracking-[0.3em] text-gray-700 mb-16">
+                INSIGHTS FOR <br /> STRATEGIC MIND
             </h2>
+
+            <!-- Masonry Layout -->
+            <div class="columns-1 md:columns-3 gap-6 space-y-6">
+
+                <!-- Card 1 -->
+                <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
+                    <p class="text-sm text-gray-500">Branding</p>
+                    <a href="#" class="block">
+                        <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
+                            SOMA: Dynamic Branding & Visual Identity by Made by Ruda
+                        </h3>
+                    </a>
+                    <img src="{{ asset('assets/img/blog1.png') }}" alt="Blog Image"
+                        class="w-full rounded-xl object-cover">
+                </div>
+
+                <!-- Card 2 -->
+                <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
+                    <p class="text-sm text-gray-500">Design</p>
+                    <a href="#" class="block">
+                        <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
+                            Get Ready for the Next Wave of Visual Design: Wallpaper Forged with Figma's Progressive Blur
+                            Effects That Will Redefine Motion Branding
+                        </h3>
+                    </a>
+                    <img src="{{ asset('assets/img/blog1.png') }}" alt="Blog Image"
+                        class="w-full rounded-xl object-cover">
+                </div>
+
+                <!-- Card 3 -->
+                <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
+                    <p class="text-sm text-gray-500">Motion</p>
+                    <a href="#" class="block">
+                        <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
+                            Exploring Minimal One-Line Motion
+                        </h3>
+                    </a>
+                    <img src="{{ asset('assets/img/blog1.png') }}" alt="Blog Image"
+                        class="w-full rounded-xl object-cover">
+                </div>
+
+                <!-- Card 4 -->
+                <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
+                    <p class="text-sm text-gray-500">Strategy</p>
+                    <a href="#" class="block">
+                        <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
+                            Why Storytelling is the Future of Branding in the Digital Age
+                        </h3>
+                    </a>
+                    <img src="{{ asset('assets/img/blog1.png') }}" alt="Blog Image"
+                        class="w-full rounded-xl object-cover">
+                </div>
+
+                <!-- Card 5 -->
+                <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
+                    <p class="text-sm text-gray-500">Marketing</p>
+                    <a href="#" class="block">
+                        <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
+                            Micro-Influencers: The Secret Weapon for Authentic Engagement
+                        </h3>
+                    </a>
+                    <img src="{{ asset('assets/img/blog1.png') }}" alt="Blog Image"
+                        class="w-full rounded-xl object-cover">
+                </div>
+
+                <!-- Card 6 -->
+                <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
+                    <p class="text-sm text-gray-500">Technology</p>
+                    <a href="#" class="block">
+                        <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
+                            The Rise of AI-Driven Design Tools: Opportunities & Challenges
+                        </h3>
+                    </a>
+                    <img src="{{ asset('assets/img/blog1.png') }}" alt="Blog Image"
+                        class="w-full rounded-xl object-cover">
+                </div>
+
+            </div>
+
+            <!-- Read More Button -->
+            <div class="text-center mt-12">
+                <a href="#"
+                    class="inline-block bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition">
+                    Read More
+                </a>
+            </div>
+
         </div>
-
-        {{-- Right Content --}}
-        <div class="max-w-lg">
-            <h3 class="text-2xl md:text-3xl font-semibold mb-4">Let’s ignite your growth!</h3>
-            <p class="text-base md:text-lg mb-6 leading-relaxed">
-                Partner with Communic8's 20 years of creative strategic expertise. 
-                We're dedicated to understanding your unique goals and crafting innovative digital solutions 
-                that deliver exceptional results across Southeast Asia.
-            </p>
-            <a href="#"
-               class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
-               Begin Your Ascent
-            </a>
-        </div>
-    </div>
-</section>
-
-<section class="py-20 bg-white">
-  <div class="max-w-7xl mx-auto px-6">
-
-    <!-- Section Title -->
-    <h2 class="text-center text-2xl md:text-3xl lg:text-4xl tracking-[0.3em] text-gray-700 mb-16">
-      INSIGHTS FOR <br /> STRATEGIC MIND
-    </h2>
-
-    <!-- Masonry Layout -->
-    <div class="columns-1 md:columns-3 gap-6 space-y-6">
-      
-      <!-- Card 1 -->
-      <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
-        <p class="text-sm text-gray-500">Branding</p>
-        <a href="#" class="block">
-          <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
-            SOMA: Dynamic Branding & Visual Identity by Made by Ruda
-          </h3>
-        </a>
-        <img src="{{ asset('assets/img/blog1.png') }}" alt="Blog Image" class="w-full rounded-xl object-cover">
-      </div>
-
-      <!-- Card 2 -->
-      <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
-        <p class="text-sm text-gray-500">Design</p>
-        <a href="#" class="block">
-          <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
-            Get Ready for the Next Wave of Visual Design: Wallpaper Forged with Figma's Progressive Blur Effects That Will Redefine Motion Branding
-          </h3>
-        </a>
-        <img src="{{ asset('assets/img/blog1.png') }}" alt="Blog Image" class="w-full rounded-xl object-cover">
-      </div>
-
-      <!-- Card 3 -->
-      <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
-        <p class="text-sm text-gray-500">Motion</p>
-        <a href="#" class="block">
-          <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
-            Exploring Minimal One-Line Motion
-          </h3>
-        </a>
-        <img src="{{ asset('assets/img/blog1.png') }}" alt="Blog Image" class="w-full rounded-xl object-cover">
-      </div>
-
-      <!-- Card 4 -->
-      <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
-        <p class="text-sm text-gray-500">Strategy</p>
-        <a href="#" class="block">
-          <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
-            Why Storytelling is the Future of Branding in the Digital Age
-          </h3>
-        </a>
-        <img src="{{ asset('assets/img/blog1.png') }}" alt="Blog Image" class="w-full rounded-xl object-cover">
-      </div>
-
-      <!-- Card 5 -->
-      <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
-        <p class="text-sm text-gray-500">Marketing</p>
-        <a href="#" class="block">
-          <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
-            Micro-Influencers: The Secret Weapon for Authentic Engagement
-          </h3>
-        </a>
-        <img src="{{ asset('assets/img/blog1.png') }}" alt="Blog Image" class="w-full rounded-xl object-cover">
-      </div>
-
-      <!-- Card 6 -->
-      <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
-        <p class="text-sm text-gray-500">Technology</p>
-        <a href="#" class="block">
-          <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
-            The Rise of AI-Driven Design Tools: Opportunities & Challenges
-          </h3>
-        </a>
-        <img src="{{ asset('assets/img/blog1.png') }}" alt="Blog Image" class="w-full rounded-xl object-cover">
-      </div>
-
-    </div>
-
-    <!-- Read More Button -->
-    <div class="text-center mt-12">
-      <a href="#"
-        class="inline-block bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition">
-        Read More
-      </a>
-    </div>
-
-  </div>
-</section>
-
+    </section>
 @endsection
