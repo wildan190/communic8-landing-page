@@ -50,7 +50,7 @@
                 <a href="{{ url('/')}}" class="hover:text-orange-500">Home</a>
                 <a href="{{ route('about.index') }}" class="hover:text-orange-500">About</a>
                 <a href="#" class="hover:text-orange-500">Services</a>
-                <a href="#" class="hover:text-orange-500">Portfolio</a>
+                <a href="{{ route('portofolio.index')}}" class="hover:text-orange-500">Portfolio</a>
                 <a href="#" class="hover:text-orange-500">Insight</a>
                 <a href="#" class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700">Contact</a>
             </nav>
@@ -78,7 +78,7 @@
             <a href="#" class="hover:text-orange-500">Home</a>
             <a href="#" class="hover:text-orange-500">About</a>
             <a href="#" class="hover:text-orange-500">Services</a>
-            <a href="#" class="hover:text-orange-500">Portfolio</a>
+            <a href="{{ route('portofolio.index')}}" class="hover:text-orange-500">Portfolio</a>
             <a href="#" class="hover:text-orange-500">Insight</a>
             <a href="#"
                 class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 text-center">Contact</a>
@@ -137,7 +137,7 @@
                     <ul class="space-y-2 text-sm">
                         <li><a href="#" class="hover:text-gray-500">Home</a></li>
                         <li><a href="#" class="hover:text-gray-500">About</a></li>
-                        <li><a href="#" class="hover:text-gray-500">Portfolio</a></li>
+                        <li><a href="{{ route('portofolio.index')}}" class="hover:text-gray-500">Portfolio</a></li>
                     </ul>
                 </div>
 

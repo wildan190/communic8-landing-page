@@ -352,7 +352,6 @@
             </div>
         </section>
 
-
         <!-- Blog Slider Section -->
         <section class="py-20 bg-white">
             <div class="max-w-7xl mx-auto px-6">
@@ -439,7 +438,6 @@
             </div>
         </section>
 
-
         <!-- JS for slider scroll -->
         <script>
             const slider = document.getElementById('blog-slider');
@@ -456,7 +454,6 @@
                 });
             });
         </script>
-
 
     </div>
 @endsection
