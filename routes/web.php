@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\Web\HomeController::class, 'index'])->name('home.index');
 Route::get('/about', [App\Http\Controllers\Web\AboutController::class, 'index'])->name('about.index');
 Route::get('/portofolio', [App\Http\Controllers\Web\PortofolioController::class, 'index'])->name('portofolio.index');
+Route::get('/insight', [App\Http\Controllers\Web\InsightController::class, 'index'])->name('insight.index');
 
 // Route::get('/', function () {
 //     return view('welcome');
