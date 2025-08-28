@@ -52,7 +52,7 @@
                 <a href="#" class="hover:text-orange-500">Services</a>
                 <a href="{{ route('portofolio.index')}}" class="hover:text-orange-500">Portfolio</a>
                 <a href="{{ route('insight.index')}}" class="hover:text-orange-500">Insight</a>
-                <a href="#" class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700">Contact</a>
+                <a href="{{ route('contact.index')}}" class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700">Contact</a>
             </nav>
 
             {{-- Mobile Hamburger --}}
@@ -80,7 +80,7 @@
             <a href="#" class="hover:text-orange-500">Services</a>
             <a href="{{ route('portofolio.index')}}" class="hover:text-orange-500">Portfolio</a>
             <a href="{{ route('insight.index')}}" class="hover:text-orange-500">Insight</a>
-            <a href="#"
+            <a href="{{ route('contact.index')}}"
                 class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 text-center">Contact</a>
         </nav>
     </div>
