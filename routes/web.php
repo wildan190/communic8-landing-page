@@ -18,6 +18,10 @@ Route::get('/about', [App\Http\Controllers\Web\AboutController::class, 'index'])
 Route::get('/portofolio', [App\Http\Controllers\Web\PortofolioController::class, 'index'])->name('portofolio.index');
 Route::get('/insight', [App\Http\Controllers\Web\InsightController::class, 'index'])->name('insight.index');
 Route::get('/contact', [App\Http\Controllers\Web\ContactController::class, 'index'])->name('contact.index');
+Route::get('/layanan/brand-forge', [App\Http\Controllers\Web\LayananController::class, 'brandForge'])->name('layanan.brand-forge');
+Route::get('/layanan/digital-compass', [App\Http\Controllers\Web\LayananController::class, 'digitalCompass'])->name('layanan.digital-compass');
+Route::get('/layanan/digital-architecture', [App\Http\Controllers\Web\LayananController::class, 'digitalArchitecture'])->name('layanan.digital-architecture');
+Route::get('/layanan/public-presence', [App\Http\Controllers\Web\LayananController::class, 'publicPresence'])->name('layanan.public-presence');
 
 // Route::get('/', function () {
 //     return view('welcome');

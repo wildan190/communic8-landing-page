@@ -45,15 +45,32 @@
                 <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="h-8">
             </div>
 
-            {{-- Desktop Navigation --}}
-            <nav class="hidden md:flex items-center space-x-8 text-gray-700 font-medium">
-                <a href="{{ url('/')}}" class="hover:text-orange-500">Home</a>
-                <a href="{{ route('about.index') }}" class="hover:text-orange-500">About</a>
-                <a href="#" class="hover:text-orange-500">Services</a>
-                <a href="{{ route('portofolio.index')}}" class="hover:text-orange-500">Portfolio</a>
-                <a href="{{ route('insight.index')}}" class="hover:text-orange-500">Insight</a>
-                <a href="{{ route('contact.index')}}" class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700">Contact</a>
-            </nav>
+            <nav class="hidden md:flex items-center space-x-8 text-gray-700 font-medium relative">
+    <a href="{{ url('/')}}" class="hover:text-orange-500">Home</a>
+    <a href="{{ route('about.index') }}" class="hover:text-orange-500">About</a>
+
+    {{-- Dropdown Services --}}
+    <div class="relative group">
+        <button class="hover:text-orange-500 flex items-center gap-1">
+            Services
+            <svg class="w-4 h-4 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+        </button>
+
+        <div
+            class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+            <a href="#" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">Brand Forge</a>
+            <a href="#" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">Digital Compass</a>
+            <a href="#" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">Digital Architecture</a>
+            <a href="#" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">Digital Presence</a>
+        </div>
+    </div>
+
+    <a href="{{ route('portofolio.index')}}" class="hover:text-orange-500">Portfolio</a>
+    <a href="{{ route('insight.index')}}" class="hover:text-orange-500">Insight</a>
+    <a href="{{ route('contact.index')}}" class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700">Contact</a>
+</nav>
 
             {{-- Mobile Hamburger --}}
             <button onclick="toggleSidebar()" class="md:hidden text-gray-700 focus:outline-none">
@@ -65,25 +82,53 @@
         </div>
     </header>
 
-    {{-- Sidebar Mobile --}}
-    <div id="mobileMenu"
-        class="fixed top-0 right-0 w-64 h-full bg-white shadow-lg transform translate-x-full transition-transform duration-300 z-50">
-        <div class="flex justify-between items-center px-6 py-4 border-b">
-            <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="h-8">
-            <button onclick="toggleSidebar()" class="text-gray-700">
-                ✕
-            </button>
-        </div>
-        <nav class="flex flex-col space-y-6 p-6 text-gray-700 font-medium">
-            <a href="#" class="hover:text-orange-500">Home</a>
-            <a href="#" class="hover:text-orange-500">About</a>
-            <a href="#" class="hover:text-orange-500">Services</a>
-            <a href="{{ route('portofolio.index')}}" class="hover:text-orange-500">Portfolio</a>
-            <a href="{{ route('insight.index')}}" class="hover:text-orange-500">Insight</a>
-            <a href="{{ route('contact.index')}}"
-                class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 text-center">Contact</a>
-        </nav>
+{{-- Sidebar Mobile --}}
+<div id="mobileMenu"
+    class="fixed top-0 right-0 w-64 h-full bg-white shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+    <div class="flex justify-between items-center px-6 py-4 border-b">
+        <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="h-8">
+        <button onclick="toggleSidebar()" class="text-gray-700">✕</button>
     </div>
+
+    <nav class="flex flex-col space-y-4 p-6 text-gray-700 font-medium">
+        <a href="{{ url('/') }}" class="hover:text-orange-500">Home</a>
+        <a href="{{ route('about.index') }}" class="hover:text-orange-500">About</a>
+
+        {{-- Mobile Dropdown Services --}}
+        <div>
+            <button onclick="toggleMobileDropdown()" 
+                class="w-full flex justify-between items-center hover:text-orange-500">
+                Services
+                <svg id="dropdownIcon" class="w-5 h-5 transform transition-transform duration-200" 
+                     fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </button>
+
+            <div id="mobileDropdown" class="hidden flex-col ml-4 mt-2 space-y-2 text-gray-600">
+                <a href="#" class="hover:text-orange-500">Brand Forge</a>
+                <a href="#" class="hover:text-orange-500">Digital Compass</a>
+                <a href="#" class="hover:text-orange-500">Digital Architecture</a>
+                <a href="#" class="hover:text-orange-500">Digital Presence</a>
+            </div>
+        </div>
+
+        <a href="{{ route('portofolio.index')}}" class="hover:text-orange-500">Portfolio</a>
+        <a href="{{ route('insight.index')}}" class="hover:text-orange-500">Insight</a>
+        <a href="{{ route('contact.index')}}"
+           class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 text-center">Contact</a>
+    </nav>
+</div>
+
+<script>
+    function toggleMobileDropdown() {
+        const dropdown = document.getElementById('mobileDropdown');
+        const icon = document.getElementById('dropdownIcon');
+        dropdown.classList.toggle('hidden');
+        icon.classList.toggle('rotate-180'); // animasi panah
+    }
+</script>
+
 
     {{-- Content --}}
     <main class="relative">
