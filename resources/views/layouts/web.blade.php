@@ -42,7 +42,9 @@
 
             {{-- Logo --}}
             <div class="flex items-center">
-                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="h-8">
+                <a href="{{ url('/') }}">
+                    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="h-8">
+                </a>
             </div>
 
             <nav class="hidden md:flex items-center space-x-8 text-gray-700 font-medium relative">
