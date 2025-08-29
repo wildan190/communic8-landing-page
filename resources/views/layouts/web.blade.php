@@ -148,7 +148,9 @@
             <div class="max-w-7xl mx-auto px-6 flex justify-between items-center py-6">
                 <!-- Logo & Copyright -->
                 <div class="flex items-center space-x-4">
-                    <img src="{{ asset('assets/img/logo-white.png') }}" alt="Logo" class="h-10">
+                    <a href="{{ url('/') }}">
+                        <img src="{{ asset('assets/img/logo-white.png') }}" alt="Logo" class="h-10">
+                    </a>
                     <span class="text-white text-sm">
                         © 2025 Communic8 Asia – All Right Reserved.
                     </span>
