@@ -3,19 +3,19 @@
 @section('content')
     {{-- Hero Section --}}
     <section class="relative w-full h-[80vh] flex items-end bg-cover bg-center"
-        style="background-image: url('{{ asset('assets/img/forge-hero.png') }}')">
+        style="background-image: url('{{ asset('assets/img/digicompass.png') }}')">
         <div class="container mx-auto px-6 md:px-12 lg:px-32 pb-20">
             <div class="max-w-xl text-left">
-                <h1 class="text-4xl md:text-5xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
-                    B R A N D <br> F O R G E
+                <h1 class="text-4xl md:text-4xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
+                    D I G I T A L <br> C O M P A S S
                 </h1>
                 <h2 class="mt-6 text-lg md:text-xl font-bold font-rubik text-black">
-                    Forge Your Brand’s Identity and Destiny
+                    Amplify Your Reach, Accelerate Your Growth
                 </h2>
                 <p class="mt-4 text-sm md:text-base text-gray-800 font-rubik leading-relaxed">
-                    We go beyond aesthetics to build and align your brand’s core quality, value, and trust.
-                    Our comprehensive approach ensures a powerful consistent presence that resonates with your audience in
-                    Asia.
+                    Communic 8 delivers targeted digital marketing that cuts through the noise. We guide your brand to
+                    effectively reach and engage your audience across Asia, transforming digital complexity into measurable
+                    results.
                 </p>
             </div>
         </div>
@@ -23,133 +23,108 @@
 
     {{-- Gallery Section --}}
     <section class="w-full">
+        <div class="container mx-auto px-6 md:px-12 py-16 text-center">
+            <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
+                Digital Marketing is no longer just an option. It has become the central nervous system for business growth
+                and brand evolution.
+            </p>
+            <br />
+            <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
+                Our approach is built on a strategic framework that delivers tangible results and ensures a holistic journey
+                for your audience.
+            </p>
+        </div>
+
         <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery" class="w-full h-auto object-cover">
     </section>
 
-    {{-- Strategy Section --}}
-    <section class="w-full py-24">
-        <div class="max-w-7xl mx-auto px-20 space-y-24">
-            {{-- 👆 Samain px-20 atau sesuai padding navbar kamu --}}
+    {{-- Section 1 --}}
+    <section class="w-full py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-            {{-- Row 1 --}}
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="text-left">
-                    <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase">
-                        Insight-Driven<br>Strategy
-                    </h2>
-                    <p class="mt-6 text-gray-700 font-rubik leading-relaxed text-sm md:text-base">
-                        Every powerful brand is built on a foundation of deep understanding.
-                        Our process begins with comprehensive analysis, where we dive into your market, competitive
-                        landscape, and audience behavior.
-                        This strategic thinking ensures your brand’s positioning is not only unique but also precisely
-                        aligned with your business objectives for maximum effectiveness.
-                    </p>
-                </div>
-                <div class="flex justify-center">
-                    <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Insight Driven Strategy"
-                        class="rounded-xl w-full max-w-md object-cover">
-                </div>
+            {{-- Left Image --}}
+            <div>
+                <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Digital Compass"
+                    class="rounded-xl w-full object-cover">
             </div>
 
-            {{-- Row 2 --}}
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="order-2 md:order-1 flex justify-center">
-                    <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Bold Creative Ideas"
-                        class="rounded-xl w-full max-w-md object-cover">
+            {{-- Right Text --}}
+            <div class="space-y-6 font-rubik">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900">REACH</h3>
+                    <p class="text-gray-600 text-base leading-relaxed">
+                        We expand your visibility, ensuring your brand connects with the right “Prospect & Customer” across
+                        relevant digital channels.
+                    </p>
                 </div>
-                <div class="order-1 md:order-2 text-left">
-                    <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase">
-                        Bold Creative<br>Ideas
-                    </h2>
-                    <p class="mt-6 text-gray-700 font-rubik leading-relaxed text-sm md:text-base">
-                        Strategy provides the direction, creativity makes the journey unforgettable.
-                        We translate strategic insights into bold ideas and out-of-the-box concepts with creative and
-                        different thinking.
-                        This is where we craft the unique personality and compelling narrative that gives your brand a
-                        distinctive voice.
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900">ACT</h3>
+                    <p class="text-gray-600 text-base leading-relaxed">
+                        We inspire and encourage your audience to interact meaningfully with your content and offerings.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900">CONVERT</h3>
+                    <p class="text-gray-600 text-base leading-relaxed">
+                        We drive tangible outcomes, turning your prospects into leads.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900">ENGAGE</h3>
+                    <p class="text-gray-600 text-base leading-relaxed">
+                        We build lasting relationships, fostering loyalty and advocacy over time with your customer base.
                     </p>
                 </div>
             </div>
-
-            {{-- Row 3 --}}
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="text-left">
-                    <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase">
-                        Impactful<br>Visual Identity
-                    </h2>
-                    <p class="mt-6 text-gray-700 font-rubik leading-relaxed text-sm md:text-base">
-                        We bring your brand’s story to life through strong visuals that command attention and ensure
-                        consistency.
-                        From a striking logo and color palette to a complete “Corporate Brand Guideline”, our design
-                        expertise ensures your visual identity is not only beautiful but also cohesive and impactful across
-                        every single touchpoint.
-                    </p>
-                </div>
-                <div class="flex justify-center">
-                    <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Impactful Visual Identity"
-                        class="rounded-xl w-full max-w-md object-cover">
-                </div>
-            </div>
-
         </div>
     </section>
 
-    {{-- Services Grid Section --}}
+    {{-- Section 2 --}}
     <section class="w-full py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-20 text-center">
+        <div class="max-w-7xl mx-auto px-20">
 
-            {{-- Top description --}}
-            <p class="text-gray-700 font-rubik text-base leading-relaxed max-w-3xl mx-auto">
-                Communic 8's Brand Development service shapes every facet of your identity from
-                foundational research to brand design and activation.
-            </p>
-            <p class="mt-4 font-rubik font-semibold text-gray-900">
-                Let us help you build a resilient brand that will stand through the test of time.
-            </p>
-
-            {{-- Grid 6 --}}
-            <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-center">
 
                 {{-- Item 1 --}}
                 <div class="flex flex-col items-center">
-                    <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Brand Platform"
-                        class="rounded-xl w-full max-w-[250px] object-cover">
-                    <p class="mt-4 text-gray-700 font-rubik">Brand Platform</p>
+                    <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Search Engine Optimization"
+                        class="rounded-xl w-full max-w-[220px] object-cover">
+                    <p class="mt-4 text-gray-700 font-rubik">Search Engine Optimization</p>
                 </div>
 
                 {{-- Item 2 --}}
                 <div class="flex flex-col items-center">
-                    <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Brand Identity"
-                        class="rounded-xl w-full max-w-[250px] object-cover">
-                    <p class="mt-4 text-gray-700 font-rubik">Brand Identity</p>
+                    <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Search Engine Marketing"
+                        class="rounded-xl w-full max-w-[220px] object-cover">
+                    <p class="mt-4 text-gray-700 font-rubik">Search Engine Marketing</p>
                 </div>
 
                 {{-- Item 3 --}}
                 <div class="flex flex-col items-center">
-                    <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Brand System"
-                        class="rounded-xl w-full max-w-[250px] object-cover">
-                    <p class="mt-4 text-gray-700 font-rubik">Brand System</p>
+                    <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Social Media Advertising"
+                        class="rounded-xl w-full max-w-[220px] object-cover">
+                    <p class="mt-4 text-gray-700 font-rubik">Social Media Advertising</p>
                 </div>
 
                 {{-- Item 4 --}}
                 <div class="flex flex-col items-center">
-                    <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Brand Activation"
-                        class="rounded-xl w-full max-w-[250px] object-cover">
-                    <p class="mt-4 text-gray-700 font-rubik">Brand Activation</p>
+                    <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Social Media Management"
+                        class="rounded-xl w-full max-w-[220px] object-cover">
+                    <p class="mt-4 text-gray-700 font-rubik">Social Media Management</p>
                 </div>
 
                 {{-- Item 5 --}}
                 <div class="flex flex-col items-center">
-                    <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Creative Design"
-                        class="rounded-xl w-full max-w-[250px] object-cover">
-                    <p class="mt-4 text-gray-700 font-rubik">Creative Design</p>
+                    <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Influencer Marketing"
+                        class="rounded-xl w-full max-w-[220px] object-cover">
+                    <p class="mt-4 text-gray-700 font-rubik">Influencer Marketing</p>
                 </div>
 
                 {{-- Item 6 --}}
                 <div class="flex flex-col items-center">
-                    <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Corporate Brand Guideline"
-                        class="rounded-xl w-full max-w-[250px] object-cover">
-                    <p class="mt-4 text-gray-700 font-rubik">Corporate Brand Guideline</p>
+                    <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Digital Public Relations"
+                        class="rounded-xl w-full max-w-[220px] object-cover">
+                    <p class="mt-4 text-gray-700 font-rubik">Digital Public Relations</p>
                 </div>
 
             </div>
