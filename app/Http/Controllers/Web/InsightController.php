@@ -18,9 +18,12 @@ class InsightController extends Controller
             ->latest()
             ->paginate(10);
 
-        // Ambil daftar kategori unik untuk tombol filter
+        // Ambil daftar kategori unik
         $categories = Blog::select('category')->distinct()->pluck('category');
 
-        return view('web.insight.index', compact('blogs', 'categories', 'category'));
+        // Data untuk slider (10 terbaru)
+        $sliderBlogs = Blog::latest()->take(10)->get();
+
+        return view('web.insight.index', compact('blogs', 'categories', 'category', 'sliderBlogs'));
     }
 }
