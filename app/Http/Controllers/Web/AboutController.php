@@ -1,13 +1,29 @@
 <?php
 
 namespace App\Http\Controllers\Web;
+use App\Models\Blog;
+use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 
 class AboutController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('web.about.index');
+        $category = $request->get('category');
+
+        $blogs = Blog::when($category, function ($query, $category) {
+                $query->where('category', $category);
+            })
+            ->latest()
+            ->paginate(10);
+
+        // Ambil daftar kategori unik
+        $categories = Blog::select('category')->distinct()->pluck('category');
+
+        // Data untuk slider (10 terbaru)
+        $sliderBlogs = Blog::latest()->take(10)->get();
+
+        return view('web.about.index', compact('blogs', 'categories', 'category', 'sliderBlogs'));
     }
 }
