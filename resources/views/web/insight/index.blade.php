@@ -9,6 +9,9 @@
         <!-- Overlay supaya background lebih soft -->
         <div class="absolute inset-0 bg-white/70"></div>
 
+        <!-- Overlay supaya background lebih soft -->
+        <div class="absolute inset-0 bg-white/70"></div>
+
         <!-- Content -->
         <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
             <h1 class="font-poppins text-4xl md:text-5xl tracking-[0.3em] text-gray-800">
@@ -21,36 +24,24 @@
 
             <!-- Categories -->
             <div class="flex flex-wrap justify-center gap-4 mt-10">
-                <button class="px-6 py-2 border border-gray-400 rounded-full text-gray-700 hover:bg-gray-100 transition">All
-                    categories</button>
-                <button
-                    class="px-6 py-2 border border-gray-400 rounded-full text-gray-700 hover:bg-gray-100 transition">Blog
-                    category one</button>
-                <button
-                    class="px-6 py-2 border border-gray-400 rounded-full text-gray-700 hover:bg-gray-100 transition">Second
-                    category</button>
-                <button class="px-6 py-2 border border-gray-400 rounded-full text-gray-700 hover:bg-gray-100 transition">The
-                    third</button>
-                <button
-                    class="px-6 py-2 border border-gray-400 rounded-full text-gray-700 hover:bg-gray-100 transition">Back
-                    and fourth</button>
-                <button
-                    class="px-6 py-2 border border-gray-400 rounded-full text-gray-700 hover:bg-gray-100 transition">Fifth
-                    shades</button>
-                <button
-                    class="px-6 py-2 border border-gray-400 rounded-full text-gray-700 hover:bg-gray-100 transition">Sixth
-                    sense</button>
-                <button
-                    class="px-6 py-2 border border-gray-400 rounded-full text-gray-700 hover:bg-gray-100 transition">Seventh
-                    eleven</button>
-                <button
-                    class="px-6 py-2 border border-gray-400 rounded-full text-gray-700 hover:bg-gray-100 transition">Black
-                    eight ball</button>
-                <button
-                    class="px-6 py-2 border border-gray-400 rounded-full text-gray-700 hover:bg-gray-100 transition">Nine
-                    nine one</button>
+                <a href="{{ route('insight.index') }}"
+                    class="px-6 py-2 border border-gray-400 rounded-full 
+                  {{ !$category ? 'bg-gray-800 text-white' : 'text-gray-700 hover:bg-gray-100' }}
+                  transition">
+                    All categories
+                </a>
+
+                @foreach ($categories as $cat)
+                    <a href="{{ route('insight.index', ['category' => $cat]) }}"
+                        class="px-6 py-2 border border-gray-400 rounded-full 
+                      {{ $category === $cat ? 'bg-gray-800 text-white' : 'text-gray-700 hover:bg-gray-100' }}
+                      transition">
+                        {{ $cat }}
+                    </a>
+                @endforeach
             </div>
         </div>
+
     </section>
 
     <!-- Masonry Grid Section -->
@@ -60,78 +51,34 @@
             <!-- Masonry Layout -->
             <div class="columns-1 md:columns-3 gap-6 space-y-6">
 
-                <!-- Card 1 -->
-                <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
-                    <p class="text-sm text-gray-500">Branding</p>
-                    <a href="#">
-                        <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">SOMA: Dynamic Branding
-                            & Visual Identity by Made by Ruda</h3>
-                    </a>
-                    <img src="{{ asset('assets/img/blog1.png') }}" class="w-full rounded-xl object-cover">
-                </div>
-
-                <!-- Card 2 -->
-                <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
-                    <p class="text-sm text-gray-500">Design</p>
-                    <a href="#">
-                        <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">Get Ready for the Next
-                            Wave of Visual Design</h3>
-                    </a>
-                    <img src="{{ asset('assets/img/blog1.png') }}" class="w-full rounded-xl object-cover">
-                </div>
-
-                <!-- Card 3 -->
-                <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
-                    <p class="text-sm text-gray-500">Motion</p>
-                    <a href="#">
-                        <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">Exploring Minimal
-                            One-Line Motion</h3>
-                    </a>
-                    <img src="{{ asset('assets/img/blog1.png') }}" class="w-full rounded-xl object-cover">
-                </div>
-
-                <!-- Card 4 -->
-                <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
-                    <p class="text-sm text-gray-500">Strategy</p>
-                    <a href="#">
-                        <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">Why Storytelling is the
-                            Future of Branding</h3>
-                    </a>
-                    <img src="{{ asset('assets/img/blog1.png') }}" class="w-full rounded-xl object-cover">
-                </div>
-
-                <!-- Card 5 -->
-                <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
-                    <p class="text-sm text-gray-500">Marketing</p>
-                    <a href="#">
-                        <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">Micro-Influencers: The
-                            Secret Weapon for Authentic Engagement</h3>
-                    </a>
-                    <img src="{{ asset('assets/img/blog1.png') }}" class="w-full rounded-xl object-cover">
-                </div>
-
-                <!-- Card 6 -->
-                <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
-                    <p class="text-sm text-gray-500">Technology</p>
-                    <a href="#">
-                        <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">The Rise of AI-Driven
-                            Design Tools</h3>
-                    </a>
-                    <img src="{{ asset('assets/img/blog1.png') }}" class="w-full rounded-xl object-cover">
-                </div>
+                @foreach ($blogs as $blog)
+                    <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
+                        <p class="text-sm text-gray-500">{{ $blog->category }}</p>
+                        <a href="{{ route('blogs.show', $blog->slug) }}">
+                            <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
+                                {{ $blog->title }}
+                            </h3>
+                        </a>
+                        @if ($blog->headline_img)
+                            <img src="{{ asset('storage/' . $blog->headline_img) }}"
+                                alt="{{ $blog->headline_img_alt ?? $blog->title }}" class="w-full rounded-xl object-cover">
+                        @else
+                            <img src="{{ asset('assets/img/blog1.png') }}" alt="Default Image"
+                                class="w-full rounded-xl object-cover">
+                        @endif
+                    </div>
+                @endforeach
 
             </div>
 
             <!-- Read More Button -->
             <div class="text-center mt-12">
-                <a href="#"
-                    class="inline-block bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition">
-                    Read More
-                </a>
+                {{ $blogs->links() }}
             </div>
 
         </div>
     </section>
+
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
