@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\BranchOffice;
+use App\Models\Client;
+use App\Models\Gallery;
+use App\Models\WebInformation;
 use Illuminate\Http\Request;
 
 class InsightController extends Controller
@@ -24,6 +28,19 @@ class InsightController extends Controller
         // Data untuk slider (10 terbaru)
         $sliderBlogs = Blog::latest()->take(10)->get();
 
-        return view('web.insight.index', compact('blogs', 'categories', 'category', 'sliderBlogs'));
+        $categories = Blog::select('category')->distinct()->pluck('category');
+        $sliderBlogs = Blog::latest()->take(10)->get();
+        $clients = Client::latest()->get();
+
+        // 🔥 ambil semua data gallery terbaru
+        $galleries = Gallery::latest()->get();
+        $webInfo = WebInformation::first();
+        $branchOffices = BranchOffice::all();
+        $insightCategories = Blog::select('category')
+            ->distinct()
+            ->take(5)
+            ->pluck('category');
+
+        return view('web.insight.index', compact('blogs', 'categories', 'category', 'sliderBlogs', 'webInfo', 'branchOffices', 'insightCategories', 'clients', 'galleries'));
     }
 }

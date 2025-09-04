@@ -36,10 +36,7 @@ class PortofolioController extends Controller
         $galleries = Gallery::latest()->get();
         $webInfo = WebInformation::first();
         $branchOffices = BranchOffice::all();
-        $insightCategories = Blog::select('category')
-            ->distinct()
-            ->take(5)
-            ->pluck('category');
+        $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
 
         return view('web.portofolio.index', compact('blogs', 'categories', 'category', 'sliderBlogs', 'webInfo', 'branchOffices', 'insightCategories', 'clients', 'galleries'));
     }
