@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Client;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
@@ -19,15 +20,20 @@ class AboutController extends Controller
             ->latest()
             ->paginate(10);
 
-        // Ambil daftar kategori unik
         $categories = Blog::select('category')->distinct()->pluck('category');
-
-        // Data untuk slider (10 terbaru)
         $sliderBlogs = Blog::latest()->take(10)->get();
-
-        // Ambil semua clients
         $clients = Client::latest()->get();
 
-        return view('web.about.index', compact('blogs', 'categories', 'category', 'sliderBlogs', 'clients'));
+        // 🔥 ambil semua data gallery terbaru
+        $galleries = Gallery::latest()->get();
+
+        return view('web.about.index', compact(
+            'blogs',
+            'categories',
+            'category',
+            'sliderBlogs',
+            'clients',
+            'galleries'
+        ));
     }
 }

@@ -159,16 +159,27 @@
         <section class="relative bg-white py-10">
             <div class="swiper mySwiper w-full relative overflow-visible">
                 <div class="swiper-wrapper">
-                    @php $galleries = ['gallery1.png','gallery2.png','gallery3.png']; @endphp
-                    @for ($i = 0; $i < 8; $i++)
-                        <div class="swiper-slide">
-                            <img src="{{ asset('assets/img/' . $galleries[$i % count($galleries)]) }}" alt="Gallery"
-                                class="w-full h-[320px] object-cover">
-                        </div>
-                    @endfor
+                    @if ($galleries->count() > 0)
+                        @for ($i = 0; $i < 8; $i++)
+                            @php $gallery = $galleries[$i % $galleries->count()]; @endphp
+                            <div class="swiper-slide">
+                                <img src="{{ asset('storage/' . $gallery->upload_picture) }}" alt="Gallery"
+                                    class="w-full h-[320px] object-cover">
+                            </div>
+                        @endfor
+                    @else
+                        {{-- fallback kalau database kosong --}}
+                        @php $fallbacks = ['gallery1.png','gallery2.png','gallery3.png']; @endphp
+                        @for ($i = 0; $i < 8; $i++)
+                            <div class="swiper-slide">
+                                <img src="{{ asset('assets/img/' . $fallbacks[$i % count($fallbacks)]) }}" alt="Gallery"
+                                    class="w-full h-[320px] object-cover">
+                            </div>
+                        @endfor
+                    @endif
                 </div>
 
-                {{-- Pakai PNG kamu, tanpa chevron default --}}
+                {{-- Pakai PNG custom, tanpa chevron default --}}
                 <div class="swiper-button-prev custom-nav" aria-label="Previous">
                     <img src="{{ asset('assets/img/arrow-left.png') }}" alt="Prev">
                 </div>
@@ -178,6 +189,7 @@
             </div>
         </section>
 
+        {{-- SwiperJS --}}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -194,29 +206,23 @@
                 height: auto !important;
                 position: absolute !important;
                 top: 55% !important;
-                /* posisi tengah */
                 transform: translateY(-50%) !important;
-                /* koreksi biar bener2 center */
                 z-index: 30 !important;
             }
 
             .mySwiper .swiper-button-prev {
                 left: 16px !important;
-                /* jarak kiri */
             }
 
             .mySwiper .swiper-button-next {
                 right: 16px !important;
-                /* jarak kanan */
             }
 
             .mySwiper .swiper-button-prev img,
             .mySwiper .swiper-button-next img {
                 display: block;
                 width: 72px;
-                /* atur ukuran */
                 height: auto;
-                /* biar tidak gepeng */
             }
         </style>
 
@@ -254,8 +260,6 @@
             });
         </script>
 
-
-
         {{-- Trusted by Many Section --}}
         <section class="relative bg-white py-24">
             <div class="container max-w-7xl mx-auto px-6 text-center">
@@ -269,15 +273,12 @@
                 </h2>
 
                 {{-- Logos Grid --}}
-<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-10 items-center justify-center">
-    @foreach($clients as $client)
-        <img 
-            src="{{ $client->logo ? asset('storage/' . $client->logo) : asset('assets/img/default-logo.png') }}" 
-            alt="{{ $client->company_name }}" 
-            class="max-h-14 mx-auto"
-        >
-    @endforeach
-</div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-10 items-center justify-center">
+                    @foreach ($clients as $client)
+                        <img src="{{ $client->logo ? asset('storage/' . $client->logo) : asset('assets/img/default-logo.png') }}"
+                            alt="{{ $client->company_name }}" class="max-h-14 mx-auto">
+                    @endforeach
+                </div>
 
             </div>
         </section>
