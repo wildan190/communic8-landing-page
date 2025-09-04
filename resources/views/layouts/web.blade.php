@@ -148,20 +148,19 @@
     </main>
 
     <footer class="bg-white">
-        <!-- Top Footer -->
         <div class="bg-cover bg-center" style="background-image: url('{{ asset('assets/img/cta-bg.png') }}');">
-            <div class="max-w-7xl mx-auto px-6 flex justify-between items-center py-6">
-                <!-- Logo & Copyright -->
-                <div class="flex items-center space-x-4">
+            <div
+                class="max-w-7xl mx-auto px-6 py-6 flex flex-col items-center md:flex-row md:justify-between md:items-center">
+                <div
+                    class="flex flex-col items-center md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4 mb-4 md:mb-0">
                     <a href="{{ url('/') }}">
                         <img src="{{ asset('assets/img/logo-white.png') }}" alt="Logo" class="h-10">
                     </a>
-                    <span class="text-white text-sm">
+                    <span class="text-white text-center md:text-left text-sm">
                         © 2025 Communic8 Asia – All Right Reserved.
                     </span>
                 </div>
 
-                <!-- Social Icons -->
                 <div class="flex space-x-4">
                     @if ($webInfo && $webInfo->facebook)
                         <a href="{{ $webInfo->facebook }}" target="_blank" class="group">
@@ -194,12 +193,9 @@
             </div>
         </div>
 
-        <!-- Bottom Footer -->
-        <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8 text-gray-700">
+        <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 gap-8 text-gray-700 md:grid-cols-2 lg:grid-cols-4">
 
-            <!-- Column 1-3 grouped -->
-            <div class="col-span-2 grid grid-cols-3 gap-6">
-                <!-- Get to know -->
+            <div class="col-span-1 md:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <div>
                     <h4 class="font-semibold mb-4">Get to know</h4>
                     <ul class="space-y-2 text-sm">
@@ -209,7 +205,6 @@
                     </ul>
                 </div>
 
-                <!-- Scope of works -->
                 <div>
                     <h4 class="font-semibold mb-4">Scope of works</h4>
                     <ul class="space-y-2 text-sm">
@@ -220,7 +215,6 @@
                     </ul>
                 </div>
 
-                <!-- Insights -->
                 <div>
                     <h4 class="font-semibold mb-4">Insights</h4>
                     <ul class="space-y-2 text-sm">
@@ -239,22 +233,9 @@
 
             </div>
 
-            <!-- Column 4 Jakarta & Malaysia -->
-            <div class="space-y-6 border-l pl-6">
-                @foreach ($branchOffices->slice(0, 2) as $office)
-                    <div>
-                        <h4 class="font-semibold mb-2">{{ $office->name }}</h4>
-                        <p class="text-sm text-gray-600">
-                            {!! nl2br(e($office->address)) !!} <br>
-                            <span class="block mt-1">Phone number: {{ $office->phone }}</span>
-                        </p>
-                    </div>
-                @endforeach
-            </div>
-
-            <!-- Column 5 Singapore & China -->
-            <div class="space-y-6">
-                @foreach ($branchOffices->slice(2, 2) as $office)
+            <div
+                class="col-span-1 md:col-span-2 lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-6 lg:border-l lg:pl-6">
+                @foreach ($branchOffices as $office)
                     <div>
                         <h4 class="font-semibold mb-2">{{ $office->name }}</h4>
                         <p class="text-sm text-gray-600">
