@@ -269,18 +269,16 @@
                 </h2>
 
                 {{-- Logos Grid --}}
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-10 items-center justify-center">
-                    <img src="{{ asset('assets/img/clients/mercedes.png') }}" alt="Mercedes" class="max-h-14 mx-auto">
-                    <img src="{{ asset('assets/img/clients/pertamina.png') }}" alt="Pertamina" class="max-h-14 mx-auto">
-                    <img src="{{ asset('assets/img/clients/repsol.png') }}" alt="Repsol" class="max-h-14 mx-auto">
-                    <img src="{{ asset('assets/img/clients/sanken.png') }}" alt="Sanken" class="max-h-14 mx-auto">
-                    <img src="{{ asset('assets/img/clients/adira.png') }}" alt="Adira" class="max-h-14 mx-auto">
-                    <img src="{{ asset('assets/img/clients/daikin.png') }}" alt="Daikin" class="max-h-14 mx-auto">
-                    <img src="{{ asset('assets/img/clients/bri.png') }}" alt="BRI" class="max-h-14 mx-auto">
-                    <img src="{{ asset('assets/img/clients/daihatsu.png') }}" alt="Daihatsu" class="max-h-14 mx-auto">
-                    <img src="{{ asset('assets/img/clients/msig.png') }}" alt="MSIG" class="max-h-14 mx-auto">
-                    <img src="{{ asset('assets/img/clients/ot.png') }}" alt="OT" class="max-h-14 mx-auto">
-                </div>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-10 items-center justify-center">
+    @foreach($clients as $client)
+        <img 
+            src="{{ $client->logo ? asset('storage/' . $client->logo) : asset('assets/img/default-logo.png') }}" 
+            alt="{{ $client->company_name }}" 
+            class="max-h-14 mx-auto"
+        >
+    @endforeach
+</div>
+
             </div>
         </section>
 
