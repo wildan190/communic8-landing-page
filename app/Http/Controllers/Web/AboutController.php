@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Client;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
@@ -24,6 +25,9 @@ class AboutController extends Controller
         // Data untuk slider (10 terbaru)
         $sliderBlogs = Blog::latest()->take(10)->get();
 
-        return view('web.about.index', compact('blogs', 'categories', 'category', 'sliderBlogs'));
+        // Ambil semua clients
+        $clients = Client::latest()->get();
+
+        return view('web.about.index', compact('blogs', 'categories', 'category', 'sliderBlogs', 'clients'));
     }
 }

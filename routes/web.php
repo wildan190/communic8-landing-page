@@ -63,6 +63,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
     Route::get('/messages/{message}', [MessageController::class, 'show'])->name('messages.show');
     Route::delete('/messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
+
+    // Clients
+    Route::get('/clients', [App\Http\Controllers\ClientController::class, 'index'])->name('clients.index');
+    Route::get('/clients/create', [App\Http\Controllers\ClientController::class, 'create'])->name('clients.create');
+    Route::post('/clients', [App\Http\Controllers\ClientController::class, 'store'])->name('clients.store');
+    Route::get('/clients/{client}/edit', [App\Http\Controllers\ClientController::class, 'edit'])->name('clients.edit');
+    Route::put('/clients/{client}', [App\Http\Controllers\ClientController::class, 'update'])->name('clients.update');
+    Route::delete('/clients/{client}', [App\Http\Controllers\ClientController::class, 'destroy'])->name('clients.destroy');
 });
 
 require __DIR__.'/auth.php';
