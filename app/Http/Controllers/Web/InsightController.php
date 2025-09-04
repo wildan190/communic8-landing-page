@@ -13,8 +13,8 @@ class InsightController extends Controller
         $category = $request->get('category');
 
         $blogs = Blog::when($category, function ($query, $category) {
-                $query->where('category', $category);
-            })
+            $query->where('category', $category);
+        })
             ->latest()
             ->paginate(10);
 

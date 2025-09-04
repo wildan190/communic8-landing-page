@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Web;
-use App\Models\Blog;
-use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
+use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
@@ -13,8 +13,8 @@ class AboutController extends Controller
         $category = $request->get('category');
 
         $blogs = Blog::when($category, function ($query, $category) {
-                $query->where('category', $category);
-            })
+            $query->where('category', $category);
+        })
             ->latest()
             ->paginate(10);
 

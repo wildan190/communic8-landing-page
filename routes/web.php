@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,7 @@ Route::get('/about', [App\Http\Controllers\Web\AboutController::class, 'index'])
 Route::get('/portofolio', [App\Http\Controllers\Web\PortofolioController::class, 'index'])->name('portofolio.index');
 Route::get('/insight', [App\Http\Controllers\Web\InsightController::class, 'index'])->name('insight.index');
 Route::get('/contact', [App\Http\Controllers\Web\ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact', [App\Http\Controllers\Web\ContactController::class, 'store'])->name('contact.store');
 Route::get('/layanan/brand-forge', [App\Http\Controllers\Web\LayananController::class, 'brandForge'])->name('layanan.brand-forge');
 Route::get('/layanan/digital-compass', [App\Http\Controllers\Web\LayananController::class, 'digitalCompass'])->name('layanan.digital-compass');
 Route::get('/layanan/digital-architecture', [App\Http\Controllers\Web\LayananController::class, 'digitalArchitecture'])->name('layanan.digital-architecture');
@@ -43,6 +45,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('blogs.edit');
     Route::put('/blogs/{blog}', [BlogController::class, 'update'])->name('blogs.update');
     Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name('blogs.destroy');
+
+    Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
+    Route::get('/messages/{message}', [MessageController::class, 'show'])->name('messages.show');
+    Route::delete('/messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
