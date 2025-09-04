@@ -199,8 +199,8 @@
                 <div>
                     <h4 class="font-semibold mb-4">Get to know</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-gray-500">Home</a></li>
-                        <li><a href="#" class="hover:text-gray-500">About</a></li>
+                        <li><a href="{{ url('/')}}" class="hover:text-gray-500">Home</a></li>
+                        <li><a href="{{ route('about.index')}}" class="hover:text-gray-500">About</a></li>
                         <li><a href="{{ route('portofolio.index') }}" class="hover:text-gray-500">Portfolio</a></li>
                     </ul>
                 </div>
@@ -208,10 +208,10 @@
                 <div>
                     <h4 class="font-semibold mb-4">Scope of works</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-gray-500">Brand Development</a></li>
-                        <li><a href="#" class="hover:text-gray-500">Digital Marketing</a></li>
-                        <li><a href="#" class="hover:text-gray-500">Digital Development</a></li>
-                        <li><a href="#" class="hover:text-gray-500">Event Management</a></li>
+                        <li><a href="{{ route('layanan.brand-forge')}}" class="hover:text-gray-500">Brand Development</a></li>
+                        <li><a href="{{ route('layanan.digital-compass')}}" class="hover:text-gray-500">Digital Marketing</a></li>
+                        <li><a href="{{ route('layanan.digital-architecture')}}" class="hover:text-gray-500">Digital Development</a></li>
+                        <li><a href="{{ route('layanan.public-presence')}}" class="hover:text-gray-500">Event Management</a></li>
                     </ul>
                 </div>
 
