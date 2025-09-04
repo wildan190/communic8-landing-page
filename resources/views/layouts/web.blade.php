@@ -224,53 +224,47 @@
                 <div>
                     <h4 class="font-semibold mb-4">Insights</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-gray-500">Blog Category</a></li>
-                        <li><a href="#" class="hover:text-gray-500">Blog Category</a></li>
-                        <li><a href="#" class="hover:text-gray-500">Blog Category</a></li>
-                        <li><a href="#" class="hover:text-gray-500">Blog Category</a></li>
-                        <li><a href="#" class="hover:text-gray-500">Blog Category</a></li>
+                        @forelse($insightCategories as $cat)
+                            <li>
+                                <a href="{{ route('home.index', ['category' => $cat]) }}"
+                                    class="hover:text-gray-500">
+                                    {{ $cat }}
+                                </a>
+                            </li>
+                        @empty
+                            <li class="text-gray-400">Belum ada kategori</li>
+                        @endforelse
                     </ul>
                 </div>
+
             </div>
 
             <!-- Column 4 Jakarta & Malaysia -->
             <div class="space-y-6 border-l pl-6">
-                <div>
-                    <h4 class="font-semibold mb-2">Jakarta Office</h4>
-                    <p class="text-sm text-gray-600">
-                        Jl. Tebet Timur Dalam Raya No. 65, Tebet <br>
-                        Jakarta Selatan – DKI Jakarta 12820 <br>
-                        <span class="block mt-1">Phone number: +62 817-7415-6280</span>
-                    </p>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-2">Malaysia Office</h4>
-                    <p class="text-sm text-gray-600">
-                        Persiaran Bayan Indah, Bayan Bay, <br>
-                        Bayan Lepas – Pulau Pinang 11900 <br>
-                        <span class="block mt-1">Phone number: +60 6761-0661</span>
-                    </p>
-                </div>
+                @foreach ($branchOffices->slice(0, 2) as $office)
+                    <div>
+                        <h4 class="font-semibold mb-2">{{ $office->name }}</h4>
+                        <p class="text-sm text-gray-600">
+                            {!! nl2br(e($office->address)) !!} <br>
+                            <span class="block mt-1">Phone number: {{ $office->phone }}</span>
+                        </p>
+                    </div>
+                @endforeach
             </div>
 
             <!-- Column 5 Singapore & China -->
             <div class="space-y-6">
-                <div>
-                    <h4 class="font-semibold mb-2">Singapore Office</h4>
-                    <p class="text-sm text-gray-600">
-                        St. 280A Sims Avenue, Singapore 387515 <br>
-                        <span class="block mt-1">Phone number: +65 6842-6837</span>
-                    </p>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-2">China Office</h4>
-                    <p class="text-sm text-gray-600">
-                        St. San Li He Lu Jiu Hao Jian <br>
-                        Haidian District – Beijing 2106 <br>
-                        <span class="block mt-1">Phone number: +86 1307-3399-412</span>
-                    </p>
-                </div>
+                @foreach ($branchOffices->slice(2, 2) as $office)
+                    <div>
+                        <h4 class="font-semibold mb-2">{{ $office->name }}</h4>
+                        <p class="text-sm text-gray-600">
+                            {!! nl2br(e($office->address)) !!} <br>
+                            <span class="block mt-1">Phone number: {{ $office->phone }}</span>
+                        </p>
+                    </div>
+                @endforeach
             </div>
+
         </div>
 
     </footer>
