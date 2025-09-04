@@ -3,6 +3,12 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Web\AboutController;
+use App\Http\Controllers\Web\ContactController;
+use App\Http\Controllers\Web\HomeController;
+use App\Http\Controllers\Web\InsightController;
+use App\Http\Controllers\Web\LayananController;
+use App\Http\Controllers\Web\PortofolioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,16 +22,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\Web\HomeController::class, 'index'])->name('home.index');
-Route::get('/about', [App\Http\Controllers\Web\AboutController::class, 'index'])->name('about.index');
-Route::get('/portofolio', [App\Http\Controllers\Web\PortofolioController::class, 'index'])->name('portofolio.index');
-Route::get('/insight', [App\Http\Controllers\Web\InsightController::class, 'index'])->name('insight.index');
-Route::get('/contact', [App\Http\Controllers\Web\ContactController::class, 'index'])->name('contact.index');
-Route::post('/contact', [App\Http\Controllers\Web\ContactController::class, 'store'])->name('contact.store');
-Route::get('/layanan/brand-forge', [App\Http\Controllers\Web\LayananController::class, 'brandForge'])->name('layanan.brand-forge');
-Route::get('/layanan/digital-compass', [App\Http\Controllers\Web\LayananController::class, 'digitalCompass'])->name('layanan.digital-compass');
-Route::get('/layanan/digital-architecture', [App\Http\Controllers\Web\LayananController::class, 'digitalArchitecture'])->name('layanan.digital-architecture');
-Route::get('/layanan/public-presence', [App\Http\Controllers\Web\LayananController::class, 'publicPresence'])->name('layanan.public-presence');
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+Route::get('/portofolio', [PortofolioController::class, 'index'])->name('portofolio.index');
+Route::get('/insight', [InsightController::class, 'index'])->name('insight.index');
+
+// Rute Kontak dengan throttle
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+
+// Batasi 60 request per menit untuk rute POST /contact
+Route::post('/contact', [ContactController::class, 'store'])
+    ->middleware('throttle:60,1')
+    ->name('contact.store');
+
+// Rute Layanan lainnya
+Route::get('/layanan/brand-forge', [LayananController::class, 'brandForge'])->name('layanan.brand-forge');
+Route::get('/layanan/digital-compass', [LayananController::class, 'digitalCompass'])->name('layanan.digital-compass');
+Route::get('/layanan/digital-architecture', [LayananController::class, 'digitalArchitecture'])->name('layanan.digital-architecture');
+Route::get('/layanan/public-presence', [LayananController::class, 'publicPresence'])->name('layanan.public-presence');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
