@@ -63,13 +63,17 @@
 
                     <div
                         class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                        <a href="{{ route('layanan.brand-forge')}}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">Brand
+                        <a href="{{ route('layanan.brand-forge') }}"
+                            class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">Brand
                             Forge</a>
-                        <a href="{{ route('layanan.digital-compass')}}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">Digital
+                        <a href="{{ route('layanan.digital-compass') }}"
+                            class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">Digital
                             Compass</a>
-                        <a href="{{ route('layanan.digital-architecture')}}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">Digital
+                        <a href="{{ route('layanan.digital-architecture') }}"
+                            class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">Digital
                             Architecture</a>
-                        <a href="{{ route('layanan.public-presence')}}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">Digital
+                        <a href="{{ route('layanan.public-presence') }}"
+                            class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">Digital
                             Presence</a>
                     </div>
                 </div>
@@ -114,10 +118,11 @@
                 </button>
 
                 <div id="mobileDropdown" class="hidden flex-col ml-4 mt-2 space-y-2 text-gray-600">
-                    <a href="{{ route('layanan.brand-forge')}}" class="hover:text-orange-500">Brand Forge</a>
-                    <a href="{{ route('layanan.digital-compass')}}" class="hover:text-orange-500">Digital Compass</a>
-                    <a href="{{ route('layanan.digital-architecture')}}" class="hover:text-orange-500">Digital Architecture</a>
-                    <a href="{{ route('layanan.public-presence')}}" class="hover:text-orange-500">Digital Presence</a>
+                    <a href="{{ route('layanan.brand-forge') }}" class="hover:text-orange-500">Brand Forge</a>
+                    <a href="{{ route('layanan.digital-compass') }}" class="hover:text-orange-500">Digital Compass</a>
+                    <a href="{{ route('layanan.digital-architecture') }}" class="hover:text-orange-500">Digital
+                        Architecture</a>
+                    <a href="{{ route('layanan.public-presence') }}" class="hover:text-orange-500">Digital Presence</a>
                 </div>
             </div>
 
@@ -158,25 +163,34 @@
 
                 <!-- Social Icons -->
                 <div class="flex space-x-4">
-                    <a href="#" class="group">
-                        <img src="{{ asset('assets/img/social/fb.png') }}" alt="Facebook"
-                            class="h-8 w-8 group-hover:hidden">
-                        <img src="{{ asset('assets/img/social/colored/fb.png') }}" alt="Facebook Colored"
-                            class="h-8 w-8 hidden group-hover:block">
-                    </a>
-                    <a href="#" class="group">
-                        <img src="{{ asset('assets/img/social/ig.png') }}" alt="Instagram"
-                            class="h-8 w-8 group-hover:hidden">
-                        <img src="{{ asset('assets/img/social/colored/ig.png') }}" alt="Instagram Colored"
-                            class="h-8 w-8 hidden group-hover:block">
-                    </a>
-                    <a href="#" class="group">
-                        <img src="{{ asset('assets/img/social/tiktok.png') }}" alt="TikTok"
-                            class="h-8 w-8 group-hover:hidden">
-                        <img src="{{ asset('assets/img/social/colored/tiktok.png') }}" alt="TikTok Colored"
-                            class="h-8 w-8 hidden group-hover:block">
-                    </a>
+                    @if ($webInfo && $webInfo->facebook)
+                        <a href="{{ $webInfo->facebook }}" target="_blank" class="group">
+                            <img src="{{ asset('assets/img/social/fb.png') }}" alt="Facebook"
+                                class="h-8 w-8 group-hover:hidden">
+                            <img src="{{ asset('assets/img/social/colored/fb.png') }}" alt="Facebook Colored"
+                                class="h-8 w-8 hidden group-hover:block">
+                        </a>
+                    @endif
+
+                    @if ($webInfo && $webInfo->instagram)
+                        <a href="{{ $webInfo->instagram }}" target="_blank" class="group">
+                            <img src="{{ asset('assets/img/social/ig.png') }}" alt="Instagram"
+                                class="h-8 w-8 group-hover:hidden">
+                            <img src="{{ asset('assets/img/social/colored/ig.png') }}" alt="Instagram Colored"
+                                class="h-8 w-8 hidden group-hover:block">
+                        </a>
+                    @endif
+
+                    @if ($webInfo && $webInfo->tiktok)
+                        <a href="{{ $webInfo->tiktok }}" target="_blank" class="group">
+                            <img src="{{ asset('assets/img/social/tiktok.png') }}" alt="TikTok"
+                                class="h-8 w-8 group-hover:hidden">
+                            <img src="{{ asset('assets/img/social/colored/tiktok.png') }}" alt="TikTok Colored"
+                                class="h-8 w-8 hidden group-hover:block">
+                        </a>
+                    @endif
                 </div>
+
             </div>
         </div>
 

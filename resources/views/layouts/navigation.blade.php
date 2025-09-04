@@ -27,6 +27,13 @@
                     <x-nav-link :href="route('clients.index')" :active="request()->routeIs('clients.index')">
                         {{ __('Clients') }}
                     </x-nav-link>
+                    {{-- gallery --}}
+                    <x-nav-link :href="route('galleries.index')" :active="request()->routeIs('galleries.index')">
+                        {{ __('Galleries') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('web_information.index')" :active="request()->routeIs('web_information.index')">
+                        {{ __('Web Information') }}
+                    </x-nav-link>
                 </div>
             </div>
 

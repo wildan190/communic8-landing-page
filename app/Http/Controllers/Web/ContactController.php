@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Consumer;
+use App\Models\WebInformation;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -19,13 +20,12 @@ class ContactController extends Controller
             ->latest()
             ->paginate(10);
 
-        // Ambil daftar kategori unik
         $categories = Blog::select('category')->distinct()->pluck('category');
-
-        // Data untuk slider (10 terbaru)
         $sliderBlogs = Blog::latest()->take(10)->get();
 
-        return view('web.contact.index', compact('blogs', 'categories', 'category', 'sliderBlogs'));
+        $webInfo = WebInformation::first();
+
+        return view('web.contact.index', compact('blogs', 'categories', 'category', 'sliderBlogs', 'webInfo'));
     }
 
     public function store(Request $request)
