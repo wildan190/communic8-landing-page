@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Web\AboutController;
@@ -71,6 +72,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/clients/{client}/edit', [App\Http\Controllers\ClientController::class, 'edit'])->name('clients.edit');
     Route::put('/clients/{client}', [App\Http\Controllers\ClientController::class, 'update'])->name('clients.update');
     Route::delete('/clients/{client}', [App\Http\Controllers\ClientController::class, 'destroy'])->name('clients.destroy');
+
+    Route::get('/galleries', [GalleryController::class, 'index'])->name('galleries.index');
+    Route::get('/galleries/create', [GalleryController::class, 'create'])->name('galleries.create');
+    Route::post('/galleries', [GalleryController::class, 'store'])->name('galleries.store');
+    Route::get('/galleries/{gallery}/edit', [GalleryController::class, 'edit'])->name('galleries.edit');
+    Route::put('/galleries/{gallery}', [GalleryController::class, 'update'])->name('galleries.update');
+    Route::delete('/galleries/{gallery}', [GalleryController::class, 'destroy'])->name('galleries.destroy');
 });
 
 require __DIR__.'/auth.php';
