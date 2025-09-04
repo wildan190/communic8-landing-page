@@ -16,96 +16,99 @@
             </p>
         </div>
 
-<!-- Contact Form -->
-<div class="max-w-4xl mx-auto mt-12 rounded-2xl p-8 shadow-sm" style="background-color: rgb(204, 204, 204);">
-    <form action="{{ route('contact.store') }}" method="POST" class="space-y-6">
-        @csrf
+        <!-- Contact Form -->
+        <div class="max-w-4xl mx-auto mt-12 rounded-2xl p-8 shadow-sm" style="background-color: rgb(204, 204, 204);">
+            <form action="{{ route('contact.store') }}" method="POST" class="space-y-6">
+                @csrf
 
-        <!-- Row 1 -->
-        <div class="grid md:grid-cols-2 gap-6">
-            <input type="text" name="name" placeholder="Your name..."
-                class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
-            <div class="flex">
-                <span class="px-3 flex items-center bg-gray-200 rounded-l-md text-gray-600">+62</span>
-                <input type="text" name="phone" placeholder="812-3456-7890"
-                    class="w-full px-4 py-3 rounded-r-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
-            </div>
+                <!-- Row 1 -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <input type="text" name="name" placeholder="Your name..."
+                        class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
+                    <div class="flex">
+                        <span class="px-3 flex items-center bg-gray-200 rounded-l-md text-gray-600">+62</span>
+                        <input type="text" name="phone" placeholder="812-3456-7890"
+                            class="w-full px-4 py-3 rounded-r-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <input type="text" name="company" placeholder="Your company’s name..."
+                        class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
+                    <input type="email" name="email" placeholder="your.email@domain.com"
+                        class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
+                </div>
+
+                <!-- Row 3 -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <select name="industry"
+                        class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
+                        <option value="">(Industry...)</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="Education">Education</option>
+                        <option value="Retail">Retail</option>
+                        <option value="Manufacturing">Manufacturing</option>
+                        <option value="Media & Entertainment">Media & Entertainment</option>
+                        <option value="Hospitality">Hospitality</option>
+                        <option value="Government">Government</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <select name="services"
+                        class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
+                        <option value="">(Which services interest you...)</option>
+                        <option value="Brand Forge">Brand Forge</option>
+                        <option value="Digital Compass">Digital Compass</option>
+                        <option value="Public Presence">Public Presence</option>
+                        <option value="Digital Architecture">Digital Architecture</option>
+                    </select>
+                </div>
+
+                <!-- Row 4 -->
+                <div>
+                    <select name="find_us"
+                        class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
+                        <option value="">(How did you find us...)</option>
+                        <option value="Instagram">Instagram</option>
+                        <option value="Facebook">Facebook</option>
+                        <option value="Website">Website</option>
+                        <option value="Linkedin">Linkedin</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Radio -->
+                <div class="text-gray-700">
+                    <p class="mb-2">Select which area your email will be delivered...</p>
+                    <div class="flex flex-wrap gap-6">
+                        <label><input type="radio" name="area" value="1" class="mr-2"> Jakarta</label>
+                        <label><input type="radio" name="area" value="2" class="mr-2"> Malaysia</label>
+                        <label><input type="radio" name="area" value="3" class="mr-2"> Singapore</label>
+                        <label><input type="radio" name="area" value="4" class="mr-2"> China</label>
+                    </div>
+                </div>
+
+                <!-- Message -->
+                <textarea name="message" placeholder="Tell us what you need..."
+                    class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500 h-32"></textarea>
+
+                <!-- Checkbox (optional newsletter) -->
+                <label class="flex items-center space-x-2 text-gray-600">
+                    <input type="checkbox" class="rounded border-gray-300">
+                    <span>Keep me ahead of the curve. Send me insights and updates.</span>
+                </label>
+
+                <!-- Submit -->
+                <div class="flex justify-center">
+                    <button type="submit"
+                        class="px-10 py-3 rounded-full bg-gray-800 text-white hover:bg-gray-700 transition">
+                        Submit
+                    </button>
+                </div>
+            </form>
         </div>
-
-        <!-- Row 2 -->
-        <div class="grid md:grid-cols-2 gap-6">
-            <input type="text" name="company" placeholder="Your company’s name..."
-                class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
-            <input type="email" name="email" placeholder="your.email@domain.com"
-                class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
-        </div>
-
-        <!-- Row 3 -->
-        <div class="grid md:grid-cols-2 gap-6">
-            <select name="industry" class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
-                <option value="">(Industry...)</option>
-                <option value="Technology">Technology</option>
-                <option value="Finance">Finance</option>
-                <option value="Healthcare">Healthcare</option>
-                <option value="Education">Education</option>
-                <option value="Retail">Retail</option>
-                <option value="Manufacturing">Manufacturing</option>
-                <option value="Media & Entertainment">Media & Entertainment</option>
-                <option value="Hospitality">Hospitality</option>
-                <option value="Government">Government</option>
-                <option value="Other">Other</option>
-            </select>
-            <select name="services" class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
-                <option value="">(Which services interest you...)</option>
-                <option value="Brand Forge">Brand Forge</option>
-                <option value="Digital Compass">Digital Compass</option>
-                <option value="Public Presence">Public Presence</option>
-                <option value="Digital Architecture">Digital Architecture</option>
-            </select>
-        </div>
-
-        <!-- Row 4 -->
-        <div>
-            <select name="find_us" class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
-                <option value="">(How did you find us...)</option>
-                <option value="Instagram">Instagram</option>
-                <option value="Facebook">Facebook</option>
-                <option value="Website">Website</option>
-                <option value="Linkedin">Linkedin</option>
-                <option value="Other">Other</option>
-            </select>
-        </div>
-
-        <!-- Radio -->
-        <div class="text-gray-700">
-            <p class="mb-2">Select which area your email will be delivered...</p>
-            <div class="flex flex-wrap gap-6">
-                <label><input type="radio" name="area" value="1" class="mr-2"> Jakarta</label>
-                <label><input type="radio" name="area" value="2" class="mr-2"> Malaysia</label>
-                <label><input type="radio" name="area" value="3" class="mr-2"> Singapore</label>
-                <label><input type="radio" name="area" value="4" class="mr-2"> China</label>
-            </div>
-        </div>
-
-        <!-- Message -->
-        <textarea name="message" placeholder="Tell us what you need..."
-            class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500 h-32"></textarea>
-
-        <!-- Checkbox (optional newsletter) -->
-        <label class="flex items-center space-x-2 text-gray-600">
-            <input type="checkbox" class="rounded border-gray-300">
-            <span>Keep me ahead of the curve. Send me insights and updates.</span>
-        </label>
-
-        <!-- Submit -->
-        <div class="flex justify-center">
-            <button type="submit"
-                class="px-10 py-3 rounded-full bg-gray-800 text-white hover:bg-gray-700 transition">
-                Submit
-            </button>
-        </div>
-    </form>
-</div>
 
 
         <!-- Office Grid -->
@@ -146,12 +149,19 @@
 
     <!-- Map Section -->
     <section class="w-full">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.370941543208!2d106.85667647499144!3d-6.213743993771499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f39db0e4f4fb%3A0xd73214edb7b8e5df!2sJl.%20Tebet%20Timur%20Dalam%20Raya%20No.65%2C%20Tebet%20Tim.%2C%20Kec.%20Tebet%2C%20Kota%20Jakarta%20Selatan%2C%20Daerah%20Khusus%20Ibukota%20Jakarta%2012820!5e0!3m2!1sen!2sid!4v1693303812345!5m2!1sen!2sid"
-            width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+        @if ($webInfo && $webInfo->address)
+            <iframe width="100%" height="500" style="border:0;" loading="lazy" allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q={{ urlencode($webInfo->address) }}&output=embed">
+            </iframe>
+        @else
+            <div class="text-center py-10 text-gray-500 dark:text-gray-400">
+                <i class="fa-solid fa-map-location-dot text-3xl mb-2"></i>
+                <p>Alamat belum tersedia.</p>
+            </div>
+        @endif
     </section>
+
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"

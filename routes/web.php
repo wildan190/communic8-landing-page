@@ -10,6 +10,7 @@ use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\InsightController;
 use App\Http\Controllers\Web\LayananController;
 use App\Http\Controllers\Web\PortofolioController;
+use App\Http\Controllers\WebInformationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -79,6 +80,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/galleries/{gallery}/edit', [GalleryController::class, 'edit'])->name('galleries.edit');
     Route::put('/galleries/{gallery}', [GalleryController::class, 'update'])->name('galleries.update');
     Route::delete('/galleries/{gallery}', [GalleryController::class, 'destroy'])->name('galleries.destroy');
+
+    Route::get('/web-information', [WebInformationController::class, 'index'])->name('web_information.index');
+    Route::get('/web-information/create', [WebInformationController::class, 'create'])->name('web_information.create');
+    Route::post('/web-information', [WebInformationController::class, 'store'])->name('web_information.store');
+    Route::get('/web-information/{webInformation}/edit', [WebInformationController::class, 'edit'])->name('web_information.edit');
+    Route::put('/web-information/{webInformation}', [WebInformationController::class, 'update'])->name('web_information.update');
 });
 
 require __DIR__.'/auth.php';
