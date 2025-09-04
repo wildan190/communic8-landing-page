@@ -3,26 +3,83 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
+use App\Models\BranchOffice;
+use App\Models\Client;
+use App\Models\Gallery;
+use App\Models\WebInformation;
 
 class LayananController extends Controller
 {
     public function brandForge()
     {
-        return view('web.layanan.brand-forge');
+        $categories = Blog::select('category')->distinct()->pluck('category');
+        $sliderBlogs = Blog::latest()->take(10)->get();
+        $clients = Client::latest()->get();
+
+        // 🔥 ambil semua data gallery terbaru
+        $galleries = Gallery::latest()->get();
+        $webInfo = WebInformation::first();
+        $branchOffices = BranchOffice::all();
+        $insightCategories = Blog::select('category')
+            ->distinct()
+            ->take(5)
+            ->pluck('category');
+
+        return view('web.layanan.brand-forge', compact('categories', 'sliderBlogs', 'clients', 'galleries', 'webInfo', 'branchOffices', 'insightCategories'));
     }
 
     public function digitalCompass()
     {
-        return view('web.layanan.digital-compass');
+        $categories = Blog::select('category')->distinct()->pluck('category');
+        $sliderBlogs = Blog::latest()->take(10)->get();
+        $clients = Client::latest()->get();
+
+        // 🔥 ambil semua data gallery terbaru
+        $galleries = Gallery::latest()->get();
+        $webInfo = WebInformation::first();
+        $branchOffices = BranchOffice::all();
+        $insightCategories = Blog::select('category')
+            ->distinct()
+            ->take(5)
+            ->pluck('category');
+
+        return view('web.layanan.digital-compass', compact('categories', 'sliderBlogs', 'clients', 'galleries', 'webInfo', 'branchOffices', 'insightCategories'));
     }
 
     public function digitalArchitecture()
     {
-        return view('web.layanan.digital-architecture');
+        $categories = Blog::select('category')->distinct()->pluck('category');
+        $sliderBlogs = Blog::latest()->take(10)->get();
+        $clients = Client::latest()->get();
+
+        // 🔥 ambil semua data gallery terbaru
+        $galleries = Gallery::latest()->get();
+        $webInfo = WebInformation::first();
+        $branchOffices = BranchOffice::all();
+        $insightCategories = Blog::select('category')
+            ->distinct()
+            ->take(5)
+            ->pluck('category');
+
+        return view('web.layanan.digital-architecture', compact('categories', 'sliderBlogs', 'clients', 'galleries', 'webInfo', 'branchOffices', 'insightCategories'));
     }
 
     public function publicPresence()
     {
-        return view('web.layanan.public-presence');
+        $categories = Blog::select('category')->distinct()->pluck('category');
+        $sliderBlogs = Blog::latest()->take(10)->get();
+        $clients = Client::latest()->get();
+
+        // 🔥 ambil semua data gallery terbaru
+        $galleries = Gallery::latest()->get();
+        $webInfo = WebInformation::first();
+        $branchOffices = BranchOffice::all();
+        $insightCategories = Blog::select('category')
+            ->distinct()
+            ->take(5)
+            ->pluck('category');
+
+        return view('web.layanan.public-presence', compact('categories', 'sliderBlogs', 'clients', 'galleries', 'webInfo', 'branchOffices', 'insightCategories'));
     }
 }

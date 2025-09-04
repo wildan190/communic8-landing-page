@@ -111,40 +111,27 @@
         </div>
 
 
-        <!-- Office Grid -->
-        <div class="max-w-6xl mx-auto px-6 mt-20">
-            <div class="grid md:grid-cols-2 gap-10">
-                <!-- Jakarta Office -->
-                <div class="bg-white rounded-2xl shadow-sm border p-6 space-y-4 text-center">
-                    <img src="{{ asset('assets/img/jakartaoffice.png') }}" class="rounded-xl w-full object-cover">
-                    <h3 class="text-lg font-semibold text-gray-800">Jakarta Office</h3>
-                    <p class="text-gray-600 text-sm">Jl. Tebet Timur Dalam Raya No. 65, Tebet Jakarta Selatan – DKI Jakarta
-                        12820</p>
-                    <p class="font-medium text-gray-800">+62 877-0455-8280</p>
-                </div>
-                <!-- Malaysia Office -->
-                <div class="bg-white rounded-2xl shadow-sm border p-6 space-y-4 text-center">
-                    <img src="{{ asset('assets/img/malaysiaoffice.png') }}" class="rounded-xl w-full object-cover">
-                    <h3 class="text-lg font-semibold text-gray-800">Malaysia Office</h3>
-                    <p class="text-gray-600 text-sm">Persiaran Bayan Indah, Bayan Bay, Bayan Lepas – Pulau Pinang 11900</p>
-                    <p class="font-medium text-gray-800">+60 6476-0641</p>
-                </div>
-                <!-- Singapore Office -->
-                <div class="bg-white rounded-2xl shadow-sm border p-6 space-y-4 text-center">
-                    <img src="{{ asset('assets/img/singaporeoffice.png') }}" class="rounded-xl w-full object-cover">
-                    <h3 class="text-lg font-semibold text-gray-800">Singapore Office</h3>
-                    <p class="text-gray-600 text-sm">St. 260A Sims Avenue, Singapore 387515</p>
-                    <p class="font-medium text-gray-800">+65 6942-6837</p>
-                </div>
-                <!-- China Office -->
-                <div class="bg-white rounded-2xl shadow-sm border p-6 space-y-4 text-center">
-                    <img src="{{ asset('assets/img/chinaoffice.png') }}" class="rounded-xl w-full object-cover">
-                    <h3 class="text-lg font-semibold text-gray-800">China Office</h3>
-                    <p class="text-gray-600 text-sm">St. San Li He Lu Zhu Hou Jian Haidian District – Beijing 2106</p>
-                    <p class="font-medium text-gray-800">+80 1507-3399-412</p>
-                </div>
+<!-- Office Grid -->
+<div class="max-w-6xl mx-auto px-6 mt-20">
+    <div class="grid md:grid-cols-2 gap-10">
+        @forelse($branchOffices as $office)
+            <div class="bg-white rounded-2xl shadow-sm border p-6 space-y-4 text-center">
+                @if($office->picture_upload)
+                    <img src="{{ asset('storage/' . $office->picture_upload) }}" class="rounded-xl w-full object-cover">
+                @else
+                    <img src="{{ asset('assets/img/default-office.png') }}" class="rounded-xl w-full object-cover">
+                @endif
+
+                <h3 class="text-lg font-semibold text-gray-800">{{ $office->name }}</h3>
+                <p class="text-gray-600 text-sm">{{ $office->address }}</p>
+                <p class="font-medium text-gray-800">{{ $office->phone }}</p>
             </div>
-        </div>
+        @empty
+            <p class="col-span-2 text-center text-gray-500">No branch offices available.</p>
+        @endforelse
+    </div>
+</div>
+
     </section>
 
     <!-- Map Section -->

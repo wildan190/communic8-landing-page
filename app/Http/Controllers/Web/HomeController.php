@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\BranchOffice;
 use App\Models\WebInformation;
 use Illuminate\Http\Request;
 
@@ -24,6 +25,23 @@ class HomeController extends Controller
 
         $webInfo = WebInformation::first();
 
-        return view('web.home.index', compact('blogs', 'categories', 'category', 'sliderBlogs', 'webInfo'));
+        // Ambil semua branch office
+        $branchOffices = BranchOffice::all();
+
+        // Ambil max 5 kategori unik untuk Insights
+        $insightCategories = Blog::select('category')
+            ->distinct()
+            ->take(5)
+            ->pluck('category');
+
+        return view('web.home.index', compact(
+            'blogs',
+            'categories',
+            'category',
+            'sliderBlogs',
+            'webInfo',
+            'branchOffices',
+            'insightCategories'
+        ));
     }
 }

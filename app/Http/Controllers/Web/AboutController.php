@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\BranchOffice;
 use App\Models\Client;
 use App\Models\Gallery;
+use App\Models\WebInformation;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
@@ -26,6 +28,12 @@ class AboutController extends Controller
 
         // 🔥 ambil semua data gallery terbaru
         $galleries = Gallery::latest()->get();
+        $webInfo = WebInformation::first();
+        $branchOffices = BranchOffice::all();
+        $insightCategories = Blog::select('category')
+            ->distinct()
+            ->take(5)
+            ->pluck('category');
 
         return view('web.about.index', compact(
             'blogs',
@@ -33,7 +41,10 @@ class AboutController extends Controller
             'category',
             'sliderBlogs',
             'clients',
-            'galleries'
+            'galleries',
+            'insightCategories',
+            'webInfo',
+            'branchOffices',
         ));
     }
 }

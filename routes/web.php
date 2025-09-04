@@ -86,6 +86,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/web-information', [WebInformationController::class, 'store'])->name('web_information.store');
     Route::get('/web-information/{webInformation}/edit', [WebInformationController::class, 'edit'])->name('web_information.edit');
     Route::put('/web-information/{webInformation}', [WebInformationController::class, 'update'])->name('web_information.update');
+
+    Route::get('/branch-offices', [\App\Http\Controllers\BranchOfficeController::class, 'index'])->name('branch-offices.index');
+    Route::get('/branch-offices/create', [\App\Http\Controllers\BranchOfficeController::class, 'create'])->name('branch-offices.create');
+    Route::post('/branch-offices', [\App\Http\Controllers\BranchOfficeController::class, 'store'])->name('branch-offices.store');
+    Route::get('/branch-offices/{branchOffice}/edit', [\App\Http\Controllers\BranchOfficeController::class, 'edit'])->name('branch-offices.edit');
+    Route::put('/branch-offices/{branchOffice}', [\App\Http\Controllers\BranchOfficeController::class, 'update'])->name('branch-offices.update');
 });
 
 require __DIR__.'/auth.php';
