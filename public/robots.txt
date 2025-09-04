@@ -1,2 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /contact
+Allow: /
+
+Sitemap: https://www.communic8agency.com/sitemap.xml
