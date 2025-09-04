@@ -156,6 +156,7 @@
             </div>
         </div>
     </section>
+
     <!-- Blog Slider Section -->
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-6">
@@ -178,50 +179,26 @@
                 <div id="blog-slider"
                     class="flex overflow-x-auto space-x-6 scrollbar-hide snap-x snap-mandatory scroll-smooth">
 
-                    <!-- Card -->
-                    <div
-                        class="snap-center min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
-                        <p class="text-sm text-gray-500">Branding</p>
-                        <a href="#" class="block flex-grow">
-                            <h3
-                                class="text-lg font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[72px] mb-4">
-                                SOMA: Dynamic Branding & Visual Identity by Made by Ruda
-                            </h3>
-                        </a>
-                        <img src="{{ asset('assets/img/blog1.png') }}" alt="Blog Image"
-                            class="w-full h-48 object-cover rounded-xl">
-                    </div>
-
-                    <!-- Card -->
-                    <div
-                        class="snap-center min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
-                        <p class="text-sm text-gray-500">Design</p>
-                        <a href="#" class="block flex-grow">
-                            <h3
-                                class="text-lg font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[72px] mb-4">
-                                Get Ready for the Next Wave of Visual Design: Wallpaper Forged with Figma's Progressive
-                                Blur Effects
-                            </h3>
-                        </a>
-                        <img src="{{ asset('assets/img/blog1.png') }}" alt="Blog Image"
-                            class="w-full h-48 object-cover rounded-xl">
-                    </div>
-
-                    <!-- Card -->
-                    <div
-                        class="snap-center min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
-                        <p class="text-sm text-gray-500">Motion</p>
-                        <a href="#" class="block flex-grow">
-                            <h3
-                                class="text-lg font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[72px] mb-4">
-                                Exploring Minimal One-Line Motion
-                            </h3>
-                        </a>
-                        <img src="{{ asset('assets/img/blog1.png') }}" alt="Blog Image"
-                            class="w-full h-48 object-cover rounded-xl">
-                    </div>
-
-                    <!-- Tambahkan card lainnya sesuai kebutuhan -->
+                    @foreach ($sliderBlogs as $blog)
+                        <div
+                            class="snap-center min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
+                            <p class="text-sm text-gray-500">{{ $blog->category }}</p>
+                            <a href="{{ route('blogs.show', $blog->slug) }}" class="block flex-grow">
+                                <h3
+                                    class="text-lg font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[72px] mb-4">
+                                    {{ $blog->title }}
+                                </h3>
+                            </a>
+                            @if ($blog->headline_img)
+                                <img src="{{ asset('storage/' . $blog->headline_img) }}"
+                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}"
+                                    class="w-full h-48 object-cover rounded-xl">
+                            @else
+                                <img src="{{ asset('assets/img/blog1.png') }}" alt="Default Image"
+                                    class="w-full h-48 object-cover rounded-xl">
+                            @endif
+                        </div>
+                    @endforeach
 
                 </div>
 
@@ -233,7 +210,7 @@
 
             <!-- Read More Button -->
             <div class="text-center mt-12">
-                <a href="#"
+                <a href="{{ route('insight.index') }}"
                     class="inline-block bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition">
                     Read More
                 </a>
