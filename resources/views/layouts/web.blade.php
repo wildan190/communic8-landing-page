@@ -4,22 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Jasa Digital Marketing & Brand Development - Communic8 Asia</title>
-    <meta name="description" content="Communic8 Asia adalah agensi kreatif di Jakarta yang fokus pada digital marketing, brand development, dan digital campaign. Kami bantu bisnis Anda tumbuh di era digital.">
-    <meta name="keywords" content="digital marketing agency jakarta, jasa digital marketing, brand development, agensi kreatif jakarta, jasa SEO, manajemen media sosial, social media agency, branding, website development">
+    <meta name="description"
+        content="Communic8 Asia adalah agensi kreatif di Jakarta yang fokus pada digital marketing, brand development, dan digital campaign. Kami bantu bisnis Anda tumbuh di era digital.">
+    <meta name="keywords"
+        content="digital marketing agency jakarta, jasa digital marketing, brand development, agensi kreatif jakarta, jasa SEO, manajemen media sosial, social media agency, branding, website development">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.communic8agency.com/">
 
     <meta property="og:title" content="Jasa Digital Marketing & Brand Development - Communic8 Asia">
-    <meta property="og:description" content="Communic8 Asia, agensi kreatif di Jakarta. Kami menyediakan layanan digital marketing, brand development, dan web development untuk membantu bisnis Anda berkembang.">
+    <meta property="og:description"
+        content="Communic8 Asia, agensi kreatif di Jakarta. Kami menyediakan layanan digital marketing, brand development, dan web development untuk membantu bisnis Anda berkembang.">
     <meta property="og:image" content="https://www.communic8agency.com/assets/img/og-image.jpg">
     <meta property="og:url" content="https://www.communic8agency.com/">
     <meta property="og:type" content="website">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Jasa Digital Marketing & Brand Development - Communic8 Asia">
-    <meta name="twitter:description" content="Kami adalah agensi digital kreatif di Jakarta yang menawarkan solusi lengkap untuk digital marketing dan branding.">
+    <meta name="twitter:description"
+        content="Kami adalah agensi digital kreatif di Jakarta yang menawarkan solusi lengkap untuk digital marketing dan branding.">
     <meta name="twitter:image" content="https://www.communic8agency.com/assets/img/twitter-image.jpg">
 
     <script type="application/ld+json">
@@ -173,10 +177,12 @@
 
                 <div id="mobileDropdown" class="hidden flex-col ml-4 mt-2 space-y-2 text-gray-600">
                     <a href="{{ route('layanan.brand-forge') }}" class="hover:text-orange-500">Brand Forge</a>
-                    <a href="{{ route('layanan.digital-compass') }}" class="hover:text-orange-500">Digital Compass</a>
+                    <a href="{{ route('layanan.digital-compass') }}" class="hover:text-orange-500">Digital
+                        Compass</a>
                     <a href="{{ route('layanan.digital-architecture') }}" class="hover:text-orange-500">Digital
                         Architecture</a>
-                    <a href="{{ route('layanan.public-presence') }}" class="hover:text-orange-500">Digital Presence</a>
+                    <a href="{{ route('layanan.public-presence') }}" class="hover:text-orange-500">Digital
+                        Presence</a>
                 </div>
             </div>
 
@@ -253,8 +259,8 @@
                 <div>
                     <h4 class="font-semibold mb-4">Get to know</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="{{ url('/')}}" class="hover:text-gray-500">Home</a></li>
-                        <li><a href="{{ route('about.index')}}" class="hover:text-gray-500">About</a></li>
+                        <li><a href="{{ url('/') }}" class="hover:text-gray-500">Home</a></li>
+                        <li><a href="{{ route('about.index') }}" class="hover:text-gray-500">About</a></li>
                         <li><a href="{{ route('portofolio.index') }}" class="hover:text-gray-500">Portfolio</a></li>
                     </ul>
                 </div>
@@ -262,10 +268,14 @@
                 <div>
                     <h4 class="font-semibold mb-4">Scope of works</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="{{ route('layanan.brand-forge')}}" class="hover:text-gray-500">Brand Development</a></li>
-                        <li><a href="{{ route('layanan.digital-compass')}}" class="hover:text-gray-500">Digital Marketing</a></li>
-                        <li><a href="{{ route('layanan.digital-architecture')}}" class="hover:text-gray-500">Digital Development</a></li>
-                        <li><a href="{{ route('layanan.public-presence')}}" class="hover:text-gray-500">Event Management</a></li>
+                        <li><a href="{{ route('layanan.brand-forge') }}" class="hover:text-gray-500">Brand
+                                Development</a></li>
+                        <li><a href="{{ route('layanan.digital-compass') }}" class="hover:text-gray-500">Digital
+                                Marketing</a></li>
+                        <li><a href="{{ route('layanan.digital-architecture') }}" class="hover:text-gray-500">Digital
+                                Development</a></li>
+                        <li><a href="{{ route('layanan.public-presence') }}" class="hover:text-gray-500">Event
+                                Management</a></li>
                     </ul>
                 </div>
 
