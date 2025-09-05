@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\BranchOffice;
+use App\Models\Client;
+use App\Models\Project;
 use App\Models\WebInformation;
 use Illuminate\Http\Request;
 
@@ -24,15 +26,18 @@ class HomeController extends Controller
         $sliderBlogs = Blog::latest()->take(10)->get();
 
         $webInfo = WebInformation::first();
-
-        // Ambil semua branch office
         $branchOffices = BranchOffice::all();
 
-        // Ambil max 5 kategori unik untuk Insights
         $insightCategories = Blog::select('category')
             ->distinct()
             ->take(5)
             ->pluck('category');
+
+        // 🔥 ambil max 5 project untuk grid
+        $trustedProjects = Project::latest()->take(5)->get();
+
+        // 🔥 ambil semua clients untuk logo row
+        $clients = Client::latest()->get();
 
         return view('web.home.index', compact(
             'blogs',
@@ -41,7 +46,9 @@ class HomeController extends Controller
             'sliderBlogs',
             'webInfo',
             'branchOffices',
-            'insightCategories'
+            'insightCategories',
+            'trustedProjects',
+            'clients'
         ));
     }
 }
