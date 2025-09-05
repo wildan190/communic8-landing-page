@@ -257,84 +257,40 @@
                 <h2 class="text-2xl sm:text-3xl md:text-4xl tracking-[0.3em] text-gray-700 mb-6">
                     T R U S T E D &nbsp; B Y
                 </h2>
-                <p class="text-gray-600">We’ve been privileged to partner with a diverse range of leading brands, and across
-                    industries.</p>
+                <p class="text-gray-600">
+                    We’ve been privileged to partner with a diverse range of leading brands, and across industries.
+                </p>
             </div>
 
-            {{-- Grid --}}
+            {{-- Grid Projects --}}
             <div class="grid grid-cols-6 gap-6">
-
-                {{-- Row 1: 2 big cards --}}
-                <div class="col-span-6 md:col-span-3 border border-gray-200 rounded-2xl p-4 flex flex-col">
-                    <div class="flex justify-between items-center mb-2">
-                        <p class="text-xs text-gray-500">Lorem ipsum</p>
-                        <a href="https://dummyurl.com" target="_blank" class="text-gray-400 hover:text-gray-600">
-                            <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
-                        </a>
+                @foreach ($trustedProjects as $key => $project)
+                    @php
+                        // 2 project pertama besar (col-span-3), sisanya kecil (col-span-2)
+                        $colClass = $key < 2 ? 'col-span-6 md:col-span-3' : 'col-span-6 md:col-span-2';
+                    @endphp
+                    <div class="{{ $colClass }} border border-gray-200 rounded-2xl p-4 flex flex-col">
+                        <div class="flex justify-between items-center mb-2">
+                            <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
+                            @if ($project->project_url)
+                                <a href="{{ $project->project_url }}" target="_blank"
+                                    class="text-gray-400 hover:text-gray-600">
+                                    <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
+                                </a>
+                            @endif
+                        </div>
+                        <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
+                        <div class="rounded-xl overflow-hidden">
+                            @if ($project->project_img)
+                                <img src="{{ asset('storage/' . $project->project_img) }}" alt="{{ $project->name }}"
+                                    class="w-full object-cover">
+                            @else
+                                <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="No Image"
+                                    class="w-full object-cover">
+                            @endif
+                        </div>
                     </div>
-                    <h3 class="font-semibold text-gray-700 mb-3">Mercedes-Benz</h3>
-                    <div class="rounded-xl overflow-hidden">
-                        <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Mercedes"
-                            class="w-full object-cover">
-                    </div>
-                </div>
-
-                <div class="col-span-6 md:col-span-3 border border-gray-200 rounded-2xl p-4 flex flex-col">
-                    <div class="flex justify-between items-center mb-2">
-                        <p class="text-xs text-gray-500">Lorem ipsum</p>
-                        <a href="https://dummyurl.com" target="_blank" class="text-gray-400 hover:text-gray-600">
-                            <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
-                        </a>
-                    </div>
-                    <h3 class="font-semibold text-gray-700 mb-3">Daikin</h3>
-                    <div class="rounded-xl overflow-hidden">
-                        <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Daikin"
-                            class="w-full object-cover">
-                    </div>
-                </div>
-
-                {{-- Row 2: 3 smaller cards --}}
-                <div class="col-span-6 md:col-span-2 border border-gray-200 rounded-2xl p-4 flex flex-col">
-                    <div class="flex justify-between items-center mb-2">
-                        <p class="text-xs text-gray-500">Lorem ipsum</p>
-                        <a href="https://dummyurl.com" target="_blank" class="text-gray-400 hover:text-gray-600">
-                            <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
-                        </a>
-                    </div>
-                    <h3 class="font-semibold text-gray-700 mb-3">Borong</h3>
-                    <div class="rounded-xl overflow-hidden">
-                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Borong"
-                            class="w-full object-cover">
-                    </div>
-                </div>
-
-                <div class="col-span-6 md:col-span-2 border border-gray-200 rounded-2xl p-4 flex flex-col">
-                    <div class="flex justify-between items-center mb-2">
-                        <p class="text-xs text-gray-500">Lorem ipsum</p>
-                        <a href="https://dummyurl.com" target="_blank" class="text-gray-400 hover:text-gray-600">
-                            <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
-                        </a>
-                    </div>
-                    <h3 class="font-semibold text-gray-700 mb-3">Adira</h3>
-                    <div class="rounded-xl overflow-hidden">
-                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Adira"
-                            class="w-full object-cover">
-                    </div>
-                </div>
-
-                <div class="col-span-6 md:col-span-2 border border-gray-200 rounded-2xl p-4 flex flex-col">
-                    <div class="flex justify-between items-center mb-2">
-                        <p class="text-xs text-gray-500">Lorem ipsum</p>
-                        <a href="https://dummyurl.com" target="_blank" class="text-gray-400 hover:text-gray-600">
-                            <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
-                        </a>
-                    </div>
-                    <h3 class="font-semibold text-gray-700 mb-3">MSIG</h3>
-                    <div class="rounded-xl overflow-hidden">
-                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="MSIG"
-                            class="w-full object-cover">
-                    </div>
-                </div>
+                @endforeach
             </div>
 
             {{-- Button --}}
@@ -346,20 +302,14 @@
 
             {{-- Clients logo row --}}
             <div class="flex flex-wrap justify-center items-center gap-7 mt-12">
-                <img src="{{ asset('assets/img/clients/mercedes.png') }}" class="h-12" alt="Mercedes">
-                <img src="{{ asset('assets/img/clients/pertamina.png') }}" class="h-12" alt="Pertamina">
-                <img src="{{ asset('assets/img/clients/repsol.png') }}" class="h-12" alt="Repsol">
-                <img src="{{ asset('assets/img/clients/sanken.png') }}" class="h-12" alt="Sanken">
-                <img src="{{ asset('assets/img/clients/adira.png') }}" class="h-12" alt="Adira">
-                <img src="{{ asset('assets/img/clients/daikin.png') }}" class="h-12" alt="Daikin">
-                <img src="{{ asset('assets/img/clients/bri.png') }}" class="h-12" alt="BRI">
-                <img src="{{ asset('assets/img/clients/daihatsu.png') }}" class="h-12" alt="Daihatsu">
-                <img src="{{ asset('assets/img/clients/ot.png') }}" class="h-12" alt="OT">
-                <img src="{{ asset('assets/img/clients/msig.png') }}" class="h-12" alt="MSIG">
+                @foreach ($clients as $client)
+                    <img src="{{ asset('storage/' . $client->logo) }}" class="h-12" alt="{{ $client->company_name }}">
+                @endforeach
             </div>
 
         </div>
     </section>
+
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
@@ -396,44 +346,42 @@
     </section>
 
     <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-7xl mx-auto px-6">
 
-        <!-- Section Title -->
-        <h2 class="text-center text-2xl md:text-3xl lg:text-4xl tracking-[0.3em] text-gray-700 mb-16">
-            INSIGHTS FOR <br /> STRATEGIC MIND
-        </h2>
+            <!-- Section Title -->
+            <h2 class="text-center text-2xl md:text-3xl lg:text-4xl tracking-[0.3em] text-gray-700 mb-16">
+                INSIGHTS FOR <br /> STRATEGIC MIND
+            </h2>
 
-        <!-- Masonry Layout -->
-        <div class="columns-1 md:columns-3 gap-6 space-y-6">
+            <!-- Masonry Layout -->
+            <div class="columns-1 md:columns-3 gap-6 space-y-6">
 
-            @foreach ($blogs as $blog)
-                <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
-                    <p class="text-sm text-gray-500">{{ $blog->category }}</p>
-                    <a href="{{ route('blogs.show', $blog->slug) }}" class="block">
-                        <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
-                            {{ $blog->title }}
-                        </h3>
-                    </a>
-                    @if ($blog->headline_img)
-                        <img src="{{ asset('storage/' . $blog->headline_img) }}"
-                             alt="{{ $blog->headline_img_alt ?? $blog->title }}"
-                             class="w-full rounded-xl object-cover">
-                    @else
-                        <img src="{{ asset('assets/img/blog1.png') }}"
-                             alt="Default Blog Image"
-                             class="w-full rounded-xl object-cover">
-                    @endif
-                </div>
-            @endforeach
+                @foreach ($blogs as $blog)
+                    <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
+                        <p class="text-sm text-gray-500">{{ $blog->category }}</p>
+                        <a href="{{ route('blogs.show', $blog->slug) }}" class="block">
+                            <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
+                                {{ $blog->title }}
+                            </h3>
+                        </a>
+                        @if ($blog->headline_img)
+                            <img src="{{ asset('storage/' . $blog->headline_img) }}"
+                                alt="{{ $blog->headline_img_alt ?? $blog->title }}"
+                                class="w-full rounded-xl object-cover">
+                        @else
+                            <img src="{{ asset('assets/img/blog1.png') }}" alt="Default Blog Image"
+                                class="w-full rounded-xl object-cover">
+                        @endif
+                    </div>
+                @endforeach
+
+            </div>
+
+            <!-- Read More Button -->
+            <div class="text-center mt-12">
+                {{ $blogs->links() }}
+            </div>
 
         </div>
-
-        <!-- Read More Button -->
-        <div class="text-center mt-12">
-            {{ $blogs->links() }}
-        </div>
-
-    </div>
-</section>
-
+    </section>
 @endsection
