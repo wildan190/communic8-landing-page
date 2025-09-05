@@ -16,8 +16,6 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     {{-- blog --}}
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('blogs.index')" :active="request()->routeIs('blogs.index')">
                         {{ __('Blogs') }}
                     </x-nav-link>
@@ -34,6 +32,10 @@
                     {{-- projects --}}
                     <x-nav-link :href="route('projects.index')" :active="request()->routeIs('projects.index')">
                         {{ __('Projects') }}
+                    </x-nav-link>
+                    {{-- activity --}}
+                    <x-nav-link :href="route('activities.index')" :active="request()->routeIs('activities.index')">
+                        {{ __('Activities') }}
                     </x-nav-link>
                     {{-- web information --}}
                     <x-nav-link :href="route('web_information.index')" :active="request()->routeIs('web_information.index')">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Activity;
 use App\Models\Blog;
 use App\Models\BranchOffice;
 use App\Models\Client;
@@ -26,25 +27,28 @@ class AboutController extends Controller
         $sliderBlogs = Blog::latest()->take(10)->get();
         $clients = Client::latest()->get();
 
-        // 🔥 ambil semua data gallery terbaru
         $galleries = Gallery::latest()->get();
         $webInfo = WebInformation::first();
         $branchOffices = BranchOffice::all();
-        $insightCategories = Blog::select('category')
-            ->distinct()
-            ->take(5)
-            ->pluck('category');
+        $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
 
-        return view('web.about.index', compact(
-            'blogs',
-            'categories',
-            'category',
-            'sliderBlogs',
-            'clients',
-            'galleries',
-            'insightCategories',
-            'webInfo',
-            'branchOffices',
-        ));
+        // 🔥 ambil semua data Activity terbaru
+        $activities = Activity::latest()->take(9)->get();
+
+        return view(
+            'web.about.index',
+            compact(
+                'blogs',
+                'categories',
+                'category',
+                'sliderBlogs',
+                'clients',
+                'galleries',
+                'insightCategories',
+                'webInfo',
+                'branchOffices',
+                'activities', // jangan lupa dikirim ke view
+            ),
+        );
     }
 }

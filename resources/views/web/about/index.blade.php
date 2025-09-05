@@ -300,12 +300,12 @@
 
                 <!-- Grid Images -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-12">
-                    @for ($i = 0; $i < 6; $i++)
+                    @foreach ($activities as $activity)
                         <div>
-                            <img src="{{ asset('assets/img/lastactivityimg.png') }}" alt="Last Activity"
-                                class="w-full h-full object-cover">
+                            <img src="{{ asset('storage/' . $activity->file_img) }}"
+                                alt="{{ $activity->caption ?? 'Last Activity' }}" class="w-full h-full object-cover">
                         </div>
-                    @endfor
+                    @endforeach
                 </div>
 
                 <!-- Instagram Button -->
