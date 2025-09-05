@@ -31,6 +31,11 @@
                     <x-nav-link :href="route('galleries.index')" :active="request()->routeIs('galleries.index')">
                         {{ __('Galleries') }}
                     </x-nav-link>
+                    {{-- projects --}}
+                    <x-nav-link :href="route('projects.index')" :active="request()->routeIs('projects.index')">
+                        {{ __('Projects') }}
+                    </x-nav-link>
+                    {{-- web information --}}
                     <x-nav-link :href="route('web_information.index')" :active="request()->routeIs('web_information.index')">
                         {{ __('Web Information') }}
                     </x-nav-link>

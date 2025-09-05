@@ -8,7 +8,6 @@
             <img src="{{ asset('assets/img/heroporto.png') }}" alt="Hero Background"
                 class="w-full h-[70vh] md:h-[80vh] object-cover transform scale-x-[-1] opacity-30">
         </div>
-
         <div class="relative z-10 max-w-7xl mx-auto px-6">
             <!-- Title -->
             <div class="text-center mb-16">
@@ -23,72 +22,33 @@
 
             <!-- Grid -->
             <div class="grid grid-cols-6 gap-6 relative">
-                <!-- Row 1: 2 big cards -->
-                <div class="col-span-6 md:col-span-3 border border-gray-200 rounded-2xl p-4 flex flex-col bg-white">
-                    <div class="flex justify-between items-center mb-2">
-                        <p class="text-xs text-gray-500">Lorem ipsum</p>
-                        <a href="https://dummyurl.com" target="_blank" class="text-gray-400 hover:text-gray-600">
-                            <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
-                        </a>
+                @foreach ($projects as $key => $project)
+                    @php
+                        // Row 1: ambil 2 pertama (col-span-3), sisanya col-span-2
+                        $colClass = $key < 2 ? 'col-span-6 md:col-span-3' : 'col-span-6 md:col-span-2';
+                    @endphp
+                    <div class="{{ $colClass }} border border-gray-200 rounded-2xl p-4 flex flex-col bg-white">
+                        <div class="flex justify-between items-center mb-2">
+                            <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
+                            @if ($project->project_url)
+                                <a href="{{ $project->project_url }}" target="_blank"
+                                    class="text-gray-400 hover:text-gray-600">
+                                    <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
+                                </a>
+                            @endif
+                        </div>
+                        <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
+                        <div class="rounded-xl overflow-hidden">
+                            @if ($project->project_img)
+                                <img src="{{ asset('storage/' . $project->project_img) }}" alt="{{ $project->name }}"
+                                    class="w-full object-cover">
+                            @else
+                                <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="No Image"
+                                    class="w-full object-cover">
+                            @endif
+                        </div>
                     </div>
-                    <h3 class="font-semibold text-gray-700 mb-3">Mercedes-Benz</h3>
-                    <div class="rounded-xl overflow-hidden">
-                        <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Mercedes" class="w-full object-cover">
-                    </div>
-                </div>
-
-                <div class="col-span-6 md:col-span-3 border border-gray-200 rounded-2xl p-4 flex flex-col bg-white">
-                    <div class="flex justify-between items-center mb-2">
-                        <p class="text-xs text-gray-500">Lorem ipsum</p>
-                        <a href="https://dummyurl.com" target="_blank" class="text-gray-400 hover:text-gray-600">
-                            <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
-                        </a>
-                    </div>
-                    <h3 class="font-semibold text-gray-700 mb-3">Daikin</h3>
-                    <div class="rounded-xl overflow-hidden">
-                        <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Daikin" class="w-full object-cover">
-                    </div>
-                </div>
-
-                <!-- Row 2: 3 smaller cards -->
-                <div class="col-span-6 md:col-span-2 border border-gray-200 rounded-2xl p-4 flex flex-col bg-white">
-                    <div class="flex justify-between items-center mb-2">
-                        <p class="text-xs text-gray-500">Lorem ipsum</p>
-                        <a href="https://dummyurl.com" target="_blank" class="text-gray-400 hover:text-gray-600">
-                            <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
-                        </a>
-                    </div>
-                    <h3 class="font-semibold text-gray-700 mb-3">Borong</h3>
-                    <div class="rounded-xl overflow-hidden">
-                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Borong" class="w-full object-cover">
-                    </div>
-                </div>
-
-                <div class="col-span-6 md:col-span-2 border border-gray-200 rounded-2xl p-4 flex flex-col bg-white">
-                    <div class="flex justify-between items-center mb-2">
-                        <p class="text-xs text-gray-500">Lorem ipsum</p>
-                        <a href="https://dummyurl.com" target="_blank" class="text-gray-400 hover:text-gray-600">
-                            <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
-                        </a>
-                    </div>
-                    <h3 class="font-semibold text-gray-700 mb-3">Adira</h3>
-                    <div class="rounded-xl overflow-hidden">
-                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Adira" class="w-full object-cover">
-                    </div>
-                </div>
-
-                <div class="col-span-6 md:col-span-2 border border-gray-200 rounded-2xl p-4 flex flex-col bg-white">
-                    <div class="flex justify-between items-center mb-2">
-                        <p class="text-xs text-gray-500">Lorem ipsum</p>
-                        <a href="https://dummyurl.com" target="_blank" class="text-gray-400 hover:text-gray-600">
-                            <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
-                        </a>
-                    </div>
-                    <h3 class="font-semibold text-gray-700 mb-3">MSIG</h3>
-                    <div class="rounded-xl overflow-hidden">
-                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="MSIG" class="w-full object-cover">
-                    </div>
-                </div>
+                @endforeach
             </div>
 
             <!-- Button -->
@@ -98,6 +58,7 @@
                 </button>
             </div>
         </div>
+
     </section>
 
     {{-- CTA Section --}}
@@ -134,82 +95,82 @@
         </div>
     </section>
 
-        <!-- Blog Slider Section -->
-        <section class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-6">
+    <!-- Blog Slider Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
 
-                <!-- Section Title -->
-                <h2
-                    class="text-center font-poppins text-2xl md:text-3xl lg:text-4xl font-semibold tracking-[0.3em] text-gray-700 mb-16">
-                    INSIGHTS FOR <br /> STRATEGIC MIND
-                </h2>
+            <!-- Section Title -->
+            <h2
+                class="text-center font-poppins text-2xl md:text-3xl lg:text-4xl font-semibold tracking-[0.3em] text-gray-700 mb-16">
+                INSIGHTS FOR <br /> STRATEGIC MIND
+            </h2>
 
-                <!-- Wrapper + Buttons -->
-                <div class="flex items-center space-x-6">
+            <!-- Wrapper + Buttons -->
+            <div class="flex items-center space-x-6">
 
-                    <!-- Prev Button -->
-                    <button id="prevBtn" class="shrink-0">
-                        <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Prev" class="w-10 h-10">
-                    </button>
+                <!-- Prev Button -->
+                <button id="prevBtn" class="shrink-0">
+                    <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Prev" class="w-10 h-10">
+                </button>
 
-                    <!-- Slider Container -->
-                    <div id="blog-slider"
-                        class="flex overflow-x-auto space-x-6 scrollbar-hide snap-x snap-mandatory scroll-smooth">
+                <!-- Slider Container -->
+                <div id="blog-slider"
+                    class="flex overflow-x-auto space-x-6 scrollbar-hide snap-x snap-mandatory scroll-smooth">
 
-                        @foreach ($sliderBlogs as $blog)
-                            <div
-                                class="snap-center min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
-                                <p class="text-sm text-gray-500">{{ $blog->category }}</p>
-                                <a href="{{ route('blogs.show', $blog->slug) }}" class="block flex-grow">
-                                    <h3
-                                        class="text-lg font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[72px] mb-4">
-                                        {{ $blog->title }}
-                                    </h3>
-                                </a>
-                                @if ($blog->headline_img)
-                                    <img src="{{ asset('storage/' . $blog->headline_img) }}"
-                                        alt="{{ $blog->headline_img_alt ?? $blog->title }}"
-                                        class="w-full h-48 object-cover rounded-xl">
-                                @else
-                                    <img src="{{ asset('assets/img/blog1.png') }}" alt="Default Image"
-                                        class="w-full h-48 object-cover rounded-xl">
-                                @endif
-                            </div>
-                        @endforeach
+                    @foreach ($sliderBlogs as $blog)
+                        <div
+                            class="snap-center min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
+                            <p class="text-sm text-gray-500">{{ $blog->category }}</p>
+                            <a href="{{ route('blogs.show', $blog->slug) }}" class="block flex-grow">
+                                <h3
+                                    class="text-lg font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[72px] mb-4">
+                                    {{ $blog->title }}
+                                </h3>
+                            </a>
+                            @if ($blog->headline_img)
+                                <img src="{{ asset('storage/' . $blog->headline_img) }}"
+                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}"
+                                    class="w-full h-48 object-cover rounded-xl">
+                            @else
+                                <img src="{{ asset('assets/img/blog1.png') }}" alt="Default Image"
+                                    class="w-full h-48 object-cover rounded-xl">
+                            @endif
+                        </div>
+                    @endforeach
 
-                    </div>
-
-                    <!-- Next Button -->
-                    <button id="nextBtn" class="shrink-0">
-                        <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next" class="w-10 h-10">
-                    </button>
                 </div>
 
-                <!-- Read More Button -->
-                <div class="text-center mt-12">
-                    <a href="{{ route('insight.index') }}"
-                        class="inline-block bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition">
-                        Read More
-                    </a>
-                </div>
-
+                <!-- Next Button -->
+                <button id="nextBtn" class="shrink-0">
+                    <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next" class="w-10 h-10">
+                </button>
             </div>
-        </section>
 
-        <!-- JS for slider scroll -->
-        <script>
-            const slider = document.getElementById('blog-slider');
-            document.getElementById('prevBtn').addEventListener('click', () => {
-                slider.scrollBy({
-                    left: -400,
-                    behavior: 'smooth'
-                });
+            <!-- Read More Button -->
+            <div class="text-center mt-12">
+                <a href="{{ route('insight.index') }}"
+                    class="inline-block bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition">
+                    Read More
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- JS for slider scroll -->
+    <script>
+        const slider = document.getElementById('blog-slider');
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            slider.scrollBy({
+                left: -400,
+                behavior: 'smooth'
             });
-            document.getElementById('nextBtn').addEventListener('click', () => {
-                slider.scrollBy({
-                    left: 400,
-                    behavior: 'smooth'
-                });
+        });
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            slider.scrollBy({
+                left: 400,
+                behavior: 'smooth'
             });
-        </script>
+        });
+    </script>
 @endsection
