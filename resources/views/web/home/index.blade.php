@@ -8,19 +8,15 @@
             class="container max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center justify-between min-h-screen py-28 md:py-32 space-y-12">
 
             {{-- Title --}}
-            <div class="text-center mt-12 md:mt-20">
+            <div class="text-center mt-12 md:mt-20 relative">
                 <img src="{{ asset('assets/img/text.png') }}" alt="Grow and Glow"
-                    class="mx-auto w-56 sm:w-72 md:w-[420px] lg:w-[480px]">
+                    class="mx-auto w-56 sm:w-72 md:w-[420px] lg:w-[480px] relative z-20">
             </div>
 
-
-            {{-- Lampu (Layer Bawah & Atas) --}}
-            <div class="flex justify-center">
-                <div class="relative">
-
-                    <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
-                        class="max-w-[200px] sm:max-w-[220px] md:max-w-[240px] lg:max-w-[260px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                </div>
+            {{-- Lampu (di bawah text, agak turun) --}}
+            <div class="flex justify-center relative">
+                <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
+                    class="max-w-[200px] sm:max-w-[220px] md:max-w-[240px] lg:max-w-[260px] relative -mt-6 md:-mt-10 z-10">
             </div>
 
             {{-- Bottom Row --}}
@@ -303,7 +299,8 @@
             {{-- Clients logo row --}}
             <div class="flex flex-wrap justify-center items-center gap-7 mt-12">
                 @foreach ($clients as $client)
-                    <img src="{{ asset('storage/' . $client->logo) }}" class="h-12" alt="{{ $client->company_name }}">
+                    <img src="{{ asset('storage/' . $client->logo) }}" class="h-12"
+                        alt="{{ $client->company_name }}">
                 @endforeach
             </div>
 

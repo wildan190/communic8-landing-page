@@ -30,6 +30,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/portofolio', [PortofolioController::class, 'index'])->name('portofolio.index');
 Route::get('/insight', [InsightController::class, 'index'])->name('insight.index');
+Route::get('/insight/{slug}', [InsightController::class, 'show'])->name('insight.show');
 
 // Rute Kontak dengan throttle
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
