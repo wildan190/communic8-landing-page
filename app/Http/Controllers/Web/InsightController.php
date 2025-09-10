@@ -36,11 +36,22 @@ class InsightController extends Controller
         $galleries = Gallery::latest()->get();
         $webInfo = WebInformation::first();
         $branchOffices = BranchOffice::all();
-        $insightCategories = Blog::select('category')
-            ->distinct()
-            ->take(5)
-            ->pluck('category');
+        $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
 
         return view('web.insight.index', compact('blogs', 'categories', 'category', 'sliderBlogs', 'webInfo', 'branchOffices', 'insightCategories', 'clients', 'galleries'));
+    }
+
+    public function show($slug)
+    {
+        $blog = Blog::where('slug', $slug)->firstOrFail();
+
+        // Data untuk slider (10 terbaru)
+        $sliderBlogs = Blog::latest()->take(10)->get();
+
+        $webInfo = WebInformation::first();
+        $branchOffices = BranchOffice::all();
+        $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
+
+        return view('web.insight.blog-detail', compact('blog', 'webInfo', 'branchOffices', 'insightCategories', 'sliderBlogs'));
     }
 }

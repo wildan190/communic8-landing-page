@@ -2,9 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'tailwindcss';
+/* ✅ Pastikan list Quill ikut style Typography */
+.prose ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+}
+.prose ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+}
+.prose li {
+    margin-bottom: 0.25rem;
+}
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+/* ✅ Mapping Quill header ke style Tailwind Typography */
+.prose .ql-header-1 {
+    @apply text-3xl md:text-4xl font-bold mt-6 mb-4;
+}
+.prose .ql-header-2 {
+    @apply text-2xl md:text-3xl font-semibold mt-5 mb-3;
+}
+.prose .ql-header-3 {
+    @apply text-xl md:text-2xl font-semibold mt-4 mb-2;
+}
+.prose .ql-header-4 {
+    @apply text-lg font-semibold mt-3 mb-2;
+}
+.prose .ql-header-5 {
+    @apply text-base font-semibold mt-2 mb-1;
+}
+.prose .ql-header-6 {
+    @apply text-sm font-semibold uppercase tracking-wide mt-2 mb-1 text-gray-500;
+}
+
+/* ✅ Inline formatting */
+.prose u {
+    @apply underline;
+}
+.prose i {
+    @apply italic;
+}
+
+input, textarea, select {
+  @apply rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500;
+}
