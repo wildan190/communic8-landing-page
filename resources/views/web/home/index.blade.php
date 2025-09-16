@@ -13,6 +13,8 @@
                     class="mx-auto w-56 sm:w-72 md:w-[420px] lg:w-[480px] relative z-20">
             </div>
 
+            <br /><br />
+
             {{-- Lampu (di bawah text, agak turun) --}}
             <div class="flex justify-center relative">
                 <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
