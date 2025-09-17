@@ -134,106 +134,168 @@
 
     </div>
 
-    <br />
+    {{-- Section Values / Achievements --}}
+    <section class="bg-gray-200 py-24 font-rubik">
+        <div class="container mx-auto px-4 sm:px-6 md:px-12">
 
-{{-- Section WHAT WE CAN DO FOR YOU --}}
-<section class="relative bg-white pt-16 sm:pt-20 md:pt-32 pb-16 sm:pb-20 md:pb-24">
-    <div class="container max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+            <br /><br />
 
-        {{-- Title Section --}}
-        <div class="text-center mb-16">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl tracking-[0.3em] text-gray-700 mb-6">
-                W H A T &nbsp; W E &nbsp;C A N<br>D O &nbsp;F O R &nbsp;Y O U
-            </h2>
-        </div>
+            {{-- Title --}}
+            <div class="text-center mb-16">
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-700 leading-relaxed">
+                    Creative minds, tech experts, end-to-end solutions,<br>
+                    driven by results, built for impact.
+                </h2>
+            </div>
 
-        @php
-            // Data card dideklarasikan sekali di sini
-            $cards = [
-                [
-                    'img' => 'forge.png',
-                    'title' => 'Brand Forge',
-                    'desc' =>
-                        'We build and fortify compelling brands that resonate deeply with the market and audience. From establishing your unique identity to cultivating lasting trust and value, we ensure your brand stands out and makes a memorable impact.',
-                    'btn' => 'Find your brand\'s identity',
-                ],
-                [
-                    'img' => 'digital.png',
-                    'title' => 'Public Presence',
-                    'desc' =>
-                        'Build powerful, real-world brand awareness by going beyond the screen. We make your brand unmissable, elevating its public stature and impact. Our strategic placements in OOH, DOOH, and Transit Media ensure your message connects with your target audience in the right space.',
-                    'btn' => 'Be seen and heard',
-                ],
-                [
-                    'img' => 'compass.png',
-                    'title' => 'Digital Compass',
-                    'desc' =>
-                        'Amplify your reach and boost your business with our intelligent digital marketing strategies. We connect you with your target audience across diverse online channels, and drive meaningful engagement.',
-                    'btn' => 'Get found & get growing',
-                ],
-                [
-                    'img' => 'digital.png',
-                    'title' => 'Digital Architecture',
-                    'desc' =>
-                        'Navigate the digital transformation and build your digital backbone with confidence. Our expert team provides digital consultancy, designing and developing sophisticated websites, applications, and platforms that enhance your operational efficiency and user experience.',
-                    'btn' => 'Unlock digital possibilities',
-                ],
-            ];
-        @endphp
+            {{-- Stats Row --}}
+            <div class="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-20 mb-16">
 
-        {{-- Mobile: Single Column Stack --}}
-        <div class="md:hidden space-y-6">
-            @foreach ($cards as $card)
-                <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col mx-auto max-w-sm p-4 min-h-[520px]">
-                    <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
-                        class="w-full h-48 sm:h-60 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
-
-                    {{-- konten yang fleksibel supaya tombol selalu di bawah --}}
-                    <div class="flex flex-col items-center text-center w-full flex-1">
-                        <h3 class="text-lg sm:text-xl font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed px-2 mb-4 flex-1">{{ $card['desc'] }}</p>
-
-                        <button
-                            class="bg-gray-800 text-white px-5 py-2 text-sm rounded-full hover:bg-gray-700 transition-colors mt-auto">
-                            {{ $card['btn'] }}
-                        </button>
+                {{-- Item 1 --}}
+                <div class="flex items-center gap-4">
+                    <div class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-orange-500">15+</div>
+                        <div class="text-gray-700 font-semibold text-sm">Years of Experience</div>
                     </div>
                 </div>
-            @endforeach
-        </div>
 
-        {{-- Desktop: 2x2 Grid Layout --}}
-        <div class="hidden md:block">
+                {{-- Item 2 --}}
+                <div class="flex items-center gap-4">
+                    <div class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-orange-500">30+</div>
+                        <div class="text-gray-700 font-semibold text-sm">Brands Handled</div>
+                    </div>
+                </div>
+
+                {{-- Item 3 --}}
+                <div class="flex items-center gap-4">
+                    <div class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
+                        <i class="fas fa-smile-beam"></i>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-orange-500">99%</div>
+                        <div class="text-gray-700 font-semibold text-sm">Clients Satisfaction</div>
+                    </div>
+                </div>
+
+            </div>
+
+            {{-- Bottom Text --}}
+            <div class="text-center max-w-3xl mx-auto text-gray-600 text-sm leading-relaxed">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </div>
+
+        </div>
+    </section>
+
+
+    {{-- Section WHAT WE CAN DO FOR YOU --}}
+    <section class="relative bg-white pt-16 sm:pt-20 md:pt-32 pb-16 sm:pb-20 md:pb-24">
+        <div class="container max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+
+            {{-- Title Section --}}
+            <div class="text-center mb-16">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl tracking-[0.3em] text-gray-700 mb-6">
+                    W H A T &nbsp; W E &nbsp;C A N<br>D O &nbsp;F O R &nbsp;Y O U
+                </h2>
+            </div>
+
             @php
-                // bagi ke baris 2x2
-                $rows = array_chunk($cards, 2);
+                // Data card dideklarasikan sekali di sini
+                $cards = [
+                    [
+                        'img' => 'forge.png',
+                        'title' => 'Brand Forge',
+                        'desc' =>
+                            'We build and fortify compelling brands that resonate deeply with the market and audience. From establishing your unique identity to cultivating lasting trust and value, we ensure your brand stands out and makes a memorable impact.',
+                        'btn' => 'Find your brand\'s identity',
+                    ],
+                    [
+                        'img' => 'digital.png',
+                        'title' => 'Public Presence',
+                        'desc' =>
+                            'Build powerful, real-world brand awareness by going beyond the screen. We make your brand unmissable, elevating its public stature and impact. Our strategic placements in OOH, DOOH, and Transit Media ensure your message connects with your target audience in the right space.',
+                        'btn' => 'Be seen and heard',
+                    ],
+                    [
+                        'img' => 'compass.png',
+                        'title' => 'Digital Compass',
+                        'desc' =>
+                            'Amplify your reach and boost your business with our intelligent digital marketing strategies. We connect you with your target audience across diverse online channels, and drive meaningful engagement.',
+                        'btn' => 'Get found & get growing',
+                    ],
+                    [
+                        'img' => 'digital.png',
+                        'title' => 'Digital Architecture',
+                        'desc' =>
+                            'Navigate the digital transformation and build your digital backbone with confidence. Our expert team provides digital consultancy, designing and developing sophisticated websites, applications, and platforms that enhance your operational efficiency and user experience.',
+                        'btn' => 'Unlock digital possibilities',
+                    ],
+                ];
             @endphp
 
-            @foreach ($rows as $row)
-                <div class="flex flex-wrap justify-center gap-6 mb-6">
-                    @foreach ($row as $card)
-                        <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-72 p-4 min-h-[520px]">
-                            <img src="{{ asset('assets/img/' . $card['img']) }}"
-                                alt="{{ $card['title'] }}"
-                                class="w-full h-60 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
+            {{-- Mobile: Single Column Stack --}}
+            <div class="md:hidden space-y-6">
+                @foreach ($cards as $card)
+                    <div
+                        class="bg-white border border-gray-300 rounded-[16px] flex flex-col mx-auto max-w-sm p-4 min-h-[520px]">
+                        <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
+                            class="w-full h-48 sm:h-60 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
 
-                            <div class="flex flex-col items-center text-center w-full flex-1">
-                                <h3 class="text-xl font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
-                                <p class="text-gray-600 text-sm mb-4 flex-1">{{ $card['desc'] }}</p>
+                        {{-- konten yang fleksibel supaya tombol selalu di bawah --}}
+                        <div class="flex flex-col items-center text-center w-full flex-1">
+                            <h3 class="text-lg sm:text-xl font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed px-2 mb-4 flex-1">{{ $card['desc'] }}</p>
 
-                                <button
-                                    class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors">
-                                    {{ $card['btn'] }}
-                                </button>
-                            </div>
+                            <button
+                                class="bg-gray-800 text-white px-5 py-2 text-sm rounded-full hover:bg-gray-700 transition-colors mt-auto">
+                                {{ $card['btn'] }}
+                            </button>
                         </div>
-                    @endforeach
-                </div>
-            @endforeach
-        </div>
+                    </div>
+                @endforeach
+            </div>
 
-    </div>
-</section>
+            {{-- Desktop: 2x2 Grid Layout --}}
+            <div class="hidden md:block">
+                @php
+                    // bagi ke baris 2x2
+                    $rows = array_chunk($cards, 2);
+                @endphp
+
+                @foreach ($rows as $row)
+                    <div class="flex flex-wrap justify-center gap-6 mb-6">
+                        @foreach ($row as $card)
+                            <div
+                                class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-72 p-4 min-h-[520px]">
+                                <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
+                                    class="w-full h-60 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
+
+                                <div class="flex flex-col items-center text-center w-full flex-1">
+                                    <h3 class="text-xl font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
+                                    <p class="text-gray-600 text-sm mb-4 flex-1">{{ $card['desc'] }}</p>
+
+                                    <button
+                                        class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors">
+                                        {{ $card['btn'] }}
+                                    </button>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endforeach
+            </div>
+
+        </div>
+    </section>
 
 
     {{-- Section TRUSTED BY --}}
