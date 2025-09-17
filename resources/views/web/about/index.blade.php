@@ -311,11 +311,12 @@
                 <!-- Instagram Button -->
                 <a href="https://www.instagram.com" target="_blank"
                     class="inline-flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-700 transition">
+                    <i class="fab fa-instagram text-lg"></i>
                     Visit our Instagram
                 </a>
+
             </div>
         </section>
-
 
         {{-- CTA Section --}}
         <section class="relative bg-cover bg-center text-white font-poppins"
