@@ -110,27 +110,42 @@
             </form>
         </div>
 
+        <!-- SweetAlert2 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<!-- Office Grid -->
-<div class="max-w-6xl mx-auto px-6 mt-20">
-    <div class="grid md:grid-cols-2 gap-10">
-        @forelse($branchOffices as $office)
-            <div class="bg-white rounded-2xl shadow-sm border p-6 space-y-4 text-center">
-                @if($office->picture_upload)
-                    <img src="{{ asset('storage/' . $office->picture_upload) }}" class="rounded-xl w-full object-cover">
-                @else
-                    <img src="{{ asset('assets/img/default-office.png') }}" class="rounded-xl w-full object-cover">
-                @endif
+        @if (session('success'))
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: '{{ session('success') }}',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            </script>
+        @endif
 
-                <h3 class="text-lg font-semibold text-gray-800">{{ $office->name }}</h3>
-                <p class="text-gray-600 text-sm">{{ $office->address }}</p>
-                <p class="font-medium text-gray-800">{{ $office->phone }}</p>
+        <!-- Office Grid -->
+        <div class="max-w-6xl mx-auto px-6 mt-20">
+            <div class="grid md:grid-cols-2 gap-10">
+                @forelse($branchOffices as $office)
+                    <div class="bg-white rounded-2xl shadow-sm border p-6 space-y-4 text-center">
+                        @if ($office->picture_upload)
+                            <img src="{{ asset('storage/' . $office->picture_upload) }}"
+                                class="rounded-xl w-full object-cover">
+                        @else
+                            <img src="{{ asset('assets/img/default-office.png') }}" class="rounded-xl w-full object-cover">
+                        @endif
+
+                        <h3 class="text-lg font-semibold text-gray-800">{{ $office->name }}</h3>
+                        <p class="text-gray-600 text-sm">{{ $office->address }}</p>
+                        <p class="font-medium text-gray-800">{{ $office->phone }}</p>
+                    </div>
+                @empty
+                    <p class="col-span-2 text-center text-gray-500">No branch offices available.</p>
+                @endforelse
             </div>
-        @empty
-            <p class="col-span-2 text-center text-gray-500">No branch offices available.</p>
-        @endforelse
-    </div>
-</div>
+        </div>
 
     </section>
 
