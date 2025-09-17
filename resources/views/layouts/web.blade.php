@@ -313,6 +313,16 @@
             </div>
 
         </div>
+        <!-- Bagian paling bawah -->
+        <div class="bg-gray-900 py-4">
+            <div class="max-w-7xl mx-auto px-6 text-center text-sm text-white space-x-4">
+                <a href="" class="hover:underline">Privacy Policy</a>
+                <span>|</span>
+                <a href="" class="hover:underline">Terms of Services</a>
+                <span>|</span>
+                <a href="" class="hover:underline">Google Certified Partner Disclosure</a>
+            </div>
+        </div>
 
     </footer>
 
