@@ -20,14 +20,17 @@
                 </p>
             </div>
 
-            <!-- Grid -->
-            <div class="grid grid-cols-6 gap-6 relative">
+            {{-- Grid Projects --}}
+            <div class="grid grid-cols-6 gap-6" id="trusted-projects">
                 @foreach ($projects as $key => $project)
                     @php
-                        // Row 1: ambil 2 pertama (col-span-3), sisanya col-span-2
+                        // 2 project pertama besar (col-span-3), sisanya kecil (col-span-2)
                         $colClass = $key < 2 ? 'col-span-6 md:col-span-3' : 'col-span-6 md:col-span-2';
+                        // Tentukan project yang perlu disembunyikan (mulai dari index 5 = item ke-6)
+                        $hiddenClass = $key >= 5 ? 'hidden more-project' : '';
                     @endphp
-                    <div class="{{ $colClass }} border border-gray-200 rounded-2xl p-4 flex flex-col bg-white">
+                    <div
+                        class="{{ $colClass }} border border-gray-200 rounded-2xl p-4 flex flex-col {{ $hiddenClass }}">
                         <div class="flex justify-between items-center mb-2">
                             <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
                             @if ($project->project_url)
@@ -51,14 +54,28 @@
                 @endforeach
             </div>
 
-            <!-- Button -->
+            {{-- Button --}}
             <div class="flex justify-center mt-12">
-                <button class="bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition-colors">
+                <button id="toggle-projects"
+                    class="bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition-colors">
                     Explore more
                 </button>
             </div>
         </div>
+        <script>
+            // Toggle Projects
+            const toggleBtn = document.getElementById("toggle-projects");
+            const moreProjects = document.querySelectorAll(".more-project");
+            let expanded = false;
 
+            toggleBtn.addEventListener("click", () => {
+                expanded = !expanded;
+                moreProjects.forEach(el => {
+                    el.classList.toggle("hidden");
+                });
+                toggleBtn.textContent = expanded ? "See less" : "Explore more";
+            });
+        </script>
     </section>
 
     {{-- CTA Section --}}

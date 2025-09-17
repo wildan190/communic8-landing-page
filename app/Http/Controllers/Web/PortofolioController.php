@@ -32,7 +32,7 @@ class PortofolioController extends Controller
         $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
 
         // 🔥 ambil max 5 project terbaru
-        $projects = Project::latest()->take(5)->get();
+        $projects = Project::latest()->get();
 
         return view('web.portofolio.index', compact(
             'blogs',

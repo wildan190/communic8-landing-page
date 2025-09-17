@@ -296,125 +296,131 @@
         </div>
     </section>
 
-{{-- Section TRUSTED BY --}}
-<section class="relative bg-white py-20">
-    <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {{-- Section TRUSTED BY --}}
+    <section class="relative bg-white py-20">
+        <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {{-- Title Section --}}
-        <div class="text-center mb-16">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl tracking-[0.3em] text-gray-700 mb-6">
-                T R U S T E D &nbsp; B Y
-            </h2>
-            <p class="text-gray-600">
-                We’ve been privileged to partner with a diverse range of leading brands, and across industries.
-            </p>
-        </div>
-
-        {{-- Grid Projects --}}
-        <div class="grid grid-cols-6 gap-6" id="trusted-projects">
-            @foreach ($trustedProjects as $key => $project)
-                @php
-                    // 2 project pertama besar (col-span-3), sisanya kecil (col-span-2)
-                    $colClass = $key < 2 ? 'col-span-6 md:col-span-3' : 'col-span-6 md:col-span-2';
-                    // Tentukan project yang perlu disembunyikan (mulai dari index 5 = item ke-6)
-                    $hiddenClass = $key >= 5 ? 'hidden more-project' : '';
-                @endphp
-                <div class="{{ $colClass }} border border-gray-200 rounded-2xl p-4 flex flex-col {{ $hiddenClass }}">
-                    <div class="flex justify-between items-center mb-2">
-                        <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
-                        @if ($project->project_url)
-                            <a href="{{ $project->project_url }}" target="_blank"
-                                class="text-gray-400 hover:text-gray-600">
-                                <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
-                            </a>
-                        @endif
-                    </div>
-                    <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
-                    <div class="rounded-xl overflow-hidden">
-                        @if ($project->project_img)
-                            <img src="{{ asset('storage/' . $project->project_img) }}" alt="{{ $project->name }}"
-                                class="w-full object-cover">
-                        @else
-                            <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="No Image"
-                                class="w-full object-cover">
-                        @endif
-                    </div>
-                </div>
-            @endforeach
-        </div>
-
-        {{-- Button --}}
-        <div class="flex justify-center mt-12">
-            <button id="toggle-projects"
-                class="bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition-colors">
-                Explore more
-            </button>
-        </div>
-
-        {{-- Clients Section --}}
-        <section class="bg-white py-16 font-rubik">
-            <div class="container mx-auto px-4 sm:px-6 md:px-12">
-
-                {{-- Clients Logo Slider --}}
-                <div class="swiper clientSwiper">
-                    <div class="swiper-wrapper items-center">
-                        @foreach ($clients as $client)
-                            <div class="swiper-slide flex justify-center items-center">
-                                <img src="{{ asset('storage/' . $client->logo) }}" alt="{{ $client->company_name }}"
-                                    class="h-12 object-contain transition duration-300" />
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-
-                {{-- Bottom Text --}}
-                <div class="text-center mt-10">
-                    <h3 class="text-lg sm:text-xl md:text-2xl font-semibold text-gray-700">
-                        Trusted by over <span class="text-gray-900 font-bold">35,000 businesses</span>
-                        across various <br />industries, and now it's your turn!
-                    </h3>
-                </div>
-
+            {{-- Title Section --}}
+            <div class="text-center mb-16">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl tracking-[0.3em] text-gray-700 mb-6">
+                    T R U S T E D &nbsp; B Y
+                </h2>
+                <p class="text-gray-600">
+                    We’ve been privileged to partner with a diverse range of leading brands, and across industries.
+                </p>
             </div>
-        </section>
-    </div>
-</section>
 
-{{-- SwiperJS CDN --}}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+            {{-- Grid Projects --}}
+            <div class="grid grid-cols-6 gap-6" id="trusted-projects">
+                @foreach ($trustedProjects as $key => $project)
+                    @php
+                        // 2 project pertama besar (col-span-3), sisanya kecil (col-span-2)
+                        $colClass = $key < 2 ? 'col-span-6 md:col-span-3' : 'col-span-6 md:col-span-2';
+                        // Tentukan project yang perlu disembunyikan (mulai dari index 5 = item ke-6)
+                        $hiddenClass = $key >= 5 ? 'hidden more-project' : '';
+                    @endphp
+                    <div
+                        class="{{ $colClass }} border border-gray-200 rounded-2xl p-4 flex flex-col {{ $hiddenClass }}">
+                        <div class="flex justify-between items-center mb-2">
+                            <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
+                            @if ($project->project_url)
+                                <a href="{{ $project->project_url }}" target="_blank"
+                                    class="text-gray-400 hover:text-gray-600">
+                                    <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
+                                </a>
+                            @endif
+                        </div>
+                        <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
+                        <div class="rounded-xl overflow-hidden">
+                            @if ($project->project_img)
+                                <img src="{{ asset('storage/' . $project->project_img) }}" alt="{{ $project->name }}"
+                                    class="w-full object-cover">
+                            @else
+                                <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="No Image"
+                                    class="w-full object-cover">
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
+            </div>
 
-{{-- Swiper Init --}}
-<script>
-    const swiper = new Swiper(".clientSwiper", {
-        slidesPerView: 2,
-        spaceBetween: 30,
-        loop: true,
-        autoplay: {
-            delay: 2000,
-            disableOnInteraction: false,
-        },
-        breakpoints: {
-            640: { slidesPerView: 3 },
-            768: { slidesPerView: 4 },
-            1024: { slidesPerView: 6 },
-        },
-    });
+            {{-- Button --}}
+            <div class="flex justify-center mt-12">
+                <button id="toggle-projects"
+                    class="bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition-colors">
+                    Explore more
+                </button>
+            </div>
 
-    // Toggle Projects
-    const toggleBtn = document.getElementById("toggle-projects");
-    const moreProjects = document.querySelectorAll(".more-project");
-    let expanded = false;
+            {{-- Clients Section --}}
+            <section class="bg-white py-16 font-rubik">
+                <div class="container mx-auto px-4 sm:px-6 md:px-12">
 
-    toggleBtn.addEventListener("click", () => {
-        expanded = !expanded;
-        moreProjects.forEach(el => {
-            el.classList.toggle("hidden");
+                    {{-- Clients Logo Slider --}}
+                    <div class="swiper clientSwiper">
+                        <div class="swiper-wrapper items-center">
+                            @foreach ($clients as $client)
+                                <div class="swiper-slide flex justify-center items-center">
+                                    <img src="{{ asset('storage/' . $client->logo) }}" alt="{{ $client->company_name }}"
+                                        class="h-12 object-contain transition duration-300" />
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    {{-- Bottom Text --}}
+                    <div class="text-center mt-10">
+                        <h3 class="text-lg sm:text-xl md:text-2xl font-semibold text-gray-700">
+                            Trusted by over <span class="text-gray-900 font-bold">35,000 businesses</span>
+                            across various <br />industries, and now it's your turn!
+                        </h3>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </section>
+
+    {{-- SwiperJS CDN --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    {{-- Swiper Init --}}
+    <script>
+        const swiper = new Swiper(".clientSwiper", {
+            slidesPerView: 2,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 3
+                },
+                768: {
+                    slidesPerView: 4
+                },
+                1024: {
+                    slidesPerView: 6
+                },
+            },
         });
-        toggleBtn.textContent = expanded ? "See less" : "Explore more";
-    });
-</script>
 
+        // Toggle Projects
+        const toggleBtn = document.getElementById("toggle-projects");
+        const moreProjects = document.querySelectorAll(".more-project");
+        let expanded = false;
+
+        toggleBtn.addEventListener("click", () => {
+            expanded = !expanded;
+            moreProjects.forEach(el => {
+                el.classList.toggle("hidden");
+            });
+            toggleBtn.textContent = expanded ? "See less" : "Explore more";
+        });
+    </script>
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
