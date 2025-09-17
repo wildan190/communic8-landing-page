@@ -134,117 +134,107 @@
 
     </div>
 
-    {{-- Section WHAT WE CAN DO FOR YOU --}}
-    <section class="relative bg-white pt-16 sm:pt-20 md:pt-32 pb-16 sm:pb-20 md:pb-24">
-        <div class="container max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+    <br />
 
-            {{-- Title Section --}}
-            <div class="text-center mb-8 sm:mb-12 md:mb-16">
-                <h2
-                    class="text-xl sm:text-2xl md:text-3xl lg:text-4xl tracking-[0.3em] sm:tracking-[0.5em] text-gray-700 font-extrabold uppercase leading-tight mt-6 sm:mt-8 md:mt-12 px-4">
-                    WHAT WE CAN<br>DO FOR YOU
-                </h2>
-            </div>
+{{-- Section WHAT WE CAN DO FOR YOU --}}
+<section class="relative bg-white pt-16 sm:pt-20 md:pt-32 pb-16 sm:pb-20 md:pb-24">
+    <div class="container max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
 
-            {{-- Mobile: Single Column Stack --}}
-            <div class="md:hidden space-y-6">
-                @php
-                    $cardsMobile = [
-                        [
-                            'img' => 'forge.png',
-                            'title' => 'Brand Forge',
-                            'desc' =>
-                                'We build and fortify compelling brands that resonate deeply with the market and audience. From establishing your unique identity to cultivating lasting trust and value, we ensure your brand stands out and makes a memorable impact.',
-                            'btn' => 'Find your brand\'s identity',
-                        ],
-                        [
-                            'img' => 'digital.png',
-                            'title' => 'Public Presence',
-                            'desc' =>
-                                'Build powerful, real-world brand awareness by going beyond the screen. We make your brand unmissable, elevating its public stature and impact. Our strategic placements in OOH, DOOH, and Transit Media ensure your message connects with your target audience in the right space.',
-                            'btn' => 'Be seen and heard',
-                        ],
-                        [
-                            'img' => 'compass.png',
-                            'title' => 'Digital Compass',
-                            'desc' =>
-                                'Amplify your reach and boost your business with our intelligent digital marketing strategies. We connect you with your target audience across diverse online channels, and drive meaningful engagement.',
-                            'btn' => 'Get found & get growing',
-                        ],
-                        [
-                            'img' => 'digital.png',
-                            'title' => 'Digital Architecture',
-                            'desc' =>
-                                'Navigate the digital transformation and build your digital backbone with confidence. Our expert team provides digital consultancy, designing and developing sophisticated websites, applications, and platforms that enhance your operational efficiency and user experience.',
-                            'btn' => 'Unlock digital possibilities',
-                        ],
-                    ];
-                @endphp
-
-                @foreach ($cardsMobile as $card)
-                    <div
-                        class="bg-white border border-gray-300 rounded-[16px] flex flex-col items-center p-4 mx-auto max-w-sm">
-                        <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
-                            class="w-full max-w-60 h-48 sm:h-60 object-cover rounded-md mb-4 filter grayscale hover:grayscale-0 transition duration-500">
-                        <div class="flex flex-col items-center text-center w-full">
-                            <h3 class="text-lg sm:text-xl font-bold text-gray-700 mb-2">{{ $card['title'] }}</h3>
-                            <p class="text-gray-600 mb-4 text-sm leading-relaxed px-2">{{ $card['desc'] }}</p>
-                            <button
-                                class="bg-gray-800 text-white px-4 py-2 text-sm rounded-full hover:bg-gray-700 transition-colors mt-auto">
-                                {{ $card['btn'] }}
-                            </button>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-
-            {{-- Desktop: 2x2 Grid Layout --}}
-            <div class="hidden md:block">
-                @php
-                    $cardsDesktop = $cardsMobile; // sama data
-                @endphp
-
-                {{-- Row 1 --}}
-                <div class="flex flex-wrap justify-center gap-[10px] mb-2">
-                    @for ($i = 0; $i < 2; $i++)
-                        <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col items-center p-4 w-72">
-                            <img src="{{ asset('assets/img/' . $cardsDesktop[$i]['img']) }}"
-                                alt="{{ $cardsDesktop[$i]['title'] }}"
-                                class="w-60 h-60 object-cover rounded-md mb-4 filter grayscale hover:grayscale-0 transition duration-500">
-                            <div class="flex flex-col items-center text-center w-60 h-full">
-                                <h3 class="text-xl font-bold text-gray-700 mb-2">{{ $cardsDesktop[$i]['title'] }}</h3>
-                                <p class="text-gray-600 mb-4 text-sm flex-auto">{{ $cardsDesktop[$i]['desc'] }}</p>
-                                <button
-                                    class="bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors">
-                                    {{ $cardsDesktop[$i]['btn'] }}
-                                </button>
-                            </div>
-                        </div>
-                    @endfor
-                </div>
-
-                {{-- Row 2 --}}
-                <div class="flex flex-wrap justify-center gap-[10px] mt-2">
-                    @for ($i = 2; $i < 4; $i++)
-                        <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col items-center p-4 w-72">
-                            <img src="{{ asset('assets/img/' . $cardsDesktop[$i]['img']) }}"
-                                alt="{{ $cardsDesktop[$i]['title'] }}"
-                                class="w-60 h-60 object-cover rounded-md mb-4 filter grayscale hover:grayscale-0 transition duration-500">
-                            <div class="flex flex-col items-center text-center w-60 h-full">
-                                <h3 class="text-xl font-bold text-gray-700 mb-2">{{ $cardsDesktop[$i]['title'] }}</h3>
-                                <p class="text-gray-600 mb-4 text-sm flex-auto">{{ $cardsDesktop[$i]['desc'] }}</p>
-                                <button
-                                    class="bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors">
-                                    {{ $cardsDesktop[$i]['btn'] }}
-                                </button>
-                            </div>
-                        </div>
-                    @endfor
-                </div>
-            </div>
-
+        {{-- Title Section --}}
+        <div class="text-center mb-16">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl tracking-[0.3em] text-gray-700 mb-6">
+                W H A T &nbsp; W E &nbsp;C A N<br>D O &nbsp;F O R &nbsp;Y O U
+            </h2>
         </div>
-    </section>
+
+        @php
+            // Data card dideklarasikan sekali di sini
+            $cards = [
+                [
+                    'img' => 'forge.png',
+                    'title' => 'Brand Forge',
+                    'desc' =>
+                        'We build and fortify compelling brands that resonate deeply with the market and audience. From establishing your unique identity to cultivating lasting trust and value, we ensure your brand stands out and makes a memorable impact.',
+                    'btn' => 'Find your brand\'s identity',
+                ],
+                [
+                    'img' => 'digital.png',
+                    'title' => 'Public Presence',
+                    'desc' =>
+                        'Build powerful, real-world brand awareness by going beyond the screen. We make your brand unmissable, elevating its public stature and impact. Our strategic placements in OOH, DOOH, and Transit Media ensure your message connects with your target audience in the right space.',
+                    'btn' => 'Be seen and heard',
+                ],
+                [
+                    'img' => 'compass.png',
+                    'title' => 'Digital Compass',
+                    'desc' =>
+                        'Amplify your reach and boost your business with our intelligent digital marketing strategies. We connect you with your target audience across diverse online channels, and drive meaningful engagement.',
+                    'btn' => 'Get found & get growing',
+                ],
+                [
+                    'img' => 'digital.png',
+                    'title' => 'Digital Architecture',
+                    'desc' =>
+                        'Navigate the digital transformation and build your digital backbone with confidence. Our expert team provides digital consultancy, designing and developing sophisticated websites, applications, and platforms that enhance your operational efficiency and user experience.',
+                    'btn' => 'Unlock digital possibilities',
+                ],
+            ];
+        @endphp
+
+        {{-- Mobile: Single Column Stack --}}
+        <div class="md:hidden space-y-6">
+            @foreach ($cards as $card)
+                <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col mx-auto max-w-sm p-4 min-h-[520px]">
+                    <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
+                        class="w-full h-48 sm:h-60 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
+
+                    {{-- konten yang fleksibel supaya tombol selalu di bawah --}}
+                    <div class="flex flex-col items-center text-center w-full flex-1">
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed px-2 mb-4 flex-1">{{ $card['desc'] }}</p>
+
+                        <button
+                            class="bg-gray-800 text-white px-5 py-2 text-sm rounded-full hover:bg-gray-700 transition-colors mt-auto">
+                            {{ $card['btn'] }}
+                        </button>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        {{-- Desktop: 2x2 Grid Layout --}}
+        <div class="hidden md:block">
+            @php
+                // bagi ke baris 2x2
+                $rows = array_chunk($cards, 2);
+            @endphp
+
+            @foreach ($rows as $row)
+                <div class="flex flex-wrap justify-center gap-6 mb-6">
+                    @foreach ($row as $card)
+                        <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-72 p-4 min-h-[520px]">
+                            <img src="{{ asset('assets/img/' . $card['img']) }}"
+                                alt="{{ $card['title'] }}"
+                                class="w-full h-60 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
+
+                            <div class="flex flex-col items-center text-center w-full flex-1">
+                                <h3 class="text-xl font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
+                                <p class="text-gray-600 text-sm mb-4 flex-1">{{ $card['desc'] }}</p>
+
+                                <button
+                                    class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors">
+                                    {{ $card['btn'] }}
+                                </button>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @endforeach
+        </div>
+
+    </div>
+</section>
+
 
     {{-- Section TRUSTED BY --}}
     <section class="relative bg-white py-20">
