@@ -34,7 +34,7 @@ class HomeController extends Controller
             ->pluck('category');
 
         // 🔥 ambil max 5 project untuk grid
-        $trustedProjects = Project::latest()->take(5)->get();
+        $trustedProjects = Project::latest()->get();
 
         // 🔥 ambil semua clients untuk logo row
         $clients = Client::latest()->get();
