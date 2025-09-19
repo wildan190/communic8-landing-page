@@ -442,16 +442,16 @@
                     <div class="flex-shrink-0 w-full flex relative items-stretch">
                         <!-- CARD TESTIMONI (KIRI di desktop, overlay di mobile) -->
                         <div
-                            class="w-full md:w-1/2 flex items-center justify-center relative z-20 
-                               px-4 md:px-0 md:-mr-[20%]">
+                            class="w-full md:w-[48%] flex items-center justify-center relative z-20 
+           px-4 md:px-0 md:-mr-[6%]">
                             <div
                                 class="bg-white rounded-xl p-6 md:p-8 shadow-lg w-full max-w-md md:max-w-none 
-                                   relative flex flex-col items-center">
+               relative flex flex-col items-center">
                                 <!-- Avatar -->
                                 <div
                                     class="absolute -top-12 left-1/2 -translate-x-1/2 
-                                       w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden 
-                                       border-4 border-white shadow-md">
+                   w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden 
+                   border-4 border-white shadow-md">
                                     <img src="{{ Storage::url($testimoni->photo) }}" alt="{{ $testimoni->name }}"
                                         class="w-full h-full object-cover">
                                 </div>
@@ -466,7 +466,7 @@
                         </div>
 
                         <!-- FOTO COVER (KANAN di desktop, background penuh di mobile) -->
-                        <div class="hidden md:block w-1/2 relative overflow-hidden z-10">
+                        <div class="hidden md:block md:w-[52%] relative overflow-hidden z-10">
                             @if ($testimoni->photo_cover)
                                 <img src="{{ Storage::url($testimoni->photo_cover) }}" alt="Cover"
                                     class="absolute inset-0 w-full h-full object-cover">
