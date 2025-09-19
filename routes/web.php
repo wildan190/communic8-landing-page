@@ -6,6 +6,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\Web\AboutController;
 use App\Http\Controllers\Web\ContactController;
 use App\Http\Controllers\Web\HomeController;
@@ -109,6 +110,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/activities/{activity}/edit', [ActivityController::class, 'edit'])->name('activities.edit');
     Route::put('/activities/{activity}', [ActivityController::class, 'update'])->name('activities.update');
     Route::delete('/activities/{activity}', [ActivityController::class, 'destroy'])->name('activities.destroy');
+
+    Route::get('testimonies', [TestimoniController::class, 'index'])->name('testimonies.index');
+    Route::get('testimonies/create', [TestimoniController::class, 'create'])->name('testimonies.create');
+    Route::post('testimonies', [TestimoniController::class, 'store'])->name('testimonies.store');
+    Route::get('testimonies/{testimoni}/edit', [TestimoniController::class, 'edit'])->name('testimonies.edit');
+    Route::put('testimonies/{testimoni}', [TestimoniController::class, 'update'])->name('testimonies.update');
+    Route::delete('testimonies/{testimoni}', [TestimoniController::class, 'destroy'])->name('testimonies.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

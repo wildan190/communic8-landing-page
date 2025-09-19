@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\BranchOffice;
 use App\Models\Client;
 use App\Models\Project;
+use App\Models\Testimoni;
 use App\Models\WebInformation;
 use Illuminate\Http\Request;
 
@@ -39,6 +40,8 @@ class HomeController extends Controller
         // 🔥 ambil semua clients untuk logo row
         $clients = Client::latest()->get();
 
+        $testimonis = Testimoni::latest()->get();
+
         return view('web.home.index', compact(
             'blogs',
             'categories',
@@ -48,7 +51,8 @@ class HomeController extends Controller
             'branchOffices',
             'insightCategories',
             'trustedProjects',
-            'clients'
+            'clients',
+            'testimonis'
         ));
     }
 }

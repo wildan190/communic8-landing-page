@@ -41,6 +41,10 @@
                     <x-nav-link :href="route('web_information.index')" :active="request()->routeIs('web_information.index')">
                         {{ __('Web Information') }}
                     </x-nav-link>
+                    {{-- testimonies --}}
+                    <x-nav-link :href="route('testimonies.index')" :active="request()->routeIs('testimonies.index')">
+                        {{ __('Testimonies') }}
+                    </x-nav-link>
                 </div>
             </div>
 
