@@ -422,6 +422,125 @@
         });
     </script>
 
+    <section class="w-full bg-gray-100 relative min-h-[520px] flex items-center justify-center">
+        <!-- Overlay gelap -->
+        <div class="absolute inset-0 bg-black/30 z-[5] pointer-events-none"></div>
+
+        <!-- Tombol kiri (di luar container) -->
+        <button id="prev"
+            class="absolute left-[2cm] top-1/2 -translate-y-1/2 z-30 w-14 h-14 flex items-center justify-center">
+            <img src="{{ asset('assets/img/arrow-left.png') }}" alt="Prev"
+                class="w-12 h-12 opacity-80 hover:opacity-100">
+        </button>
+
+        <!-- Container utama -->
+        <div class="max-w-7xl mx-auto relative flex items-stretch min-h-[520px] overflow-hidden z-10">
+            <!-- Container slider -->
+            <div id="testimonial-container" class="flex w-full transition-transform duration-500 ease-in-out">
+                @foreach ($testimonis as $testimoni)
+                    <!-- satu item slider -->
+                    <div class="flex-shrink-0 w-full flex relative items-stretch">
+                        <!-- CARD TESTIMONI (KIRI di desktop, overlay di mobile) -->
+                        <div
+                            class="w-full md:w-1/2 flex items-center justify-center relative z-20 
+                               px-4 md:px-0 md:-mr-[20%]">
+                            <div
+                                class="bg-white rounded-xl p-6 md:p-8 shadow-lg w-full max-w-md md:max-w-none 
+                                   relative flex flex-col items-center">
+                                <!-- Avatar -->
+                                <div
+                                    class="absolute -top-12 left-1/2 -translate-x-1/2 
+                                       w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden 
+                                       border-4 border-white shadow-md">
+                                    <img src="{{ Storage::url($testimoni->photo) }}" alt="{{ $testimoni->name }}"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <!-- Isi card -->
+                                <div class="mt-16 text-center px-2 md:px-4">
+                                    <h3 class="font-semibold text-lg">{{ $testimoni->name }}</h3>
+                                    <p class="text-gray-500 text-sm">{{ $testimoni->title }} at {{ $testimoni->company }}
+                                    </p>
+                                    <p class="mt-4 text-gray-600 text-sm italic">{{ $testimoni->message }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FOTO COVER (KANAN di desktop, background penuh di mobile) -->
+                        <div class="hidden md:block w-1/2 relative overflow-hidden z-10">
+                            @if ($testimoni->photo_cover)
+                                <img src="{{ Storage::url($testimoni->photo_cover) }}" alt="Cover"
+                                    class="absolute inset-0 w-full h-full object-cover">
+                            @endif
+                        </div>
+
+                        <!-- MOBILE COVER -->
+                        @if ($testimoni->photo_cover)
+                            <img src="{{ Storage::url($testimoni->photo_cover) }}" alt="Cover"
+                                class="md:hidden absolute inset-0 w-full h-full object-cover z-0">
+                        @endif
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+        <!-- Tombol kanan (di luar container) -->
+        <button id="next"
+            class="absolute right-[2cm] top-1/2 -translate-y-1/2 z-30 w-14 h-14 flex items-center justify-center">
+            <img src="{{ asset('assets/img/arrow-right.png') }}" alt="Next"
+                class="w-12 h-12 opacity-80 hover:opacity-100">
+        </button>
+    </section>
+
+    <script>
+        const container = document.getElementById('testimonial-container');
+        const items = container.children;
+        let current = 0;
+
+        function showItem(index) {
+            container.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        showItem(current);
+
+        // Tombol klik
+        document.getElementById('prev').addEventListener('click', () => {
+            current = (current === 0) ? items.length - 1 : current - 1;
+            showItem(current);
+        });
+
+        document.getElementById('next').addEventListener('click', () => {
+            current = (current === items.length - 1) ? 0 : current + 1;
+            showItem(current);
+        });
+
+        // Swipe support (mobile)
+        let startX = 0;
+        let endX = 0;
+
+        container.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+
+        container.addEventListener('touchmove', (e) => {
+            endX = e.touches[0].clientX;
+        });
+
+        container.addEventListener('touchend', () => {
+            let diff = startX - endX;
+
+            if (Math.abs(diff) > 50) { // threshold supaya tidak terlalu sensitif
+                if (diff > 0) {
+                    // swipe left -> next
+                    current = (current === items.length - 1) ? 0 : current + 1;
+                } else {
+                    // swipe right -> prev
+                    current = (current === 0) ? items.length - 1 : current - 1;
+                }
+                showItem(current);
+            }
+        });
+    </script>
+
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
         style="background-image: url('/assets/img/cta-bg.png');">
@@ -460,9 +579,11 @@
         <div class="max-w-7xl mx-auto px-6">
 
             <!-- Section Title -->
-            <h2 class="text-center text-2xl md:text-3xl lg:text-4xl tracking-[0.3em] text-gray-700 mb-16">
-                INSIGHTS FOR <br /> STRATEGIC MIND
-            </h2>
+            <div class="text-center mb-16">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl tracking-[0.3em] text-gray-700 mb-6">
+                    I N S I G H T S &nbsp; F O R <br /> S T A T E G I C &nbsp; M I N D
+                </h2>
+            </div>
 
             <!-- Masonry Layout -->
             <div class="columns-1 md:columns-3 gap-6 space-y-6">
