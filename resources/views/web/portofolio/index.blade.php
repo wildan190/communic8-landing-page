@@ -117,10 +117,11 @@
         <div class="max-w-7xl mx-auto px-6">
 
             <!-- Section Title -->
-            <h2
-                class="text-center font-poppins text-2xl md:text-3xl lg:text-4xl font-semibold tracking-[0.3em] text-gray-700 mb-16">
-                INSIGHTS FOR <br /> STRATEGIC MIND
-            </h2>
+            <div class="text-center mb-16">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl tracking-[0.3em] text-gray-700 mb-6">
+                    I N S I G H T S &nbsp; F O R <br /> S T A T E G I C &nbsp; M I N D
+                </h2>
+            </div>
 
             <!-- Wrapper + Buttons -->
             <div class="flex items-center space-x-6">
