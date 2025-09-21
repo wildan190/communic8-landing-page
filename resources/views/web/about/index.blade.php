@@ -9,15 +9,23 @@
             style="background-image: url('{{ asset('assets/img/sectionhero.png') }}');">
             <div class="absolute inset-0 bg-white/20"></div>
 
+            <br class="hidden sm:block" />
+            <br class="hidden sm:block" />
+
             {{-- Hero Title --}}
             <div class="relative z-10 pt-40">
-                <h1 class="font-poppins text-2xl sm:text-3xl md:text-4xl font-semibold tracking-[0.5em] text-black mb-4">
-                    WE DON’T CHASE TRENDS
+                <h1
+                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-bold 
+               text-[#000000] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                    W E &nbsp; D O N ’ T &nbsp; C H A S E &nbsp; T R E N D S
                 </h1>
-                <h1 class="font-poppins text-2xl sm:text-3xl md:text-4xl font-semibold tracking-[0.5em] text-black">
-                    WE CRAFT LEGACIES
+                <h1
+                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-bold 
+               text-[#000000] tracking-normal sm:tracking-[0.35em] leading-snug">
+                    W E &nbsp; C R A F T &nbsp; L E G A C I E S
                 </h1>
             </div>
+
 
             {{-- Red Box PNG --}}
             <div class="absolute top-1/3 left-1/2 -translate-x-1/2 z-20">
@@ -85,15 +93,20 @@
         </section>
 
         {{-- WHY OUR PARTNER CHOOSE US --}}
-        <section class="relative pt-56 pb-24 bg-white">
+        <section class="relative pt-32 sm:pt-40 md:pt-56 pb-16 sm:pb-20 md:pb-24 bg-white">
             <div class="container max-w-6xl mx-auto px-4 sm:px-6 md:px-12">
 
                 {{-- Title --}}
-                <div class="text-center mb-20">
-                    <h2 class="font-poppins text-2xl sm:text-3xl md:text-4xl tracking-[0.35em] font-semibold mb-6">
-                        WHY OUR PARTNER <br class="sm:hidden"> CHOOSE US
+                <div class="text-center mb-12 sm:mb-20">
+                    <h2
+                        class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal mb-4 sm:mb-6 
+           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug">
+                        W H Y &nbsp; O U R &nbsp; P A R T N E R &nbsp;
+                        <br />
+                        C H O O S E &nbsp; U S
                     </h2>
-                    <p class="text-gray-600 max-w-3xl mx-auto">
+
+                    <p class="text-gray-600 max-w-2xl sm:max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
                         Our approach is defined by three core principles that guide every project we undertake.
                         This is our commitment to every client, ensuring we not only meet your goals but exceed them with
                         exceptional value.
@@ -101,52 +114,52 @@
                 </div>
 
                 {{-- List Items --}}
-                <div class="space-y-16">
+                <div class="space-y-12 sm:space-y-16">
                     {{-- Item 1 --}}
-                    <div class="flex items-center gap-10">
+                    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-10">
                         <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Creative Thinking"
-                            class="w-48 h-48 object-cover rounded-lg shadow-xl flex-shrink-0">
-                        <div>
-                            <h3 class="font-semibold text-2xl mb-3">Creative Strategic Thinking</h3>
-                            <p class="text-gray-600 leading-relaxed">
+                            class="w-32 h-32 sm:w-48 sm:h-48 object-cover rounded-lg shadow-xl flex-shrink-0 mb-4 sm:mb-0">
+                        <div class="text-center sm:text-left">
+                            <h3 class="font-semibold text-lg sm:text-2xl mb-2 sm:mb-3">Creative Strategic Thinking</h3>
+                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
                                 We believe that powerful creativity must be guided by sharp strategy.
                                 Our team provides strategies that are relevant with the latest trend according to your
                                 needs,
                                 ensuring every idea is not only imaginative but also purposeful.
                                 We specialize in wrapping these strategies in out-of-the-box concepts with creative and
-                                different thinking
-                                that cut through the noise and deliver your message with real impact.
+                                different thinking that cut through the noise and deliver your message with real impact.
                             </p>
                         </div>
                     </div>
 
                     {{-- Item 2 --}}
-                    <div class="flex items-center gap-10">
+                    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-10">
                         <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Everlasting Partnership"
-                            class="w-48 h-48 object-cover rounded-lg shadow-xl flex-shrink-0">
-                        <div>
-                            <h3 class="font-semibold text-2xl mb-3">An Everlasting Partnership</h3>
-                            <p class="text-gray-600 leading-relaxed">
+                            class="w-32 h-32 sm:w-48 sm:h-48 object-cover rounded-lg shadow-xl flex-shrink-0 mb-4 sm:mb-0">
+                        <div class="text-center sm:text-left">
+                            <h3 class="font-semibold text-lg sm:text-2xl mb-2 sm:mb-3">An Everlasting Partnership</h3>
+                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
                                 Your success is our success. We are committed to building lasting relationships
                                 founded on good communication as we fulfill your objectives, desires and wishes to be
                                 achieved.
                                 We work as a seamless extension of your team, providing dedicated service and a
-                                collaborative spirit
-                                that transforms business goals into shared victories.
+                                collaborative
+                                spirit that transforms business goals into shared victories.
                             </p>
                         </div>
                     </div>
 
                     {{-- Item 3 --}}
-                    <div class="flex items-center gap-10">
+                    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-10">
                         <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Legacy of Results"
-                            class="w-48 h-48 object-cover rounded-lg shadow-xl flex-shrink-0">
-                        <div>
-                            <h3 class="font-semibold text-2xl mb-3">A Legacy of Proven Results</h3>
-                            <p class="text-gray-600 leading-relaxed">
+                            class="w-32 h-32 sm:w-48 sm:h-48 object-cover rounded-lg shadow-xl flex-shrink-0 mb-4 sm:mb-0">
+                        <div class="text-center sm:text-left">
+                            <h3 class="font-semibold text-lg sm:text-2xl mb-2 sm:mb-3">A Legacy of Proven Results</h3>
+                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
                                 Our commitment is backed by a legacy of delivering tangible outcomes.
                                 With a team that holds over 20 years of experience, we stand at the forefront of
-                                tried-and-true methodologies.
+                                tried-and-true
+                                methodologies.
                                 We don’t just promise results, our track record is built on proving them.
                             </p>
                         </div>
@@ -164,7 +177,7 @@
                             @php $gallery = $galleries[$i % $galleries->count()]; @endphp
                             <div class="swiper-slide">
                                 <img src="{{ asset('storage/' . $gallery->upload_picture) }}" alt="Gallery"
-                                    class="w-full h-[320px] object-cover">
+                                    class="gallery-img w-full h-[320px] object-cover filter grayscale hover:grayscale-0 transition duration-500">
                             </div>
                         @endfor
                     @else
@@ -173,7 +186,7 @@
                         @for ($i = 0; $i < 8; $i++)
                             <div class="swiper-slide">
                                 <img src="{{ asset('assets/img/' . $fallbacks[$i % count($fallbacks)]) }}" alt="Gallery"
-                                    class="w-full h-[320px] object-cover">
+                                    class="gallery-img w-full h-[320px] object-cover filter grayscale hover:grayscale-0 transition duration-500">
                             </div>
                         @endfor
                     @endif
@@ -188,6 +201,19 @@
                 </div>
             </div>
         </section>
+
+        <script>
+            // Untuk mobile: tap -> hilangkan grayscale
+            document.querySelectorAll('.gallery-img').forEach(img => {
+                img.addEventListener('touchstart', () => {
+                    img.classList.remove('grayscale');
+                });
+                img.addEventListener('touchend', () => {
+                    // setelah lepas jari, balik lagi ke grayscale
+                    setTimeout(() => img.classList.add('grayscale'), 1500);
+                });
+            });
+        </script>
 
         {{-- SwiperJS --}}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -265,15 +291,21 @@
             <div class="container max-w-7xl mx-auto px-6 text-center">
 
                 {{-- Title --}}
-                <h2 class="font-poppins text-2xl sm:text-3xl md:text-4xl tracking-[0.35em] font-semibold mb-4">
-                    TRUSTED BY MANY
-                </h2>
-                <h2 class="font-poppins text-2xl sm:text-3xl md:text-4xl tracking-[0.35em] font-semibold mb-12">
-                    CELEBRATED BY ALL
+                <h2
+                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal mb-4 sm:mb-6 
+           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug">
+                    T R U S T E D &nbsp; B Y &nbsp; M A N Y
                 </h2>
 
+                <h2
+                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal mb-12 sm:mb-16 
+           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug">
+                    C E L E B R A T E D &nbsp; B Y &nbsp; A L L
+                </h2>
+
+
                 {{-- Logos Grid --}}
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-10 items-center justify-center">
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-7 gap-10 items-center justify-center">
                     @foreach ($clients as $client)
                         <img src="{{ $client->logo ? asset('storage/' . $client->logo) : asset('assets/img/default-logo.png') }}"
                             alt="{{ $client->company_name }}" class="max-h-14 mx-auto">
@@ -287,14 +319,17 @@
         <section class="py-20 bg-white">
             <div class="container mx-auto px-4 md:px-20 text-center">
 
-                <!-- Title mirip WE DON’T CHASE TRENDS / WE CRAFT LEGACIES -->
-                <div class="relative z-10 mb-16">
+                <!-- Title -->
+                <div class="relative z-10 mb-12 sm:mb-16">
                     <h1
-                        class="font-poppins text-2xl sm:text-3xl md:text-4xl font-semibold tracking-[0.5em] text-black mb-4">
-                        STAY CONNECTED WITH
+                        class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
+               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                        S T A Y &nbsp; C O N N E C T E D &nbsp; W I T H
                     </h1>
-                    <h1 class="font-poppins text-2xl sm:text-3xl md:text-4xl font-semibold tracking-[0.5em] text-black">
-                        OUR LATEST ACTIVITY
+                    <h1
+                        class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
+               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug">
+                        O U R &nbsp; L A T E S T &nbsp; A C T I V I T Y
                     </h1>
                 </div>
 
@@ -354,18 +389,22 @@
 
         <!-- Blog Slider Section -->
         <section class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
                 <!-- Section Title -->
-                <div class="text-center mb-16">
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl tracking-[0.3em] text-gray-700 mb-6">
-                        I N S I G H T S &nbsp; F O R <br /> S T A T E G I C &nbsp; M I N D
+                <div class="text-center mb-12 sm:mb-16">
+                    <h2
+                        class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
+               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                        I N S I G H T S &nbsp; F O R &nbsp;
+                        <span class="hidden sm:inline"><br /></span>
+                        S T R A T E G I C &nbsp; M I N D
                     </h2>
                 </div>
 
-                <!-- Wrapper + Buttons -->
-                <div class="flex items-center space-x-6">
 
+                <!-- Wrapper for Desktop (with arrows) -->
+                <div class="hidden sm:flex items-center space-x-6">
                     <!-- Prev Button -->
                     <button id="prevBtn" class="shrink-0">
                         <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Prev" class="w-10 h-10">
@@ -373,15 +412,14 @@
 
                     <!-- Slider Container -->
                     <div id="blog-slider"
-                        class="flex overflow-x-auto space-x-6 scrollbar-hide snap-x snap-mandatory scroll-smooth">
-
+                        class="flex overflow-x-auto space-x-6 scrollbar-hide snap-x snap-mandatory scroll-smooth w-full">
                         @foreach ($sliderBlogs as $blog)
                             <div
-                                class="snap-center min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
+                                class="snap-center min-w-[280px] sm:min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
                                 <p class="text-sm text-gray-500">{{ $blog->category }}</p>
                                 <a href="{{ route('blogs.show', $blog->slug) }}" class="block flex-grow">
                                     <h3
-                                        class="text-lg font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[72px] mb-4">
+                                        class="text-base sm:text-lg font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[72px] mb-4">
                                         {{ $blog->title }}
                                     </h3>
                                 </a>
@@ -395,13 +433,49 @@
                                 @endif
                             </div>
                         @endforeach
-
                     </div>
 
                     <!-- Next Button -->
                     <button id="nextBtn" class="shrink-0">
                         <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next" class="w-10 h-10">
                     </button>
+                </div>
+
+                <!-- Mobile: Slider full width, arrows below -->
+                <div class="sm:hidden">
+                    <div id="blog-slider-mobile"
+                        class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
+                        @foreach ($sliderBlogs as $blog)
+                            <div
+                                class="snap-center min-w-[260px] bg-white rounded-2xl shadow-sm p-4 border border-gray-200 flex flex-col">
+                                <p class="text-xs text-gray-500">{{ $blog->category }}</p>
+                                <a href="{{ route('blogs.show', $blog->slug) }}" class="block flex-grow">
+                                    <h3
+                                        class="text-base font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[60px] mb-3">
+                                        {{ $blog->title }}
+                                    </h3>
+                                </a>
+                                @if ($blog->headline_img)
+                                    <img src="{{ asset('storage/' . $blog->headline_img) }}"
+                                        alt="{{ $blog->headline_img_alt ?? $blog->title }}"
+                                        class="w-full h-40 object-cover rounded-xl">
+                                @else
+                                    <img src="{{ asset('assets/img/blog1.png') }}" alt="Default Image"
+                                        class="w-full h-40 object-cover rounded-xl">
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <!-- Arrows below slider -->
+                    <div class="flex justify-center space-x-6 mt-6">
+                        <button id="prevBtnMobile">
+                            <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Prev" class="w-8 h-8">
+                        </button>
+                        <button id="nextBtnMobile">
+                            <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next" class="w-8 h-8">
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Read More Button -->
@@ -417,6 +491,7 @@
 
         <!-- JS for slider scroll -->
         <script>
+            // Desktop
             const slider = document.getElementById('blog-slider');
             document.getElementById('prevBtn').addEventListener('click', () => {
                 slider.scrollBy({
@@ -427,6 +502,21 @@
             document.getElementById('nextBtn').addEventListener('click', () => {
                 slider.scrollBy({
                     left: 400,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Mobile
+            const sliderMobile = document.getElementById('blog-slider-mobile');
+            document.getElementById('prevBtnMobile').addEventListener('click', () => {
+                sliderMobile.scrollBy({
+                    left: -300,
+                    behavior: 'smooth'
+                });
+            });
+            document.getElementById('nextBtnMobile').addEventListener('click', () => {
+                sliderMobile.scrollBy({
+                    left: 300,
                     behavior: 'smooth'
                 });
             });
