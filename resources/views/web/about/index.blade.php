@@ -85,15 +85,19 @@
         </section>
 
         {{-- WHY OUR PARTNER CHOOSE US --}}
-        <section class="relative pt-56 pb-24 bg-white">
+        <section class="relative pt-32 sm:pt-40 md:pt-56 pb-16 sm:pb-20 md:pb-24 bg-white">
             <div class="container max-w-6xl mx-auto px-4 sm:px-6 md:px-12">
 
                 {{-- Title --}}
-                <div class="text-center mb-20">
-                    <h2 class="font-poppins text-2xl sm:text-3xl md:text-4xl tracking-[0.35em] font-semibold mb-6">
-                        WHY OUR PARTNER <br class="sm:hidden"> CHOOSE US
+                <div class="text-center mb-12 sm:mb-20">
+                    <h2
+                        class="font-poppins text-xl sm:text-3xl md:text-4xl font-semibold mb-4 sm:mb-6 
+                       tracking-normal sm:tracking-[0.35em] leading-snug">
+                        WHY OUR PARTNER
+                        <br class="sm:hidden">
+                        CHOOSE US
                     </h2>
-                    <p class="text-gray-600 max-w-3xl mx-auto">
+                    <p class="text-gray-600 max-w-2xl sm:max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
                         Our approach is defined by three core principles that guide every project we undertake.
                         This is our commitment to every client, ensuring we not only meet your goals but exceed them with
                         exceptional value.
@@ -101,52 +105,52 @@
                 </div>
 
                 {{-- List Items --}}
-                <div class="space-y-16">
+                <div class="space-y-12 sm:space-y-16">
                     {{-- Item 1 --}}
-                    <div class="flex items-center gap-10">
+                    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-10">
                         <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Creative Thinking"
-                            class="w-48 h-48 object-cover rounded-lg shadow-xl flex-shrink-0">
-                        <div>
-                            <h3 class="font-semibold text-2xl mb-3">Creative Strategic Thinking</h3>
-                            <p class="text-gray-600 leading-relaxed">
+                            class="w-32 h-32 sm:w-48 sm:h-48 object-cover rounded-lg shadow-xl flex-shrink-0 mb-4 sm:mb-0">
+                        <div class="text-center sm:text-left">
+                            <h3 class="font-semibold text-lg sm:text-2xl mb-2 sm:mb-3">Creative Strategic Thinking</h3>
+                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
                                 We believe that powerful creativity must be guided by sharp strategy.
                                 Our team provides strategies that are relevant with the latest trend according to your
                                 needs,
                                 ensuring every idea is not only imaginative but also purposeful.
                                 We specialize in wrapping these strategies in out-of-the-box concepts with creative and
-                                different thinking
-                                that cut through the noise and deliver your message with real impact.
+                                different thinking that cut through the noise and deliver your message with real impact.
                             </p>
                         </div>
                     </div>
 
                     {{-- Item 2 --}}
-                    <div class="flex items-center gap-10">
+                    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-10">
                         <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Everlasting Partnership"
-                            class="w-48 h-48 object-cover rounded-lg shadow-xl flex-shrink-0">
-                        <div>
-                            <h3 class="font-semibold text-2xl mb-3">An Everlasting Partnership</h3>
-                            <p class="text-gray-600 leading-relaxed">
+                            class="w-32 h-32 sm:w-48 sm:h-48 object-cover rounded-lg shadow-xl flex-shrink-0 mb-4 sm:mb-0">
+                        <div class="text-center sm:text-left">
+                            <h3 class="font-semibold text-lg sm:text-2xl mb-2 sm:mb-3">An Everlasting Partnership</h3>
+                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
                                 Your success is our success. We are committed to building lasting relationships
                                 founded on good communication as we fulfill your objectives, desires and wishes to be
                                 achieved.
                                 We work as a seamless extension of your team, providing dedicated service and a
-                                collaborative spirit
-                                that transforms business goals into shared victories.
+                                collaborative
+                                spirit that transforms business goals into shared victories.
                             </p>
                         </div>
                     </div>
 
                     {{-- Item 3 --}}
-                    <div class="flex items-center gap-10">
+                    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-10">
                         <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Legacy of Results"
-                            class="w-48 h-48 object-cover rounded-lg shadow-xl flex-shrink-0">
-                        <div>
-                            <h3 class="font-semibold text-2xl mb-3">A Legacy of Proven Results</h3>
-                            <p class="text-gray-600 leading-relaxed">
+                            class="w-32 h-32 sm:w-48 sm:h-48 object-cover rounded-lg shadow-xl flex-shrink-0 mb-4 sm:mb-0">
+                        <div class="text-center sm:text-left">
+                            <h3 class="font-semibold text-lg sm:text-2xl mb-2 sm:mb-3">A Legacy of Proven Results</h3>
+                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
                                 Our commitment is backed by a legacy of delivering tangible outcomes.
                                 With a team that holds over 20 years of experience, we stand at the forefront of
-                                tried-and-true methodologies.
+                                tried-and-true
+                                methodologies.
                                 We don’t just promise results, our track record is built on proving them.
                             </p>
                         </div>
@@ -164,7 +168,7 @@
                             @php $gallery = $galleries[$i % $galleries->count()]; @endphp
                             <div class="swiper-slide">
                                 <img src="{{ asset('storage/' . $gallery->upload_picture) }}" alt="Gallery"
-                                    class="w-full h-[320px] object-cover">
+                                    class="gallery-img w-full h-[320px] object-cover filter grayscale hover:grayscale-0 transition duration-500">
                             </div>
                         @endfor
                     @else
@@ -173,7 +177,7 @@
                         @for ($i = 0; $i < 8; $i++)
                             <div class="swiper-slide">
                                 <img src="{{ asset('assets/img/' . $fallbacks[$i % count($fallbacks)]) }}" alt="Gallery"
-                                    class="w-full h-[320px] object-cover">
+                                    class="gallery-img w-full h-[320px] object-cover filter grayscale hover:grayscale-0 transition duration-500">
                             </div>
                         @endfor
                     @endif
@@ -188,6 +192,19 @@
                 </div>
             </div>
         </section>
+
+        <script>
+            // Untuk mobile: tap -> hilangkan grayscale
+            document.querySelectorAll('.gallery-img').forEach(img => {
+                img.addEventListener('touchstart', () => {
+                    img.classList.remove('grayscale');
+                });
+                img.addEventListener('touchend', () => {
+                    // setelah lepas jari, balik lagi ke grayscale
+                    setTimeout(() => img.classList.add('grayscale'), 1500);
+                });
+            });
+        </script>
 
         {{-- SwiperJS --}}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
