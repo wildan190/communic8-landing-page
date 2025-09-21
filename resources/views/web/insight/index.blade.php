@@ -116,7 +116,7 @@
 
     <!-- Blog Slider Section -->
     <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
             <!-- Section Title -->
             <div class="text-center mb-16">
@@ -125,9 +125,8 @@
                 </h2>
             </div>
 
-            <!-- Wrapper + Buttons -->
-            <div class="flex items-center space-x-6">
-
+            <!-- Wrapper for Desktop (with arrows) -->
+            <div class="hidden sm:flex items-center space-x-6">
                 <!-- Prev Button -->
                 <button id="prevBtn" class="shrink-0">
                     <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Prev" class="w-10 h-10">
@@ -135,15 +134,14 @@
 
                 <!-- Slider Container -->
                 <div id="blog-slider"
-                    class="flex overflow-x-auto space-x-6 scrollbar-hide snap-x snap-mandatory scroll-smooth">
-
+                    class="flex overflow-x-auto space-x-6 scrollbar-hide snap-x snap-mandatory scroll-smooth w-full">
                     @foreach ($sliderBlogs as $blog)
                         <div
-                            class="snap-center min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
+                            class="snap-center min-w-[280px] sm:min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
                             <p class="text-sm text-gray-500">{{ $blog->category }}</p>
-                            <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
+                            <a href="{{ route('blogs.show', $blog->slug) }}" class="block flex-grow">
                                 <h3
-                                    class="text-lg font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[72px] mb-4">
+                                    class="text-base sm:text-lg font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[72px] mb-4">
                                     {{ $blog->title }}
                                 </h3>
                             </a>
@@ -157,13 +155,49 @@
                             @endif
                         </div>
                     @endforeach
-
                 </div>
 
                 <!-- Next Button -->
                 <button id="nextBtn" class="shrink-0">
                     <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next" class="w-10 h-10">
                 </button>
+            </div>
+
+            <!-- Mobile: Slider full width, arrows below -->
+            <div class="sm:hidden">
+                <div id="blog-slider-mobile"
+                    class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
+                    @foreach ($sliderBlogs as $blog)
+                        <div
+                            class="snap-center min-w-[260px] bg-white rounded-2xl shadow-sm p-4 border border-gray-200 flex flex-col">
+                            <p class="text-xs text-gray-500">{{ $blog->category }}</p>
+                            <a href="{{ route('blogs.show', $blog->slug) }}" class="block flex-grow">
+                                <h3
+                                    class="text-base font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[60px] mb-3">
+                                    {{ $blog->title }}
+                                </h3>
+                            </a>
+                            @if ($blog->headline_img)
+                                <img src="{{ asset('storage/' . $blog->headline_img) }}"
+                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}"
+                                    class="w-full h-40 object-cover rounded-xl">
+                            @else
+                                <img src="{{ asset('assets/img/blog1.png') }}" alt="Default Image"
+                                    class="w-full h-40 object-cover rounded-xl">
+                            @endif
+                        </div>
+                    @endforeach
+                </div>
+
+                <!-- Arrows below slider -->
+                <div class="flex justify-center space-x-6 mt-6">
+                    <button id="prevBtnMobile">
+                        <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Prev" class="w-8 h-8">
+                    </button>
+                    <button id="nextBtnMobile">
+                        <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next" class="w-8 h-8">
+                    </button>
+                </div>
             </div>
 
             <!-- Read More Button -->
@@ -179,6 +213,7 @@
 
     <!-- JS for slider scroll -->
     <script>
+        // Desktop
         const slider = document.getElementById('blog-slider');
         document.getElementById('prevBtn').addEventListener('click', () => {
             slider.scrollBy({
@@ -189,6 +224,21 @@
         document.getElementById('nextBtn').addEventListener('click', () => {
             slider.scrollBy({
                 left: 400,
+                behavior: 'smooth'
+            });
+        });
+
+        // Mobile
+        const sliderMobile = document.getElementById('blog-slider-mobile');
+        document.getElementById('prevBtnMobile').addEventListener('click', () => {
+            sliderMobile.scrollBy({
+                left: -300,
+                behavior: 'smooth'
+            });
+        });
+        document.getElementById('nextBtnMobile').addEventListener('click', () => {
+            sliderMobile.scrollBy({
+                left: 300,
                 behavior: 'smooth'
             });
         });
