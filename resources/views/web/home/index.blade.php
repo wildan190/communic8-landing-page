@@ -579,9 +579,13 @@
         <div class="max-w-7xl mx-auto px-6">
 
             <!-- Section Title -->
-            <div class="text-center mb-16">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl tracking-[0.3em] text-gray-700 mb-6">
-                    I N S I G H T S &nbsp; F O R <br /> S T A T E G I C &nbsp; M I N D
+            <div class="text-center mb-12 sm:mb-16">
+                <h2
+                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
+               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                    I N S I G H T S &nbsp; F O R
+                    <span class="hidden sm:inline"><br /></span>
+                    S T R A T E G I C &nbsp; M I N D
                 </h2>
             </div>
 

@@ -9,15 +9,23 @@
             style="background-image: url('{{ asset('assets/img/sectionhero.png') }}');">
             <div class="absolute inset-0 bg-white/20"></div>
 
+            <br class="hidden sm:block" />
+            <br class="hidden sm:block" />
+
             {{-- Hero Title --}}
             <div class="relative z-10 pt-40">
-                <h1 class="font-poppins text-2xl sm:text-3xl md:text-4xl font-semibold tracking-[0.5em] text-black mb-4">
-                    WE DON’T CHASE TRENDS
+                <h1
+                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-bold 
+               text-[#000000] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                    W E &nbsp; D O N ’ T &nbsp; C H A S E &nbsp; T R E N D S
                 </h1>
-                <h1 class="font-poppins text-2xl sm:text-3xl md:text-4xl font-semibold tracking-[0.5em] text-black">
-                    WE CRAFT LEGACIES
+                <h1
+                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-bold 
+               text-[#000000] tracking-normal sm:tracking-[0.35em] leading-snug">
+                    W E &nbsp; C R A F T &nbsp; L E G A C I E S
                 </h1>
             </div>
+
 
             {{-- Red Box PNG --}}
             <div class="absolute top-1/3 left-1/2 -translate-x-1/2 z-20">
@@ -91,12 +99,13 @@
                 {{-- Title --}}
                 <div class="text-center mb-12 sm:mb-20">
                     <h2
-                        class="font-poppins text-xl sm:text-3xl md:text-4xl font-semibold mb-4 sm:mb-6 
-                       tracking-normal sm:tracking-[0.35em] leading-snug">
-                        WHY OUR PARTNER
-                        <br class="sm:hidden">
-                        CHOOSE US
+                        class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal mb-4 sm:mb-6 
+           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug">
+                        W H Y &nbsp; O U R &nbsp; P A R T N E R &nbsp;
+                        <br />
+                        C H O O S E &nbsp; U S
                     </h2>
+
                     <p class="text-gray-600 max-w-2xl sm:max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
                         Our approach is defined by three core principles that guide every project we undertake.
                         This is our commitment to every client, ensuring we not only meet your goals but exceed them with
@@ -282,12 +291,18 @@
             <div class="container max-w-7xl mx-auto px-6 text-center">
 
                 {{-- Title --}}
-                <h2 class="font-poppins text-2xl sm:text-3xl md:text-4xl tracking-[0.35em] font-semibold mb-4">
-                    TRUSTED BY MANY
+                <h2
+                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal mb-4 sm:mb-6 
+           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug">
+                    T R U S T E D &nbsp; B Y &nbsp; M A N Y
                 </h2>
-                <h2 class="font-poppins text-2xl sm:text-3xl md:text-4xl tracking-[0.35em] font-semibold mb-12">
-                    CELEBRATED BY ALL
+
+                <h2
+                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal mb-12 sm:mb-16 
+           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug">
+                    C E L E B R A T E D &nbsp; B Y &nbsp; A L L
                 </h2>
+
 
                 {{-- Logos Grid --}}
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-10 items-center justify-center">
@@ -304,14 +319,17 @@
         <section class="py-20 bg-white">
             <div class="container mx-auto px-4 md:px-20 text-center">
 
-                <!-- Title mirip WE DON’T CHASE TRENDS / WE CRAFT LEGACIES -->
-                <div class="relative z-10 mb-16">
+                <!-- Title -->
+                <div class="relative z-10 mb-12 sm:mb-16">
                     <h1
-                        class="font-poppins text-2xl sm:text-3xl md:text-4xl font-semibold tracking-[0.5em] text-black mb-4">
-                        STAY CONNECTED WITH
+                        class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
+               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                        S T A Y &nbsp; C O N N E C T E D &nbsp; W I T H
                     </h1>
-                    <h1 class="font-poppins text-2xl sm:text-3xl md:text-4xl font-semibold tracking-[0.5em] text-black">
-                        OUR LATEST ACTIVITY
+                    <h1
+                        class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
+               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug">
+                        O U R &nbsp; L A T E S T &nbsp; A C T I V I T Y
                     </h1>
                 </div>
 
@@ -376,13 +394,14 @@
                 <!-- Section Title -->
                 <div class="text-center mb-12 sm:mb-16">
                     <h2
-                        class="text-lg sm:text-2xl md:text-3xl lg:text-4xl text-gray-700 mb-4 sm:mb-6 font-semibold 
-               tracking-normal sm:tracking-[0.3em] leading-snug">
+                        class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
+               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
                         I N S I G H T S &nbsp; F O R &nbsp;
                         <span class="hidden sm:inline"><br /></span>
                         S T R A T E G I C &nbsp; M I N D
                     </h2>
                 </div>
+
 
                 <!-- Wrapper for Desktop (with arrows) -->
                 <div class="hidden sm:flex items-center space-x-6">
