@@ -305,7 +305,7 @@
 
 
                 {{-- Logos Grid --}}
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-10 items-center justify-center">
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-7 gap-10 items-center justify-center">
                     @foreach ($clients as $client)
                         <img src="{{ $client->logo ? asset('storage/' . $client->logo) : asset('assets/img/default-logo.png') }}"
                             alt="{{ $client->company_name }}" class="max-h-14 mx-auto">
