@@ -534,15 +534,12 @@
                 <h2
                     class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
                text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
-                    I N S I G H T S &nbsp; F O R
-                    <span class="hidden sm:inline"><br /></span>
-                    S T R A T E G I C &nbsp; M I N D
+                    {!! __('home/insights.title') !!}
                 </h2>
             </div>
 
             <!-- Masonry Layout -->
             <div class="columns-1 md:columns-3 gap-6 space-y-6">
-
                 @foreach ($blogs as $blog)
                     <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
                         <p class="text-sm text-gray-500">{{ $blog->category }}</p>
@@ -561,7 +558,6 @@
                         @endif
                     </div>
                 @endforeach
-
             </div>
 
             <!-- Read More Button -->
