@@ -1,46 +1,43 @@
 @extends('layouts.web')
 
 @section('content')
-    <section class="relative w-full min-h-screen bg-cover bg-center"
+    <section class="relative w-full min-h-[85vh] bg-cover bg-center"
         style="background-image: url('{{ asset('assets/img/sectionhero.png') }}')">
 
         <div
-            class="container max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center justify-between min-h-screen py-28 md:py-32 space-y-12">
+            class="container max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center justify-between min-h-[85vh] py-24 md:py-28 space-y-10">
 
-            {{-- Title --}}
-            <div class="text-center mt-12 md:mt-20 relative">
-                <img src="{{ asset('assets/img/text.png') }}" alt="Grow and Glow"
-                    class="mx-auto w-56 sm:w-72 md:w-[420px] lg:w-[480px] relative z-20">
+            {{-- Hero Title --}}
+            <div class="relative z-10 pt-32 text-center">
+                <h1
+                    class="font-poppins font-bold text-lg sm:text-2xl md:text-3xl 
+       text-[#000000] tracking-normal sm:tracking-[0.3em] leading-snug mb-3 sm:mb-5">
+                    {!! __('home/hero.title_line1') !!}
+                </h1>
+                <h1
+                    class="font-poppins font-bold text-lg sm:text-2xl md:text-3xl 
+       text-[#000000] tracking-normal sm:tracking-[0.3em] leading-snug">
+                    {!! __('home/hero.title_line2') !!}
+                </h1>
             </div>
 
-            <br /><br />
-
-            {{-- Lampu (di bawah text, agak turun) --}}
-            <div class="flex justify-center relative">
+            {{-- Lampu --}}
+            <div class="flex justify-center relative mt-12">
                 <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
-                    class="max-w-[200px] sm:max-w-[220px] md:max-w-[240px] lg:max-w-[260px] relative -mt-6 md:-mt-10 z-10">
+                    class="max-w-[60px] sm:max-w-[70px] md:max-w-[80px] lg:max-w-[90px] relative z-10">
             </div>
 
             {{-- Bottom Row --}}
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 w-full items-start text-center md:text-left">
-
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 w-full items-start text-center md:text-left mt-6">
                 {{-- Left Content --}}
                 <div class="space-y-6">
                     <p class="text-gray-600 text-base sm:text-lg leading-relaxed max-w-md mx-auto md:mx-0">
-                        Your dedicated brand partner, crafting bespoke strategies
-                        that connect your brand with the heart of the region's
-                        diverse markets.
+                        {{ __('home/hero.description') }}
                     </p>
                     <button class="bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700">
-                        Discover your opportunities
+                        {{ __('home/hero.button') }}
                     </button>
                 </div>
-
-                {{-- Right Content --}}
-                {{-- <div class="space-y-2 md:text-right">
-                    <h2 class="text-orange-500 text-5xl sm:text-6xl font-extrabold">100+</h2>
-                    <p class="text-gray-700 text-lg sm:text-xl font-semibold">Satisfied clients</p>
-                </div> --}}
             </div>
         </div>
     </section>
@@ -72,17 +69,13 @@
                     {{-- Text Content First on Mobile --}}
                     <div class="text-center mb-8">
                         <h2 class="text-xl sm:text-2xl tracking-[0.2em] sm:tracking-[0.3em] text-gray-700 mb-4 sm:mb-6">
-                            A T &nbsp; A &nbsp; G L A N C E
+                            {!! __('home/glance.title') !!}
                         </h2>
                         <p class="text-gray-600 leading-relaxed text-sm sm:text-base px-2">
-                            With over 20 years of experience, Communic8 has been the trusted creative digital agency
-                            for ambitious brands.
+                            {{ __('home/glance.paragraph1') }}
                         </p>
                         <p class="mt-3 sm:mt-4 text-gray-600 leading-relaxed text-sm sm:text-base px-2">
-                            We don't just deliver services. We build everlasting partnerships.
-                            Through integrated solutions that combine creativity, digital intelligence,
-                            and complex strategy that works. We elevate your business to achieve
-                            your unique vision in this dynamic region.
+                            {{ __('home/glance.paragraph2') }}
                         </p>
                     </div>
 
@@ -90,11 +83,11 @@
                     <div class="flex justify-center space-x-2 sm:space-x-4">
                         <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
                             class="w-36 sm:w-44 h-40 sm:h-48 object-cover rounded-lg shadow-lg 
-                           grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                    grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
 
                         <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
                             class="w-36 sm:w-44 h-40 sm:h-48 object-cover rounded-lg shadow-lg mt-4 sm:mt-6
-                           grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                    grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
                     </div>
                 </div>
 
@@ -104,27 +97,23 @@
                     <div class="relative w-full h-full">
                         <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
                             class="absolute -top-32 left-0 w-64 sm:w-72 md:w-80 rounded-lg shadow-lg z-30 
-                           grayscale hover:grayscale-0 hover:saturate-150 transition duration-500 pointer-events-auto">
+                    grayscale hover:grayscale-0 hover:saturate-150 transition duration-500 pointer-events-auto">
 
                         <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
                             class="absolute top-20 left-12 w-64 sm:w-72 md:w-80 rounded-lg shadow-lg z-20 
-                           grayscale hover:grayscale-0 hover:saturate-150 transition duration-500 pointer-events-auto">
+                    grayscale hover:grayscale-0 hover:saturate-150 transition duration-500 pointer-events-auto">
                     </div>
 
                     {{-- Text --}}
                     <div class="text-left flex flex-col justify-center">
                         <h2 class="text-2xl sm:text-3xl md:text-4xl tracking-[0.3em] text-gray-700 mb-6">
-                            A T &nbsp; A &nbsp; G L A N C E
+                            {!! __('home/glance.title') !!}
                         </h2>
                         <p class="text-gray-600 leading-relaxed max-w-lg">
-                            With over 20 years of experience, Communic8 has been the trusted creative digital agency
-                            for ambitious brands.
+                            {{ __('home/glance.paragraph1') }}
                         </p>
                         <p class="mt-4 text-gray-600 leading-relaxed max-w-lg">
-                            We don't just deliver services. We build everlasting partnerships.
-                            Through integrated solutions that combine creativity, digital intelligence,
-                            and complex strategy that works. We elevate your business to achieve
-                            your unique vision in this dynamic region.
+                            {{ __('home/glance.paragraph2') }}
                         </p>
                     </div>
                 </div>
@@ -143,8 +132,7 @@
             {{-- Title --}}
             <div class="text-center mb-16">
                 <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-700 leading-relaxed">
-                    Creative minds, tech experts, end-to-end solutions,<br>
-                    driven by results, built for impact.
+                    {!! __('home/values.title') !!}
                 </h2>
             </div>
 
@@ -158,7 +146,7 @@
                     </div>
                     <div>
                         <div class="text-3xl font-bold text-orange-500">15+</div>
-                        <div class="text-gray-700 font-semibold text-sm">Years of Experience</div>
+                        <div class="text-gray-700 font-semibold text-sm">{{ __('home/values.years_experience') }}</div>
                     </div>
                 </div>
 
@@ -169,7 +157,7 @@
                     </div>
                     <div>
                         <div class="text-3xl font-bold text-orange-500">30+</div>
-                        <div class="text-gray-700 font-semibold text-sm">Brands Handled</div>
+                        <div class="text-gray-700 font-semibold text-sm">{{ __('home/values.brands_handled') }}</div>
                     </div>
                 </div>
 
@@ -180,7 +168,7 @@
                     </div>
                     <div>
                         <div class="text-3xl font-bold text-orange-500">99%</div>
-                        <div class="text-gray-700 font-semibold text-sm">Clients Satisfaction</div>
+                        <div class="text-gray-700 font-semibold text-sm">{{ __('home/values.clients_satisfaction') }}</div>
                     </div>
                 </div>
 
@@ -188,9 +176,7 @@
 
             {{-- Bottom Text --}}
             <div class="text-center max-w-3xl mx-auto text-gray-600 text-sm leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                {{ __('home/values.bottom_text') }}
             </div>
 
         </div>
@@ -203,42 +189,12 @@
             {{-- Title Section --}}
             <div class="text-center mb-16">
                 <h2 class="text-2xl sm:text-3xl md:text-4xl tracking-[0.3em] text-gray-700 mb-6">
-                    W H A T &nbsp; W E &nbsp;C A N<br>D O &nbsp;F O R &nbsp;Y O U
+                    {!! __('home/what_we_do.title') !!}
                 </h2>
             </div>
 
             @php
-                // Data card dideklarasikan sekali di sini
-                $cards = [
-                    [
-                        'img' => 'forge.png',
-                        'title' => 'Brand Forge',
-                        'desc' =>
-                            'We build and fortify compelling brands that resonate deeply with the market and audience. From establishing your unique identity to cultivating lasting trust and value, we ensure your brand stands out and makes a memorable impact.',
-                        'btn' => 'Find your brand\'s identity',
-                    ],
-                    [
-                        'img' => 'digital.png',
-                        'title' => 'Public Presence',
-                        'desc' =>
-                            'Build powerful, real-world brand awareness by going beyond the screen. We make your brand unmissable, elevating its public stature and impact. Our strategic placements in OOH, DOOH, and Transit Media ensure your message connects with your target audience in the right space.',
-                        'btn' => 'Be seen and heard',
-                    ],
-                    [
-                        'img' => 'compass.png',
-                        'title' => 'Digital Compass',
-                        'desc' =>
-                            'Amplify your reach and boost your business with our intelligent digital marketing strategies. We connect you with your target audience across diverse online channels, and drive meaningful engagement.',
-                        'btn' => 'Get found & get growing',
-                    ],
-                    [
-                        'img' => 'digital.png',
-                        'title' => 'Digital Architecture',
-                        'desc' =>
-                            'Navigate the digital transformation and build your digital backbone with confidence. Our expert team provides digital consultancy, designing and developing sophisticated websites, applications, and platforms that enhance your operational efficiency and user experience.',
-                        'btn' => 'Unlock digital possibilities',
-                    ],
-                ];
+                $cards = __('home/what_we_do.cards');
             @endphp
 
             {{-- Mobile: Single Column Stack --}}
@@ -249,7 +205,6 @@
                         <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
                             class="w-full h-48 sm:h-60 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
 
-                        {{-- konten yang fleksibel supaya tombol selalu di bawah --}}
                         <div class="flex flex-col items-center text-center w-full flex-1">
                             <h3 class="text-lg sm:text-xl font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
                             <p class="text-gray-600 text-sm leading-relaxed px-2 mb-4 flex-1">{{ $card['desc'] }}</p>
@@ -266,7 +221,6 @@
             {{-- Desktop: 2x2 Grid Layout --}}
             <div class="hidden md:block">
                 @php
-                    // bagi ke baris 2x2
                     $rows = array_chunk($cards, 2);
                 @endphp
 
@@ -303,10 +257,10 @@
             {{-- Title Section --}}
             <div class="text-center mb-16">
                 <h2 class="text-2xl sm:text-3xl md:text-4xl tracking-[0.3em] text-gray-700 mb-6">
-                    T R U S T E D &nbsp; B Y
+                    {!! __('home/trusted_by.title') !!}
                 </h2>
                 <p class="text-gray-600">
-                    We’ve been privileged to partner with a diverse range of leading brands, and across industries.
+                    {{ __('home/trusted_by.subtitle') }}
                 </p>
             </div>
 
@@ -314,9 +268,7 @@
             <div class="grid grid-cols-6 gap-6" id="trusted-projects">
                 @foreach ($trustedProjects as $key => $project)
                     @php
-                        // 2 project pertama besar (col-span-3), sisanya kecil (col-span-2)
                         $colClass = $key < 2 ? 'col-span-6 md:col-span-3' : 'col-span-6 md:col-span-2';
-                        // Tentukan project yang perlu disembunyikan (mulai dari index 5 = item ke-6)
                         $hiddenClass = $key >= 5 ? 'hidden more-project' : '';
                     @endphp
                     <div
@@ -347,8 +299,10 @@
             {{-- Button --}}
             <div class="flex justify-center mt-12">
                 <button id="toggle-projects"
-                    class="bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition-colors">
-                    Explore more
+                    class="bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition-colors"
+                    data-more="{{ __('home/trusted_by.button_more') }}"
+                    data-less="{{ __('home/trusted_by.button_less') }}">
+                    {{ __('home/trusted_by.button_more') }}
                 </button>
             </div>
 
@@ -371,8 +325,7 @@
                     {{-- Bottom Text --}}
                     <div class="text-center mt-10">
                         <h3 class="text-lg sm:text-xl md:text-2xl font-semibold text-gray-700">
-                            Trusted by over <span class="text-gray-900 font-bold">35,000 businesses</span>
-                            across various <br />industries, and now it's your turn!
+                            {!! __('home/trusted_by.bottom_text') !!}
                         </h3>
                     </div>
 
@@ -385,7 +338,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    {{-- Swiper Init --}}
+    {{-- Swiper Init + Toggle Projects --}}
     <script>
         const swiper = new Swiper(".clientSwiper", {
             slidesPerView: 2,
@@ -408,17 +361,17 @@
             },
         });
 
-        // Toggle Projects
+        // Toggle Projects with Translations
         const toggleBtn = document.getElementById("toggle-projects");
         const moreProjects = document.querySelectorAll(".more-project");
+        const textMore = toggleBtn.dataset.more;
+        const textLess = toggleBtn.dataset.less;
         let expanded = false;
 
         toggleBtn.addEventListener("click", () => {
             expanded = !expanded;
-            moreProjects.forEach(el => {
-                el.classList.toggle("hidden");
-            });
-            toggleBtn.textContent = expanded ? "See less" : "Explore more";
+            moreProjects.forEach(el => el.classList.toggle("hidden"));
+            toggleBtn.textContent = expanded ? textLess : textMore;
         });
     </script>
 
@@ -550,26 +503,24 @@
             class="relative max-w-screen-xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center md:items-start justify-between">
 
             {{-- Left Big Text --}}
-            <div class="mb-12 md:mb-0">
+            <div class="mb-12 md:mb-0 text-center md:text-left">
                 <h2 class="text-4xl md:text-6xl leading-relaxed tracking-[0.5em]">
-                    <span class="font-thin block">DREAM</span>
-                    <span class="font-bold block">BOLDER</span>
-                    <span class="font-thin block">ACHIEVE</span>
-                    <span class="font-bold block">BIGGER</span>
+                    <span class="font-thin block">{{ __('home/cta.dream') }}</span>
+                    <span class="font-bold block">{{ __('home/cta.bolder') }}</span>
+                    <span class="font-thin block">{{ __('home/cta.achieve') }}</span>
+                    <span class="font-bold block">{{ __('home/cta.bigger') }}</span>
                 </h2>
             </div>
 
             {{-- Right Content --}}
-            <div class="max-w-lg">
-                <h3 class="text-2xl md:text-3xl font-semibold mb-4">Let’s ignite your growth!</h3>
+            <div class="max-w-lg text-center md:text-left">
+                <h3 class="text-2xl md:text-3xl font-semibold mb-4">{{ __('home/cta.title') }}</h3>
                 <p class="text-base md:text-lg mb-6 leading-relaxed">
-                    Partner with Communic8's 20 years of creative strategic expertise.
-                    We're dedicated to understanding your unique goals and crafting innovative digital solutions
-                    that deliver exceptional results across Southeast Asia.
+                    {{ __('home/cta.description') }}
                 </p>
                 <a href="#"
                     class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
-                    Begin Your Ascent
+                    {{ __('home/cta.button') }}
                 </a>
             </div>
         </div>

@@ -119,4 +119,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('testimonies/{testimoni}', [TestimoniController::class, 'destroy'])->name('testimonies.destroy');
 });
 
+Route::get('lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'id'])) {
+        session(['locale' => $locale]);
+        app()->setLocale($locale);
+    }
+    return redirect()->back();
+})->name('lang.switch');
+
+
 require __DIR__ . '/auth.php';
