@@ -16,16 +16,15 @@
             <div class="relative z-10 pt-40">
                 <h1
                     class="font-poppins text-xl sm:text-3xl md:text-4xl font-bold 
-               text-[#000000] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
-                    W E &nbsp; D O N ’ T &nbsp; C H A S E &nbsp; T R E N D S
+            text-[#000000] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                    {{ __('about/hero.headline_1') }}
                 </h1>
                 <h1
                     class="font-poppins text-xl sm:text-3xl md:text-4xl font-bold 
-               text-[#000000] tracking-normal sm:tracking-[0.35em] leading-snug">
-                    W E &nbsp; C R A F T &nbsp; L E G A C I E S
+            text-[#000000] tracking-normal sm:tracking-[0.35em] leading-snug">
+                    {{ __('about/hero.headline_2') }}
                 </h1>
             </div>
-
 
             {{-- Red Box PNG --}}
             <div class="absolute top-1/3 left-1/2 -translate-x-1/2 z-20">
@@ -34,18 +33,14 @@
 
             {{-- About Us --}}
             <div class="relative z-10 mt-[36rem] md:mt-[40rem] lg:mt-[44rem] max-w-3xl pb-20">
-                <h2 class="text-lg tracking-[0.3em] font-medium mb-6">ABOUT US</h2>
+                <h2 class="text-lg tracking-[0.3em] font-medium mb-6">
+                    {{ __('about/hero.about_us_title') }}
+                </h2>
                 <p class="text-gray-700 leading-relaxed">
-                    Communic8 is a creative digital agency based in Jakarta, dedicated to propel brands forward across the
-                    dynamic Southeast Asia region. <br><br>
-                    We pursue more than just digital fads. We delve into the core of our business, market trends, and
-                    audience behaviors, ensuring every strategy is built on a foundation of insight. <br><br>
-                    Our innate drive for boundless creativity and innovation transforms well-researched strategies into
-                    compelling out-of-the-box ideas and crafted digital experiences that not only engage but also inspire.
+                    {!! __('about/hero.about_us_text') !!}
                 </p>
             </div>
         </section>
-
 
         {{-- THE PHILOSOPHY --}}
         <section
@@ -69,23 +64,16 @@
                     {{-- Text Right --}}
                     <div class="text-left text-white md:pl-6">
                         <h2 class="font-poppins text-2xl sm:text-3xl md:text-4xl tracking-[0.35em] font-semibold mb-6">
-                            THE PHILOSOPHY
+                            {{ __('about/philosophy.title') }}
                         </h2>
                         <p class="leading-relaxed opacity-95">
-                            Communic8 is a creative digital agency focused on communication and innovation, committed to
-                            delivering exceptional results for clients. Leveraging strategic partnerships, superior
-                            services,
-                            and boundless creativity, we optimize business performance.
+                            {{ __('about/philosophy.paragraph_1') }}
                         </p>
                         <p class="leading-relaxed mt-4 opacity-95">
-                            With 20 years of expertise, we aim to become a leading digital creative partner globally. We
-                            craft
-                            masterpiece programs, leaving a lasting legacy in the global creative industry.
+                            {{ __('about/philosophy.paragraph_2') }}
                         </p>
                         <p class="leading-relaxed mt-4 opacity-95">
-                            We design integrated solutions blending strategy, creativity, technical expertise and digital
-                            intelligence—fueled by strategic thinking, creative passion, technical precision and digital
-                            innovation.
+                            {{ __('about/philosophy.paragraph_3') }}
                         </p>
                     </div>
                 </div>
@@ -101,66 +89,59 @@
                     <h2
                         class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal mb-4 sm:mb-6 
            text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug">
-                        W H Y &nbsp; O U R &nbsp; P A R T N E R &nbsp;
-                        <br />
-                        C H O O S E &nbsp; U S
+                        {!! __('about/why_choose_us.title_line1') !!} <br />
+                        {!! __('about/why_choose_us.title_line2') !!}
                     </h2>
 
                     <p class="text-gray-600 max-w-2xl sm:max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
-                        Our approach is defined by three core principles that guide every project we undertake.
-                        This is our commitment to every client, ensuring we not only meet your goals but exceed them with
-                        exceptional value.
+                        {{ __('about/why_choose_us.subtitle') }}
                     </p>
                 </div>
 
                 {{-- List Items --}}
                 <div class="space-y-12 sm:space-y-16">
+
                     {{-- Item 1 --}}
                     <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-10">
-                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Creative Thinking"
+                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}"
+                            alt="{{ __('about/why_choose_us.item1.alt') }}"
                             class="w-32 h-32 sm:w-48 sm:h-48 object-cover rounded-lg shadow-xl flex-shrink-0 mb-4 sm:mb-0">
                         <div class="text-center sm:text-left">
-                            <h3 class="font-semibold text-lg sm:text-2xl mb-2 sm:mb-3">Creative Strategic Thinking</h3>
+                            <h3 class="font-semibold text-lg sm:text-2xl mb-2 sm:mb-3">
+                                {{ __('about/why_choose_us.item1.title') }}
+                            </h3>
                             <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
-                                We believe that powerful creativity must be guided by sharp strategy.
-                                Our team provides strategies that are relevant with the latest trend according to your
-                                needs,
-                                ensuring every idea is not only imaginative but also purposeful.
-                                We specialize in wrapping these strategies in out-of-the-box concepts with creative and
-                                different thinking that cut through the noise and deliver your message with real impact.
+                                {{ __('about/why_choose_us.item1.text') }}
                             </p>
                         </div>
                     </div>
 
                     {{-- Item 2 --}}
                     <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-10">
-                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Everlasting Partnership"
+                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}"
+                            alt="{{ __('about/why_choose_us.item2.alt') }}"
                             class="w-32 h-32 sm:w-48 sm:h-48 object-cover rounded-lg shadow-xl flex-shrink-0 mb-4 sm:mb-0">
                         <div class="text-center sm:text-left">
-                            <h3 class="font-semibold text-lg sm:text-2xl mb-2 sm:mb-3">An Everlasting Partnership</h3>
+                            <h3 class="font-semibold text-lg sm:text-2xl mb-2 sm:mb-3">
+                                {{ __('about/why_choose_us.item2.title') }}
+                            </h3>
                             <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
-                                Your success is our success. We are committed to building lasting relationships
-                                founded on good communication as we fulfill your objectives, desires and wishes to be
-                                achieved.
-                                We work as a seamless extension of your team, providing dedicated service and a
-                                collaborative
-                                spirit that transforms business goals into shared victories.
+                                {{ __('about/why_choose_us.item2.text') }}
                             </p>
                         </div>
                     </div>
 
                     {{-- Item 3 --}}
                     <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-10">
-                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Legacy of Results"
+                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}"
+                            alt="{{ __('about/why_choose_us.item3.alt') }}"
                             class="w-32 h-32 sm:w-48 sm:h-48 object-cover rounded-lg shadow-xl flex-shrink-0 mb-4 sm:mb-0">
                         <div class="text-center sm:text-left">
-                            <h3 class="font-semibold text-lg sm:text-2xl mb-2 sm:mb-3">A Legacy of Proven Results</h3>
+                            <h3 class="font-semibold text-lg sm:text-2xl mb-2 sm:mb-3">
+                                {{ __('about/why_choose_us.item3.title') }}
+                            </h3>
                             <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
-                                Our commitment is backed by a legacy of delivering tangible outcomes.
-                                With a team that holds over 20 years of experience, we stand at the forefront of
-                                tried-and-true
-                                methodologies.
-                                We don’t just promise results, our track record is built on proving them.
+                                {{ __('about/why_choose_us.item3.text') }}
                             </p>
                         </div>
                     </div>
@@ -362,26 +343,24 @@
                 class="relative max-w-screen-xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center md:items-start justify-between">
 
                 {{-- Left Big Text --}}
-                <div class="mb-12 md:mb-0">
+                <div class="mb-12 md:mb-0 text-center md:text-left">
                     <h2 class="text-4xl md:text-6xl leading-relaxed tracking-[0.5em]">
-                        <span class="font-thin block">DREAM</span>
-                        <span class="font-bold block">BOLDER</span>
-                        <span class="font-thin block">ACHIEVE</span>
-                        <span class="font-bold block">BIGGER</span>
+                        <span class="font-thin block">{{ __('home/cta.dream') }}</span>
+                        <span class="font-bold block">{{ __('home/cta.bolder') }}</span>
+                        <span class="font-thin block">{{ __('home/cta.achieve') }}</span>
+                        <span class="font-bold block">{{ __('home/cta.bigger') }}</span>
                     </h2>
                 </div>
 
                 {{-- Right Content --}}
-                <div class="max-w-lg">
-                    <h3 class="text-2xl md:text-3xl font-semibold mb-4">Let’s ignite your growth!</h3>
+                <div class="max-w-lg text-center md:text-left">
+                    <h3 class="text-2xl md:text-3xl font-semibold mb-4">{{ __('home/cta.title') }}</h3>
                     <p class="text-base md:text-lg mb-6 leading-relaxed">
-                        Partner with Communic8's 20 years of creative strategic expertise.
-                        We're dedicated to understanding your unique goals and crafting innovative digital solutions
-                        that deliver exceptional results across Southeast Asia.
+                        {{ __('home/cta.description') }}
                     </p>
                     <a href="#"
                         class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
-                        Begin Your Ascent
+                        {{ __('home/cta.button') }}
                     </a>
                 </div>
             </div>

@@ -6,42 +6,37 @@
     <section class="relative pt-48 pb-20 bg-cover bg-center"
         style="background-image: url('{{ asset('assets/img/insightbg.png') }}');">
 
-        <!-- Overlay supaya background lebih soft -->
-        <div class="absolute inset-0 bg-white/70"></div>
-
-        <!-- Overlay supaya background lebih soft -->
         <div class="absolute inset-0 bg-white/70"></div>
 
         <!-- Content -->
         <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
             <h1 class="font-poppins text-4xl md:text-5xl tracking-[0.3em] text-gray-800">
-                <span class="font-light">FUEL YOUR </span>
-                <span class="font-bold">CURIOSITY</span>
+                <span class="font-light">{{ __('insight/hero.headline_light') }} </span>
+                <span class="font-bold">{{ __('insight/hero.headline_bold') }}</span>
             </h1>
             <p class="mt-6 text-gray-600">
-                Find emerging trends, and fresh perspectives to keep you ahead.
+                {{ __('insight/hero.description') }}
             </p>
 
             <!-- Categories -->
             <div class="flex flex-wrap justify-center gap-4 mt-10">
                 <a href="{{ route('insight.index') }}"
                     class="px-6 py-2 border border-gray-400 rounded-full 
-                  {{ !$category ? 'bg-gray-800 text-white' : 'text-gray-700 hover:bg-gray-100' }}
-                  transition">
-                    All categories
+              {{ !$category ? 'bg-gray-800 text-white' : 'text-gray-700 hover:bg-gray-100' }}
+              transition">
+                    {{ __('insight/hero.all_categories') }}
                 </a>
 
                 @foreach ($categories as $cat)
                     <a href="{{ route('insight.index', ['category' => $cat]) }}"
                         class="px-6 py-2 border border-gray-400 rounded-full 
-                      {{ $category === $cat ? 'bg-gray-800 text-white' : 'text-gray-700 hover:bg-gray-100' }}
-                      transition">
+                  {{ $category === $cat ? 'bg-gray-800 text-white' : 'text-gray-700 hover:bg-gray-100' }}
+                  transition">
                         {{ $cat }}
                     </a>
                 @endforeach
             </div>
         </div>
-
     </section>
 
     <!-- Masonry Grid Section -->
@@ -79,7 +74,6 @@
         </div>
     </section>
 
-
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
         style="background-image: url('/assets/img/cta-bg.png');">
@@ -89,26 +83,24 @@
             class="relative max-w-screen-xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center md:items-start justify-between">
 
             {{-- Left Big Text --}}
-            <div class="mb-12 md:mb-0">
+            <div class="mb-12 md:mb-0 text-center md:text-left">
                 <h2 class="text-4xl md:text-6xl leading-relaxed tracking-[0.5em]">
-                    <span class="font-thin block">DREAM</span>
-                    <span class="font-bold block">BOLDER</span>
-                    <span class="font-thin block">ACHIEVE</span>
-                    <span class="font-bold block">BIGGER</span>
+                    <span class="font-thin block">{{ __('home/cta.dream') }}</span>
+                    <span class="font-bold block">{{ __('home/cta.bolder') }}</span>
+                    <span class="font-thin block">{{ __('home/cta.achieve') }}</span>
+                    <span class="font-bold block">{{ __('home/cta.bigger') }}</span>
                 </h2>
             </div>
 
             {{-- Right Content --}}
-            <div class="max-w-lg">
-                <h3 class="text-2xl md:text-3xl font-semibold mb-4">Let’s ignite your growth!</h3>
+            <div class="max-w-lg text-center md:text-left">
+                <h3 class="text-2xl md:text-3xl font-semibold mb-4">{{ __('home/cta.title') }}</h3>
                 <p class="text-base md:text-lg mb-6 leading-relaxed">
-                    Partner with Communic8's 20 years of creative strategic expertise.
-                    We're dedicated to understanding your unique goals and crafting innovative digital solutions
-                    that deliver exceptional results across Southeast Asia.
+                    {{ __('home/cta.description') }}
                 </p>
                 <a href="#"
                     class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
-                    Begin Your Ascent
+                    {{ __('home/cta.button') }}
                 </a>
             </div>
         </div>
@@ -123,9 +115,9 @@
                 <h2
                     class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
                text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
-                    I N S I G H T S &nbsp; F O R
+                    {{ __('insight/slider.title_line_1') }}
                     <span class="hidden sm:inline"><br /></span>
-                    S T R A T E G I C &nbsp; M I N D
+                    {{ __('insight/slider.title_line_2') }}
                 </h2>
             </div>
 
@@ -167,7 +159,7 @@
                 </button>
             </div>
 
-            <!-- Mobile: Slider full width, arrows below -->
+            <!-- Mobile Version -->
             <div class="sm:hidden">
                 <div id="blog-slider-mobile"
                     class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
@@ -193,7 +185,6 @@
                     @endforeach
                 </div>
 
-                <!-- Arrows below slider -->
                 <div class="flex justify-center space-x-6 mt-6">
                     <button id="prevBtnMobile">
                         <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Prev" class="w-8 h-8">
@@ -208,10 +199,9 @@
             <div class="text-center mt-12">
                 <a href="{{ route('insight.index') }}"
                     class="inline-block bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition">
-                    Read More
+                    {{ __('insight/slider.read_more') }}
                 </a>
             </div>
-
         </div>
     </section>
 

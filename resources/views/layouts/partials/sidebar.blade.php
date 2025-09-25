@@ -6,14 +6,14 @@
     </div>
 
     <nav class="flex flex-col space-y-4 p-6 text-gray-700 font-medium">
-        <a href="{{ url('/') }}" class="hover:text-orange-500">Home</a>
-        <a href="{{ route('about.index') }}" class="hover:text-orange-500">About</a>
+        <a href="{{ url('/') }}" class="hover:text-orange-500">{{ __('navbar.home') }}</a>
+        <a href="{{ route('about.index') }}" class="hover:text-orange-500">{{ __('navbar.about') }}</a>
 
         {{-- Mobile Dropdown Services --}}
         <div>
             <button onclick="toggleMobileDropdown()"
                 class="w-full flex justify-between items-center hover:text-orange-500">
-                Services
+                {{ __('navbar.services') }}
                 <svg id="dropdownIcon" class="w-5 h-5 transform transition-transform duration-200" fill="none"
                     stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
@@ -21,17 +21,36 @@
             </button>
 
             <div id="mobileDropdown" class="hidden flex-col ml-4 mt-2 space-y-2 text-gray-600">
-                <a href="{{ route('layanan.brand-forge') }}" class="hover:text-orange-500">Brand Forge</a>
-                <a href="{{ route('layanan.digital-compass') }}" class="hover:text-orange-500">Digital Compass</a>
-                <a href="{{ route('layanan.digital-architecture') }}" class="hover:text-orange-500">Digital Architecture</a>
-                <a href="{{ route('layanan.public-presence') }}" class="hover:text-orange-500">Digital Presence</a>
+                <a href="{{ route('layanan.brand-forge') }}"
+                    class="hover:text-orange-500">{{ __('navbar.brand_forge') }}</a>
+                <a href="{{ route('layanan.digital-compass') }}"
+                    class="hover:text-orange-500">{{ __('navbar.digital_compass') }}</a>
+                <a href="{{ route('layanan.digital-architecture') }}"
+                    class="hover:text-orange-500">{{ __('navbar.digital_architecture') }}</a>
+                <a href="{{ route('layanan.public-presence') }}"
+                    class="hover:text-orange-500">{{ __('navbar.digital_presence') }}</a>
             </div>
         </div>
 
-        <a href="{{ route('portofolio.index') }}" class="hover:text-orange-500">Portfolio</a>
-        <a href="{{ route('insight.index') }}" class="hover:text-orange-500">Insight</a>
+        <a href="{{ route('portofolio.index') }}" class="hover:text-orange-500">{{ __('navbar.portfolio') }}</a>
+        <a href="{{ route('insight.index') }}" class="hover:text-orange-500">{{ __('navbar.insight') }}</a>
         <a href="{{ route('contact.index') }}"
-            class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 text-center">Contact</a>
+            class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 text-center">{{ __('navbar.contact') }}</a>
+
+        {{-- 🌐 Language Switcher --}}
+        <div class="border-t pt-4 mt-6">
+            <p class="text-gray-500 text-sm mb-2">{{ __('navbar.language') }}</p>
+            <div class="flex gap-3">
+                <a href="{{ route('lang.switch', 'en') }}"
+                    class="flex items-center gap-2 px-3 py-2 rounded-md border {{ app()->getLocale() == 'en' ? 'bg-gray-800 text-white' : 'text-gray-700 hover:bg-gray-100' }}">
+                    🇬🇧 English
+                </a>
+                <a href="{{ route('lang.switch', 'id') }}"
+                    class="flex items-center gap-2 px-3 py-2 rounded-md border {{ app()->getLocale() == 'id' ? 'bg-gray-800 text-white' : 'text-gray-700 hover:bg-gray-100' }}">
+                    🇮🇩 Indonesia
+                </a>
+            </div>
+        </div>
     </nav>
 </div>
 

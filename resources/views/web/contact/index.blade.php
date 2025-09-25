@@ -6,13 +6,11 @@
             <!-- Title -->
             <h1
                 class="font-poppins font-light text-3xl md:text-4xl tracking-[0.35em] uppercase text-gray-800 leading-relaxed text-center">
-                LET’S START A <br> CONVERSATION
+                {!! __('contact/form.title') !!}
             </h1>
 
             <p class="mt-6 text-gray-600 max-w-3xl mx-auto">
-                Whether you have a specific project in mind, a question about our services,
-                or a grand vision for your brand in Asia, we are ready to listen.
-                Reach out and let’s discuss how we can achieve your goals together.
+                {{ __('contact/form.subtitle') }}
             </p>
         </div>
 
@@ -23,20 +21,20 @@
 
                 <!-- Row 1 -->
                 <div class="grid md:grid-cols-2 gap-6">
-                    <input type="text" name="name" placeholder="Your name..."
+                    <input type="text" name="name" placeholder="{{ __('contact/form.name_placeholder') }}"
                         class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
                     <div class="flex">
                         <span class="px-3 flex items-center bg-gray-200 rounded-l-md text-gray-600">+62</span>
-                        <input type="text" name="phone" placeholder="812-3456-7890"
+                        <input type="text" name="phone" placeholder="{{ __('contact/form.phone_placeholder') }}"
                             class="w-full px-4 py-3 rounded-r-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
                     </div>
                 </div>
 
                 <!-- Row 2 -->
                 <div class="grid md:grid-cols-2 gap-6">
-                    <input type="text" name="company" placeholder="Your company’s name..."
+                    <input type="text" name="company" placeholder="{{ __('contact/form.company_placeholder') }}"
                         class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
-                    <input type="email" name="email" placeholder="your.email@domain.com"
+                    <input type="email" name="email" placeholder="{{ __('contact/form.email_placeholder') }}"
                         class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
                 </div>
 
@@ -44,25 +42,17 @@
                 <div class="grid md:grid-cols-2 gap-6">
                     <select name="industry"
                         class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
-                        <option value="">(Industry...)</option>
-                        <option value="Technology">Technology</option>
-                        <option value="Finance">Finance</option>
-                        <option value="Healthcare">Healthcare</option>
-                        <option value="Education">Education</option>
-                        <option value="Retail">Retail</option>
-                        <option value="Manufacturing">Manufacturing</option>
-                        <option value="Media & Entertainment">Media & Entertainment</option>
-                        <option value="Hospitality">Hospitality</option>
-                        <option value="Government">Government</option>
-                        <option value="Other">Other</option>
+                        <option value="">{{ __('contact/form.industry_placeholder') }}</option>
+                        @foreach (__('contact/form.industries') as $value => $label)
+                            <option value="{{ $value }}">{{ $label }}</option>
+                        @endforeach
                     </select>
                     <select name="services"
                         class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
-                        <option value="">(Which services interest you...)</option>
-                        <option value="Brand Forge">Brand Forge</option>
-                        <option value="Digital Compass">Digital Compass</option>
-                        <option value="Public Presence">Public Presence</option>
-                        <option value="Digital Architecture">Digital Architecture</option>
+                        <option value="">{{ __('contact/form.service_placeholder') }}</option>
+                        @foreach (__('contact/form.services') as $value => $label)
+                            <option value="{{ $value }}">{{ $label }}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -70,41 +60,39 @@
                 <div>
                     <select name="find_us"
                         class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
-                        <option value="">(How did you find us...)</option>
-                        <option value="Instagram">Instagram</option>
-                        <option value="Facebook">Facebook</option>
-                        <option value="Website">Website</option>
-                        <option value="Linkedin">Linkedin</option>
-                        <option value="Other">Other</option>
+                        <option value="">{{ __('contact/form.find_us_placeholder') }}</option>
+                        @foreach (__('contact/form.find_us') as $value => $label)
+                            <option value="{{ $value }}">{{ $label }}</option>
+                        @endforeach
                     </select>
                 </div>
 
                 <!-- Radio -->
                 <div class="text-gray-700">
-                    <p class="mb-2">Select which area your email will be delivered...</p>
+                    <p class="mb-2">{{ __('contact/form.radio_title') }}</p>
                     <div class="flex flex-wrap gap-6">
-                        <label><input type="radio" name="area" value="1" class="mr-2"> Jakarta</label>
-                        <label><input type="radio" name="area" value="2" class="mr-2"> Malaysia</label>
-                        <label><input type="radio" name="area" value="3" class="mr-2"> Singapore</label>
-                        <label><input type="radio" name="area" value="4" class="mr-2"> China</label>
+                        @foreach (__('contact/form.areas') as $value => $label)
+                            <label><input type="radio" name="area" value="{{ $value }}" class="mr-2">
+                                {{ $label }}</label>
+                        @endforeach
                     </div>
                 </div>
 
                 <!-- Message -->
-                <textarea name="message" placeholder="Tell us what you need..."
+                <textarea name="message" placeholder="{{ __('contact/form.message_placeholder') }}"
                     class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500 h-32"></textarea>
 
                 <!-- Checkbox (optional newsletter) -->
                 <label class="flex items-center space-x-2 text-gray-600">
                     <input type="checkbox" class="rounded border-gray-300">
-                    <span>Keep me ahead of the curve. Send me insights and updates.</span>
+                    <span>{{ __('contact/form.newsletter') }}</span>
                 </label>
 
                 <!-- Submit -->
                 <div class="flex justify-center">
                     <button type="submit"
                         class="px-10 py-3 rounded-full bg-gray-800 text-white hover:bg-gray-700 transition">
-                        Submit
+                        {{ __('contact/form.submit') }}
                     </button>
                 </div>
             </form>
@@ -117,7 +105,7 @@
             <script>
                 Swal.fire({
                     icon: 'success',
-                    title: 'Success!',
+                    title: '{{ __('contact/form.swal_title') }}',
                     text: '{{ session('success') }}',
                     showConfirmButton: false,
                     timer: 2000
@@ -142,11 +130,10 @@
                         <p class="font-medium text-gray-800">{{ $office->phone }}</p>
                     </div>
                 @empty
-                    <p class="col-span-2 text-center text-gray-500">No branch offices available.</p>
+                    <p class="col-span-2 text-center text-gray-500">{{ __('contact/form.no_branch') }}</p>
                 @endforelse
             </div>
         </div>
-
     </section>
 
     <!-- Map Section -->
@@ -164,7 +151,6 @@
         @endif
     </section>
 
-
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
         style="background-image: url('/assets/img/cta-bg.png');">
@@ -174,26 +160,24 @@
             class="relative max-w-screen-xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center md:items-start justify-between">
 
             {{-- Left Big Text --}}
-            <div class="mb-12 md:mb-0">
+            <div class="mb-12 md:mb-0 text-center md:text-left">
                 <h2 class="text-4xl md:text-6xl leading-relaxed tracking-[0.5em]">
-                    <span class="font-thin block">DREAM</span>
-                    <span class="font-bold block">BOLDER</span>
-                    <span class="font-thin block">ACHIEVE</span>
-                    <span class="font-bold block">BIGGER</span>
+                    <span class="font-thin block">{{ __('home/cta.dream') }}</span>
+                    <span class="font-bold block">{{ __('home/cta.bolder') }}</span>
+                    <span class="font-thin block">{{ __('home/cta.achieve') }}</span>
+                    <span class="font-bold block">{{ __('home/cta.bigger') }}</span>
                 </h2>
             </div>
 
             {{-- Right Content --}}
-            <div class="max-w-lg">
-                <h3 class="text-2xl md:text-3xl font-semibold mb-4">Let’s ignite your growth!</h3>
+            <div class="max-w-lg text-center md:text-left">
+                <h3 class="text-2xl md:text-3xl font-semibold mb-4">{{ __('home/cta.title') }}</h3>
                 <p class="text-base md:text-lg mb-6 leading-relaxed">
-                    Partner with Communic8's 20 years of creative strategic expertise.
-                    We're dedicated to understanding your unique goals and crafting innovative digital solutions
-                    that deliver exceptional results across Southeast Asia.
+                    {{ __('home/cta.description') }}
                 </p>
                 <a href="#"
                     class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
-                    Begin Your Ascent
+                    {{ __('home/cta.button') }}
                 </a>
             </div>
         </div>
@@ -208,9 +192,9 @@
                 <h2
                     class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
                text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
-                    I N S I G H T S &nbsp; F O R
+                    {{ __('insight/slider.title_line_1') }}
                     <span class="hidden sm:inline"><br /></span>
-                    S T R A T E G I C &nbsp; M I N D
+                    {{ __('insight/slider.title_line_2') }}
                 </h2>
             </div>
 
@@ -252,7 +236,7 @@
                 </button>
             </div>
 
-            <!-- Mobile: Slider full width, arrows below -->
+            <!-- Mobile Version -->
             <div class="sm:hidden">
                 <div id="blog-slider-mobile"
                     class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
@@ -278,7 +262,6 @@
                     @endforeach
                 </div>
 
-                <!-- Arrows below slider -->
                 <div class="flex justify-center space-x-6 mt-6">
                     <button id="prevBtnMobile">
                         <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Prev" class="w-8 h-8">
@@ -293,10 +276,9 @@
             <div class="text-center mt-12">
                 <a href="{{ route('insight.index') }}"
                     class="inline-block bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition">
-                    Read More
+                    {{ __('insight/slider.read_more') }}
                 </a>
             </div>
-
         </div>
     </section>
 
