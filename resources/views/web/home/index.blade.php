@@ -195,6 +195,12 @@
 
             @php
                 $cards = __('home/what_we_do.cards');
+                $routes = [
+                    'layanan.brand-forge',
+                    'layanan.digital-compass',
+                    'layanan.digital-architecture',
+                    'layanan.public-presence',
+                ];
             @endphp
 
             {{-- Mobile: Single Column Stack --}}
@@ -209,10 +215,11 @@
                             <h3 class="text-lg sm:text-xl font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
                             <p class="text-gray-600 text-sm leading-relaxed px-2 mb-4 flex-1">{{ $card['desc'] }}</p>
 
-                            <button
-                                class="bg-gray-800 text-white px-5 py-2 text-sm rounded-full hover:bg-gray-700 transition-colors mt-auto">
+                            {{-- Button dengan route dinamis --}}
+                            <a href="{{ route($routes[$loop->index]) }}"
+                                class="bg-gray-800 text-white px-5 py-2 text-sm rounded-full hover:bg-gray-700 transition-colors mt-auto inline-block text-center">
                                 {{ $card['btn'] }}
-                            </button>
+                            </a>
                         </div>
                     </div>
                 @endforeach
@@ -236,10 +243,11 @@
                                     <h3 class="text-xl font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
                                     <p class="text-gray-600 text-sm mb-4 flex-1">{{ $card['desc'] }}</p>
 
-                                    <button
-                                        class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors">
+                                    {{-- Button dengan route dinamis (desktop) --}}
+                                    <a href="{{ route($routes[$loop->parent->index * 2 + $loop->index]) }}"
+                                        class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors inline-block text-center">
                                         {{ $card['btn'] }}
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         @endforeach
