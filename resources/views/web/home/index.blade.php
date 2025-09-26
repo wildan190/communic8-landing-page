@@ -1,14 +1,15 @@
 @extends('layouts.web')
 
 @section('content')
+
     <section class="relative w-full min-h-[85vh] bg-cover bg-center"
         style="background-image: url('{{ asset('assets/img/sectionhero.png') }}')">
 
         <div
-            class="container max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center justify-between min-h-[85vh] py-24 md:py-28 space-y-10">
+            class="container max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center justify-between min-h-[85vh] py-20 md:py-24 space-y-8">
 
             {{-- Hero Title --}}
-            <div class="relative z-10 pt-32 text-center">
+            <div class="relative z-10 pt-20 text-center">
                 <h1
                     class="font-poppins font-bold text-lg sm:text-2xl md:text-3xl 
        text-[#000000] tracking-normal sm:tracking-[0.3em] leading-snug mb-3 sm:mb-5">
@@ -22,9 +23,9 @@
             </div>
 
             {{-- Lampu --}}
-            <div class="flex justify-center relative mt-12">
+            <div class="flex justify-center relative mt-8">
                 <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
-                    class="max-w-[60px] sm:max-w-[70px] md:max-w-[80px] lg:max-w-[90px] relative z-10">
+                    class="w-auto h-auto max-w-[180px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[260px] relative z-10">
             </div>
 
             {{-- Bottom Row --}}

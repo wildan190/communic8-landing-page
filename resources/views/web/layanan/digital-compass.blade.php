@@ -78,58 +78,76 @@
             </div>
         </div>
     </section>
+{{-- Section 2 --}}
+<section class="w-full py-8 bg-white"> {{-- py-20 -> py-8 agar konsisten --}}
+  <div class="max-w-6xl mx-auto px-4 text-center"> {{-- max-w & px diseragamkan --}}
 
-    {{-- Section 2 --}}
-    <section class="w-full py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-20">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-6"> {{-- grid & gap disamakan --}}
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-center">
-
-                {{-- Item 1 --}}
-                <div class="flex flex-col items-center">
-                    <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Search Engine Optimization"
-                        class="rounded-xl w-full max-w-[220px] object-cover">
-                    <p class="mt-4 text-gray-700 font-rubik">Search Engine Optimization</p>
-                </div>
-
-                {{-- Item 2 --}}
-                <div class="flex flex-col items-center">
-                    <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Search Engine Marketing"
-                        class="rounded-xl w-full max-w-[220px] object-cover">
-                    <p class="mt-4 text-gray-700 font-rubik">Search Engine Marketing</p>
-                </div>
-
-                {{-- Item 3 --}}
-                <div class="flex flex-col items-center">
-                    <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Social Media Advertising"
-                        class="rounded-xl w-full max-w-[220px] object-cover">
-                    <p class="mt-4 text-gray-700 font-rubik">Social Media Advertising</p>
-                </div>
-
-                {{-- Item 4 --}}
-                <div class="flex flex-col items-center">
-                    <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Social Media Management"
-                        class="rounded-xl w-full max-w-[220px] object-cover">
-                    <p class="mt-4 text-gray-700 font-rubik">Social Media Management</p>
-                </div>
-
-                {{-- Item 5 --}}
-                <div class="flex flex-col items-center">
-                    <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Influencer Marketing"
-                        class="rounded-xl w-full max-w-[220px] object-cover">
-                    <p class="mt-4 text-gray-700 font-rubik">Influencer Marketing</p>
-                </div>
-
-                {{-- Item 6 --}}
-                <div class="flex flex-col items-center">
-                    <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Digital Public Relations"
-                        class="rounded-xl w-full max-w-[220px] object-cover">
-                    <p class="mt-4 text-gray-700 font-rubik">Digital Public Relations</p>
-                </div>
-
-            </div>
+      {{-- Item 1 --}}
+      <div class="text-center p-1">
+        <div class="rounded-[28px] overflow-hidden w-full">
+          <img src="{{ asset('assets/img/dummy/dummy1.png') }}" 
+               alt="Search Engine Optimization"
+               class="w-full h-full object-cover block">
         </div>
-    </section>
+        <p class="mt-2 text-gray-700 font-rubik text-xs">Search Engine Optimization</p>
+      </div>
+
+      {{-- Item 2 --}}
+      <div class="text-center p-1">
+        <div class="rounded-[28px] overflow-hidden w-full">
+          <img src="{{ asset('assets/img/dummy/dummy2.png') }}" 
+               alt="Search Engine Marketing"
+               class="w-full h-full object-cover block">
+        </div>
+        <p class="mt-2 text-gray-700 font-rubik text-xs">Search Engine Marketing</p>
+      </div>
+
+      {{-- Item 3 --}}
+      <div class="text-center p-1">
+        <div class="rounded-[28px] overflow-hidden w-full">
+          <img src="{{ asset('assets/img/dummy/dummy3.png') }}" 
+               alt="Social Media Advertising"
+               class="w-full h-full object-cover block">
+        </div>
+        <p class="mt-2 text-gray-700 font-rubik text-xs">Social Media Advertising</p>
+      </div>
+
+      {{-- Item 4 --}}
+      <div class="text-center p-1">
+        <div class="rounded-[28px] overflow-hidden w-full">
+          <img src="{{ asset('assets/img/dummy/dummy1.png') }}" 
+               alt="Social Media Management"
+               class="w-full h-full object-cover block">
+        </div>
+        <p class="mt-2 text-gray-700 font-rubik text-xs">Social Media Management</p>
+      </div>
+
+      {{-- Item 5 --}}
+      <div class="text-center p-1">
+        <div class="rounded-[28px] overflow-hidden w-full">
+          <img src="{{ asset('assets/img/dummy/dummy2.png') }}" 
+               alt="Influencer Marketing"
+               class="w-full h-full object-cover block">
+        </div>
+        <p class="mt-2 text-gray-700 font-rubik text-xs">Influencer Marketing</p>
+      </div>
+
+      {{-- Item 6 --}}
+      <div class="text-center p-1">
+        <div class="rounded-[28px] overflow-hidden w-full">
+          <img src="{{ asset('assets/img/dummy/dummy3.png') }}" 
+               alt="Digital Public Relations"
+               class="w-full h-full object-cover block">
+        </div>
+        <p class="mt-2 text-gray-700 font-rubik text-xs">Digital Public Relations</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
