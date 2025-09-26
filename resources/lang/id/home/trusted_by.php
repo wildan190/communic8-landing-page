@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'D I P E R C A Y A &nbsp; O L E H',
+    'title' => 'D I P E R C A Y A <br />O L E H',
     'subtitle' => 'Kami bangga telah bermitra dengan berbagai merek terkemuka di berbagai industri.',
     'button_more' => 'Lihat lebih banyak',
     'button_less' => 'Lihat lebih sedikit',
