@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'A P A &nbsp; Y A N G &nbsp; B I S A<br>K A M I &nbsp; L A K U K A N &nbsp; U N T U K &nbsp; A N D A',
+    'title' => 'A P A &nbsp; Y A N G &nbsp; B I S A<br>K A M I &nbsp; L A K U K A N &nbsp; <br />U N T U K &nbsp; A N D A',
 
     'cards' => [
         [

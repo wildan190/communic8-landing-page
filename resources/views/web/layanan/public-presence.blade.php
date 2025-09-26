@@ -86,61 +86,73 @@
     </section>
 
     {{-- Services Grid Section --}}
-    <section class="w-full py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-20 text-center">
+    <section class="w-full py-8 bg-white"> {{-- py-20 -> py-8 --}}
+        <div class="max-w-6xl mx-auto px-4 text-center"> {{-- max-w-7xl -> max-w-6xl, px-20 -> px-4 --}}
 
             {{-- Top description --}}
-            <p class="text-gray-700 font-rubik text-base leading-relaxed max-w-3xl mx-auto">
+            <p class="text-gray-700 font-rubik text-sm leading-snug max-w-xl mx-auto"> {{-- font & leading diseragamkan --}}
                 Communic 8's Brand Development service shapes every facet of your identity from
                 foundational research to brand design and activation.
             </p>
-            <p class="mt-4 font-rubik font-semibold text-gray-900">
+            <p class="mt-1 font-rubik font-semibold text-gray-900 text-sm"> {{-- mt-4 -> mt-1 --}}
                 Let us help you build a resilient brand that will stand through the test of time.
             </p>
 
             {{-- Grid 6 --}}
-            <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-6"> {{-- mt-16 -> mt-6, gap-12 -> gap-6 --}}
 
                 {{-- Item 1 --}}
-                <div class="flex flex-col items-center">
-                    <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Brand Platform"
-                        class="rounded-xl w-full max-w-[250px] object-cover">
-                    <p class="mt-4 text-gray-700 font-rubik">Brand Platform</p>
+                <div class="text-center p-1">
+                    <div class="rounded-[28px] overflow-hidden w-full">
+                        <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Brand Platform"
+                            class="w-full h-full object-cover block">
+                    </div>
+                    <p class="mt-2 text-gray-700 font-rubik text-xs">Brand Platform</p>
                 </div>
 
                 {{-- Item 2 --}}
-                <div class="flex flex-col items-center">
-                    <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Brand Identity"
-                        class="rounded-xl w-full max-w-[250px] object-cover">
-                    <p class="mt-4 text-gray-700 font-rubik">Brand Identity</p>
+                <div class="text-center p-1">
+                    <div class="rounded-[28px] overflow-hidden w-full">
+                        <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Brand Identity"
+                            class="w-full h-full object-cover block">
+                    </div>
+                    <p class="mt-2 text-gray-700 font-rubik text-xs">Brand Identity</p>
                 </div>
 
                 {{-- Item 3 --}}
-                <div class="flex flex-col items-center">
-                    <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Brand System"
-                        class="rounded-xl w-full max-w-[250px] object-cover">
-                    <p class="mt-4 text-gray-700 font-rubik">Brand System</p>
+                <div class="text-center p-1">
+                    <div class="rounded-[28px] overflow-hidden w-full">
+                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Brand System"
+                            class="w-full h-full object-cover block">
+                    </div>
+                    <p class="mt-2 text-gray-700 font-rubik text-xs">Brand System</p>
                 </div>
 
                 {{-- Item 4 --}}
-                <div class="flex flex-col items-center">
-                    <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Brand Activation"
-                        class="rounded-xl w-full max-w-[250px] object-cover">
-                    <p class="mt-4 text-gray-700 font-rubik">Brand Activation</p>
+                <div class="text-center p-1">
+                    <div class="rounded-[28px] overflow-hidden w-full">
+                        <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Brand Activation"
+                            class="w-full h-full object-cover block">
+                    </div>
+                    <p class="mt-2 text-gray-700 font-rubik text-xs">Brand Activation</p>
                 </div>
 
                 {{-- Item 5 --}}
-                <div class="flex flex-col items-center">
-                    <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Creative Design"
-                        class="rounded-xl w-full max-w-[250px] object-cover">
-                    <p class="mt-4 text-gray-700 font-rubik">Creative Design</p>
+                <div class="text-center p-1">
+                    <div class="rounded-[28px] overflow-hidden w-full">
+                        <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Creative Design"
+                            class="w-full h-full object-cover block">
+                    </div>
+                    <p class="mt-2 text-gray-700 font-rubik text-xs">Creative Design</p>
                 </div>
 
                 {{-- Item 6 --}}
-                <div class="flex flex-col items-center">
-                    <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Corporate Brand Guideline"
-                        class="rounded-xl w-full max-w-[250px] object-cover">
-                    <p class="mt-4 text-gray-700 font-rubik">Corporate Brand Guideline</p>
+                <div class="text-center p-1">
+                    <div class="rounded-[28px] overflow-hidden w-full">
+                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Corporate Brand Guideline"
+                            class="w-full h-full object-cover block">
+                    </div>
+                    <p class="mt-2 text-gray-700 font-rubik text-xs">Corporate Brand Guideline</p>
                 </div>
 
             </div>
