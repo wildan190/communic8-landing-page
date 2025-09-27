@@ -85,37 +85,35 @@
         </div>
     </section>
 
-{{-- Services Grid Section --}}
-<section class="w-full py-8 bg-white">
-    <div class="max-w-6xl mx-auto px-4 text-center">
+    {{-- Services Grid Section --}}
+    <section class="w-full py-8 bg-white">
+        <div class="max-w-6xl mx-auto px-4 text-center">
 
-        {{-- Top description --}}
-        <p class="text-gray-700 font-rubik text-sm leading-snug max-w-xl mx-auto">
-            Communic 8's Brand Development service shapes every facet of your identity from
-            foundational research to brand design and activation.
-        </p>
-        <p class="mt-1 font-rubik font-semibold text-gray-900 text-sm">
-            Let us help you build a resilient brand that will stand through the test of time.
-        </p>
+            {{-- Top description --}}
+            <p class="text-gray-700 font-rubik text-sm leading-snug max-w-xl mx-auto">
+                Communic 8's Brand Development service shapes every facet of your identity from
+                foundational research to brand design and activation.
+            </p>
+            <p class="mt-1 font-rubik font-semibold text-gray-900 text-sm">
+                Let us help you build a resilient brand that will stand through the test of time.
+            </p>
 
-        {{-- Grid dynamic --}}
-        <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-6">
-            @forelse($publicPresenceSubservices as $subservice)
-                <div class="text-center p-1">
-                    <div class="rounded-[28px] overflow-hidden w-full">
-                        <img src="{{ $subservice->picture_upload ? Storage::url($subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}" 
-                             alt="{{ $subservice->name }}" 
-                             class="w-full h-full object-cover block">
+            {{-- Grid dynamic --}}
+            <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-6">
+                @forelse($publicPresenceSubservices as $subservice)
+                    <div class="text-center p-1">
+                        <div class="rounded-[28px] overflow-hidden w-full">
+                            <img src="{{ $subservice->picture_upload ? Storage::url($subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
+                                alt="{{ $subservice->name }}" class="w-full h-full object-cover block">
+                        </div>
+                        <p class="mt-2 text-gray-700 font-rubik text-xs">{{ $subservice->name }}</p>
                     </div>
-                    <p class="mt-2 text-gray-700 font-rubik text-xs">{{ $subservice->name }}</p>
-                </div>
-            @empty
-                <p class="col-span-full text-gray-500 text-sm">No services available at the moment.</p>
-            @endforelse
+                @empty
+                    <p class="col-span-full text-gray-500 text-sm">No services available at the moment.</p>
+                @endforelse
+            </div>
         </div>
-    </div>
-</section>
-
+    </section>
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
