@@ -25,7 +25,6 @@ class LayananController extends Controller
 
         $brandForgeContent = BrandForgeContent::latest()->first();
 
-        // Ambil subservices yang terkait dengan Service "Brand Forge"
         $brandForgeSubservices = SubService::with('service')->whereHas('service', fn($q) => $q->where('name', 'Brand Forge'))->latest()->get();
 
         return view('web.layanan.brand-forge', compact('categories', 'sliderBlogs', 'clients', 'galleries', 'webInfo', 'branchOffices', 'insightCategories', 'brandForgeContent', 'brandForgeSubservices'));
@@ -66,13 +65,28 @@ class LayananController extends Controller
         $categories = Blog::select('category')->distinct()->pluck('category');
         $sliderBlogs = Blog::latest()->take(10)->get();
         $clients = Client::latest()->get();
-
-        // 🔥 ambil semua data gallery terbaru
         $galleries = Gallery::latest()->get();
         $webInfo = WebInformation::first();
         $branchOffices = BranchOffice::all();
         $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
 
-        return view('web.layanan.public-presence', compact('categories', 'sliderBlogs', 'clients', 'galleries', 'webInfo', 'branchOffices', 'insightCategories'));
+        // 🔥 Ambil semua SubService yang service name-nya "Public Presence"
+        $publicPresenceSubservices = SubService::whereHas('service', function ($query) {
+            $query->where('name', 'Public Presence');
+        })->get();
+
+        return view(
+            'web.layanan.public-presence',
+            compact(
+                'categories',
+                'sliderBlogs',
+                'clients',
+                'galleries',
+                'webInfo',
+                'branchOffices',
+                'insightCategories',
+                'publicPresenceSubservices', // passing ke view
+            ),
+        );
     }
 }
