@@ -7,7 +7,10 @@ use App\Models\Blog;
 use App\Models\BranchOffice;
 use App\Models\BrandForgeContent;
 use App\Models\Client;
+use App\Models\DigitalArchitectureContent;
+use App\Models\DigitalCompassContent;
 use App\Models\Gallery;
+use App\Models\PublicPresenceContent;
 use App\Models\SubService;
 use App\Models\WebInformation;
 
@@ -35,14 +38,33 @@ class LayananController extends Controller
         $categories = Blog::select('category')->distinct()->pluck('category');
         $sliderBlogs = Blog::latest()->take(10)->get();
         $clients = Client::latest()->get();
-
-        // 🔥 ambil semua data gallery terbaru
         $galleries = Gallery::latest()->get();
         $webInfo = WebInformation::first();
         $branchOffices = BranchOffice::all();
         $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
 
-        return view('web.layanan.digital-compass', compact('categories', 'sliderBlogs', 'clients', 'galleries', 'webInfo', 'branchOffices', 'insightCategories'));
+        // 🔥 Ambil semua SubService yang service name-nya "Digital Compass"
+        $digitalCompassSubservices = SubService::whereHas('service', function ($query) {
+            $query->where('name', 'Digital Compass');
+        })->get();
+
+        // 🔥 Ambil konten utama Digital Compass
+        $digitalCompassContent = DigitalCompassContent::first();
+
+        return view(
+            'web.layanan.digital-compass',
+            compact(
+                'categories',
+                'sliderBlogs',
+                'clients',
+                'galleries',
+                'webInfo',
+                'branchOffices',
+                'insightCategories',
+                'digitalCompassSubservices',
+                'digitalCompassContent', // ✅ kirim konten
+            ),
+        );
     }
 
     public function digitalArchitecture()
@@ -50,14 +72,33 @@ class LayananController extends Controller
         $categories = Blog::select('category')->distinct()->pluck('category');
         $sliderBlogs = Blog::latest()->take(10)->get();
         $clients = Client::latest()->get();
-
-        // 🔥 ambil semua data gallery terbaru
         $galleries = Gallery::latest()->get();
         $webInfo = WebInformation::first();
         $branchOffices = BranchOffice::all();
         $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
 
-        return view('web.layanan.digital-architecture', compact('categories', 'sliderBlogs', 'clients', 'galleries', 'webInfo', 'branchOffices', 'insightCategories'));
+        // 🔥 Ambil semua SubService yang service name-nya "Digital Architecture"
+        $digitalArchitectureSubservices = SubService::whereHas('service', function ($query) {
+            $query->where('name', 'Digital Architecture');
+        })->get();
+
+        // ✅ Ambil konten DigitalArchitectureContent
+        $digitalArchitectureContent = DigitalArchitectureContent::first();
+
+        return view(
+            'web.layanan.digital-architecture',
+            compact(
+                'categories',
+                'sliderBlogs',
+                'clients',
+                'galleries',
+                'webInfo',
+                'branchOffices',
+                'insightCategories',
+                'digitalArchitectureSubservices',
+                'digitalArchitectureContent', // kirim ke view
+            ),
+        );
     }
 
     public function publicPresence()
@@ -75,6 +116,9 @@ class LayananController extends Controller
             $query->where('name', 'Public Presence');
         })->get();
 
+        // 🔥 Ambil konten utama Public Presence
+        $publicPresenceContent = PublicPresenceContent::first();
+
         return view(
             'web.layanan.public-presence',
             compact(
@@ -85,7 +129,8 @@ class LayananController extends Controller
                 'webInfo',
                 'branchOffices',
                 'insightCategories',
-                'publicPresenceSubservices', // passing ke view
+                'publicPresenceSubservices',
+                'publicPresenceContent', // ✅ kirim ke view
             ),
         );
     }

@@ -20,109 +20,93 @@
             </div>
         </div>
     </section>
+    {{-- Gallery Section / Head Image --}}
+    @if ($digitalArchitectureContent)
+        <section class="w-full">
+            <div class="container mx-auto px-6 md:px-12 py-16 text-center">
+                <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
+                    {{ $digitalArchitectureContent->head_paragraph_1 ??
+                        'Digital Development is more than writing codes. It’s about constructing robust digital solutions that serve your business objective and power your digital transformation.' }}
+                    <br /><br />
+                </p>
+                <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
+                    {{ $digitalArchitectureContent->head_paragraph_2 ??
+                        'With collaborative and forward-thinking approach, every development is build with strategic intent.' }}
+                </p>
+            </div>
 
-    {{-- Gallery Section --}}
-    <section class="w-full">
-        <div class="container mx-auto px-6 md:px-12 py-16 text-center">
-            <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
-                Digital Development is more than writing codes. It’s about constructing robust digital solutions that serve
-                your business objective and power your digital transformation.
-                <br /> <br />
-            <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
-                With collaborative and forward-thinking approach, every development is build with strategic intent.
-            </p>
-        </div>
+            <img src="{{ $digitalArchitectureContent->head_img
+                ? Storage::url($digitalArchitectureContent->head_img)
+                : asset('assets/img/gallery1.png') }}"
+                alt="Gallery" class="w-full h-auto object-cover">
 
-        <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery" class="w-full h-auto object-cover">
-
-        <div class="container mx-auto px-6 md:px-12 py-16 text-center">
-            <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
-                Digital Development is more than writing codes. It’s about constructing robust digital solutions that serve
-                your business objective and power your digital transformation.
-                <br /> <br />
-            <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
-                With collaborative and forward-thinking approach, every development is build with strategic intent.
-            </p>
-        </div>
-    </section>
+            <div class="container mx-auto px-6 md:px-12 py-16 text-center">
+                <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
+                    {{ $digitalArchitectureContent->head_paragraph_3 ??
+                        'Digital Development is more than writing codes. It’s about constructing robust digital solutions that serve your business objective and power your digital transformation.' }}
+                    <br /><br />
+                </p>
+                <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
+                    {{ $digitalArchitectureContent->head_paragraph_4 ??
+                        'With collaborative and forward-thinking approach, every development is build with strategic intent.' }}
+                </p>
+            </div>
+        </section>
+    @endif
 
     {{-- Section 1 --}}
     <section class="w-full py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="max-w-7xl mx-auto px-6 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
             {{-- Left Image --}}
             <div>
-                <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Digital Compass"
-                    class="rounded-xl w-full object-cover">
+                <img src="{{ $digitalArchitectureContent && $digitalArchitectureContent->img_services
+                    ? Storage::url($digitalArchitectureContent->img_services)
+                    : asset('assets/img/dummy/dummy2.png') }}"
+                    alt="Digital Architecture" class="rounded-xl w-full object-cover shadow-lg">
             </div>
 
             {{-- Right Text --}}
             <div class="space-y-6 font-rubik">
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900">REACH</h3>
-                    <p class="text-gray-600 text-base leading-relaxed">
-                        We expand your visibility, ensuring your brand connects with the right “Prospect & Customer” across
-                        relevant digital channels.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900">ACT</h3>
-                    <p class="text-gray-600 text-base leading-relaxed">
-                        We inspire and encourage your audience to interact meaningfully with your content and offerings.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900">CONVERT</h3>
-                    <p class="text-gray-600 text-base leading-relaxed">
-                        We drive tangible outcomes, turning your prospects into leads.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900">ENGAGE</h3>
-                    <p class="text-gray-600 text-base leading-relaxed">
-                        We build lasting relationships, fostering loyalty and advocacy over time with your customer base.
-                    </p>
-                </div>
+                @foreach (['1', '2', '3', '4'] as $i)
+                    @php
+                        $title = $digitalArchitectureContent ? $digitalArchitectureContent->{'title' . $i} : null;
+                        $value = $digitalArchitectureContent ? $digitalArchitectureContent->{'value_title' . $i} : null;
+                    @endphp
+                    @if ($title || $value)
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">{{ $title ?? 'Title ' . $i }}</h3>
+                            <p class="text-gray-600 text-base leading-relaxed">
+                                {{ $value ?? 'Description for ' . $title }}
+                            </p>
+                        </div>
+                    @endif
+                @endforeach
             </div>
         </div>
     </section>
 
-    {{-- Section 2 --}}
+    {{-- Section 2: Digital Architecture --}}
     <section class="w-full py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4 text-center"> {{-- sama seperti section 1 --}}
+        <div class="max-w-6xl mx-auto px-4 text-center">
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"> {{-- gap-6 sama seperti section 1 --}}
-
-                {{-- Item 1 --}}
-                <div class="text-center p-1"> {{-- p-1 agar radius kiri-kanan tetap terlihat --}}
-                    <div class="rounded-[28px] overflow-hidden w-full">
-                        <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Search Engine Optimization"
-                            class="w-full h-full object-cover">
+            {{-- Grid dynamic --}}
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                @forelse($digitalArchitectureSubservices as $subservice)
+                    <div class="text-center p-1">
+                        <div class="rounded-[28px] overflow-hidden w-full">
+                            <img src="{{ $subservice->picture_upload ? Storage::url($subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
+                                alt="{{ $subservice->name }}" class="w-full h-full object-cover">
+                        </div>
+                        <p class="mt-2 text-gray-700 font-rubik text-xs">{{ $subservice->name }}</p>
                     </div>
-                    <p class="mt-2 text-gray-700 font-rubik text-xs">Search Engine Optimization</p>
-                </div>
-
-                {{-- Item 2 --}}
-                <div class="text-center p-1">
-                    <div class="rounded-[28px] overflow-hidden w-full">
-                        <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Search Engine Marketing"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <p class="mt-2 text-gray-700 font-rubik text-xs">Search Engine Marketing</p>
-                </div>
-
-                {{-- Item 3 --}}
-                <div class="text-center p-1">
-                    <div class="rounded-[28px] overflow-hidden w-full">
-                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Social Media Advertising"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <p class="mt-2 text-gray-700 font-rubik text-xs">Social Media Advertising</p>
-                </div>
-
+                @empty
+                    <p class="col-span-full text-gray-500 text-sm">No services available at the moment.</p>
+                @endforelse
             </div>
         </div>
     </section>
+
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"

@@ -20,7 +20,6 @@
             </div>
         </div>
     </section>
-
     {{-- Gallery Section --}}
     <section class="w-full">
         <div class="container mx-auto px-6 md:px-12 py-16 text-center">
@@ -35,118 +34,84 @@
             </p>
         </div>
 
-        <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery" class="w-full h-auto object-cover">
+        {{-- ✅ head_img dari database --}}
+        @if ($digitalCompassContent && $digitalCompassContent->head_img)
+            <img src="{{ Storage::url($digitalCompassContent->head_img) }}" alt="Gallery"
+                class="w-full h-auto object-cover">
+        @else
+            <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery" class="w-full h-auto object-cover">
+        @endif
     </section>
 
     {{-- Section 1 --}}
     <section class="w-full py-20 bg-white">
         <div class="max-w-7xl mx-auto px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-            {{-- Left Image --}}
+            {{-- ✅ Left Image dinamis --}}
             <div>
-                <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Digital Compass"
-                    class="rounded-xl w-full object-cover">
+                @if ($digitalCompassContent && $digitalCompassContent->img_services)
+                    <img src="{{ Storage::url($digitalCompassContent->img_services) }}" alt="Digital Compass"
+                        class="rounded-xl w-full object-cover">
+                @else
+                    <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Digital Compass"
+                        class="rounded-xl w-full object-cover">
+                @endif
             </div>
 
-            {{-- Right Text --}}
+            {{-- ✅ Right Text (title dan value dari DB) --}}
             <div class="space-y-6 font-rubik">
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900">REACH</h3>
-                    <p class="text-gray-600 text-base leading-relaxed">
-                        We expand your visibility, ensuring your brand connects with the right “Prospect & Customer” across
-                        relevant digital channels.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900">ACT</h3>
-                    <p class="text-gray-600 text-base leading-relaxed">
-                        We inspire and encourage your audience to interact meaningfully with your content and offerings.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900">CONVERT</h3>
-                    <p class="text-gray-600 text-base leading-relaxed">
-                        We drive tangible outcomes, turning your prospects into leads.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900">ENGAGE</h3>
-                    <p class="text-gray-600 text-base leading-relaxed">
-                        We build lasting relationships, fostering loyalty and advocacy over time with your customer base.
-                    </p>
-                </div>
+                @for ($i = 1; $i <= 4; $i++)
+                    @php
+                        $title = $digitalCompassContent->{'title' . $i} ?? null;
+                        $value = $digitalCompassContent->{'value_title' . $i} ?? null;
+                    @endphp
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900">
+                            {{ $title ??
+                                match ($i) {
+                                    1 => 'REACH',
+                                    2 => 'ACT',
+                                    3 => 'CONVERT',
+                                    4 => 'ENGAGE',
+                                } }}
+                        </h3>
+                        <p class="text-gray-600 text-base leading-relaxed">
+                            {{ $value ??
+                                match ($i) {
+                                    1
+                                        => 'We expand your visibility, ensuring your brand connects with the right “Prospect & Customer” across relevant digital channels.',
+                                    2 => 'We inspire and encourage your audience to interact meaningfully with your content and offerings.',
+                                    3 => 'We drive tangible outcomes, turning your prospects into leads.',
+                                    4 => 'We build lasting relationships, fostering loyalty and advocacy over time with your customer base.',
+                                } }}
+                        </p>
+                    </div>
+                @endfor
             </div>
         </div>
     </section>
-{{-- Section 2 --}}
-<section class="w-full py-8 bg-white"> {{-- py-20 -> py-8 agar konsisten --}}
-  <div class="max-w-6xl mx-auto px-4 text-center"> {{-- max-w & px diseragamkan --}}
 
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-6"> {{-- grid & gap disamakan --}}
+    {{-- Section 2: Digital Compass --}}
+    <section class="w-full py-8 bg-white">
+        <div class="max-w-6xl mx-auto px-4 text-center">
 
-      {{-- Item 1 --}}
-      <div class="text-center p-1">
-        <div class="rounded-[28px] overflow-hidden w-full">
-          <img src="{{ asset('assets/img/dummy/dummy1.png') }}" 
-               alt="Search Engine Optimization"
-               class="w-full h-full object-cover block">
+            {{-- Grid dynamic --}}
+            <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-6">
+                @forelse($digitalCompassSubservices as $subservice)
+                    <div class="text-center p-1">
+                        <div class="rounded-[28px] overflow-hidden w-full">
+                            <img src="{{ $subservice->picture_upload ? Storage::url($subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
+                                alt="{{ $subservice->name }}" class="w-full h-full object-cover block">
+                        </div>
+                        <p class="mt-2 text-gray-700 font-rubik text-xs">{{ $subservice->name }}</p>
+                    </div>
+                @empty
+                    <p class="col-span-full text-gray-500 text-sm">No services available at the moment.</p>
+                @endforelse
+            </div>
         </div>
-        <p class="mt-2 text-gray-700 font-rubik text-xs">Search Engine Optimization</p>
-      </div>
-
-      {{-- Item 2 --}}
-      <div class="text-center p-1">
-        <div class="rounded-[28px] overflow-hidden w-full">
-          <img src="{{ asset('assets/img/dummy/dummy2.png') }}" 
-               alt="Search Engine Marketing"
-               class="w-full h-full object-cover block">
-        </div>
-        <p class="mt-2 text-gray-700 font-rubik text-xs">Search Engine Marketing</p>
-      </div>
-
-      {{-- Item 3 --}}
-      <div class="text-center p-1">
-        <div class="rounded-[28px] overflow-hidden w-full">
-          <img src="{{ asset('assets/img/dummy/dummy3.png') }}" 
-               alt="Social Media Advertising"
-               class="w-full h-full object-cover block">
-        </div>
-        <p class="mt-2 text-gray-700 font-rubik text-xs">Social Media Advertising</p>
-      </div>
-
-      {{-- Item 4 --}}
-      <div class="text-center p-1">
-        <div class="rounded-[28px] overflow-hidden w-full">
-          <img src="{{ asset('assets/img/dummy/dummy1.png') }}" 
-               alt="Social Media Management"
-               class="w-full h-full object-cover block">
-        </div>
-        <p class="mt-2 text-gray-700 font-rubik text-xs">Social Media Management</p>
-      </div>
-
-      {{-- Item 5 --}}
-      <div class="text-center p-1">
-        <div class="rounded-[28px] overflow-hidden w-full">
-          <img src="{{ asset('assets/img/dummy/dummy2.png') }}" 
-               alt="Influencer Marketing"
-               class="w-full h-full object-cover block">
-        </div>
-        <p class="mt-2 text-gray-700 font-rubik text-xs">Influencer Marketing</p>
-      </div>
-
-      {{-- Item 6 --}}
-      <div class="text-center p-1">
-        <div class="rounded-[28px] overflow-hidden w-full">
-          <img src="{{ asset('assets/img/dummy/dummy3.png') }}" 
-               alt="Digital Public Relations"
-               class="w-full h-full object-cover block">
-        </div>
-        <p class="mt-2 text-gray-700 font-rubik text-xs">Digital Public Relations</p>
-      </div>
-
-    </div>
-  </div>
-</section>
+    </section>
 
 
     {{-- CTA Section --}}
@@ -158,26 +123,24 @@
             class="relative max-w-screen-xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center md:items-start justify-between">
 
             {{-- Left Big Text --}}
-            <div class="mb-12 md:mb-0">
+            <div class="mb-12 md:mb-0 text-center md:text-left">
                 <h2 class="text-4xl md:text-6xl leading-relaxed tracking-[0.5em]">
-                    <span class="font-thin block">DREAM</span>
-                    <span class="font-bold block">BOLDER</span>
-                    <span class="font-thin block">ACHIEVE</span>
-                    <span class="font-bold block">BIGGER</span>
+                    <span class="font-thin block">{{ __('home/cta.dream') }}</span>
+                    <span class="font-bold block">{{ __('home/cta.bolder') }}</span>
+                    <span class="font-thin block">{{ __('home/cta.achieve') }}</span>
+                    <span class="font-bold block">{{ __('home/cta.bigger') }}</span>
                 </h2>
             </div>
 
             {{-- Right Content --}}
-            <div class="max-w-lg">
-                <h3 class="text-2xl md:text-3xl font-semibold mb-4">Let’s ignite your growth!</h3>
+            <div class="max-w-lg text-center md:text-left">
+                <h3 class="text-2xl md:text-3xl font-semibold mb-4">{{ __('home/cta.title') }}</h3>
                 <p class="text-base md:text-lg mb-6 leading-relaxed">
-                    Partner with Communic8's 20 years of creative strategic expertise.
-                    We're dedicated to understanding your unique goals and crafting innovative digital solutions
-                    that deliver exceptional results across Southeast Asia.
+                    {{ __('home/cta.description') }}
                 </p>
                 <a href="#"
                     class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
-                    Begin Your Ascent
+                    {{ __('home/cta.button') }}
                 </a>
             </div>
         </div>
