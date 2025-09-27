@@ -2,10 +2,13 @@
 
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BrandForgeContentController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SubServiceController;
 use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\Web\AboutController;
 use App\Http\Controllers\Web\ContactController;
@@ -117,6 +120,23 @@ Route::middleware('auth')->group(function () {
     Route::get('testimonies/{testimoni}/edit', [TestimoniController::class, 'edit'])->name('testimonies.edit');
     Route::put('testimonies/{testimoni}', [TestimoniController::class, 'update'])->name('testimonies.update');
     Route::delete('testimonies/{testimoni}', [TestimoniController::class, 'destroy'])->name('testimonies.destroy');
+
+    Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
+    Route::get('/services/create', [ServiceController::class, 'create'])->name('services.create');
+    Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
+    Route::get('/services/{id}/edit', [ServiceController::class, 'edit'])->name('services.edit');
+    Route::put('/services/{id}', [ServiceController::class, 'update'])->name('services.update');
+    Route::delete('/services/{id}', [ServiceController::class, 'destroy'])->name('services.destroy');
+
+    Route::get('/brandforge', [BrandForgeContentController::class, 'form'])->name('brandforge.form');
+    Route::post('/brandforge/save', [BrandForgeContentController::class, 'save'])->name('brandforge.save');
+
+    Route::get('services/subservices', [SubServiceController::class, 'index'])->name('subservices.index');
+    Route::get('services/subservices/create', [SubServiceController::class, 'create'])->name('subservices.create');
+    Route::post('services/subservices', [SubServiceController::class, 'store'])->name('subservices.store');
+    Route::get('services/subservices/{subservice}/edit', [SubServiceController::class, 'edit'])->name('subservices.edit');
+    Route::put('services/subservices/{subservice}', [SubServiceController::class, 'update'])->name('subservices.update');
+    Route::delete('services/subservices/{subservice}', [SubServiceController::class, 'destroy'])->name('subservices.destroy');
 });
 
 Route::get('lang/{locale}', function ($locale) {
@@ -126,6 +146,5 @@ Route::get('lang/{locale}', function ($locale) {
     }
     return redirect()->back();
 })->name('lang.switch');
-
 
 require __DIR__ . '/auth.php';

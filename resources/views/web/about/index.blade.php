@@ -4,8 +4,9 @@
 @section('content')
     <div class="relative">
 
-        {{-- Hero Section --}}
-        <section class="relative bg-cover bg-center min-h-[125vh] flex flex-col items-center justify-start text-center px-6"
+{{-- Hero Section --}}
+        <section class="relative bg-cover bg-center flex flex-col items-center text-center px-6
+                        min-h-[100vh] md:min-h-[125vh]"
             style="background-image: url('{{ asset('assets/img/sectionhero.png') }}');">
             <div class="absolute inset-0 bg-white/20"></div>
 
@@ -13,30 +14,33 @@
             <br class="hidden sm:block" />
 
             {{-- Hero Title --}}
-            <div class="relative z-10 pt-40">
-                <h1
-                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-bold 
-            text-[#000000] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+            <div class="relative z-10 pt-32 md:pt-40">
+                <h1 class="font-poppins font-bold text-[#000000] leading-snug mb-4 sm:mb-6
+                          text-xl sm:text-3xl md:text-4xl
+                          {{ app()->getLocale() == 'en' ? 'tracking-normal sm:tracking-[0.35em]' : 'tracking-normal' }}">
                     {{ __('about/hero.headline_1') }}
                 </h1>
-                <h1
-                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-bold 
-            text-[#000000] tracking-normal sm:tracking-[0.35em] leading-snug">
+                <h1 class="font-poppins font-bold text-[#000000] leading-snug
+                          text-xl sm:text-3xl md:text-4xl
+                          {{ app()->getLocale() == 'en' ? 'tracking-normal sm:tracking-[0.35em]' : 'tracking-normal' }}">
                     {{ __('about/hero.headline_2') }}
                 </h1>
             </div>
 
             {{-- Red Box PNG --}}
-            <div class="absolute top-1/3 left-1/2 -translate-x-1/2 z-20">
-                <img src="{{ asset('assets/img/redbox.png') }}" alt="Red Box" class="w-[420px] md:w-[520px] lg:w-[640px]">
+            <div class="relative z-20 mt-8 md:mt-12">
+                <img src="{{ asset('assets/img/redbox.png') }}" alt="Red Box" 
+                     class="w-[280px] sm:w-[350px] md:w-[520px] lg:w-[640px]">
             </div>
 
             {{-- About Us --}}
-            <div class="relative z-10 mt-[36rem] md:mt-[40rem] lg:mt-[44rem] max-w-3xl pb-20">
-                <h2 class="text-lg tracking-[0.3em] font-medium mb-6">
+            <div class="relative z-10 max-w-3xl pb-12 md:pb-20 mt-8 md:mt-16">
+                <h2 class="font-medium mb-4 md:mb-6
+                          text-base md:text-lg
+                          {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}">
                     {{ __('about/hero.about_us_title') }}
                 </h2>
-                <p class="text-gray-700 leading-relaxed">
+                <p class="text-gray-700 leading-relaxed text-sm md:text-base">
                     {!! __('about/hero.about_us_text') !!}
                 </p>
             </div>

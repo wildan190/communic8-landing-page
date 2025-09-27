@@ -1,7 +1,6 @@
 @extends('layouts.web')
 
 @section('content')
-
     <section class="relative w-full min-h-[85vh] bg-cover bg-center"
         style="background-image: url('{{ asset('assets/img/sectionhero.png') }}')">
 
@@ -69,7 +68,8 @@
                 <div class="md:hidden">
                     {{-- Text Content First on Mobile --}}
                     <div class="text-center mb-8">
-                        <h2 class="text-xl sm:text-2xl text-gray-700 mb-4 sm:mb-6 leading-tight px-2
+                        <h2
+                            class="text-xl sm:text-2xl text-gray-700 mb-4 sm:mb-6 leading-tight px-2
                            {{ app()->getLocale() == 'en' ? 'tracking-[0.2em] sm:tracking-[0.3em]' : 'tracking-normal' }}">
                             {!! __('home/glance.title') !!}
                         </h2>
@@ -108,7 +108,8 @@
 
                     {{-- Text --}}
                     <div class="text-left flex flex-col justify-center">
-                        <h2 class="text-2xl sm:text-3xl md:text-4xl text-gray-700 mb-6 leading-tight
+                        <h2
+                            class="text-2xl sm:text-3xl md:text-4xl text-gray-700 mb-6 leading-tight
                            {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}">
                             {!! __('home/glance.title') !!}
                         </h2>
@@ -148,7 +149,7 @@
                         <i class="fas fa-briefcase"></i>
                     </div>
                     <div>
-                        <div class="text-3xl font-bold text-orange-500">15+</div>
+                        <div class="text-3xl font-bold text-orange-500">{{ now()->year - 2010 }}+</div>
                         <div class="text-gray-700 font-semibold text-sm">{{ __('home/values.years_experience') }}</div>
                     </div>
                 </div>
@@ -191,7 +192,8 @@
 
             {{-- Title Section --}}
             <div class="text-center mb-16">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl text-gray-700 mb-6
+                <h2
+                    class="text-2xl sm:text-3xl md:text-4xl text-gray-700 mb-6
                           {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}
                           leading-tight">
                     {!! __('home/what_we_do.title') !!}
@@ -216,11 +218,13 @@
                             class="w-full h-48 sm:h-60 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
 
                         <div class="flex flex-col items-center text-center w-full flex-1 pb-4">
-                            <h3 class="font-bold text-gray-700 mb-3 break-words px-1
+                            <h3
+                                class="font-bold text-gray-700 mb-3 break-words px-1
                                {{ app()->getLocale() == 'en' ? 'text-lg sm:text-xl' : 'text-base sm:text-lg' }}">
                                 {{ $card['title'] }}
                             </h3>
-                            <p class="text-gray-600 leading-relaxed px-1 mb-6 flex-1 break-words hyphens-auto
+                            <p
+                                class="text-gray-600 leading-relaxed px-1 mb-6 flex-1 break-words hyphens-auto
                               {{ app()->getLocale() == 'en' ? 'text-sm' : 'text-xs sm:text-sm' }}">
                                 {{ $card['desc'] }}
                             </p>
@@ -284,13 +288,55 @@
 
             {{-- Grid Projects --}}
             <div class="grid grid-cols-6 gap-6" id="trusted-projects">
-                @foreach ($trustedProjects as $key => $project)
+                @php
+                    // Ambil 2 project highlight untuk kotak besar
+                    $highlightedProjects = $trustedProjects->where('is_highlighted', true)->take(2)->values();
+
+                    // Ambil project lain untuk kotak kecil (total 3)
+                    $remainingProjects = $trustedProjects
+                        ->whereNotIn('id', $highlightedProjects->pluck('id'))
+                        ->take(3)
+                        ->values();
+
+                    // Gabungkan untuk 5 project awal
+                    $initialProjects = $highlightedProjects->concat($remainingProjects);
+
+                    // Sisanya hidden untuk See More / See Less
+                    $moreProjects = $trustedProjects->whereNotIn('id', $initialProjects->pluck('id'));
+                @endphp
+
+                {{-- Tampilkan 5 project awal --}}
+                @foreach ($initialProjects as $key => $project)
                     @php
                         $colClass = $key < 2 ? 'col-span-6 md:col-span-3' : 'col-span-6 md:col-span-2';
-                        $hiddenClass = $key >= 5 ? 'hidden more-project' : '';
                     @endphp
+                    <div class="{{ $colClass }} border border-gray-200 rounded-2xl p-4 flex flex-col">
+                        <div class="flex justify-between items-center mb-2">
+                            <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
+                            @if ($project->project_url)
+                                <a href="{{ $project->project_url }}" target="_blank"
+                                    class="text-gray-400 hover:text-gray-600">
+                                    <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
+                                </a>
+                            @endif
+                        </div>
+                        <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
+                        <div class="rounded-xl overflow-hidden">
+                            @if ($project->project_img)
+                                <img src="{{ asset('storage/' . $project->project_img) }}" alt="{{ $project->name }}"
+                                    class="w-full object-cover">
+                            @else
+                                <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="No Image"
+                                    class="w-full object-cover">
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
+
+                {{-- Tampilkan project lebih (hidden awalnya) --}}
+                @foreach ($moreProjects as $project)
                     <div
-                        class="{{ $colClass }} border border-gray-200 rounded-2xl p-4 flex flex-col {{ $hiddenClass }}">
+                        class="col-span-6 md:col-span-2 border border-gray-200 rounded-2xl p-4 flex flex-col hidden more-project">
                         <div class="flex justify-between items-center mb-2">
                             <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
                             @if ($project->project_url)
@@ -364,7 +410,7 @@
             loop: true,
             autoplay: {
                 delay: 2000,
-                disableOnInteraction: false,
+                disableOnInteraction: false
             },
             breakpoints: {
                 640: {
@@ -375,11 +421,10 @@
                 },
                 1024: {
                     slidesPerView: 6
-                },
+                }
             },
         });
 
-        // Toggle Projects with Translations
         const toggleBtn = document.getElementById("toggle-projects");
         const moreProjects = document.querySelectorAll(".more-project");
         const textMore = toggleBtn.dataset.more;

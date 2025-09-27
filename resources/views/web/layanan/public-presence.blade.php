@@ -86,75 +86,31 @@
     </section>
 
     {{-- Services Grid Section --}}
-    <section class="w-full py-8 bg-white"> {{-- py-20 -> py-8 --}}
-        <div class="max-w-6xl mx-auto px-4 text-center"> {{-- max-w-7xl -> max-w-6xl, px-20 -> px-4 --}}
+    <section class="w-full py-8 bg-white">
+        <div class="max-w-6xl mx-auto px-4 text-center">
 
             {{-- Top description --}}
-            <p class="text-gray-700 font-rubik text-sm leading-snug max-w-xl mx-auto"> {{-- font & leading diseragamkan --}}
+            <p class="text-gray-700 font-rubik text-sm leading-snug max-w-xl mx-auto">
                 Communic 8's Brand Development service shapes every facet of your identity from
                 foundational research to brand design and activation.
             </p>
-            <p class="mt-1 font-rubik font-semibold text-gray-900 text-sm"> {{-- mt-4 -> mt-1 --}}
+            <p class="mt-1 font-rubik font-semibold text-gray-900 text-sm">
                 Let us help you build a resilient brand that will stand through the test of time.
             </p>
 
-            {{-- Grid 6 --}}
-            <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-6"> {{-- mt-16 -> mt-6, gap-12 -> gap-6 --}}
-
-                {{-- Item 1 --}}
-                <div class="text-center p-1">
-                    <div class="rounded-[28px] overflow-hidden w-full">
-                        <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Brand Platform"
-                            class="w-full h-full object-cover block">
+            {{-- Grid dynamic --}}
+            <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-6">
+                @forelse($publicPresenceSubservices as $subservice)
+                    <div class="text-center p-1">
+                        <div class="rounded-[28px] overflow-hidden w-full">
+                            <img src="{{ $subservice->picture_upload ? Storage::url($subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
+                                alt="{{ $subservice->name }}" class="w-full h-full object-cover block">
+                        </div>
+                        <p class="mt-2 text-gray-700 font-rubik text-xs">{{ $subservice->name }}</p>
                     </div>
-                    <p class="mt-2 text-gray-700 font-rubik text-xs">Brand Platform</p>
-                </div>
-
-                {{-- Item 2 --}}
-                <div class="text-center p-1">
-                    <div class="rounded-[28px] overflow-hidden w-full">
-                        <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Brand Identity"
-                            class="w-full h-full object-cover block">
-                    </div>
-                    <p class="mt-2 text-gray-700 font-rubik text-xs">Brand Identity</p>
-                </div>
-
-                {{-- Item 3 --}}
-                <div class="text-center p-1">
-                    <div class="rounded-[28px] overflow-hidden w-full">
-                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Brand System"
-                            class="w-full h-full object-cover block">
-                    </div>
-                    <p class="mt-2 text-gray-700 font-rubik text-xs">Brand System</p>
-                </div>
-
-                {{-- Item 4 --}}
-                <div class="text-center p-1">
-                    <div class="rounded-[28px] overflow-hidden w-full">
-                        <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Brand Activation"
-                            class="w-full h-full object-cover block">
-                    </div>
-                    <p class="mt-2 text-gray-700 font-rubik text-xs">Brand Activation</p>
-                </div>
-
-                {{-- Item 5 --}}
-                <div class="text-center p-1">
-                    <div class="rounded-[28px] overflow-hidden w-full">
-                        <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Creative Design"
-                            class="w-full h-full object-cover block">
-                    </div>
-                    <p class="mt-2 text-gray-700 font-rubik text-xs">Creative Design</p>
-                </div>
-
-                {{-- Item 6 --}}
-                <div class="text-center p-1">
-                    <div class="rounded-[28px] overflow-hidden w-full">
-                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Corporate Brand Guideline"
-                            class="w-full h-full object-cover block">
-                    </div>
-                    <p class="mt-2 text-gray-700 font-rubik text-xs">Corporate Brand Guideline</p>
-                </div>
-
+                @empty
+                    <p class="col-span-full text-gray-500 text-sm">No services available at the moment.</p>
+                @endforelse
             </div>
         </div>
     </section>
@@ -168,26 +124,24 @@
             class="relative max-w-screen-xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center md:items-start justify-between">
 
             {{-- Left Big Text --}}
-            <div class="mb-12 md:mb-0">
+            <div class="mb-12 md:mb-0 text-center md:text-left">
                 <h2 class="text-4xl md:text-6xl leading-relaxed tracking-[0.5em]">
-                    <span class="font-thin block">DREAM</span>
-                    <span class="font-bold block">BOLDER</span>
-                    <span class="font-thin block">ACHIEVE</span>
-                    <span class="font-bold block">BIGGER</span>
+                    <span class="font-thin block">{{ __('home/cta.dream') }}</span>
+                    <span class="font-bold block">{{ __('home/cta.bolder') }}</span>
+                    <span class="font-thin block">{{ __('home/cta.achieve') }}</span>
+                    <span class="font-bold block">{{ __('home/cta.bigger') }}</span>
                 </h2>
             </div>
 
             {{-- Right Content --}}
-            <div class="max-w-lg">
-                <h3 class="text-2xl md:text-3xl font-semibold mb-4">Let’s ignite your growth!</h3>
+            <div class="max-w-lg text-center md:text-left">
+                <h3 class="text-2xl md:text-3xl font-semibold mb-4">{{ __('home/cta.title') }}</h3>
                 <p class="text-base md:text-lg mb-6 leading-relaxed">
-                    Partner with Communic8's 20 years of creative strategic expertise.
-                    We're dedicated to understanding your unique goals and crafting innovative digital solutions
-                    that deliver exceptional results across Southeast Asia.
+                    {{ __('home/cta.description') }}
                 </p>
                 <a href="#"
                     class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
-                    Begin Your Ascent
+                    {{ __('home/cta.button') }}
                 </a>
             </div>
         </div>
