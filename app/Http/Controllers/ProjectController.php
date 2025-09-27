@@ -27,7 +27,16 @@ class ProjectController extends Controller
             'client' => 'nullable|string|max:255',
             'project_img' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'project_url' => 'nullable|url',
+            'is_highlighted' => 'nullable|boolean',
         ]);
+
+        // Set boolean
+        $validated['is_highlighted'] = $request->has('is_highlighted');
+
+        // Cek maksimal 2 highlight
+        if ($validated['is_highlighted'] && Project::where('is_highlighted', true)->count() >= 2) {
+            return back()->withErrors(['is_highlighted' => 'Maximum 2 projects can be highlighted at a time.'])->withInput();
+        }
 
         if ($request->hasFile('project_img')) {
             $validated['project_img'] = $request->file('project_img')->store('projects', 'public');
@@ -50,7 +59,16 @@ class ProjectController extends Controller
             'client' => 'nullable|string|max:255',
             'project_img' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'project_url' => 'nullable|url',
+            'is_highlighted' => 'nullable|boolean',
         ]);
+
+        // Set boolean
+        $validated['is_highlighted'] = $request->has('is_highlighted');
+
+        // Cek maksimal 2 highlight (kecuali project ini sendiri)
+        if ($validated['is_highlighted'] && Project::where('is_highlighted', true)->where('id', '!=', $project->id)->count() >= 2) {
+            return back()->withErrors(['is_highlighted' => 'Maximum 2 projects can be highlighted at a time.'])->withInput();
+        }
 
         if ($request->hasFile('project_img')) {
             if ($project->project_img) {
@@ -69,6 +87,7 @@ class ProjectController extends Controller
         if ($project->project_img) {
             Storage::disk('public')->delete($project->project_img);
         }
+
         $project->delete();
 
         return redirect()->route('projects.index')->with('success', 'Project deleted successfully!');

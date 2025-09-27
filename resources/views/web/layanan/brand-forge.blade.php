@@ -23,50 +23,47 @@
 
     {{-- Gallery Section --}}
     <section class="w-full">
-        <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery" class="w-full h-auto object-cover">
+        @if ($brandForgeContent && $brandForgeContent->head_img)
+            <img src="{{ asset('storage/' . $brandForgeContent->head_img) }}" alt="Gallery"
+                class="w-full h-auto object-cover">
+        @else
+            <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery" class="w-full h-auto object-cover">
+        @endif
     </section>
 
     {{-- Strategy Section --}}
     <section class="w-full py-24">
         <div class="max-w-7xl mx-auto px-20 space-y-24">
-            {{-- 👆 Samain px-20 atau sesuai padding navbar kamu --}}
-
             {{-- Row 1 --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="text-left">
                     <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase">
-                        Insight-Driven<br>Strategy
+                        {!! $brandForgeContent->insight_strategy_driven ?? 'Insight-Driven<br>Strategy' !!}
                     </h2>
                     <p class="mt-6 text-gray-700 font-rubik leading-relaxed text-sm md:text-base">
-                        Every powerful brand is built on a foundation of deep understanding.
-                        Our process begins with comprehensive analysis, where we dive into your market, competitive
-                        landscape, and audience behavior.
-                        This strategic thinking ensures your brand’s positioning is not only unique but also precisely
-                        aligned with your business objectives for maximum effectiveness.
+                        {!! $brandForgeContent->desc_insight_strategy_driven ??
+                            'Every powerful brand is built on a foundation of deep understanding...' !!}
                     </p>
                 </div>
                 <div class="flex justify-center">
-                    <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Insight Driven Strategy"
-                        class="rounded-xl w-full max-w-md object-cover">
+                    <img src="{{ $brandForgeContent && $brandForgeContent->img_insight_strategy_driven ? asset('storage/' . $brandForgeContent->img_insight_strategy_driven) : asset('assets/img/dummy/dummy1.png') }}"
+                        alt="Insight Driven Strategy" class="rounded-xl w-full max-w-md object-cover">
                 </div>
             </div>
 
             {{-- Row 2 --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="order-2 md:order-1 flex justify-center">
-                    <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Bold Creative Ideas"
-                        class="rounded-xl w-full max-w-md object-cover">
+                    <img src="{{ $brandForgeContent && $brandForgeContent->img_bold_creative_ideas ? asset('storage/' . $brandForgeContent->img_bold_creative_ideas) : asset('assets/img/dummy/dummy2.png') }}"
+                        alt="Bold Creative Ideas" class="rounded-xl w-full max-w-md object-cover">
                 </div>
                 <div class="order-1 md:order-2 text-left">
                     <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase">
-                        Bold Creative<br>Ideas
+                        {!! $brandForgeContent->bold_creative_ideas ?? 'Bold Creative<br>Ideas' !!}
                     </h2>
                     <p class="mt-6 text-gray-700 font-rubik leading-relaxed text-sm md:text-base">
-                        Strategy provides the direction, creativity makes the journey unforgettable.
-                        We translate strategic insights into bold ideas and out-of-the-box concepts with creative and
-                        different thinking.
-                        This is where we craft the unique personality and compelling narrative that gives your brand a
-                        distinctive voice.
+                        {!! $brandForgeContent->desc_bold_creative_ideas ??
+                            'Strategy provides the direction, creativity makes the journey unforgettable...' !!}
                     </p>
                 </div>
             </div>
@@ -75,22 +72,18 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="text-left">
                     <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase">
-                        Impactful<br>Visual Identity
+                        {!! $brandForgeContent->impactful_visual_identity ?? 'Impactful<br>Visual Identity' !!}
                     </h2>
                     <p class="mt-6 text-gray-700 font-rubik leading-relaxed text-sm md:text-base">
-                        We bring your brand’s story to life through strong visuals that command attention and ensure
-                        consistency.
-                        From a striking logo and color palette to a complete “Corporate Brand Guideline”, our design
-                        expertise ensures your visual identity is not only beautiful but also cohesive and impactful across
-                        every single touchpoint.
+                        {!! $brandForgeContent->desc_impactful_visual_identity ??
+                            'We bring your brand’s story to life through strong visuals...' !!}
                     </p>
                 </div>
                 <div class="flex justify-center">
-                    <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Impactful Visual Identity"
-                        class="rounded-xl w-full max-w-md object-cover">
+                    <img src="{{ $brandForgeContent && $brandForgeContent->img_impactful_visual_identity ? asset('storage/' . $brandForgeContent->img_impactful_visual_identity) : asset('assets/img/dummy/dummy3.png') }}"
+                        alt="Impactful Visual Identity" class="rounded-xl w-full max-w-md object-cover">
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -107,63 +100,31 @@
                 Let us help you build a resilient brand that will stand through the test of time.
             </p>
 
-            {{-- Grid 6 --}}
+            {{-- Grid --}}
             <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-6">
+                @php
+                    $brandForgeSubservices = \App\Models\SubService::with('service')
+                        ->whereHas('service', fn($q) => $q->where('name', 'Brand Forge'))
+                        ->latest()
+                        ->get();
+                @endphp
 
-                {{-- Item 1 --}}
-                <div class="text-center p-1"> {{-- ← tambahkan padding kecil --}}
-                    <div class="rounded-[28px] overflow-hidden w-full">
-                        <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Brand Platform"
-                            class="w-full h-full object-cover">
+                @forelse($brandForgeSubservices as $subservice)
+                    <div class="text-center p-1">
+                        <div class="rounded-[28px] overflow-hidden w-full">
+                            @if ($subservice->picture_upload)
+                                <img src="{{ asset('storage/' . $subservice->picture_upload) }}"
+                                    alt="{{ $subservice->name }}" class="w-full h-full object-cover">
+                            @else
+                                <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="{{ $subservice->name }}"
+                                    class="w-full h-full object-cover">
+                            @endif
+                        </div>
+                        <p class="mt-2 text-gray-700 font-rubik text-xs">{{ $subservice->name }}</p>
                     </div>
-                    <p class="mt-2 text-gray-700 font-rubik text-xs">Brand Platform</p>
-                </div>
-
-                {{-- Item 2 --}}
-                <div class="text-center p-1">
-                    <div class="rounded-[28px] overflow-hidden w-full">
-                        <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Brand Identity"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <p class="mt-2 text-gray-700 font-rubik text-xs">Brand Identity</p>
-                </div>
-
-                {{-- Item 3 --}}
-                <div class="text-center p-1">
-                    <div class="rounded-[28px] overflow-hidden w-full">
-                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Brand System"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <p class="mt-2 text-gray-700 font-rubik text-xs">Brand System</p>
-                </div>
-
-                {{-- Item 4 --}}
-                <div class="text-center p-1">
-                    <div class="rounded-[28px] overflow-hidden w-full">
-                        <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Brand Activation"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <p class="mt-2 text-gray-700 font-rubik text-xs">Brand Activation</p>
-                </div>
-
-                {{-- Item 5 --}}
-                <div class="text-center p-1">
-                    <div class="rounded-[28px] overflow-hidden w-full">
-                        <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Creative Design"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <p class="mt-2 text-gray-700 font-rubik text-xs">Creative Design</p>
-                </div>
-
-                {{-- Item 6 --}}
-                <div class="text-center p-1">
-                    <div class="rounded-[28px] overflow-hidden w-full">
-                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Corporate Brand Guideline"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <p class="mt-2 text-gray-700 font-rubik text-xs">Corporate Brand Guideline</p>
-                </div>
-
+                @empty
+                    <p class="col-span-3 text-center text-gray-500">No Brand Forge subservices found.</p>
+                @endforelse
             </div>
         </div>
     </section>
@@ -177,26 +138,24 @@
             class="relative max-w-screen-xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center md:items-start justify-between">
 
             {{-- Left Big Text --}}
-            <div class="mb-12 md:mb-0">
+            <div class="mb-12 md:mb-0 text-center md:text-left">
                 <h2 class="text-4xl md:text-6xl leading-relaxed tracking-[0.5em]">
-                    <span class="font-thin block">DREAM</span>
-                    <span class="font-bold block">BOLDER</span>
-                    <span class="font-thin block">ACHIEVE</span>
-                    <span class="font-bold block">BIGGER</span>
+                    <span class="font-thin block">{{ __('home/cta.dream') }}</span>
+                    <span class="font-bold block">{{ __('home/cta.bolder') }}</span>
+                    <span class="font-thin block">{{ __('home/cta.achieve') }}</span>
+                    <span class="font-bold block">{{ __('home/cta.bigger') }}</span>
                 </h2>
             </div>
 
             {{-- Right Content --}}
-            <div class="max-w-lg">
-                <h3 class="text-2xl md:text-3xl font-semibold mb-4">Let’s ignite your growth!</h3>
+            <div class="max-w-lg text-center md:text-left">
+                <h3 class="text-2xl md:text-3xl font-semibold mb-4">{{ __('home/cta.title') }}</h3>
                 <p class="text-base md:text-lg mb-6 leading-relaxed">
-                    Partner with Communic8's 20 years of creative strategic expertise.
-                    We're dedicated to understanding your unique goals and crafting innovative digital solutions
-                    that deliver exceptional results across Southeast Asia.
+                    {{ __('home/cta.description') }}
                 </p>
                 <a href="#"
                     class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
-                    Begin Your Ascent
+                    {{ __('home/cta.button') }}
                 </a>
             </div>
         </div>

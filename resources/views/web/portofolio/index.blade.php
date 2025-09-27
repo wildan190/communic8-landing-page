@@ -1,82 +1,112 @@
 @extends('layouts.web')
 
 @section('content')
-    <!-- Portfolio Section -->
-    <section class="relative pt-56 pb-20">
-        <!-- Background image flipped -->
-        <div class="absolute inset-0 top-0">
-            <img src="{{ asset('assets/img/heroporto.png') }}" alt="Hero Background"
-                class="w-full h-[70vh] md:h-[80vh] object-cover transform scale-x-[-1] opacity-30">
+   <!-- Portfolio Section -->
+<section class="relative pt-56 pb-20">
+    <!-- Background image flipped -->
+    <div class="absolute inset-0 top-0">
+        <img src="{{ asset('assets/img/heroporto.png') }}" alt="Hero Background"
+            class="w-full h-[70vh] md:h-[80vh] object-cover transform scale-x-[-1] opacity-30">
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6">
+        <!-- Title -->
+        <div class="text-center mb-16">
+            <h1 class="font-poppins text-2xl md:text-4xl lg:text-5xl tracking-[0.3em] text-gray-800">
+                <span class="font-light">PARTNERED</span>
+                <span class="font-bold">FOR THE BETTER</span>
+            </h1>
+            <p class="mt-6 text-gray-600 max-w-2xl mx-auto">
+                Dive into our portfolio and see the energy we bring to every project.
+            </p>
         </div>
-        <div class="relative z-10 max-w-7xl mx-auto px-6">
-            <!-- Title -->
-            <div class="text-center mb-16">
-                <h1 class="font-poppins text-2xl md:text-4xl lg:text-5xl tracking-[0.3em] text-gray-800">
-                    <span class="font-light">PARTNERED</span>
-                    <span class="font-bold">FOR THE BETTER</span>
-                </h1>
-                <p class="mt-6 text-gray-600 max-w-2xl mx-auto">
-                    Dive into our portfolio and see the energy we bring to every project.
-                </p>
-            </div>
 
-            {{-- Grid Projects --}}
-            <div class="grid grid-cols-6 gap-6" id="trusted-projects">
-                @foreach ($projects as $key => $project)
-                    @php
-                        // 2 project pertama besar (col-span-3), sisanya kecil (col-span-2)
-                        $colClass = $key < 2 ? 'col-span-6 md:col-span-3' : 'col-span-6 md:col-span-2';
-                        // Tentukan project yang perlu disembunyikan (mulai dari index 5 = item ke-6)
-                        $hiddenClass = $key >= 5 ? 'hidden more-project' : '';
-                    @endphp
-                    <div
-                        class="{{ $colClass }} border border-gray-200 rounded-2xl p-4 flex flex-col {{ $hiddenClass }}">
-                        <div class="flex justify-between items-center mb-2">
-                            <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
-                            @if ($project->project_url)
-                                <a href="{{ $project->project_url }}" target="_blank"
-                                    class="text-gray-400 hover:text-gray-600">
-                                    <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
-                                </a>
-                            @endif
-                        </div>
-                        <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
-                        <div class="rounded-xl overflow-hidden">
-                            @if ($project->project_img)
-                                <img src="{{ asset('storage/' . $project->project_img) }}" alt="{{ $project->name }}"
-                                    class="w-full object-cover">
-                            @else
-                                <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="No Image"
-                                    class="w-full object-cover">
-                            @endif
-                        </div>
+        {{-- Grid Projects --}}
+        <div class="grid grid-cols-6 gap-6" id="trusted-projects">
+            @php
+                // Ambil 2 project highlight untuk kotak besar
+                $highlightedProjects = $projects->where('is_highlighted', true)->take(2)->values();
+
+                // Ambil project lain untuk kotak kecil (total 3)
+                $remainingProjects = $projects->whereNotIn('id', $highlightedProjects->pluck('id'))->take(3)->values();
+
+                // Gabungkan 5 project awal
+                $initialProjects = $highlightedProjects->concat($remainingProjects);
+
+                // Sisanya hidden untuk Explore more / See less
+                $moreProjects = $projects->whereNotIn('id', $initialProjects->pluck('id'));
+            @endphp
+
+            {{-- Tampilkan 5 project awal --}}
+            @foreach ($initialProjects as $key => $project)
+                @php
+                    $colClass = $key < 2 ? 'col-span-6 md:col-span-3' : 'col-span-6 md:col-span-2';
+                @endphp
+                <div class="{{ $colClass }} border border-gray-200 rounded-2xl p-4 flex flex-col">
+                    <div class="flex justify-between items-center mb-2">
+                        <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
+                        @if ($project->project_url)
+                            <a href="{{ $project->project_url }}" target="_blank" class="text-gray-400 hover:text-gray-600">
+                                <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
+                            </a>
+                        @endif
                     </div>
-                @endforeach
-            </div>
+                    <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
+                    <div class="rounded-xl overflow-hidden">
+                        @if ($project->project_img)
+                            <img src="{{ asset('storage/' . $project->project_img) }}" alt="{{ $project->name }}" class="w-full object-cover">
+                        @else
+                            <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="No Image" class="w-full object-cover">
+                        @endif
+                    </div>
+                </div>
+            @endforeach
 
-            {{-- Button --}}
-            <div class="flex justify-center mt-12">
-                <button id="toggle-projects"
-                    class="bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition-colors">
-                    Explore more
-                </button>
-            </div>
+            {{-- Tampilkan project lebih (hidden awalnya) --}}
+            @foreach ($moreProjects as $project)
+                <div class="col-span-6 md:col-span-2 border border-gray-200 rounded-2xl p-4 flex flex-col hidden more-project">
+                    <div class="flex justify-between items-center mb-2">
+                        <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
+                        @if ($project->project_url)
+                            <a href="{{ $project->project_url }}" target="_blank" class="text-gray-400 hover:text-gray-600">
+                                <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
+                            </a>
+                        @endif
+                    </div>
+                    <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
+                    <div class="rounded-xl overflow-hidden">
+                        @if ($project->project_img)
+                            <img src="{{ asset('storage/' . $project->project_img) }}" alt="{{ $project->name }}" class="w-full object-cover">
+                        @else
+                            <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="No Image" class="w-full object-cover">
+                        @endif
+                    </div>
+                </div>
+            @endforeach
         </div>
-        <script>
-            // Toggle Projects
-            const toggleBtn = document.getElementById("toggle-projects");
-            const moreProjects = document.querySelectorAll(".more-project");
-            let expanded = false;
 
-            toggleBtn.addEventListener("click", () => {
-                expanded = !expanded;
-                moreProjects.forEach(el => {
-                    el.classList.toggle("hidden");
-                });
-                toggleBtn.textContent = expanded ? "See less" : "Explore more";
-            });
-        </script>
-    </section>
+        {{-- Button --}}
+        <div class="flex justify-center mt-12">
+            <button id="toggle-projects"
+                class="bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition-colors">
+                Explore more
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Toggle Projects
+        const toggleBtn = document.getElementById("toggle-projects");
+        const moreProjects = document.querySelectorAll(".more-project");
+        let expanded = false;
+
+        toggleBtn.addEventListener("click", () => {
+            expanded = !expanded;
+            moreProjects.forEach(el => el.classList.toggle("hidden"));
+            toggleBtn.textContent = expanded ? "See less" : "Explore more";
+        });
+    </script>
+</section>
+
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
