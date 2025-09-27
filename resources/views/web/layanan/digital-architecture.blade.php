@@ -20,31 +20,39 @@
             </div>
         </div>
     </section>
+    {{-- Gallery Section / Head Image --}}
+    @if ($digitalArchitectureContent)
+        <section class="w-full">
+            <div class="container mx-auto px-6 md:px-12 py-16 text-center">
+                <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
+                    {{ $digitalArchitectureContent->head_paragraph_1 ??
+                        'Digital Development is more than writing codes. It’s about constructing robust digital solutions that serve your business objective and power your digital transformation.' }}
+                    <br /><br />
+                </p>
+                <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
+                    {{ $digitalArchitectureContent->head_paragraph_2 ??
+                        'With collaborative and forward-thinking approach, every development is build with strategic intent.' }}
+                </p>
+            </div>
 
-    {{-- Gallery Section --}}
-    <section class="w-full">
-        <div class="container mx-auto px-6 md:px-12 py-16 text-center">
-            <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
-                Digital Development is more than writing codes. It’s about constructing robust digital solutions that serve
-                your business objective and power your digital transformation.
-                <br /> <br />
-            <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
-                With collaborative and forward-thinking approach, every development is build with strategic intent.
-            </p>
-        </div>
+            <img src="{{ $digitalArchitectureContent->head_img
+                ? Storage::url($digitalArchitectureContent->head_img)
+                : asset('assets/img/gallery1.png') }}"
+                alt="Gallery" class="w-full h-auto object-cover">
 
-        <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery" class="w-full h-auto object-cover">
-
-        <div class="container mx-auto px-6 md:px-12 py-16 text-center">
-            <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
-                Digital Development is more than writing codes. It’s about constructing robust digital solutions that serve
-                your business objective and power your digital transformation.
-                <br /> <br />
-            <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
-                With collaborative and forward-thinking approach, every development is build with strategic intent.
-            </p>
-        </div>
-    </section>
+            <div class="container mx-auto px-6 md:px-12 py-16 text-center">
+                <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
+                    {{ $digitalArchitectureContent->head_paragraph_3 ??
+                        'Digital Development is more than writing codes. It’s about constructing robust digital solutions that serve your business objective and power your digital transformation.' }}
+                    <br /><br />
+                </p>
+                <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
+                    {{ $digitalArchitectureContent->head_paragraph_4 ??
+                        'With collaborative and forward-thinking approach, every development is build with strategic intent.' }}
+                </p>
+            </div>
+        </section>
+    @endif
 
     {{-- Section 1 --}}
     <section class="w-full py-20 bg-white">
