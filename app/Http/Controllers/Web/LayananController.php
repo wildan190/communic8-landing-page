@@ -7,7 +7,9 @@ use App\Models\Blog;
 use App\Models\BranchOffice;
 use App\Models\BrandForgeContent;
 use App\Models\Client;
+use App\Models\DigitalCompassContent;
 use App\Models\Gallery;
+use App\Models\PublicPresenceContent;
 use App\Models\SubService;
 use App\Models\WebInformation;
 
@@ -45,6 +47,9 @@ class LayananController extends Controller
             $query->where('name', 'Digital Compass');
         })->get();
 
+        // 🔥 Ambil konten utama Digital Compass
+        $digitalCompassContent = DigitalCompassContent::first();
+
         return view(
             'web.layanan.digital-compass',
             compact(
@@ -55,7 +60,8 @@ class LayananController extends Controller
                 'webInfo',
                 'branchOffices',
                 'insightCategories',
-                'digitalCompassSubservices', // passing ke view
+                'digitalCompassSubservices',
+                'digitalCompassContent', // ✅ kirim konten
             ),
         );
     }
@@ -105,6 +111,9 @@ class LayananController extends Controller
             $query->where('name', 'Public Presence');
         })->get();
 
+        // 🔥 Ambil konten utama Public Presence
+        $publicPresenceContent = PublicPresenceContent::first();
+
         return view(
             'web.layanan.public-presence',
             compact(
@@ -115,7 +124,8 @@ class LayananController extends Controller
                 'webInfo',
                 'branchOffices',
                 'insightCategories',
-                'publicPresenceSubservices', // passing ke view
+                'publicPresenceSubservices',
+                'publicPresenceContent', // ✅ kirim ke view
             ),
         );
     }

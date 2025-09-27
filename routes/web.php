@@ -3,10 +3,12 @@
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BrandForgeContentController;
+use App\Http\Controllers\DigitalCompassContentController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\PublicPresenceContentController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SubServiceController;
 use App\Http\Controllers\TestimoniController;
@@ -137,6 +139,12 @@ Route::middleware('auth')->group(function () {
     Route::get('services/subservices/{subservice}/edit', [SubServiceController::class, 'edit'])->name('subservices.edit');
     Route::put('services/subservices/{subservice}', [SubServiceController::class, 'update'])->name('subservices.update');
     Route::delete('services/subservices/{subservice}', [SubServiceController::class, 'destroy'])->name('subservices.destroy');
+
+    Route::get('/public-presence', [PublicPresenceContentController::class, 'index'])->name('public-presence.index');
+    Route::post('/public-presence', [PublicPresenceContentController::class, 'storeOrUpdate'])->name('public-presence.storeOrUpdate');
+
+    Route::get('/digital-compass-content', [DigitalCompassContentController::class, 'index'])->name('digital.compass.index');
+    Route::post('/digital-compass-content/save', [DigitalCompassContentController::class, 'createOrUpdate'])->name('digital.compass.save');
 });
 
 Route::get('lang/{locale}', function ($locale) {

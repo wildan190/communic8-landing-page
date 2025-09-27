@@ -20,7 +20,6 @@
             </div>
         </div>
     </section>
-
     {{-- Gallery Section --}}
     <section class="w-full">
         <div class="container mx-auto px-6 md:px-12 py-16 text-center">
@@ -35,46 +34,60 @@
             </p>
         </div>
 
-        <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery" class="w-full h-auto object-cover">
+        {{-- ✅ head_img dari database --}}
+        @if ($digitalCompassContent && $digitalCompassContent->head_img)
+            <img src="{{ Storage::url($digitalCompassContent->head_img) }}" alt="Gallery"
+                class="w-full h-auto object-cover">
+        @else
+            <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery" class="w-full h-auto object-cover">
+        @endif
     </section>
 
     {{-- Section 1 --}}
     <section class="w-full py-20 bg-white">
         <div class="max-w-7xl mx-auto px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-            {{-- Left Image --}}
+            {{-- ✅ Left Image dinamis --}}
             <div>
-                <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Digital Compass"
-                    class="rounded-xl w-full object-cover">
+                @if ($digitalCompassContent && $digitalCompassContent->img_services)
+                    <img src="{{ Storage::url($digitalCompassContent->img_services) }}" alt="Digital Compass"
+                        class="rounded-xl w-full object-cover">
+                @else
+                    <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Digital Compass"
+                        class="rounded-xl w-full object-cover">
+                @endif
             </div>
 
-            {{-- Right Text --}}
+            {{-- ✅ Right Text (title dan value dari DB) --}}
             <div class="space-y-6 font-rubik">
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900">REACH</h3>
-                    <p class="text-gray-600 text-base leading-relaxed">
-                        We expand your visibility, ensuring your brand connects with the right “Prospect & Customer” across
-                        relevant digital channels.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900">ACT</h3>
-                    <p class="text-gray-600 text-base leading-relaxed">
-                        We inspire and encourage your audience to interact meaningfully with your content and offerings.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900">CONVERT</h3>
-                    <p class="text-gray-600 text-base leading-relaxed">
-                        We drive tangible outcomes, turning your prospects into leads.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900">ENGAGE</h3>
-                    <p class="text-gray-600 text-base leading-relaxed">
-                        We build lasting relationships, fostering loyalty and advocacy over time with your customer base.
-                    </p>
-                </div>
+                @for ($i = 1; $i <= 4; $i++)
+                    @php
+                        $title = $digitalCompassContent->{'title' . $i} ?? null;
+                        $value = $digitalCompassContent->{'value_title' . $i} ?? null;
+                    @endphp
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900">
+                            {{ $title ??
+                                match ($i) {
+                                    1 => 'REACH',
+                                    2 => 'ACT',
+                                    3 => 'CONVERT',
+                                    4 => 'ENGAGE',
+                                } }}
+                        </h3>
+                        <p class="text-gray-600 text-base leading-relaxed">
+                            {{ $value ??
+                                match ($i) {
+                                    1
+                                        => 'We expand your visibility, ensuring your brand connects with the right “Prospect & Customer” across relevant digital channels.',
+                                    2 => 'We inspire and encourage your audience to interact meaningfully with your content and offerings.',
+                                    3 => 'We drive tangible outcomes, turning your prospects into leads.',
+                                    4 => 'We build lasting relationships, fostering loyalty and advocacy over time with your customer base.',
+                                } }}
+                        </p>
+                    </div>
+                @endfor
             </div>
         </div>
     </section>
@@ -99,6 +112,7 @@
             </div>
         </div>
     </section>
+
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
