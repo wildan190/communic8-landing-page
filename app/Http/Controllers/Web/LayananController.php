@@ -35,14 +35,29 @@ class LayananController extends Controller
         $categories = Blog::select('category')->distinct()->pluck('category');
         $sliderBlogs = Blog::latest()->take(10)->get();
         $clients = Client::latest()->get();
-
-        // 🔥 ambil semua data gallery terbaru
         $galleries = Gallery::latest()->get();
         $webInfo = WebInformation::first();
         $branchOffices = BranchOffice::all();
         $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
 
-        return view('web.layanan.digital-compass', compact('categories', 'sliderBlogs', 'clients', 'galleries', 'webInfo', 'branchOffices', 'insightCategories'));
+        // 🔥 Ambil semua SubService yang service name-nya "Digital Compass"
+        $digitalCompassSubservices = SubService::whereHas('service', function ($query) {
+            $query->where('name', 'Digital Compass');
+        })->get();
+
+        return view(
+            'web.layanan.digital-compass',
+            compact(
+                'categories',
+                'sliderBlogs',
+                'clients',
+                'galleries',
+                'webInfo',
+                'branchOffices',
+                'insightCategories',
+                'digitalCompassSubservices', // passing ke view
+            ),
+        );
     }
 
     public function digitalArchitecture()
@@ -50,14 +65,29 @@ class LayananController extends Controller
         $categories = Blog::select('category')->distinct()->pluck('category');
         $sliderBlogs = Blog::latest()->take(10)->get();
         $clients = Client::latest()->get();
-
-        // 🔥 ambil semua data gallery terbaru
         $galleries = Gallery::latest()->get();
         $webInfo = WebInformation::first();
         $branchOffices = BranchOffice::all();
         $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
 
-        return view('web.layanan.digital-architecture', compact('categories', 'sliderBlogs', 'clients', 'galleries', 'webInfo', 'branchOffices', 'insightCategories'));
+        // 🔥 Ambil semua SubService yang service name-nya "Digital Architecture"
+        $digitalArchitectureSubservices = SubService::whereHas('service', function ($query) {
+            $query->where('name', 'Digital Architecture');
+        })->get();
+
+        return view(
+            'web.layanan.digital-architecture',
+            compact(
+                'categories',
+                'sliderBlogs',
+                'clients',
+                'galleries',
+                'webInfo',
+                'branchOffices',
+                'insightCategories',
+                'digitalArchitectureSubservices', // passing ke view
+            ),
+        );
     }
 
     public function publicPresence()

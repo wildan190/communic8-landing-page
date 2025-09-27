@@ -87,42 +87,27 @@
         </div>
     </section>
 
-    {{-- Section 2 --}}
+    {{-- Section 2: Digital Architecture --}}
     <section class="w-full py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4 text-center"> {{-- sama seperti section 1 --}}
+        <div class="max-w-6xl mx-auto px-4 text-center">
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"> {{-- gap-6 sama seperti section 1 --}}
-
-                {{-- Item 1 --}}
-                <div class="text-center p-1"> {{-- p-1 agar radius kiri-kanan tetap terlihat --}}
-                    <div class="rounded-[28px] overflow-hidden w-full">
-                        <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Search Engine Optimization"
-                            class="w-full h-full object-cover">
+            {{-- Grid dynamic --}}
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                @forelse($digitalArchitectureSubservices as $subservice)
+                    <div class="text-center p-1">
+                        <div class="rounded-[28px] overflow-hidden w-full">
+                            <img src="{{ $subservice->picture_upload ? Storage::url($subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
+                                alt="{{ $subservice->name }}" class="w-full h-full object-cover">
+                        </div>
+                        <p class="mt-2 text-gray-700 font-rubik text-xs">{{ $subservice->name }}</p>
                     </div>
-                    <p class="mt-2 text-gray-700 font-rubik text-xs">Search Engine Optimization</p>
-                </div>
-
-                {{-- Item 2 --}}
-                <div class="text-center p-1">
-                    <div class="rounded-[28px] overflow-hidden w-full">
-                        <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Search Engine Marketing"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <p class="mt-2 text-gray-700 font-rubik text-xs">Search Engine Marketing</p>
-                </div>
-
-                {{-- Item 3 --}}
-                <div class="text-center p-1">
-                    <div class="rounded-[28px] overflow-hidden w-full">
-                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Social Media Advertising"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <p class="mt-2 text-gray-700 font-rubik text-xs">Social Media Advertising</p>
-                </div>
-
+                @empty
+                    <p class="col-span-full text-gray-500 text-sm">No services available at the moment.</p>
+                @endforelse
             </div>
         </div>
     </section>
+
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
