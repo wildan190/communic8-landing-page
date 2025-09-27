@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\BranchOffice;
 use App\Models\BrandForgeContent;
 use App\Models\Client;
+use App\Models\DigitalArchitectureContent;
 use App\Models\DigitalCompassContent;
 use App\Models\Gallery;
 use App\Models\PublicPresenceContent;
@@ -81,6 +82,9 @@ class LayananController extends Controller
             $query->where('name', 'Digital Architecture');
         })->get();
 
+        // ✅ Ambil konten DigitalArchitectureContent
+        $digitalArchitectureContent = DigitalArchitectureContent::first();
+
         return view(
             'web.layanan.digital-architecture',
             compact(
@@ -91,7 +95,8 @@ class LayananController extends Controller
                 'webInfo',
                 'branchOffices',
                 'insightCategories',
-                'digitalArchitectureSubservices', // passing ke view
+                'digitalArchitectureSubservices',
+                'digitalArchitectureContent', // kirim ke view
             ),
         );
     }

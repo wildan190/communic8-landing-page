@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BrandForgeContentController;
+use App\Http\Controllers\DigitalArchitectureContentController;
 use App\Http\Controllers\DigitalCompassContentController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MessageController;
@@ -145,6 +146,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/digital-compass-content', [DigitalCompassContentController::class, 'index'])->name('digital.compass.index');
     Route::post('/digital-compass-content/save', [DigitalCompassContentController::class, 'createOrUpdate'])->name('digital.compass.save');
+
+    Route::get('/digital-architecture-content', [DigitalArchitectureContentController::class, 'index'])->name('digital-architecture-content.index');
+    Route::post('/digital-architecture-content/save', [DigitalArchitectureContentController::class, 'createOrUpdate'])->name('digital-architecture-content.save');
 });
 
 Route::get('lang/{locale}', function ($locale) {

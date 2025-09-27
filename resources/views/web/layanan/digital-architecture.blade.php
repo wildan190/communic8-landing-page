@@ -48,41 +48,32 @@
 
     {{-- Section 1 --}}
     <section class="w-full py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="max-w-7xl mx-auto px-6 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
             {{-- Left Image --}}
             <div>
-                <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Digital Compass"
-                    class="rounded-xl w-full object-cover">
+                <img src="{{ $digitalArchitectureContent && $digitalArchitectureContent->img_services
+                    ? Storage::url($digitalArchitectureContent->img_services)
+                    : asset('assets/img/dummy/dummy2.png') }}"
+                    alt="Digital Architecture" class="rounded-xl w-full object-cover shadow-lg">
             </div>
 
             {{-- Right Text --}}
             <div class="space-y-6 font-rubik">
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900">REACH</h3>
-                    <p class="text-gray-600 text-base leading-relaxed">
-                        We expand your visibility, ensuring your brand connects with the right “Prospect & Customer” across
-                        relevant digital channels.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900">ACT</h3>
-                    <p class="text-gray-600 text-base leading-relaxed">
-                        We inspire and encourage your audience to interact meaningfully with your content and offerings.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900">CONVERT</h3>
-                    <p class="text-gray-600 text-base leading-relaxed">
-                        We drive tangible outcomes, turning your prospects into leads.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900">ENGAGE</h3>
-                    <p class="text-gray-600 text-base leading-relaxed">
-                        We build lasting relationships, fostering loyalty and advocacy over time with your customer base.
-                    </p>
-                </div>
+                @foreach (['1', '2', '3', '4'] as $i)
+                    @php
+                        $title = $digitalArchitectureContent ? $digitalArchitectureContent->{'title' . $i} : null;
+                        $value = $digitalArchitectureContent ? $digitalArchitectureContent->{'value_title' . $i} : null;
+                    @endphp
+                    @if ($title || $value)
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">{{ $title ?? 'Title ' . $i }}</h3>
+                            <p class="text-gray-600 text-base leading-relaxed">
+                                {{ $value ?? 'Description for ' . $title }}
+                            </p>
+                        </div>
+                    @endif
+                @endforeach
             </div>
         </div>
     </section>
