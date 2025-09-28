@@ -10,7 +10,7 @@
         content="Communic8 Asia adalah agensi kreatif di Jakarta yang fokus pada digital marketing, brand development, dan digital campaign. Kami bantu bisnis Anda tumbuh di era digital.">
     <meta name="keywords" content="{{ $webInformation->meta_keywords ?? '' }}">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.communic8agency.com/">
+    <link rel="canonical" href="{{ url()->current() }}" />
 
     <meta property="og:title" content="Jasa Digital Marketing & Brand Development - Communic8 Asia">
     <meta property="og:description"
