@@ -149,6 +149,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/digital-architecture-content', [DigitalArchitectureContentController::class, 'index'])->name('digital-architecture-content.index');
     Route::post('/digital-architecture-content/save', [DigitalArchitectureContentController::class, 'createOrUpdate'])->name('digital-architecture-content.save');
+
+    // SEO Manager
+    Route::get('/seo-manager', [WebInformationController::class, 'seo'])->name('seo.index');
+    Route::put('/seo-manager', [WebInformationController::class, 'updateSeo'])->name('seo.update');
 });
 
 Route::get('lang/{locale}', function ($locale) {

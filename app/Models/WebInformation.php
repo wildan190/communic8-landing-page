@@ -18,5 +18,7 @@ class WebInformation extends Model
         'facebook',
         'instagram',
         'tiktok',
+        'meta_keywords',
+        'schema_markup',
     ];
 }

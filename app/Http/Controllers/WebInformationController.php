@@ -40,19 +40,22 @@ class WebInformationController extends Controller
         return view('web_information.edit', compact('webInformation'));
     }
 
-    public function update(Request $request, WebInformation $webInformation)
+    public function seo()
+    {
+        $webInfo = WebInformation::firstOrCreate([]);
+        return view('web_information.seo', compact('webInfo'));
+    }
+
+    public function updateSeo(Request $request)
     {
         $request->validate([
-            'phone' => 'nullable|string|max:50',
-            'email' => 'nullable|email|max:100',
-            'address' => 'nullable|string',
-            'facebook' => 'nullable|url',
-            'instagram' => 'nullable|url',
-            'tiktok' => 'nullable|url',
+            'meta_keywords' => 'nullable|string',
+            'schema_markup' => 'nullable|string',
         ]);
 
-        $webInformation->update($request->all());
+        $webInfo = WebInformation::firstOrCreate([]);
+        $webInfo->update($request->only('meta_keywords', 'schema_markup'));
 
-        return redirect()->route('web_information.index')->with('success', 'Informasi berhasil diperbarui');
+        return redirect()->route('seo.index')->with('success', 'Pengaturan SEO berhasil diperbarui');
     }
 }
