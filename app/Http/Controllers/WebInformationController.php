@@ -43,6 +43,7 @@ class WebInformationController extends Controller
     public function seo()
     {
         $webInfo = WebInformation::firstOrCreate([]);
+
         return view('web_information.seo', compact('webInfo'));
     }
 

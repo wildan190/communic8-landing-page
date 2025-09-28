@@ -13,6 +13,7 @@ class BrandForgeContentController extends Controller
     {
         // Kita anggap hanya ada 1 konten BrandForgeContent
         $content = BrandForgeContent::first();
+
         return view('brandforge.form', compact('content'));
     }
 
@@ -35,8 +36,8 @@ class BrandForgeContentController extends Controller
         // Ambil konten pertama atau buat baru
         $content = BrandForgeContent::first();
 
-        if (!$content) {
-            $content = new BrandForgeContent();
+        if (! $content) {
+            $content = new BrandForgeContent;
         }
 
         // 📤 Upload semua gambar jika ada dan hapus yang lama jika update

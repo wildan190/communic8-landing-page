@@ -12,13 +12,14 @@ class DigitalCompassContentController extends Controller
     public function index()
     {
         $content = DigitalCompassContent::first();
+
         return view('digital-compass.index', compact('content'));
     }
 
     // ✏️ Simpan atau update konten
     public function createOrUpdate(Request $request)
     {
-        $content = DigitalCompassContent::first() ?? new DigitalCompassContent();
+        $content = DigitalCompassContent::first() ?? new DigitalCompassContent;
 
         $content->title1 = $request->title1;
         $content->value_title1 = $request->value_title1;

@@ -29,7 +29,7 @@ class TrackPageView
             ->where('visited_at', $today)
             ->first();
 
-        if (!$existingView) {
+        if (! $existingView) {
             $data = [
                 'url' => $url,
                 'session_id' => $sessionId,

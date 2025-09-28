@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SubService;
 use App\Models\Service;
+use App\Models\SubService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,6 +13,7 @@ class SubServiceController extends Controller
     public function index()
     {
         $subservices = SubService::with('service')->latest()->paginate(10);
+
         return view('services.subservices.index', compact('subservices'));
     }
 
@@ -20,6 +21,7 @@ class SubServiceController extends Controller
     public function create()
     {
         $services = Service::all();
+
         return view('services.subservices.create', compact('services'));
     }
 
@@ -45,6 +47,7 @@ class SubServiceController extends Controller
     public function edit(SubService $subservice)
     {
         $services = Service::all();
+
         return view('services.subservices.edit', compact('subservice', 'services'));
     }
 

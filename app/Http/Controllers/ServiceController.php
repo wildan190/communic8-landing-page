@@ -13,8 +13,8 @@ class ServiceController extends Controller
         $query = Service::query();
 
         if ($request->has('q') && $request->q !== '') {
-            $query->where('name', 'like', '%' . $request->q . '%')
-                  ->orWhere('description', 'like', '%' . $request->q . '%');
+            $query->where('name', 'like', '%'.$request->q.'%')
+                ->orWhere('description', 'like', '%'.$request->q.'%');
         }
 
         $services = $query->latest()->paginate(10);
@@ -47,6 +47,7 @@ class ServiceController extends Controller
     public function show($id)
     {
         $service = Service::findOrFail($id);
+
         return view('services.show', compact('service'));
     }
 
@@ -54,6 +55,7 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $service = Service::findOrFail($id);
+
         return view('services.edit', compact('service'));
     }
 

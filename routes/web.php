@@ -62,9 +62,9 @@ Route::get('/dashboard', function () {
 
     // Ambil total pengunjung unik per hari
     $visitors = PageView::select(
-            DB::raw('DATE(visited_at) as date'),
-            DB::raw('COUNT(DISTINCT session_id) as total')
-        )
+        DB::raw('DATE(visited_at) as date'),
+        DB::raw('COUNT(DISTINCT session_id) as total')
+    )
         ->where('visited_at', '>=', $startDate)
         ->groupBy('date')
         ->orderBy('date', 'ASC')
@@ -72,9 +72,9 @@ Route::get('/dashboard', function () {
 
     // Ambil data untuk landing page
     $landingPageViews = PageView::select(
-            DB::raw('DATE(visited_at) as date'),
-            DB::raw('COUNT(DISTINCT session_id) as total')
-        )
+        DB::raw('DATE(visited_at) as date'),
+        DB::raw('COUNT(DISTINCT session_id) as total')
+    )
         ->where('url', url('/'))
         ->where('visited_at', '>=', $startDate)
         ->groupBy('date')
@@ -83,9 +83,9 @@ Route::get('/dashboard', function () {
 
     // Ambil data untuk blog
     $blogViews = PageView::select(
-            DB::raw('DATE(visited_at) as date'),
-            DB::raw('COUNT(DISTINCT session_id) as total')
-        )
+        DB::raw('DATE(visited_at) as date'),
+        DB::raw('COUNT(DISTINCT session_id) as total')
+    )
         ->where('visitable_type', \App\Models\Blog::class)
         ->where('visited_at', '>=', $startDate)
         ->groupBy('date')
@@ -113,25 +113,25 @@ Route::get('/dashboard', function () {
                 'label' => 'Total Visitors',
                 'data' => array_reverse($totalData),
                 'borderColor' => '#4F46E5',
-                'tension' => 0.1
+                'tension' => 0.1,
             ],
             [
                 'label' => 'Landing Page',
                 'data' => array_reverse($landingPageData),
                 'borderColor' => '#10B981',
-                'tension' => 0.1
+                'tension' => 0.1,
             ],
             [
                 'label' => 'Blog Posts',
                 'data' => array_reverse($blogData),
                 'borderColor' => '#F59E0B',
-                'tension' => 0.1
-            ]
-        ]
+                'tension' => 0.1,
+            ],
+        ],
     ];
 
     return view('dashboard', [
-        'chartData' => $chartData
+        'chartData' => $chartData,
     ]);
 })
     ->middleware(['auth', 'verified'])
@@ -238,7 +238,8 @@ Route::get('lang/{locale}', function ($locale) {
         session(['locale' => $locale]);
         app()->setLocale($locale);
     }
+
     return redirect()->back();
 })->name('lang.switch');
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
