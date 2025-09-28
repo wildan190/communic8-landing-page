@@ -400,7 +400,7 @@
                             <div
                                 class="snap-center min-w-[280px] sm:min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
                                 <p class="text-sm text-gray-500">{{ $blog->category }}</p>
-                                <a href="{{ route('blogs.show', $blog->slug) }}" class="block flex-grow">
+                                <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
                                     <h3
                                         class="text-base sm:text-lg font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[72px] mb-4">
                                         {{ $blog->title }}
@@ -432,7 +432,7 @@
                             <div
                                 class="snap-center min-w-[260px] bg-white rounded-2xl shadow-sm p-4 border border-gray-200 flex flex-col">
                                 <p class="text-xs text-gray-500">{{ $blog->category }}</p>
-                                <a href="{{ route('blogs.show', $blog->slug) }}" class="block flex-grow">
+                                <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
                                     <h3
                                         class="text-base font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[60px] mb-3">
                                         {{ $blog->title }}

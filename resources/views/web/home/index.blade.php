@@ -606,7 +606,7 @@
                 @foreach ($blogs as $blog)
                     <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
                         <p class="text-sm text-gray-500">{{ $blog->category }}</p>
-                        <a href="{{ route('blogs.show', $blog->slug) }}" class="block">
+                        <a href="{{ route('insight.show', $blog->slug) }}" class="block">
                             <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
                                 {{ $blog->title }}
                             </h3>
