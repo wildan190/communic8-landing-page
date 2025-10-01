@@ -3,7 +3,7 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="relative pt-48 pb-20 bg-cover bg-center"
+    <section class="relative pt-48 pb-20 bg-cover"
         style="background-image: url('{{ asset('assets/img/insightbg.png') }}');">
 
         <div class="absolute inset-0 bg-white/70"></div>
