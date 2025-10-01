@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Third Party Services
@@ -31,4 +30,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'instagram' => [
+        'token' => env('INSTAGRAM_ACCESS_TOKEN'),
+        'user_id' => env('INSTAGRAM_USER_ID'),
+    ],
 ];

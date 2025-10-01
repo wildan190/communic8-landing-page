@@ -10,6 +10,7 @@ use App\Models\Project;
 use App\Models\Testimoni;
 use App\Models\WebInformation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
@@ -26,13 +27,10 @@ class HomeController extends Controller
         $categories = Blog::select('category')->distinct()->pluck('category');
         $sliderBlogs = Blog::latest()->take(10)->get();
 
-        $webInfo = WebInformation::first();
+        $webInformation = WebInformation::first();
         $branchOffices = BranchOffice::all();
 
-        $insightCategories = Blog::select('category')
-            ->distinct()
-            ->take(5)
-            ->pluck('category');
+        $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
 
         // 🔥 ambil max 5 project untuk grid
         $trustedProjects = Project::latest()->get();
@@ -42,17 +40,25 @@ class HomeController extends Controller
 
         $testimonis = Testimoni::latest()->get();
 
-        return view('web.home.index', compact(
-            'blogs',
-            'categories',
-            'category',
-            'sliderBlogs',
-            'webInfo',
-            'branchOffices',
-            'insightCategories',
-            'trustedProjects',
-            'clients',
-            'testimonis'
-        ));
+        // ✅ Ambil postingan Instagram terbaru (misal 6 postingan)
+        $accessToken = config('services.instagram.token');
+        $userId = config('services.instagram.user_id');
+
+        $instagramPosts = [];
+        try {
+            $response = Http::get("https://graph.instagram.com/{$userId}/media", [
+                'fields' => 'id,caption,media_type,media_url,permalink,thumbnail_url,timestamp',
+                'access_token' => $accessToken,
+                'limit' => 6,
+            ]);
+
+            if ($response->ok()) {
+                $instagramPosts = $response->json()['data'];
+            }
+        } catch (\Exception $e) {
+            // log error jika mau
+        }
+
+        return view('web.home.index', compact('blogs', 'categories', 'category', 'sliderBlogs', 'webInformation', 'branchOffices', 'insightCategories', 'trustedProjects', 'clients', 'testimonis', 'instagramPosts'));
     }
 }

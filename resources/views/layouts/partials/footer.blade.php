@@ -13,8 +13,8 @@
             </div>
 
             <div class="flex space-x-4">
-                @if ($webInfo && $webInfo->facebook)
-                    <a href="{{ $webInfo->facebook }}" target="_blank" class="group">
+                @if ($webInformation && $webInformation->facebook)
+                    <a href="{{ $webInformation->facebook }}" target="_blank" class="group">
                         <img src="{{ asset('assets/img/social/fb.png') }}" alt="Facebook"
                             class="h-8 w-8 group-hover:hidden">
                         <img src="{{ asset('assets/img/social/colored/fb.png') }}" alt="Facebook Colored"
@@ -22,8 +22,8 @@
                     </a>
                 @endif
 
-                @if ($webInfo && $webInfo->instagram)
-                    <a href="{{ $webInfo->instagram }}" target="_blank" class="group">
+                @if ($webInformation && $webInformation->instagram)
+                    <a href="{{ $webInformation->instagram }}" target="_blank" class="group">
                         <img src="{{ asset('assets/img/social/ig.png') }}" alt="Instagram"
                             class="h-8 w-8 group-hover:hidden">
                         <img src="{{ asset('assets/img/social/colored/ig.png') }}" alt="Instagram Colored"
@@ -31,8 +31,8 @@
                     </a>
                 @endif
 
-                @if ($webInfo && $webInfo->tiktok)
-                    <a href="{{ $webInfo->tiktok }}" target="_blank" class="group">
+                @if ($webInformation && $webInformation->tiktok)
+                    <a href="{{ $webInformation->tiktok }}" target="_blank" class="group">
                         <img src="{{ asset('assets/img/social/tiktok.png') }}" alt="TikTok"
                             class="h-8 w-8 group-hover:hidden">
                         <img src="{{ asset('assets/img/social/colored/tiktok.png') }}" alt="TikTok Colored"

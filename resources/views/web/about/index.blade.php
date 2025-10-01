@@ -4,8 +4,9 @@
 @section('content')
     <div class="relative">
 
-{{-- Hero Section --}}
-        <section class="relative bg-cover bg-center flex flex-col items-center text-center px-6
+        {{-- Hero Section --}}
+        <section
+            class="relative bg-cover bg-center flex flex-col items-center text-center px-6
                         min-h-[100vh] md:min-h-[125vh]"
             style="background-image: url('{{ asset('assets/img/sectionhero.png') }}');">
             <div class="absolute inset-0 bg-white/20"></div>
@@ -15,12 +16,14 @@
 
             {{-- Hero Title --}}
             <div class="relative z-10 pt-32 md:pt-40">
-                <h1 class="font-poppins font-bold text-[#000000] leading-snug mb-4 sm:mb-6
+                <h1
+                    class="font-poppins font-bold text-[#000000] leading-snug mb-4 sm:mb-6
                           text-xl sm:text-3xl md:text-4xl
                           {{ app()->getLocale() == 'en' ? 'tracking-normal sm:tracking-[0.35em]' : 'tracking-normal' }}">
                     {{ __('about/hero.headline_1') }}
                 </h1>
-                <h1 class="font-poppins font-bold text-[#000000] leading-snug
+                <h1
+                    class="font-poppins font-bold text-[#000000] leading-snug
                           text-xl sm:text-3xl md:text-4xl
                           {{ app()->getLocale() == 'en' ? 'tracking-normal sm:tracking-[0.35em]' : 'tracking-normal' }}">
                     {{ __('about/hero.headline_2') }}
@@ -29,13 +32,14 @@
 
             {{-- Red Box PNG --}}
             <div class="relative z-20 mt-8 md:mt-12">
-                <img src="{{ asset('assets/img/redbox.png') }}" alt="Red Box" 
-                     class="w-[280px] sm:w-[350px] md:w-[520px] lg:w-[640px]">
+                <img src="{{ asset('assets/img/redbox.png') }}" alt="Red Box"
+                    class="w-[280px] sm:w-[350px] md:w-[520px] lg:w-[640px]">
             </div>
 
             {{-- About Us --}}
             <div class="relative z-10 max-w-3xl pb-12 md:pb-20 mt-8 md:mt-16">
-                <h2 class="font-medium mb-4 md:mb-6
+                <h2
+                    class="font-medium mb-4 md:mb-6
                           text-base md:text-lg
                           {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}">
                     {{ __('about/hero.about_us_title') }}
