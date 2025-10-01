@@ -22,11 +22,11 @@
             </div>
 
             {{-- Lampu --}}
-            <div class="flex justify-center relative mt-8">
+            <div class="flex justify-center relative mt-8 group">
                 <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
-                    class="w-auto h-auto max-w-[180px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[260px] relative z-10"
-                    onmouseover="this.src='{{ asset('assets/img/lamphover.png') }}'"
-                    onmouseout="this.src='{{ asset('assets/img/lamp.png') }}'">
+                    class="w-auto h-auto max-w-[180px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[260px] relative z-10 transition-opacity duration-300 group-hover:opacity-0">
+                <img src="{{ asset('assets/img/lamphover.png') }}" alt="Lamp Hover"
+                    class="w-auto h-auto max-w-[180px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[260px] absolute z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             </div>
 
             {{-- Bottom Row --}}

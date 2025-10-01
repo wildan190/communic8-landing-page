@@ -46,3 +46,8 @@
 input, textarea, select {
   @apply rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500;
 }
+
+/* Custom gradient hover for contact button */
+.btn-contact:hover {
+  background-image: linear-gradient(to right, #F97316, #EA580C); /* orange-500 to orange-600 */
+}

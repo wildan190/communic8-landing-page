@@ -1,6 +1,6 @@
 <header class="w-full fixed top-5 left-0 z-50">
     <div
-        class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6 bg-white/90 backdrop-blur-md rounded-full mt-4 shadow">
+        class="max-w-7xl mx-auto flex justify-between items-center py-6 px-6 bg-white/90 backdrop-blur-md rounded-full mt-4 shadow">
 
         {{-- Logo --}}
         <div class="flex items-center">
@@ -11,16 +11,13 @@
 
         {{-- Desktop Menu --}}
         <nav class="hidden md:flex items-center space-x-8 text-gray-700 font-medium relative">
-            <a href="{{ url('/') }}" class="hover:text-orange-500">{{ __('navbar.home') }}</a>
-            <a href="{{ route('about.index') }}" class="hover:text-orange-500">{{ __('navbar.about') }}</a>
+            <a href="{{ url('/') }}" class="hover:text-orange-500 {{ request()->is('/') ? 'text-orange-500' : '' }}">{{ __('navbar.home') }}</a>
+            <a href="{{ route('about.index') }}" class="hover:text-orange-500 {{ request()->routeIs('about.index') ? 'text-orange-500' : '' }}">{{ __('navbar.about') }}</a>
 
             {{-- Dropdown Services --}}
             <div class="relative group">
-                <button class="hover:text-orange-500 flex items-center gap-1">
+                <button class="hover:text-orange-500 flex items-center gap-1 {{ request()->routeIs('layanan.*') ? 'text-orange-500' : '' }}">
                     {{ __('navbar.services') }}
-                    <svg class="w-4 h-4 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
                 </button>
 
                 <div
@@ -36,10 +33,10 @@
                 </div>
             </div>
 
-            <a href="{{ route('portofolio.index') }}" class="hover:text-orange-500">{{ __('navbar.portfolio') }}</a>
-            <a href="{{ route('insight.index') }}" class="hover:text-orange-500">{{ __('navbar.insight') }}</a>
+            <a href="{{ route('portofolio.index') }}" class="hover:text-orange-500 {{ request()->routeIs('portofolio.index') ? 'text-orange-500' : '' }}">{{ __('navbar.portfolio') }}</a>
+            <a href="{{ route('insight.index') }}" class="hover:text-orange-500 {{ request()->routeIs('insight.index') ? 'text-orange-500' : '' }}">{{ __('navbar.insight') }}</a>
             <a href="{{ route('contact.index') }}"
-                class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700">{{ __('navbar.contact') }}</a>
+                class="btn-contact bg-gray-800 text-white px-5 py-2 rounded-full">{{ __('navbar.contact') }}</a>
 
             {{-- Language Switcher --}}
             <div class="relative group">
