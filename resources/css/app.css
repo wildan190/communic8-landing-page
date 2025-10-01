@@ -51,3 +51,13 @@ input, textarea, select {
 .btn-contact:hover {
   background-image: linear-gradient(to right, #F97316, #EA580C); /* orange-500 to orange-600 */
 }
+
+/* For hiding scrollbars */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
