@@ -12,6 +12,7 @@ class DigitalArchitectureContentController extends Controller
     public function index()
     {
         $content = DigitalArchitectureContent::first();
+
         return view('digitalarchitecture.index', compact('content'));
     }
 
@@ -31,7 +32,7 @@ class DigitalArchitectureContentController extends Controller
             'value_title4' => 'nullable|string',
         ]);
 
-        $content = DigitalArchitectureContent::first() ?? new DigitalArchitectureContent();
+        $content = DigitalArchitectureContent::first() ?? new DigitalArchitectureContent;
 
         // ✅ Upload head_img jika ada
         if ($request->hasFile('head_img')) {

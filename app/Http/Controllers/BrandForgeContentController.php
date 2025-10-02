@@ -13,6 +13,7 @@ class BrandForgeContentController extends Controller
     {
         // Kita anggap hanya ada 1 konten BrandForgeContent
         $content = BrandForgeContent::first();
+
         return view('brandforge.form', compact('content'));
     }
 
@@ -35,8 +36,8 @@ class BrandForgeContentController extends Controller
         // Ambil konten pertama atau buat baru
         $content = BrandForgeContent::first();
 
-        if (!$content) {
-            $content = new BrandForgeContent();
+        if (! $content) {
+            $content = new BrandForgeContent;
         }
 
         // 📤 Upload semua gambar jika ada dan hapus yang lama jika update
@@ -58,6 +59,15 @@ class BrandForgeContentController extends Controller
 
         // Simpan data
         $content->fill($validated);
+
+        // Sanitize the fields that might contain HTML
+        $content->insight_strategy_driven = clean($request->input('insight_strategy_driven'));
+        $content->desc_insight_strategy_driven = clean($request->input('desc_insight_strategy_driven'));
+        $content->bold_creative_ideas = clean($request->input('bold_creative_ideas'));
+        $content->desc_bold_creative_ideas = clean($request->input('desc_bold_creative_ideas'));
+        $content->impactful_visual_identity = clean($request->input('impactful_visual_identity'));
+        $content->desc_impactful_visual_identity = clean($request->input('desc_impactful_visual_identity'));
+
         $content->save();
 
         return redirect()->route('brandforge.form')->with('success', 'Konten berhasil disimpan.');

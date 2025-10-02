@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\PublicPresenceContent;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 
 class PublicPresenceContentController extends Controller
 {
@@ -12,6 +11,7 @@ class PublicPresenceContentController extends Controller
     public function index()
     {
         $content = PublicPresenceContent::first(); // Ambil 1 data, bisa disesuaikan
+
         return view('public_presence.index', compact('content'));
     }
 
@@ -24,7 +24,7 @@ class PublicPresenceContentController extends Controller
             'img_Creative_and_Channel_Synergy' => 'nullable|image|max:2048',
         ]);
 
-        $content = PublicPresenceContent::first() ?? new PublicPresenceContent();
+        $content = PublicPresenceContent::first() ?? new PublicPresenceContent;
 
         // Upload gambar jika ada
         if ($request->hasFile('head_img')) {

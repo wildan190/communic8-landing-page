@@ -22,9 +22,11 @@
             </div>
 
             {{-- Lampu --}}
-            <div class="flex justify-center relative mt-8">
+            <div class="flex justify-center relative mt-8 group">
                 <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
-                    class="w-auto h-auto max-w-[180px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[260px] relative z-10">
+                    class="w-auto h-auto max-w-[180px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[260px] relative z-10 transition-opacity duration-300 group-hover:opacity-0">
+                <img src="{{ asset('assets/img/lamphover.png') }}" alt="Lamp Hover"
+                    class="w-auto h-auto max-w-[180px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[260px] absolute z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             </div>
 
             {{-- Bottom Row --}}
@@ -141,38 +143,41 @@
             </div>
 
             {{-- Stats Row --}}
-            <div class="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-20 mb-16">
+            <div class="flex flex-col md:flex-row justify-center items-center text-center gap-12 md:gap-20 mb-16">
 
                 {{-- Item 1 --}}
-                <div class="flex items-center gap-4">
-                    <div class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
+                <div class="flex flex-col items-center gap-4">
+                    <div
+                        class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
                         <i class="fas fa-briefcase"></i>
                     </div>
                     <div>
-                        <div class="text-3xl font-bold text-orange-500">{{ now()->year - 2010 }}+</div>
+                        <div class="text-3xl font-bold text-orange-500">{{ now()->year - 2005 }}+</div>
                         <div class="text-gray-700 font-semibold text-sm">{{ __('home/values.years_experience') }}</div>
                     </div>
                 </div>
 
                 {{-- Item 2 --}}
-                <div class="flex items-center gap-4">
-                    <div class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
+                <div class="flex flex-col items-center text-center gap-4">
+                    <div
+                        class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
                         <i class="fas fa-layer-group"></i>
                     </div>
                     <div>
-                        <div class="text-3xl font-bold text-orange-500">30+</div>
+                        <div class="text-3xl font-bold text-orange-500">300+</div>
                         <div class="text-gray-700 font-semibold text-sm">{{ __('home/values.brands_handled') }}</div>
                     </div>
                 </div>
 
                 {{-- Item 3 --}}
-                <div class="flex items-center gap-4">
-                    <div class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
-                        <i class="fas fa-smile-beam"></i>
+                <div class="flex flex-col items-center text-center gap-4">
+                    <div
+                        class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
+                        <i class="fas fa-handshake"></i>
                     </div>
                     <div>
-                        <div class="text-3xl font-bold text-orange-500">99%</div>
-                        <div class="text-gray-700 font-semibold text-sm">{{ __('home/values.clients_satisfaction') }}</div>
+                        <div class="text-3xl font-bold text-orange-500">8/10</div>
+                        <div class="text-gray-700 font-semibold text-sm">{{ __('home/values.clients_return') }}</div>
                     </div>
                 </div>
 
@@ -606,7 +611,7 @@
                 @foreach ($blogs as $blog)
                     <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
                         <p class="text-sm text-gray-500">{{ $blog->category }}</p>
-                        <a href="{{ route('blogs.show', $blog->slug) }}" class="block">
+                        <a href="{{ route('insight.show', $blog->slug) }}" class="block">
                             <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
                                 {{ $blog->title }}
                             </h3>

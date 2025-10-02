@@ -8,10 +8,9 @@
     <title>Jasa Digital Marketing & Brand Development - Communic8 Asia</title>
     <meta name="description"
         content="Communic8 Asia adalah agensi kreatif di Jakarta yang fokus pada digital marketing, brand development, dan digital campaign. Kami bantu bisnis Anda tumbuh di era digital.">
-    <meta name="keywords"
-        content="digital marketing agency jakarta, jasa digital marketing, brand development, agensi kreatif jakarta, jasa SEO, manajemen media sosial, social media agency, branding, website development">
+    <meta name="keywords" content="{{ $webInformation->meta_keywords ?? '' }}">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.communic8agency.com/">
+    <link rel="canonical" href="{{ url()->current() }}" />
 
     <meta property="og:title" content="Jasa Digital Marketing & Brand Development - Communic8 Asia">
     <meta property="og:description"
@@ -26,42 +25,9 @@
         content="Kami adalah agensi digital kreatif di Jakarta yang menawarkan solusi lengkap untuk digital marketing dan branding.">
     <meta name="twitter:image" content="https://www.communic8agency.com/assets/img/twitter-image.jpg">
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Communic8 Asia",
-      "url": "https://www.communic8agency.com/",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://www.communic8agency.com/?s={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Communic8 Asia",
-      "image": "https://www.communic8agency.com/assets/img/logo.png",
-      "@id": "https://www.communic8agency.com/",
-      "url": "https://www.communic8agency.com/",
-      "telephone": "+62211234567",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Jl. Sudirman No. 123",
-        "addressLocality": "Jakarta",
-        "postalCode": "12345",
-        "addressCountry": "ID"
-      },
-      "sameAs": [
-        "https://www.facebook.com/communic8asia",
-        "https://www.instagram.com/communic8asia",
-        "https://www.linkedin.com/company/communic8asia"
-      ]
-    }
-    </script>
+    @if($webInformation && $webInformation->schema_markup)
+        {!! $webInformation->schema_markup !!}
+    @endif
 
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
     {{-- vite --}}
@@ -108,6 +74,40 @@
 
     {{-- Footer --}}
     @include('layouts.partials.footer')
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent-banner"
+        style="display: none; position: fixed; bottom: 0; left: 0; width: 100%; background-color: #2d3748; color: white; padding: 1rem; text-align: center; z-index: 1000;">
+        <p style="margin: 0; font-size: 0.9rem;">
+            We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.
+            <a href="#" id="cookie-consent-button"
+                style="background-color: #4a5568; color: white; padding: 0.5rem 1rem; border-radius: 0.25rem; text-decoration: none; margin-left: 1rem;">
+                Accept
+            </a>
+        </p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if the cookie consent has already been accepted
+            if (!document.cookie.split(';').some((item) => item.trim().startsWith('cookie_consent_accepted='))) {
+                document.getElementById('cookie-consent-banner').style.display = 'block';
+            }
+
+            // Add event listener to the accept button
+            document.getElementById('cookie-consent-button').addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Set a cookie to remember that the user has accepted, expiring in 1 year
+                let expiryDate = new Date();
+                expiryDate.setFullYear(expiryDate.getFullYear() + 1);
+                document.cookie = 'cookie_consent_accepted=true; expires=' + expiryDate.toUTCString() + '; path=/; SameSite=Lax';
+
+                // Hide the banner
+                document.getElementById('cookie-consent-banner').style.display = 'none';
+            });
+        });
+    </script>
 
 </body>
 

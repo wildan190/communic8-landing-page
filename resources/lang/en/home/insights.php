@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'title' => "INSIGHTS FOR<br>STRATEGIC MIND",
+    'title' => 'INSIGHTS FOR<br>STRATEGIC MIND',
 ];

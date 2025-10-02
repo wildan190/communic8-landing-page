@@ -33,11 +33,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/', [HomeController::class, 'index'])->name('home.index')->middleware('track.pageview');
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/portofolio', [PortofolioController::class, 'index'])->name('portofolio.index');
 Route::get('/insight', [InsightController::class, 'index'])->name('insight.index');
-Route::get('/insight/{slug}', [InsightController::class, 'show'])->name('insight.show');
+Route::get('/insight/{slug}', [InsightController::class, 'show'])->name('insight.show')->middleware('track.pageview');
 
 // Rute Kontak dengan throttle
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
@@ -53,8 +53,86 @@ Route::get('/layanan/digital-compass', [LayananController::class, 'digitalCompas
 Route::get('/layanan/digital-architecture', [LayananController::class, 'digitalArchitecture'])->name('layanan.digital-architecture');
 Route::get('/layanan/public-presence', [LayananController::class, 'publicPresence'])->name('layanan.public-presence');
 
+use App\Models\PageView;
+use Illuminate\Support\Facades\DB;
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $days = 30;
+    $startDate = now()->subDays($days - 1)->format('Y-m-d');
+
+    // Ambil total pengunjung unik per hari
+    $visitors = PageView::select(
+        DB::raw('DATE(visited_at) as date'),
+        DB::raw('COUNT(DISTINCT session_id) as total')
+    )
+        ->where('visited_at', '>=', $startDate)
+        ->groupBy('date')
+        ->orderBy('date', 'ASC')
+        ->get();
+
+    // Ambil data untuk landing page
+    $landingPageViews = PageView::select(
+        DB::raw('DATE(visited_at) as date'),
+        DB::raw('COUNT(DISTINCT session_id) as total')
+    )
+        ->where('url', url('/'))
+        ->where('visited_at', '>=', $startDate)
+        ->groupBy('date')
+        ->orderBy('date', 'ASC')
+        ->get();
+
+    // Ambil data untuk blog
+    $blogViews = PageView::select(
+        DB::raw('DATE(visited_at) as date'),
+        DB::raw('COUNT(DISTINCT session_id) as total')
+    )
+        ->where('visitable_type', \App\Models\Blog::class)
+        ->where('visited_at', '>=', $startDate)
+        ->groupBy('date')
+        ->orderBy('date', 'ASC')
+        ->get();
+
+    // Siapkan data untuk chart
+    $labels = [];
+    $totalData = [];
+    $landingPageData = [];
+    $blogData = [];
+
+    for ($i = 0; $i < $days; $i++) {
+        $date = now()->subDays($i)->format('Y-m-d');
+        $labels[] = date('M d', strtotime($date));
+        $totalData[] = $visitors->firstWhere('date', $date)->total ?? 0;
+        $landingPageData[] = $landingPageViews->firstWhere('date', $date)->total ?? 0;
+        $blogData[] = $blogViews->firstWhere('date', $date)->total ?? 0;
+    }
+
+    $chartData = [
+        'labels' => array_reverse($labels),
+        'datasets' => [
+            [
+                'label' => 'Total Visitors',
+                'data' => array_reverse($totalData),
+                'borderColor' => '#4F46E5',
+                'tension' => 0.1,
+            ],
+            [
+                'label' => 'Landing Page',
+                'data' => array_reverse($landingPageData),
+                'borderColor' => '#10B981',
+                'tension' => 0.1,
+            ],
+            [
+                'label' => 'Blog Posts',
+                'data' => array_reverse($blogData),
+                'borderColor' => '#F59E0B',
+                'tension' => 0.1,
+            ],
+        ],
+    ];
+
+    return view('dashboard', [
+        'chartData' => $chartData,
+    ]);
 })
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
@@ -149,6 +227,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/digital-architecture-content', [DigitalArchitectureContentController::class, 'index'])->name('digital-architecture-content.index');
     Route::post('/digital-architecture-content/save', [DigitalArchitectureContentController::class, 'createOrUpdate'])->name('digital-architecture-content.save');
+
+    // SEO Manager
+    Route::get('/seo-manager', [WebInformationController::class, 'seo'])->name('seo.index');
+    Route::put('/seo-manager', [WebInformationController::class, 'updateSeo'])->name('seo.update');
 });
 
 Route::get('lang/{locale}', function ($locale) {
@@ -156,7 +238,8 @@ Route::get('lang/{locale}', function ($locale) {
         session(['locale' => $locale]);
         app()->setLocale($locale);
     }
+
     return redirect()->back();
 })->name('lang.switch');
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

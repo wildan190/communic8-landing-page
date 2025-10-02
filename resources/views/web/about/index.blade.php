@@ -4,8 +4,9 @@
 @section('content')
     <div class="relative">
 
-{{-- Hero Section --}}
-        <section class="relative bg-cover bg-center flex flex-col items-center text-center px-6
+        {{-- Hero Section --}}
+        <section
+            class="relative bg-cover bg-center flex flex-col items-center text-center px-6
                         min-h-[100vh] md:min-h-[125vh]"
             style="background-image: url('{{ asset('assets/img/sectionhero.png') }}');">
             <div class="absolute inset-0 bg-white/20"></div>
@@ -15,12 +16,14 @@
 
             {{-- Hero Title --}}
             <div class="relative z-10 pt-32 md:pt-40">
-                <h1 class="font-poppins font-bold text-[#000000] leading-snug mb-4 sm:mb-6
+                <h1
+                    class="font-poppins font-bold text-[#000000] leading-snug mb-4 sm:mb-6
                           text-xl sm:text-3xl md:text-4xl
                           {{ app()->getLocale() == 'en' ? 'tracking-normal sm:tracking-[0.35em]' : 'tracking-normal' }}">
                     {{ __('about/hero.headline_1') }}
                 </h1>
-                <h1 class="font-poppins font-bold text-[#000000] leading-snug
+                <h1
+                    class="font-poppins font-bold text-[#000000] leading-snug
                           text-xl sm:text-3xl md:text-4xl
                           {{ app()->getLocale() == 'en' ? 'tracking-normal sm:tracking-[0.35em]' : 'tracking-normal' }}">
                     {{ __('about/hero.headline_2') }}
@@ -29,13 +32,14 @@
 
             {{-- Red Box PNG --}}
             <div class="relative z-20 mt-8 md:mt-12">
-                <img src="{{ asset('assets/img/redbox.png') }}" alt="Red Box" 
-                     class="w-[280px] sm:w-[350px] md:w-[520px] lg:w-[640px]">
+                <img src="{{ asset('assets/img/redbox.png') }}" alt="Red Box"
+                    class="w-[280px] sm:w-[350px] md:w-[520px] lg:w-[640px]">
             </div>
 
             {{-- About Us --}}
             <div class="relative z-10 max-w-3xl pb-12 md:pb-20 mt-8 md:mt-16">
-                <h2 class="font-medium mb-4 md:mb-6
+                <h2
+                    class="font-medium mb-4 md:mb-6
                           text-base md:text-lg
                           {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}">
                     {{ __('about/hero.about_us_title') }}
@@ -48,16 +52,23 @@
 
         {{-- THE PHILOSOPHY --}}
         <section
-            class="relative overflow-visible z-10 bg-gradient-to-r from-gray-300 via-gray-200 to-gray-600 py-20 md:py-24 -mb-20">
+            class="relative overflow-visible z-10 bg-gradient-to-r from-gray-400 to-gray-600 py-20 md:py-24 -mb-20 transition-colors duration-500 hover:from-orange-500 hover:to-orange-600 group">
+
             <div class="container max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative">
 
                 {{-- Lamp (left) – big & overlapping top/bottom --}}
                 <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
-                    class="hidden md:block absolute -top-40 left-0 w-[380px] lg:w-[500px] xl:w-[560px] drop-shadow-2xl z-40 pointer-events-none" />
+                    class="hidden md:block absolute -top-40 left-0 w-[380px] lg:w-[500px] xl:w-[560px] drop-shadow-2xl z-40 transition-all duration-500 group-hover:opacity-0" />
+
+                <img src="{{ asset('assets/img/lamphover.png') }}" alt="Lamp Hover"
+                    class="hidden md:block absolute -top-40 left-0 w-[380px] lg:w-[500px] xl:w-[560px] drop-shadow-2xl z-40 opacity-0 transition-all duration-500 group-hover:opacity-100" />
 
                 {{-- Mobile lamp (smaller, inline flow) --}}
-                <div class="md:hidden mb-6 -mt-20 flex justify-center">
-                    <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp" class="w-64 drop-shadow-2xl">
+                <div class="md:hidden mb-6 -mt-20 flex justify-center relative">
+                    <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
+                        class="w-64 drop-shadow-2xl transition-all duration-500 group-hover:opacity-0">
+                    <img src="{{ asset('assets/img/lamphover.png') }}" alt="Lamp Hover"
+                        class="w-64 drop-shadow-2xl absolute top-0 opacity-0 transition-all duration-500 group-hover:opacity-100">
                 </div>
 
                 {{-- Grid: spacer kiri untuk lamp, teks di kanan --}}
@@ -66,7 +77,7 @@
                     <div class="hidden md:block"></div>
 
                     {{-- Text Right --}}
-                    <div class="text-left text-white md:pl-6">
+                    <div class="text-left text-white md:pl-6 transition-colors duration-500">
                         <h2 class="font-poppins text-2xl sm:text-3xl md:text-4xl tracking-[0.35em] font-semibold mb-6">
                             {{ __('about/philosophy.title') }}
                         </h2>
@@ -83,6 +94,7 @@
                 </div>
             </div>
         </section>
+
 
         {{-- WHY OUR PARTNER CHOOSE US --}}
         <section class="relative pt-32 sm:pt-40 md:pt-56 pb-16 sm:pb-20 md:pb-24 bg-white">
@@ -400,7 +412,7 @@
                             <div
                                 class="snap-center min-w-[280px] sm:min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
                                 <p class="text-sm text-gray-500">{{ $blog->category }}</p>
-                                <a href="{{ route('blogs.show', $blog->slug) }}" class="block flex-grow">
+                                <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
                                     <h3
                                         class="text-base sm:text-lg font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[72px] mb-4">
                                         {{ $blog->title }}
@@ -432,7 +444,7 @@
                             <div
                                 class="snap-center min-w-[260px] bg-white rounded-2xl shadow-sm p-4 border border-gray-200 flex flex-col">
                                 <p class="text-xs text-gray-500">{{ $blog->category }}</p>
-                                <a href="{{ route('blogs.show', $blog->slug) }}" class="block flex-grow">
+                                <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
                                     <h3
                                         class="text-base font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[60px] mb-3">
                                         {{ $blog->title }}

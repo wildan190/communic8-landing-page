@@ -72,6 +72,10 @@ class BlogController extends Controller
             $validated['slug'] = Str::slug($request->title);
         }
 
+        if ($request->has('content')) {
+            $validated['content'] = clean($request->input('content'));
+        }
+
         if ($request->hasFile('headline_img')) {
             $path = $request->file('headline_img')->store('headline_images', 'public');
             $validated['headline_img'] = $path;

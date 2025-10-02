@@ -12,9 +12,9 @@ class TestimoniController extends Controller
         $query = Testimoni::query();
 
         if ($request->has('q')) {
-            $query->where('name', 'like', '%' . $request->q . '%')
-                  ->orWhere('title', 'like', '%' . $request->q . '%')
-                  ->orWhere('company', 'like', '%' . $request->q . '%');
+            $query->where('name', 'like', '%'.$request->q.'%')
+                ->orWhere('title', 'like', '%'.$request->q.'%')
+                ->orWhere('company', 'like', '%'.$request->q.'%');
         }
 
         $testimonies = $query->latest()->paginate(10);
@@ -83,6 +83,7 @@ class TestimoniController extends Controller
     public function destroy(Testimoni $testimoni)
     {
         $testimoni->delete();
+
         return redirect()->route('testimonies.index')->with('success', 'Testimoni berhasil dihapus');
     }
 }

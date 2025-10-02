@@ -88,6 +88,7 @@
                     <div x-show="open" @click.away="open = false" class="absolute mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5">
                         <div class="py-1">
                             <x-dropdown-link :href="route('web_information.index')">{{ __('Web Information') }}</x-dropdown-link>
+                            <x-dropdown-link :href="route('seo.index')">{{ __('SEO Manager') }}</x-dropdown-link>
                         </div>
                     </div>
                 </div>

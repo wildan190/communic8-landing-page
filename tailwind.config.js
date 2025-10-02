@@ -13,6 +13,24 @@ export default {
         './resources/js/**/*.js',
     ],
 
+    safelist: [
+        // 👇 kelas background & gradient saat hover
+        'group-hover:bg-gradient-to-r',
+        'group-hover:from-amber-200',
+        'group-hover:via-orange-400',
+        'group-hover:to-orange-700',
+
+        // 👇 kalau nanti pakai warna lain
+        'group-hover:bg-orange-500',
+        'group-hover:bg-orange-600',
+        'group-hover:bg-orange-700',
+
+        // 👇 untuk debugging / fallback warna solid
+        'hover:bg-orange-500',
+        'hover:bg-orange-600',
+        'hover:bg-orange-700',
+    ],
+
     theme: {
         extend: {
             fontFamily: {
