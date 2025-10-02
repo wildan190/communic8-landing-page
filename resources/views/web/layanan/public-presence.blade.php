@@ -44,55 +44,54 @@
         @endif
     </section>
 
-{{-- Strategy Section --}}
-<section class="w-full py-24">
-    <div class="max-w-7xl mx-auto px-6 md:px-20 space-y-24">
-        {{-- Row 1 - INSIGHT DRIVEN STRATEGY --}}
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div class="text-left">
-                <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase">
-                    {{ $publicPresenceContent->INSIGHT_DRIVEN_STRATEGY ?? 'INSIGHT-DRIVEN STRATEGY' }}
-                </h2>
-                <p class="mt-6 text-gray-700 font-rubik leading-relaxed text-sm md:text-base">
-                    {{ $publicPresenceContent->desc_INSIGHT_DRIVEN_STRATEGY ??
-                        'Every powerful brand is built on a foundation of deep understanding. Our process begins with comprehensive analysis, where we dive into your market, competitive landscape, and audience behavior. This strategic thinking ensures your brand’s positioning is not only unique but also precisely aligned with your business objectives for maximum effectiveness.' }}
-                </p>
+    {{-- Strategy Section --}}
+    <section class="w-full py-24">
+        <div class="max-w-7xl mx-auto px-6 md:px-20 space-y-24">
+            {{-- Row 1 - INSIGHT DRIVEN STRATEGY --}}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="text-left">
+                    <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase">
+                        {{ $publicPresenceContent->INSIGHT_DRIVEN_STRATEGY ?? 'INSIGHT-DRIVEN STRATEGY' }}
+                    </h2>
+                    <p class="mt-6 text-gray-700 font-rubik leading-relaxed text-sm md:text-base">
+                        {{ $publicPresenceContent->desc_INSIGHT_DRIVEN_STRATEGY ??
+                            'Every powerful brand is built on a foundation of deep understanding. Our process begins with comprehensive analysis, where we dive into your market, competitive landscape, and audience behavior. This strategic thinking ensures your brand’s positioning is not only unique but also precisely aligned with your business objectives for maximum effectiveness.' }}
+                    </p>
+                </div>
+                <div class="flex justify-center">
+                    @if ($publicPresenceContent && $publicPresenceContent->img_INSIGHT_DRIVEN_STRATEGY)
+                        <img src="{{ Storage::url($publicPresenceContent->img_INSIGHT_DRIVEN_STRATEGY) }}"
+                            alt="Insight Driven Strategy" class="rounded-xl w-full max-w-md object-cover">
+                    @else
+                        <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Insight Driven Strategy"
+                            class="rounded-xl w-full max-w-md object-cover">
+                    @endif
+                </div>
             </div>
-            <div class="flex justify-center">
-                @if ($publicPresenceContent && $publicPresenceContent->img_INSIGHT_DRIVEN_STRATEGY)
-                    <img src="{{ Storage::url($publicPresenceContent->img_INSIGHT_DRIVEN_STRATEGY) }}"
-                        alt="Insight Driven Strategy" class="rounded-xl w-full max-w-md object-cover">
-                @else
-                    <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Insight Driven Strategy"
-                        class="rounded-xl w-full max-w-md object-cover">
-                @endif
+
+            {{-- Row 2 - Creative and Channel Synergy --}}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1 flex justify-center">
+                    @if ($publicPresenceContent && $publicPresenceContent->img_Creative_and_Channel_Synergy)
+                        <img src="{{ Storage::url($publicPresenceContent->img_Creative_and_Channel_Synergy) }}"
+                            alt="Creative and Channel Synergy" class="rounded-xl w-full max-w-md object-cover">
+                    @else
+                        <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Creative and Channel Synergy"
+                            class="rounded-xl w-full max-w-md object-cover">
+                    @endif
+                </div>
+                <div class="order-1 md:order-2 text-left">
+                    <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase">
+                        {{ $publicPresenceContent->Creative_and_Channel_Synergy ?? 'Creative and Channel Synergy' }}
+                    </h2>
+                    <p class="mt-6 text-gray-700 font-rubik leading-relaxed text-sm md:text-base">
+                        {{ $publicPresenceContent->desc_Creative_and_Channel_Synergy ??
+                            'Strategy provides the direction, creativity makes the journey unforgettable. We translate strategic insights into bold ideas and out-of-the-box concepts with creative and different thinking. This is where we craft the unique personality and compelling narrative that gives your brand a distinctive voice.' }}
+                    </p>
+                </div>
             </div>
         </div>
-
-        {{-- Row 2 - Creative and Channel Synergy --}}
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div class="order-2 md:order-1 flex justify-center">
-                @if ($publicPresenceContent && $publicPresenceContent->img_Creative_and_Channel_Synergy)
-                    <img src="{{ Storage::url($publicPresenceContent->img_Creative_and_Channel_Synergy) }}"
-                        alt="Creative and Channel Synergy" class="rounded-xl w-full max-w-md object-cover">
-                @else
-                    <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Creative and Channel Synergy"
-                        class="rounded-xl w-full max-w-md object-cover">
-                @endif
-            </div>
-            <div class="order-1 md:order-2 text-left">
-                <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase">
-                    {{ $publicPresenceContent->Creative_and_Channel_Synergy ?? 'Creative and Channel Synergy' }}
-                </h2>
-                <p class="mt-6 text-gray-700 font-rubik leading-relaxed text-sm md:text-base">
-                    {{ $publicPresenceContent->desc_Creative_and_Channel_Synergy ??
-                        'Strategy provides the direction, creativity makes the journey unforgettable. We translate strategic insights into bold ideas and out-of-the-box concepts with creative and different thinking. This is where we craft the unique personality and compelling narrative that gives your brand a distinctive voice.' }}
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
+    </section>
 
     {{-- Services Grid Section --}}
     <section class="w-full py-8 bg-white">
