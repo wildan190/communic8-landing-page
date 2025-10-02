@@ -22,31 +22,31 @@
     </section>
 
     {{-- Gallery Section --}}
-<section class="w-full">
-    <div class="container mx-auto px-6 md:px-12 py-16 text-center">
-        <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
-            <b>Strategic Placement for Maximum Impact</b>
-        </p>
-        <br>
-        <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
-            We bring the same strategic thinking and creative spirit to the real world that define our digital work. 
-            Our approach and methodology to media placement is designed to ensure your brand connects with the right 
-            audience in the right place.
-        </p>
-    </div>
+    <section class="w-full">
+        <div class="container mx-auto px-6 md:px-12 py-16 text-center">
+            <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
+                <b>Strategic Placement for Maximum Impact</b>
+            </p>
+            <br>
+            <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
+                We bring the same strategic thinking and creative spirit to the real world that define our digital work.
+                Our approach and methodology to media placement is designed to ensure your brand connects with the right
+                audience in the right place.
+            </p>
+        </div>
 
-    {{-- ✅ Head Image dari database --}}
-    @if($publicPresenceContent && $publicPresenceContent->head_img)
-        <img src="{{ Storage::url($publicPresenceContent->head_img) }}" alt="Gallery" class="w-full h-auto object-cover">
-    @else
-        <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery" class="w-full h-auto object-cover">
-    @endif
-</section>
+        {{-- ✅ Head Image dari database --}}
+        @if ($publicPresenceContent && $publicPresenceContent->head_img)
+            <img src="{{ Storage::url($publicPresenceContent->head_img) }}" alt="Gallery"
+                class="w-full h-auto object-cover">
+        @else
+            <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery" class="w-full h-auto object-cover">
+        @endif
+    </section>
 
 {{-- Strategy Section --}}
 <section class="w-full py-24">
-    <div class="max-w-7xl mx-auto px-20 space-y-24">
-
+    <div class="max-w-7xl mx-auto px-6 md:px-20 space-y-24">
         {{-- Row 1 - INSIGHT DRIVEN STRATEGY --}}
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div class="text-left">
@@ -54,17 +54,17 @@
                     {{ $publicPresenceContent->INSIGHT_DRIVEN_STRATEGY ?? 'INSIGHT-DRIVEN STRATEGY' }}
                 </h2>
                 <p class="mt-6 text-gray-700 font-rubik leading-relaxed text-sm md:text-base">
-                    {{ $publicPresenceContent->desc_INSIGHT_DRIVEN_STRATEGY ?? 
-                    "Every powerful brand is built on a foundation of deep understanding. Our process begins with comprehensive analysis, where we dive into your market, competitive landscape, and audience behavior. This strategic thinking ensures your brand’s positioning is not only unique but also precisely aligned with your business objectives for maximum effectiveness." }}
+                    {{ $publicPresenceContent->desc_INSIGHT_DRIVEN_STRATEGY ??
+                        'Every powerful brand is built on a foundation of deep understanding. Our process begins with comprehensive analysis, where we dive into your market, competitive landscape, and audience behavior. This strategic thinking ensures your brand’s positioning is not only unique but also precisely aligned with your business objectives for maximum effectiveness.' }}
                 </p>
             </div>
             <div class="flex justify-center">
-                @if($publicPresenceContent && $publicPresenceContent->img_INSIGHT_DRIVEN_STRATEGY)
-                    <img src="{{ Storage::url($publicPresenceContent->img_INSIGHT_DRIVEN_STRATEGY) }}" 
-                         alt="Insight Driven Strategy" 
-                         class="rounded-xl w-full max-w-md object-cover">
+                @if ($publicPresenceContent && $publicPresenceContent->img_INSIGHT_DRIVEN_STRATEGY)
+                    <img src="{{ Storage::url($publicPresenceContent->img_INSIGHT_DRIVEN_STRATEGY) }}"
+                        alt="Insight Driven Strategy" class="rounded-xl w-full max-w-md object-cover">
                 @else
-                    <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Insight Driven Strategy" class="rounded-xl w-full max-w-md object-cover">
+                    <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Insight Driven Strategy"
+                        class="rounded-xl w-full max-w-md object-cover">
                 @endif
             </div>
         </div>
@@ -72,12 +72,12 @@
         {{-- Row 2 - Creative and Channel Synergy --}}
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div class="order-2 md:order-1 flex justify-center">
-                @if($publicPresenceContent && $publicPresenceContent->img_Creative_and_Channel_Synergy)
-                    <img src="{{ Storage::url($publicPresenceContent->img_Creative_and_Channel_Synergy) }}" 
-                         alt="Creative and Channel Synergy" 
-                         class="rounded-xl w-full max-w-md object-cover">
+                @if ($publicPresenceContent && $publicPresenceContent->img_Creative_and_Channel_Synergy)
+                    <img src="{{ Storage::url($publicPresenceContent->img_Creative_and_Channel_Synergy) }}"
+                        alt="Creative and Channel Synergy" class="rounded-xl w-full max-w-md object-cover">
                 @else
-                    <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Creative and Channel Synergy" class="rounded-xl w-full max-w-md object-cover">
+                    <img src="{{ asset('assets/img/dummy/dummy2.png') }}" alt="Creative and Channel Synergy"
+                        class="rounded-xl w-full max-w-md object-cover">
                 @endif
             </div>
             <div class="order-1 md:order-2 text-left">
@@ -85,12 +85,11 @@
                     {{ $publicPresenceContent->Creative_and_Channel_Synergy ?? 'Creative and Channel Synergy' }}
                 </h2>
                 <p class="mt-6 text-gray-700 font-rubik leading-relaxed text-sm md:text-base">
-                    {{ $publicPresenceContent->desc_Creative_and_Channel_Synergy ?? 
-                    "Strategy provides the direction, creativity makes the journey unforgettable. We translate strategic insights into bold ideas and out-of-the-box concepts with creative and different thinking. This is where we craft the unique personality and compelling narrative that gives your brand a distinctive voice." }}
+                    {{ $publicPresenceContent->desc_Creative_and_Channel_Synergy ??
+                        'Strategy provides the direction, creativity makes the journey unforgettable. We translate strategic insights into bold ideas and out-of-the-box concepts with creative and different thinking. This is where we craft the unique personality and compelling narrative that gives your brand a distinctive voice.' }}
                 </p>
             </div>
         </div>
-
     </div>
 </section>
 
@@ -159,17 +158,22 @@
 
     <!-- Blog Slider Section -->
     <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
             <!-- Section Title -->
-            <h2
-                class="text-center font-poppins text-2xl md:text-3xl lg:text-4xl font-semibold tracking-[0.3em] text-gray-700 mb-16">
-                INSIGHTS FOR <br /> STRATEGIC MIND
-            </h2>
+            <div class="text-center mb-12 sm:mb-16">
+                <h2
+                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
+               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                    I N S I G H T S &nbsp; F O R &nbsp;
+                    <span class="hidden sm:inline"><br /></span>
+                    S T R A T E G I C &nbsp; M I N D
+                </h2>
+            </div>
 
-            <!-- Wrapper + Buttons -->
-            <div class="flex items-center space-x-6">
 
+            <!-- Wrapper for Desktop (with arrows) -->
+            <div class="hidden sm:flex items-center space-x-6">
                 <!-- Prev Button -->
                 <button id="prevBtn" class="shrink-0">
                     <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Prev" class="w-10 h-10">
@@ -177,15 +181,14 @@
 
                 <!-- Slider Container -->
                 <div id="blog-slider"
-                    class="flex overflow-x-auto space-x-6 scrollbar-hide snap-x snap-mandatory scroll-smooth">
-
+                    class="flex overflow-x-auto space-x-6 scrollbar-hide snap-x snap-mandatory scroll-smooth w-full">
                     @foreach ($sliderBlogs as $blog)
                         <div
-                            class="snap-center min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
+                            class="snap-center min-w-[280px] sm:min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
                             <p class="text-sm text-gray-500">{{ $blog->category }}</p>
                             <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
                                 <h3
-                                    class="text-lg font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[72px] mb-4">
+                                    class="text-base sm:text-lg font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[72px] mb-4">
                                     {{ $blog->title }}
                                 </h3>
                             </a>
@@ -199,13 +202,49 @@
                             @endif
                         </div>
                     @endforeach
-
                 </div>
 
                 <!-- Next Button -->
                 <button id="nextBtn" class="shrink-0">
                     <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next" class="w-10 h-10">
                 </button>
+            </div>
+
+            <!-- Mobile: Slider full width, arrows below -->
+            <div class="sm:hidden">
+                <div id="blog-slider-mobile"
+                    class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
+                    @foreach ($sliderBlogs as $blog)
+                        <div
+                            class="snap-center min-w-[260px] bg-white rounded-2xl shadow-sm p-4 border border-gray-200 flex flex-col">
+                            <p class="text-xs text-gray-500">{{ $blog->category }}</p>
+                            <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
+                                <h3
+                                    class="text-base font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[60px] mb-3">
+                                    {{ $blog->title }}
+                                </h3>
+                            </a>
+                            @if ($blog->headline_img)
+                                <img src="{{ asset('storage/' . $blog->headline_img) }}"
+                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}"
+                                    class="w-full h-40 object-cover rounded-xl">
+                            @else
+                                <img src="{{ asset('assets/img/blog1.png') }}" alt="Default Image"
+                                    class="w-full h-40 object-cover rounded-xl">
+                            @endif
+                        </div>
+                    @endforeach
+                </div>
+
+                <!-- Arrows below slider -->
+                <div class="flex justify-center space-x-6 mt-6">
+                    <button id="prevBtnMobile">
+                        <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Prev" class="w-8 h-8">
+                    </button>
+                    <button id="nextBtnMobile">
+                        <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next" class="w-8 h-8">
+                    </button>
+                </div>
             </div>
 
             <!-- Read More Button -->
@@ -221,6 +260,7 @@
 
     <!-- JS for slider scroll -->
     <script>
+        // Desktop
         const slider = document.getElementById('blog-slider');
         document.getElementById('prevBtn').addEventListener('click', () => {
             slider.scrollBy({
@@ -231,6 +271,21 @@
         document.getElementById('nextBtn').addEventListener('click', () => {
             slider.scrollBy({
                 left: 400,
+                behavior: 'smooth'
+            });
+        });
+
+        // Mobile
+        const sliderMobile = document.getElementById('blog-slider-mobile');
+        document.getElementById('prevBtnMobile').addEventListener('click', () => {
+            sliderMobile.scrollBy({
+                left: -300,
+                behavior: 'smooth'
+            });
+        });
+        document.getElementById('nextBtnMobile').addEventListener('click', () => {
+            sliderMobile.scrollBy({
+                left: 300,
                 behavior: 'smooth'
             });
         });

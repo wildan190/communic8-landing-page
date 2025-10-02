@@ -52,16 +52,23 @@
 
         {{-- THE PHILOSOPHY --}}
         <section
-            class="relative overflow-visible z-10 bg-gradient-to-r from-gray-300 via-gray-200 to-gray-600 py-20 md:py-24 -mb-20">
+            class="relative overflow-visible z-10 bg-gradient-to-r from-gray-400 to-gray-600 py-20 md:py-24 -mb-20 transition-colors duration-500 hover:from-orange-500 hover:to-orange-600 group">
+
             <div class="container max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative">
 
                 {{-- Lamp (left) – big & overlapping top/bottom --}}
                 <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
-                    class="hidden md:block absolute -top-40 left-0 w-[380px] lg:w-[500px] xl:w-[560px] drop-shadow-2xl z-40 pointer-events-none" />
+                    class="hidden md:block absolute -top-40 left-0 w-[380px] lg:w-[500px] xl:w-[560px] drop-shadow-2xl z-40 transition-all duration-500 group-hover:opacity-0" />
+
+                <img src="{{ asset('assets/img/lamphover.png') }}" alt="Lamp Hover"
+                    class="hidden md:block absolute -top-40 left-0 w-[380px] lg:w-[500px] xl:w-[560px] drop-shadow-2xl z-40 opacity-0 transition-all duration-500 group-hover:opacity-100" />
 
                 {{-- Mobile lamp (smaller, inline flow) --}}
-                <div class="md:hidden mb-6 -mt-20 flex justify-center">
-                    <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp" class="w-64 drop-shadow-2xl">
+                <div class="md:hidden mb-6 -mt-20 flex justify-center relative">
+                    <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
+                        class="w-64 drop-shadow-2xl transition-all duration-500 group-hover:opacity-0">
+                    <img src="{{ asset('assets/img/lamphover.png') }}" alt="Lamp Hover"
+                        class="w-64 drop-shadow-2xl absolute top-0 opacity-0 transition-all duration-500 group-hover:opacity-100">
                 </div>
 
                 {{-- Grid: spacer kiri untuk lamp, teks di kanan --}}
@@ -70,7 +77,7 @@
                     <div class="hidden md:block"></div>
 
                     {{-- Text Right --}}
-                    <div class="text-left text-white md:pl-6">
+                    <div class="text-left text-white md:pl-6 transition-colors duration-500">
                         <h2 class="font-poppins text-2xl sm:text-3xl md:text-4xl tracking-[0.35em] font-semibold mb-6">
                             {{ __('about/philosophy.title') }}
                         </h2>
@@ -87,6 +94,7 @@
                 </div>
             </div>
         </section>
+
 
         {{-- WHY OUR PARTNER CHOOSE US --}}
         <section class="relative pt-32 sm:pt-40 md:pt-56 pb-16 sm:pb-20 md:pb-24 bg-white">
