@@ -48,10 +48,12 @@ Route::post('/contact', [ContactController::class, 'store'])
     ->name('contact.store');
 
 // Rute Layanan lainnya
-Route::get('/layanan/brand-forge', [LayananController::class, 'brandForge'])->name('layanan.brand-forge');
-Route::get('/layanan/digital-compass', [LayananController::class, 'digitalCompass'])->name('layanan.digital-compass');
-Route::get('/layanan/digital-architecture', [LayananController::class, 'digitalArchitecture'])->name('layanan.digital-architecture');
-Route::get('/layanan/public-presence', [LayananController::class, 'publicPresence'])->name('layanan.public-presence');
+Route::get('/layanan/brand-land', [LayananController::class, 'brandLand'])->name('layanan.brand-land');
+Route::get('/layanan/digital-stand', [LayananController::class, 'digitalStand'])->name('layanan.digital-stand');
+Route::get('/layanan/code-band', [LayananController::class, 'codeBand'])->name('layanan.code-band');
+Route::get('/layanan/public-space-media', [LayananController::class, 'publicSpaceMedia'])->name('layanan.public-space-media');
+Route::get('/layanan/ott-advertising', [LayananController::class, 'ottAdvertising'])->name('layanan.ott-advertising');
+
 
 use App\Models\PageView;
 use Illuminate\Support\Facades\DB;

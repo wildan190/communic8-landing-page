@@ -58,14 +58,11 @@
             <div>
                 <h4 class="font-semibold mb-4">Scope of works</h4>
                 <ul class="space-y-2 text-sm">
-                    <li><a href="{{ route('layanan.brand-forge') }}" class="hover:text-gray-500">Brand
-                            Development</a></li>
-                    <li><a href="{{ route('layanan.digital-compass') }}" class="hover:text-gray-500">Digital
-                            Marketing</a></li>
-                    <li><a href="{{ route('layanan.digital-architecture') }}" class="hover:text-gray-500">Digital
-                            Development</a></li>
-                    <li><a href="{{ route('layanan.public-presence') }}" class="hover:text-gray-500">Event
-                            Management</a></li>
+                    <li><a href="{{ route('layanan.brand-land') }}" class="hover:text-gray-500">Brand Land</a></li>
+                    <li><a href="{{ route('layanan.digital-stand') }}" class="hover:text-gray-500">Digital Stand</a></li>
+                    <li><a href="{{ route('layanan.code-band') }}" class="hover:text-gray-500">Code Band</a></li>
+                    <li><a href="{{ route('layanan.public-space-media') }}" class="hover:text-gray-500">Public Space Media</a></li>
+                    <li><a href="{{ route('layanan.ott-advertising') }}" class="hover:text-gray-500">OTT Advertising</a></li>
                 </ul>
             </div>
 
