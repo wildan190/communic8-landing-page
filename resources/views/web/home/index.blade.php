@@ -52,7 +52,7 @@
             <div class="text-white px-4 sm:px-6">
                 <h2
                     class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-[0.2em] sm:tracking-[0.3em] uppercase leading-tight">
-                    Creativity is intelligence<br>having fun
+                    Creativity is the bridge between culture and commerce
                 </h2>
                 <p class="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base italic">Albert Einstein</p>
             </div>
@@ -71,8 +71,8 @@
                     {{-- Text Content First on Mobile --}}
                     <div class="text-center mb-8">
                         <h2
-                            class="text-xl sm:text-2xl text-gray-700 mb-4 sm:mb-6 leading-tight px-2
-                           {{ app()->getLocale() == 'en' ? 'tracking-[0.2em] sm:tracking-[0.3em]' : 'tracking-normal' }}">
+                            class="text-sm sm:text-base text-gray-700 mb-0 sm:mb-0 leading-tight px-0 {{ app()->getLocale() == 'en' ? 'tracking-normal' : 'tracking-normal' }}">
+                            BEHIND THE BRAND
                             {!! __('home/glance.title') !!}
                         </h2>
                         <p class="text-gray-600 leading-relaxed text-sm sm:text-base px-2">
@@ -147,8 +147,7 @@
 
                 {{-- Item 1 --}}
                 <div class="flex flex-col items-center gap-4">
-                    <div
-                        class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
+                    <div class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
                         <i class="fas fa-briefcase"></i>
                     </div>
                     <div>
@@ -159,8 +158,7 @@
 
                 {{-- Item 2 --}}
                 <div class="flex flex-col items-center text-center gap-4">
-                    <div
-                        class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
+                    <div class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
                         <i class="fas fa-layer-group"></i>
                     </div>
                     <div>
@@ -171,8 +169,7 @@
 
                 {{-- Item 3 --}}
                 <div class="flex flex-col items-center text-center gap-4">
-                    <div
-                        class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
+                    <div class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
                         <i class="fas fa-handshake"></i>
                     </div>
                     <div>
@@ -198,12 +195,16 @@
             {{-- Title Section --}}
             <div class="text-center mb-16">
                 <h2
-                    class="text-2xl sm:text-3xl md:text-4xl text-gray-700 mb-6
-                          {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}
-                          leading-tight">
+                    class="text-2xl sm:text-3xl md:text-4xl text-gray-700 mb-2
+              {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}
+              leading-tight">
                     {!! __('home/what_we_do.title') !!}
-                </h2>
+                </h2><br />
+                <p class="text-gray-500 text-base sm:text-lg md:text-xl">
+                    {!! __('home/what_we_do.subtitle') !!}
+                </p>
             </div>
+
 
             @php
                 $cards = __('home/what_we_do.cards');

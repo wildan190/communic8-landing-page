@@ -1,7 +1,8 @@
 <?php
 
 return [
-    'title' => 'W H A T &nbsp; W E &nbsp; C A N<br>D O &nbsp; F O R &nbsp; Y O U',
+    'title' => 'WHAT WE DO BEST',
+    'subtitle' => 'End-to-end solutions in branding, creativity, and digital — built to help <br />your business grow.',
 
     'cards' => [
         [
