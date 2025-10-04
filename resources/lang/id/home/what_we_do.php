@@ -29,5 +29,11 @@ return [
             'desc' => 'Di era digital-first, kehadiran online merek Anda lebih dari sekadar titik kontak — ini adalah fondasi bagaimana audiens mengalami dan terhubung dengan Anda. Oleh karena itu, solusi Digital Development di Communic 8 dirancang tidak hanya untuk membangun aset digital, tetapi juga menciptakan pengalaman yang bermakna, skalabel, dan siap masa depan.',
             'btn' => 'Buka kemungkinan digital',
         ],
+        [
+            'img' => 'ott.png',
+            'title' => 'OTT Advertising',
+            'desc' => 'Iklan terarah di platform OTT untuk menjangkau audiens yang tepat melalui konten yang mereka sukai — dari layar TV besar hingga perangkat seluler.',
+            'btn' => 'Pelajari lebih lanjut',
+        ],
     ],
 ];
