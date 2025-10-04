@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'S E K I L A S &nbsp; T E N T A N G &nbsp; K A M I',
-    'paragraph1' => 'Dengan pengalaman lebih dari 20 tahun, Communic8 telah menjadi agensi digital kreatif terpercaya bagi berbagai merek ambisius.',
-    'paragraph2' => 'Kami tidak hanya memberikan layanan. Kami membangun kemitraan yang abadi. Melalui solusi terintegrasi yang menggabungkan kreativitas, kecerdasan digital, dan strategi kompleks yang efektif, kami membantu bisnis Anda mencapai visi uniknya di kawasan yang dinamis ini.',
+    'title' => 'DI BALIK BRAND',
+    'paragraph1' => 'Di Communic 8, kami percaya bahwa ide-ide yang kuat hanya berarti ketika diwujudkan dalam tindakan. Dengan pengalaman lebih dari 20 tahun dan 11 tahun sebagai agensi kreatif yang mapan, kami mengubah wawasan lokal menjadi strategi yang berdampak secara global.',
+    'paragraph2' => 'Dipandu oleh riset, didorong oleh kinerja, dan didukung oleh kreativitas, karya kami telah mendapatkan kepercayaan dari merek nasional dan multinasional dari berbagai industri. Dengan pemahaman mendalam terhadap budaya dan perilaku konsumen unik Indonesia, kami menjadi mitra terpercaya bagi perusahaan yang ingin masuk dan berkembang di pasar dinamis ini. Bagi kami, ide bukan sekadar konsep. Ide adalah tindakan yang bermakna, membentuk bisnis, menginspirasi audiens, dan menciptakan dampak yang bertahan lama.',
 ];

@@ -22,14 +22,16 @@
 
                 <div
                     class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                    <a href="{{ route('layanan.brand-forge') }}"
-                        class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">{{ __('navbar.brand_forge') }}</a>
-                    <a href="{{ route('layanan.digital-compass') }}"
-                        class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">{{ __('navbar.digital_compass') }}</a>
-                    <a href="{{ route('layanan.digital-architecture') }}"
-                        class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">{{ __('navbar.digital_architecture') }}</a>
-                    <a href="{{ route('layanan.public-presence') }}"
-                        class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">{{ __('navbar.digital_presence') }}</a>
+                    <a href="{{ route('layanan.brand-land') }}"
+                        class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">{{ __('navbar.brand_land') }}</a>
+                    <a href="{{ route('layanan.digital-stand') }}"
+                        class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">{{ __('navbar.digital_stand') }}</a>
+                    <a href="{{ route('layanan.code-band') }}"
+                        class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">{{ __('navbar.code_band') }}</a>
+                    <a href="{{ route('layanan.public-space-media') }}"
+                        class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">{{ __('navbar.public_space_media') }}</a>
+                    <a href="{{ route('layanan.ott-advertising') }}"
+                        class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">{{ __('navbar.ott_advertising') }}</a>
                 </div>
             </div>
 

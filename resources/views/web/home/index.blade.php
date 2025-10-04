@@ -52,7 +52,7 @@
             <div class="text-white px-4 sm:px-6">
                 <h2
                     class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-[0.2em] sm:tracking-[0.3em] uppercase leading-tight">
-                    Creativity is intelligence<br>having fun
+                    Creativity is the bridge between culture and commerce
                 </h2>
                 <p class="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base italic">Albert Einstein</p>
             </div>
@@ -71,8 +71,8 @@
                     {{-- Text Content First on Mobile --}}
                     <div class="text-center mb-8">
                         <h2
-                            class="text-xl sm:text-2xl text-gray-700 mb-4 sm:mb-6 leading-tight px-2
-                           {{ app()->getLocale() == 'en' ? 'tracking-[0.2em] sm:tracking-[0.3em]' : 'tracking-normal' }}">
+                            class="text-sm sm:text-base text-gray-700 mb-0 sm:mb-0 leading-tight px-0 {{ app()->getLocale() == 'en' ? 'tracking-normal' : 'tracking-normal' }}">
+                            BEHIND THE BRAND
                             {!! __('home/glance.title') !!}
                         </h2>
                         <p class="text-gray-600 leading-relaxed text-sm sm:text-base px-2">
@@ -147,8 +147,7 @@
 
                 {{-- Item 1 --}}
                 <div class="flex flex-col items-center gap-4">
-                    <div
-                        class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
+                    <div class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
                         <i class="fas fa-briefcase"></i>
                     </div>
                     <div>
@@ -159,8 +158,7 @@
 
                 {{-- Item 2 --}}
                 <div class="flex flex-col items-center text-center gap-4">
-                    <div
-                        class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
+                    <div class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
                         <i class="fas fa-layer-group"></i>
                     </div>
                     <div>
@@ -171,8 +169,7 @@
 
                 {{-- Item 3 --}}
                 <div class="flex flex-col items-center text-center gap-4">
-                    <div
-                        class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
+                    <div class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
                         <i class="fas fa-handshake"></i>
                     </div>
                     <div>
@@ -190,92 +187,125 @@
 
         </div>
     </section>
+    
+{{-- Section WHAT WE CAN DO FOR YOU --}}
+<section class="relative bg-white pt-16 sm:pt-20 md:pt-32 pb-16 sm:pb-20 md:pb-24">
+    <div class="container max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
 
-    {{-- Section WHAT WE CAN DO FOR YOU --}}
-    <section class="relative bg-white pt-16 sm:pt-20 md:pt-32 pb-16 sm:pb-20 md:pb-24">
-        <div class="container max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+        {{-- Title Section --}}
+        <div class="text-center mb-16">
+            <h2
+                class="text-2xl sm:text-3xl md:text-4xl text-gray-700 mb-2
+                {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}
+                leading-tight">
+                {!! __('home/what_we_do.title') !!}
+            </h2><br />
+            <p class="text-gray-500 text-base sm:text-lg md:text-xl">
+                {!! __('home/what_we_do.subtitle') !!}
+            </p>
+        </div>
 
-            {{-- Title Section --}}
-            <div class="text-center mb-16">
-                <h2
-                    class="text-2xl sm:text-3xl md:text-4xl text-gray-700 mb-6
-                          {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}
-                          leading-tight">
-                    {!! __('home/what_we_do.title') !!}
-                </h2>
-            </div>
+        @php
+            $cards = __('home/what_we_do.cards');
+            $routes = [
+                'layanan.brand-land',
+                'layanan.public-space-media',
+                'layanan.digital-stand',
+                'layanan.code-band',
+                'layanan.ott-advertising',
+            ];
+        @endphp
 
-            @php
-                $cards = __('home/what_we_do.cards');
-                $routes = [
-                    'layanan.brand-forge',
-                    'layanan.digital-compass',
-                    'layanan.digital-architecture',
-                    'layanan.public-presence',
-                ];
-            @endphp
+        {{-- Mobile: Single Column Stack --}}
+        <div class="md:hidden space-y-6">
+            @foreach ($cards as $index => $card)
+                <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col mx-auto max-w-sm p-4">
+                    <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
+                        class="w-full h-48 sm:h-60 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
 
-            {{-- Mobile: Single Column Stack --}}
-            <div class="md:hidden space-y-6">
-                @foreach ($cards as $card)
-                    <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col mx-auto max-w-sm p-4">
+                    <div class="flex flex-col items-center text-center w-full flex-1 pb-4">
+                        <h3
+                            class="font-bold text-gray-700 mb-3 break-words px-1
+                            {{ app()->getLocale() == 'en' ? 'text-lg sm:text-xl' : 'text-base sm:text-lg' }}">
+                            {{ $card['title'] }}
+                        </h3>
+                        <p
+                            class="text-gray-600 leading-relaxed px-1 mb-6 flex-1 break-words hyphens-auto
+                            {{ app()->getLocale() == 'en' ? 'text-sm' : 'text-xs sm:text-sm' }}">
+                            {{ $card['desc'] }}
+                        </p>
+
+                        {{-- Button dengan route dinamis --}}
+                        <a href="{{ route($routes[$index]) }}"
+                            class="bg-gray-800 text-white px-5 py-2 text-sm rounded-full hover:bg-gray-700 transition-colors inline-block text-center whitespace-nowrap">
+                            {{ $card['btn'] }}
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        {{-- Desktop: 2-2-1 Layout --}}
+        <div class="hidden md:block">
+            {{-- Baris 1: 2 cards --}}
+            <div class="flex flex-wrap justify-center gap-6 mb-6">
+                @for ($i = 0; $i < 2; $i++)
+                    @php $card = $cards[$i]; @endphp
+                    <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-72 p-4 min-h-[520px]">
                         <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
-                            class="w-full h-48 sm:h-60 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
-
-                        <div class="flex flex-col items-center text-center w-full flex-1 pb-4">
-                            <h3
-                                class="font-bold text-gray-700 mb-3 break-words px-1
-                               {{ app()->getLocale() == 'en' ? 'text-lg sm:text-xl' : 'text-base sm:text-lg' }}">
-                                {{ $card['title'] }}
-                            </h3>
-                            <p
-                                class="text-gray-600 leading-relaxed px-1 mb-6 flex-1 break-words hyphens-auto
-                              {{ app()->getLocale() == 'en' ? 'text-sm' : 'text-xs sm:text-sm' }}">
-                                {{ $card['desc'] }}
-                            </p>
-
-                            {{-- Button dengan route dinamis --}}
-                            <a href="{{ route($routes[$loop->index]) }}"
-                                class="bg-gray-800 text-white px-5 py-2 text-sm rounded-full hover:bg-gray-700 transition-colors inline-block text-center whitespace-nowrap">
+                            class="w-full h-60 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
+                        <div class="flex flex-col items-center text-center w-full flex-1">
+                            <h3 class="text-xl font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
+                            <p class="text-gray-600 text-sm mb-4 flex-1">{{ $card['desc'] }}</p>
+                            <a href="{{ route($routes[$i]) }}"
+                                class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors inline-block text-center">
                                 {{ $card['btn'] }}
                             </a>
                         </div>
                     </div>
-                @endforeach
+                @endfor
             </div>
 
-            {{-- Desktop: 2x2 Grid Layout --}}
-            <div class="hidden md:block">
-                @php
-                    $rows = array_chunk($cards, 2);
-                @endphp
-
-                @foreach ($rows as $row)
-                    <div class="flex flex-wrap justify-center gap-6 mb-6">
-                        @foreach ($row as $card)
-                            <div
-                                class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-72 p-4 min-h-[520px]">
-                                <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
-                                    class="w-full h-60 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
-
-                                <div class="flex flex-col items-center text-center w-full flex-1">
-                                    <h3 class="text-xl font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
-                                    <p class="text-gray-600 text-sm mb-4 flex-1">{{ $card['desc'] }}</p>
-
-                                    {{-- Button dengan route dinamis (desktop) --}}
-                                    <a href="{{ route($routes[$loop->parent->index * 2 + $loop->index]) }}"
-                                        class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors inline-block text-center">
-                                        {{ $card['btn'] }}
-                                    </a>
-                                </div>
-                            </div>
-                        @endforeach
+            {{-- Baris 2: 2 cards --}}
+            <div class="flex flex-wrap justify-center gap-6 mb-6">
+                @for ($i = 2; $i < 4; $i++)
+                    @php $card = $cards[$i]; @endphp
+                    <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-72 p-4 min-h-[520px]">
+                        <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
+                            class="w-full h-60 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
+                        <div class="flex flex-col items-center text-center w-full flex-1">
+                            <h3 class="text-xl font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
+                            <p class="text-gray-600 text-sm mb-4 flex-1">{{ $card['desc'] }}</p>
+                            <a href="{{ route($routes[$i]) }}"
+                                class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors inline-block text-center">
+                                {{ $card['btn'] }}
+                            </a>
+                        </div>
                     </div>
-                @endforeach
+                @endfor
+            </div>
+
+            {{-- Baris 3: 1 card tengah --}}
+            <div class="flex justify-center">
+                @php $card = $cards[4]; @endphp
+                <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-72 p-4 min-h-[520px]">
+                    <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
+                        class="w-full h-60 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
+                    <div class="flex flex-col items-center text-center w-full flex-1">
+                        <h3 class="text-xl font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-1">{{ $card['desc'] }}</p>
+                        <a href="{{ route($routes[4]) }}"
+                            class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors inline-block text-center">
+                            {{ $card['btn'] }}
+                        </a>
+                    </div>
+                </div>
             </div>
 
         </div>
-    </section>
+    </div>
+</section>
+
 
     {{-- Section TRUSTED BY --}}
     <section class="relative bg-white py-20">

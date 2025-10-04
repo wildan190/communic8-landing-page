@@ -1,32 +1,39 @@
 <?php
 
 return [
-    'title' => 'A P A &nbsp; Y A N G &nbsp; B I S A<br>K A M I &nbsp; L A K U K A N &nbsp; <br />U N T U K &nbsp; A N D A',
+    'title' => 'APA YANG KAMI LAKUKAN TERBAIK',
+    'subtitle' => 'Solusi menyeluruh dalam branding, kreativitas, dan digital — dibangun untuk membantu <br />bisnis Anda berkembang.',
 
     'cards' => [
         [
             'img' => 'forge.png',
-            'title' => 'Brand Forge',
-            'desc' => 'Kami membangun dan memperkuat merek yang kuat dan relevan dengan pasar dan audiens Anda. Dari membentuk identitas unik hingga menumbuhkan kepercayaan dan nilai jangka panjang, kami memastikan merek Anda menonjol dan memberikan kesan yang tak terlupakan.',
+            'title' => 'Brand Land',
+            'desc' => 'Dengan perspektif global dan pemahaman mendalam terhadap budaya lokal, kami membantu merek membangun ekuitas yang kuat dan koneksi bermakna — terutama bagi mereka yang ingin masuk dan berkembang di pasar dinamis Indonesia.',
             'btn' => 'Temukan identitas merek Anda',
         ],
         [
             'img' => 'digital.png',
-            'title' => 'Public Presence',
-            'desc' => 'Bangun kesadaran merek yang kuat di dunia nyata, tidak hanya di layar. Kami membuat merek Anda tak terlewatkan, meningkatkan citra dan pengaruhnya. Penempatan strategis kami di OOH, DOOH, dan Transit Media memastikan pesan Anda terhubung dengan audiens yang tepat.',
-            'btn' => 'Jadilah terlihat dan terdengar',
+            'title' => 'Public Space Media',
+            'desc' => 'Tempatkan merek Anda di pusat konsumsi media modern. Kami menghubungkan Anda dengan audiens yang sangat terlibat di seluruh ekosistem streaming, menjangkau mereka di setiap layar mulai dari TV ruang tamu hingga smartphone di tangan mereka.',
+            'btn' => 'Dikenal dan terdengar',
         ],
         [
             'img' => 'compass.png',
-            'title' => 'Digital Compass',
-            'desc' => 'Perluas jangkauan dan dorong pertumbuhan bisnis Anda dengan strategi pemasaran digital cerdas kami. Kami menghubungkan Anda dengan audiens target di berbagai saluran online dan mendorong keterlibatan yang berarti.',
-            'btn' => 'Ditemukan & tumbuh lebih besar',
+            'title' => 'Digital Stand',
+            'desc' => 'Solusi pemasaran digital kami dirancang untuk tidak hanya menampilkan merek Anda di hadapan audiens yang tepat, tetapi juga memastikan setiap interaksi memberikan nilai yang terukur.',
+            'btn' => 'Ditemukan & berkembang',
         ],
         [
             'img' => 'digital.png',
-            'title' => 'Digital Architecture',
-            'desc' => 'Navigasikan transformasi digital dan bangun fondasi digital Anda dengan percaya diri. Tim ahli kami menyediakan konsultasi digital, merancang dan mengembangkan situs web, aplikasi, dan platform yang meningkatkan efisiensi operasional dan pengalaman pengguna Anda.',
-            'btn' => 'Buka peluang digital',
+            'title' => 'Code Band',
+            'desc' => 'Di era digital-first, kehadiran online merek Anda lebih dari sekadar titik kontak — ini adalah fondasi bagaimana audiens mengalami dan terhubung dengan Anda. Oleh karena itu, solusi Digital Development di Communic 8 dirancang tidak hanya untuk membangun aset digital, tetapi juga menciptakan pengalaman yang bermakna, skalabel, dan siap masa depan.',
+            'btn' => 'Buka kemungkinan digital',
+        ],
+        [
+            'img' => 'ott.png',
+            'title' => 'OTT Advertising',
+            'desc' => 'Iklan terarah di platform OTT untuk menjangkau audiens yang tepat melalui konten yang mereka sukai — dari layar TV besar hingga perangkat seluler.',
+            'btn' => 'Pelajari lebih lanjut',
         ],
     ],
 ];

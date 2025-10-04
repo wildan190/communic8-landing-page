@@ -134,4 +134,17 @@ class LayananController extends Controller
             ),
         );
     }
+
+    public function ottAdvertising()
+    {
+        $categories = Blog::select('category')->distinct()->pluck('category');
+        $sliderBlogs = Blog::latest()->take(10)->get();
+        $clients = Client::latest()->get();
+        $galleries = Gallery::latest()->get();
+        $webInfo = WebInformation::first();
+        $branchOffices = BranchOffice::all();
+        $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
+
+        return view('web.layanan.ott-advertising', compact('categories', 'sliderBlogs', 'clients', 'galleries', 'webInfo', 'branchOffices', 'insightCategories'));
+    }
 }

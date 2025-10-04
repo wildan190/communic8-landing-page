@@ -21,14 +21,11 @@
             </button>
 
             <div id="mobileDropdown" class="hidden flex-col ml-4 mt-2 space-y-2 text-gray-600">
-                <a href="{{ route('layanan.brand-forge') }}"
-                    class="hover:text-orange-500">{{ __('navbar.brand_forge') }}</a>
-                <a href="{{ route('layanan.digital-compass') }}"
-                    class="hover:text-orange-500">{{ __('navbar.digital_compass') }}</a>
-                <a href="{{ route('layanan.digital-architecture') }}"
-                    class="hover:text-orange-500">{{ __('navbar.digital_architecture') }}</a>
-                <a href="{{ route('layanan.public-presence') }}"
-                    class="hover:text-orange-500">{{ __('navbar.digital_presence') }}</a>
+                <a href="{{ route('layanan.brand-land') }}" class="hover:text-orange-500">{{ __('navbar.brand_land') }}</a>
+                <a href="{{ route('layanan.digital-stand') }}" class="hover:text-orange-500">{{ __('navbar.digital_stand') }}</a>
+                <a href="{{ route('layanan.code-band') }}" class="hover:text-orange-500">{{ __('navbar.code_band') }}</a>
+                <a href="{{ route('layanan.public-space-media') }}" class="hover:text-orange-500">{{ __('navbar.public_space_media') }}</a>
+                <a href="{{ route('layanan.ott-advertising') }}" class="hover:text-orange-500">{{ __('navbar.ott_advertising') }}</a>
             </div>
         </div>
 

@@ -1,32 +1,39 @@
 <?php
 
 return [
-    'title' => 'W H A T &nbsp; W E &nbsp; C A N<br>D O &nbsp; F O R &nbsp; Y O U',
+    'title' => 'WHAT WE DO BEST',
+    'subtitle' => 'End-to-end solutions in branding, creativity, and digital — built to help <br />your business grow.',
 
     'cards' => [
         [
             'img' => 'forge.png',
-            'title' => 'Brand Forge',
-            'desc' => 'We build and fortify compelling brands that resonate deeply with the market and audience. From establishing your unique identity to cultivating lasting trust and value, we ensure your brand stands out and makes a memorable impact.',
+            'title' => 'Brand Land',
+            'desc' => 'With a global perspective and a deep understanding of local culture, we help brands build strong equity and meaningful connections — especially for those seeking to enter and thrive in Indonesia’s dynamic market.',
             'btn' => "Find your brand's identity",
         ],
         [
             'img' => 'digital.png',
-            'title' => 'Public Presence',
-            'desc' => 'Build powerful, real-world brand awareness by going beyond the screen. We make your brand unmissable, elevating its public stature and impact. Our strategic placements in OOH, DOOH, and Transit Media ensure your message connects with your target audience in the right space.',
+            'title' => 'Public Space Media',
+            'desc' => 'Place your brand at the center of modern media consumption. We connect you with highly engaged audiences across the entire streaming ecosystem, reaching them on every screen from the living room TV to the smartphone in their hands.',
             'btn' => 'Be seen and heard',
         ],
         [
             'img' => 'compass.png',
-            'title' => 'Digital Compass',
-            'desc' => 'Amplify your reach and boost your business with our intelligent digital marketing strategies. We connect you with your target audience across diverse online channels, and drive meaningful engagement.',
+            'title' => 'Digital Stand',
+            'desc' => 'Our digital marketing solutions are designed to not only put your brand in front of the right audiences, but also to ensure every interaction delivers measurable value.',
             'btn' => 'Get found & get growing',
         ],
         [
             'img' => 'digital.png',
-            'title' => 'Digital Architecture',
-            'desc' => 'Navigate the digital transformation and build your digital backbone with confidence. Our expert team provides digital consultancy, designing and developing sophisticated websites, applications, and platforms that enhance your operational efficiency and user experience.',
+            'title' => 'Code Band',
+            'desc' => 'In the digital-first era, your brand’s online presence is more than a touchpoint — it’s the foundation of how audiences experience and connect with you. That’s why at Communic 8, our Digital Development solutions are designed not just to build digital assets, but to create experiences that are meaningful, scalable, and future-ready.',
             'btn' => 'Unlock digital possibilities',
+        ],
+        [
+            'img' => 'ott.png',
+            'title' => 'OTT Advertising',
+            'desc' => 'Place your brand at the center of modern media consumption. We connect you with highly engaged audiences across the entire streaming ecosystem, reaching them on every screen from the living room TV to the smartphone in their hands.',
+            'btn' => 'Own the Living Room',
         ],
     ],
 ];
