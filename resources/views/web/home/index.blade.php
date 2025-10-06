@@ -318,11 +318,9 @@
                 <p class="text-gray-600">{{ __('home/trusted_by.subtitle') }}</p>
             </div>
 
-            {{-- ✅ Logo Carousel (tanpa swiper, tanpa flex horizontal) --}}
-            <div class="relative">
+            {{-- Logo Carousel (di atas projects) --}}
+            <div class="relative mb-12">
                 <div id="logo-slider" class="flex overflow-x-auto scroll-smooth snap-x snap-mandatory space-x-8 pb-6">
-
-                    {{-- 🔁 Potong logo menjadi 9 per slide --}}
                     @foreach ($clients->chunk(9) as $chunk)
                         <div class="grid grid-cols-3 gap-10 min-w-full snap-center">
                             @foreach ($chunk as $client)
@@ -333,7 +331,6 @@
                             @endforeach
                         </div>
                     @endforeach
-
                 </div>
 
                 {{-- Scroll Buttons --}}
@@ -344,7 +341,6 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                     </svg>
                 </button>
-
                 <button id="scroll-right"
                     class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
@@ -361,11 +357,115 @@
                 </h3>
             </div>
 
+            <br />
+
+            {{-- Projects Grid --}}
+            @php
+                $highlightedProjects = $trustedProjects->where('is_highlighted', true)->take(2)->values();
+                $nonHighlightedProjects = $trustedProjects->where('is_highlighted', false)->values();
+            @endphp
+
+            {{-- Highlighted Projects (2 items grid besar) --}}
+            <div class="grid grid-cols-6 gap-6 mb-12">
+                @foreach ($highlightedProjects as $project)
+                    <div
+                        class="col-span-6 md:col-span-3 border border-gray-200 rounded-2xl p-4 flex flex-col relative group">
+                        <div class="flex justify-between items-center mb-2">
+                            <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
+                            @if ($project->project_url)
+                                <a href="{{ $project->project_url }}" target="_blank"
+                                    class="text-gray-400 hover:text-gray-600">
+                                    <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
+                                </a>
+                            @endif
+                        </div>
+                        <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
+                        <div class="rounded-xl overflow-hidden relative">
+                            @if ($project->project_img)
+                                <img src="{{ asset('storage/' . $project->project_img) }}" alt="{{ $project->name }}"
+                                    class="w-full object-cover">
+                            @else
+                                <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="No Image"
+                                    class="w-full object-cover">
+                            @endif
+                            <div
+                                class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
+                                <h3 class="text-sm md:text-base font-semibold mb-2">Ideas in Action</h3>
+                                <p class="text-xs md:text-sm leading-snug">
+                                    A showcase of campaigns, stories, and experiences that create real connections
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            {{-- Non-highlighted Projects Slider --}}
+            <div class="relative mb-12">
+                <div id="projects-slider"
+                    class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
+                    @foreach ($nonHighlightedProjects as $project)
+                        <div class="snap-start border border-gray-200 rounded-2xl p-4 flex flex-col relative group"
+                            style="flex: 0 0 calc(50% - 1rem);"> {{-- Lebar sama dengan highlighted --}}
+
+                            {{-- Client & Project Name --}}
+                            <div class="flex justify-between items-center mb-2">
+                                <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
+                                @if ($project->project_url)
+                                    <a href="{{ $project->project_url }}" target="_blank"
+                                        class="text-gray-400 hover:text-gray-600">
+                                        <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
+                                    </a>
+                                @endif
+                            </div>
+                            <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
+
+                            {{-- Image --}}
+                            <div class="rounded-xl overflow-hidden relative">
+                                @if ($project->project_img)
+                                    <img src="{{ asset('storage/' . $project->project_img) }}"
+                                        alt="{{ $project->name }}" class="w-full object-cover">
+                                @else
+                                    <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="No Image"
+                                        class="w-full object-cover">
+                                @endif
+
+                                {{-- Hover Overlay --}}
+                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
+                                    <h3 class="text-sm md:text-base font-semibold mb-2">Ideas in Action</h3>
+                                    <p class="text-xs md:text-sm leading-snug">
+                                        A showcase of campaigns, stories, and experiences that create real connections
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                {{-- Slider Buttons --}}
+                <button id="prevProject"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="nextProject"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+
         </div>
     </section>
 
-    {{-- JS Scroll Buttons --}}
+    {{-- JS --}}
     <script>
+        // Logo Carousel Scroll
         const slider = document.getElementById("logo-slider");
         const btnLeft = document.getElementById("scroll-left");
         const btnRight = document.getElementById("scroll-right");
@@ -390,6 +490,33 @@
         };
         window.addEventListener("resize", checkScroll);
         window.addEventListener("load", checkScroll);
+
+        // Projects Slider
+        const projectSlider = document.getElementById('projects-slider');
+        const prevProject = document.getElementById('prevProject');
+        const nextProject = document.getElementById('nextProject');
+        const slideWidth = projectSlider.querySelector('div').offsetWidth + 16;
+
+        prevProject?.addEventListener('click', () => projectSlider.scrollBy({
+            left: -slideWidth,
+            behavior: 'smooth'
+        }));
+        nextProject?.addEventListener('click', () => projectSlider.scrollBy({
+            left: slideWidth,
+            behavior: 'smooth'
+        }));
+
+        const checkProjectSlider = () => {
+            if (projectSlider.scrollWidth > projectSlider.clientWidth) {
+                prevProject?.classList.remove('hidden');
+                nextProject?.classList.remove('hidden');
+            } else {
+                prevProject?.classList.add('hidden');
+                nextProject?.classList.add('hidden');
+            }
+        };
+        window.addEventListener('resize', checkProjectSlider);
+        window.addEventListener('load', checkProjectSlider);
     </script>
 
 

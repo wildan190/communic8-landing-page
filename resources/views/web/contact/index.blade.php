@@ -1,7 +1,6 @@
 @extends('layouts.web')
 
 @section('content')
-
     <section class="relative pt-48 pb-20 bg-white"> <!-- pt lebih besar biar jauh dari navbar -->
         <div class="max-w-5xl mx-auto px-6 text-center">
             <!-- Title -->
@@ -114,43 +113,55 @@
             </script>
         @endif
 
-        <!-- Office Grid -->
-        <div class="max-w-6xl mx-auto px-6 mt-20">
-            <div class="grid md:grid-cols-2 gap-10">
-                @forelse($branchOffices as $office)
-                    <div class="bg-white rounded-2xl shadow-sm border p-6 space-y-4 text-center">
-                        @if ($office->picture_upload)
-                            <img src="{{ asset('storage/' . $office->picture_upload) }}"
-                                class="rounded-xl w-full object-cover">
-                        @else
-                            <img src="{{ asset('assets/img/default-office.png') }}" class="rounded-xl w-full object-cover">
-                        @endif
+    </section>
 
-                        <h3 class="text-lg font-semibold text-gray-800">{{ $office->name }}</h3>
-                        <p class="text-gray-600 text-sm">{{ $office->address }}</p>
-                        <p class="font-medium text-gray-800">{{ $office->phone }}</p>
+    <!-- OFFICES & MAPS SECTION -->
+    <section class="bg-white py-24">
+        <div class="max-w-7xl mx-auto px-6 space-y-20">
+
+            @forelse($branchOffices as $office)
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start border-b pb-12 last:border-b-0 last:pb-0">
+                    <!-- Left: Office Details -->
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">{{ $office->name }}</h2>
+                        <p class="text-gray-600 text-base leading-relaxed mb-3">
+                            {{ $office->address }}
+                        </p>
+                        @if ($office->phone)
+                            <p class="text-gray-800 font-medium">📞 {{ $office->phone }}</p>
+                        @endif
+                        @if ($office->email)
+                            <p class="text-gray-800 font-medium">✉️ {{ $office->email }}</p>
+                        @endif
+                        @if ($office->website)
+                            <p class="text-blue-600 font-medium hover:underline mt-1">
+                                🌐 <a href="{{ $office->website }}" target="_blank">{{ $office->website }}</a>
+                            </p>
+                        @endif
                     </div>
-                @empty
-                    <p class="col-span-2 text-center text-gray-500">{{ __('contact/form.no_branch') }}</p>
-                @endforelse
-            </div>
+
+                    <!-- Right: Map -->
+                    <div class="w-full h-[400px] rounded-xl overflow-hidden shadow">
+                        @if ($office->address)
+                            <iframe width="100%" height="100%" style="border:0;" loading="lazy" allowfullscreen
+                                referrerpolicy="no-referrer-when-downgrade"
+                                src="https://www.google.com/maps?q={{ urlencode($office->address) }}&output=embed">
+                            </iframe>
+                        @else
+                            <div class="flex flex-col items-center justify-center h-full text-gray-500">
+                                <i class="fa-solid fa-map-location-dot text-3xl mb-2"></i>
+                                <p>Alamat belum tersedia.</p>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            @empty
+                <p class="text-center text-gray-500 text-lg">{{ __('contact/form.no_branch') }}</p>
+            @endforelse
+
         </div>
     </section>
 
-    <!-- Map Section -->
-    <section class="w-full">
-        @if ($webInfo && $webInfo->address)
-            <iframe width="100%" height="500" style="border:0;" loading="lazy" allowfullscreen
-                referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q={{ urlencode($webInfo->address) }}&output=embed">
-            </iframe>
-        @else
-            <div class="text-center py-10 text-gray-500 dark:text-gray-400">
-                <i class="fa-solid fa-map-location-dot text-3xl mb-2"></i>
-                <p>Alamat belum tersedia.</p>
-            </div>
-        @endif
-    </section>
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"

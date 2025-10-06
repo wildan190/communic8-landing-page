@@ -1,111 +1,136 @@
 @extends('layouts.web')
 
 @section('content')
-    {{-- Hero Section --}}
-    <section class="relative w-full h-[80vh] flex items-end bg-cover bg-center"
-        style="background-image: url('{{ asset('assets/img/archihero.png') }}')">
-        <div class="container mx-auto px-6 md:px-12 lg:px-32 pb-20">
-            <div class="max-w-xl text-left">
-                <h1 class="text-2xl md:text-2xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
-                    D I G I T A L<br />A R C H I T E C T U R E
-                </h1>
-                <h2 class="mt-6 text-lg md:text-xl font-bold font-rubik text-black">
-                    Expertly Developed, Flawlessly Delivered
-                </h2>
-                <p class="mt-4 text-sm md:text-base text-gray-800 font-rubik leading-relaxed">
-                    Step into a realm of flawless digital experiences. Communic 8 brings creativity and code together to
-                    develop engaging websites, intuitive applications, and powerful platforms designed not just to meet your
-                    needs, but to enchant your users.
-                </p>
+{{-- Hero Section --}}
+<section class="relative w-full h-[80vh] flex items-end bg-cover bg-center"
+    style="background-image: url('{{ asset('assets/img/archihero.png') }}')">
+    <div class="container mx-auto px-6 md:px-12 lg:px-32 pb-20">
+        <div class="max-w-xl text-left">
+            <h1 class="text-2xl md:text-2xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
+                P U B L I C <br /> S P A C E &nbsp; M E D I A
+            </h1>
+            <h2 class="mt-6 text-lg md:text-xl font-bold font-rubik text-black">
+                Building Meaningful, Scalable, Future-Ready Platforms
+            </h2>
+        </div>
+    </div>
+</section>
+
+{{-- Explanation Section --}}
+<section class="w-full bg-white py-16">
+    <div class="container mx-auto px-6 md:px-12 lg:px-32">
+        <div class="max-w-4xl mx-auto text-gray-800 font-rubik leading-relaxed space-y-6 text-center">
+            <p>
+                In the digital-first era, your brand’s online presence is more than a touchpoint — it’s the foundation
+                of how audiences experience and connect with you. That’s why at Communic 8, our Digital Development
+                solutions are designed not just to build digital assets, but to create experiences that are meaningful,
+                scalable, and future-ready.
+            </p>
+            <p>
+                Our process begins with strategic planning and research, ensuring every solution is grounded in business
+                objectives and market insights. We then move into UX research and information architecture, structuring
+                intuitive user journeys that make every interaction seamless. From there, our team designs elegant and
+                functional UI/UX interfaces before translating them into reliable, high-performing platforms through
+                application development and coding. Each product undergoes rigorous testing and quality assurance to
+                guarantee stability and usability, followed by precise deployment and launch to ensure readiness for the
+                market.
+            </p>
+            <p>
+                The goal is clear: to help brands create digital ecosystems that strengthen identity, improve
+                engagement, and accelerate growth. For us, the best digital development goes beyond coding and design.
+                It’s about aligning technology with brand strategy, ensuring every platform is not only functional but
+                also truly impactful.
+            </p>
+        </div>
+    </div>
+</section>
+
+{{-- Gallery Section / Head Image --}}
+@if ($digitalArchitectureContent)
+    <section class="w-full py-12 bg-gray-50">
+        <div class="container mx-auto px-6 md:px-12 flex justify-center">
+            {{-- ✅ gambar tidak full --}}
+            <div class="max-w-4xl w-full rounded-2xl overflow-hidden shadow-lg">
+                <img src="{{ $digitalArchitectureContent->head_img
+                    ? Storage::url($digitalArchitectureContent->head_img)
+                    : asset('assets/img/gallery1.png') }}"
+                    alt="Gallery" class="w-full h-auto object-cover">
             </div>
         </div>
     </section>
-    {{-- Gallery Section / Head Image --}}
-    @if ($digitalArchitectureContent)
-        <section class="w-full">
-            <div class="container mx-auto px-6 md:px-12 py-16 text-center">
-                <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
-                    {{ $digitalArchitectureContent->head_paragraph_1 ??
-                        'Digital Development is more than writing codes. It’s about constructing robust digital solutions that serve your business objective and power your digital transformation.' }}
-                    <br /><br />
-                </p>
-                <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
-                    {{ $digitalArchitectureContent->head_paragraph_2 ??
-                        'With collaborative and forward-thinking approach, every development is build with strategic intent.' }}
-                </p>
-            </div>
+@endif
 
-            <img src="{{ $digitalArchitectureContent->head_img
-                ? Storage::url($digitalArchitectureContent->head_img)
-                : asset('assets/img/gallery1.png') }}"
-                alt="Gallery" class="w-full h-auto object-cover">
+{{-- Section 1 --}}
+<section class="w-full py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-            <div class="container mx-auto px-6 md:px-12 py-16 text-center">
-                <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
-                    {{ $digitalArchitectureContent->head_paragraph_3 ??
-                        'Digital Development is more than writing codes. It’s about constructing robust digital solutions that serve your business objective and power your digital transformation.' }}
-                    <br /><br />
-                </p>
-                <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
-                    {{ $digitalArchitectureContent->head_paragraph_4 ??
-                        'With collaborative and forward-thinking approach, every development is build with strategic intent.' }}
-                </p>
-            </div>
-        </section>
-    @endif
-
-    {{-- Section 1 --}}
-    <section class="w-full py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
-            {{-- Left Image --}}
-            <div>
-                <img src="{{ $digitalArchitectureContent && $digitalArchitectureContent->img_services
-                    ? Storage::url($digitalArchitectureContent->img_services)
-                    : asset('assets/img/dummy/dummy2.png') }}"
-                    alt="Digital Architecture" class="rounded-xl w-full object-cover shadow-lg">
-            </div>
-
-            {{-- Right Text --}}
-            <div class="space-y-6 font-rubik">
-                @foreach (['1', '2', '3', '4'] as $i)
-                    @php
-                        $title = $digitalArchitectureContent ? $digitalArchitectureContent->{'title' . $i} : null;
-                        $value = $digitalArchitectureContent ? $digitalArchitectureContent->{'value_title' . $i} : null;
-                    @endphp
-                    @if ($title || $value)
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-900">{{ $title ?? 'Title ' . $i }}</h3>
-                            <p class="text-gray-600 text-base leading-relaxed">
-                                {{ $value ?? 'Description for ' . $title }}
-                            </p>
-                        </div>
-                    @endif
-                @endforeach
-            </div>
+        {{-- Left Image --}}
+        <div>
+            <img src="{{ $digitalArchitectureContent && $digitalArchitectureContent->img_services
+                ? Storage::url($digitalArchitectureContent->img_services)
+                : asset('assets/img/dummy/dummy2.png') }}"
+                alt="Public Space Media" class="rounded-xl w-full object-cover shadow-lg">
         </div>
-    </section>
 
-    {{-- Section 2: Digital Architecture --}}
-    <section class="w-full py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-
-            {{-- Grid dynamic --}}
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-                @forelse($digitalArchitectureSubservices as $subservice)
-                    <div class="text-center p-1">
-                        <div class="rounded-[28px] overflow-hidden w-full">
-                            <img src="{{ $subservice->picture_upload ? Storage::url($subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
-                                alt="{{ $subservice->name }}" class="w-full h-full object-cover">
-                        </div>
-                        <p class="mt-2 text-gray-700 font-rubik text-xs">{{ $subservice->name }}</p>
+        {{-- Right Text --}}
+        <div class="space-y-6 font-rubik">
+            @foreach (['1', '2', '3', '4'] as $i)
+                @php
+                    $title = $digitalArchitectureContent ? $digitalArchitectureContent->{'title' . $i} : null;
+                    $value = $digitalArchitectureContent ? $digitalArchitectureContent->{'value_title' . $i} : null;
+                @endphp
+                @if ($title || $value)
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900">{{ $title ?? 'Title ' . $i }}</h3>
+                        <p class="text-gray-600 text-base leading-relaxed">
+                            {{ $value ?? 'Description for ' . $title }}
+                        </p>
                     </div>
-                @empty
-                    <p class="col-span-full text-gray-500 text-sm">No services available at the moment.</p>
-                @endforelse
-            </div>
+                @endif
+            @endforeach
         </div>
-    </section>
+    </div>
+</section>
+
+
+{{-- Section 2: Digital Architecture --}}
+<section class="w-full py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+
+        {{-- Grid dynamic --}}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+            @forelse($digitalArchitectureSubservices as $subservice)
+                <div class="text-center p-1 relative group">
+                    <div class="rounded-[28px] overflow-hidden w-full relative">
+
+                        {{-- ✅ Gambar tetap original ukuran tetap, hanya diberi efek zoom halus saat hover --}}
+                        <img src="{{ $subservice->picture_upload ? Storage::url($subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
+                            alt="{{ $subservice->name }}"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+
+                        {{-- ✨ Overlay detail muncul saat hover --}}
+                        <div
+                            class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
+                            <h3 class="text-sm md:text-base font-semibold mb-2">{{ $subservice->name }}</h3>
+                            @if ($subservice->description)
+                                <p class="text-xs md:text-sm leading-snug">
+                                    {{ Str::limit($subservice->description, 120) }}
+                                </p>
+                            @else
+                                <p class="text-xs md:text-sm italic opacity-80">No additional details available.</p>
+                            @endif
+                        </div>
+                    </div>
+
+                    {{-- Nama tetap tampil di bawah gambar --}}
+                    <p class="mt-2 text-gray-700 font-rubik text-xs">{{ $subservice->name }}</p>
+                </div>
+            @empty
+                <p class="col-span-full text-gray-500 text-sm">No services available at the moment.</p>
+            @endforelse
+        </div>
+    </div>
+</section>
 
 
     {{-- CTA Section --}}

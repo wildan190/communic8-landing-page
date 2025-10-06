@@ -1,47 +1,64 @@
 @extends('layouts.web')
 
 @section('content')
-    {{-- Hero Section --}}
-    <section class="relative w-full h-[80vh] flex items-end bg-cover bg-center"
-        style="background-image: url('{{ asset('assets/img/digicompass.png') }}')">
-        <div class="container mx-auto px-6 md:px-12 lg:px-32 pb-20">
-            <div class="max-w-xl text-left">
-                <h1 class="text-4xl md:text-4xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
-                    D I G I T A L <br> C O M P A S S
-                </h1>
-                <h2 class="mt-6 text-lg md:text-xl font-bold font-rubik text-black">
-                    Amplify Your Reach, Accelerate Your Growth
-                </h2>
-                <p class="mt-4 text-sm md:text-base text-gray-800 font-rubik leading-relaxed">
-                    Communic 8 delivers targeted digital marketing that cuts through the noise. We guide your brand to
-                    effectively reach and engage your audience across Asia, transforming digital complexity into measurable
-                    results.
-                </p>
-            </div>
+{{-- Hero Section --}}
+<section class="relative w-full h-[80vh] flex items-end bg-cover bg-center"
+    style="background-image: url('{{ asset('assets/img/digicompass.png') }}')">
+    <div class="container mx-auto px-6 md:px-12 lg:px-32 pb-20">
+        <div class="max-w-xl text-left">
+            <h1 class="text-4xl md:text-4xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
+                D I G I T A L <br> S T A N D
+            </h1>
+            <h2 class="mt-6 text-lg md:text-xl font-bold font-rubik text-black">
+                Precision. Performance. Growth.
+            </h2>
         </div>
-    </section>
-    {{-- Gallery Section --}}
-    <section class="w-full">
-        <div class="container mx-auto px-6 md:px-12 py-16 text-center">
-            <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
-                Digital Marketing is no longer just an option. It has become the central nervous system for business growth
-                and brand evolution.
-            </p>
-            <br />
-            <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
-                Our approach is built on a strategic framework that delivers tangible results and ensures a holistic journey
-                for your audience.
-            </p>
-        </div>
+    </div>
+</section>
 
-        {{-- ✅ head_img dari database --}}
-        @if ($digitalCompassContent && $digitalCompassContent->head_img)
-            <img src="{{ Storage::url($digitalCompassContent->head_img) }}" alt="Gallery"
-                class="w-full h-auto object-cover">
-        @else
-            <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery" class="w-full h-auto object-cover">
-        @endif
-    </section>
+{{-- Explanation Section --}}
+<section class="w-full bg-white py-16">
+    <div class="container mx-auto px-6 md:px-12 lg:px-32">
+        <div class="max-w-4xl mx-auto text-gray-800 font-rubik leading-relaxed space-y-6 text-center">
+            <p>
+                In the digital era, visibility alone is not enough — brands need precision, performance, and adaptability. That’s where Communic 8 comes in. Our digital marketing solutions are designed to not only put your brand in front of the right audiences, but also to ensure every interaction delivers measurable value.
+            </p>
+
+            <p class="font-semibold text-lg mt-4">We provide a full suite of services, including:</p>
+            <ul class="list-disc list-inside text-left mx-auto max-w-lg space-y-2">
+                <li>Website & Landing Page Optimization – turning visits into conversions.</li>
+                <li>Ads Performance Optimization (PPC & Paid Social) – maximizing every ad dollar.</li>
+                <li>Content & SEO Optimization – making your brand discoverable and relevant.</li>
+                <li>Automation & Tooling – ensuring efficiency and scalability.</li>
+                <li>Social Media Optimization & Retargeting – engaging the right audience at the right time.</li>
+                <li>Campaign Real-Time Monitoring & Adjustment – keeping strategies agile and performance-driven.</li>
+            </ul>
+
+            <p>
+                The goal is clear: to help brands achieve sustainable growth through data-driven, ROI-focused digital strategies. For us, the best digital marketing is not about doing more, but about doing what works — combining creative storytelling, smart targeting, and continuous optimization to deliver impact that lasts.
+            </p>
+
+            <p>
+                With Communic 8, digital marketing isn’t just about reach — it’s about results that matter.
+            </p>
+        </div>
+    </div>
+</section>
+
+{{-- Gallery Section --}}
+<section class="w-full py-12 bg-gray-50">
+    <div class="container mx-auto px-6 md:px-12 flex justify-center">
+        <div class="max-w-4xl w-full rounded-2xl overflow-hidden shadow-lg">
+            @if ($digitalCompassContent && $digitalCompassContent->head_img)
+                <img src="{{ Storage::url($digitalCompassContent->head_img) }}" alt="Gallery"
+                    class="w-full h-auto object-cover">
+            @else
+                <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery"
+                    class="w-full h-auto object-cover">
+            @endif
+        </div>
+    </div>
+</section>
 
     {{-- Section 1 --}}
     <section class="w-full py-20 bg-white">
@@ -92,26 +109,41 @@
         </div>
     </section>
 
-    {{-- Section 2: Digital Compass --}}
-    <section class="w-full py-8 bg-white">
-        <div class="max-w-6xl mx-auto px-4 text-center">
+{{-- Section 2: Digital Compass --}}
+<section class="w-full py-8 bg-white">
+    <div class="max-w-6xl mx-auto px-4 text-center">
 
-            {{-- Grid dynamic --}}
-            <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-6">
-                @forelse($digitalCompassSubservices as $subservice)
-                    <div class="text-center p-1">
-                        <div class="rounded-[28px] overflow-hidden w-full">
-                            <img src="{{ $subservice->picture_upload ? Storage::url($subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
-                                alt="{{ $subservice->name }}" class="w-full h-full object-cover block">
+        {{-- Grid dynamic --}}
+        <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-6">
+            @forelse($digitalCompassSubservices as $subservice)
+                <div class="text-center p-1 relative group">
+                    <div class="rounded-[28px] overflow-hidden w-full relative">
+                        
+                        {{-- Gambar asli, ukuran tetap --}}
+                        <img src="{{ $subservice->picture_upload ? Storage::url($subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
+                            alt="{{ $subservice->name }}" class="w-full h-full object-cover block">
+
+                        {{-- Overlay detail saat hover --}}
+                        <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
+                            <h3 class="text-sm md:text-base font-semibold mb-2">{{ $subservice->name }}</h3>
+                            @if ($subservice->description)
+                                <p class="text-xs md:text-sm leading-snug">{{ Str::limit($subservice->description, 120) }}</p>
+                            @else
+                                <p class="text-xs md:text-sm italic opacity-80">No additional details available.</p>
+                            @endif
                         </div>
-                        <p class="mt-2 text-gray-700 font-rubik text-xs">{{ $subservice->name }}</p>
                     </div>
-                @empty
-                    <p class="col-span-full text-gray-500 text-sm">No services available at the moment.</p>
-                @endforelse
-            </div>
+
+                    {{-- Nama tetap muncul di bawah gambar --}}
+                    <p class="mt-2 text-gray-700 font-rubik text-xs">{{ $subservice->name }}</p>
+                </div>
+            @empty
+                <p class="col-span-full text-gray-500 text-sm">No services available at the moment.</p>
+            @endforelse
         </div>
-    </section>
+    </div>
+</section>
+
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"

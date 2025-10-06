@@ -7,7 +7,7 @@
         <div class="container mx-auto px-6 md:px-12 lg:px-32 pb-20">
             <div class="max-w-xl text-left">
                 <h1 class="text-2xl md:text-2xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
-                    P U B L I C<br />P R E S E N C E
+                    P U B L I C<br />S P A C E &nbsp; M E D I A
                 </h1>
                 <h2 class="mt-6 text-lg md:text-xl font-bold font-rubik text-black">
                     Be Seen Where It Matters Most
@@ -22,8 +22,8 @@
     </section>
 
     {{-- Gallery Section --}}
-    <section class="w-full">
-        <div class="container mx-auto px-6 md:px-12 py-16 text-center">
+    <section class="w-full bg-gray-50 py-16">
+        <div class="container mx-auto px-6 md:px-12 text-center">
             <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
                 <b>Strategic Placement for Maximum Impact</b>
             </p>
@@ -35,14 +35,20 @@
             </p>
         </div>
 
-        {{-- ✅ Head Image dari database --}}
-        @if ($publicPresenceContent && $publicPresenceContent->head_img)
-            <img src="{{ Storage::url($publicPresenceContent->head_img) }}" alt="Gallery"
-                class="w-full h-auto object-cover">
-        @else
-            <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery" class="w-full h-auto object-cover">
-        @endif
+        {{-- ✅ Head Image dari database - tidak full width --}}
+        <div class="container mx-auto px-6 md:px-12 flex justify-center mt-12">
+            <div class="w-full max-w-5xl rounded-2xl overflow-hidden shadow-lg">
+                @if ($publicPresenceContent && $publicPresenceContent->head_img)
+                    <img src="{{ Storage::url($publicPresenceContent->head_img) }}" alt="Gallery"
+                        class="w-full h-auto object-cover transition-transform duration-500 hover:scale-105">
+                @else
+                    <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery"
+                        class="w-full h-auto object-cover transition-transform duration-500 hover:scale-105">
+                @endif
+            </div>
+        </div>
     </section>
+
 
     {{-- Strategy Section --}}
     <section class="w-full py-24">
@@ -106,13 +112,25 @@
                 Let us help you build a resilient brand that will stand through the test of time.
             </p>
 
-            {{-- Grid dynamic --}}
+            {{-- ✅ Grid dynamic + hover --}}
             <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-6">
                 @forelse($publicPresenceSubservices as $subservice)
-                    <div class="text-center p-1">
-                        <div class="rounded-[28px] overflow-hidden w-full">
+                    <div class="text-center p-1 relative group">
+                        <div class="rounded-[28px] overflow-hidden w-full relative">
                             <img src="{{ $subservice->picture_upload ? Storage::url($subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
                                 alt="{{ $subservice->name }}" class="w-full h-full object-cover block">
+
+                            {{-- ✨ Hover overlay detail --}}
+                            <div
+                                class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
+                                <h3 class="text-sm md:text-base font-semibold mb-2">{{ $subservice->name }}</h3>
+                                @if ($subservice->description)
+                                    <p class="text-xs md:text-sm leading-snug">
+                                        {{ Str::limit($subservice->description, 120) }}</p>
+                                @else
+                                    <p class="text-xs md:text-sm italic opacity-80">No additional details available.</p>
+                                @endif
+                            </div>
                         </div>
                         <p class="mt-2 text-gray-700 font-rubik text-xs">{{ $subservice->name }}</p>
                     </div>
@@ -126,7 +144,7 @@
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
         style="background-image: url('/assets/img/cta-bg.png');">
-        <div class="absolute inset-0 bg-black/40"></div> {{-- Overlay biar teks jelas --}}
+        <div class="absolute inset-0 bg-black/40"></div>
 
         <div
             class="relative max-w-screen-xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center md:items-start justify-between">
@@ -159,26 +177,20 @@
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
-            <!-- Section Title -->
             <div class="text-center mb-12 sm:mb-16">
                 <h2
-                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
-               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
                     I N S I G H T S &nbsp; F O R &nbsp;
                     <span class="hidden sm:inline"><br /></span>
                     S T R A T E G I C &nbsp; M I N D
                 </h2>
             </div>
 
-
-            <!-- Wrapper for Desktop (with arrows) -->
             <div class="hidden sm:flex items-center space-x-6">
-                <!-- Prev Button -->
                 <button id="prevBtn" class="shrink-0">
                     <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Prev" class="w-10 h-10">
                 </button>
 
-                <!-- Slider Container -->
                 <div id="blog-slider"
                     class="flex overflow-x-auto space-x-6 scrollbar-hide snap-x snap-mandatory scroll-smooth w-full">
                     @foreach ($sliderBlogs as $blog)
@@ -203,13 +215,11 @@
                     @endforeach
                 </div>
 
-                <!-- Next Button -->
                 <button id="nextBtn" class="shrink-0">
                     <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next" class="w-10 h-10">
                 </button>
             </div>
 
-            <!-- Mobile: Slider full width, arrows below -->
             <div class="sm:hidden">
                 <div id="blog-slider-mobile"
                     class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
@@ -235,7 +245,6 @@
                     @endforeach
                 </div>
 
-                <!-- Arrows below slider -->
                 <div class="flex justify-center space-x-6 mt-6">
                     <button id="prevBtnMobile">
                         <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Prev" class="w-8 h-8">
@@ -246,7 +255,6 @@
                 </div>
             </div>
 
-            <!-- Read More Button -->
             <div class="text-center mt-12">
                 <a href="{{ route('insight.index') }}"
                     class="inline-block bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition">
@@ -259,7 +267,6 @@
 
     <!-- JS for slider scroll -->
     <script>
-        // Desktop
         const slider = document.getElementById('blog-slider');
         document.getElementById('prevBtn').addEventListener('click', () => {
             slider.scrollBy({
@@ -274,7 +281,6 @@
             });
         });
 
-        // Mobile
         const sliderMobile = document.getElementById('blog-slider-mobile');
         document.getElementById('prevBtnMobile').addEventListener('click', () => {
             sliderMobile.scrollBy({

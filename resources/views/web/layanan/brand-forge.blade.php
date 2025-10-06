@@ -1,34 +1,71 @@
 @extends('layouts.web')
 
 @section('content')
+
     {{-- Hero Section --}}
     <section class="relative w-full h-[80vh] flex items-end bg-cover bg-center"
         style="background-image: url('{{ asset('assets/img/forge-hero.png') }}')">
         <div class="container mx-auto px-6 md:px-12 lg:px-32 pb-20">
             <div class="max-w-xl text-left">
                 <h1 class="text-4xl md:text-5xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
-                    B R A N D <br> F O R G E
+                    B R A N D <br> L A N D
                 </h1>
                 <h2 class="mt-6 text-lg md:text-xl font-bold font-rubik text-black">
-                    Forge Your Brand’s Identity and Destiny
+                    Wording & Image
                 </h2>
-                <p class="mt-4 text-sm md:text-base text-gray-800 font-rubik leading-relaxed">
-                    We go beyond aesthetics to build and align your brand’s core quality, value, and trust.
-                    Our comprehensive approach ensures a powerful consistent presence that resonates with your audience in
-                    Asia.
+            </div>
+        </div>
+    </section>
+
+    {{-- Explanation Section --}}
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6 md:px-12 lg:px-32">
+            <div class="max-w-4xl mx-auto text-gray-800 font-rubik leading-relaxed space-y-6">
+                <p>
+                    At Communic 8, we specialize in helping brands unlock their full potential. Our services span the entire
+                    brand journey — from building a strong identity, to amplifying it through creative campaigns,
+                    endorsements, and other impactful executions.
+                </p>
+                <p>
+                    What sets us apart is our ability to combine a global mindset with a local touch. For brands looking to
+                    expand into Indonesia, this is our strongest advantage: we help you build solid brand equity by
+                    understanding global standards while staying deeply connected to local culture, values, and consumer
+                    behavior.
+                </p>
+                <p>
+                    A brand is more than just a name, logo, or visual identity — it is a promise of consistent quality and
+                    values. True brand strength comes from continuously aligning what we do, what we deliver, and what we
+                    stand for with the principles that define the brand. This alignment is what earns trust, builds
+                    credibility, and sustains long-term relationships with stakeholders.
+                </p>
+                <p>
+                    In essence, building a brand means building a system of trust:
+                </p>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Consistently delivering quality in every interaction.</li>
+                    <li>Staying true to core values, even as markets evolve.</li>
+                    <li>Fostering meaningful connections that extend beyond transactions.</li>
+                </ul>
+                <p>
+                    A brand that achieves this does more than stand out in the market — it becomes a lasting force that
+                    inspires confidence, loyalty, and meaningful engagement from all who experience it.
                 </p>
             </div>
         </div>
     </section>
 
     {{-- Gallery Section --}}
-    <section class="w-full">
-        @if ($brandForgeContent && $brandForgeContent->head_img)
-            <img src="{{ asset('storage/' . $brandForgeContent->head_img) }}" alt="Gallery"
-                class="w-full h-auto object-cover">
-        @else
-            <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery" class="w-full h-auto object-cover">
-        @endif
+    <section class="w-full py-12 bg-gray-50">
+        <div class="container mx-auto px-6 md:px-12 lg:px-32 flex justify-center">
+            <div class="max-w-4xl w-full rounded-2xl overflow-hidden shadow-lg">
+                @if ($brandForgeContent && $brandForgeContent->head_img)
+                    <img src="{{ asset('storage/' . $brandForgeContent->head_img) }}" alt="Gallery"
+                        class="w-full h-auto object-cover">
+                @else
+                    <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery" class="w-full h-auto object-cover">
+                @endif
+            </div>
+        </div>
     </section>
 
     {{-- Strategy Section --}}
@@ -87,48 +124,64 @@
             </div>
         </div>
     </section>
+{{-- Services Grid Section --}}
+<section class="w-full py-8 bg-white">
+    <div class="max-w-6xl mx-auto px-4 text-center">
 
-    {{-- Services Grid Section --}}
-    <section class="w-full py-8 bg-white">
-        <div class="max-w-6xl mx-auto px-4 text-center">
+        {{-- Top description --}}
+        <p class="text-gray-700 font-rubik text-sm leading-snug max-w-xl mx-auto">
+            Communic 8's Brand Development service shapes every facet of your identity from
+            foundational research to brand design and activation.
+        </p>
+        <p class="mt-1 font-rubik font-semibold text-gray-900 text-sm">
+            Let us help you build a resilient brand that will stand through the test of time.
+        </p>
 
-            {{-- Top description --}}
-            <p class="text-gray-700 font-rubik text-sm leading-snug max-w-xl mx-auto">
-                Communic 8's Brand Development service shapes every facet of your identity from
-                foundational research to brand design and activation.
-            </p>
-            <p class="mt-1 font-rubik font-semibold text-gray-900 text-sm">
-                Let us help you build a resilient brand that will stand through the test of time.
-            </p>
+        {{-- Grid --}}
+        <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-6">
+            @php
+                $brandForgeSubservices = \App\Models\SubService::with('service')
+                    ->whereHas('service', fn($q) => $q->where('name', 'Brand Forge'))
+                    ->latest()
+                    ->get();
+            @endphp
 
-            {{-- Grid --}}
-            <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-6">
-                @php
-                    $brandForgeSubservices = \App\Models\SubService::with('service')
-                        ->whereHas('service', fn($q) => $q->where('name', 'Brand Forge'))
-                        ->latest()
-                        ->get();
-                @endphp
+            @forelse($brandForgeSubservices as $subservice)
+                <div class="text-center p-1 relative group">
+                    <div class="rounded-[28px] overflow-hidden w-full relative">
+                        
+                        {{-- Gambar tetap original --}}
+                        @if ($subservice->picture_upload)
+                            <img src="{{ asset('storage/' . $subservice->picture_upload) }}"
+                                alt="{{ $subservice->name }}" 
+                                class="w-full h-full object-cover">
+                        @else
+                            <img src="{{ asset('assets/img/dummy/dummy1.png') }}" 
+                                alt="{{ $subservice->name }}"
+                                class="w-full h-full object-cover">
+                        @endif
 
-                @forelse($brandForgeSubservices as $subservice)
-                    <div class="text-center p-1">
-                        <div class="rounded-[28px] overflow-hidden w-full">
-                            @if ($subservice->picture_upload)
-                                <img src="{{ asset('storage/' . $subservice->picture_upload) }}"
-                                    alt="{{ $subservice->name }}" class="w-full h-full object-cover">
+                        {{-- Overlay detail saat hover --}}
+                        <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
+                            <h3 class="text-sm md:text-base font-semibold mb-2">{{ $subservice->name }}</h3>
+                            @if ($subservice->description)
+                                <p class="text-xs md:text-sm leading-snug">{{ Str::limit($subservice->description, 120) }}</p>
                             @else
-                                <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="{{ $subservice->name }}"
-                                    class="w-full h-full object-cover">
+                                <p class="text-xs md:text-sm italic opacity-80">No additional details available.</p>
                             @endif
                         </div>
-                        <p class="mt-2 text-gray-700 font-rubik text-xs">{{ $subservice->name }}</p>
                     </div>
-                @empty
-                    <p class="col-span-3 text-center text-gray-500">No Brand Forge subservices found.</p>
-                @endforelse
-            </div>
+
+                    {{-- Nama tetap tampil di bawah gambar --}}
+                    <p class="mt-2 text-gray-700 font-rubik text-xs">{{ $subservice->name }}</p>
+                </div>
+            @empty
+                <p class="col-span-3 text-center text-gray-500">No Brand Forge subservices found.</p>
+            @endforelse
         </div>
-    </section>
+    </div>
+</section>
+
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
