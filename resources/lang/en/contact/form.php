@@ -2,8 +2,8 @@
 
 return [
     // Hero
-    'title' => 'LET’S START A <br> CONVERSATION',
-    'subtitle' => 'Whether you have a specific project in mind, a question about our services, or a grand vision for your brand in Asia, we are ready to listen. Reach out and let’s discuss how we can achieve your goals together.',
+    'title' => 'LET’S TALK <br> ABOUT YOUR PROJECT',
+    'subtitle' => 'Bring your project, we’ll bring you ideas and creativity. Together, we make it happen.',
 
     // Form placeholders
     'name_placeholder' => 'Your name...',
@@ -63,5 +63,4 @@ return [
     'no_branch' => 'No branch offices available.',
 
     'swal_title' => 'Success!',
-
 ];

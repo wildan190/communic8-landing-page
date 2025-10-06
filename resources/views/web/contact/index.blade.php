@@ -1,6 +1,7 @@
 @extends('layouts.web')
 
 @section('content')
+
     <section class="relative pt-48 pb-20 bg-white"> <!-- pt lebih besar biar jauh dari navbar -->
         <div class="max-w-5xl mx-auto px-6 text-center">
             <!-- Title -->
