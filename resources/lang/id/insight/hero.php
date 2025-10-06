@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'headline_light' => 'ASAH',
-    'headline_bold' => 'RASA INGIN TAHU',
-    'description' => 'Temukan tren baru dan sudut pandang segar untuk membuat Anda tetap selangkah lebih maju.',
-    'all_categories' => 'Semua Kategori',
+    'headline_light' => 'WAWASAN YANG',
+    'headline_bold' => 'MENGINSPIRASI TINDAKAN',
+    'description' => 'Kami melampaui data untuk mengungkap kejelasan dan peluang.',
+    'all_categories' => 'Semua kategori',
 ];

@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'headline_light' => 'FUEL YOUR',
-    'headline_bold' => 'CURIOSITY',
-    'description' => 'Find emerging trends, and fresh perspectives to keep you ahead.',
+    'headline_light' => 'INSIGHT THAT',
+    'headline_bold' => 'INSPIRES ACTION',
+    'description' => 'We go beyond data to uncover clarity and opportunity.',
     'all_categories' => 'All categories',
 ];
