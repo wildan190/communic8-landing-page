@@ -310,167 +310,88 @@
     <section class="relative bg-white py-20">
         <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            {{-- Title Section --}}
-            <div class="text-center mb-16">
+            {{-- Title --}}
+            <div class="text-center mb-12">
                 <h2 class="text-2xl sm:text-3xl md:text-4xl tracking-[0.3em] text-gray-700 mb-6">
                     {!! __('home/trusted_by.title') !!}
                 </h2>
-                <p class="text-gray-600">
-                    {{ __('home/trusted_by.subtitle') }}
-                </p>
+                <p class="text-gray-600">{{ __('home/trusted_by.subtitle') }}</p>
             </div>
 
-            {{-- Grid Projects --}}
-            <div class="grid grid-cols-6 gap-6" id="trusted-projects">
-                @php
-                    // Ambil 2 project highlight untuk kotak besar
-                    $highlightedProjects = $trustedProjects->where('is_highlighted', true)->take(2)->values();
+            {{-- ✅ Logo Carousel (tanpa swiper, tanpa flex horizontal) --}}
+            <div class="relative">
+                <div id="logo-slider" class="flex overflow-x-auto scroll-smooth snap-x snap-mandatory space-x-8 pb-6">
 
-                    // Ambil project lain untuk kotak kecil (total 3)
-                    $remainingProjects = $trustedProjects
-                        ->whereNotIn('id', $highlightedProjects->pluck('id'))
-                        ->take(3)
-                        ->values();
-
-                    // Gabungkan untuk 5 project awal
-                    $initialProjects = $highlightedProjects->concat($remainingProjects);
-
-                    // Sisanya hidden untuk See More / See Less
-                    $moreProjects = $trustedProjects->whereNotIn('id', $initialProjects->pluck('id'));
-                @endphp
-
-                {{-- Tampilkan 5 project awal --}}
-                @foreach ($initialProjects as $key => $project)
-                    @php
-                        $colClass = $key < 2 ? 'col-span-6 md:col-span-3' : 'col-span-6 md:col-span-2';
-                    @endphp
-                    <div class="{{ $colClass }} border border-gray-200 rounded-2xl p-4 flex flex-col">
-                        <div class="flex justify-between items-center mb-2">
-                            <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
-                            @if ($project->project_url)
-                                <a href="{{ $project->project_url }}" target="_blank"
-                                    class="text-gray-400 hover:text-gray-600">
-                                    <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
-                                </a>
-                            @endif
-                        </div>
-                        <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
-                        <div class="rounded-xl overflow-hidden">
-                            @if ($project->project_img)
-                                <img src="{{ asset('storage/' . $project->project_img) }}" alt="{{ $project->name }}"
-                                    class="w-full object-cover">
-                            @else
-                                <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="No Image"
-                                    class="w-full object-cover">
-                            @endif
-                        </div>
-                    </div>
-                @endforeach
-
-                {{-- Tampilkan project lebih (hidden awalnya) --}}
-                @foreach ($moreProjects as $project)
-                    <div
-                        class="col-span-6 md:col-span-2 border border-gray-200 rounded-2xl p-4 flex flex-col hidden more-project">
-                        <div class="flex justify-between items-center mb-2">
-                            <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
-                            @if ($project->project_url)
-                                <a href="{{ $project->project_url }}" target="_blank"
-                                    class="text-gray-400 hover:text-gray-600">
-                                    <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
-                                </a>
-                            @endif
-                        </div>
-                        <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
-                        <div class="rounded-xl overflow-hidden">
-                            @if ($project->project_img)
-                                <img src="{{ asset('storage/' . $project->project_img) }}" alt="{{ $project->name }}"
-                                    class="w-full object-cover">
-                            @else
-                                <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="No Image"
-                                    class="w-full object-cover">
-                            @endif
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-
-            {{-- Button --}}
-            <div class="flex justify-center mt-12">
-                <button id="toggle-projects"
-                    class="bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition-colors"
-                    data-more="{{ __('home/trusted_by.button_more') }}"
-                    data-less="{{ __('home/trusted_by.button_less') }}">
-                    {{ __('home/trusted_by.button_more') }}
-                </button>
-            </div>
-
-            {{-- Clients Section --}}
-            <section class="bg-white py-16 font-rubik">
-                <div class="container mx-auto px-4 sm:px-6 md:px-12">
-
-                    {{-- Clients Logo Slider --}}
-                    <div class="swiper clientSwiper">
-                        <div class="swiper-wrapper items-center">
-                            @foreach ($clients as $client)
-                                <div class="swiper-slide flex justify-center items-center">
+                    {{-- 🔁 Potong logo menjadi 9 per slide --}}
+                    @foreach ($clients->chunk(9) as $chunk)
+                        <div class="grid grid-cols-3 gap-10 min-w-full snap-center">
+                            @foreach ($chunk as $client)
+                                <div class="flex justify-center items-center">
                                     <img src="{{ asset('storage/' . $client->logo) }}" alt="{{ $client->company_name }}"
-                                        class="h-12 object-contain transition duration-300" />
+                                        class="h-16 object-contain grayscale hover:grayscale-0 transition duration-300" />
                                 </div>
                             @endforeach
                         </div>
-                    </div>
-
-                    {{-- Bottom Text --}}
-                    <div class="text-center mt-10">
-                        <h3 class="text-lg sm:text-xl md:text-2xl font-semibold text-gray-700">
-                            {!! __('home/trusted_by.bottom_text') !!}
-                        </h3>
-                    </div>
+                    @endforeach
 
                 </div>
-            </section>
+
+                {{-- Scroll Buttons --}}
+                <button id="scroll-left"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+
+                <button id="scroll-right"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+
+            {{-- Bottom Text --}}
+            <div class="text-center mt-12">
+                <h3 class="text-lg sm:text-xl md:text-2xl font-semibold text-gray-700">
+                    {!! __('home/trusted_by.bottom_text') !!}
+                </h3>
+            </div>
+
         </div>
     </section>
 
-    {{-- SwiperJS CDN --}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-    {{-- Swiper Init + Toggle Projects --}}
+    {{-- JS Scroll Buttons --}}
     <script>
-        const swiper = new Swiper(".clientSwiper", {
-            slidesPerView: 2,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-                delay: 2000,
-                disableOnInteraction: false
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 3
-                },
-                768: {
-                    slidesPerView: 4
-                },
-                1024: {
-                    slidesPerView: 6
-                }
-            },
-        });
+        const slider = document.getElementById("logo-slider");
+        const btnLeft = document.getElementById("scroll-left");
+        const btnRight = document.getElementById("scroll-right");
 
-        const toggleBtn = document.getElementById("toggle-projects");
-        const moreProjects = document.querySelectorAll(".more-project");
-        const textMore = toggleBtn.dataset.more;
-        const textLess = toggleBtn.dataset.less;
-        let expanded = false;
+        btnLeft?.addEventListener("click", () => slider.scrollBy({
+            left: -slider.clientWidth,
+            behavior: "smooth"
+        }));
+        btnRight?.addEventListener("click", () => slider.scrollBy({
+            left: slider.clientWidth,
+            behavior: "smooth"
+        }));
 
-        toggleBtn.addEventListener("click", () => {
-            expanded = !expanded;
-            moreProjects.forEach(el => el.classList.toggle("hidden"));
-            toggleBtn.textContent = expanded ? textLess : textMore;
-        });
+        const checkScroll = () => {
+            if (slider.scrollWidth > slider.clientWidth) {
+                btnLeft?.classList.remove("hidden");
+                btnRight?.classList.remove("hidden");
+            } else {
+                btnLeft?.classList.add("hidden");
+                btnRight?.classList.add("hidden");
+            }
+        };
+        window.addEventListener("resize", checkScroll);
+        window.addEventListener("load", checkScroll);
     </script>
+
 
     <section class="w-full bg-gray-100 relative min-h-[520px] flex items-center justify-center">
         <!-- Overlay gelap -->
@@ -630,9 +551,12 @@
             <div class="text-center mb-12 sm:mb-16">
                 <h2
                     class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
-               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
                     {!! __('home/insights.title') !!}
                 </h2>
+                <p class="text-gray-600 text-base sm:text-lg mt-2">
+                    {{ __('home/insights.description') }}
+                </p>
             </div>
 
             <!-- Masonry Layout -->

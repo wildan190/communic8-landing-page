@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'title' => 'INSIGHTS FOR<br>STRATEGIC MIND',
+    'title' => 'INSIGHTS THAT<br>INSPIRE ACTION',
+    'description' => 'We go beyond data to uncover clarity and opportunity.',
 ];

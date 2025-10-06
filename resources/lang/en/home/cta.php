@@ -6,7 +6,7 @@ return [
     'achieve' => 'ACHIEVE',
     'bigger' => 'BIGGER',
 
-    'title' => 'Let’s ignite your growth!',
-    'description' => "Partner with Communic8's 20 years of creative strategic expertise. We're dedicated to understanding your unique goals and crafting innovative digital solutions that deliver exceptional results across Southeast Asia.",
-    'button' => 'Begin Your Ascent',
+    'title' => "Let’s talk about your project.",
+    'description' => "Bring your ideas, we’ll bring the creativity. Together, we make it happen. Bring your project, we’ll bring you ideas and creativity.",
+    'button' => 'Start the Conversation',
 ];
