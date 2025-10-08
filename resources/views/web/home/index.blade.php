@@ -63,7 +63,7 @@
     <div class="relative">
 
         {{-- Section At a Glance --}}
-        <section class="relative bg-gray-100 pt-8 sm:pt-12 md:pt-16 pb-12 sm:pb-14 md:pb-16 z-10">
+        <section class="relative bg-gray-100 pt-8 sm:pt-12 md:pt-16 pb-12 sm:pb-14 md:pb-16 z-10 overflow-visible">
             <div class="container max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative">
 
                 {{-- Mobile Layout --}}
@@ -86,12 +86,12 @@
                     {{-- Images Stack for Mobile --}}
                     <div class="flex justify-center space-x-2 sm:space-x-4">
                         <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
-                            class="w-36 sm:w-44 h-40 sm:h-48 object-cover rounded-lg shadow-lg 
-                    grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                            class="w-40 sm:w-48 h-44 sm:h-52 object-cover rounded-lg shadow-lg 
+                        grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
 
                         <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
-                            class="w-36 sm:w-44 h-40 sm:h-48 object-cover rounded-lg shadow-lg mt-4 sm:mt-6
-                    grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                            class="w-40 sm:w-48 h-44 sm:h-52 object-cover rounded-lg shadow-lg mt-6 sm:mt-8
+                        grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
                     </div>
                 </div>
 
@@ -100,19 +100,19 @@
                     {{-- Floating Images --}}
                     <div class="relative w-full h-full">
                         <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
-                            class="absolute -top-32 left-0 w-64 sm:w-72 md:w-80 rounded-lg shadow-lg z-30 
-                    grayscale hover:grayscale-0 hover:saturate-150 transition duration-500 pointer-events-auto">
+                            class="absolute -top-32 left-0 w-[28rem] sm:w-[30rem] md:w-[32rem] rounded-lg shadow-lg z-30 
+                        grayscale hover:grayscale-0 hover:saturate-150 transition duration-500 pointer-events-auto">
 
                         <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
-                            class="absolute top-20 left-12 w-64 sm:w-72 md:w-80 rounded-lg shadow-lg z-20 
-                    grayscale hover:grayscale-0 hover:saturate-150 transition duration-500 pointer-events-auto">
+                            class="absolute top-20 left-12 w-[28rem] sm:w-[30rem] md:w-[32rem] rounded-lg shadow-lg z-20 
+                        grayscale hover:grayscale-0 hover:saturate-150 transition duration-500 pointer-events-auto">
                     </div>
 
                     {{-- Text --}}
                     <div class="text-left flex flex-col justify-center">
                         <h2
                             class="text-2xl sm:text-3xl md:text-4xl text-gray-700 mb-6 leading-tight
-                           {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}">
+                        {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}">
                             {!! __('home/glance.title') !!}
                         </h2>
                         <p class="text-gray-600 leading-relaxed break-words">
@@ -318,36 +318,16 @@
                 <p class="text-gray-600">{{ __('home/trusted_by.subtitle') }}</p>
             </div>
 
-            {{-- Logo Carousel (di atas projects) --}}
-            <div class="relative mb-12">
-                <div id="logo-slider" class="flex overflow-x-auto scroll-smooth snap-x snap-mandatory space-x-8 pb-6">
-                    @foreach ($clients->chunk(9) as $chunk)
-                        <div class="grid grid-cols-3 gap-10 min-w-full snap-center">
-                            @foreach ($chunk as $client)
-                                <div class="flex justify-center items-center">
-                                    <img src="{{ asset('storage/' . $client->logo) }}" alt="{{ $client->company_name }}"
-                                        class="h-16 object-contain grayscale hover:grayscale-0 transition duration-300" />
-                                </div>
-                            @endforeach
+            {{-- Logo Grid (tanpa slider) --}}
+            <div class="mb-12">
+                <div class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 gap-10">
+                    @foreach ($clients as $client)
+                        <div class="flex justify-center items-center">
+                            <img src="{{ asset('storage/' . $client->logo) }}" alt="{{ $client->company_name }}"
+                                class="h-16 object-contain grayscale hover:grayscale-0 transition duration-300" />
                         </div>
                     @endforeach
                 </div>
-
-                {{-- Scroll Buttons --}}
-                <button id="scroll-left"
-                    class="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
-                </button>
-                <button id="scroll-right"
-                    class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                </button>
             </div>
 
             {{-- Bottom Text --}}
@@ -359,54 +339,17 @@
 
             <br />
 
-            {{-- Projects Grid --}}
+            {{-- Projects Slider (hanya non-highlighted) --}}
             @php
-                $highlightedProjects = $trustedProjects->where('is_highlighted', true)->take(2)->values();
                 $nonHighlightedProjects = $trustedProjects->where('is_highlighted', false)->values();
             @endphp
 
-            {{-- Highlighted Projects (2 items grid besar) --}}
-            <div class="grid grid-cols-6 gap-6 mb-12">
-                @foreach ($highlightedProjects as $project)
-                    <div
-                        class="col-span-6 md:col-span-3 border border-gray-200 rounded-2xl p-4 flex flex-col relative group">
-                        <div class="flex justify-between items-center mb-2">
-                            <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
-                            @if ($project->project_url)
-                                <a href="{{ $project->project_url }}" target="_blank"
-                                    class="text-gray-400 hover:text-gray-600">
-                                    <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
-                                </a>
-                            @endif
-                        </div>
-                        <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
-                        <div class="rounded-xl overflow-hidden relative">
-                            @if ($project->project_img)
-                                <img src="{{ asset('storage/' . $project->project_img) }}" alt="{{ $project->name }}"
-                                    class="w-full object-cover">
-                            @else
-                                <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="No Image"
-                                    class="w-full object-cover">
-                            @endif
-                            <div
-                                class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
-                                <h3 class="text-sm md:text-base font-semibold mb-2">Ideas in Action</h3>
-                                <p class="text-xs md:text-sm leading-snug">
-                                    A showcase of campaigns, stories, and experiences that create real connections
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-
-            {{-- Non-highlighted Projects Slider --}}
             <div class="relative mb-12">
                 <div id="projects-slider"
                     class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
                     @foreach ($nonHighlightedProjects as $project)
                         <div class="snap-start border border-gray-200 rounded-2xl p-4 flex flex-col relative group"
-                            style="flex: 0 0 calc(50% - 1rem);"> {{-- Lebar sama dengan highlighted --}}
+                            style="flex: 0 0 calc(50% - 1rem);">
 
                             {{-- Client & Project Name --}}
                             <div class="flex justify-between items-center mb-2">
@@ -465,33 +408,7 @@
 
     {{-- JS --}}
     <script>
-        // Logo Carousel Scroll
-        const slider = document.getElementById("logo-slider");
-        const btnLeft = document.getElementById("scroll-left");
-        const btnRight = document.getElementById("scroll-right");
-
-        btnLeft?.addEventListener("click", () => slider.scrollBy({
-            left: -slider.clientWidth,
-            behavior: "smooth"
-        }));
-        btnRight?.addEventListener("click", () => slider.scrollBy({
-            left: slider.clientWidth,
-            behavior: "smooth"
-        }));
-
-        const checkScroll = () => {
-            if (slider.scrollWidth > slider.clientWidth) {
-                btnLeft?.classList.remove("hidden");
-                btnRight?.classList.remove("hidden");
-            } else {
-                btnLeft?.classList.add("hidden");
-                btnRight?.classList.add("hidden");
-            }
-        };
-        window.addEventListener("resize", checkScroll);
-        window.addEventListener("load", checkScroll);
-
-        // Projects Slider
+        // Projects Slider (tetap dipakai)
         const projectSlider = document.getElementById('projects-slider');
         const prevProject = document.getElementById('prevProject');
         const nextProject = document.getElementById('nextProject');
