@@ -9,15 +9,13 @@
 
             {{-- Hero Title --}}
             <div class="relative z-10 pt-20 text-center">
-                <h1
+                <h1 id="hero-line1"
                     class="font-poppins font-bold text-lg sm:text-2xl md:text-3xl 
-       text-[#000000] tracking-normal sm:tracking-[0.3em] leading-snug mb-3 sm:mb-5">
-                    {!! __('home/hero.title_line1') !!}
+                text-[#000000] tracking-normal sm:tracking-[0.3em] leading-snug mb-3 sm:mb-5">
                 </h1>
-                <h1
+                <h1 id="hero-line2"
                     class="font-poppins font-bold text-lg sm:text-2xl md:text-3xl 
-       text-[#000000] tracking-normal sm:tracking-[0.3em] leading-snug">
-                    {!! __('home/hero.title_line2') !!}
+                text-[#000000] tracking-normal sm:tracking-[0.3em] leading-snug">
                 </h1>
             </div>
 
@@ -31,7 +29,6 @@
 
             {{-- Bottom Row --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 w-full items-start text-center md:text-left mt-6">
-                {{-- Left Content --}}
                 <div class="space-y-6">
                     <p class="text-gray-600 text-base sm:text-lg leading-relaxed max-w-md mx-auto md:mx-0">
                         {{ __('home/hero.description') }}
@@ -43,6 +40,34 @@
             </div>
         </div>
     </section>
+
+    {{-- Rotating Text Script --}}
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const phrases = @json(__('home/hero.titles'));
+            let index = 0;
+
+            const el1 = document.getElementById("hero-line1");
+            const el2 = document.getElementById("hero-line2");
+
+            function showPhrase(i) {
+                el1.style.opacity = 0;
+                el2.style.opacity = 0;
+                setTimeout(() => {
+                    el1.innerHTML = phrases[i].line1;
+                    el2.innerHTML = phrases[i].line2;
+                    el1.style.opacity = 1;
+                    el2.style.opacity = 1;
+                }, 300);
+            }
+
+            showPhrase(index);
+            setInterval(() => {
+                index = (index + 1) % phrases.length;
+                showPhrase(index);
+            }, 4000);
+        });
+    </script>
 
     {{-- Section Quotes --}}
     <section class="relative w-full bg-cover bg-center"
