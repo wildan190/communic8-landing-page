@@ -1,6 +1,7 @@
 @extends('layouts.web')
 
 @section('content')
+
     <section class="relative w-full min-h-[85vh] bg-cover bg-center"
         style="background-image: url('{{ asset('assets/img/sectionhero.png') }}')">
 

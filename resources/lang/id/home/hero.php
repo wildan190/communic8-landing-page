@@ -15,6 +15,6 @@ return [
             'line2' => 'K R E A T I V I T A S &nbsp; Y A N G &nbsp; T E R A R A H',
         ],
     ],
-    'description' => 'Dipandu oleh riset, didorong oleh kinerja, dan dipacu oleh kreativitas, ...',
+    'description' => 'Dipandu oleh riset, didorong oleh kinerja, dan dipacu oleh kreativitas, kami mengubah ide menjadi tindakan yang berdampak. Sebagai mitra kreatif tepercaya di Asia, kami memadukan perspektif global dengan wawasan lokal — dengan Indonesia sebagai gerbangnya.',
     'button' => 'Temukan peluang Anda',
 ];

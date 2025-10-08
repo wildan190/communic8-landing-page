@@ -15,6 +15,6 @@ return [
             'line2' => 'P U R P O S E F U L &nbsp; C R E A T I V I T Y',
         ],
     ],
-    'description' => 'Guided by research, driven by performance, and fueled by creativity...',
+    'description' => 'Guided by research, driven by performance, and fueled by creativity, we turn ideas into actions that deliver impact. As Asia’s trusted creative partner, we blend global perspective with local insight — with Indonesia as the gateway.',
     'button' => 'Discover your opportunities',
 ];
