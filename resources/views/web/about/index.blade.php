@@ -52,71 +52,46 @@
 
         {{-- THE PHILOSOPHY --}}
         <section
-            class="relative overflow-visible z-10 bg-gradient-to-r from-gray-400 to-gray-600 py-12 md:py-16 -mb-12 transition-colors duration-500 hover:from-orange-500 hover:to-orange-600 group">
+            class="relative overflow-visible z-10 bg-gradient-to-r from-gray-400 to-gray-600 py-16 md:py-20 transition-colors duration-500 hover:from-orange-500 hover:to-orange-600 group">
 
-            <div class="container max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative">
+            <div class="container max-w-5xl mx-auto px-4 sm:px-6 md:px-12 relative text-center">
 
-                {{-- Lamp (desktop) – wrapper tetap --}}
-                <div class="hidden md:block absolute -top-32 left-0 w-[460px] lg:w-[480px] xl:w-[500px] z-40">
+                {{-- Lamp (sekarang di dalam section & center) --}}
+                <div class="mx-auto mb-12 w-[280px] sm:w-[340px] md:w-[400px] lg:w-[460px] relative">
                     <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
-                        class="w-full h-auto drop-shadow-2xl transition-all duration-500 group-hover:opacity-0 object-contain" />
+                        class="w-full h-auto drop-shadow-2xl transition-all duration-500 group-hover:opacity-0 object-contain mx-auto" />
                     <img src="{{ asset('assets/img/lamphover.png') }}" alt="Lamp Hover"
-                        class="w-full h-auto drop-shadow-2xl absolute top-0 left-0 opacity-0 transition-all duration-500 group-hover:opacity-100 object-contain" />
+                        class="w-full h-auto drop-shadow-2xl absolute top-0 left-0 opacity-0 transition-all duration-500 group-hover:opacity-100 object-contain mx-auto" />
                 </div>
 
-                {{-- Layout --}}
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
-                    <div class="hidden md:block"></div>
+                {{-- Text (tanpa slider) --}}
+                <div class="text-white transition-colors duration-500 text-center">
+                    <h2 class="font-poppins text-2xl sm:text-3xl md:text-4xl tracking-[0.35em] font-semibold mb-12">
+                        {{ __('about/philosophy.title') }}
+                    </h2>
 
-                    {{-- Text + Slider --}}
-                    <div class="text-left text-white md:pl-6 transition-colors duration-500">
-                        <h2 class="font-poppins text-2xl sm:text-3xl md:text-4xl tracking-[0.35em] font-semibold mb-10">
-                            {{ __('about/philosophy.title') }}
-                        </h2>
+                    {{-- Slide 1 --}}
+                    <div class="mb-12 max-w-3xl mx-auto">
+                        <h3 class="text-xl font-semibold mb-4">{{ __('about/philosophy.slide_1_title') }}</h3>
+                        <p class="leading-relaxed opacity-95">{{ __('about/philosophy.slide_1_text') }}</p>
+                    </div>
 
-                        <!-- Swiper -->
-                        <div class="swiper philosophySwiper pb-14">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <h3 class="text-xl font-semibold mb-4">{{ __('about/philosophy.slide_1_title') }}</h3>
-                                    <p class="leading-relaxed opacity-95">{{ __('about/philosophy.slide_1_text') }}</p>
-                                </div>
-                                <div class="swiper-slide">
-                                    <h3 class="text-xl font-semibold mb-4">{{ __('about/philosophy.slide_2_title') }}</h3>
-                                    <p class="leading-relaxed opacity-95">{{ __('about/philosophy.slide_2_text') }}</p>
-                                </div>
-                                <div class="swiper-slide">
-                                    <h3 class="text-xl font-semibold mb-4">{{ __('about/philosophy.slide_3_title') }}</h3>
-                                    <p class="leading-relaxed opacity-95">{{ __('about/philosophy.slide_3_text') }}</p>
-                                </div>
-                            </div>
+                    {{-- Slide 2 --}}
+                    <div class="mb-12 max-w-3xl mx-auto">
+                        <h3 class="text-xl font-semibold mb-4">{{ __('about/philosophy.slide_2_title') }}</h3>
+                        <p class="leading-relaxed opacity-95">{{ __('about/philosophy.slide_2_text') }}</p>
+                    </div>
 
-                            <!-- Pagination -->
-                            <div class="swiper-pagination !static mt-8"></div>
-                        </div>
+                    {{-- Slide 3 --}}
+                    <div class="max-w-3xl mx-auto">
+                        <h3 class="text-xl font-semibold mb-4">{{ __('about/philosophy.slide_3_title') }}</h3>
+                        <p class="leading-relaxed opacity-95">{{ __('about/philosophy.slide_3_text') }}</p>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        {{-- Swiper CDN --}}
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-        <script>
-            new Swiper(".philosophySwiper", {
-                loop: true,
-                autoHeight: true,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                autoplay: {
-                    delay: 7000,
-                    disableOnInteraction: false,
-                },
-            });
-        </script>
 
         {{-- WHY OUR PARTNER CHOOSE US --}}
         <section class="relative pt-24 sm:pt-32 md:pt-40 pb-16 sm:pb-20 md:pb-24 bg-white">
@@ -312,23 +287,22 @@
             });
         </script>
 
-        {{-- Trusted by Many Section --}}
+        {{-- Brands We Empower Section --}}
         <section class="relative bg-white py-24">
             <div class="container max-w-7xl mx-auto px-6 text-center">
 
                 {{-- Title --}}
                 <h2
                     class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal mb-4 sm:mb-6 
-           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug">
-                    T R U S T E D &nbsp; B Y &nbsp; M A N Y
+            text-[#2C2C2C] tracking-[0.35em] leading-snug uppercase">
+                    {!! __('about/trusted_by_many_section.title') !!}
                 </h2>
 
-                <h2
-                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal mb-12 sm:mb-16 
-           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug">
-                    C E L E B R A T E D &nbsp; B Y &nbsp; A L L
-                </h2>
-
+                {{-- Subtitle --}}
+                <p
+                    class="font-poppins text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-12 sm:mb-16 leading-relaxed">
+                    {{ __('about/trusted_by_many_section.subtitle') }}
+                </p>
 
                 {{-- Logos Grid --}}
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-7 gap-10 items-center justify-center">
@@ -419,13 +393,13 @@
                 <div class="text-center mb-12 sm:mb-16">
                     <h2
                         class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
-               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
-                        I N S I G H T S &nbsp; F O R &nbsp;
-                        <span class="hidden sm:inline"><br /></span>
-                        S T R A T E G I C &nbsp; M I N D
+           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                        {!! __('home/insights.title') !!}
                     </h2>
+                    <p class="text-gray-600 text-base sm:text-lg mt-2">
+                        {{ __('home/insights.description') }}
+                    </p>
                 </div>
-
 
                 <!-- Wrapper for Desktop (with arrows) -->
                 <div class="hidden sm:flex items-center space-x-6">

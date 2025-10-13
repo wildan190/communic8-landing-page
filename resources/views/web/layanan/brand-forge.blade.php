@@ -1,7 +1,6 @@
 @extends('layouts.web')
 
 @section('content')
-
     {{-- Hero Section --}}
     <section class="relative w-full h-[80vh] flex items-end bg-cover bg-center"
         style="background-image: url('{{ asset('assets/img/forge-hero.png') }}')">
@@ -13,9 +12,15 @@
                 <h2 class="mt-6 text-lg md:text-xl font-bold font-rubik text-black">
                     Wording & Image
                 </h2>
+                <p class="mt-4 text-gray-800 text-base md:text-lg font-rubik leading-relaxed">
+                    At Communic 8, we specialize in helping brands unlock their full potential. Our services span the entire
+                    brand journey — from building a strong identity, to amplifying it through creative campaigns,
+                    endorsements, and other impactful executions.
+                </p>
             </div>
         </div>
     </section>
+
 
     {{-- Explanation Section --}}
     <section class="py-16 bg-white">
@@ -55,17 +60,13 @@
     </section>
 
     {{-- Gallery Section --}}
-    <section class="w-full py-12 bg-gray-50">
-        <div class="container mx-auto px-6 md:px-12 lg:px-32 flex justify-center">
-            <div class="max-w-4xl w-full rounded-2xl overflow-hidden shadow-lg">
-                @if ($brandForgeContent && $brandForgeContent->head_img)
-                    <img src="{{ asset('storage/' . $brandForgeContent->head_img) }}" alt="Gallery"
-                        class="w-full h-auto object-cover">
-                @else
-                    <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery" class="w-full h-auto object-cover">
-                @endif
-            </div>
-        </div>
+    <section class="w-full bg-gray-50">
+        @if ($brandForgeContent && $brandForgeContent->head_img)
+            <img src="{{ asset('storage/' . $brandForgeContent->head_img) }}" alt="Gallery"
+                class="w-full h-auto object-cover">
+        @else
+            <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery" class="w-full h-auto object-cover">
+        @endif
     </section>
 
     {{-- Strategy Section --}}
@@ -124,21 +125,21 @@
             </div>
         </div>
     </section>
-{{-- Services Grid Section --}}
-<section class="w-full py-8 bg-white">
-    <div class="max-w-6xl mx-auto px-4 text-center">
 
-        {{-- Top description --}}
-        <p class="text-gray-700 font-rubik text-sm leading-snug max-w-xl mx-auto">
-            Communic 8's Brand Development service shapes every facet of your identity from
-            foundational research to brand design and activation.
-        </p>
-        <p class="mt-1 font-rubik font-semibold text-gray-900 text-sm">
-            Let us help you build a resilient brand that will stand through the test of time.
-        </p>
+    {{-- Services Grid Section with Proper Spacing --}}
+    <section class="w-full py-8 bg-white relative z-10">
+        <div class="max-w-6xl mx-auto px-4 text-center">
 
-        {{-- Grid --}}
-        <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-6">
+            {{-- Top description --}}
+            <p class="text-gray-700 font-rubik text-sm leading-snug max-w-xl mx-auto">
+                Communic 8's Brand Development service shapes every facet of your identity from
+                foundational research to brand design and activation.
+            </p>
+            <p class="mt-1 font-rubik font-semibold text-gray-900 text-sm">
+                Let us help you build a resilient brand that will stand through the test of time.
+            </p>
+
+            {{-- Grid Projects Style for Brand Forge Subservices --}}
             @php
                 $brandForgeSubservices = \App\Models\SubService::with('service')
                     ->whereHas('service', fn($q) => $q->where('name', 'Brand Forge'))
@@ -146,41 +147,95 @@
                     ->get();
             @endphp
 
-            @forelse($brandForgeSubservices as $subservice)
-                <div class="text-center p-1 relative group">
-                    <div class="rounded-[28px] overflow-hidden w-full relative">
-                        
-                        {{-- Gambar tetap original --}}
-                        @if ($subservice->picture_upload)
-                            <img src="{{ asset('storage/' . $subservice->picture_upload) }}"
-                                alt="{{ $subservice->name }}" 
-                                class="w-full h-full object-cover">
-                        @else
-                            <img src="{{ asset('assets/img/dummy/dummy1.png') }}" 
-                                alt="{{ $subservice->name }}"
-                                class="w-full h-full object-cover">
-                        @endif
+            <div class="relative mt-10">
+                <div id="brandforge-slider"
+                    class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
 
-                        {{-- Overlay detail saat hover --}}
-                        <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
-                            <h3 class="text-sm md:text-base font-semibold mb-2">{{ $subservice->name }}</h3>
-                            @if ($subservice->description)
-                                <p class="text-xs md:text-sm leading-snug">{{ Str::limit($subservice->description, 120) }}</p>
-                            @else
-                                <p class="text-xs md:text-sm italic opacity-80">No additional details available.</p>
-                            @endif
+                    @forelse ($brandForgeSubservices as $subservice)
+                        <div class="snap-start border border-gray-200 rounded-2xl p-4 flex flex-col relative group"
+                            style="flex: 0 0 calc(50% - 1rem);">
+
+                            {{-- Subservice Title --}}
+                            <h3 class="font-semibold text-gray-700 mb-3 text-sm md:text-base">{{ $subservice->name }}</h3>
+
+                            {{-- Image --}}
+                            <div class="rounded-xl overflow-hidden relative">
+                                @if ($subservice->picture_upload)
+                                    <img src="{{ asset('storage/' . $subservice->picture_upload) }}"
+                                        alt="{{ $subservice->name }}" class="w-full object-cover">
+                                @else
+                                    <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="No Image"
+                                        class="w-full object-cover">
+                                @endif
+
+                                {{-- Hover Overlay --}}
+                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
+                                    <h3 class="text-sm md:text-base font-semibold mb-2">{{ $subservice->name }}</h3>
+                                    @if ($subservice->description)
+                                        <p class="text-xs md:text-sm leading-snug">
+                                            {{ Str::limit($subservice->description, 120) }}</p>
+                                    @else
+                                        <p class="text-xs md:text-sm italic opacity-80">No additional details available.</p>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
-                    </div>
-
-                    {{-- Nama tetap tampil di bawah gambar --}}
-                    <p class="mt-2 text-gray-700 font-rubik text-xs">{{ $subservice->name }}</p>
+                    @empty
+                        <p class="text-center text-gray-500 w-full">No Brand Forge subservices found.</p>
+                    @endforelse
                 </div>
-            @empty
-                <p class="col-span-3 text-center text-gray-500">No Brand Forge subservices found.</p>
-            @endforelse
+
+                {{-- Slider Buttons --}}
+                <button id="prevBrandForge"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="nextBrandForge"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    {{-- JS for Brand Forge Slider --}}
+
+    <script>
+        // Brand Forge Horizontal Scroll
+        const brandforgeSlider = document.getElementById('brandforge-slider');
+        const prevBrandForge = document.getElementById('prevBrandForge');
+        const nextBrandForge = document.getElementById('nextBrandForge');
+        const brandforgeSlideWidth = brandforgeSlider.querySelector('div')?.offsetWidth + 16 || 300;
+
+        prevBrandForge?.addEventListener('click', () => brandforgeSlider.scrollBy({
+            left: -brandforgeSlideWidth,
+            behavior: 'smooth'
+        }));
+        nextBrandForge?.addEventListener('click', () => brandforgeSlider.scrollBy({
+            left: brandforgeSlideWidth,
+            behavior: 'smooth'
+        }));
+
+        const checkBrandforgeSlider = () => {
+            if (brandforgeSlider.scrollWidth > brandforgeSlider.clientWidth) {
+                prevBrandForge?.classList.remove('hidden');
+                nextBrandForge?.classList.remove('hidden');
+            } else {
+                prevBrandForge?.classList.add('hidden');
+                nextBrandForge?.classList.add('hidden');
+            }
+        };
+        window.addEventListener('resize', checkBrandforgeSlider);
+        window.addEventListener('load', checkBrandforgeSlider);
+    </script>
+
 
 
     {{-- CTA Section --}}
@@ -223,11 +278,12 @@
             <div class="text-center mb-12 sm:mb-16">
                 <h2
                     class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
-               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
-                    I N S I G H T S &nbsp; F O R &nbsp;
-                    <span class="hidden sm:inline"><br /></span>
-                    S T R A T E G I C &nbsp; M I N D
+           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                    {!! __('home/insights.title') !!}
                 </h2>
+                <p class="text-gray-600 text-base sm:text-lg mt-2">
+                    {{ __('home/insights.description') }}
+                </p>
             </div>
 
 

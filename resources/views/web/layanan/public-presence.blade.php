@@ -21,7 +21,7 @@
         </div>
     </section>
 
-    {{-- Gallery Section --}}
+    {{-- Gallery Section (Full Width) --}}
     <section class="w-full bg-gray-50 py-16">
         <div class="container mx-auto px-6 md:px-12 text-center">
             <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
@@ -35,25 +35,22 @@
             </p>
         </div>
 
-        {{-- ✅ Head Image dari database - tidak full width --}}
-        <div class="container mx-auto px-6 md:px-12 flex justify-center mt-12">
-            <div class="w-full max-w-5xl rounded-2xl overflow-hidden shadow-lg">
-                @if ($publicPresenceContent && $publicPresenceContent->head_img)
-                    <img src="{{ Storage::url($publicPresenceContent->head_img) }}" alt="Gallery"
-                        class="w-full h-auto object-cover transition-transform duration-500 hover:scale-105">
-                @else
-                    <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery"
-                        class="w-full h-auto object-cover transition-transform duration-500 hover:scale-105">
-                @endif
-            </div>
+        {{-- ✅ Full-width image --}}
+        <div class="w-full mt-12">
+            @if ($publicPresenceContent && $publicPresenceContent->head_img)
+                <img src="{{ Storage::url($publicPresenceContent->head_img) }}" alt="Gallery"
+                    class="w-full h-auto object-cover transition-transform duration-500 hover:scale-105">
+            @else
+                <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery"
+                    class="w-full h-auto object-cover transition-transform duration-500 hover:scale-105">
+            @endif
         </div>
     </section>
 
-
-    {{-- Strategy Section --}}
+    {{-- Strategy Section (tidak diubah) --}}
     <section class="w-full py-24">
         <div class="max-w-7xl mx-auto px-6 md:px-20 space-y-24">
-            {{-- Row 1 - INSIGHT DRIVEN STRATEGY --}}
+            {{-- Row 1 --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="text-left">
                     <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase">
@@ -75,7 +72,7 @@
                 </div>
             </div>
 
-            {{-- Row 2 - Creative and Channel Synergy --}}
+            {{-- Row 2 --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="order-2 md:order-1 flex justify-center">
                     @if ($publicPresenceContent && $publicPresenceContent->img_Creative_and_Channel_Synergy)
@@ -99,7 +96,7 @@
         </div>
     </section>
 
-    {{-- Services Grid Section --}}
+    {{-- Services Grid Section (Horizontal Scroll Style) --}}
     <section class="w-full py-8 bg-white">
         <div class="max-w-6xl mx-auto px-4 text-center">
 
@@ -112,34 +109,106 @@
                 Let us help you build a resilient brand that will stand through the test of time.
             </p>
 
-            {{-- ✅ Grid dynamic + hover --}}
-            <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-6">
-                @forelse($publicPresenceSubservices as $subservice)
-                    <div class="text-center p-1 relative group">
-                        <div class="rounded-[28px] overflow-hidden w-full relative">
-                            <img src="{{ $subservice->picture_upload ? Storage::url($subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
-                                alt="{{ $subservice->name }}" class="w-full h-full object-cover block">
+            @php
+                $publicPresenceSubservices = \App\Models\SubService::with('service')
+                    ->whereHas('service', fn($q) => $q->where('name', 'Public Presence'))
+                    ->latest()
+                    ->get();
+            @endphp
 
-                            {{-- ✨ Hover overlay detail --}}
-                            <div
-                                class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
-                                <h3 class="text-sm md:text-base font-semibold mb-2">{{ $subservice->name }}</h3>
-                                @if ($subservice->description)
-                                    <p class="text-xs md:text-sm leading-snug">
-                                        {{ Str::limit($subservice->description, 120) }}</p>
-                                @else
-                                    <p class="text-xs md:text-sm italic opacity-80">No additional details available.</p>
-                                @endif
+            {{-- Horizontal Scroll Grid --}}
+            <div class="relative mt-10">
+                <div id="public-presence-slider"
+                    class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
+
+                    @forelse ($publicPresenceSubservices as $subservice)
+                        <div class="snap-start border border-gray-200 rounded-2xl p-4 flex flex-col relative group"
+                            style="flex: 0 0 calc(50% - 1rem);">
+
+                            {{-- Nama --}}
+                            <h3 class="font-semibold text-gray-700 mb-3 text-sm md:text-base">
+                                {{ $subservice->name }}
+                            </h3>
+
+                            {{-- Gambar --}}
+                            <div class="rounded-xl overflow-hidden relative">
+                                <img src="{{ $subservice->picture_upload ? Storage::url($subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
+                                    alt="{{ $subservice->name }}"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+
+                                {{-- Overlay --}}
+                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
+                                    <h3 class="text-sm md:text-base font-semibold mb-2">{{ $subservice->name }}</h3>
+                                    @if ($subservice->description)
+                                        <p class="text-xs md:text-sm leading-snug">
+                                            {{ Str::limit($subservice->description, 120) }}
+                                        </p>
+                                    @else
+                                        <p class="text-xs md:text-sm italic opacity-80">
+                                            No additional details available.
+                                        </p>
+                                    @endif
+                                </div>
                             </div>
+
+                            {{-- Nama di bawah gambar --}}
+                            <p class="mt-2 text-gray-700 font-rubik text-xs">{{ $subservice->name }}</p>
                         </div>
-                        <p class="mt-2 text-gray-700 font-rubik text-xs">{{ $subservice->name }}</p>
-                    </div>
-                @empty
-                    <p class="col-span-full text-gray-500 text-sm">No services available at the moment.</p>
-                @endforelse
+                    @empty
+                        <p class="text-center text-gray-500 w-full">
+                            No Public Presence subservices found.
+                        </p>
+                    @endforelse
+                </div>
+
+                {{-- Tombol Navigasi --}}
+                <button id="prevPublicPresence"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="nextPublicPresence"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
             </div>
         </div>
     </section>
+
+    <script>
+        // Public Presence Horizontal Scroll
+        const ppSlider = document.getElementById('public-presence-slider');
+        const prevPP = document.getElementById('prevPublicPresence');
+        const nextPP = document.getElementById('nextPublicPresence');
+        const ppSlideWidth = ppSlider.querySelector('div')?.offsetWidth + 16 || 300;
+
+        prevPP?.addEventListener('click', () => ppSlider.scrollBy({
+            left: -ppSlideWidth,
+            behavior: 'smooth'
+        }));
+        nextPP?.addEventListener('click', () => ppSlider.scrollBy({
+            left: ppSlideWidth,
+            behavior: 'smooth'
+        }));
+
+        const checkPPSlider = () => {
+            if (ppSlider.scrollWidth > ppSlider.clientWidth) {
+                prevPP?.classList.remove('hidden');
+                nextPP?.classList.remove('hidden');
+            } else {
+                prevPP?.classList.add('hidden');
+                nextPP?.classList.add('hidden');
+            }
+        };
+        window.addEventListener('resize', checkPPSlider);
+        window.addEventListener('load', checkPPSlider);
+    </script>
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"

@@ -1,7 +1,6 @@
 @extends('layouts.web')
 
 @section('content')
-
     <section class="relative w-full min-h-[85vh] bg-cover bg-center"
         style="background-image: url('{{ asset('assets/img/sectionhero.png') }}')">
 
@@ -159,7 +158,11 @@
     <section class="bg-gray-200 py-24 font-rubik">
         <div class="container mx-auto px-4 sm:px-6 md:px-12">
 
-            <br /><br />
+            <br />
+            <br />
+            <br />
+            <br />
+
 
             {{-- Title --}}
             <div class="text-center mb-16">
@@ -222,8 +225,8 @@
             <div class="text-center mb-16">
                 <h2
                     class="text-2xl sm:text-3xl md:text-4xl text-gray-700 mb-2
-                {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}
-                leading-tight">
+            {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}
+            leading-tight">
                     {!! __('home/what_we_do.title') !!}
                 </h2><br />
                 <p class="text-gray-500 text-base sm:text-lg md:text-xl">
@@ -240,6 +243,9 @@
                     'layanan.code-band',
                     'layanan.ott-advertising',
                 ];
+
+                // Samakan gambar OTT Advertising dengan Digital Stand
+                $cards[4]['img'] = $cards[2]['img'];
             @endphp
 
             {{-- Mobile: Single Column Stack --}}
@@ -252,12 +258,12 @@
                         <div class="flex flex-col items-center text-center w-full flex-1 pb-4">
                             <h3
                                 class="font-bold text-gray-700 mb-3 break-words px-1
-                            {{ app()->getLocale() == 'en' ? 'text-lg sm:text-xl' : 'text-base sm:text-lg' }}">
+                        {{ app()->getLocale() == 'en' ? 'text-lg sm:text-xl' : 'text-base sm:text-lg' }}">
                                 {{ $card['title'] }}
                             </h3>
                             <p
                                 class="text-gray-600 leading-relaxed px-1 mb-6 flex-1 break-words hyphens-auto
-                            {{ app()->getLocale() == 'en' ? 'text-sm' : 'text-xs sm:text-sm' }}">
+                        {{ app()->getLocale() == 'en' ? 'text-sm' : 'text-xs sm:text-sm' }}">
                                 {{ $card['desc'] }}
                             </p>
 
@@ -271,20 +277,21 @@
                 @endforeach
             </div>
 
-            {{-- Desktop: 2-2-1 Layout --}}
+            {{-- Desktop: 2-3 Layout (lebih kecil & proporsional) --}}
             <div class="hidden md:block">
                 {{-- Baris 1: 2 cards --}}
-                <div class="flex flex-wrap justify-center gap-6 mb-6">
+                <div class="flex flex-wrap justify-center gap-6 mb-8">
                     @for ($i = 0; $i < 2; $i++)
                         @php $card = $cards[$i]; @endphp
-                        <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-72 p-4 min-h-[520px]">
+                        <div
+                            class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-72 p-4 min-h-[480px] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                             <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
-                                class="w-full h-60 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
+                                class="w-full h-56 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
                             <div class="flex flex-col items-center text-center w-full flex-1">
-                                <h3 class="text-xl font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
+                                <h3 class="text-lg font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
                                 <p class="text-gray-600 text-sm mb-4 flex-1">{{ $card['desc'] }}</p>
                                 <a href="{{ route($routes[$i]) }}"
-                                    class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors inline-block text-center">
+                                    class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors inline-block text-center text-sm">
                                     {{ $card['btn'] }}
                                 </a>
                             </div>
@@ -292,42 +299,25 @@
                     @endfor
                 </div>
 
-                {{-- Baris 2: 2 cards --}}
-                <div class="flex flex-wrap justify-center gap-6 mb-6">
-                    @for ($i = 2; $i < 4; $i++)
+                {{-- Baris 2: 3 cards --}}
+                <div class="flex flex-wrap justify-center gap-6">
+                    @for ($i = 2; $i < 5; $i++)
                         @php $card = $cards[$i]; @endphp
-                        <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-72 p-4 min-h-[520px]">
+                        <div
+                            class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-64 p-4 min-h-[480px] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                             <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
-                                class="w-full h-60 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
+                                class="w-full h-52 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
                             <div class="flex flex-col items-center text-center w-full flex-1">
-                                <h3 class="text-xl font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
+                                <h3 class="text-base font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
                                 <p class="text-gray-600 text-sm mb-4 flex-1">{{ $card['desc'] }}</p>
                                 <a href="{{ route($routes[$i]) }}"
-                                    class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors inline-block text-center">
+                                    class="bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors inline-block text-center text-sm">
                                     {{ $card['btn'] }}
                                 </a>
                             </div>
                         </div>
                     @endfor
                 </div>
-
-                {{-- Baris 3: 1 card tengah --}}
-                <div class="flex justify-center">
-                    @php $card = $cards[4]; @endphp
-                    <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-72 p-4 min-h-[520px]">
-                        <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
-                            class="w-full h-60 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
-                        <div class="flex flex-col items-center text-center w-full flex-1">
-                            <h3 class="text-xl font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
-                            <p class="text-gray-600 text-sm mb-4 flex-1">{{ $card['desc'] }}</p>
-                            <a href="{{ route($routes[4]) }}"
-                                class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors inline-block text-center">
-                                {{ $card['btn'] }}
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -461,7 +451,6 @@
         window.addEventListener('resize', checkProjectSlider);
         window.addEventListener('load', checkProjectSlider);
     </script>
-
 
     <section class="w-full bg-gray-100 relative min-h-[520px] flex items-center justify-center">
         <!-- Overlay gelap -->
