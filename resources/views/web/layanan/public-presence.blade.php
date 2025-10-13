@@ -7,7 +7,7 @@
         <div class="container mx-auto px-6 md:px-12 lg:px-32 pb-20">
             <div class="max-w-xl text-left">
                 <h1 class="text-2xl md:text-2xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
-                    P U B L I C<br />P R E S E N C E
+                    P U B L I C<br />S P A C E &nbsp; M E D I A
                 </h1>
                 <h2 class="mt-6 text-lg md:text-xl font-bold font-rubik text-black">
                     Be Seen Where It Matters Most
@@ -21,9 +21,9 @@
         </div>
     </section>
 
-    {{-- Gallery Section --}}
-    <section class="w-full">
-        <div class="container mx-auto px-6 md:px-12 py-16 text-center">
+    {{-- Gallery Section (Full Width) --}}
+    <section class="w-full bg-gray-50 py-16">
+        <div class="container mx-auto px-6 md:px-12 text-center">
             <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
                 <b>Strategic Placement for Maximum Impact</b>
             </p>
@@ -35,19 +35,22 @@
             </p>
         </div>
 
-        {{-- ✅ Head Image dari database --}}
-        @if ($publicPresenceContent && $publicPresenceContent->head_img)
-            <img src="{{ Storage::url($publicPresenceContent->head_img) }}" alt="Gallery"
-                class="w-full h-auto object-cover">
-        @else
-            <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery" class="w-full h-auto object-cover">
-        @endif
+        {{-- ✅ Full-width image --}}
+        <div class="w-full mt-12">
+            @if ($publicPresenceContent && $publicPresenceContent->head_img)
+                <img src="{{ Storage::url($publicPresenceContent->head_img) }}" alt="Gallery"
+                    class="w-full h-auto object-cover transition-transform duration-500 hover:scale-105">
+            @else
+                <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery"
+                    class="w-full h-auto object-cover transition-transform duration-500 hover:scale-105">
+            @endif
+        </div>
     </section>
 
-    {{-- Strategy Section --}}
+    {{-- Strategy Section (tidak diubah) --}}
     <section class="w-full py-24">
         <div class="max-w-7xl mx-auto px-6 md:px-20 space-y-24">
-            {{-- Row 1 - INSIGHT DRIVEN STRATEGY --}}
+            {{-- Row 1 --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="text-left">
                     <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase">
@@ -69,7 +72,7 @@
                 </div>
             </div>
 
-            {{-- Row 2 - Creative and Channel Synergy --}}
+            {{-- Row 2 --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="order-2 md:order-1 flex justify-center">
                     @if ($publicPresenceContent && $publicPresenceContent->img_Creative_and_Channel_Synergy)
@@ -93,7 +96,7 @@
         </div>
     </section>
 
-    {{-- Services Grid Section --}}
+    {{-- Services Grid Section (Horizontal Scroll Style) --}}
     <section class="w-full py-8 bg-white">
         <div class="max-w-6xl mx-auto px-4 text-center">
 
@@ -106,27 +109,111 @@
                 Let us help you build a resilient brand that will stand through the test of time.
             </p>
 
-            {{-- Grid dynamic --}}
-            <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-6">
-                @forelse($publicPresenceSubservices as $subservice)
-                    <div class="text-center p-1">
-                        <div class="rounded-[28px] overflow-hidden w-full">
-                            <img src="{{ $subservice->picture_upload ? Storage::url($subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
-                                alt="{{ $subservice->name }}" class="w-full h-full object-cover block">
+            @php
+                $publicPresenceSubservices = \App\Models\SubService::with('service')
+                    ->whereHas('service', fn($q) => $q->where('name', 'Public Presence'))
+                    ->latest()
+                    ->get();
+            @endphp
+
+            {{-- Horizontal Scroll Grid --}}
+            <div class="relative mt-10">
+                <div id="public-presence-slider"
+                    class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
+
+                    @forelse ($publicPresenceSubservices as $subservice)
+                        <div class="snap-start border border-gray-200 rounded-2xl p-4 flex flex-col relative group"
+                            style="flex: 0 0 calc(50% - 1rem);">
+
+                            {{-- Nama --}}
+                            <h3 class="font-semibold text-gray-700 mb-3 text-sm md:text-base">
+                                {{ $subservice->name }}
+                            </h3>
+
+                            {{-- Gambar --}}
+                            <div class="rounded-xl overflow-hidden relative">
+                                <img src="{{ $subservice->picture_upload ? Storage::url($subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
+                                    alt="{{ $subservice->name }}"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+
+                                {{-- Overlay --}}
+                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
+                                    <h3 class="text-sm md:text-base font-semibold mb-2">{{ $subservice->name }}</h3>
+                                    @if ($subservice->description)
+                                        <p class="text-xs md:text-sm leading-snug">
+                                            {{ Str::limit($subservice->description, 120) }}
+                                        </p>
+                                    @else
+                                        <p class="text-xs md:text-sm italic opacity-80">
+                                            No additional details available.
+                                        </p>
+                                    @endif
+                                </div>
+                            </div>
+
+                            {{-- Nama di bawah gambar --}}
+                            <p class="mt-2 text-gray-700 font-rubik text-xs">{{ $subservice->name }}</p>
                         </div>
-                        <p class="mt-2 text-gray-700 font-rubik text-xs">{{ $subservice->name }}</p>
-                    </div>
-                @empty
-                    <p class="col-span-full text-gray-500 text-sm">No services available at the moment.</p>
-                @endforelse
+                    @empty
+                        <p class="text-center text-gray-500 w-full">
+                            No Public Presence subservices found.
+                        </p>
+                    @endforelse
+                </div>
+
+                {{-- Tombol Navigasi --}}
+                <button id="prevPublicPresence"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="nextPublicPresence"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
             </div>
         </div>
     </section>
 
+    <script>
+        // Public Presence Horizontal Scroll
+        const ppSlider = document.getElementById('public-presence-slider');
+        const prevPP = document.getElementById('prevPublicPresence');
+        const nextPP = document.getElementById('nextPublicPresence');
+        const ppSlideWidth = ppSlider.querySelector('div')?.offsetWidth + 16 || 300;
+
+        prevPP?.addEventListener('click', () => ppSlider.scrollBy({
+            left: -ppSlideWidth,
+            behavior: 'smooth'
+        }));
+        nextPP?.addEventListener('click', () => ppSlider.scrollBy({
+            left: ppSlideWidth,
+            behavior: 'smooth'
+        }));
+
+        const checkPPSlider = () => {
+            if (ppSlider.scrollWidth > ppSlider.clientWidth) {
+                prevPP?.classList.remove('hidden');
+                nextPP?.classList.remove('hidden');
+            } else {
+                prevPP?.classList.add('hidden');
+                nextPP?.classList.add('hidden');
+            }
+        };
+        window.addEventListener('resize', checkPPSlider);
+        window.addEventListener('load', checkPPSlider);
+    </script>
+
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
         style="background-image: url('/assets/img/cta-bg.png');">
-        <div class="absolute inset-0 bg-black/40"></div> {{-- Overlay biar teks jelas --}}
+        <div class="absolute inset-0 bg-black/40"></div>
 
         <div
             class="relative max-w-screen-xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center md:items-start justify-between">
@@ -159,26 +246,20 @@
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
-            <!-- Section Title -->
             <div class="text-center mb-12 sm:mb-16">
                 <h2
-                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
-               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
                     I N S I G H T S &nbsp; F O R &nbsp;
                     <span class="hidden sm:inline"><br /></span>
                     S T R A T E G I C &nbsp; M I N D
                 </h2>
             </div>
 
-
-            <!-- Wrapper for Desktop (with arrows) -->
             <div class="hidden sm:flex items-center space-x-6">
-                <!-- Prev Button -->
                 <button id="prevBtn" class="shrink-0">
                     <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Prev" class="w-10 h-10">
                 </button>
 
-                <!-- Slider Container -->
                 <div id="blog-slider"
                     class="flex overflow-x-auto space-x-6 scrollbar-hide snap-x snap-mandatory scroll-smooth w-full">
                     @foreach ($sliderBlogs as $blog)
@@ -203,13 +284,11 @@
                     @endforeach
                 </div>
 
-                <!-- Next Button -->
                 <button id="nextBtn" class="shrink-0">
                     <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next" class="w-10 h-10">
                 </button>
             </div>
 
-            <!-- Mobile: Slider full width, arrows below -->
             <div class="sm:hidden">
                 <div id="blog-slider-mobile"
                     class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
@@ -235,7 +314,6 @@
                     @endforeach
                 </div>
 
-                <!-- Arrows below slider -->
                 <div class="flex justify-center space-x-6 mt-6">
                     <button id="prevBtnMobile">
                         <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Prev" class="w-8 h-8">
@@ -246,7 +324,6 @@
                 </div>
             </div>
 
-            <!-- Read More Button -->
             <div class="text-center mt-12">
                 <a href="{{ route('insight.index') }}"
                     class="inline-block bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition">
@@ -259,7 +336,6 @@
 
     <!-- JS for slider scroll -->
     <script>
-        // Desktop
         const slider = document.getElementById('blog-slider');
         document.getElementById('prevBtn').addEventListener('click', () => {
             slider.scrollBy({
@@ -274,7 +350,6 @@
             });
         });
 
-        // Mobile
         const sliderMobile = document.getElementById('blog-slider-mobile');
         document.getElementById('prevBtnMobile').addEventListener('click', () => {
             sliderMobile.scrollBy({

@@ -52,59 +52,56 @@
 
         {{-- THE PHILOSOPHY --}}
         <section
-            class="relative overflow-visible z-10 bg-gradient-to-r from-gray-400 to-gray-600 py-20 md:py-24 -mb-20 transition-colors duration-500 hover:from-orange-500 hover:to-orange-600 group">
+            class="relative overflow-visible z-10 bg-gradient-to-r from-gray-400 to-gray-600 py-16 md:py-20 transition-colors duration-500 hover:from-orange-500 hover:to-orange-600 group">
 
-            <div class="container max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative">
+            <div class="container max-w-5xl mx-auto px-4 sm:px-6 md:px-12 relative text-center">
 
-                {{-- Lamp (left) – big & overlapping top/bottom --}}
-                <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
-                    class="hidden md:block absolute -top-40 left-0 w-[380px] lg:w-[500px] xl:w-[560px] drop-shadow-2xl z-40 transition-all duration-500 group-hover:opacity-0" />
-
-                <img src="{{ asset('assets/img/lamphover.png') }}" alt="Lamp Hover"
-                    class="hidden md:block absolute -top-40 left-0 w-[380px] lg:w-[500px] xl:w-[560px] drop-shadow-2xl z-40 opacity-0 transition-all duration-500 group-hover:opacity-100" />
-
-                {{-- Mobile lamp (smaller, inline flow) --}}
-                <div class="md:hidden mb-6 -mt-20 flex justify-center relative">
+                {{-- Lamp (sekarang di dalam section & center) --}}
+                <div class="mx-auto mb-12 w-[280px] sm:w-[340px] md:w-[400px] lg:w-[460px] relative">
                     <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
-                        class="w-64 drop-shadow-2xl transition-all duration-500 group-hover:opacity-0">
+                        class="w-full h-auto drop-shadow-2xl transition-all duration-500 group-hover:opacity-0 object-contain mx-auto" />
                     <img src="{{ asset('assets/img/lamphover.png') }}" alt="Lamp Hover"
-                        class="w-64 drop-shadow-2xl absolute top-0 opacity-0 transition-all duration-500 group-hover:opacity-100">
+                        class="w-full h-auto drop-shadow-2xl absolute top-0 left-0 opacity-0 transition-all duration-500 group-hover:opacity-100 object-contain mx-auto" />
                 </div>
 
-                {{-- Grid: spacer kiri untuk lamp, teks di kanan --}}
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
-                    {{-- Spacer kolom lamp --}}
-                    <div class="hidden md:block"></div>
+                {{-- Text (tanpa slider) --}}
+                <div class="text-white transition-colors duration-500 text-center">
+                    <h2 class="font-poppins text-2xl sm:text-3xl md:text-4xl tracking-[0.35em] font-semibold mb-12">
+                        {{ __('about/philosophy.title') }}
+                    </h2>
 
-                    {{-- Text Right --}}
-                    <div class="text-left text-white md:pl-6 transition-colors duration-500">
-                        <h2 class="font-poppins text-2xl sm:text-3xl md:text-4xl tracking-[0.35em] font-semibold mb-6">
-                            {{ __('about/philosophy.title') }}
-                        </h2>
-                        <p class="leading-relaxed opacity-95">
-                            {{ __('about/philosophy.paragraph_1') }}
-                        </p>
-                        <p class="leading-relaxed mt-4 opacity-95">
-                            {{ __('about/philosophy.paragraph_2') }}
-                        </p>
-                        <p class="leading-relaxed mt-4 opacity-95">
-                            {{ __('about/philosophy.paragraph_3') }}
-                        </p>
+                    {{-- Slide 1 --}}
+                    <div class="mb-12 max-w-3xl mx-auto">
+                        <h3 class="text-xl font-semibold mb-4">{{ __('about/philosophy.slide_1_title') }}</h3>
+                        <p class="leading-relaxed opacity-95">{{ __('about/philosophy.slide_1_text') }}</p>
+                    </div>
+
+                    {{-- Slide 2 --}}
+                    <div class="mb-12 max-w-3xl mx-auto">
+                        <h3 class="text-xl font-semibold mb-4">{{ __('about/philosophy.slide_2_title') }}</h3>
+                        <p class="leading-relaxed opacity-95">{{ __('about/philosophy.slide_2_text') }}</p>
+                    </div>
+
+                    {{-- Slide 3 --}}
+                    <div class="max-w-3xl mx-auto">
+                        <h3 class="text-xl font-semibold mb-4">{{ __('about/philosophy.slide_3_title') }}</h3>
+                        <p class="leading-relaxed opacity-95">{{ __('about/philosophy.slide_3_text') }}</p>
                     </div>
                 </div>
+
             </div>
         </section>
 
 
         {{-- WHY OUR PARTNER CHOOSE US --}}
-        <section class="relative pt-32 sm:pt-40 md:pt-56 pb-16 sm:pb-20 md:pb-24 bg-white">
+        <section class="relative pt-24 sm:pt-32 md:pt-40 pb-16 sm:pb-20 md:pb-24 bg-white">
             <div class="container max-w-6xl mx-auto px-4 sm:px-6 md:px-12">
 
                 {{-- Title --}}
-                <div class="text-center mb-12 sm:mb-20">
+                <div class="text-center mb-16">
                     <h2
-                        class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal mb-4 sm:mb-6 
-           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug">
+                        class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal mb-4 
+                text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug">
                         {!! __('about/why_choose_us.title_line1') !!} <br />
                         {!! __('about/why_choose_us.title_line2') !!}
                     </h2>
@@ -114,53 +111,60 @@
                     </p>
                 </div>
 
-                {{-- List Items --}}
-                <div class="space-y-12 sm:space-y-16">
+                {{-- Grid Items --}}
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
 
                     {{-- Item 1 --}}
-                    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-10">
-                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}"
-                            alt="{{ __('about/why_choose_us.item1.alt') }}"
-                            class="w-32 h-32 sm:w-48 sm:h-48 object-cover rounded-lg shadow-xl flex-shrink-0 mb-4 sm:mb-0">
-                        <div class="text-center sm:text-left">
-                            <h3 class="font-semibold text-lg sm:text-2xl mb-2 sm:mb-3">
+                    <div
+                        class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
+                        <div class="w-full bg-gray-100 flex items-center justify-center">
+                            <img src="{{ asset('assets/img/dummy/dummy3.png') }}"
+                                alt="{{ __('about/why_choose_us.item1.alt') }}" class="w-full h-auto object-contain">
+                        </div>
+                        <div class="p-6 text-center flex-1 flex flex-col">
+                            <h3 class="font-semibold text-lg sm:text-xl mb-3">
                                 {{ __('about/why_choose_us.item1.title') }}
                             </h3>
-                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed flex-1">
                                 {{ __('about/why_choose_us.item1.text') }}
                             </p>
                         </div>
                     </div>
 
                     {{-- Item 2 --}}
-                    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-10">
-                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}"
-                            alt="{{ __('about/why_choose_us.item2.alt') }}"
-                            class="w-32 h-32 sm:w-48 sm:h-48 object-cover rounded-lg shadow-xl flex-shrink-0 mb-4 sm:mb-0">
-                        <div class="text-center sm:text-left">
-                            <h3 class="font-semibold text-lg sm:text-2xl mb-2 sm:mb-3">
+                    <div
+                        class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
+                        <div class="w-full bg-gray-100 flex items-center justify-center">
+                            <img src="{{ asset('assets/img/dummy/dummy3.png') }}"
+                                alt="{{ __('about/why_choose_us.item2.alt') }}" class="w-full h-auto object-contain">
+                        </div>
+                        <div class="p-6 text-center flex-1 flex flex-col">
+                            <h3 class="font-semibold text-lg sm:text-xl mb-3">
                                 {{ __('about/why_choose_us.item2.title') }}
                             </h3>
-                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed flex-1">
                                 {{ __('about/why_choose_us.item2.text') }}
                             </p>
                         </div>
                     </div>
 
                     {{-- Item 3 --}}
-                    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-10">
-                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}"
-                            alt="{{ __('about/why_choose_us.item3.alt') }}"
-                            class="w-32 h-32 sm:w-48 sm:h-48 object-cover rounded-lg shadow-xl flex-shrink-0 mb-4 sm:mb-0">
-                        <div class="text-center sm:text-left">
-                            <h3 class="font-semibold text-lg sm:text-2xl mb-2 sm:mb-3">
+                    <div
+                        class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
+                        <div class="w-full bg-gray-100 flex items-center justify-center">
+                            <img src="{{ asset('assets/img/dummy/dummy3.png') }}"
+                                alt="{{ __('about/why_choose_us.item3.alt') }}" class="w-full h-auto object-contain">
+                        </div>
+                        <div class="p-6 text-center flex-1 flex flex-col">
+                            <h3 class="font-semibold text-lg sm:text-xl mb-3">
                                 {{ __('about/why_choose_us.item3.title') }}
                             </h3>
-                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed flex-1">
                                 {{ __('about/why_choose_us.item3.text') }}
                             </p>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -283,23 +287,22 @@
             });
         </script>
 
-        {{-- Trusted by Many Section --}}
+        {{-- Brands We Empower Section --}}
         <section class="relative bg-white py-24">
             <div class="container max-w-7xl mx-auto px-6 text-center">
 
                 {{-- Title --}}
                 <h2
                     class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal mb-4 sm:mb-6 
-           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug">
-                    T R U S T E D &nbsp; B Y &nbsp; M A N Y
+            text-[#2C2C2C] tracking-[0.35em] leading-snug uppercase">
+                    {!! __('about/trusted_by_many_section.title') !!}
                 </h2>
 
-                <h2
-                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal mb-12 sm:mb-16 
-           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug">
-                    C E L E B R A T E D &nbsp; B Y &nbsp; A L L
-                </h2>
-
+                {{-- Subtitle --}}
+                <p
+                    class="font-poppins text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-12 sm:mb-16 leading-relaxed">
+                    {{ __('about/trusted_by_many_section.subtitle') }}
+                </p>
 
                 {{-- Logos Grid --}}
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-7 gap-10 items-center justify-center">
@@ -390,13 +393,13 @@
                 <div class="text-center mb-12 sm:mb-16">
                     <h2
                         class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
-               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
-                        I N S I G H T S &nbsp; F O R &nbsp;
-                        <span class="hidden sm:inline"><br /></span>
-                        S T R A T E G I C &nbsp; M I N D
+           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                        {!! __('home/insights.title') !!}
                     </h2>
+                    <p class="text-gray-600 text-base sm:text-lg mt-2">
+                        {{ __('home/insights.description') }}
+                    </p>
                 </div>
-
 
                 <!-- Wrapper for Desktop (with arrows) -->
                 <div class="hidden sm:flex items-center space-x-6">

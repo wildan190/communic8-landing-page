@@ -25,7 +25,7 @@
         content="Kami adalah agensi digital kreatif di Jakarta yang menawarkan solusi lengkap untuk digital marketing dan branding.">
     <meta name="twitter:image" content="https://www.communic8agency.com/assets/img/twitter-image.jpg">
 
-    @if($webInformation && $webInformation->schema_markup)
+    @if ($webInformation && $webInformation->schema_markup)
         {!! $webInformation->schema_markup !!}
     @endif
 
@@ -75,6 +75,13 @@
     {{-- Footer --}}
     @include('layouts.partials.footer')
 
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6281774156280" target="_blank"
+        class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 flex items-center justify-center rounded-full shadow-lg transition-all duration-300"
+        title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp fa-lg"></i>
+    </a>
+
     <!-- Cookie Consent Banner -->
     <div id="cookie-consent-banner"
         style="display: none; position: fixed; bottom: 0; left: 0; width: 100%; background-color: #2d3748; color: white; padding: 1rem; text-align: center; z-index: 1000;">
@@ -101,7 +108,8 @@
                 // Set a cookie to remember that the user has accepted, expiring in 1 year
                 let expiryDate = new Date();
                 expiryDate.setFullYear(expiryDate.getFullYear() + 1);
-                document.cookie = 'cookie_consent_accepted=true; expires=' + expiryDate.toUTCString() + '; path=/; SameSite=Lax';
+                document.cookie = 'cookie_consent_accepted=true; expires=' + expiryDate.toUTCString() +
+                    '; path=/; SameSite=Lax';
 
                 // Hide the banner
                 document.getElementById('cookie-consent-banner').style.display = 'none';

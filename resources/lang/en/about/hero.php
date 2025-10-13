@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'headline_1' => "WE DON'T CHASE TRENDS",
-    'headline_2' => 'WE CRAFT LEGACIES',
+    'headline_1' => 'DRIVEN BY PURPOSE',
+    'headline_2' => 'BUILT FOR LEGACY',
     'about_us_title' => 'ABOUT US',
-    'about_us_text' => 'Communic8 is a creative digital agency based in Jakarta, dedicated to propel brands forward across the dynamic Southeast Asia region.<br><br>We pursue more than just digital fads. We delve into the core of our business, market trends, and audience behaviors, ensuring every strategy is built on a foundation of insight.<br><br>Our innate drive for boundless creativity and innovation transforms well-researched strategies into compelling out-of-the-box ideas and crafted digital experiences that not only engage but also inspire.',
+    'about_us_text' => "We connect ideas across Asia.<br><br>Communic8 was founded with a vision to leave a legacy in the creative industry. With over 20 years of team experience, we have helped brands across industries and countries shape their identity and grow with impact.<br><br>Guided by insight and driven by creativity, we craft ideas that build trust, spark connections, and deliver measurable results.<br><br>Today, we continue to bridge global perspective with local culture by connecting Asia through creativity and growth.",
 ];

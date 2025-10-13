@@ -2,7 +2,13 @@
 
 return [
     'title' => 'FILOSOFI',
-    'paragraph_1' => 'Communic8 adalah agensi digital kreatif yang berfokus pada komunikasi dan inovasi, berkomitmen memberikan hasil luar biasa bagi klien. Dengan memanfaatkan kemitraan strategis, layanan unggul, dan kreativitas tanpa batas, kami mengoptimalkan kinerja bisnis.',
-    'paragraph_2' => 'Dengan pengalaman lebih dari 20 tahun, kami bertujuan menjadi mitra kreatif digital terkemuka di dunia. Kami menciptakan program-program masterpiece yang meninggalkan warisan abadi dalam industri kreatif global.',
-    'paragraph_3' => 'Kami merancang solusi terintegrasi yang memadukan strategi, kreativitas, keahlian teknis, dan kecerdasan digital — didorong oleh pemikiran strategis, semangat kreatif, presisi teknis, dan inovasi digital.',
+
+    'slide_1_title' => 'Bagaimana Kami Dimulai',
+    'slide_1_text' => "Communic8 adalah agensi kreatif dan strategis yang didirikan dengan visi untuk meninggalkan warisan abadi di industri kreatif. Dengan lebih dari 20 tahun pengalaman tim, kami telah berkembang menjadi mitra tepercaya bagi berbagai merek lintas industri dan negara. Berdiri di persimpangan antara perspektif global dan wawasan lokal, Communic8 memiliki posisi unik untuk membantu bisnis masuk, tumbuh, dan berkembang di Indonesia sekaligus menghubungkan Asia melalui kreativitas dan inovasi.",
+
+    'slide_2_title' => 'Prinsip Panduan Kami',
+    'slide_2_text' => "Kami percaya bahwa sebuah merek lebih dari sekadar nama atau logo — ia adalah sistem kepercayaan yang hidup. Filosofi kami menggabungkan kreativitas, strategi, dan teknologi untuk membuka potensi merek dan membangun koneksi bermakna dengan audiensnya. Kami yakin bahwa ide-ide hebat hanya akan memberikan dampak jika dieksekusi dengan presisi, dan setiap solusi yang kami berikan dipandu oleh wawasan, didorong oleh kreativitas, dan dirancang untuk memberikan hasil yang terukur.",
+
+    'slide_3_title' => 'Janji dalam Aksi',
+    'slide_3_text' => "Layanan kami mencakup seluruh spektrum solusi merek dan digital: mulai dari pengembangan identitas merek, kampanye kreatif, endorsement, dan hubungan publik hingga pemasaran digital, penempatan media, dan pengembangan produk digital. Selama bertahun-tahun, kami telah bermitra dengan ratusan klien — dari pionir lokal hingga merek global terkemuka — serta berkolaborasi dengan mitra strategis lintas industri. Janji kami sederhana: menjadi lebih dari sekadar agensi. Communic8 adalah mitra pertumbuhan Anda, berkomitmen membantu merek membangun ekuitas, memperluas pasar, dan meninggalkan dampak yang bertahan lama.",
 ];

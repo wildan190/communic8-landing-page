@@ -16,7 +16,7 @@ use App\Models\WebInformation;
 
 class LayananController extends Controller
 {
-    public function brandForge()
+    public function brandLand()
     {
         $categories = Blog::select('category')->distinct()->pluck('category');
         $sliderBlogs = Blog::latest()->take(10)->get();
@@ -28,12 +28,12 @@ class LayananController extends Controller
 
         $brandForgeContent = BrandForgeContent::latest()->first();
 
-        $brandForgeSubservices = SubService::with('service')->whereHas('service', fn ($q) => $q->where('name', 'Brand Forge'))->latest()->get();
+        $brandForgeSubservices = SubService::with('service')->whereHas('service', fn($q) => $q->where('name', 'Brand Forge'))->latest()->get();
 
         return view('web.layanan.brand-forge', compact('categories', 'sliderBlogs', 'clients', 'galleries', 'webInfo', 'branchOffices', 'insightCategories', 'brandForgeContent', 'brandForgeSubservices'));
     }
 
-    public function digitalCompass()
+    public function digitalStand()
     {
         $categories = Blog::select('category')->distinct()->pluck('category');
         $sliderBlogs = Blog::latest()->take(10)->get();
@@ -67,7 +67,7 @@ class LayananController extends Controller
         );
     }
 
-    public function digitalArchitecture()
+    public function codeBand()
     {
         $categories = Blog::select('category')->distinct()->pluck('category');
         $sliderBlogs = Blog::latest()->take(10)->get();
@@ -101,7 +101,7 @@ class LayananController extends Controller
         );
     }
 
-    public function publicPresence()
+    public function publicSpaceMedia()
     {
         $categories = Blog::select('category')->distinct()->pluck('category');
         $sliderBlogs = Blog::latest()->take(10)->get();
