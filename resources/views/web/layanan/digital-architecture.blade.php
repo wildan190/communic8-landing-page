@@ -110,7 +110,7 @@
 
                     @forelse ($digitalArchitectureSubservices as $subservice)
                         <div class="snap-start border border-gray-200 rounded-2xl p-4 flex flex-col relative group"
-                            style="flex: 0 0 calc(50% - 1rem);">
+                            style="flex: 0 0 calc(33.333% - 1rem); min-width: 260px;">
 
                             {{-- Subservice Name --}}
                             <h3 class="font-semibold text-gray-700 mb-3 text-sm md:text-base">{{ $subservice->name }}</h3>
@@ -118,7 +118,7 @@
                             {{-- Image --}}
                             <div class="rounded-xl overflow-hidden relative">
                                 <img src="{{ $subservice->picture_upload
-                                    ? Storage::url($subservice->picture_upload)
+                                    ? asset('storage/' . $subservice->picture_upload)
                                     : asset('assets/img/dummy/dummy1.png') }}"
                                     alt="{{ $subservice->name }}"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -166,16 +166,25 @@
         const daSlider = document.getElementById('digital-architecture-slider');
         const prevDA = document.getElementById('prevDigitalArchitecture');
         const nextDA = document.getElementById('nextDigitalArchitecture');
-        const daSlideWidth = daSlider.querySelector('div')?.offsetWidth + 16 || 300;
 
-        prevDA?.addEventListener('click', () => daSlider.scrollBy({
-            left: -daSlideWidth,
-            behavior: 'smooth'
-        }));
-        nextDA?.addEventListener('click', () => daSlider.scrollBy({
-            left: daSlideWidth,
-            behavior: 'smooth'
-        }));
+        const getDASlideWidth = () => {
+            const first = daSlider.querySelector('.snap-start');
+            return first ? first.offsetWidth + 16 : 300; // tambahkan margin antar item
+        };
+
+        prevDA?.addEventListener('click', () => {
+            daSlider.scrollBy({
+                left: -getDASlideWidth(),
+                behavior: 'smooth'
+            });
+        });
+
+        nextDA?.addEventListener('click', () => {
+            daSlider.scrollBy({
+                left: getDASlideWidth(),
+                behavior: 'smooth'
+            });
+        });
 
         const checkDASlider = () => {
             if (daSlider.scrollWidth > daSlider.clientWidth) {
@@ -186,9 +195,11 @@
                 nextDA?.classList.add('hidden');
             }
         };
+
         window.addEventListener('resize', checkDASlider);
         window.addEventListener('load', checkDASlider);
     </script>
+
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"

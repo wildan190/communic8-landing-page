@@ -334,7 +334,7 @@
                 <p class="text-gray-600">{{ __('home/trusted_by.subtitle') }}</p>
             </div>
 
-            {{-- Logo Grid (tanpa slider) --}}
+            {{-- Logo Grid --}}
             <div class="mb-12">
                 <div class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 gap-10">
                     @foreach ($clients as $client)
@@ -363,9 +363,11 @@
             <div class="relative mb-12">
                 <div id="projects-slider"
                     class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
+
                     @foreach ($nonHighlightedProjects as $project)
-                        <div class="snap-start border border-gray-200 rounded-2xl p-4 flex flex-col relative group"
-                            style="flex: 0 0 calc(50% - 1rem);">
+                        <div
+                            class="snap-start border border-gray-200 rounded-2xl p-4 flex flex-col relative group
+                               flex-[0_0_80%] sm:flex-[0_0_45%] md:flex-[0_0_30%] lg:flex-[0_0_22%] xl:flex-[0_0_22%]">
 
                             {{-- Client & Project Name --}}
                             <div class="flex justify-between items-center mb-2">
@@ -377,6 +379,7 @@
                                     </a>
                                 @endif
                             </div>
+
                             <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
 
                             {{-- Image --}}
@@ -418,24 +421,27 @@
                     </svg>
                 </button>
             </div>
-
         </div>
     </section>
 
     {{-- JS --}}
     <script>
-        // Projects Slider (tetap dipakai)
+        // Projects Slider
         const projectSlider = document.getElementById('projects-slider');
         const prevProject = document.getElementById('prevProject');
         const nextProject = document.getElementById('nextProject');
-        const slideWidth = projectSlider.querySelector('div').offsetWidth + 16;
+
+        const getSlideWidth = () => {
+            const firstSlide = projectSlider.querySelector('div');
+            return firstSlide ? firstSlide.offsetWidth + 16 : 300;
+        };
 
         prevProject?.addEventListener('click', () => projectSlider.scrollBy({
-            left: -slideWidth,
+            left: -getSlideWidth(),
             behavior: 'smooth'
         }));
         nextProject?.addEventListener('click', () => projectSlider.scrollBy({
-            left: slideWidth,
+            left: getSlideWidth(),
             behavior: 'smooth'
         }));
 
@@ -448,9 +454,11 @@
                 nextProject?.classList.add('hidden');
             }
         };
+
         window.addEventListener('resize', checkProjectSlider);
         window.addEventListener('load', checkProjectSlider);
     </script>
+
 
     <section class="w-full bg-gray-100 relative min-h-[520px] flex items-center justify-center">
         <!-- Overlay gelap -->

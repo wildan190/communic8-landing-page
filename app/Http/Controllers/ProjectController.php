@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -25,21 +25,31 @@ class ProjectController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'client' => 'nullable|string|max:255',
-            'project_img' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'project_img' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'project_url' => 'nullable|url',
             'is_highlighted' => 'nullable|boolean',
         ]);
 
-        // Set boolean
+        // Boolean highlight
         $validated['is_highlighted'] = $request->has('is_highlighted');
 
-        // Cek maksimal 2 highlight
+        // Cegah lebih dari 2 project highlight
         if ($validated['is_highlighted'] && Project::where('is_highlighted', true)->count() >= 2) {
             return back()->withErrors(['is_highlighted' => 'Maximum 2 projects can be highlighted at a time.'])->withInput();
         }
 
+        // 📤 Upload gambar ke public/storage/projects
         if ($request->hasFile('project_img')) {
-            $validated['project_img'] = $request->file('project_img')->store('projects', 'public');
+            $file = $request->file('project_img');
+            $filename = time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
+
+            $destinationPath = public_path('storage/projects');
+            if (! file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            $file->move($destinationPath, $filename);
+            $validated['project_img'] = 'projects/'.$filename;
         }
 
         Project::create($validated);
@@ -57,24 +67,35 @@ class ProjectController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'client' => 'nullable|string|max:255',
-            'project_img' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'project_img' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'project_url' => 'nullable|url',
             'is_highlighted' => 'nullable|boolean',
         ]);
 
-        // Set boolean
         $validated['is_highlighted'] = $request->has('is_highlighted');
 
-        // Cek maksimal 2 highlight (kecuali project ini sendiri)
+        // Cegah lebih dari 2 highlight, kecuali project ini sendiri
         if ($validated['is_highlighted'] && Project::where('is_highlighted', true)->where('id', '!=', $project->id)->count() >= 2) {
             return back()->withErrors(['is_highlighted' => 'Maximum 2 projects can be highlighted at a time.'])->withInput();
         }
 
+        // 📤 Upload baru jika ada file baru
         if ($request->hasFile('project_img')) {
-            if ($project->project_img) {
-                Storage::disk('public')->delete($project->project_img);
+            // Hapus gambar lama
+            if ($project->project_img && file_exists(public_path('storage/'.$project->project_img))) {
+                unlink(public_path('storage/'.$project->project_img));
             }
-            $validated['project_img'] = $request->file('project_img')->store('projects', 'public');
+
+            $file = $request->file('project_img');
+            $filename = time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
+
+            $destinationPath = public_path('storage/projects');
+            if (! file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            $file->move($destinationPath, $filename);
+            $validated['project_img'] = 'projects/'.$filename;
         }
 
         $project->update($validated);
@@ -84,8 +105,9 @@ class ProjectController extends Controller
 
     public function destroy(Project $project)
     {
-        if ($project->project_img) {
-            Storage::disk('public')->delete($project->project_img);
+        // 🧹 Hapus file fisik jika ada
+        if ($project->project_img && file_exists(public_path('storage/'.$project->project_img))) {
+            unlink(public_path('storage/'.$project->project_img));
         }
 
         $project->delete();

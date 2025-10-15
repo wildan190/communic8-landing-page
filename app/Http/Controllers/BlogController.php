@@ -34,10 +34,20 @@ class BlogController extends Controller
         ]);
 
         $validated['slug'] = Str::slug($request->title);
+        $validated['content'] = clean($request->input('content'));
 
+        // Upload image manual agar tidak perlu symbolic link
         if ($request->hasFile('headline_img')) {
-            $path = $request->file('headline_img')->store('headline_images', 'public');
-            $validated['headline_img'] = $path;
+            $file = $request->file('headline_img');
+            $filename = time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
+
+            $destinationPath = public_path('storage/headline_images');
+            if (! file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            $file->move($destinationPath, $filename);
+            $validated['headline_img'] = 'headline_images/'.$filename;
         }
 
         Blog::create($validated);
@@ -76,9 +86,25 @@ class BlogController extends Controller
             $validated['content'] = clean($request->input('content'));
         }
 
+        // Handle update image
         if ($request->hasFile('headline_img')) {
-            $path = $request->file('headline_img')->store('headline_images', 'public');
-            $validated['headline_img'] = $path;
+            // Hapus gambar lama jika ada
+            if ($blog->headline_img && file_exists(public_path('storage/'.$blog->headline_img))) {
+                unlink(public_path('storage/'.$blog->headline_img));
+            }
+
+            $file = $request->file('headline_img');
+            $filename = time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
+
+            $destinationPath = public_path('storage/headline_images');
+            if (! file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            $file->move($destinationPath, $filename);
+            $validated['headline_img'] = 'headline_images/'.$filename;
+        } else {
+            $validated['headline_img'] = $blog->headline_img;
         }
 
         $blog->update($validated);
@@ -88,6 +114,11 @@ class BlogController extends Controller
 
     public function destroy(Blog $blog)
     {
+        // Hapus gambar dari storage jika ada
+        if ($blog->headline_img && file_exists(public_path('storage/'.$blog->headline_img))) {
+            unlink(public_path('storage/'.$blog->headline_img));
+        }
+
         $blog->delete();
 
         return redirect()->route('blogs.index')->with('success', 'Blog berhasil dihapus.');

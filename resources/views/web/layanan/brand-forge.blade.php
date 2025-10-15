@@ -153,7 +153,7 @@
 
                     @forelse ($brandForgeSubservices as $subservice)
                         <div class="snap-start border border-gray-200 rounded-2xl p-4 flex flex-col relative group"
-                            style="flex: 0 0 calc(50% - 1rem);">
+                            style="flex: 0 0 calc(33.333% - 1rem); min-width: 260px;">
 
                             {{-- Subservice Title --}}
                             <h3 class="font-semibold text-gray-700 mb-3 text-sm md:text-base">{{ $subservice->name }}</h3>
@@ -206,22 +206,29 @@
     </section>
 
     {{-- JS for Brand Forge Slider --}}
-
     <script>
-        // Brand Forge Horizontal Scroll
         const brandforgeSlider = document.getElementById('brandforge-slider');
         const prevBrandForge = document.getElementById('prevBrandForge');
         const nextBrandForge = document.getElementById('nextBrandForge');
-        const brandforgeSlideWidth = brandforgeSlider.querySelector('div')?.offsetWidth + 16 || 300;
 
-        prevBrandForge?.addEventListener('click', () => brandforgeSlider.scrollBy({
-            left: -brandforgeSlideWidth,
-            behavior: 'smooth'
-        }));
-        nextBrandForge?.addEventListener('click', () => brandforgeSlider.scrollBy({
-            left: brandforgeSlideWidth,
-            behavior: 'smooth'
-        }));
+        const getSlideWidth = () => {
+            const first = brandforgeSlider.querySelector('.snap-start');
+            return first ? first.offsetWidth + 16 : 300; // jarak antar item
+        };
+
+        prevBrandForge?.addEventListener('click', () => {
+            brandforgeSlider.scrollBy({
+                left: -getSlideWidth(),
+                behavior: 'smooth'
+            });
+        });
+
+        nextBrandForge?.addEventListener('click', () => {
+            brandforgeSlider.scrollBy({
+                left: getSlideWidth(),
+                behavior: 'smooth'
+            });
+        });
 
         const checkBrandforgeSlider = () => {
             if (brandforgeSlider.scrollWidth > brandforgeSlider.clientWidth) {
@@ -232,11 +239,10 @@
                 nextBrandForge?.classList.add('hidden');
             }
         };
+
         window.addEventListener('resize', checkBrandforgeSlider);
         window.addEventListener('load', checkBrandforgeSlider);
     </script>
-
-
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"

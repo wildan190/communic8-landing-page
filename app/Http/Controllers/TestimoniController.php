@@ -30,20 +30,27 @@ class TestimoniController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'photo' => 'nullable|image',
-            'photo_cover' => 'nullable|image',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'photo_cover' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'name' => 'required|string|max:255',
             'title' => 'required|string|max:255',
             'company' => 'nullable|string|max:255',
             'message' => 'required|string',
         ]);
 
-        if ($request->hasFile('photo')) {
-            $data['photo'] = $request->file('photo')->store('public/testimoni');
-        }
+        foreach (['photo', 'photo_cover'] as $field) {
+            if ($request->hasFile($field)) {
+                $file = $request->file($field);
+                $filename = time().'_'.$file->getClientOriginalName();
 
-        if ($request->hasFile('photo_cover')) {
-            $data['photo_cover'] = $request->file('photo_cover')->store('public/testimoni');
+                $destinationPath = public_path('storage/testimoni');
+                if (! file_exists($destinationPath)) {
+                    mkdir($destinationPath, 0755, true);
+                }
+
+                $file->move($destinationPath, $filename);
+                $data[$field] = 'testimoni/'.$filename;
+            }
         }
 
         Testimoni::create($data);
@@ -59,20 +66,34 @@ class TestimoniController extends Controller
     public function update(Request $request, Testimoni $testimoni)
     {
         $data = $request->validate([
-            'photo' => 'nullable|image',
-            'photo_cover' => 'nullable|image',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'photo_cover' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'name' => 'required|string|max:255',
             'title' => 'required|string|max:255',
             'company' => 'nullable|string|max:255',
             'message' => 'required|string',
         ]);
 
-        if ($request->hasFile('photo')) {
-            $data['photo'] = $request->file('photo')->store('testimoni');
-        }
+        foreach (['photo', 'photo_cover'] as $field) {
+            if ($request->hasFile($field)) {
+                // Hapus file lama kalau ada
+                if ($testimoni->$field && file_exists(public_path('storage/'.$testimoni->$field))) {
+                    unlink(public_path('storage/'.$testimoni->$field));
+                }
 
-        if ($request->hasFile('photo_cover')) {
-            $data['photo_cover'] = $request->file('photo_cover')->store('testimoni');
+                $file = $request->file($field);
+                $filename = time().'_'.$file->getClientOriginalName();
+
+                $destinationPath = public_path('storage/testimoni');
+                if (! file_exists($destinationPath)) {
+                    mkdir($destinationPath, 0755, true);
+                }
+
+                $file->move($destinationPath, $filename);
+                $data[$field] = 'testimoni/'.$filename;
+            } else {
+                $data[$field] = $testimoni->$field;
+            }
         }
 
         $testimoni->update($data);
@@ -82,6 +103,12 @@ class TestimoniController extends Controller
 
     public function destroy(Testimoni $testimoni)
     {
+        foreach (['photo', 'photo_cover'] as $field) {
+            if ($testimoni->$field && file_exists(public_path('storage/'.$testimoni->$field))) {
+                unlink(public_path('storage/'.$testimoni->$field));
+            }
+        }
+
         $testimoni->delete();
 
         return redirect()->route('testimonies.index')->with('success', 'Testimoni berhasil dihapus');

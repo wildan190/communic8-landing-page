@@ -54,7 +54,6 @@ Route::get('/layanan/code-band', [LayananController::class, 'codeBand'])->name('
 Route::get('/layanan/public-space-media', [LayananController::class, 'publicSpaceMedia'])->name('layanan.public-space-media');
 Route::get('/layanan/ott-advertising', [LayananController::class, 'ottAdvertising'])->name('layanan.ott-advertising');
 
-
 use App\Models\PageView;
 use Illuminate\Support\Facades\DB;
 

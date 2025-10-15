@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ClientController extends Controller
 {
@@ -28,7 +27,24 @@ class ClientController extends Controller
             'logo' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        $logoPath = $request->file('logo')?->store('clients', 'public');
+        $logoPath = null;
+
+        if ($request->hasFile('logo')) {
+            $file = $request->file('logo');
+            $filename = time().'_'.$file->getClientOriginalName();
+
+            // Pastikan folder tujuan ada
+            $destinationPath = public_path('storage/clients');
+            if (! file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            // Pindahkan file ke folder public/storage/clients
+            $file->move($destinationPath, $filename);
+
+            // Simpan path relatif
+            $logoPath = 'clients/'.$filename;
+        }
 
         Client::create([
             'company_name' => $request->company_name,
@@ -55,10 +71,25 @@ class ClientController extends Controller
         $data = $request->only(['company_name', 'industry']);
 
         if ($request->hasFile('logo')) {
-            if ($client->logo) {
-                Storage::disk('public')->delete($client->logo);
+            // Hapus logo lama kalau ada
+            if ($client->logo && file_exists(public_path('storage/'.$client->logo))) {
+                unlink(public_path('storage/'.$client->logo));
             }
-            $data['logo'] = $request->file('logo')->store('clients', 'public');
+
+            $file = $request->file('logo');
+            $filename = time().'_'.$file->getClientOriginalName();
+
+            $destinationPath = public_path('storage/clients');
+            if (! file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            $file->move($destinationPath, $filename);
+
+            $data['logo'] = 'clients/'.$filename;
+        } else {
+            // Tetap pakai logo lama kalau tidak upload baru
+            $data['logo'] = $client->logo;
         }
 
         $client->update($data);
@@ -68,8 +99,8 @@ class ClientController extends Controller
 
     public function destroy(Client $client)
     {
-        if ($client->logo) {
-            Storage::disk('public')->delete($client->logo);
+        if ($client->logo && file_exists(public_path('storage/'.$client->logo))) {
+            unlink(public_path('storage/'.$client->logo));
         }
 
         $client->delete();
