@@ -11,28 +11,38 @@
 
         {{-- Desktop Menu --}}
         <nav class="hidden md:flex items-center space-x-8 text-gray-700 font-medium relative">
-            <a href="{{ url('/') }}" class="hover:text-orange-500 {{ request()->is('/') ? 'text-orange-500' : '' }}">Home</a>
-            <a href="{{ route('about.index') }}" class="hover:text-orange-500 {{ request()->routeIs('about.index') ? 'text-orange-500' : '' }}">About</a>
+            <a href="{{ url('/') }}" class="hover:text-orange-500 {{ request()->is('/') ? 'text-orange-500' : '' }}">
+                {{ __('navbar.home') }}
+            </a>
+            <a href="{{ route('about.index') }}" class="hover:text-orange-500 {{ request()->routeIs('about.index') ? 'text-orange-500' : '' }}">
+                {{ __('navbar.about') }}
+            </a>
 
             {{-- Dropdown Services --}}
             <div class="relative group">
                 <button class="hover:text-orange-500 flex items-center gap-1 {{ request()->routeIs('layanan.*') ? 'text-orange-500' : '' }}">
-                    Services
+                    {{ __('navbar.services') }}
                 </button>
 
                 <div
                     class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                    <a href="{{ route('layanan.brand-land') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">Brand Land</a>
-                    <a href="{{ route('layanan.digital-stand') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">Digital Stand</a>
-                    <a href="{{ route('layanan.code-band') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">Code Band</a>
-                    <a href="{{ route('layanan.public-space-media') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">Public Space Media</a>
-                    <a href="{{ route('layanan.ott-advertising') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">OTT Advertising</a>
+                    <a href="{{ route('layanan.brand-land') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">{{ __('navbar.brand_land') }}</a>
+                    <a href="{{ route('layanan.digital-stand') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">{{ __('navbar.digital_stand') }}</a>
+                    <a href="{{ route('layanan.code-band') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">{{ __('navbar.code_band') }}</a>
+                    <a href="{{ route('layanan.public-space-media') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">{{ __('navbar.public_space_media') }}</a>
+                    <a href="{{ route('layanan.ott-advertising') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">{{ __('navbar.ott_advertising') }}</a>
                 </div>
             </div>
 
-            <a href="{{ route('portofolio.index') }}" class="hover:text-orange-500 {{ request()->routeIs('portofolio.index') ? 'text-orange-500' : '' }}">Portfolio</a>
-            <a href="{{ route('insight.index') }}" class="hover:text-orange-500 {{ request()->routeIs('insight.index') ? 'text-orange-500' : '' }}">Insight</a>
-            <a href="{{ route('contact.index') }}" class="btn-contact bg-gray-800 text-white px-5 py-2 rounded-full">Contact</a>
+            <a href="{{ route('portofolio.index') }}" class="hover:text-orange-500 {{ request()->routeIs('portofolio.index') ? 'text-orange-500' : '' }}">
+                {{ __('navbar.portfolio') }}
+            </a>
+            <a href="{{ route('insight.index') }}" class="hover:text-orange-500 {{ request()->routeIs('insight.index') ? 'text-orange-500' : '' }}">
+                {{ __('navbar.insight') }}
+            </a>
+            <a href="{{ route('contact.index') }}" class="btn-contact bg-gray-800 text-white px-5 py-2 rounded-full">
+                {{ __('navbar.contact') }}
+            </a>
 
             {{-- Language Switcher --}}
             <div class="relative group">
@@ -73,27 +83,27 @@
 
         {{-- Menu Items --}}
         <nav class="flex flex-col space-y-4 px-6 pb-8 text-gray-700 font-medium">
-            <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'text-orange-500' : '' }}">Home</a>
-            <a href="{{ route('about.index') }}" class="{{ request()->routeIs('about.index') ? 'text-orange-500' : '' }}">About</a>
+            <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'text-orange-500' : '' }}">{{ __('navbar.home') }}</a>
+            <a href="{{ route('about.index') }}" class="{{ request()->routeIs('about.index') ? 'text-orange-500' : '' }}">{{ __('navbar.about') }}</a>
 
             {{-- Dropdown Services --}}
             <div x-data="{ open: false }" class="flex flex-col">
                 <button @click="open = !open" class="flex items-center justify-between w-full">
-                    Services
+                    {{ __('navbar.services') }}
                     <span x-text="open ? '▲' : '▼'"></span>
                 </button>
                 <div x-show="open" class="flex flex-col pl-4 mt-2 space-y-2">
-                    <a href="{{ route('layanan.brand-land') }}" class="hover:text-orange-500">Brand Land</a>
-                    <a href="{{ route('layanan.digital-stand') }}" class="hover:text-orange-500">Digital Stand</a>
-                    <a href="{{ route('layanan.code-band') }}" class="hover:text-orange-500">Code Band</a>
-                    <a href="{{ route('layanan.public-space-media') }}" class="hover:text-orange-500">Public Space Media</a>
-                    <a href="{{ route('layanan.ott-advertising') }}" class="hover:text-orange-500">OTT Advertising</a>
+                    <a href="{{ route('layanan.brand-land') }}" class="hover:text-orange-500">{{ __('navbar.brand_land') }}</a>
+                    <a href="{{ route('layanan.digital-stand') }}" class="hover:text-orange-500">{{ __('navbar.digital_stand') }}</a>
+                    <a href="{{ route('layanan.code-band') }}" class="hover:text-orange-500">{{ __('navbar.code_band') }}</a>
+                    <a href="{{ route('layanan.public-space-media') }}" class="hover:text-orange-500">{{ __('navbar.public_space_media') }}</a>
+                    <a href="{{ route('layanan.ott-advertising') }}" class="hover:text-orange-500">{{ __('navbar.ott_advertising') }}</a>
                 </div>
             </div>
 
-            <a href="{{ route('portofolio.index') }}" class="{{ request()->routeIs('portofolio.index') ? 'text-orange-500' : '' }}">Portfolio</a>
-            <a href="{{ route('insight.index') }}" class="{{ request()->routeIs('insight.index') ? 'text-orange-500' : '' }}">Insight</a>
-            <a href="{{ route('contact.index') }}" class="bg-gray-800 text-white px-5 py-2 rounded-full text-center">Contact</a>
+            <a href="{{ route('portofolio.index') }}" class="{{ request()->routeIs('portofolio.index') ? 'text-orange-500' : '' }}">{{ __('navbar.portfolio') }}</a>
+            <a href="{{ route('insight.index') }}" class="{{ request()->routeIs('insight.index') ? 'text-orange-500' : '' }}">{{ __('navbar.insight') }}</a>
+            <a href="{{ route('contact.index') }}" class="bg-gray-800 text-white px-5 py-2 rounded-full text-center">{{ __('navbar.contact') }}</a>
 
             {{-- Language Switcher --}}
             <div x-data="{ openLang: false }" class="flex flex-col mt-4">

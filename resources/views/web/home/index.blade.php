@@ -334,13 +334,14 @@
                 <p class="text-gray-600">{{ __('home/trusted_by.subtitle') }}</p>
             </div>
 
-            {{-- Logo Grid --}}
-            <div class="mb-12">
-                <div class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 gap-10">
+            {{-- Client Logos in One Line --}}
+            <div class="relative mb-12">
+                <div id="client-logos"
+                    class="flex overflow-x-auto space-x-10 scrollbar-hide items-center justify-start snap-x snap-mandatory scroll-smooth py-4 px-2">
                     @foreach ($clients as $client)
-                        <div class="flex justify-center items-center">
+                        <div class="flex-shrink-0 snap-start flex justify-center items-center">
                             <img src="{{ asset('storage/' . $client->logo) }}" alt="{{ $client->company_name }}"
-                                class="h-16 object-contain grayscale hover:grayscale-0 transition duration-300" />
+                                class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
                         </div>
                     @endforeach
                 </div>
@@ -355,7 +356,7 @@
 
             <br />
 
-            {{-- Projects Slider (hanya non-highlighted) --}}
+            {{-- Projects Slider (non-highlighted only) --}}
             @php
                 $nonHighlightedProjects = $trustedProjects->where('is_highlighted', false)->values();
             @endphp
@@ -478,42 +479,51 @@
                 @foreach ($testimonis as $testimoni)
                     <!-- satu item slider -->
                     <div class="flex-shrink-0 w-full flex relative items-stretch">
-                        <!-- CARD TESTIMONI (KIRI di desktop, overlay di mobile) -->
+                        <!-- CARD TESTIMONI -->
                         <div
-                            class="w-full md:w-[48%] flex items-center justify-center relative z-20 
-           px-4 md:px-0 md:-mr-[6%]">
+                            class="w-full md:w-[48%] flex items-center justify-center relative z-20 px-4 md:px-0 md:-mr-[6%]">
                             <div
-                                class="bg-white rounded-xl p-6 md:p-8 shadow-lg w-full max-w-md md:max-w-none 
-               relative flex flex-col items-center">
+                                class="bg-white rounded-xl p-6 md:p-8 shadow-lg w-full max-w-md md:max-w-none relative flex flex-col items-center">
+
                                 <!-- Avatar -->
                                 <div
-                                    class="absolute -top-12 left-1/2 -translate-x-1/2 
-                   w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden 
-                   border-4 border-white shadow-md">
-                                    <img src="{{ Storage::url($testimoni->photo) }}" alt="{{ $testimoni->name }}"
-                                        class="w-full h-full object-cover">
+                                    class="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-4 border-white shadow-md">
+                                    <img src="{{ $testimoni->photo && file_exists(public_path('storage/' . $testimoni->photo))
+                                        ? asset('storage/' . $testimoni->photo)
+                                        : asset('assets/img/dummy/avatar.png') }}"
+                                        alt="{{ $testimoni->name }}" class="w-full h-full object-cover">
                                 </div>
+
                                 <!-- Isi card -->
                                 <div class="mt-16 text-center px-2 md:px-4">
                                     <h3 class="font-semibold text-lg">{{ $testimoni->name }}</h3>
-                                    <p class="text-gray-500 text-sm">{{ $testimoni->title }} at {{ $testimoni->company }}
+                                    <p class="text-gray-500 text-sm">
+                                        {{ $testimoni->title }} at {{ $testimoni->company }}
                                     </p>
-                                    <p class="mt-4 text-gray-600 text-sm italic">{{ $testimoni->message }}</p>
+                                    <p class="mt-4 text-gray-600 text-sm italic">
+                                        {{ $testimoni->message }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- FOTO COVER (KANAN di desktop, background penuh di mobile) -->
+                        <!-- FOTO COVER (desktop) -->
                         <div class="hidden md:block md:w-[52%] relative overflow-hidden z-10">
-                            @if ($testimoni->photo_cover)
-                                <img src="{{ Storage::url($testimoni->photo_cover) }}" alt="Cover"
+                            @if ($testimoni->photo_cover && file_exists(public_path('storage/' . $testimoni->photo_cover)))
+                                <img src="{{ asset('storage/' . $testimoni->photo_cover) }}" alt="Cover"
+                                    class="absolute inset-0 w-full h-full object-cover">
+                            @else
+                                <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Cover"
                                     class="absolute inset-0 w-full h-full object-cover">
                             @endif
                         </div>
 
-                        <!-- MOBILE COVER -->
-                        @if ($testimoni->photo_cover)
-                            <img src="{{ Storage::url($testimoni->photo_cover) }}" alt="Cover"
+                        <!-- FOTO COVER (mobile) -->
+                        @if ($testimoni->photo_cover && file_exists(public_path('storage/' . $testimoni->photo_cover)))
+                            <img src="{{ asset('storage/' . $testimoni->photo_cover) }}" alt="Cover"
+                                class="md:hidden absolute inset-0 w-full h-full object-cover z-0">
+                        @else
+                            <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Cover"
                                 class="md:hidden absolute inset-0 w-full h-full object-cover z-0">
                         @endif
                     </div>

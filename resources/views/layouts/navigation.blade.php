@@ -19,7 +19,7 @@
                     <button @click="open = !open" class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-800 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white focus:outline-none">
                         {{ __('Content') }}
                         <svg class="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0-1.414z" clip-rule="evenodd"/>
                         </svg>
                     </button>
                     <div x-show="open" @click.away="open = false" class="absolute mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5">
@@ -68,10 +68,8 @@
                             <x-dropdown-link :href="route('public-presence.index')">{{ __('Public Presence') }}</x-dropdown-link>
                             <x-dropdown-link :href="route('digital.compass.index')">{{ __('Digital Compass') }}</x-dropdown-link>
                             <x-dropdown-link :href="route('digital-architecture-content.index')">{{ __('Digital Architecture') }}</x-dropdown-link>
-
-                            <!-- ✅ Brand Forge sekarang masuk ke Service Content -->
                             <x-dropdown-link :href="route('brandforge.form')" :active="request()->routeIs('brandforge.form')">
-                                {{ __('Brand Forge') }}
+                                {{ __('Brand Land') }}
                             </x-dropdown-link>
                         </div>
                     </div>
@@ -85,10 +83,17 @@
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
                         </svg>
                     </button>
-                    <div x-show="open" @click.away="open = false" class="absolute mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5">
+                    <div x-show="open" @click.away="open = false" class="absolute mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5">
                         <div class="py-1">
                             <x-dropdown-link :href="route('web_information.index')">{{ __('Web Information') }}</x-dropdown-link>
                             <x-dropdown-link :href="route('seo.index')">{{ __('SEO Manager') }}</x-dropdown-link>
+
+                            <div class="border-t my-2 border-gray-200 dark:border-gray-600"></div>
+
+                            <!-- ✅ Tambahan Menu About -->
+                            <x-dropdown-link :href="route('admin.about.index')" :active="request()->routeIs('about.*')">
+                                {{ __('About Page') }}
+                            </x-dropdown-link>
                         </div>
                     </div>
                 </div>

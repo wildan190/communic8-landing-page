@@ -30,10 +30,11 @@ return [
     ],
 
     'services' => [
-        'Brand Forge' => 'Brand Forge',
-        'Digital Compass' => 'Digital Compass',
-        'Public Presence' => 'Public Presence',
-        'Digital Architecture' => 'Digital Architecture',
+        'Brand Land' => 'Brand Land',
+        'Digital Stand' => 'Digital Stand',
+        'Code Band' => 'Code Band',
+        'Public Space Media' => 'Public Space Media',
+        'OTT Advertising' => 'OTT Advertising',
     ],
 
     'find_us' => [

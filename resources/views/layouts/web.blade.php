@@ -75,11 +75,11 @@
     {{-- Footer --}}
     @include('layouts.partials.footer')
 
-    <!-- Floating WhatsApp Button -->
+    <!-- Floating WhatsApp Button (Bigger Version) -->
     <a href="https://wa.me/6281774156280" target="_blank"
-        class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 flex items-center justify-center rounded-full shadow-lg transition-all duration-300"
+        class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-16 h-16 flex items-center justify-center rounded-full shadow-xl transition-all duration-300 hover:scale-110"
         title="Chat with us on WhatsApp">
-        <i class="fab fa-whatsapp fa-lg"></i>
+        <i class="fab fa-whatsapp fa-2x"></i>
     </a>
 
     <!-- Cookie Consent Banner -->
