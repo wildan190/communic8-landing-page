@@ -4,14 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\BrandForgeContent;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class BrandForgeContentController extends Controller
 {
     // 📝 Tampilkan form (buat atau edit)
     public function form()
     {
-        // Kita anggap hanya ada 1 konten BrandForgeContent
         $content = BrandForgeContent::first();
 
         return view('brandforge.form', compact('content'));
@@ -34,21 +32,30 @@ class BrandForgeContentController extends Controller
         ]);
 
         // Ambil konten pertama atau buat baru
-        $content = BrandForgeContent::first();
-
-        if (! $content) {
-            $content = new BrandForgeContent;
-        }
+        $content = BrandForgeContent::first() ?? new BrandForgeContent;
 
         // 📤 Upload semua gambar jika ada dan hapus yang lama jika update
         foreach (['head_img', 'img_insight_strategy_driven', 'img_bold_creative_ideas', 'img_impactful_visual_identity'] as $field) {
             if ($request->hasFile($field)) {
                 // Hapus gambar lama jika ada
-                if ($content->$field && Storage::disk('public')->exists($content->$field)) {
-                    Storage::disk('public')->delete($content->$field);
+                if ($content->$field && file_exists(public_path('storage/'.$content->$field))) {
+                    unlink(public_path('storage/'.$content->$field));
                 }
-                // Simpan gambar baru
-                $validated[$field] = $request->file($field)->store('brandforge', 'public');
+
+                $file = $request->file($field);
+                $filename = time().'_'.$file->getClientOriginalName();
+
+                // Pastikan folder tujuan ada
+                $destinationPath = public_path('storage/brandforge');
+                if (! file_exists($destinationPath)) {
+                    mkdir($destinationPath, 0755, true);
+                }
+
+                // Pindahkan file ke folder publik
+                $file->move($destinationPath, $filename);
+
+                // Simpan path relatif (untuk asset())
+                $validated[$field] = 'brandforge/'.$filename;
             } else {
                 // Jika tidak upload baru dan sudah ada gambar lama → tetap pakai yang lama
                 if ($content->$field) {
@@ -57,10 +64,10 @@ class BrandForgeContentController extends Controller
             }
         }
 
-        // Simpan data
+        // Simpan data (termasuk teks dan gambar)
         $content->fill($validated);
 
-        // Sanitize the fields that might contain HTML
+        // Sanitize field yang mungkin mengandung HTML
         $content->insight_strategy_driven = clean($request->input('insight_strategy_driven'));
         $content->desc_insight_strategy_driven = clean($request->input('desc_insight_strategy_driven'));
         $content->bold_creative_ideas = clean($request->input('bold_creative_ideas'));

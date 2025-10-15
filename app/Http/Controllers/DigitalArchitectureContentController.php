@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DigitalArchitectureContent;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class DigitalArchitectureContentController extends Controller
 {
@@ -34,20 +34,37 @@ class DigitalArchitectureContentController extends Controller
 
         $content = DigitalArchitectureContent::first() ?? new DigitalArchitectureContent;
 
+        // 🔧 Folder tujuan (langsung di public/storage)
+        $destinationPath = public_path('storage/digital-architecture');
+        if (! file_exists($destinationPath)) {
+            mkdir($destinationPath, 0755, true);
+        }
+
         // ✅ Upload head_img jika ada
         if ($request->hasFile('head_img')) {
-            if ($content->head_img) {
-                Storage::delete($content->head_img);
+            // Hapus file lama jika ada
+            if ($content->head_img && file_exists(public_path('storage/'.$content->head_img))) {
+                unlink(public_path('storage/'.$content->head_img));
             }
-            $content->head_img = $request->file('head_img')->store('digital-architecture', 'public');
+
+            $file = $request->file('head_img');
+            $filename = time().'_head_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
+            $file->move($destinationPath, $filename);
+
+            $content->head_img = 'digital-architecture/'.$filename;
         }
 
         // ✅ Upload img_services jika ada
         if ($request->hasFile('img_services')) {
-            if ($content->img_services) {
-                Storage::delete($content->img_services);
+            if ($content->img_services && file_exists(public_path('storage/'.$content->img_services))) {
+                unlink(public_path('storage/'.$content->img_services));
             }
-            $content->img_services = $request->file('img_services')->store('digital-architecture', 'public');
+
+            $file = $request->file('img_services');
+            $filename = time().'_services_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
+            $file->move($destinationPath, $filename);
+
+            $content->img_services = 'digital-architecture/'.$filename;
         }
 
         // ✅ Simpan teks
@@ -62,6 +79,6 @@ class DigitalArchitectureContentController extends Controller
 
         $content->save();
 
-        return redirect()->back()->with('success', 'Digital Architecture content saved successfully!');
+        return redirect()->back()->with('success', 'Digital Architecture content berhasil disimpan!');
     }
 }

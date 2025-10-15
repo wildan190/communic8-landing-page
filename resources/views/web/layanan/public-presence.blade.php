@@ -123,7 +123,7 @@
 
                     @forelse ($publicPresenceSubservices as $subservice)
                         <div class="snap-start border border-gray-200 rounded-2xl p-4 flex flex-col relative group"
-                            style="flex: 0 0 calc(50% - 1rem);">
+                            style="flex: 0 0 calc(33.333% - 1rem); min-width: 260px;">
 
                             {{-- Nama --}}
                             <h3 class="font-semibold text-gray-700 mb-3 text-sm md:text-base">
@@ -132,7 +132,9 @@
 
                             {{-- Gambar --}}
                             <div class="rounded-xl overflow-hidden relative">
-                                <img src="{{ $subservice->picture_upload ? Storage::url($subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
+                                <img src="{{ $subservice->picture_upload
+                                    ? asset('storage/' . $subservice->picture_upload)
+                                    : asset('assets/img/dummy/dummy1.png') }}"
                                     alt="{{ $subservice->name }}"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
 
@@ -186,16 +188,25 @@
         const ppSlider = document.getElementById('public-presence-slider');
         const prevPP = document.getElementById('prevPublicPresence');
         const nextPP = document.getElementById('nextPublicPresence');
-        const ppSlideWidth = ppSlider.querySelector('div')?.offsetWidth + 16 || 300;
 
-        prevPP?.addEventListener('click', () => ppSlider.scrollBy({
-            left: -ppSlideWidth,
-            behavior: 'smooth'
-        }));
-        nextPP?.addEventListener('click', () => ppSlider.scrollBy({
-            left: ppSlideWidth,
-            behavior: 'smooth'
-        }));
+        const getPPSlideWidth = () => {
+            const first = ppSlider.querySelector('.snap-start');
+            return first ? first.offsetWidth + 16 : 300;
+        };
+
+        prevPP?.addEventListener('click', () => {
+            ppSlider.scrollBy({
+                left: -getPPSlideWidth(),
+                behavior: 'smooth'
+            });
+        });
+
+        nextPP?.addEventListener('click', () => {
+            ppSlider.scrollBy({
+                left: getPPSlideWidth(),
+                behavior: 'smooth'
+            });
+        });
 
         const checkPPSlider = () => {
             if (ppSlider.scrollWidth > ppSlider.clientWidth) {
@@ -206,9 +217,11 @@
                 nextPP?.classList.add('hidden');
             }
         };
+
         window.addEventListener('resize', checkPPSlider);
         window.addEventListener('load', checkPPSlider);
     </script>
+
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"

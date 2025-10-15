@@ -28,7 +28,7 @@ class LayananController extends Controller
 
         $brandForgeContent = BrandForgeContent::latest()->first();
 
-        $brandForgeSubservices = SubService::with('service')->whereHas('service', fn($q) => $q->where('name', 'Brand Forge'))->latest()->get();
+        $brandForgeSubservices = SubService::with('service')->whereHas('service', fn ($q) => $q->where('name', 'Brand Forge'))->latest()->get();
 
         return view('web.layanan.brand-forge', compact('categories', 'sliderBlogs', 'clients', 'galleries', 'webInfo', 'branchOffices', 'insightCategories', 'brandForgeContent', 'brandForgeSubservices'));
     }

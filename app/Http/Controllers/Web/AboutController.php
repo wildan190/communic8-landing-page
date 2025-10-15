@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\About;
 use App\Models\Activity;
 use App\Models\Blog;
 use App\Models\BranchOffice;
@@ -31,6 +32,7 @@ class AboutController extends Controller
         $webInfo = WebInformation::first();
         $branchOffices = BranchOffice::all();
         $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
+        $abouts = About::all();
 
         // 🔥 ambil semua data Activity terbaru
         $activities = Activity::latest()->take(9)->get();
@@ -48,6 +50,7 @@ class AboutController extends Controller
                 'webInfo',
                 'branchOffices',
                 'activities', // jangan lupa dikirim ke view
+                'abouts' // jangan lupa dikirim ke view
             ),
         );
     }

@@ -92,7 +92,6 @@
             </div>
         </section>
 
-
         {{-- WHY OUR PARTNER CHOOSE US --}}
         <section class="relative pt-24 sm:pt-32 md:pt-40 pb-16 sm:pb-20 md:pb-24 bg-white">
             <div class="container max-w-6xl mx-auto px-4 sm:px-6 md:px-12">
@@ -111,61 +110,35 @@
                     </p>
                 </div>
 
-                {{-- Grid Items --}}
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                {{-- ✅ Dynamic About Section dari Database --}}
+                @if (isset($abouts) && $abouts->count() > 0)
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                        @foreach ($abouts as $about)
+                            <div
+                                class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
 
-                    {{-- Item 1 --}}
-                    <div
-                        class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
-                        <div class="w-full bg-gray-100 flex items-center justify-center">
-                            <img src="{{ asset('assets/img/dummy/dummy3.png') }}"
-                                alt="{{ __('about/why_choose_us.item1.alt') }}" class="w-full h-auto object-contain">
-                        </div>
-                        <div class="p-6 text-center flex-1 flex flex-col">
-                            <h3 class="font-semibold text-lg sm:text-xl mb-3">
-                                {{ __('about/why_choose_us.item1.title') }}
-                            </h3>
-                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed flex-1">
-                                {{ __('about/why_choose_us.item1.text') }}
-                            </p>
-                        </div>
+                                {{-- Gambar --}}
+                                @if ($about->img)
+                                    <div class="w-full bg-gray-100 flex items-center justify-center">
+                                        <img src="{{ asset('uploads/about/' . $about->img) }}" alt="{{ $about->title }}"
+                                            class="w-full h-auto object-contain">
+                                    </div>
+                                @endif
+
+                                {{-- Konten --}}
+                                <div class="p-6 text-center flex-1 flex flex-col">
+                                    <h3 class="font-semibold text-lg sm:text-xl mb-3">{{ $about->title }}</h3>
+                                    <p class="text-gray-600 text-sm sm:text-base leading-relaxed flex-1">
+                                        {{ $about->description }}
+                                    </p>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
+                @else
+                    <p class="text-center text-gray-500">{{ __('No data available at the moment.') }}</p>
+                @endif
 
-                    {{-- Item 2 --}}
-                    <div
-                        class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
-                        <div class="w-full bg-gray-100 flex items-center justify-center">
-                            <img src="{{ asset('assets/img/dummy/dummy3.png') }}"
-                                alt="{{ __('about/why_choose_us.item2.alt') }}" class="w-full h-auto object-contain">
-                        </div>
-                        <div class="p-6 text-center flex-1 flex flex-col">
-                            <h3 class="font-semibold text-lg sm:text-xl mb-3">
-                                {{ __('about/why_choose_us.item2.title') }}
-                            </h3>
-                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed flex-1">
-                                {{ __('about/why_choose_us.item2.text') }}
-                            </p>
-                        </div>
-                    </div>
-
-                    {{-- Item 3 --}}
-                    <div
-                        class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
-                        <div class="w-full bg-gray-100 flex items-center justify-center">
-                            <img src="{{ asset('assets/img/dummy/dummy3.png') }}"
-                                alt="{{ __('about/why_choose_us.item3.alt') }}" class="w-full h-auto object-contain">
-                        </div>
-                        <div class="p-6 text-center flex-1 flex flex-col">
-                            <h3 class="font-semibold text-lg sm:text-xl mb-3">
-                                {{ __('about/why_choose_us.item3.title') }}
-                            </h3>
-                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed flex-1">
-                                {{ __('about/why_choose_us.item3.text') }}
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
             </div>
         </section>
 

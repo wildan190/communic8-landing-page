@@ -13,6 +13,7 @@ use App\Http\Controllers\PublicPresenceContentController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SubServiceController;
 use App\Http\Controllers\TestimoniController;
+use App\Http\Controllers\AboutController as AdminAboutController;
 use App\Http\Controllers\Web\AboutController;
 use App\Http\Controllers\Web\ContactController;
 use App\Http\Controllers\Web\HomeController;
@@ -33,11 +34,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home.index')->middleware('track.pageview');
+Route::get('/', [HomeController::class, 'index'])
+    ->name('home.index')
+    ->middleware('track.pageview');
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/portofolio', [PortofolioController::class, 'index'])->name('portofolio.index');
 Route::get('/insight', [InsightController::class, 'index'])->name('insight.index');
-Route::get('/insight/{slug}', [InsightController::class, 'show'])->name('insight.show')->middleware('track.pageview');
+Route::get('/insight/{slug}', [InsightController::class, 'show'])
+    ->name('insight.show')
+    ->middleware('track.pageview');
 
 // Rute Kontak dengan throttle
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
@@ -54,45 +59,23 @@ Route::get('/layanan/code-band', [LayananController::class, 'codeBand'])->name('
 Route::get('/layanan/public-space-media', [LayananController::class, 'publicSpaceMedia'])->name('layanan.public-space-media');
 Route::get('/layanan/ott-advertising', [LayananController::class, 'ottAdvertising'])->name('layanan.ott-advertising');
 
-
 use App\Models\PageView;
 use Illuminate\Support\Facades\DB;
 
 Route::get('/dashboard', function () {
     $days = 30;
-    $startDate = now()->subDays($days - 1)->format('Y-m-d');
+    $startDate = now()
+        ->subDays($days - 1)
+        ->format('Y-m-d');
 
     // Ambil total pengunjung unik per hari
-    $visitors = PageView::select(
-        DB::raw('DATE(visited_at) as date'),
-        DB::raw('COUNT(DISTINCT session_id) as total')
-    )
-        ->where('visited_at', '>=', $startDate)
-        ->groupBy('date')
-        ->orderBy('date', 'ASC')
-        ->get();
+    $visitors = PageView::select(DB::raw('DATE(visited_at) as date'), DB::raw('COUNT(DISTINCT session_id) as total'))->where('visited_at', '>=', $startDate)->groupBy('date')->orderBy('date', 'ASC')->get();
 
     // Ambil data untuk landing page
-    $landingPageViews = PageView::select(
-        DB::raw('DATE(visited_at) as date'),
-        DB::raw('COUNT(DISTINCT session_id) as total')
-    )
-        ->where('url', url('/'))
-        ->where('visited_at', '>=', $startDate)
-        ->groupBy('date')
-        ->orderBy('date', 'ASC')
-        ->get();
+    $landingPageViews = PageView::select(DB::raw('DATE(visited_at) as date'), DB::raw('COUNT(DISTINCT session_id) as total'))->where('url', url('/'))->where('visited_at', '>=', $startDate)->groupBy('date')->orderBy('date', 'ASC')->get();
 
     // Ambil data untuk blog
-    $blogViews = PageView::select(
-        DB::raw('DATE(visited_at) as date'),
-        DB::raw('COUNT(DISTINCT session_id) as total')
-    )
-        ->where('visitable_type', \App\Models\Blog::class)
-        ->where('visited_at', '>=', $startDate)
-        ->groupBy('date')
-        ->orderBy('date', 'ASC')
-        ->get();
+    $blogViews = PageView::select(DB::raw('DATE(visited_at) as date'), DB::raw('COUNT(DISTINCT session_id) as total'))->where('visitable_type', \App\Models\Blog::class)->where('visited_at', '>=', $startDate)->groupBy('date')->orderBy('date', 'ASC')->get();
 
     // Siapkan data untuk chart
     $labels = [];
@@ -139,7 +122,7 @@ Route::get('/dashboard', function () {
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -233,6 +216,13 @@ Route::middleware('auth')->group(function () {
     // SEO Manager
     Route::get('/seo-manager', [WebInformationController::class, 'seo'])->name('seo.index');
     Route::put('/seo-manager', [WebInformationController::class, 'updateSeo'])->name('seo.update');
+
+    Route::get('/about', [AdminAboutController::class, 'index'])->name('admin.about.index');
+    Route::get('/about/create', [AdminAboutController::class, 'create'])->name('admin.about.create');
+    Route::post('/about/store', [AdminAboutController::class, 'store'])->name('admin.about.store');
+    Route::get('/about/{id}/edit', [AdminAboutController::class, 'edit'])->name('admin.about.edit');
+    Route::post('/about/{id}/update', [AdminAboutController::class, 'update'])->name('admin.about.update');
+    Route::get('/about/{id}/delete', [AdminAboutController::class, 'destroy'])->name('admin.about.destroy');
 });
 
 Route::get('lang/{locale}', function ($locale) {
@@ -244,4 +234,4 @@ Route::get('lang/{locale}', function ($locale) {
     return redirect()->back();
 })->name('lang.switch');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

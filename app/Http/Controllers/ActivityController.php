@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Activity;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ActivityController extends Controller
 {
@@ -28,8 +27,22 @@ class ActivityController extends Controller
         ]);
 
         $path = null;
+
         if ($request->hasFile('file_img')) {
-            $path = $request->file('file_img')->store('activities', 'public');
+            $file = $request->file('file_img');
+            $filename = time().'_'.$file->getClientOriginalName();
+
+            // Pastikan folder tujuan ada
+            $destinationPath = public_path('storage/activities');
+            if (! file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            // Pindahkan file ke folder publik
+            $file->move($destinationPath, $filename);
+
+            // Simpan path relatif untuk digunakan di view
+            $path = 'activities/'.$filename;
         }
 
         Activity::create([
@@ -53,11 +66,23 @@ class ActivityController extends Controller
         ]);
 
         $path = $activity->file_img;
+
         if ($request->hasFile('file_img')) {
-            if ($path) {
-                Storage::disk('public')->delete($path);
+            // Hapus file lama jika ada
+            if ($path && file_exists(public_path('storage/'.$path))) {
+                unlink(public_path('storage/'.$path));
             }
-            $path = $request->file('file_img')->store('activities', 'public');
+
+            $file = $request->file('file_img');
+            $filename = time().'_'.$file->getClientOriginalName();
+
+            $destinationPath = public_path('storage/activities');
+            if (! file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            $file->move($destinationPath, $filename);
+            $path = 'activities/'.$filename;
         }
 
         $activity->update([
@@ -70,9 +95,10 @@ class ActivityController extends Controller
 
     public function destroy(Activity $activity)
     {
-        if ($activity->file_img) {
-            Storage::disk('public')->delete($activity->file_img);
+        if ($activity->file_img && file_exists(public_path('storage/'.$activity->file_img))) {
+            unlink(public_path('storage/'.$activity->file_img));
         }
+
         $activity->delete();
 
         return redirect()->route('activities.index')->with('success', 'Activity deleted successfully.');

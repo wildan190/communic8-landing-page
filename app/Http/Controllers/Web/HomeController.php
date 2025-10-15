@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\About;
 use App\Models\Blog;
 use App\Models\BranchOffice;
 use App\Models\Client;
@@ -40,6 +41,8 @@ class HomeController extends Controller
 
         $testimonis = Testimoni::latest()->get();
 
+        $abouts = About::all();
+
         // ✅ Ambil postingan Instagram terbaru (misal 6 postingan)
         $accessToken = config('services.instagram.token');
         $userId = config('services.instagram.user_id');
@@ -59,6 +62,6 @@ class HomeController extends Controller
             // log error jika mau
         }
 
-        return view('web.home.index', compact('blogs', 'categories', 'category', 'sliderBlogs', 'webInformation', 'branchOffices', 'insightCategories', 'trustedProjects', 'clients', 'testimonis', 'instagramPosts'));
+        return view('web.home.index', compact('blogs', 'categories', 'category', 'sliderBlogs', 'webInformation', 'branchOffices', 'insightCategories', 'trustedProjects', 'clients', 'testimonis', 'instagramPosts', 'abouts'));
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Service;
 use App\Models\SubService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class SubServiceController extends Controller
 {
@@ -31,16 +31,25 @@ class SubServiceController extends Controller
         $validated = $request->validate([
             'service_id' => 'required|exists:services,id',
             'name' => 'required|string|max:255',
-            'picture_upload' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'picture_upload' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
         if ($request->hasFile('picture_upload')) {
-            $validated['picture_upload'] = $request->file('picture_upload')->store('subservices', 'public');
+            $file = $request->file('picture_upload');
+            $filename = time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
+
+            $destinationPath = public_path('storage/subservices');
+            if (! file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            $file->move($destinationPath, $filename);
+            $validated['picture_upload'] = 'subservices/'.$filename;
         }
 
         SubService::create($validated);
 
-        return redirect()->route('subservices.index')->with('success', 'SubService created successfully!');
+        return redirect()->route('subservices.index')->with('success', 'SubService berhasil ditambahkan!');
     }
 
     // Edit
@@ -57,29 +66,43 @@ class SubServiceController extends Controller
         $validated = $request->validate([
             'service_id' => 'required|exists:services,id',
             'name' => 'required|string|max:255',
-            'picture_upload' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'picture_upload' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
         if ($request->hasFile('picture_upload')) {
-            if ($subservice->picture_upload) {
-                Storage::disk('public')->delete($subservice->picture_upload);
+            // Hapus gambar lama jika ada
+            if ($subservice->picture_upload && file_exists(public_path('storage/'.$subservice->picture_upload))) {
+                unlink(public_path('storage/'.$subservice->picture_upload));
             }
-            $validated['picture_upload'] = $request->file('picture_upload')->store('subservices', 'public');
+
+            $file = $request->file('picture_upload');
+            $filename = time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
+
+            $destinationPath = public_path('storage/subservices');
+            if (! file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            $file->move($destinationPath, $filename);
+            $validated['picture_upload'] = 'subservices/'.$filename;
+        } else {
+            $validated['picture_upload'] = $subservice->picture_upload;
         }
 
         $subservice->update($validated);
 
-        return redirect()->route('subservices.index')->with('success', 'SubService updated successfully!');
+        return redirect()->route('subservices.index')->with('success', 'SubService berhasil diperbarui!');
     }
 
     // Destroy
     public function destroy(SubService $subservice)
     {
-        if ($subservice->picture_upload) {
-            Storage::disk('public')->delete($subservice->picture_upload);
+        if ($subservice->picture_upload && file_exists(public_path('storage/'.$subservice->picture_upload))) {
+            unlink(public_path('storage/'.$subservice->picture_upload));
         }
+
         $subservice->delete();
 
-        return redirect()->route('subservices.index')->with('success', 'SubService deleted successfully!');
+        return redirect()->route('subservices.index')->with('success', 'SubService berhasil dihapus!');
     }
 }

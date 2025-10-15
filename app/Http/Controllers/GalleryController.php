@@ -27,8 +27,16 @@ class GalleryController extends Controller
         ]);
 
         if ($request->hasFile('upload_picture')) {
-            $path = $request->file('upload_picture')->store('galleries', 'public');
-            $validated['upload_picture'] = $path;
+            $file = $request->file('upload_picture');
+            $filename = time().'_'.$file->getClientOriginalName();
+
+            $destinationPath = public_path('storage/galleries');
+            if (! file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            $file->move($destinationPath, $filename);
+            $validated['upload_picture'] = 'galleries/'.$filename;
         }
 
         Gallery::create($validated);
@@ -49,8 +57,24 @@ class GalleryController extends Controller
         ]);
 
         if ($request->hasFile('upload_picture')) {
-            $path = $request->file('upload_picture')->store('galleries', 'public');
-            $validated['upload_picture'] = $path;
+            // Hapus file lama jika ada
+            if ($gallery->upload_picture && file_exists(public_path('storage/'.$gallery->upload_picture))) {
+                unlink(public_path('storage/'.$gallery->upload_picture));
+            }
+
+            $file = $request->file('upload_picture');
+            $filename = time().'_'.$file->getClientOriginalName();
+
+            $destinationPath = public_path('storage/galleries');
+            if (! file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            $file->move($destinationPath, $filename);
+            $validated['upload_picture'] = 'galleries/'.$filename;
+        } else {
+            // kalau tidak upload baru, tetap pakai gambar lama
+            $validated['upload_picture'] = $gallery->upload_picture;
         }
 
         $gallery->update($validated);
@@ -60,6 +84,10 @@ class GalleryController extends Controller
 
     public function destroy(Gallery $gallery)
     {
+        if ($gallery->upload_picture && file_exists(public_path('storage/'.$gallery->upload_picture))) {
+            unlink(public_path('storage/'.$gallery->upload_picture));
+        }
+
         $gallery->delete();
 
         return redirect()->route('galleries.index')->with('success', 'Gambar berhasil dihapus.');
