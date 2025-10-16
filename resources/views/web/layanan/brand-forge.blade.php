@@ -9,13 +9,8 @@
                 <h1 class="text-4xl md:text-5xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
                     B R A N D <br> L A N D
                 </h1>
-                <h2 class="mt-6 text-lg md:text-xl font-bold font-rubik text-black">
-                    Wording & Image
-                </h2>
                 <p class="mt-4 text-gray-800 text-base md:text-lg font-rubik leading-relaxed">
-                    At Communic 8, we specialize in helping brands unlock their full potential. Our services span the entire
-                    brand journey — from building a strong identity, to amplifying it through creative campaigns,
-                    endorsements, and other impactful executions.
+                    We go beyond aesthetics to build and align your brand’s core quality, value, and trust. Our comprehensive approach ensures a powerful consitent presence that resonates with your audience in Asia.
                 </p>
             </div>
         </div>
@@ -268,7 +263,7 @@
                 <p class="text-base md:text-lg mb-6 leading-relaxed">
                     {{ __('home/cta.description') }}
                 </p>
-                <a href="#"
+                <a href="{{ route('contact.index') }}"
                     class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
                     {{ __('home/cta.button') }}
                 </a>

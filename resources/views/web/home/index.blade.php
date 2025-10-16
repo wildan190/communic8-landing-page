@@ -33,11 +33,13 @@
                     <p class="text-gray-600 text-base sm:text-lg leading-relaxed max-w-md mx-auto md:mx-0">
                         {{ __('home/hero.description') }}
                     </p>
-                    <button class="bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700">
+                    <button onclick="window.location='{{ route('about.index') }}'"
+                        class="bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700">
                         {{ __('home/hero.button') }}
                     </button>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -323,143 +325,160 @@
     </section>
 
     {{-- Section TRUSTED BY --}}
-    <section class="relative bg-white py-20">
+    <section class="relative bg-white py-12 md:py-20">
         <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             {{-- Title --}}
-            <div class="text-center mb-12">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl tracking-[0.3em] text-gray-700 mb-6">
+            <div class="text-center mb-8 md:mb-12">
+                <h2
+                    class="text-xl sm:text-2xl md:text-3xl lg:text-4xl tracking-[0.2em] md:tracking-[0.3em] text-gray-700 mb-4 md:mb-6">
                     {!! __('home/trusted_by.title') !!}
                 </h2>
-                <p class="text-gray-600">{{ __('home/trusted_by.subtitle') }}</p>
+                <p class="text-sm md:text-base text-gray-600 px-4">{{ __('home/trusted_by.subtitle') }}</p>
             </div>
 
-            {{-- Client Logos in One Line --}}
-            <div class="relative mb-12">
-                <div id="client-logos"
-                    class="flex overflow-x-auto space-x-10 scrollbar-hide items-center justify-start snap-x snap-mandatory scroll-smooth py-4 px-2">
+            {{-- Client Logos Auto Slide --}}
+            <div class="relative mb-8 md:mb-12 overflow-hidden">
+                <div id="client-logos" class="flex gap-6 md:gap-10 items-center py-4 px-2 md:px-4">
                     @foreach ($clients as $client)
-                        <div class="flex-shrink-0 snap-start flex justify-center items-center">
+                        <div class="flex-shrink-0 flex justify-center items-center">
                             <img src="{{ asset('storage/' . $client->logo) }}" alt="{{ $client->company_name }}"
-                                class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
+                                class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
                         </div>
                     @endforeach
                 </div>
             </div>
 
             {{-- Bottom Text --}}
-            <div class="text-center mt-12">
-                <h3 class="text-lg sm:text-xl md:text-2xl font-semibold text-gray-700">
+            <div class="text-center mt-8 mb-8 md:mt-12 md:mb-12 px-4">
+                <h3 class="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-gray-700">
                     {!! __('home/trusted_by.bottom_text') !!}
                 </h3>
             </div>
 
-            <br />
-
-            {{-- Projects Slider (non-highlighted only) --}}
+            {{-- Projects Carousel --}}
             @php
-                $nonHighlightedProjects = $trustedProjects->where('is_highlighted', false)->values();
+                $projects = $trustedProjects->where('is_highlighted', false)->values();
             @endphp
 
-            <div class="relative mb-12">
-                <div id="projects-slider"
-                    class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
+            <div class="relative mb-8 md:mb-12 px-0 md:px-0">
 
-                    @foreach ($nonHighlightedProjects as $project)
-                        <div
-                            class="snap-start border border-gray-200 rounded-2xl p-4 flex flex-col relative group
-                               flex-[0_0_80%] sm:flex-[0_0_45%] md:flex-[0_0_30%] lg:flex-[0_0_22%] xl:flex-[0_0_22%]">
-
-                            {{-- Client & Project Name --}}
-                            <div class="flex justify-between items-center mb-2">
-                                <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
-                                @if ($project->project_url)
-                                    <a href="{{ $project->project_url }}" target="_blank"
-                                        class="text-gray-400 hover:text-gray-600">
-                                        <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
-                                    </a>
-                                @endif
-                            </div>
-
-                            <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
-
-                            {{-- Image --}}
-                            <div class="rounded-xl overflow-hidden relative">
-                                @if ($project->project_img)
-                                    <img src="{{ asset('storage/' . $project->project_img) }}"
-                                        alt="{{ $project->name }}" class="w-full object-cover">
-                                @else
-                                    <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="No Image"
+                <!-- Slider -->
+                <div class="swiper projects-swiper overflow-hidden relative">
+                    <div class="swiper-wrapper">
+                        @foreach ($projects as $project)
+                            <div class="swiper-slide border border-gray-200 rounded-2xl p-4 flex flex-col group">
+                                {{-- Client & Project Name --}}
+                                <div class="flex justify-between items-center mb-2">
+                                    <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
+                                    @if ($project->project_url)
+                                        <a href="{{ $project->project_url }}" target="_blank" class="flex-shrink-0">
+                                            <img src="/assets/img/icon/iconlink.png" alt="External Link"
+                                                class="w-4 h-4 md:w-5 md:h-5">
+                                        </a>
+                                    @endif
+                                </div>
+                                <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
+                                {{-- Image --}}
+                                <div class="rounded-xl overflow-hidden relative">
+                                    <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
                                         class="w-full object-cover">
-                                @endif
-
-                                {{-- Hover Overlay --}}
-                                <div
-                                    class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
-                                    <h3 class="text-sm md:text-base font-semibold mb-2">Ideas in Action</h3>
-                                    <p class="text-xs md:text-sm leading-snug">
-                                        A showcase of campaigns, stories, and experiences that create real connections
-                                    </p>
+                                    <div
+                                        class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
+                                        <h3 class="text-sm md:text-base font-semibold mb-2">Ideas in Action</h3>
+                                        <p class="text-xs md:text-sm leading-snug">
+                                            A showcase of campaigns, stories, and experiences that create real connections
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
 
-                {{-- Slider Buttons --}}
-                <button id="prevProject"
-                    class="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
+                <!-- Tombol navigasi - Hide on mobile, show on tablet+ -->
+                <button id="my-prev"
+                    class="hidden lg:block absolute left-[-50px] top-1/2 transform -translate-y-1/2 bg-gray-800 p-2 rounded-full shadow-md hover:bg-gray-700 z-50 transition-all">
+                    <img src="{{ asset('assets/img/arrow-left.png') }}" class="w-10 h-10" alt="Previous">
                 </button>
-                <button id="nextProject"
-                    class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
+                <button id="my-next"
+                    class="hidden lg:block absolute right-[-50px] top-1/2 transform -translate-y-1/2 bg-gray-800 p-2 rounded-full shadow-md hover:bg-gray-700 z-50 transition-all">
+                    <img src="{{ asset('assets/img/arrow-right.png') }}" class="w-10 h-10" alt="Next">
                 </button>
+
+                <!-- Pagination dots for mobile -->
+                <div class="swiper-pagination lg:hidden mt-6"></div>
+
             </div>
+
         </div>
     </section>
 
-    {{-- JS --}}
+    <!-- Swiper CSS & JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
     <script>
-        // Projects Slider
-        const projectSlider = document.getElementById('projects-slider');
-        const prevProject = document.getElementById('prevProject');
-        const nextProject = document.getElementById('nextProject');
-
-        const getSlideWidth = () => {
-            const firstSlide = projectSlider.querySelector('div');
-            return firstSlide ? firstSlide.offsetWidth + 16 : 300;
-        };
-
-        prevProject?.addEventListener('click', () => projectSlider.scrollBy({
-            left: -getSlideWidth(),
-            behavior: 'smooth'
-        }));
-        nextProject?.addEventListener('click', () => projectSlider.scrollBy({
-            left: getSlideWidth(),
-            behavior: 'smooth'
-        }));
-
-        const checkProjectSlider = () => {
-            if (projectSlider.scrollWidth > projectSlider.clientWidth) {
-                prevProject?.classList.remove('hidden');
-                nextProject?.classList.remove('hidden');
-            } else {
-                prevProject?.classList.add('hidden');
-                nextProject?.classList.add('hidden');
+        // Inisialisasi Swiper
+        const swiper = new Swiper('.projects-swiper', {
+            slidesPerView: 1.2,
+            spaceBetween: 12,
+            centeredSlides: false,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                480: {
+                    slidesPerView: 1.5,
+                    spaceBetween: 12,
+                },
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 14,
+                },
+                768: {
+                    slidesPerView: 2.5,
+                    spaceBetween: 16,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 16,
+                }
             }
-        };
+        });
 
-        window.addEventListener('resize', checkProjectSlider);
-        window.addEventListener('load', checkProjectSlider);
+        // Tombol samping mengontrol Swiper (untuk desktop)
+        const prevBtn = document.getElementById('my-prev');
+        const nextBtn = document.getElementById('my-next');
+
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', () => swiper.slidePrev());
+            nextBtn.addEventListener('click', () => swiper.slideNext());
+        }
+
+        // Client logos auto-slide seamless
+        const clientLogos = document.getElementById('client-logos');
+        if (clientLogos) {
+            const logosWidth = clientLogos.scrollWidth / 2; // Divide by 2 because we'll duplicate
+            let offset = 0;
+            const cloneLogos = clientLogos.innerHTML;
+            clientLogos.innerHTML += cloneLogos; // Duplicate for seamless loop
+
+            function slideLogos() {
+                offset += 0.5; // Slower speed for mobile
+                if (offset >= logosWidth) offset = 0;
+                clientLogos.style.transform = `translateX(-${offset}px)`;
+                requestAnimationFrame(slideLogos);
+            }
+            requestAnimationFrame(slideLogos);
+        }
     </script>
-
 
     <section class="w-full bg-gray-100 relative min-h-[520px] flex items-center justify-center">
         <!-- Overlay gelap -->
@@ -613,7 +632,7 @@
                 <p class="text-base md:text-lg mb-6 leading-relaxed">
                     {{ __('home/cta.description') }}
                 </p>
-                <a href="#"
+                <a href="{{ route('contact.index') }}"
                     class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
                     {{ __('home/cta.button') }}
                 </a>

@@ -10,8 +10,13 @@
                     D I G I T A L <br> S T A N D
                 </h1>
                 <h2 class="mt-6 text-lg md:text-xl font-bold font-rubik text-black">
-                    Precision. Performance. Growth.
+                    Amplify Your Reach, Accelerate Your Growth
                 </h2>
+                <p class="mt-4 text-sm md:text-base text-gray-700 max-w-md leading-relaxed">
+                    Communic 8 delivers targeted digital marketing that cuts through the noise.
+                    We guide your brand to effectively reach and engage your audience across Asia,
+                    transforming digital complexity into measurable results.
+                </p>
             </div>
         </div>
     </section>
@@ -230,7 +235,6 @@
         window.addEventListener('load', checkDSSlider);
     </script>
 
-
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
         style="background-image: url('/assets/img/cta-bg.png');">
@@ -255,7 +259,7 @@
                 <p class="text-base md:text-lg mb-6 leading-relaxed">
                     {{ __('home/cta.description') }}
                 </p>
-                <a href="#"
+                <a href="{{ route('contact.index') }}"
                     class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
                     {{ __('home/cta.button') }}
                 </a>

@@ -10,6 +10,7 @@ class AboutController extends Controller
     public function index()
     {
         $abouts = About::latest()->get();
+
         return view('about.index', compact('abouts'));
     }
 
@@ -30,11 +31,11 @@ class AboutController extends Controller
 
         if ($request->hasFile('img')) {
             $file = $request->file('img');
-            $filename = time() . '_' . $file->getClientOriginalName();
+            $filename = time().'_'.$file->getClientOriginalName();
             $uploadPath = public_path('uploads/about');
 
             // Buat folder jika belum ada
-            if (!file_exists($uploadPath)) {
+            if (! file_exists($uploadPath)) {
                 mkdir($uploadPath, 0777, true);
             }
 
@@ -53,6 +54,7 @@ class AboutController extends Controller
     public function edit($id)
     {
         $about = About::findOrFail($id);
+
         return view('about.edit', compact('about'));
     }
 
@@ -70,16 +72,16 @@ class AboutController extends Controller
 
         if ($request->hasFile('img')) {
             $file = $request->file('img');
-            $filename = time() . '_' . $file->getClientOriginalName();
+            $filename = time().'_'.$file->getClientOriginalName();
             $uploadPath = public_path('uploads/about');
 
-            if (!file_exists($uploadPath)) {
+            if (! file_exists($uploadPath)) {
                 mkdir($uploadPath, 0777, true);
             }
 
             // Hapus file lama jika ada
-            if ($about->img && file_exists($uploadPath . '/' . $about->img)) {
-                unlink($uploadPath . '/' . $about->img);
+            if ($about->img && file_exists($uploadPath.'/'.$about->img)) {
+                unlink($uploadPath.'/'.$about->img);
             }
 
             // Simpan file baru
@@ -97,8 +99,8 @@ class AboutController extends Controller
         $about = About::findOrFail($id);
         $uploadPath = public_path('uploads/about');
 
-        if ($about->img && file_exists($uploadPath . '/' . $about->img)) {
-            unlink($uploadPath . '/' . $about->img);
+        if ($about->img && file_exists($uploadPath.'/'.$about->img)) {
+            unlink($uploadPath.'/'.$about->img);
         }
 
         $about->delete();

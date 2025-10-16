@@ -66,8 +66,8 @@
 
                             <h4 class="px-3 py-1 text-xs uppercase font-semibold text-gray-500 dark:text-gray-300">Service Content</h4>
                             <x-dropdown-link :href="route('public-presence.index')">{{ __('Public Presence') }}</x-dropdown-link>
-                            <x-dropdown-link :href="route('digital.compass.index')">{{ __('Digital Compass') }}</x-dropdown-link>
-                            <x-dropdown-link :href="route('digital-architecture-content.index')">{{ __('Digital Architecture') }}</x-dropdown-link>
+                            <x-dropdown-link :href="route('digital.compass.index')">{{ __('Digital Stand') }}</x-dropdown-link>
+                            <x-dropdown-link :href="route('digital-architecture-content.index')">{{ __('Code Band') }}</x-dropdown-link>
                             <x-dropdown-link :href="route('brandforge.form')" :active="request()->routeIs('brandforge.form')">
                                 {{ __('Brand Land') }}
                             </x-dropdown-link>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController as AdminAboutController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BrandForgeContentController;
@@ -13,7 +14,6 @@ use App\Http\Controllers\PublicPresenceContentController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SubServiceController;
 use App\Http\Controllers\TestimoniController;
-use App\Http\Controllers\AboutController as AdminAboutController;
 use App\Http\Controllers\Web\AboutController;
 use App\Http\Controllers\Web\ContactController;
 use App\Http\Controllers\Web\HomeController;
@@ -234,4 +234,4 @@ Route::get('lang/{locale}', function ($locale) {
     return redirect()->back();
 })->name('lang.switch');
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
