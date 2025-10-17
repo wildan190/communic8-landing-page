@@ -10,6 +10,7 @@ use App\Models\Client;
 use App\Models\DigitalArchitectureContent;
 use App\Models\DigitalCompassContent;
 use App\Models\Gallery;
+use App\Models\LandingPage;
 use App\Models\PublicPresenceContent;
 use App\Models\SubService;
 use App\Models\WebInformation;
@@ -145,6 +146,12 @@ class LayananController extends Controller
         $branchOffices = BranchOffice::all();
         $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
 
-        return view('web.layanan.ott-advertising', compact('categories', 'sliderBlogs', 'clients', 'galleries', 'webInfo', 'branchOffices', 'insightCategories'));
+        $ottAdvertisingSubservices = SubService::whereHas('service', function ($query) {
+            $query->where('name', 'OTT Advertising');
+        })->get();
+
+        $landing = LandingPage::first();
+
+        return view('web.layanan.ott-advertising', compact('categories', 'sliderBlogs', 'clients', 'galleries', 'webInfo', 'branchOffices', 'insightCategories', 'ottAdvertisingSubservices', 'landing'));
     }
 }

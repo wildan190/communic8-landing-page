@@ -120,19 +120,24 @@
         <div class="max-w-7xl mx-auto px-6 space-y-20">
 
             @forelse($branchOffices as $office)
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start border-b pb-12 last:border-b-0 last:pb-0">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center border-b pb-12 last:border-b-0 last:pb-0">
                     <!-- Left: Office Details -->
-                    <div>
-                        <h2 class="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">{{ $office->name }}</h2>
+                    <div class="flex flex-col justify-center h-full">
+                        <h2 class="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">
+                            {{ $office->name }}
+                        </h2>
                         <p class="text-gray-600 text-base leading-relaxed mb-3">
                             {{ $office->address }}
                         </p>
+
                         @if ($office->phone)
                             <p class="text-gray-800 font-medium">📞 {{ $office->phone }}</p>
                         @endif
+
                         @if ($office->email)
                             <p class="text-gray-800 font-medium">✉️ {{ $office->email }}</p>
                         @endif
+
                         @if ($office->website)
                             <p class="text-blue-600 font-medium hover:underline mt-1">
                                 🌐 <a href="{{ $office->website }}" target="_blank">{{ $office->website }}</a>
@@ -141,7 +146,7 @@
                     </div>
 
                     <!-- Right: Map -->
-                    <div class="w-full h-[400px] rounded-xl overflow-hidden shadow">
+                    <div class="w-full h-[400px] rounded-xl overflow-hidden shadow-md">
                         @if ($office->address)
                             <iframe width="100%" height="100%" style="border:0;" loading="lazy" allowfullscreen
                                 referrerpolicy="no-referrer-when-downgrade"
@@ -156,12 +161,13 @@
                     </div>
                 </div>
             @empty
-                <p class="text-center text-gray-500 text-lg">{{ __('contact/form.no_branch') }}</p>
+                <p class="text-center text-gray-500 text-lg">
+                    {{ __('contact/form.no_branch') }}
+                </p>
             @endforelse
 
         </div>
     </section>
-
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"

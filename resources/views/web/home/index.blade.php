@@ -114,11 +114,11 @@
                     <div class="flex justify-center space-x-2 sm:space-x-4">
                         <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
                             class="w-40 sm:w-48 h-44 sm:h-52 object-cover rounded-lg shadow-lg 
-                        grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                    grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
 
                         <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
                             class="w-40 sm:w-48 h-44 sm:h-52 object-cover rounded-lg shadow-lg mt-6 sm:mt-8
-                        grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                    grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
                     </div>
                 </div>
 
@@ -126,20 +126,21 @@
                 <div class="hidden md:grid grid-cols-2 gap-12 items-start">
                     {{-- Floating Images --}}
                     <div class="relative w-full h-full">
+                        {{-- Gambar atas digeser sedikit ke kiri dan ukurannya dikecilkan --}}
                         <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
-                            class="absolute -top-32 left-0 w-[28rem] sm:w-[30rem] md:w-[32rem] rounded-lg shadow-lg z-30 
-                        grayscale hover:grayscale-0 hover:saturate-150 transition duration-500 pointer-events-auto">
+                            class="absolute -top-32 -left-4 w-[24rem] sm:w-[26rem] md:w-[28rem] rounded-lg shadow-lg z-30 
+                    grayscale hover:grayscale-0 hover:saturate-150 transition duration-500 pointer-events-auto">
 
                         <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
-                            class="absolute top-20 left-12 w-[28rem] sm:w-[30rem] md:w-[32rem] rounded-lg shadow-lg z-20 
-                        grayscale hover:grayscale-0 hover:saturate-150 transition duration-500 pointer-events-auto">
+                            class="absolute top-20 left-12 w-[24rem] sm:w-[26rem] md:w-[28rem] rounded-lg shadow-lg z-20 
+                    grayscale hover:grayscale-0 hover:saturate-150 transition duration-500 pointer-events-auto">
                     </div>
 
                     {{-- Text --}}
                     <div class="text-left flex flex-col justify-center">
                         <h2
                             class="text-2xl sm:text-3xl md:text-4xl text-gray-700 mb-6 leading-tight
-                        {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}">
+                    {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}">
                             {!! __('home/glance.title') !!}
                         </h2>
                         <p class="text-gray-600 leading-relaxed break-words">
@@ -162,9 +163,6 @@
 
             <br />
             <br />
-            <br />
-            <br />
-
 
             {{-- Title --}}
             <div class="text-center mb-16">
@@ -174,38 +172,47 @@
             </div>
 
             {{-- Stats Row --}}
-            <div class="flex flex-col md:flex-row justify-center items-center text-center gap-12 md:gap-20 mb-16">
+            <div class="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-20 mb-16">
 
                 {{-- Item 1 --}}
-                <div class="flex flex-col items-center gap-4">
-                    <div class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
+                <div class="flex flex-row items-center gap-5 text-left">
+                    <div
+                        class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl flex-shrink-0">
                         <i class="fas fa-briefcase"></i>
                     </div>
                     <div>
                         <div class="text-3xl font-bold text-orange-500">{{ now()->year - 2005 }}+</div>
-                        <div class="text-gray-700 font-semibold text-sm">{{ __('home/values.years_experience') }}</div>
+                        <div class="text-gray-700 font-semibold text-sm">
+                            {{ __('home/values.years_experience') }}
+                        </div>
                     </div>
                 </div>
 
                 {{-- Item 2 --}}
-                <div class="flex flex-col items-center text-center gap-4">
-                    <div class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
+                <div class="flex flex-row items-center gap-5 text-left">
+                    <div
+                        class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl flex-shrink-0">
                         <i class="fas fa-layer-group"></i>
                     </div>
                     <div>
                         <div class="text-3xl font-bold text-orange-500">300+</div>
-                        <div class="text-gray-700 font-semibold text-sm">{{ __('home/values.brands_handled') }}</div>
+                        <div class="text-gray-700 font-semibold text-sm">
+                            {{ __('home/values.brands_handled') }}
+                        </div>
                     </div>
                 </div>
 
                 {{-- Item 3 --}}
-                <div class="flex flex-col items-center text-center gap-4">
-                    <div class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
+                <div class="flex flex-row items-center gap-5 text-left">
+                    <div
+                        class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl flex-shrink-0">
                         <i class="fas fa-handshake"></i>
                     </div>
                     <div>
                         <div class="text-3xl font-bold text-orange-500">8/10</div>
-                        <div class="text-gray-700 font-semibold text-sm">{{ __('home/values.clients_return') }}</div>
+                        <div class="text-gray-700 font-semibold text-sm">
+                            {{ __('home/values.clients_return') }}
+                        </div>
                     </div>
                 </div>
 
@@ -218,6 +225,7 @@
 
         </div>
     </section>
+
 
     {{-- Section WHAT WE CAN DO FOR YOU --}}
     <section class="relative bg-white pt-16 sm:pt-20 md:pt-32 pb-16 sm:pb-20 md:pb-24">

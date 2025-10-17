@@ -49,9 +49,7 @@ return [
     'radio_title' => 'Select which area your email will be delivered...',
     'areas' => [
         '1' => 'Jakarta',
-        '2' => 'Malaysia',
-        '3' => 'Singapore',
-        '4' => 'China',
+        '2' => 'China',
     ],
 
     // Checkbox
