@@ -81,7 +81,7 @@
                     class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-[0.2em] sm:tracking-[0.3em] uppercase leading-tight">
                     Creativity is the bridge between culture and commerce
                 </h2>
-                <p class="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base italic">Albert Einstein</p>
+                <p class="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base italic"> Communic 8</p>
             </div>
         </div>
     </section>

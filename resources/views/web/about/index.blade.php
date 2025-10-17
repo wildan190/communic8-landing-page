@@ -30,11 +30,42 @@
                 </h1>
             </div>
 
-            {{-- Red Box PNG --}}
-            <div class="relative z-20 mt-8 md:mt-12">
-                <img src="{{ asset('assets/img/redbox.png') }}" alt="Red Box"
-                    class="w-[280px] sm:w-[350px] md:w-[520px] lg:w-[640px]">
+            <div class="relative z-10 w-full flex justify-center items-center mt-20 md:mt-32">
+
+                {{-- Wrapper seluruh komponen (gambar + box abu) --}}
+                <div class="relative flex items-center justify-center w-[700px] md:w-[950px]">
+
+                    {{-- Kotak abu-abu transparan di kiri, overlap sedikit --}}
+                    <div
+                        class="relative z-20 bg-gray-400/70 text-white text-left
+                 w-[320px] h-[220px] md:w-[460px] md:h-[280px]
+                 flex items-center px-8 md:px-10
+                 translate-x-[10%]">
+                        {{-- 10% overlap ke kanan --}}
+                        <h2
+                            class="font-poppins font-medium
+                     text-lg sm:text-2xl md:text-3xl
+                     tracking-[0.25em] leading-snug uppercase">
+                            S T R A T E G I C<br />
+                            I N S I G H T<br />
+                            C R E A T I V E<br />
+                            M I G H T
+                        </h2>
+                    </div>
+
+                    {{-- Kotak merah (gambar utama di tengah) --}}
+                    <div
+                        class="relative bg-[#E97D7D] overflow-hidden z-10
+                 w-[300px] h-[300px] md:w-[450px] md:h-[450px]
+                 -translate-x-[10%]">
+                        {{-- agar overlap 10% --}}
+                        <img src="{{ asset('assets/img/dummy/dummy3.png') }}" alt="Creative Visual"
+                            class="w-full h-full object-cover opacity-90" />
+                    </div>
+
+                </div>
             </div>
+
 
             {{-- About Us --}}
             <div class="relative z-10 max-w-3xl pb-12 md:pb-20 mt-8 md:mt-16">
