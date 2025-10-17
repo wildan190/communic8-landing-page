@@ -175,42 +175,51 @@
             <div class="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-20 mb-16">
 
                 {{-- Item 1 --}}
-                <div class="flex flex-row items-center gap-5 text-left">
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-5 text-center md:text-left">
                     <div
-                        class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl flex-shrink-0">
+                        class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-4xl flex-shrink-0">
                         <i class="fas fa-briefcase"></i>
                     </div>
                     <div>
-                        <div class="text-3xl font-bold text-orange-500">{{ now()->year - 2005 }}+</div>
-                        <div class="text-gray-700 font-semibold text-sm">
+                        <div
+                            class="text-5xl sm:text-6xl md:text-7xl font-black text-orange-500 tracking-tight mt-3 md:mt-0">
+                            {{ now()->year - 2005 }}+
+                        </div>
+                        <div class="text-gray-700 font-semibold text-sm sm:text-base">
                             {{ __('home/values.years_experience') }}
                         </div>
                     </div>
                 </div>
 
                 {{-- Item 2 --}}
-                <div class="flex flex-row items-center gap-5 text-left">
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-5 text-center md:text-left">
                     <div
-                        class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl flex-shrink-0">
+                        class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-4xl flex-shrink-0">
                         <i class="fas fa-layer-group"></i>
                     </div>
                     <div>
-                        <div class="text-3xl font-bold text-orange-500">300+</div>
-                        <div class="text-gray-700 font-semibold text-sm">
+                        <div
+                            class="text-5xl sm:text-6xl md:text-7xl font-black text-orange-500 tracking-tight mt-3 md:mt-0">
+                            300+
+                        </div>
+                        <div class="text-gray-700 font-semibold text-sm sm:text-base">
                             {{ __('home/values.brands_handled') }}
                         </div>
                     </div>
                 </div>
 
                 {{-- Item 3 --}}
-                <div class="flex flex-row items-center gap-5 text-left">
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-5 text-center md:text-left">
                     <div
-                        class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl flex-shrink-0">
+                        class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-4xl flex-shrink-0">
                         <i class="fas fa-handshake"></i>
                     </div>
                     <div>
-                        <div class="text-3xl font-bold text-orange-500">8/10</div>
-                        <div class="text-gray-700 font-semibold text-sm">
+                        <div
+                            class="text-5xl sm:text-6xl md:text-7xl font-black text-orange-500 tracking-tight mt-3 md:mt-0">
+                            8/10
+                        </div>
+                        <div class="text-gray-700 font-semibold text-sm sm:text-base">
                             {{ __('home/values.clients_return') }}
                         </div>
                     </div>
@@ -225,7 +234,6 @@
 
         </div>
     </section>
-
 
     {{-- Section WHAT WE CAN DO FOR YOU --}}
     <section class="relative bg-white pt-16 sm:pt-20 md:pt-32 pb-16 sm:pb-20 md:pb-24">
