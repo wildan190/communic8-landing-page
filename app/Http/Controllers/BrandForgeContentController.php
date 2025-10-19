@@ -38,22 +38,22 @@ class BrandForgeContentController extends Controller
         ]);
 
         // Ambil konten pertama atau buat baru
-        $content = BrandForgeContent::first() ?? new BrandForgeContent();
+        $content = BrandForgeContent::first() ?? new BrandForgeContent;
 
         // 📤 Upload semua gambar jika ada dan hapus yang lama jika update
-        foreach (['head_img', 'img_insight_strategy_driven', 'img_bold_creative_ideas', 'img_impactful_visual_identity', 'img_framework',] as $field) {
+        foreach (['head_img', 'img_insight_strategy_driven', 'img_bold_creative_ideas', 'img_impactful_visual_identity', 'img_framework'] as $field) {
             if ($request->hasFile($field)) {
                 // Hapus gambar lama jika ada
-                if ($content->$field && file_exists(public_path('storage/' . $content->$field))) {
-                    unlink(public_path('storage/' . $content->$field));
+                if ($content->$field && file_exists(public_path('storage/'.$content->$field))) {
+                    unlink(public_path('storage/'.$content->$field));
                 }
 
                 $file = $request->file($field);
-                $filename = time() . '_' . $file->getClientOriginalName();
+                $filename = time().'_'.$file->getClientOriginalName();
 
                 // Pastikan folder tujuan ada
                 $destinationPath = public_path('storage/brandforge');
-                if (!file_exists($destinationPath)) {
+                if (! file_exists($destinationPath)) {
                     mkdir($destinationPath, 0755, true);
                 }
 
@@ -61,7 +61,7 @@ class BrandForgeContentController extends Controller
                 $file->move($destinationPath, $filename);
 
                 // Simpan path relatif (untuk asset())
-                $validated[$field] = 'brandforge/' . $filename;
+                $validated[$field] = 'brandforge/'.$filename;
             } else {
                 // Jika tidak upload baru dan sudah ada gambar lama → tetap pakai yang lama
                 if ($content->$field) {

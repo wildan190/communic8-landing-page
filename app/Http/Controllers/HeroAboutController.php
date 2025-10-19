@@ -10,6 +10,7 @@ class HeroAboutController extends Controller
     public function edit()
     {
         $heroAbout = HeroAbout::firstOrCreate([]);
+
         return view('heroes-about.edit', compact('heroAbout'));
     }
 

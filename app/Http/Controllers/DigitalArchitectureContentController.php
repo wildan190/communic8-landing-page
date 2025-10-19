@@ -22,6 +22,7 @@ class DigitalArchitectureContentController extends Controller
         $request->validate([
             'head_img' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'img_services' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'img_first' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'title1' => 'nullable|string|max:255',
             'value_title1' => 'nullable|string',
             'title2' => 'nullable|string|max:255',
@@ -65,6 +66,19 @@ class DigitalArchitectureContentController extends Controller
             $file->move($destinationPath, $filename);
 
             $content->img_services = 'digital-architecture/'.$filename;
+        }
+
+        // ✅ Upload img_first jika ada
+        if ($request->hasFile('img_first')) {
+            if ($content->img_first && file_exists(public_path('storage/'.$content->img_first))) {
+                unlink(public_path('storage/'.$content->img_first));
+            }
+
+            $file = $request->file('img_first');
+            $filename = time().'_first_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
+            $file->move($destinationPath, $filename);
+
+            $content->img_first = 'digital-architecture/'.$filename;
         }
 
         // ✅ Simpan teks

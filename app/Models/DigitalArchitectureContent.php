@@ -12,6 +12,7 @@ class DigitalArchitectureContent extends Model
     protected $fillable = [
         'head_img',
         'img_services',
+        'img_first',
         'title1',
         'value_title1',
         'title2',

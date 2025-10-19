@@ -24,31 +24,29 @@
     {{-- Explanation + Gallery Section --}}
     <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24 items-center">
+            {{-- Grid dengan text lebih lebar --}}
+            <div class="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-16 lg:gap-24 items-center">
 
                 {{-- 📝 Text Section (kiri) --}}
-                <div class="text-gray-800 font-rubik leading-relaxed space-y-6">
+                <div class="text-gray-800 font-rubik leading-relaxed space-y-6 max-w-3xl">
                     <p>
                         At Communic 8, we specialize in helping brands unlock their full potential. Our services span the
-                        entire
-                        brand journey — from building a strong identity, to amplifying it through creative campaigns,
+                        entire brand journey — from building a strong identity, to amplifying it through creative campaigns,
                         endorsements, and other impactful executions.
                     </p>
 
                     <p>
                         What sets us apart is our ability to combine a global mindset with a local touch. For brands looking
-                        to
-                        expand into Indonesia, this is our strongest advantage: we help you build solid brand equity by
+                        to expand into Indonesia, this is our strongest advantage: we help you build solid brand equity by
                         understanding global standards while staying deeply connected to local culture, values, and consumer
                         behavior.
                     </p>
 
                     <p>
                         A brand is more than just a name, logo, or visual identity — it is a promise of consistent quality
-                        and
-                        values. True brand strength comes from continuously aligning what we do, what we deliver, and what
-                        we
-                        stand for with the principles that define the brand. This alignment is what earns trust, builds
+                        and values. True brand strength comes from continuously aligning what we do, what we deliver, and
+                        what
+                        we stand for with the principles that define the brand. This alignment is what earns trust, builds
                         credibility, and sustains long-term relationships with stakeholders.
                     </p>
 
@@ -70,8 +68,7 @@
 
                 {{-- 🖼️ Gallery (kanan) --}}
                 <div class="flex justify-center md:justify-end">
-                    <div
-                        class="aspect-square w-full max-w-[420px] rounded-2xl overflow-hidden bg-[#EE9A96] lg:ml-auto lg:-mr-45 lg:-translate-x-6 xl:-translate-x-8">
+                    <div class="aspect-square w-full max-w-[500px] rounded-2xl overflow-hidden bg-[#EE9A96] lg:ml-auto">
                         @if ($brandForgeContent && $brandForgeContent->head_img)
                             <img src="{{ asset('storage/' . $brandForgeContent->head_img) }}" alt="Brand Image"
                                 class="w-full h-full object-cover">
@@ -85,6 +82,7 @@
             </div>
         </div>
     </section>
+
 
     {{-- Framework Section --}}
     <section class="py-20 bg-white">
