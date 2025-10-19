@@ -1,75 +1,221 @@
 @extends('layouts.web')
 
 @section('content')
-
     {{-- Hero Section --}}
     <section class="relative w-full h-[80vh] flex items-end bg-cover bg-center"
-        style="background-image: url('{{ asset('assets/img/forge-hero.png') }}')">
-        <div class="container mx-auto px-6 md:px-12 lg:px-32 pb-20">
-            <div class="max-w-xl text-left">
-                <h1 class="text-4xl md:text-5xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
-                    Over-the-Top Advertising Reach Audiences
-                </h1>
-                <h2 class="mt-4 text-gray-800 text-2xl md:text-3xl font-rubik leading-relaxed">
-                    Everywhere They Stream
-                </h2>
-                <p class="mt-4 text-gray-800 text-base md:text-lg font-rubik leading-relaxed">
-                    From the largest screen in the living room to the smartphone in their hands, our OTT Advertising solutions place your brand at the center of modern media consumption.
-                </p>
+        style="background-image: url('{{ asset('assets/img/ott-hero.png') }}')">
+
+        <div class="w-full pb-20">
+            <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+                <div class="max-w-2xl text-left">
+                    <div class="max-w-2xl text-left space-y-6">
+                        <h1 class="text-4xl md:text-5xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
+                            OVER-THE-TOP<br>ADVERTISING
+                        </h1>
+
+                        <p class="text-gray-800 text-lg md:text-xl font-bold font-poppins leading-relaxed">
+                            Reach Your Audience Everywhere They Stream
+                        </p>
+
+                        <p class="text-gray-800 text-base md:text-lg font-rubik leading-relaxed">
+                            From the largest screen in the living room to the smartphone in their hands, our OTT Advertising
+                            solutions place your brand at the center of modern media consumption.
+                            *This service is currently only available in Indonesia
+                        </p>
+                        <i>*This service is currently only available in Indonesia</i>
+                    </div>
+
+                </div>
             </div>
         </div>
+
     </section>
 
-    {{-- Explanation Section --}}
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-6 md:px-12 lg:px-32">
-            <div class="max-w-4xl text-left text-gray-800 font-rubik leading-relaxed space-y-6">
-                <h2 class="text-3xl md:text-4xl font-poppins font-semibold text-black">
-                    The Media Landscape Has Changed, Has Your Strategy?
-                </h2>
-                <p>
-                    Viewers now curate their own entertainment, consuming over 3.5 billion hours of OTT content every month across Southeast Asia. A majority now prefer streaming services to watch their favorite shows. This isn’t just a trend, it’s a fundamental shift in media behavior. To win in this new era, your brand must be present and relevant in the streaming world.
-                </p>
-                <h3 class="text-2xl font-poppins font-semibold text-black">Our OTT Advertising Solution:</h3>
-                <ul class="list-disc list-inside space-y-2">
-                    <li><span class="font-semibold">Connected TV:</span> The premium, high impact living room experience.</li>
-                    <li><span class="font-semibold">Mobile & Tablet:</span> Reach viewers on the go.</li>
-                    <li><span class="font-semibold">Desktop & Web:</span> Engage audiences wherever they work and play.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
 
-    {{-- Gallery Section --}}
-    <section class="w-full bg-gray-50">
-        <img src="{{ asset($landing->img ?? 'assets/img/gallery1.png') }}" alt="Gallery" class="w-full h-auto object-cover">
-    </section>
-
-    {{-- Grid Section --}}
+    {{-- Landing Page Frontend --}}
     <section class="py-20 bg-white">
-        <div class="container mx-auto px-6 md:px-12 lg:px-32">
-            <h2 class="text-3xl md:text-4xl font-poppins font-semibold text-black text-center mb-12">
-                Engineered for Measurable Results
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-                <div>
-                    <h3 class="text-xl font-semibold text-black mb-4">{{ $landing->title_text1 ?? 'High Impact Formats' }}</h3>
-                    <p class="text-gray-700 font-rubik leading-relaxed">{{ $landing->description1 ?? 'Capture attention with unskippable, full screen video ads and interactive formats that invite viewer engagement.' }}</p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold text-black mb-4">{{ $landing->title_text2 ?? 'Multi Device Retargeting' }}</h3>
-                    <p class="text-gray-700 font-rubik leading-relaxed">{{ $landing->description2 ?? 'Engage a viewer on their Smart TV and follow up with a personalized ad on their mobile device to drive action.' }}</p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold text-black mb-4">{{ $landing->title_text3 ?? 'Advanced Audience Targeting' }}</h3>
-                    <p class="text-gray-700 font-rubik leading-relaxed">{{ $landing->description3 ?? 'Move beyond basic demographics with over 78 distinct data segments to find your perfect audience.' }}</p>
+        <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            {{-- Text Section --}}
+            <div class="space-y-6 font-rubik">
+                <h3 class="text-lg md:text-xl font-semibold text-gray-900">The Media Landscape Has Changed. Has Your
+                    Strategy?</h3>
+                <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                    Viewers now curate their own entertainment, consuming over 3.5 billion hours of OTT content every month
+                    across Southeast Asia.
+                </p>
+                <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                    A majority now prefer streaming services to watch their favorite shows. This isn’t just a trend, it’s a
+                    fundamental shift in media behavior. To win in this new era, your brand must be present and relevant in
+                    the streaming world.
+                </p>
+            </div>
+
+            {{-- Image Section --}}
+            <div class="flex justify-center lg:justify-end">
+                <div class="w-full max-w-md rounded-xl overflow-hidden shadow-lg">
+                    @if ($landing && $landing->img_1)
+                        <img src="{{ asset($landing->img_1) }}" alt="Image 1" class="w-full h-auto object-cover">
+                    @else
+                        <div class="w-full h-64 bg-red-300"></div>
+                    @endif
                 </div>
             </div>
+        </div>
+    </section>
+
+    {{-- Section 2 --}}
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            {{-- Image Section --}}
+            <div class="flex justify-center lg:justify-start order-2 lg:order-1">
+                <div class="w-full max-w-md rounded-xl overflow-hidden shadow-lg">
+                    @if ($landing && $landing->img_2)
+                        <img src="{{ asset($landing->img_2) }}" alt="Image 2" class="w-full h-auto object-cover">
+                    @else
+                        <div class="w-full h-64 bg-red-300"></div>
+                    @endif
+                </div>
+            </div>
+
+            {{-- Text Section --}}
+            <div class="space-y-6 font-rubik order-1 lg:order-2">
+                <h3 class="text-lg md:text-xl font-semibold text-gray-900">Our OTT Advertising Solutions</h3>
+                <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                    The media landscape has fundamentally shifted. Audiences have moved from traditional broadcast
+                    television to on-demand streaming services, creating a powerful new arena for brands to make a
+                    meaningful impact. Over-the-Top (OTT) advertising allows you to connect with these highly engaged
+                    viewers directly on their favorite platforms, placing your brand message in a premium, non-skippable
+                    environment.
+                </p>
+                <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                    Unlike traditional advertising, OTT provides unparalleled precision. We can reach specific households
+                    based on their interests, viewing habits, and demographics, ensuring your message is not only seen but
+                    is also relevant. From the biggest screen in the living room to the mobile devices they carry
+                    everywhere, our solutions are designed to capture attention where it matters most.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    {{-- Section 3 --}}
+    <section class="py-20 bg-white font-rubik">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 text-center">
+
+            {{-- Top Icons (Horizontal Layout) --}}
+            <div class="flex flex-wrap justify-center gap-10 mb-12">
+                <div class="flex items-start space-x-3 max-w-xs text-left">
+                    <div class="w-10 h-10 flex items-center justify-center rounded bg-red-300 flex-shrink-0">
+                        <i class="fas fa-tv text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-gray-800">Connected TV</p>
+                        <p class="text-sm text-gray-600 leading-snug">
+                            The premium, high impact living room experience.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-start space-x-3 max-w-xs text-left">
+                    <div class="w-10 h-10 flex items-center justify-center rounded bg-red-300 flex-shrink-0">
+                        <i class="fas fa-mobile-alt text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-gray-800">Mobile & Tablet</p>
+                        <p class="text-sm text-gray-600 leading-snug">
+                            Reach viewers on the go.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-start space-x-3 max-w-xs text-left">
+                    <div class="w-10 h-10 flex items-center justify-center rounded bg-red-300 flex-shrink-0">
+                        <i class="fas fa-desktop text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-gray-800">Desktop & Web</p>
+                        <p class="text-sm text-gray-600 leading-snug">
+                            Engage audiences wherever they work and play.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Main Image --}}
+            <div class="mb-16">
+                @if ($landing && $landing->img)
+                    <img src="{{ asset($landing->img) }}" alt="Main Image"
+                        class="w-full h-auto rounded-xl shadow-md object-cover">
+                @else
+                    <div class="w-full h-64 bg-red-300 rounded-xl"></div>
+                @endif
+            </div>
+
+            {{-- Title --}}
+            <h3 class="tracking-widest text-gray-800 font-semibold mb-10 uppercase">
+                Engineered For<br>Measurable Results
+            </h3>
+
+            {{-- Three Images / Features --}}
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 text-left">
+                <div class="space-y-4">
+                    @if ($landing && $landing->img_3)
+                        <img src="{{ asset($landing->img_3) }}" alt="Image 3"
+                            class="w-full h-56 rounded-xl object-cover bg-red-300">
+                    @else
+                        <div class="w-full h-56 bg-red-300 rounded-xl"></div>
+                    @endif
+                    <h3 class="text-xl font-semibold text-black mb-4">{{ $landing->title_text1 ?? 'High Impact Formats' }}
+                    </h3>
+                    <p class="text-gray-700 font-rubik leading-relaxed">
+                        {{ $landing->description1 ?? 'Capture attention with unskippable, full screen video ads and interactive formats that invite viewer engagement.' }}
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    @if ($landing && $landing->img_4)
+                        <img src="{{ asset($landing->img_4) }}" alt="Image 4"
+                            class="w-full h-56 rounded-xl object-cover bg-red-300">
+                    @else
+                        <div class="w-full h-56 bg-red-300 rounded-xl"></div>
+                    @endif
+                    <h3 class="text-xl font-semibold text-black mb-4">
+                        {{ $landing->title_text2 ?? 'Multi Device Retargeting' }}</h3>
+                    <p class="text-gray-700 font-rubik leading-relaxed">
+                        {{ $landing->description2 ?? 'Engage a viewer on their Smart TV and follow up with a personalized ad on their mobile device to drive action.' }}
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    @if ($landing && $landing->img_5)
+                        <img src="{{ asset($landing->img_5) }}" alt="Image 5"
+                            class="w-full h-56 rounded-xl object-cover bg-red-300">
+                    @else
+                        <div class="w-full h-56 bg-red-300 rounded-xl"></div>
+                    @endif
+                    <h3 class="text-xl font-semibold text-black mb-4">
+                        {{ $landing->title_text3 ?? 'Advanced Audience Targeting' }}</h3>
+                    <p class="text-gray-700 font-rubik leading-relaxed">
+                        {{ $landing->description3 ?? 'Move beyond basic demographics with over 78 distinct data segments to find your perfect audience.' }}
+                    </p>
+                </div>
+            </div>
+
+            {{-- Footer Text --}}
+            <h4 class="tracking-widest text-gray-800 font-semibold mb-4 uppercase">
+                Ready To Dominate In<br>This New Era?
+            </h4>
+            <p class="text-gray-600 text-base">
+                Let’s build a strategy that places your brand on the screens that matter most.
+            </p>
+
         </div>
     </section>
 
     {{-- Services Grid Section with Proper Spacing --}}
-    <section class="w-full py-8 bg-white relative z-10">
+    {{-- <section class="w-full py-8 bg-white relative z-10">
         <div class="max-w-6xl mx-auto px-4 text-center">
 
             <div class="relative mt-10">
@@ -80,10 +226,8 @@
                         <div class="snap-start border border-gray-200 rounded-2xl p-4 flex flex-col relative group"
                             style="flex: 0 0 calc(33.333% - 1rem); min-width: 260px;">
 
-                            {{-- Subservice Title --}}
                             <h3 class="font-semibold text-gray-700 mb-3 text-sm md:text-base">{{ $subservice->name }}</h3>
 
-                            {{-- Image --}}
                             <div class="rounded-xl overflow-hidden relative">
                                 @if ($subservice->picture_upload)
                                     <img src="{{ asset('storage/' . $subservice->picture_upload) }}"
@@ -93,7 +237,6 @@
                                         class="w-full object-cover">
                                 @endif
 
-                                {{-- Hover Overlay --}}
                                 <div
                                     class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
                                     <h3 class="text-sm md:text-base font-semibold mb-2">{{ $subservice->name }}</h3>
@@ -101,7 +244,8 @@
                                         <p class="text-xs md:text-sm leading-snug">
                                             {{ Str::limit($subservice->description, 120) }}</p>
                                     @else
-                                        <p class="text-xs md:text-sm italic opacity-80">No additional details available.</p>
+                                        <p class="text-xs md:text-sm italic opacity-80">No additional details available.
+                                        </p>
                                     @endif
                                 </div>
                             </div>
@@ -111,7 +255,6 @@
                     @endforelse
                 </div>
 
-                {{-- Slider Buttons --}}
                 <button id="prevOtt"
                     class="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
@@ -128,10 +271,10 @@
                 </button>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     {{-- JS for OTT Slider --}}
-    <script>
+    {{-- <script>
         const ottSlider = document.getElementById('ott-slider');
         const prevOtt = document.getElementById('prevOtt');
         const nextOtt = document.getElementById('nextOtt');
@@ -167,7 +310,7 @@
 
         window.addEventListener('resize', checkOttSlider);
         window.addEventListener('load', checkOttSlider);
-    </script>
+    </script> --}}
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
@@ -336,5 +479,4 @@
             });
         });
     </script>
-
 @endsection

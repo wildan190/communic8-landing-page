@@ -41,7 +41,7 @@
                             rows="3">{{ old('banner_text', $landing->banner_text ?? '') }}</textarea>
                     </div>
 
-                    {{-- Image --}}
+                    {{-- Banner Image --}}
                     <div>
                         <label class="block font-semibold mb-1">Banner Image</label>
                         @if (!empty($landing->img))
@@ -53,6 +53,20 @@
                             class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500">
                     </div>
 
+                    {{-- Images 1-5 --}}
+                    @for ($i = 1; $i <= 5; $i++)
+                        <div>
+                            <label class="block font-semibold mb-1">Image {{ $i }}</label>
+                            @if (!empty($landing->{'img_'.$i}))
+                                <div class="mb-2">
+                                    <img src="{{ asset($landing->{'img_'.$i}) }}" alt="Image {{ $i }}" class="w-48 rounded shadow">
+                                </div>
+                            @endif
+                            <input type="file" name="img_{{ $i }}"
+                                class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500">
+                        </div>
+                    @endfor
+
                     {{-- Text 1 --}}
                     <div>
                         <label class="block font-semibold mb-1">Title Text 1</label>
@@ -60,7 +74,6 @@
                             value="{{ old('title_text1', $landing->title_text1 ?? '') }}"
                             class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500">
                     </div>
-
                     <div>
                         <label class="block font-semibold mb-1">Description 1</label>
                         <textarea name="description1"
@@ -75,7 +88,6 @@
                             value="{{ old('title_text2', $landing->title_text2 ?? '') }}"
                             class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500">
                     </div>
-
                     <div>
                         <label class="block font-semibold mb-1">Description 2</label>
                         <textarea name="description2"
@@ -90,7 +102,6 @@
                             value="{{ old('title_text3', $landing->title_text3 ?? '') }}"
                             class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500">
                     </div>
-
                     <div>
                         <label class="block font-semibold mb-1">Description 3</label>
                         <textarea name="description3"
