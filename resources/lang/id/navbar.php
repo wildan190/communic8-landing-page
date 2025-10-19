@@ -10,7 +10,7 @@ return [
     'public_space_media' => 'Public Space Media',
     'ott_advertising' => 'OTT Advertising',
     'portfolio' => 'Portofolio',
-    'insight' => 'Insight',
+    'insight' => 'Wawasan',
     'contact' => 'Kontak',
     'language' => 'Bahasa',
 ];

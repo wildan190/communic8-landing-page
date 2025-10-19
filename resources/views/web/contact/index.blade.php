@@ -1,54 +1,59 @@
 @extends('layouts.web')
 
 @section('content')
-    <section class="relative pt-48 pb-20 bg-white"> <!-- pt lebih besar biar jauh dari navbar -->
+    <section class="relative pt-48 pb-20 bg-white">
         <div class="max-w-5xl mx-auto px-6 text-center">
             <!-- Title -->
             <h1
-                class="font-poppins font-light text-3xl md:text-4xl tracking-[0.35em] uppercase text-gray-800 leading-relaxed text-center">
+                class="font-poppins font-light text-3xl md:text-4xl tracking-[0.35em] uppercase text-gray-800 leading-relaxed">
                 {!! __('contact/form.title') !!}
             </h1>
-
             <p class="mt-6 text-gray-600 max-w-3xl mx-auto">
                 {{ __('contact/form.subtitle') }}
             </p>
         </div>
 
         <!-- Contact Form -->
-        <div class="max-w-4xl mx-auto mt-12 rounded-2xl p-8 shadow-sm" style="background-color: rgb(204, 204, 204);">
+        <div class="max-w-3xl mx-auto mt-12 bg-gray-300 rounded-3xl p-8 md:p-10 shadow-sm">
             <form action="{{ route('contact.store') }}" method="POST" class="space-y-6">
                 @csrf
 
                 <!-- Row 1 -->
                 <div class="grid md:grid-cols-2 gap-6">
                     <input type="text" name="name" placeholder="{{ __('contact/form.name_placeholder') }}"
-                        class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
-                    <div class="flex">
-                        <span class="px-3 flex items-center bg-gray-200 rounded-l-md text-gray-600">+62</span>
+                        class="w-full px-4 py-3 rounded-lg border border-transparent focus:border-gray-400 focus:ring-0 placeholder-gray-500 text-gray-800">
+
+                    <!-- Phone (tanpa border) -->
+                    <div class="flex items-center bg-white rounded-lg overflow-hidden">
+                        <select
+                            class="px-3 py-3 bg-white text-gray-700 text-sm focus:outline-none focus:ring-0 appearance-none">
+                            <option>+62</option>
+                            <option>+86</option>
+                        </select>
                         <input type="text" name="phone" placeholder="{{ __('contact/form.phone_placeholder') }}"
-                            class="w-full px-4 py-3 rounded-r-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
+                            class="w-full px-4 py-3 bg-white focus:ring-0 focus:outline-none placeholder-gray-500 text-gray-800">
                     </div>
                 </div>
 
                 <!-- Row 2 -->
                 <div class="grid md:grid-cols-2 gap-6">
                     <input type="text" name="company" placeholder="{{ __('contact/form.company_placeholder') }}"
-                        class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
+                        class="w-full px-4 py-3 rounded-lg border border-transparent focus:border-gray-400 focus:ring-0 placeholder-gray-500 text-gray-800">
                     <input type="email" name="email" placeholder="{{ __('contact/form.email_placeholder') }}"
-                        class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
+                        class="w-full px-4 py-3 rounded-lg border border-transparent focus:border-gray-400 focus:ring-0 placeholder-gray-500 text-gray-800">
                 </div>
 
                 <!-- Row 3 -->
                 <div class="grid md:grid-cols-2 gap-6">
                     <select name="industry"
-                        class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
+                        class="w-full px-4 py-3 rounded-lg border border-transparent focus:border-gray-400 focus:ring-0 text-gray-800">
                         <option value="">{{ __('contact/form.industry_placeholder') }}</option>
                         @foreach (__('contact/form.industries') as $value => $label)
                             <option value="{{ $value }}">{{ $label }}</option>
                         @endforeach
                     </select>
                     <select name="services"
-                        class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
+                        class="w-full px-4 py-3 rounded-lg border border-transparent focus:border-gray-400 focus:ring-0 text-gray-800">
                         <option value="">{{ __('contact/form.service_placeholder') }}</option>
                         @foreach (__('contact/form.services') as $value => $label)
                             <option value="{{ $value }}">{{ $label }}</option>
@@ -57,50 +62,53 @@
                 </div>
 
                 <!-- Row 4 -->
-                <div>
+                <div class="grid md:grid-cols-2 gap-6 items-start">
                     <select name="find_us"
-                        class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500">
+                        class="w-full px-4 py-3 rounded-lg border border-transparent focus:border-gray-400 focus:ring-0 text-gray-800">
                         <option value="">{{ __('contact/form.find_us_placeholder') }}</option>
                         @foreach (__('contact/form.find_us') as $value => $label)
                             <option value="{{ $value }}">{{ $label }}</option>
                         @endforeach
                     </select>
-                </div>
 
-                <!-- Radio -->
-                <div class="text-gray-700">
-                    <p class="mb-2">{{ __('contact/form.radio_title') }}</p>
-                    <div class="flex flex-wrap gap-6">
-                        @foreach (__('contact/form.areas') as $value => $label)
-                            <label><input type="radio" name="area" value="{{ $value }}" class="mr-2">
-                                {{ $label }}</label>
-                        @endforeach
+                    <!-- Radio -->
+                    <div class="text-left">
+                        <p class="text-sm text-gray-700 mb-2 font-medium">
+                            {{ __('contact/form.radio_title') }}
+                        </p>
+                        <div class="flex items-center gap-6">
+                            @foreach (__('contact/form.areas') as $value => $label)
+                                <label class="flex items-center text-gray-700">
+                                    <input type="radio" name="area" value="{{ $value }}" class="mr-2">
+                                    {{ $label }}
+                                </label>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
 
                 <!-- Message -->
                 <textarea name="message" placeholder="{{ __('contact/form.message_placeholder') }}"
-                    class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-gray-500 h-32"></textarea>
+                    class="w-full px-4 py-3 rounded-lg border border-transparent focus:border-gray-400 focus:ring-0 text-gray-800 h-32 placeholder-gray-500"></textarea>
 
-                <!-- Checkbox (optional newsletter) -->
-                <label class="flex items-center space-x-2 text-gray-600">
-                    <input type="checkbox" class="rounded border-gray-300">
+                <!-- Checkbox -->
+                <label class="flex items-center space-x-2 text-gray-700 text-sm">
+                    <input type="checkbox" class="rounded border-gray-400">
                     <span>{{ __('contact/form.newsletter') }}</span>
                 </label>
 
                 <!-- Submit -->
                 <div class="flex justify-center">
                     <button type="submit"
-                        class="px-10 py-3 rounded-full bg-gray-800 text-white hover:bg-gray-700 transition">
+                        class="px-10 py-3 rounded-full bg-gray-800 text-white hover:bg-gray-700 transition text-sm font-medium">
                         {{ __('contact/form.submit') }}
                     </button>
                 </div>
             </form>
         </div>
 
-        <!-- SweetAlert2 -->
+        <!-- SweetAlert -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
         @if (session('success'))
             <script>
                 Swal.fire({
@@ -112,56 +120,68 @@
                 });
             </script>
         @endif
-
     </section>
 
     <!-- OFFICES & MAPS SECTION -->
     <section class="bg-white py-24">
-        <div class="max-w-7xl mx-auto px-6 space-y-20">
+        <div class="max-w-7xl mx-auto px-6">
 
-            @forelse($branchOffices as $office)
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start border-b pb-12 last:border-b-0 last:pb-0">
-                    <!-- Left: Office Details -->
-                    <div>
-                        <h2 class="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">{{ $office->name }}</h2>
-                        <p class="text-gray-600 text-base leading-relaxed mb-3">
-                            {{ $office->address }}
-                        </p>
-                        @if ($office->phone)
-                            <p class="text-gray-800 font-medium">📞 {{ $office->phone }}</p>
-                        @endif
-                        @if ($office->email)
-                            <p class="text-gray-800 font-medium">✉️ {{ $office->email }}</p>
-                        @endif
-                        @if ($office->website)
-                            <p class="text-blue-600 font-medium hover:underline mt-1">
-                                🌐 <a href="{{ $office->website }}" target="_blank">{{ $office->website }}</a>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                @forelse($branchOffices as $office)
+                    <div
+                        class="bg-white rounded-3xl shadow-md border border-gray-100 flex flex-col items-center text-center p-6 md:p-8">
+
+                        <!-- MAP (square & padded) -->
+                        <div class="w-full aspect-square rounded-2xl overflow-hidden mb-6">
+                            @if ($office->address)
+                                <iframe width="100%" height="100%" style="border:0;" loading="lazy" allowfullscreen
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    src="https://www.google.com/maps?q={{ urlencode($office->address) }}&output=embed">
+                                </iframe>
+                            @else
+                                <div
+                                    class="flex flex-col items-center justify-center h-full text-gray-500 bg-gray-50 rounded-2xl">
+                                    <i class="fa-solid fa-map-location-dot text-3xl mb-2"></i>
+                                    <p>Alamat belum tersedia.</p>
+                                </div>
+                            @endif
+                        </div>
+
+                        <!-- OFFICE DETAILS -->
+                        <div class="flex flex-col items-center justify-center space-y-3">
+                            <h3 class="text-xl font-semibold text-gray-800">{{ $office->name }}</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                {{ $office->address }}
                             </p>
-                        @endif
-                    </div>
 
-                    <!-- Right: Map -->
-                    <div class="w-full h-[400px] rounded-xl overflow-hidden shadow">
-                        @if ($office->address)
-                            <iframe width="100%" height="100%" style="border:0;" loading="lazy" allowfullscreen
-                                referrerpolicy="no-referrer-when-downgrade"
-                                src="https://www.google.com/maps?q={{ urlencode($office->address) }}&output=embed">
-                            </iframe>
-                        @else
-                            <div class="flex flex-col items-center justify-center h-full text-gray-500">
-                                <i class="fa-solid fa-map-location-dot text-3xl mb-2"></i>
-                                <p>Alamat belum tersedia.</p>
-                            </div>
-                        @endif
-                    </div>
-                </div>
-            @empty
-                <p class="text-center text-gray-500 text-lg">{{ __('contact/form.no_branch') }}</p>
-            @endforelse
+                            @if ($office->phone)
+                                <p class="text-gray-900 font-semibold">
+                                    {{ $office->phone }}
+                                </p>
+                            @endif
 
+                            @if ($office->email)
+                                <p class="text-gray-800 font-medium">
+                                    ✉️ {{ $office->email }}
+                                </p>
+                            @endif
+
+                            @if ($office->website)
+                                <a href="{{ $office->website }}" target="_blank"
+                                    class="text-blue-600 font-medium hover:underline">
+                                    🌐 {{ $office->website }}
+                                </a>
+                            @endif
+                        </div>
+                    </div>
+                @empty
+                    <p class="text-center text-gray-500 text-lg col-span-full">
+                        {{ __('contact/form.no_branch') }}
+                    </p>
+                @endforelse
+            </div>
         </div>
     </section>
-
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
@@ -187,7 +207,7 @@
                 <p class="text-base md:text-lg mb-6 leading-relaxed">
                     {{ __('home/cta.description') }}
                 </p>
-                <a href="#"
+                <a href="{{ route('contact.index') }}"
                     class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
                     {{ __('home/cta.button') }}
                 </a>

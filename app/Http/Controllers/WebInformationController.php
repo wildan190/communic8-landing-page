@@ -40,6 +40,22 @@ class WebInformationController extends Controller
         return view('web_information.edit', compact('webInformation'));
     }
 
+    public function update(Request $request, WebInformation $webInformation)
+    {
+        $request->validate([
+            'phone' => 'nullable|string|max:50',
+            'email' => 'nullable|email|max:100',
+            'address' => 'nullable|string',
+            'facebook' => 'nullable|url',
+            'instagram' => 'nullable|url',
+            'tiktok' => 'nullable|url',
+        ]);
+
+        $webInformation->update($request->all());
+
+        return redirect()->route('web_information.index')->with('success', 'Informasi berhasil diperbarui');
+    }
+
     public function seo()
     {
         $webInfo = WebInformation::firstOrCreate([]);

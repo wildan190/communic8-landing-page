@@ -66,14 +66,22 @@
 
                             <h4 class="px-3 py-1 text-xs uppercase font-semibold text-gray-500 dark:text-gray-300">Service Content</h4>
                             <x-dropdown-link :href="route('public-presence.index')">{{ __('Public Presence') }}</x-dropdown-link>
-                            <x-dropdown-link :href="route('digital.compass.index')">{{ __('Digital Compass') }}</x-dropdown-link>
-                            <x-dropdown-link :href="route('digital-architecture-content.index')">{{ __('Digital Architecture') }}</x-dropdown-link>
+                            <x-dropdown-link :href="route('digital.compass.index')">{{ __('Digital Stand') }}</x-dropdown-link>
+                            <x-dropdown-link :href="route('digital-architecture-content.index')">{{ __('Code Band') }}</x-dropdown-link>
                             <x-dropdown-link :href="route('brandforge.form')" :active="request()->routeIs('brandforge.form')">
                                 {{ __('Brand Land') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('landing.index')" :active="request()->routeIs('landing.index')">
+                                {{ __('OTT Advertising') }}
                             </x-dropdown-link>
                         </div>
                     </div>
                 </div>
+
+                <!-- Clients -->
+                <x-nav-link :href="route('clients.index')" :active="request()->routeIs('clients.*')" class="text-gray-800 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white">
+                    {{ __('Clients') }}
+                </x-nav-link>
 
                 <!-- Web Management -->
                 <div x-data="{ open: false }" class="relative">
@@ -90,9 +98,11 @@
 
                             <div class="border-t my-2 border-gray-200 dark:border-gray-600"></div>
 
-                            <!-- ✅ Tambahan Menu About -->
                             <x-dropdown-link :href="route('admin.about.index')" :active="request()->routeIs('about.*')">
                                 {{ __('About Page') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('admin.heroes-about.edit')" :active="request()->routeIs('admin.heroes-about.edit')">
+                                {{ __('Hero About') }}
                             </x-dropdown-link>
                         </div>
                     </div>

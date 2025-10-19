@@ -98,7 +98,7 @@
                 <p class="text-base md:text-lg mb-6 leading-relaxed">
                     {{ __('home/cta.description') }}
                 </p>
-                <a href="#"
+                <a href="{{ route('contact.index') }}"
                     class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
                     {{ __('home/cta.button') }}
                 </a>

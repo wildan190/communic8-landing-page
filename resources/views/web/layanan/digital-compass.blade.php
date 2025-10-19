@@ -1,66 +1,87 @@
 @extends('layouts.web')
 
 @section('content')
-    {{-- Hero Section --}}
-    <section class="relative w-full h-[80vh] flex items-end bg-cover bg-center"
-        style="background-image: url('{{ asset('assets/img/digicompass.png') }}')">
-        <div class="container mx-auto px-6 md:px-12 lg:px-32 pb-20">
+{{-- Hero Section --}}
+<section class="relative w-full h-[80vh] flex items-end bg-cover bg-center"
+    style="background-image: url('{{ asset('assets/img/digicompass.png') }}')">
+
+    <div class="w-full pb-20">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 flex justify-start">
             <div class="max-w-xl text-left">
-                <h1 class="text-4xl md:text-4xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
+                <h1 class="text-4xl md:text-5xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
                     D I G I T A L <br> S T A N D
                 </h1>
                 <h2 class="mt-6 text-lg md:text-xl font-bold font-rubik text-black">
-                    Precision. Performance. Growth.
+                    Amplify Your Reach, Accelerate Your Growth
                 </h2>
-            </div>
-        </div>
-    </section>
-
-    {{-- Explanation Section --}}
-    <section class="w-full bg-white py-16">
-        <div class="container mx-auto px-6 md:px-12 lg:px-32">
-            <div class="max-w-4xl mx-auto text-gray-800 font-rubik leading-relaxed space-y-6">
-                <p>
-                    In the digital era, visibility alone is not enough — brands need precision, performance, and
-                    adaptability. That’s where Communic 8 comes in. Our digital marketing solutions are designed to not only
-                    put your brand in front of the right audiences, but also to ensure every interaction delivers measurable
-                    value.
-                </p>
-
-                <p class="font-semibold text-lg mt-4">We provide a full suite of services, including:</p>
-                <ul class="list-disc list-inside space-y-2">
-                    <li>Website & Landing Page Optimization – turning visits into conversions.</li>
-                    <li>Ads Performance Optimization (PPC & Paid Social) – maximizing every ad dollar.</li>
-                    <li>Content & SEO Optimization – making your brand discoverable and relevant.</li>
-                    <li>Automation & Tooling – ensuring efficiency and scalability.</li>
-                    <li>Social Media Optimization & Retargeting – engaging the right audience at the right time.</li>
-                    <li>Campaign Real-Time Monitoring & Adjustment – keeping strategies agile and performance-driven.</li>
-                </ul>
-
-                <p>
-                    The goal is clear: to help brands achieve sustainable growth through data-driven, ROI-focused digital
-                    strategies. For us, the best digital marketing is not about doing more, but about doing what works —
-                    combining creative storytelling, smart targeting, and continuous optimization to deliver impact that
-                    lasts.
-                </p>
-
-                <p>
-                    With Communic 8, digital marketing isn’t just about reach — it’s about results that matter.
+                <p class="mt-4 text-gray-700 text-base md:text-lg font-rubik leading-relaxed max-w-md">
+                    Communic 8 delivers targeted digital marketing that cuts through the noise.
+                    We guide your brand to effectively reach and engage your audience across Asia,
+                    transforming digital complexity into measurable results.
                 </p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
+{{-- Explanation + Gallery Section --}}
+<section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
+        {{-- Grid 2 kolom: text + gambar lebih besar --}}
+        <div class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr] gap-20 items-stretch">
 
-    {{-- Gallery Section (Full Width) --}}
-    <section class="w-full">
-        @if ($digitalCompassContent && $digitalCompassContent->head_img)
-            <img src="{{ Storage::url($digitalCompassContent->head_img) }}" alt="Gallery"
-                class="w-full h-auto object-cover block">
-        @else
-            <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery" class="w-full h-auto object-cover block">
-        @endif
-    </section>
+            {{-- 📝 Text Section (kiri) --}}
+            <div class="text-gray-800 font-rubik leading-relaxed space-y-6 flex flex-col justify-between">
+                <div>
+                    <p>
+                        In the digital era, visibility alone is not enough — brands need precision, performance, and adaptability.
+                        That’s where Communic 8 comes in. Our digital marketing solutions are designed to not only put your brand
+                        in front of the right audiences, but also to ensure every interaction delivers measurable value.
+                    </p>
+
+                    <p class="font-semibold text-lg mt-4">We provide a full suite of services, including:</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Website & Landing Page Optimization – turning visits into conversions.</li>
+                        <li>Ads Performance Optimization (PPC & Paid Social) – maximizing every ad dollar.</li>
+                        <li>Content & SEO Optimization – making your brand discoverable and relevant.</li>
+                        <li>Automation & Tooling – ensuring efficiency and scalability.</li>
+                        <li>Social Media Optimization & Retargeting – engaging the right audience at the right time.</li>
+                        <li>Campaign Real-Time Monitoring & Adjustment – keeping strategies agile and performance-driven.</li>
+                    </ul>
+
+                    <p>
+                        The goal is clear: to help brands achieve sustainable growth through data-driven, ROI-focused digital
+                        strategies. For us, the best digital marketing is not about doing more, but about doing what works —
+                        combining creative storytelling, smart targeting, and continuous optimization to deliver impact that lasts.
+                    </p>
+
+                    <p>
+                        With Communic 8, digital marketing isn’t just about reach — it’s about results that matter.
+                    </p>
+                </div>
+            </div>
+
+            {{-- 🖼️ Gallery Section (kanan) --}}
+            <div class="flex justify-center md:justify-end">
+                <div class="w-full relative max-w-none">
+                    {{-- Wrapper persegi --}}
+                    <div class="w-full relative" style="padding-top:100%; border-radius:1rem; overflow:hidden; background-color:#EE9A96;">
+                        @if ($digitalCompassContent && $digitalCompassContent->head_img)
+                            <img src="{{ Storage::url($digitalCompassContent->head_img) }}" 
+                                 alt="Gallery"
+                                 class="absolute top-0 left-0 w-full h-full object-cover">
+                        @else
+                            <img src="{{ asset('assets/img/gallery1.png') }}" 
+                                 alt="Gallery"
+                                 class="absolute top-0 left-0 w-full h-full object-cover opacity-0">
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
     {{-- Section 1 --}}
     <section class="w-full py-20 bg-white">
@@ -230,7 +251,6 @@
         window.addEventListener('load', checkDSSlider);
     </script>
 
-
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
         style="background-image: url('/assets/img/cta-bg.png');">
@@ -255,7 +275,7 @@
                 <p class="text-base md:text-lg mb-6 leading-relaxed">
                     {{ __('home/cta.description') }}
                 </p>
-                <a href="#"
+                <a href="{{ route('contact.index') }}"
                     class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
                     {{ __('home/cta.button') }}
                 </a>

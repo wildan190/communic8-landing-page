@@ -21,7 +21,8 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('blogs.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+                    <form action="{{ route('blogs.store') }}" method="POST" enctype="multipart/form-data"
+                        class="space-y-6">
                         @csrf
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -34,14 +35,32 @@
 
                             <!-- Kategori -->
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Kategori</label>
-                                <input type="text" name="category" value="{{ old('category') }}"
-                                    class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:border-indigo-500 focus:ring-indigo-500" />
+                                <label
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">Kategori</label>
+                                <select name="category"
+                                    class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:border-indigo-500 focus:ring-indigo-500">
+                                    <option value="">-- Pilih Kategori --</option>
+                                    <option value="Communic8" {{ old('category') == 'Communic8' ? 'selected' : '' }}>
+                                        Communic8</option>
+                                    <option value="Travel" {{ old('category') == 'Travel' ? 'selected' : '' }}>Travel
+                                    </option>
+                                    <option value="Sport" {{ old('category') == 'Sport' ? 'selected' : '' }}>Sport
+                                    </option>
+                                    <option value="Automotive" {{ old('category') == 'Automotive' ? 'selected' : '' }}>
+                                        Automotive</option>
+                                    <option value="Lifestyle" {{ old('category') == 'Lifestyle' ? 'selected' : '' }}>
+                                        Lifestyle</option>
+                                    <option value="Politics" {{ old('category') == 'Politics' ? 'selected' : '' }}>
+                                        Politics</option>
+                                    <option value="Economy" {{ old('category') == 'Economy' ? 'selected' : '' }}>
+                                        Economy</option>
+                                </select>
                             </div>
 
                             <!-- Tanggal -->
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Tanggal</label>
+                                <label
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">Tanggal</label>
                                 <input type="date" name="date" value="{{ old('date') }}"
                                     class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:border-indigo-500 focus:ring-indigo-500" />
                             </div>
@@ -51,29 +70,35 @@
                                 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Status</label>
                                 <select name="status"
                                     class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:border-indigo-500 focus:ring-indigo-500">
-                                    <option value="draft" {{ old('status') === 'draft' ? 'selected' : '' }}>Draft</option>
-                                    <option value="published" {{ old('status') === 'published' ? 'selected' : '' }}>Published</option>
-                                    <option value="archived" {{ old('status') === 'archived' ? 'selected' : '' }}>Archived</option>
+                                    <option value="draft" {{ old('status') === 'draft' ? 'selected' : '' }}>Draft
+                                    </option>
+                                    <option value="published" {{ old('status') === 'published' ? 'selected' : '' }}>
+                                        Published</option>
+                                    <option value="archived" {{ old('status') === 'archived' ? 'selected' : '' }}>
+                                        Archived</option>
                                 </select>
                             </div>
 
                             <!-- Keywords -->
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Keywords</label>
+                                <label
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">Keywords</label>
                                 <input type="text" name="keywords" value="{{ old('keywords') }}"
                                     class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:border-indigo-500 focus:ring-indigo-500" />
                             </div>
 
                             <!-- Headline Image -->
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Headline Image</label>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Headline
+                                    Image</label>
                                 <input type="file" name="headline_img"
                                     class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:border-indigo-500 focus:ring-indigo-500" />
                             </div>
 
                             <!-- Headline Alt -->
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Headline Alt Text</label>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Headline Alt
+                                    Text</label>
                                 <input type="text" name="headline_img_alt" value="{{ old('headline_img_alt') }}"
                                     class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:border-indigo-500 focus:ring-indigo-500" />
                             </div>
@@ -114,46 +139,56 @@
         #editor .ql-editor {
             min-height: 200px;
         }
+
         .ql-toolbar {
             border-radius: 0.5rem 0.5rem 0 0;
         }
+
         .ql-container {
             border-radius: 0 0 0.5rem 0.5rem;
         }
     </style>
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var quill = new Quill('#editor', {
-            theme: 'snow',
-            placeholder: 'Tulis konten blog di sini...',
-            modules: {
-                toolbar: [
-                    [{ header: [1, 2, 3, false] }],
-                    ['bold', 'italic', 'underline'],
-                    ['link', 'blockquote', 'code-block', 'image'],
-                    [{ list: 'ordered' }, { list: 'bullet' }],
-                    [{ align: [] }],
-                    ['clean']
-                ]
+        document.addEventListener("DOMContentLoaded", function() {
+            var quill = new Quill('#editor', {
+                theme: 'snow',
+                placeholder: 'Tulis konten blog di sini...',
+                modules: {
+                    toolbar: [
+                        [{
+                            header: [1, 2, 3, false]
+                        }],
+                        ['bold', 'italic', 'underline'],
+                        ['link', 'blockquote', 'code-block', 'image'],
+                        [{
+                            list: 'ordered'
+                        }, {
+                            list: 'bullet'
+                        }],
+                        [{
+                            align: []
+                        }],
+                        ['clean']
+                    ]
+                }
+            });
+
+            // isi editor dari old value
+            let oldContent = {!! json_encode(old('content')) !!};
+            if (oldContent) {
+                quill.root.innerHTML = oldContent;
             }
-        });
 
-        // isi editor dari old value
-        let oldContent = {!! json_encode(old('content')) !!};
-        if (oldContent) {
-            quill.root.innerHTML = oldContent;
-        }
+            // sinkronisasi realtime ke hidden input
+            quill.on('text-change', function() {
+                document.querySelector('#content').value = quill.root.innerHTML;
+            });
 
-        // sinkronisasi realtime ke hidden input
-        quill.on('text-change', function() {
-            document.querySelector('#content').value = quill.root.innerHTML;
+            // pastikan hidden input terisi sebelum submit
+            document.querySelector('form').addEventListener('submit', function() {
+                document.querySelector('#content').value = quill.root.innerHTML;
+            });
         });
-
-        // pastikan hidden input terisi sebelum submit
-        document.querySelector('form').addEventListener('submit', function() {
-            document.querySelector('#content').value = quill.root.innerHTML;
-        });
-    });
-</script>
+    </script>
 
 </x-app-layout>

@@ -29,13 +29,19 @@ class BrandForgeContentController extends Controller
             'impactful_visual_identity' => 'nullable|string|max:255',
             'desc_impactful_visual_identity' => 'nullable|string',
             'img_impactful_visual_identity' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+
+            // ✅ Tambahan baru
+            'img_framework' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'align_strategic_foundation' => 'nullable|string',
+            'build_constructing_the_brand_world' => 'nullable|string',
+            'maintain_ensuring_lasting_relevance' => 'nullable|string',
         ]);
 
         // Ambil konten pertama atau buat baru
         $content = BrandForgeContent::first() ?? new BrandForgeContent;
 
         // 📤 Upload semua gambar jika ada dan hapus yang lama jika update
-        foreach (['head_img', 'img_insight_strategy_driven', 'img_bold_creative_ideas', 'img_impactful_visual_identity'] as $field) {
+        foreach (['head_img', 'img_insight_strategy_driven', 'img_bold_creative_ideas', 'img_impactful_visual_identity', 'img_framework'] as $field) {
             if ($request->hasFile($field)) {
                 // Hapus gambar lama jika ada
                 if ($content->$field && file_exists(public_path('storage/'.$content->$field))) {
@@ -74,6 +80,9 @@ class BrandForgeContentController extends Controller
         $content->desc_bold_creative_ideas = clean($request->input('desc_bold_creative_ideas'));
         $content->impactful_visual_identity = clean($request->input('impactful_visual_identity'));
         $content->desc_impactful_visual_identity = clean($request->input('desc_impactful_visual_identity'));
+        $content->align_strategic_foundation = clean($request->input('align_strategic_foundation'));
+        $content->build_constructing_the_brand_world = clean($request->input('build_constructing_the_brand_world'));
+        $content->maintain_ensuring_lasting_relevance = clean($request->input('maintain_ensuring_lasting_relevance'));
 
         $content->save();
 

@@ -6,9 +6,10 @@
 
         {{-- Hero Section --}}
         <section
-            class="relative bg-cover bg-center flex flex-col items-center text-center px-6
-                        min-h-[100vh] md:min-h-[125vh]"
+            class="relative bg-cover bg-center flex flex-col items-center text-center px-6 min-h-[100vh] md:min-h-[125vh]"
             style="background-image: url('{{ asset('assets/img/sectionhero.png') }}');">
+
+            {{-- Overlay --}}
             <div class="absolute inset-0 bg-white/20"></div>
 
             <br class="hidden sm:block" />
@@ -18,32 +19,46 @@
             <div class="relative z-10 pt-32 md:pt-40">
                 <h1
                     class="font-poppins font-bold text-[#000000] leading-snug mb-4 sm:mb-6
-                          text-xl sm:text-3xl md:text-4xl
-                          {{ app()->getLocale() == 'en' ? 'tracking-normal sm:tracking-[0.35em]' : 'tracking-normal' }}">
-                    {{ __('about/hero.headline_1') }}
-                </h1>
-                <h1
-                    class="font-poppins font-bold text-[#000000] leading-snug
-                          text-xl sm:text-3xl md:text-4xl
-                          {{ app()->getLocale() == 'en' ? 'tracking-normal sm:tracking-[0.35em]' : 'tracking-normal' }}">
-                    {{ __('about/hero.headline_2') }}
+            text-xl sm:text-3xl md:text-4xl
+            {{ app()->getLocale() == 'en' ? 'tracking-normal sm:tracking-[0.35em]' : 'tracking-normal' }}">
+                    {!! __('about/hero.headline') !!}
                 </h1>
             </div>
 
-            {{-- Red Box PNG --}}
-            <div class="relative z-20 mt-8 md:mt-12">
-                <img src="{{ asset('assets/img/redbox.png') }}" alt="Red Box"
-                    class="w-[280px] sm:w-[350px] md:w-[520px] lg:w-[640px]">
+            {{-- Hero Content Wrapper --}}
+            <div class="relative z-10 w-full flex justify-center items-center mt-20 md:mt-32">
+                <div class="relative flex items-center justify-center w-[700px] md:w-[950px]">
+
+                    {{-- Transparent Grey Box --}}
+                    <div
+                        class="relative z-10 bg-gray-400/70 text-white text-left
+                w-[320px] h-[220px] md:w-[460px] md:h-[280px]
+                flex items-center px-8 md:px-10 translate-x-[10%]">
+                        <h2
+                            class="font-poppins font-medium text-lg sm:text-2xl md:text-3xl
+                    tracking-[0.25em] leading-snug uppercase">
+                            {!! __('about/hero.strategic_text') !!}
+                        </h2>
+                    </div>
+
+                    {{-- Main Image --}}
+                    <div
+                        class="relative z-20 w-[340px] h-[340px] md:w-[500px] md:h-[500px]
+                -translate-x-[10%] flex items-center justify-center overflow-visible">
+                        <img src="{{ $heroAbout && $heroAbout->box_img ? asset($heroAbout->box_img) : asset('assets/img/dummy/dummy3.png') }}"
+                            alt="Creative Visual" class="w-full h-auto object-contain rounded-lg" />
+                    </div>
+
+                </div>
             </div>
 
-            {{-- About Us --}}
+            {{-- About Us Section --}}
             <div class="relative z-10 max-w-3xl pb-12 md:pb-20 mt-8 md:mt-16">
                 <h2
-                    class="font-medium mb-4 md:mb-6
-                          text-base md:text-lg
-                          {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}">
-                    {{ __('about/hero.about_us_title') }}
+                    class="font-poppins font-extrabold uppercase tracking-[0.4em] text-[32px] md:text-[40px] text-[#666666] text-center">
+                    ABOUT US
                 </h2>
+
                 <p class="text-gray-700 leading-relaxed text-sm md:text-base">
                     {!! __('about/hero.about_us_text') !!}
                 </p>
@@ -350,7 +365,7 @@
                     <p class="text-base md:text-lg mb-6 leading-relaxed">
                         {{ __('home/cta.description') }}
                     </p>
-                    <a href="#"
+                    <a href="{{ route('contact.index') }}"
                         class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
                         {{ __('home/cta.button') }}
                     </a>

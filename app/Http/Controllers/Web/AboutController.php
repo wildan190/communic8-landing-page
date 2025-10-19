@@ -9,6 +9,7 @@ use App\Models\Blog;
 use App\Models\BranchOffice;
 use App\Models\Client;
 use App\Models\Gallery;
+use App\Models\HeroAbout;
 use App\Models\WebInformation;
 use Illuminate\Http\Request;
 
@@ -36,6 +37,7 @@ class AboutController extends Controller
 
         // 🔥 ambil semua data Activity terbaru
         $activities = Activity::latest()->take(9)->get();
+        $heroAbout = HeroAbout::first();
 
         return view(
             'web.about.index',
@@ -50,7 +52,8 @@ class AboutController extends Controller
                 'webInfo',
                 'branchOffices',
                 'activities', // jangan lupa dikirim ke view
-                'abouts' // jangan lupa dikirim ke view
+                'abouts', // jangan lupa dikirim ke view
+                'heroAbout'
             ),
         );
     }

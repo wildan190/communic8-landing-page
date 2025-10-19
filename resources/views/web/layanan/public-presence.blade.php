@@ -3,51 +3,58 @@
 @section('content')
     {{-- Hero Section --}}
     <section class="relative w-full h-[80vh] flex items-end bg-cover bg-center"
-        style="background-image: url('{{ asset('assets/img/archihero.png') }}')">
-        <div class="container mx-auto px-6 md:px-12 lg:px-32 pb-20">
-            <div class="max-w-xl text-left">
-                <h1 class="text-2xl md:text-2xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
-                    P U B L I C<br />S P A C E &nbsp; M E D I A
-                </h1>
-                <h2 class="mt-6 text-lg md:text-xl font-bold font-rubik text-black">
-                    Be Seen Where It Matters Most
-                </h2>
-                <p class="mt-4 text-sm md:text-base text-gray-800 font-rubik leading-relaxed">
-                    Move beyond digital noise. We deliver your brand directly into the daily lives of your target audience
-                    through powerful, unmissable real-world displays.
-                    <i>*This service is currently only available in Indonesia</i>
-                </p>
+        style="background-image: url('{{ asset('assets/img/ott-hero.png') }}')">
+
+        <div class="w-full pb-20">
+            <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+                <div class="max-w-xl text-left">
+                    <h1 class="text-2xl md:text-2xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
+                        P U B L I C<br />S P A C E &nbsp; M E D I A
+                    </h1>
+                    <h2 class="mt-6 text-lg md:text-xl font-bold font-rubik text-black">
+                        Be Seen Where It Matters Most
+                    </h2>
+                    <p class="mt-4 text-sm md:text-base text-gray-800 font-rubik leading-relaxed">
+                        Move beyond digital noise. We deliver your brand directly into the daily lives of your target
+                        audience
+                        through powerful, unmissable real-world displays.
+                        <i>*This service is currently only available in Indonesia</i>
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
-    {{-- Gallery Section (Full Width) --}}
+    {{-- Gallery Section --}}
     <section class="w-full bg-gray-50 py-16">
-        <div class="container mx-auto px-6 md:px-12 text-center">
-            <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
+        <div class="max-w-7xl mx-auto px-6 md:px-20 text-center">
+            {{-- Text lebih lebar --}}
+            <p class="text-base md:text-base font-rubik text-gray-800 max-w-5xl mx-auto">
                 <b>Strategic Placement for Maximum Impact</b>
             </p>
             <br>
-            <p class="text-base md:text-base font-rubik text-gray-800 max-w-3xl mx-auto text-center">
+            <p class="text-base md:text-base font-rubik text-gray-800 max-w-5xl mx-auto">
                 We bring the same strategic thinking and creative spirit to the real world that define our digital work.
                 Our approach and methodology to media placement is designed to ensure your brand connects with the right
                 audience in the right place.
             </p>
-        </div>
 
-        {{-- ✅ Full-width image --}}
-        <div class="w-full mt-12">
-            @if ($publicPresenceContent && $publicPresenceContent->head_img)
-                <img src="{{ Storage::url($publicPresenceContent->head_img) }}" alt="Gallery"
-                    class="w-full h-auto object-cover transition-transform duration-500 hover:scale-105">
-            @else
-                <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery"
-                    class="w-full h-auto object-cover transition-transform duration-500 hover:scale-105">
-            @endif
+            {{-- ✅ Wrapper gambar lebih besar, tetap segaris --}}
+            <div class="mt-12 flex justify-center">
+                <div class="w-full max-w-6xl rounded-2xl overflow-hidden">
+                    @if ($publicPresenceContent && $publicPresenceContent->head_img)
+                        <img src="{{ Storage::url($publicPresenceContent->head_img) }}" alt="Gallery"
+                            class="w-full h-auto object-cover transition-transform duration-500 hover:scale-105 rounded-2xl">
+                    @else
+                        <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery"
+                            class="w-full h-auto object-cover transition-transform duration-500 hover:scale-105 rounded-2xl">
+                    @endif
+                </div>
+            </div>
         </div>
     </section>
 
-    {{-- Strategy Section (tidak diubah) --}}
+    {{-- Strategy Section --}}
     <section class="w-full py-24">
         <div class="max-w-7xl mx-auto px-6 md:px-20 space-y-24">
             {{-- Row 1 --}}
@@ -96,14 +103,14 @@
         </div>
     </section>
 
-    {{-- Services Grid Section (Horizontal Scroll Style) --}}
+    {{-- Services Grid Section --}}
     <section class="w-full py-8 bg-white">
-        <div class="max-w-6xl mx-auto px-4 text-center">
+        <div class="max-w-7xl mx-auto px-6 md:px-20 text-center">
 
             {{-- Top description --}}
-            <p class="text-gray-700 font-rubik text-sm leading-snug max-w-xl mx-auto">
-                Communic 8's Brand Development service shapes every facet of your identity from
-                foundational research to brand design and activation.
+            <p class="text-gray-700 font-rubik text-sm leading-snug max-w-4xl mx-auto">
+                Communic 8's Brand Development service shapes every facet of your identity from foundational research to
+                brand design and activation.
             </p>
             <p class="mt-1 font-rubik font-semibold text-gray-900 text-sm">
                 Let us help you build a resilient brand that will stand through the test of time.
@@ -124,21 +131,15 @@
                     @forelse ($publicPresenceSubservices as $subservice)
                         <div class="snap-start border border-gray-200 rounded-2xl p-4 flex flex-col relative group"
                             style="flex: 0 0 calc(33.333% - 1rem); min-width: 260px;">
-
-                            {{-- Nama --}}
                             <h3 class="font-semibold text-gray-700 mb-3 text-sm md:text-base">
                                 {{ $subservice->name }}
                             </h3>
-
-                            {{-- Gambar --}}
                             <div class="rounded-xl overflow-hidden relative">
                                 <img src="{{ $subservice->picture_upload
                                     ? asset('storage/' . $subservice->picture_upload)
                                     : asset('assets/img/dummy/dummy1.png') }}"
                                     alt="{{ $subservice->name }}"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-
-                                {{-- Overlay --}}
                                 <div
                                     class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
                                     <h3 class="text-sm md:text-base font-semibold mb-2">{{ $subservice->name }}</h3>
@@ -153,8 +154,6 @@
                                     @endif
                                 </div>
                             </div>
-
-                            {{-- Nama di bawah gambar --}}
                             <p class="mt-2 text-gray-700 font-rubik text-xs">{{ $subservice->name }}</p>
                         </div>
                     @empty
@@ -163,25 +162,10 @@
                         </p>
                     @endforelse
                 </div>
-
-                {{-- Tombol Navigasi --}}
-                <button id="prevPublicPresence"
-                    class="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
-                </button>
-                <button id="nextPublicPresence"
-                    class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                </button>
             </div>
         </div>
     </section>
+
 
     <script>
         // Public Presence Horizontal Scroll
@@ -222,11 +206,10 @@
         window.addEventListener('load', checkPPSlider);
     </script>
 
-
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
         style="background-image: url('/assets/img/cta-bg.png');">
-        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 bg-black/40"></div> {{-- Overlay biar teks jelas --}}
 
         <div
             class="relative max-w-screen-xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center md:items-start justify-between">
@@ -247,7 +230,7 @@
                 <p class="text-base md:text-lg mb-6 leading-relaxed">
                     {{ __('home/cta.description') }}
                 </p>
-                <a href="#"
+                <a href="{{ route('contact.index') }}"
                     class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
                     {{ __('home/cta.button') }}
                 </a>

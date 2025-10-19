@@ -10,11 +10,11 @@
             {{-- Hero Title --}}
             <div class="relative z-10 pt-20 text-center">
                 <h1 id="hero-line1"
-                    class="font-poppins font-bold text-lg sm:text-2xl md:text-3xl 
+                    class="font-poppins font-regular text-lg sm:text-2xl md:text-3xl 
                 text-[#000000] tracking-normal sm:tracking-[0.3em] leading-snug mb-3 sm:mb-5">
                 </h1>
                 <h1 id="hero-line2"
-                    class="font-poppins font-bold text-lg sm:text-2xl md:text-3xl 
+                    class="font-poppins font-regular text-lg sm:text-2xl md:text-3xl 
                 text-[#000000] tracking-normal sm:tracking-[0.3em] leading-snug">
                 </h1>
             </div>
@@ -33,11 +33,13 @@
                     <p class="text-gray-600 text-base sm:text-lg leading-relaxed max-w-md mx-auto md:mx-0">
                         {{ __('home/hero.description') }}
                     </p>
-                    <button class="bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700">
+                    <button onclick="window.location='{{ route('about.index') }}'"
+                        class="bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700">
                         {{ __('home/hero.button') }}
                     </button>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -79,7 +81,7 @@
                     class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-[0.2em] sm:tracking-[0.3em] uppercase leading-tight">
                     Creativity is the bridge between culture and commerce
                 </h2>
-                <p class="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base italic">Albert Einstein</p>
+                <p class="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base italic"> Communic 8</p>
             </div>
         </div>
     </section>
@@ -112,11 +114,11 @@
                     <div class="flex justify-center space-x-2 sm:space-x-4">
                         <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
                             class="w-40 sm:w-48 h-44 sm:h-52 object-cover rounded-lg shadow-lg 
-                        grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                    grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
 
                         <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
                             class="w-40 sm:w-48 h-44 sm:h-52 object-cover rounded-lg shadow-lg mt-6 sm:mt-8
-                        grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                    grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
                     </div>
                 </div>
 
@@ -124,20 +126,21 @@
                 <div class="hidden md:grid grid-cols-2 gap-12 items-start">
                     {{-- Floating Images --}}
                     <div class="relative w-full h-full">
+                        {{-- Gambar atas digeser sedikit ke kiri dan ukurannya dikecilkan --}}
                         <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
-                            class="absolute -top-32 left-0 w-[28rem] sm:w-[30rem] md:w-[32rem] rounded-lg shadow-lg z-30 
-                        grayscale hover:grayscale-0 hover:saturate-150 transition duration-500 pointer-events-auto">
+                            class="absolute -top-32 -left-4 w-[24rem] sm:w-[26rem] md:w-[28rem] rounded-lg shadow-lg z-30 
+                    grayscale hover:grayscale-0 hover:saturate-150 transition duration-500 pointer-events-auto">
 
                         <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
-                            class="absolute top-20 left-12 w-[28rem] sm:w-[30rem] md:w-[32rem] rounded-lg shadow-lg z-20 
-                        grayscale hover:grayscale-0 hover:saturate-150 transition duration-500 pointer-events-auto">
+                            class="absolute top-20 left-12 w-[24rem] sm:w-[26rem] md:w-[28rem] rounded-lg shadow-lg z-20 
+                    grayscale hover:grayscale-0 hover:saturate-150 transition duration-500 pointer-events-auto">
                     </div>
 
                     {{-- Text --}}
                     <div class="text-left flex flex-col justify-center">
                         <h2
                             class="text-2xl sm:text-3xl md:text-4xl text-gray-700 mb-6 leading-tight
-                        {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}">
+                    {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}">
                             {!! __('home/glance.title') !!}
                         </h2>
                         <p class="text-gray-600 leading-relaxed break-words">
@@ -155,55 +158,70 @@
     </div>
 
     {{-- Section Values / Achievements --}}
-    <section class="bg-gray-200 py-24 font-rubik">
+    <section class="bg-white-200 py-24 font-rubik">
         <div class="container mx-auto px-4 sm:px-6 md:px-12">
 
             <br />
             <br />
-            <br />
-            <br />
-
 
             {{-- Title --}}
             <div class="text-center mb-16">
-                <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-700 leading-relaxed">
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-600 leading-relaxed">
                     {!! __('home/values.title') !!}
                 </h2>
             </div>
 
             {{-- Stats Row --}}
-            <div class="flex flex-col md:flex-row justify-center items-center text-center gap-12 md:gap-20 mb-16">
+            <div class="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-20 mb-16">
 
                 {{-- Item 1 --}}
-                <div class="flex flex-col items-center gap-4">
-                    <div class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-5 text-center md:text-left">
+                    <div
+                        class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-4xl flex-shrink-0">
                         <i class="fas fa-briefcase"></i>
                     </div>
                     <div>
-                        <div class="text-3xl font-bold text-orange-500">{{ now()->year - 2005 }}+</div>
-                        <div class="text-gray-700 font-semibold text-sm">{{ __('home/values.years_experience') }}</div>
+                        <div
+                            class="text-5xl sm:text-6xl md:text-7xl font-black text-orange-500 tracking-tight mt-3 md:mt-0">
+                            {{ now()->year - 2005 }}+
+                        </div>
+                        <div class="text-gray-700 font-semibold text-sm sm:text-base">
+                            {{ __('home/values.years_experience') }}
+                        </div>
                     </div>
                 </div>
 
                 {{-- Item 2 --}}
-                <div class="flex flex-col items-center text-center gap-4">
-                    <div class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-5 text-center md:text-left">
+                    <div
+                        class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-4xl flex-shrink-0">
                         <i class="fas fa-layer-group"></i>
                     </div>
                     <div>
-                        <div class="text-3xl font-bold text-orange-500">300+</div>
-                        <div class="text-gray-700 font-semibold text-sm">{{ __('home/values.brands_handled') }}</div>
+                        <div
+                            class="text-5xl sm:text-6xl md:text-7xl font-black text-orange-500 tracking-tight mt-3 md:mt-0">
+                            300+
+                        </div>
+                        <div class="text-gray-700 font-semibold text-sm sm:text-base">
+                            {{ __('home/values.brands_handled') }}
+                        </div>
                     </div>
                 </div>
 
                 {{-- Item 3 --}}
-                <div class="flex flex-col items-center text-center gap-4">
-                    <div class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-3xl">
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-5 text-center md:text-left">
+                    <div
+                        class="bg-red-600 text-white w-20 h-20 flex items-center justify-center rounded-[16px] text-4xl flex-shrink-0">
                         <i class="fas fa-handshake"></i>
                     </div>
                     <div>
-                        <div class="text-3xl font-bold text-orange-500">8/10</div>
-                        <div class="text-gray-700 font-semibold text-sm">{{ __('home/values.clients_return') }}</div>
+                        <div
+                            class="text-5xl sm:text-6xl md:text-7xl font-black text-orange-500 tracking-tight mt-3 md:mt-0">
+                            8/10
+                        </div>
+                        <div class="text-gray-700 font-semibold text-sm sm:text-base">
+                            {{ __('home/values.clients_return') }}
+                        </div>
                     </div>
                 </div>
 
@@ -225,8 +243,8 @@
             <div class="text-center mb-16">
                 <h2
                     class="text-2xl sm:text-3xl md:text-4xl text-gray-700 mb-2
-            {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}
-            leading-tight">
+        {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}
+        leading-tight">
                     {!! __('home/what_we_do.title') !!}
                 </h2><br />
                 <p class="text-gray-500 text-base sm:text-lg md:text-xl">
@@ -258,12 +276,12 @@
                         <div class="flex flex-col items-center text-center w-full flex-1 pb-4">
                             <h3
                                 class="font-bold text-gray-700 mb-3 break-words px-1
-                        {{ app()->getLocale() == 'en' ? 'text-lg sm:text-xl' : 'text-base sm:text-lg' }}">
+                    {{ app()->getLocale() == 'en' ? 'text-lg sm:text-xl' : 'text-base sm:text-lg' }}">
                                 {{ $card['title'] }}
                             </h3>
                             <p
                                 class="text-gray-600 leading-relaxed px-1 mb-6 flex-1 break-words hyphens-auto
-                        {{ app()->getLocale() == 'en' ? 'text-sm' : 'text-xs sm:text-sm' }}">
+                    {{ app()->getLocale() == 'en' ? 'text-sm' : 'text-xs sm:text-sm' }}">
                                 {{ $card['desc'] }}
                             </p>
 
@@ -277,31 +295,11 @@
                 @endforeach
             </div>
 
-            {{-- Desktop: 2-3 Layout (lebih kecil & proporsional) --}}
+            {{-- Desktop: 3-2 Layout --}}
             <div class="hidden md:block">
-                {{-- Baris 1: 2 cards --}}
+                {{-- Baris 1: 3 cards --}}
                 <div class="flex flex-wrap justify-center gap-6 mb-8">
-                    @for ($i = 0; $i < 2; $i++)
-                        @php $card = $cards[$i]; @endphp
-                        <div
-                            class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-72 p-4 min-h-[480px] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-                            <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
-                                class="w-full h-56 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
-                            <div class="flex flex-col items-center text-center w-full flex-1">
-                                <h3 class="text-lg font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
-                                <p class="text-gray-600 text-sm mb-4 flex-1">{{ $card['desc'] }}</p>
-                                <a href="{{ route($routes[$i]) }}"
-                                    class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors inline-block text-center text-sm">
-                                    {{ $card['btn'] }}
-                                </a>
-                            </div>
-                        </div>
-                    @endfor
-                </div>
-
-                {{-- Baris 2: 3 cards --}}
-                <div class="flex flex-wrap justify-center gap-6">
-                    @for ($i = 2; $i < 5; $i++)
+                    @for ($i = 0; $i < 3; $i++)
                         @php $card = $cards[$i]; @endphp
                         <div
                             class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-64 p-4 min-h-[480px] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
@@ -318,148 +316,220 @@
                         </div>
                     @endfor
                 </div>
+
+                {{-- Baris 2: 2 cards --}}
+                <div class="flex flex-wrap justify-center gap-6">
+                    @for ($i = 3; $i < 5; $i++)
+                        @php $card = $cards[$i]; @endphp
+                        <div
+                            class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-72 p-4 min-h-[480px] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                            <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
+                                class="w-full h-56 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
+                            <div class="flex flex-col items-center text-center w-full flex-1">
+                                <h3 class="text-lg font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
+                                <p class="text-gray-600 text-sm mb-4 flex-1">{{ $card['desc'] }}</p>
+                                <a href="{{ route($routes[$i]) }}"
+                                    class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors inline-block text-center text-sm">
+                                    {{ $card['btn'] }}
+                                </a>
+                            </div>
+                        </div>
+                    @endfor
+                </div>
             </div>
+        </div>
+    </section>
+
+    {{-- Section Divider --}}
+    <section
+        class="relative bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center text-center
+           py-24 md:py-32 px-6"
+        style="background-image: url('{{ asset('assets/img/cta-bg.png') }}');">
+
+        {{-- Overlay agar teks lebih kontras --}}
+        <div class="absolute inset-0 bg-black/30"></div>
+
+        {{-- Konten utama --}}
+        <div class="relative z-10 max-w-3xl mx-auto">
+            <h2
+                class="text-white font-poppins font-semibold tracking-[0.5em] text-lg sm:text-xl md:text-2xl uppercase mb-4">
+                BRAND WE EMPOWER
+            </h2>
+            <p class="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed">
+                From local pioneers to global leaders, we’ve been trusted to bring visions to life,
+                creating impact on both local and global scales.
+            </p>
         </div>
     </section>
 
     {{-- Section TRUSTED BY --}}
-    <section class="relative bg-white py-20">
+    <section class="relative bg-white py-12 md:py-20">
         <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            {{-- Title --}}
-            <div class="text-center mb-12">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl tracking-[0.3em] text-gray-700 mb-6">
-                    {!! __('home/trusted_by.title') !!}
-                </h2>
-                <p class="text-gray-600">{{ __('home/trusted_by.subtitle') }}</p>
-            </div>
+            {{-- ============================= --}}
+            {{-- 3 ROWS OF CLIENT LOGOS (SEMUA LOGO SAMA, TIDAK DIPISAH) --}}
+            {{-- ============================= --}}
+            @for ($i = 1; $i <= 3; $i++)
+                <div class="relative mb-10 overflow-hidden">
+                    <div id="logos-row-{{ $i }}"
+                        class="flex gap-8 md:gap-12 items-center py-4 px-2 md:px-4 overflow-x-auto scrollbar-hide scroll-smooth">
+                        @foreach ($clients as $client)
+                            <div class="flex-shrink-0 flex justify-center items-center w-1/3 sm:w-1/4 md:w-[12%]">
+                                <img src="{{ asset('storage/' . $client->logo) }}" alt="{{ $client->company_name }}"
+                                    class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
+                            </div>
+                        @endforeach
+                    </div>
 
-            {{-- Client Logos in One Line --}}
-            <div class="relative mb-12">
-                <div id="client-logos"
-                    class="flex overflow-x-auto space-x-10 scrollbar-hide items-center justify-start snap-x snap-mandatory scroll-smooth py-4 px-2">
-                    @foreach ($clients as $client)
-                        <div class="flex-shrink-0 snap-start flex justify-center items-center">
-                            <img src="{{ asset('storage/' . $client->logo) }}" alt="{{ $client->company_name }}"
-                                class="h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
-                        </div>
-                    @endforeach
+                    {{-- Chevron kiri-kanan (abu terang elegan) --}}
+                    <button id="prev-logos-{{ $i }}"
+                        class="absolute left-0 top-1/2 -translate-y-1/2 
+                           bg-[#B0B0B0] rounded-full p-2 hover:bg-[#9E9E9E] transition hidden md:flex z-10 border border-gray-300">
+                        <img src="{{ asset('assets/img/arrow-left.png') }}" class="w-6 h-6 invert" alt="Prev">
+                    </button>
+                    <button id="next-logos-{{ $i }}"
+                        class="absolute right-0 top-1/2 -translate-y-1/2 
+                           bg-[#B0B0B0] rounded-full p-2 hover:bg-[#9E9E9E] transition hidden md:flex z-10 border border-gray-300">
+                        <img src="{{ asset('assets/img/arrow-right.png') }}" class="w-6 h-6 invert" alt="Next">
+                    </button>
                 </div>
-            </div>
+            @endfor
 
-            {{-- Bottom Text --}}
-            <div class="text-center mt-12">
-                <h3 class="text-lg sm:text-xl md:text-2xl font-semibold text-gray-700">
-                    {!! __('home/trusted_by.bottom_text') !!}
-                </h3>
-            </div>
 
-            <br />
-
-            {{-- Projects Slider (non-highlighted only) --}}
+            {{-- ============================= --}}
+            {{-- Projects Carousel --}}
+            {{-- ============================= --}}
             @php
-                $nonHighlightedProjects = $trustedProjects->where('is_highlighted', false)->values();
+                $projects = $trustedProjects->where('is_highlighted', false)->values();
             @endphp
 
-            <div class="relative mb-12">
-                <div id="projects-slider"
-                    class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
+            <div class="relative mb-8 md:mb-12 px-0 md:px-0">
+                <div class="swiper projects-swiper overflow-hidden relative">
+                    <div class="swiper-wrapper">
+                        @foreach ($projects as $project)
+                            <div class="swiper-slide border border-gray-200 rounded-2xl p-4 flex flex-col group">
+                                {{-- Nama Client & Project --}}
+                                <div class="flex justify-between items-center mb-2">
+                                    <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
+                                    @if ($project->project_url)
+                                        <a href="{{ $project->project_url }}" target="_blank" class="flex-shrink-0">
+                                            <img src="/assets/img/icon/iconlink.png" alt="External Link"
+                                                class="w-4 h-4 md:w-5 md:h-5">
+                                        </a>
+                                    @endif
+                                </div>
+                                <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
 
-                    @foreach ($nonHighlightedProjects as $project)
-                        <div
-                            class="snap-start border border-gray-200 rounded-2xl p-4 flex flex-col relative group
-                               flex-[0_0_80%] sm:flex-[0_0_45%] md:flex-[0_0_30%] lg:flex-[0_0_22%] xl:flex-[0_0_22%]">
-
-                            {{-- Client & Project Name --}}
-                            <div class="flex justify-between items-center mb-2">
-                                <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
-                                @if ($project->project_url)
-                                    <a href="{{ $project->project_url }}" target="_blank"
-                                        class="text-gray-400 hover:text-gray-600">
-                                        <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-5 h-5">
-                                    </a>
-                                @endif
-                            </div>
-
-                            <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
-
-                            {{-- Image --}}
-                            <div class="rounded-xl overflow-hidden relative">
-                                @if ($project->project_img)
-                                    <img src="{{ asset('storage/' . $project->project_img) }}"
-                                        alt="{{ $project->name }}" class="w-full object-cover">
-                                @else
-                                    <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="No Image"
+                                {{-- Gambar Project --}}
+                                <div class="rounded-xl overflow-hidden relative">
+                                    <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
                                         class="w-full object-cover">
-                                @endif
-
-                                {{-- Hover Overlay --}}
-                                <div
-                                    class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
-                                    <h3 class="text-sm md:text-base font-semibold mb-2">Ideas in Action</h3>
-                                    <p class="text-xs md:text-sm leading-snug">
-                                        A showcase of campaigns, stories, and experiences that create real connections
-                                    </p>
+                                    <div
+                                        class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
+                                        <h3 class="text-sm md:text-base font-semibold mb-2">Ideas in Action</h3>
+                                        <p class="text-xs md:text-sm leading-snug">
+                                            A showcase of campaigns, stories, and experiences that create real connections
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
 
-                {{-- Slider Buttons --}}
-                <button id="prevProject"
-                    class="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
+                {{-- Navigasi Carousel Project --}}
+                <button id="my-prev"
+                    class="hidden lg:block absolute left-[-50px] top-1/2 -translate-y-1/2 bg-[#B0B0B0] p-2 rounded-full hover:bg-[#9E9E9E] border border-gray-300 z-50 transition-all">
+                    <img src="{{ asset('assets/img/arrow-left.png') }}" class="w-10 h-10 invert" alt="Previous">
                 </button>
-                <button id="nextProject"
-                    class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
+                <button id="my-next"
+                    class="hidden lg:block absolute right-[-50px] top-1/2 -translate-y-1/2 bg-[#B0B0B0] p-2 rounded-full hover:bg-[#9E9E9E] border border-gray-300 z-50 transition-all">
+                    <img src="{{ asset('assets/img/arrow-right.png') }}" class="w-10 h-10 invert" alt="Next">
                 </button>
+
+                <div class="swiper-pagination lg:hidden mt-6"></div>
             </div>
+
+            {{-- Tombol Explore More --}}
+            <div class="text-center mt-10">
+                <a href="{{ route('portofolio.index') }}"
+                    class="inline-block px-8 py-3 text-sm md:text-base font-semibold text-white bg-black rounded-full
+                   transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-black hover:scale-105">
+                    Explore More
+                </a>
+            </div>
+
         </div>
     </section>
 
-    {{-- JS --}}
+    {{-- ============================= --}}
+    {{-- JavaScript untuk Scroll Tiap Baris --}}
+    {{-- ============================= --}}
     <script>
-        // Projects Slider
-        const projectSlider = document.getElementById('projects-slider');
-        const prevProject = document.getElementById('prevProject');
-        const nextProject = document.getElementById('nextProject');
+        document.addEventListener('DOMContentLoaded', () => {
+            // Untuk setiap baris logo (ada 3)
+            for (let i = 1; i <= 3; i++) {
+                const row = document.getElementById(`logos-row-${i}`);
+                const next = document.getElementById(`next-logos-${i}`);
+                const prev = document.getElementById(`prev-logos-${i}`);
+                if (!row || !next || !prev) continue;
 
-        const getSlideWidth = () => {
-            const firstSlide = projectSlider.querySelector('div');
-            return firstSlide ? firstSlide.offsetWidth + 16 : 300;
-        };
+                const scrollStep = 300;
 
-        prevProject?.addEventListener('click', () => projectSlider.scrollBy({
-            left: -getSlideWidth(),
-            behavior: 'smooth'
-        }));
-        nextProject?.addEventListener('click', () => projectSlider.scrollBy({
-            left: getSlideWidth(),
-            behavior: 'smooth'
-        }));
+                next.addEventListener('click', () => {
+                    row.scrollBy({
+                        left: scrollStep,
+                        behavior: 'smooth'
+                    });
+                });
 
-        const checkProjectSlider = () => {
-            if (projectSlider.scrollWidth > projectSlider.clientWidth) {
-                prevProject?.classList.remove('hidden');
-                nextProject?.classList.remove('hidden');
-            } else {
-                prevProject?.classList.add('hidden');
-                nextProject?.classList.add('hidden');
+                prev.addEventListener('click', () => {
+                    row.scrollBy({
+                        left: -scrollStep,
+                        behavior: 'smooth'
+                    });
+                });
             }
-        };
-
-        window.addEventListener('resize', checkProjectSlider);
-        window.addEventListener('load', checkProjectSlider);
+        });
     </script>
 
+    {{-- Swiper JS --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <script>
+        const swiper = new Swiper('.projects-swiper', {
+            slidesPerView: 1.2,
+            spaceBetween: 12,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                480: {
+                    slidesPerView: 1.5
+                },
+                640: {
+                    slidesPerView: 2
+                },
+                768: {
+                    slidesPerView: 2.5
+                },
+                1024: {
+                    slidesPerView: 3
+                },
+            }
+        });
+
+        // Tombol Navigasi Project
+        document.getElementById('my-prev').addEventListener('click', () => swiper.slidePrev());
+        document.getElementById('my-next').addEventListener('click', () => swiper.slideNext());
+    </script>
 
     <section class="w-full bg-gray-100 relative min-h-[520px] flex items-center justify-center">
         <!-- Overlay gelap -->
@@ -613,7 +683,7 @@
                 <p class="text-base md:text-lg mb-6 leading-relaxed">
                     {{ __('home/cta.description') }}
                 </p>
-                <a href="#"
+                <a href="{{ route('contact.index') }}"
                     class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
                     {{ __('home/cta.button') }}
                 </a>
