@@ -10,11 +10,11 @@
             {{-- Hero Title --}}
             <div class="relative z-10 pt-20 text-center">
                 <h1 id="hero-line1"
-                    class="font-poppins font-bold text-lg sm:text-2xl md:text-3xl 
+                    class="font-poppins font-regular text-lg sm:text-2xl md:text-3xl 
                 text-[#000000] tracking-normal sm:tracking-[0.3em] leading-snug mb-3 sm:mb-5">
                 </h1>
                 <h1 id="hero-line2"
-                    class="font-poppins font-bold text-lg sm:text-2xl md:text-3xl 
+                    class="font-poppins font-regular text-lg sm:text-2xl md:text-3xl 
                 text-[#000000] tracking-normal sm:tracking-[0.3em] leading-snug">
                 </h1>
             </div>
@@ -158,7 +158,7 @@
     </div>
 
     {{-- Section Values / Achievements --}}
-    <section class="bg-gray-200 py-24 font-rubik">
+    <section class="bg-white-200 py-24 font-rubik">
         <div class="container mx-auto px-4 sm:px-6 md:px-12">
 
             <br />
@@ -166,7 +166,7 @@
 
             {{-- Title --}}
             <div class="text-center mb-16">
-                <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-700 leading-relaxed">
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-600 leading-relaxed">
                     {!! __('home/values.title') !!}
                 </h2>
             </div>
@@ -243,8 +243,8 @@
             <div class="text-center mb-16">
                 <h2
                     class="text-2xl sm:text-3xl md:text-4xl text-gray-700 mb-2
-            {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}
-            leading-tight">
+        {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}
+        leading-tight">
                     {!! __('home/what_we_do.title') !!}
                 </h2><br />
                 <p class="text-gray-500 text-base sm:text-lg md:text-xl">
@@ -276,12 +276,12 @@
                         <div class="flex flex-col items-center text-center w-full flex-1 pb-4">
                             <h3
                                 class="font-bold text-gray-700 mb-3 break-words px-1
-                        {{ app()->getLocale() == 'en' ? 'text-lg sm:text-xl' : 'text-base sm:text-lg' }}">
+                    {{ app()->getLocale() == 'en' ? 'text-lg sm:text-xl' : 'text-base sm:text-lg' }}">
                                 {{ $card['title'] }}
                             </h3>
                             <p
                                 class="text-gray-600 leading-relaxed px-1 mb-6 flex-1 break-words hyphens-auto
-                        {{ app()->getLocale() == 'en' ? 'text-sm' : 'text-xs sm:text-sm' }}">
+                    {{ app()->getLocale() == 'en' ? 'text-sm' : 'text-xs sm:text-sm' }}">
                                 {{ $card['desc'] }}
                             </p>
 
@@ -295,31 +295,11 @@
                 @endforeach
             </div>
 
-            {{-- Desktop: 2-3 Layout (lebih kecil & proporsional) --}}
+            {{-- Desktop: 3-2 Layout --}}
             <div class="hidden md:block">
-                {{-- Baris 1: 2 cards --}}
+                {{-- Baris 1: 3 cards --}}
                 <div class="flex flex-wrap justify-center gap-6 mb-8">
-                    @for ($i = 0; $i < 2; $i++)
-                        @php $card = $cards[$i]; @endphp
-                        <div
-                            class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-72 p-4 min-h-[480px] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-                            <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
-                                class="w-full h-56 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
-                            <div class="flex flex-col items-center text-center w-full flex-1">
-                                <h3 class="text-lg font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
-                                <p class="text-gray-600 text-sm mb-4 flex-1">{{ $card['desc'] }}</p>
-                                <a href="{{ route($routes[$i]) }}"
-                                    class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors inline-block text-center text-sm">
-                                    {{ $card['btn'] }}
-                                </a>
-                            </div>
-                        </div>
-                    @endfor
-                </div>
-
-                {{-- Baris 2: 3 cards --}}
-                <div class="flex flex-wrap justify-center gap-6">
-                    @for ($i = 2; $i < 5; $i++)
+                    @for ($i = 0; $i < 3; $i++)
                         @php $card = $cards[$i]; @endphp
                         <div
                             class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-64 p-4 min-h-[480px] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
@@ -336,7 +316,49 @@
                         </div>
                     @endfor
                 </div>
+
+                {{-- Baris 2: 2 cards --}}
+                <div class="flex flex-wrap justify-center gap-6">
+                    @for ($i = 3; $i < 5; $i++)
+                        @php $card = $cards[$i]; @endphp
+                        <div
+                            class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-72 p-4 min-h-[480px] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                            <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
+                                class="w-full h-56 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
+                            <div class="flex flex-col items-center text-center w-full flex-1">
+                                <h3 class="text-lg font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
+                                <p class="text-gray-600 text-sm mb-4 flex-1">{{ $card['desc'] }}</p>
+                                <a href="{{ route($routes[$i]) }}"
+                                    class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors inline-block text-center text-sm">
+                                    {{ $card['btn'] }}
+                                </a>
+                            </div>
+                        </div>
+                    @endfor
+                </div>
             </div>
+        </div>
+    </section>
+
+    {{-- Section Divider --}}
+    <section
+        class="relative bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center text-center
+           py-24 md:py-32 px-6"
+        style="background-image: url('{{ asset('assets/img/cta-bg.png') }}');">
+
+        {{-- Overlay agar teks lebih kontras --}}
+        <div class="absolute inset-0 bg-black/30"></div>
+
+        {{-- Konten utama --}}
+        <div class="relative z-10 max-w-3xl mx-auto">
+            <h2
+                class="text-white font-poppins font-semibold tracking-[0.5em] text-lg sm:text-xl md:text-2xl uppercase mb-4">
+                BRAND WE EMPOWER
+            </h2>
+            <p class="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed">
+                From local pioneers to global leaders, we’ve been trusted to bring visions to life,
+                creating impact on both local and global scales.
+            </p>
         </div>
     </section>
 
@@ -344,47 +366,49 @@
     <section class="relative bg-white py-12 md:py-20">
         <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            {{-- Title --}}
-            <div class="text-center mb-8 md:mb-12">
-                <h2
-                    class="text-xl sm:text-2xl md:text-3xl lg:text-4xl tracking-[0.2em] md:tracking-[0.3em] text-gray-700 mb-4 md:mb-6">
-                    {!! __('home/trusted_by.title') !!}
-                </h2>
-                <p class="text-sm md:text-base text-gray-600 px-4">{{ __('home/trusted_by.subtitle') }}</p>
-            </div>
+            {{-- ============================= --}}
+            {{-- 3 ROWS OF CLIENT LOGOS (SEMUA LOGO SAMA, TIDAK DIPISAH) --}}
+            {{-- ============================= --}}
+            @for ($i = 1; $i <= 3; $i++)
+                <div class="relative mb-10 overflow-hidden">
+                    <div id="logos-row-{{ $i }}"
+                        class="flex gap-8 md:gap-12 items-center py-4 px-2 md:px-4 overflow-x-auto scrollbar-hide scroll-smooth">
+                        @foreach ($clients as $client)
+                            <div class="flex-shrink-0 flex justify-center items-center w-1/3 sm:w-1/4 md:w-[12%]">
+                                <img src="{{ asset('storage/' . $client->logo) }}" alt="{{ $client->company_name }}"
+                                    class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
+                            </div>
+                        @endforeach
+                    </div>
 
-            {{-- Client Logos Auto Slide --}}
-            <div class="relative mb-8 md:mb-12 overflow-hidden">
-                <div id="client-logos" class="flex gap-6 md:gap-10 items-center py-4 px-2 md:px-4">
-                    @foreach ($clients as $client)
-                        <div class="flex-shrink-0 flex justify-center items-center">
-                            <img src="{{ asset('storage/' . $client->logo) }}" alt="{{ $client->company_name }}"
-                                class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
-                        </div>
-                    @endforeach
+                    {{-- Chevron kiri-kanan (abu terang elegan) --}}
+                    <button id="prev-logos-{{ $i }}"
+                        class="absolute left-0 top-1/2 -translate-y-1/2 
+                           bg-[#B0B0B0] rounded-full p-2 hover:bg-[#9E9E9E] transition hidden md:flex z-10 border border-gray-300">
+                        <img src="{{ asset('assets/img/arrow-left.png') }}" class="w-6 h-6 invert" alt="Prev">
+                    </button>
+                    <button id="next-logos-{{ $i }}"
+                        class="absolute right-0 top-1/2 -translate-y-1/2 
+                           bg-[#B0B0B0] rounded-full p-2 hover:bg-[#9E9E9E] transition hidden md:flex z-10 border border-gray-300">
+                        <img src="{{ asset('assets/img/arrow-right.png') }}" class="w-6 h-6 invert" alt="Next">
+                    </button>
                 </div>
-            </div>
+            @endfor
 
-            {{-- Bottom Text --}}
-            <div class="text-center mt-8 mb-8 md:mt-12 md:mb-12 px-4">
-                <h3 class="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-gray-700">
-                    {!! __('home/trusted_by.bottom_text') !!}
-                </h3>
-            </div>
 
+            {{-- ============================= --}}
             {{-- Projects Carousel --}}
+            {{-- ============================= --}}
             @php
                 $projects = $trustedProjects->where('is_highlighted', false)->values();
             @endphp
 
             <div class="relative mb-8 md:mb-12 px-0 md:px-0">
-
-                <!-- Slider -->
                 <div class="swiper projects-swiper overflow-hidden relative">
                     <div class="swiper-wrapper">
                         @foreach ($projects as $project)
                             <div class="swiper-slide border border-gray-200 rounded-2xl p-4 flex flex-col group">
-                                {{-- Client & Project Name --}}
+                                {{-- Nama Client & Project --}}
                                 <div class="flex justify-between items-center mb-2">
                                     <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
                                     @if ($project->project_url)
@@ -395,7 +419,8 @@
                                     @endif
                                 </div>
                                 <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
-                                {{-- Image --}}
+
+                                {{-- Gambar Project --}}
                                 <div class="rounded-xl overflow-hidden relative">
                                     <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
                                         class="w-full object-cover">
@@ -412,34 +437,70 @@
                     </div>
                 </div>
 
-                <!-- Tombol navigasi - Hide on mobile, show on tablet+ -->
+                {{-- Navigasi Carousel Project --}}
                 <button id="my-prev"
-                    class="hidden lg:block absolute left-[-50px] top-1/2 transform -translate-y-1/2 bg-gray-800 p-2 rounded-full shadow-md hover:bg-gray-700 z-50 transition-all">
-                    <img src="{{ asset('assets/img/arrow-left.png') }}" class="w-10 h-10" alt="Previous">
+                    class="hidden lg:block absolute left-[-50px] top-1/2 -translate-y-1/2 bg-[#B0B0B0] p-2 rounded-full hover:bg-[#9E9E9E] border border-gray-300 z-50 transition-all">
+                    <img src="{{ asset('assets/img/arrow-left.png') }}" class="w-10 h-10 invert" alt="Previous">
                 </button>
                 <button id="my-next"
-                    class="hidden lg:block absolute right-[-50px] top-1/2 transform -translate-y-1/2 bg-gray-800 p-2 rounded-full shadow-md hover:bg-gray-700 z-50 transition-all">
-                    <img src="{{ asset('assets/img/arrow-right.png') }}" class="w-10 h-10" alt="Next">
+                    class="hidden lg:block absolute right-[-50px] top-1/2 -translate-y-1/2 bg-[#B0B0B0] p-2 rounded-full hover:bg-[#9E9E9E] border border-gray-300 z-50 transition-all">
+                    <img src="{{ asset('assets/img/arrow-right.png') }}" class="w-10 h-10 invert" alt="Next">
                 </button>
 
-                <!-- Pagination dots for mobile -->
                 <div class="swiper-pagination lg:hidden mt-6"></div>
+            </div>
 
+            {{-- Tombol Explore More --}}
+            <div class="text-center mt-10">
+                <a href="{{ route('portofolio.index') }}"
+                    class="inline-block px-8 py-3 text-sm md:text-base font-semibold text-white bg-black rounded-full
+                   transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-black hover:scale-105">
+                    Explore More
+                </a>
             </div>
 
         </div>
     </section>
 
-    <!-- Swiper CSS & JS -->
+    {{-- ============================= --}}
+    {{-- JavaScript untuk Scroll Tiap Baris --}}
+    {{-- ============================= --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Untuk setiap baris logo (ada 3)
+            for (let i = 1; i <= 3; i++) {
+                const row = document.getElementById(`logos-row-${i}`);
+                const next = document.getElementById(`next-logos-${i}`);
+                const prev = document.getElementById(`prev-logos-${i}`);
+                if (!row || !next || !prev) continue;
+
+                const scrollStep = 300;
+
+                next.addEventListener('click', () => {
+                    row.scrollBy({
+                        left: scrollStep,
+                        behavior: 'smooth'
+                    });
+                });
+
+                prev.addEventListener('click', () => {
+                    row.scrollBy({
+                        left: -scrollStep,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        });
+    </script>
+
+    {{-- Swiper JS --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
     <script>
-        // Inisialisasi Swiper
         const swiper = new Swiper('.projects-swiper', {
             slidesPerView: 1.2,
             spaceBetween: 12,
-            centeredSlides: false,
             loop: true,
             autoplay: {
                 delay: 4000,
@@ -451,49 +512,23 @@
             },
             breakpoints: {
                 480: {
-                    slidesPerView: 1.5,
-                    spaceBetween: 12,
+                    slidesPerView: 1.5
                 },
                 640: {
-                    slidesPerView: 2,
-                    spaceBetween: 14,
+                    slidesPerView: 2
                 },
                 768: {
-                    slidesPerView: 2.5,
-                    spaceBetween: 16,
+                    slidesPerView: 2.5
                 },
                 1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 16,
-                }
+                    slidesPerView: 3
+                },
             }
         });
 
-        // Tombol samping mengontrol Swiper (untuk desktop)
-        const prevBtn = document.getElementById('my-prev');
-        const nextBtn = document.getElementById('my-next');
-
-        if (prevBtn && nextBtn) {
-            prevBtn.addEventListener('click', () => swiper.slidePrev());
-            nextBtn.addEventListener('click', () => swiper.slideNext());
-        }
-
-        // Client logos auto-slide seamless
-        const clientLogos = document.getElementById('client-logos');
-        if (clientLogos) {
-            const logosWidth = clientLogos.scrollWidth / 2; // Divide by 2 because we'll duplicate
-            let offset = 0;
-            const cloneLogos = clientLogos.innerHTML;
-            clientLogos.innerHTML += cloneLogos; // Duplicate for seamless loop
-
-            function slideLogos() {
-                offset += 0.5; // Slower speed for mobile
-                if (offset >= logosWidth) offset = 0;
-                clientLogos.style.transform = `translateX(-${offset}px)`;
-                requestAnimationFrame(slideLogos);
-            }
-            requestAnimationFrame(slideLogos);
-        }
+        // Tombol Navigasi Project
+        document.getElementById('my-prev').addEventListener('click', () => swiper.slidePrev());
+        document.getElementById('my-next').addEventListener('click', () => swiper.slideNext());
     </script>
 
     <section class="w-full bg-gray-100 relative min-h-[520px] flex items-center justify-center">

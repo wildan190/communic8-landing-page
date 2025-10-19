@@ -101,6 +101,9 @@
                             <x-dropdown-link :href="route('admin.about.index')" :active="request()->routeIs('about.*')">
                                 {{ __('About Page') }}
                             </x-dropdown-link>
+                            <x-dropdown-link :href="route('admin.heroes-about.edit')" :active="request()->routeIs('admin.heroes-about.edit')">
+                                {{ __('Hero About') }}
+                            </x-dropdown-link>
                         </div>
                     </div>
                 </div>

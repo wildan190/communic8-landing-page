@@ -15,6 +15,7 @@ use App\Http\Controllers\PublicPresenceContentController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SubServiceController;
 use App\Http\Controllers\TestimoniController;
+use App\Http\Controllers\HeroAboutController;
 use App\Http\Controllers\Web\AboutController;
 use App\Http\Controllers\Web\ContactController;
 use App\Http\Controllers\Web\HomeController;
@@ -229,6 +230,9 @@ Route::prefix('admin')
 
         Route::get('/services/ott-advertisings', [LandingPageController::class, 'index'])->name('landing.index');
         Route::post('/services/ott-advertisings/save', [LandingPageController::class, 'saveOrUpdate'])->name('landing.save');
+
+        Route::get('heroes-about/edit', [HeroAboutController::class, 'edit'])->name('admin.heroes-about.edit');
+        Route::post('heroes-about/update', [HeroAboutController::class, 'update'])->name('admin.heroes-about.update');
     });
 
 Route::get('lang/{locale}', function ($locale) {
