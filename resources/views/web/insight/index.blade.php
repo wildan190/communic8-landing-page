@@ -3,17 +3,17 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="relative pt-48 pb-20 bg-cover"
-        style="background-image: url('{{ asset('assets/img/insightbg.png') }}');">
+    <section class="relative pt-48 pb-20 bg-cover" style="background-image: url('{{ asset('assets/img/insightbg.png') }}');">
 
         <div class="absolute inset-0 bg-white/70"></div>
 
         <!-- Content -->
         <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
-            <h1 class="font-poppins text-4xl md:text-5xl tracking-[0.3em] text-gray-800">
-                <span class="font-light">{{ __('insight/hero.headline_light') }} </span>
-                <span class="font-bold">{{ __('insight/hero.headline_bold') }}</span>
+            <h1 class="font-poppins text-4xl md:text-5xl tracking-[0.3em] text-[#666666] font-normal leading-snug">
+                {!! __('insight/hero.headline_light') !!}<br />
+                {!! __('insight/hero.headline_bold') !!}
             </h1>
+
             <p class="mt-6 text-gray-600">
                 {{ __('insight/hero.description') }}
             </p>
@@ -99,7 +99,7 @@
                     {{ __('home/cta.description') }}
                 </p>
                 <a href="{{ route('contact.index') }}"
-                    class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
+                    class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-white-200 transition">
                     {{ __('home/cta.button') }}
                 </a>
             </div>
@@ -114,11 +114,12 @@
             <div class="text-center mb-12 sm:mb-16">
                 <h2
                     class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
-               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
-                    {{ __('insight/slider.title_line_1') }}
-                    <span class="hidden sm:inline"><br /></span>
-                    {{ __('insight/slider.title_line_2') }}
+           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                    {!! __('home/insights.title') !!}
                 </h2>
+                <p class="text-gray-600 text-base sm:text-lg mt-2">
+                    {{ __('home/insights.description') }}
+                </p>
             </div>
 
             <!-- Wrapper for Desktop (with arrows) -->
@@ -136,9 +137,8 @@
                             class="snap-center min-w-[280px] sm:min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
                             <p class="text-sm text-gray-500">{{ $blog->category }}</p>
                             <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
-                                <h3
-                                    class="text-base sm:text-lg font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[72px] mb-4">
-                                    {{ $blog->title }}
+                                <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
+                                    <strong>{{ $blog->title }}</strong>
                                 </h3>
                             </a>
                             @if ($blog->headline_img)
@@ -159,7 +159,7 @@
                 </button>
             </div>
 
-            <!-- Mobile Version -->
+            <!-- Mobile: Slider full width, arrows below -->
             <div class="sm:hidden">
                 <div id="blog-slider-mobile"
                     class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
@@ -185,6 +185,7 @@
                     @endforeach
                 </div>
 
+                <!-- Arrows below slider -->
                 <div class="flex justify-center space-x-6 mt-6">
                     <button id="prevBtnMobile">
                         <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Prev" class="w-8 h-8">
@@ -199,9 +200,10 @@
             <div class="text-center mt-12">
                 <a href="{{ route('insight.index') }}"
                     class="inline-block bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition">
-                    {{ __('insight/slider.read_more') }}
+                    Read More
                 </a>
             </div>
+
         </div>
     </section>
 

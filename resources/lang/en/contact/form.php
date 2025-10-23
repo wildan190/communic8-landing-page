@@ -2,8 +2,9 @@
 
 return [
     // Hero
-    'title' => 'LET’S TALK <br> ABOUT YOUR PROJECT',
-    'subtitle' => 'Bring your project, we’ll bring you ideas and creativity. Together, we make it happen.',
+    'title' => 'L E T ’ S &nbsp; S T A R T &nbsp; A &nbsp; <br/>C O N V E R S A T I O N',
+    'subtitle' => 'Bring your ideas, we’ll bring the creativity. Together, we make it happen.
+Bring your project, we’ll bring you ideas and creativity.',
 
     // Form placeholders
     'name_placeholder' => 'Your name...',

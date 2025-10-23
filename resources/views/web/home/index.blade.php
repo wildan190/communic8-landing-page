@@ -1,47 +1,108 @@
 @extends('layouts.web')
 
 @section('content')
+
     <section class="relative w-full min-h-[85vh] bg-cover bg-center"
         style="background-image: url('{{ asset('assets/img/sectionhero.png') }}')">
-
         <div
             class="container max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center justify-between min-h-[85vh] py-20 md:py-24 space-y-8">
 
             {{-- Hero Title --}}
             <div class="relative z-10 pt-20 text-center">
                 <h1 id="hero-line1"
-                    class="font-poppins font-regular text-lg sm:text-2xl md:text-3xl 
-                text-[#000000] tracking-normal sm:tracking-[0.3em] leading-snug mb-3 sm:mb-5">
+                    class="font-poppins font-light text-2xl sm:text-3xl md:text-4xl text-[#000000] tracking-[0.3em] leading-snug mb-3 sm:mb-5">
+                    CREATIVITY WITH
                 </h1>
                 <h1 id="hero-line2"
-                    class="font-poppins font-regular text-lg sm:text-2xl md:text-3xl 
-                text-[#000000] tracking-normal sm:tracking-[0.3em] leading-snug">
+                    class="font-poppins font-light text-2xl sm:text-3xl md:text-4xl text-[#000000] tracking-[0.3em] leading-snug">
+                    BUSINESS SENSE
                 </h1>
             </div>
 
             {{-- Lampu --}}
             <div class="flex justify-center relative mt-8 group">
                 <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
-                    class="w-auto h-auto max-w-[180px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[260px] relative z-10 transition-opacity duration-300 group-hover:opacity-0">
+                    class="w-auto h-auto max-w-[200px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[320px]
+                        relative z-10 transition-opacity duration-300 group-hover:opacity-0">
                 <img src="{{ asset('assets/img/lamphover.png') }}" alt="Lamp Hover"
-                    class="w-auto h-auto max-w-[180px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[260px] absolute z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    class="w-auto h-auto max-w-[200px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[320px]
+                        absolute z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             </div>
 
             {{-- Bottom Row --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 w-full items-start text-center md:text-left mt-6">
+
+                {{-- Left Column --}}
                 <div class="space-y-6">
                     <p class="text-gray-600 text-base sm:text-lg leading-relaxed max-w-md mx-auto md:mx-0">
                         {{ __('home/hero.description') }}
                     </p>
                     <button onclick="window.location='{{ route('about.index') }}'"
-                        class="bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700">
+                        class="px-6 py-3 text-white bg-[#333333] rounded-full font-semibold
+           transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-white hover:scale-105">
                         {{ __('home/hero.button') }}
                     </button>
-                </div>
-            </div>
 
+                </div>
+
+                {{-- Right Column: Animated Stats --}}
+                <div class="flex flex-col items-center md:items-end text-center md:text-right space-y-2 mt-10">
+                    <h2 id="stat-text"
+                        class="text-6xl sm:text-7xl md:text-8xl font-extrabold text-[#F97316]
+                           transition-all duration-700 opacity-100 transform translate-y-0">
+                        20+
+                    </h2>
+
+                    {{-- Wrapper tambahan agar teks rata kiri tanpa pindah posisi --}}
+                    <div class="text-left md:text-left">
+                        <p id="stat-sub"
+                            class="text-[#666666] text-base sm:text-lg md:text-xl font-medium
+                              transition-all duration-700 opacity-100 transform translate-y-0
+                              leading-snug">
+                            <strong>Years</strong> of Experience
+                        </p>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const stats = [{
+                    main: "20+",
+                    sub: "<strong>Years of Experience</strong>"
+                },
+                {
+                    main: "500+",
+                    sub: "<strong>Clients</strong>"
+                },
+                {
+                    main: "8/10",
+                    sub: "<strong>Clients return for new<br/>projects</strong>"
+                }
+            ];
+
+            let index = 0;
+            const mainText = document.getElementById("stat-text");
+            const subText = document.getElementById("stat-sub");
+
+            setInterval(() => {
+                mainText.classList.add("opacity-0", "-translate-y-5");
+                subText.classList.add("opacity-0", "translate-y-5");
+
+                setTimeout(() => {
+                    index = (index + 1) % stats.length;
+                    mainText.textContent = stats[index].main;
+                    subText.innerHTML = stats[index].sub;
+
+                    mainText.classList.remove("opacity-0", "-translate-y-5");
+                    subText.classList.remove("opacity-0", "translate-y-5");
+                }, 600);
+            }, 3500);
+        });
+    </script>
 
     {{-- Rotating Text Script --}}
     <script>
@@ -78,8 +139,9 @@
             class="w-full h-full bg-black bg-opacity-40 flex items-center justify-center text-center py-20 sm:py-24 md:py-32">
             <div class="text-white px-4 sm:px-6">
                 <h2
-                    class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-[0.2em] sm:tracking-[0.3em] uppercase leading-tight">
-                    Creativity is the bridge between culture and commerce
+                    class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-[0.3em] sm:tracking-[0.3em] uppercase leading-tight">
+                    “C R E A T I V I T Y &nbsp; I S &nbsp; T H E &nbsp; B R I D G E <br /> B E T W E E N &nbsp; C U L T U R
+                    E &nbsp; A N D <br /> C O M M E R C E“
                 </h2>
                 <p class="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base italic"> Communic 8</p>
             </div>
@@ -90,7 +152,8 @@
     <div class="relative">
 
         {{-- Section At a Glance --}}
-        <section class="relative bg-gray-100 pt-8 sm:pt-12 md:pt-16 pb-12 sm:pb-14 md:pb-16 z-10 overflow-visible">
+        <section
+            class="bg-white relative bg-white-100 pt-8 sm:pt-12 md:pt-16 pb-12 sm:pb-14 md:pb-16 z-10 overflow-visible">
             <div class="container max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative">
 
                 {{-- Mobile Layout --}}
@@ -98,27 +161,32 @@
                     {{-- Text Content First on Mobile --}}
                     <div class="text-center mb-8">
                         <h2
-                            class="text-sm sm:text-base text-gray-700 mb-0 sm:mb-0 leading-tight px-0 {{ app()->getLocale() == 'en' ? 'tracking-normal' : 'tracking-normal' }}">
-                            BEHIND THE BRAND
+                            class="font-poppins font-regular text-sm sm:text-2xl md:text-3xl 
+                        text-[#666666] tracking-normal sm:tracking-[0.6em] leading-snug mb-3 sm:mb-5 {{ app()->getLocale() == 'en' ? 'tracking-normal' : 'tracking-normal' }}">
+                            B E H I N D &nbsp; T H E &nbsp; B R A N D
                             {!! __('home/glance.title') !!}
                         </h2>
-                        <p class="text-gray-600 leading-relaxed text-sm sm:text-base px-2">
+                        <p class="text-[#666666] leading-relaxed text-sm sm:text-base px-2">
                             {{ __('home/glance.paragraph1') }}
                         </p>
-                        <p class="mt-3 sm:mt-4 text-gray-600 leading-relaxed text-sm sm:text-base px-2">
+                        <p class="mt-3 sm:mt-4 text-[#666666] leading-relaxed text-sm sm:text-base px-2">
                             {{ __('home/glance.paragraph2') }}
                         </p>
                     </div>
 
                     {{-- Images Stack for Mobile --}}
-                    <div class="flex justify-center space-x-2 sm:space-x-4">
-                        <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
-                            class="w-40 sm:w-48 h-44 sm:h-52 object-cover rounded-lg shadow-lg 
-                    grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                    <div class="flex justify-center space-x-8 sm:space-x-10">
+                        {{-- Gambar atas → tampil di bawah (lapisan bawah) --}}
+                        <div class="w-32 sm:w-40 h-36 sm:h-44 rounded-[32px] overflow-hidden shadow-2xl z-10 mt-0 sm:mt-0">
+                            <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 1"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                        </div>
 
-                        <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
-                            class="w-40 sm:w-48 h-44 sm:h-52 object-cover rounded-lg shadow-lg mt-6 sm:mt-8
-                    grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                        {{-- Gambar bawah → tampil di depan (lapisan luar) --}}
+                        <div class="w-32 sm:w-40 h-36 sm:h-44 rounded-[32px] overflow-hidden shadow-2xl mt-6 sm:mt-8 z-20">
+                            <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 2"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                        </div>
                     </div>
                 </div>
 
@@ -126,27 +194,32 @@
                 <div class="hidden md:grid grid-cols-2 gap-12 items-start">
                     {{-- Floating Images --}}
                     <div class="relative w-full h-full">
-                        {{-- Gambar atas digeser sedikit ke kiri dan ukurannya dikecilkan --}}
-                        <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
-                            class="absolute -top-32 -left-4 w-[24rem] sm:w-[26rem] md:w-[28rem] rounded-lg shadow-lg z-30 
-                    grayscale hover:grayscale-0 hover:saturate-150 transition duration-500 pointer-events-auto">
+                        {{-- Gambar atas secara posisi tapi lapisan bawah --}}
+                        <div
+                            class="absolute -top-28 -left-16 w-[20rem] sm:w-[21rem] md:w-[22rem] rounded-[40px] overflow-hidden shadow-2xl z-20 pointer-events-auto">
+                            <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                        </div>
 
-                        <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
-                            class="absolute top-20 left-12 w-[24rem] sm:w-[26rem] md:w-[28rem] rounded-lg shadow-lg z-20 
-                    grayscale hover:grayscale-0 hover:saturate-150 transition duration-500 pointer-events-auto">
+                        {{-- Gambar bawah secara posisi tapi lapisan luar (depan) --}}
+                        <div
+                            class="absolute top-32 left-36 w-[20rem] sm:w-[21rem] md:w-[22rem] rounded-[40px] overflow-hidden shadow-2xl z-30 pointer-events-auto">
+                            <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                        </div>
                     </div>
 
                     {{-- Text --}}
                     <div class="text-left flex flex-col justify-center">
                         <h2
-                            class="text-2xl sm:text-3xl md:text-4xl text-gray-700 mb-6 leading-tight
-                    {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}">
+                            class="text-2xl sm:text-3xl md:text-4xl text-[#666666] mb-6 leading-tight
+                        {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}">
                             {!! __('home/glance.title') !!}
                         </h2>
-                        <p class="text-gray-600 leading-relaxed break-words">
+                        <p class="text-[#666666] leading-relaxed break-words">
                             {{ __('home/glance.paragraph1') }}
                         </p>
-                        <p class="mt-4 text-gray-600 leading-relaxed break-words">
+                        <p class="mt-4 text-[#666666] leading-relaxed break-words">
                             {{ __('home/glance.paragraph2') }}
                         </p>
                     </div>
@@ -158,7 +231,7 @@
     </div>
 
     {{-- Section Values / Achievements --}}
-    <section class="bg-white-200 py-24 font-rubik">
+    <section class="bg-white py-24 font-rubik">
         <div class="container mx-auto px-4 sm:px-6 md:px-12">
 
             <br />
@@ -182,7 +255,7 @@
                     </div>
                     <div>
                         <div
-                            class="text-5xl sm:text-6xl md:text-7xl font-black text-orange-500 tracking-tight mt-3 md:mt-0">
+                            class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-orange-500 tracking-tight mt-3 md:mt-0">
                             {{ now()->year - 2005 }}+
                         </div>
                         <div class="text-gray-700 font-semibold text-sm sm:text-base">
@@ -242,12 +315,12 @@
             {{-- Title Section --}}
             <div class="text-center mb-16">
                 <h2
-                    class="text-2xl sm:text-3xl md:text-4xl text-gray-700 mb-2
-        {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}
-        leading-tight">
+                    class="text-2xl sm:text-3xl md:text-4xl text-[#666666] mb-2
+                {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}
+                leading-tight">
                     {!! __('home/what_we_do.title') !!}
                 </h2><br />
-                <p class="text-gray-500 text-base sm:text-lg md:text-xl">
+                <p class="text-[#666666] text-base sm:text-lg md:text-xl">
                     {!! __('home/what_we_do.subtitle') !!}
                 </p>
             </div>
@@ -276,12 +349,12 @@
                         <div class="flex flex-col items-center text-center w-full flex-1 pb-4">
                             <h3
                                 class="font-bold text-gray-700 mb-3 break-words px-1
-                    {{ app()->getLocale() == 'en' ? 'text-lg sm:text-xl' : 'text-base sm:text-lg' }}">
+                            {{ app()->getLocale() == 'en' ? 'text-lg sm:text-xl' : 'text-base sm:text-lg' }}">
                                 {{ $card['title'] }}
                             </h3>
                             <p
                                 class="text-gray-600 leading-relaxed px-1 mb-6 flex-1 break-words hyphens-auto
-                    {{ app()->getLocale() == 'en' ? 'text-sm' : 'text-xs sm:text-sm' }}">
+                            {{ app()->getLocale() == 'en' ? 'text-sm' : 'text-xs sm:text-sm' }}">
                                 {{ $card['desc'] }}
                             </p>
 
@@ -340,6 +413,7 @@
         </div>
     </section>
 
+
     {{-- Section Divider --}}
     <section
         class="relative bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center text-center
@@ -362,43 +436,52 @@
         </div>
     </section>
 
+    {{-- ============================= --}}
     {{-- Section TRUSTED BY --}}
+    {{-- ============================= --}}
     <section class="relative bg-white py-12 md:py-20">
         <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            {{-- ============================= --}}
-            {{-- 3 ROWS OF CLIENT LOGOS (SEMUA LOGO SAMA, TIDAK DIPISAH) --}}
-            {{-- ============================= --}}
             @for ($i = 1; $i <= 3; $i++)
-                <div class="relative mb-10 overflow-hidden">
+                <div class="relative mb-10">
+                    {{-- Slider container --}}
                     <div id="logos-row-{{ $i }}"
-                        class="flex gap-8 md:gap-12 items-center py-4 px-2 md:px-4 overflow-x-auto scrollbar-hide scroll-smooth">
+                        class="flex gap-8 md:gap-12 items-center py-4 px-2 md:px-4 overflow-x-auto scrollbar-hide scroll-smooth relative">
                         @foreach ($clients as $client)
-                            <div class="flex-shrink-0 flex justify-center items-center w-1/3 sm:w-1/4 md:w-[12%]">
+                            <div class="flex-shrink-0 flex justify-center items-center w-2/5 sm:w-1/3 md:w-[16%]">
                                 <img src="{{ asset('storage/' . $client->logo) }}" alt="{{ $client->company_name }}"
                                     class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
                             </div>
                         @endforeach
                     </div>
 
-                    {{-- Chevron kiri-kanan (abu terang elegan) --}}
+                    {{-- Tombol navigasi floating di luar slider --}}
                     <button id="prev-logos-{{ $i }}"
-                        class="absolute left-0 top-1/2 -translate-y-1/2 
-                           bg-[#B0B0B0] rounded-full p-2 hover:bg-[#9E9E9E] transition hidden md:flex z-10 border border-gray-300">
-                        <img src="{{ asset('assets/img/arrow-left.png') }}" class="w-6 h-6 invert" alt="Prev">
+                        class="absolute left-[-40px] top-1/2 -translate-y-1/2 p-2 flex items-center justify-center z-20">
+                        <img src="{{ asset('assets/img/blog-slider-left.png') }}" class="w-6 h-6 invert" alt="Prev">
                     </button>
+
                     <button id="next-logos-{{ $i }}"
-                        class="absolute right-0 top-1/2 -translate-y-1/2 
-                           bg-[#B0B0B0] rounded-full p-2 hover:bg-[#9E9E9E] transition hidden md:flex z-10 border border-gray-300">
-                        <img src="{{ asset('assets/img/arrow-right.png') }}" class="w-6 h-6 invert" alt="Next">
+                        class="absolute right-[-40px] top-1/2 -translate-y-1/2 p-2 flex items-center justify-center z-20">
+                        <img src="{{ asset('assets/img/blog-slider-right.png') }}" class="w-6 h-6 invert"
+                            alt="Next">
                     </button>
                 </div>
             @endfor
 
 
-            {{-- ============================= --}}
-            {{-- Projects Carousel --}}
-            {{-- ============================= --}}
+            <div class="relative w-full py-16">
+                <div class="container max-w-7xl mx-auto px-4 sm:px-6 text-center">
+                    <h2
+                        class="font-poppins font-light text-2xl sm:text-3xl md:text-4xl text-[#666666] tracking-[0.3em] leading-snug mb-3 sm:mb-5">
+                        I D E A S &nbsp; I N &nbsp; A C T I O N
+                    </h2>
+                    <p class="text-[#666666] text-base sm:text-lg md:text-base leading-relaxed max-w-2xl mx-auto">
+                        A showcase of campaigns, stories, and experiences that create real connections
+                    </p>
+                </div>
+            </div>
+
             @php
                 $projects = $trustedProjects->where('is_highlighted', false)->values();
             @endphp
@@ -407,30 +490,19 @@
                 <div class="swiper projects-swiper overflow-hidden relative">
                     <div class="swiper-wrapper">
                         @foreach ($projects as $project)
-                            <div class="swiper-slide border border-gray-200 rounded-2xl p-4 flex flex-col group">
-                                {{-- Nama Client & Project --}}
-                                <div class="flex justify-between items-center mb-2">
-                                    <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
-                                    @if ($project->project_url)
-                                        <a href="{{ $project->project_url }}" target="_blank" class="flex-shrink-0">
-                                            <img src="/assets/img/icon/iconlink.png" alt="External Link"
-                                                class="w-4 h-4 md:w-5 md:h-5">
-                                        </a>
-                                    @endif
-                                </div>
-                                <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
-
+                            <div class="swiper-slide relative group overflow-hidden rounded-2xl aspect-square p-2">
                                 {{-- Gambar Project --}}
-                                <div class="rounded-xl overflow-hidden relative">
-                                    <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
-                                        class="w-full object-cover">
-                                    <div
-                                        class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
-                                        <h3 class="text-sm md:text-base font-semibold mb-2">Ideas in Action</h3>
-                                        <p class="text-xs md:text-sm leading-snug">
-                                            A showcase of campaigns, stories, and experiences that create real connections
-                                        </p>
-                                    </div>
+                                <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
+                                    class="w-full h-full object-cover transition duration-500 group-hover:scale-105 rounded-2xl"
+                                    alt="{{ $project->name }}">
+
+                                {{-- Hover overlay --}}
+                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center rounded-2xl">
+                                    <h3 class="text-sm md:text-base font-semibold mb-2">{{ $project->name }}</h3>
+                                    <p class="text-xs md:text-sm leading-snug">
+                                        A showcase of campaigns, stories, and experiences that create real connections.
+                                    </p>
                                 </div>
                             </div>
                         @endforeach
@@ -439,12 +511,12 @@
 
                 {{-- Navigasi Carousel Project --}}
                 <button id="my-prev"
-                    class="hidden lg:block absolute left-[-50px] top-1/2 -translate-y-1/2 bg-[#B0B0B0] p-2 rounded-full hover:bg-[#9E9E9E] border border-gray-300 z-50 transition-all">
-                    <img src="{{ asset('assets/img/arrow-left.png') }}" class="w-10 h-10 invert" alt="Previous">
+                    class="hidden lg:flex absolute left-[-80px] top-1/2 -translate-y-1/2 p-2 flex items-center justify-center z-50">
+                    <img src="{{ asset('assets/img/blog-slider-left.png') }}" class="w-10 h-10 invert" alt="Previous">
                 </button>
                 <button id="my-next"
-                    class="hidden lg:block absolute right-[-50px] top-1/2 -translate-y-1/2 bg-[#B0B0B0] p-2 rounded-full hover:bg-[#9E9E9E] border border-gray-300 z-50 transition-all">
-                    <img src="{{ asset('assets/img/arrow-right.png') }}" class="w-10 h-10 invert" alt="Next">
+                    class="hidden lg:flex absolute right-[-80px] top-1/2 -translate-y-1/2 p-2 flex items-center justify-center z-50">
+                    <img src="{{ asset('assets/img/blog-slider-right.png') }}" class="w-10 h-10 invert" alt="Next">
                 </button>
 
                 <div class="swiper-pagination lg:hidden mt-6"></div>
@@ -454,7 +526,7 @@
             <div class="text-center mt-10">
                 <a href="{{ route('portofolio.index') }}"
                     class="inline-block px-8 py-3 text-sm md:text-base font-semibold text-white bg-black rounded-full
-                   transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-black hover:scale-105">
+           transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-black hover:scale-105">
                     Explore More
                 </a>
             </div>
@@ -462,9 +534,6 @@
         </div>
     </section>
 
-    {{-- ============================= --}}
-    {{-- JavaScript untuk Scroll Tiap Baris --}}
-    {{-- ============================= --}}
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Untuk setiap baris logo (ada 3)
@@ -531,14 +600,11 @@
         document.getElementById('my-next').addEventListener('click', () => swiper.slideNext());
     </script>
 
-    <section class="w-full bg-gray-100 relative min-h-[520px] flex items-center justify-center">
-        <!-- Overlay gelap -->
-        <div class="absolute inset-0 bg-black/30 z-[5] pointer-events-none"></div>
-
+    <section class="w-full bg-white relative min-h-[520px] flex items-center justify-center">
         <!-- Tombol kiri (di luar container) -->
         <button id="prev"
             class="absolute left-[2cm] top-1/2 -translate-y-1/2 z-30 w-14 h-14 flex items-center justify-center">
-            <img src="{{ asset('assets/img/arrow-left.png') }}" alt="Prev"
+            <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Prev"
                 class="w-12 h-12 opacity-80 hover:opacity-100">
         </button>
 
@@ -604,10 +670,31 @@
         <!-- Tombol kanan (di luar container) -->
         <button id="next"
             class="absolute right-[2cm] top-1/2 -translate-y-1/2 z-30 w-14 h-14 flex items-center justify-center">
-            <img src="{{ asset('assets/img/arrow-right.png') }}" alt="Next"
+            <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next"
                 class="w-12 h-12 opacity-80 hover:opacity-100">
         </button>
     </section>
+
+    {{-- Optional: Slider JS --}}
+    <script>
+        // Contoh simple slider
+        const container = document.getElementById('testimonial-container');
+        const prev = document.getElementById('prev');
+        const next = document.getElementById('next');
+        let index = 0;
+
+        const total = container.children.length;
+
+        prev.addEventListener('click', () => {
+            index = (index - 1 + total) % total;
+            container.style.transform = `translateX(-${index * 100}%)`;
+        });
+
+        next.addEventListener('click', () => {
+            index = (index + 1) % total;
+            container.style.transform = `translateX(-${index * 100}%)`;
+        });
+    </script>
 
     <script>
         const container = document.getElementById('testimonial-container');
@@ -684,7 +771,7 @@
                     {{ __('home/cta.description') }}
                 </p>
                 <a href="{{ route('contact.index') }}"
-                    class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
+                    class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-white-200 transition">
                     {{ __('home/cta.button') }}
                 </a>
             </div>
@@ -712,8 +799,8 @@
                     <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
                         <p class="text-sm text-gray-500">{{ $blog->category }}</p>
                         <a href="{{ route('insight.show', $blog->slug) }}" class="block">
-                            <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
-                                {{ $blog->title }}
+                            <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
+                                <strong>{{ $blog->title }}</strong>
                             </h3>
                         </a>
                         @if ($blog->headline_img)

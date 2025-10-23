@@ -31,20 +31,18 @@
 
     </section>
 
-
     {{-- Landing Page Frontend --}}
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
             {{-- Text Section --}}
-            <div class="space-y-6 font-rubik">
-                <h3 class="text-lg md:text-xl font-semibold text-gray-900">The Media Landscape Has Changed. Has Your
-                    Strategy?</h3>
-                <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+            <div class="space-y-6 font-rubik text-[#666666]">
+                <h3 class="text-lg md:text-xl font-semibold">The Media Landscape Has Changed. Has Your Strategy?</h3>
+                <p class="text-base md:text-lg leading-relaxed">
                     Viewers now curate their own entertainment, consuming over 3.5 billion hours of OTT content every month
                     across Southeast Asia.
                 </p>
-                <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                <p class="text-base md:text-lg leading-relaxed">
                     A majority now prefer streaming services to watch their favorite shows. This isn’t just a trend, it’s a
                     fundamental shift in media behavior. To win in this new era, your brand must be present and relevant in
                     the streaming world.
@@ -80,20 +78,20 @@
             </div>
 
             {{-- Text Section --}}
-            <div class="space-y-6 font-rubik order-1 lg:order-2">
-                <h3 class="text-lg md:text-xl font-semibold text-gray-900">Our OTT Advertising Solutions</h3>
-                <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+            <div class="space-y-6 font-rubik text-[#666666] order-1 lg:order-2">
+                <h3 class="text-lg md:text-xl font-semibold">Our OTT Advertising Solutions</h3>
+                <p class="text-base md:text-lg leading-relaxed">
                     The media landscape has fundamentally shifted. Audiences have moved from traditional broadcast
-                    television to on-demand streaming services, creating a powerful new arena for brands to make a
-                    meaningful impact. Over-the-Top (OTT) advertising allows you to connect with these highly engaged
-                    viewers directly on their favorite platforms, placing your brand message in a premium, non-skippable
-                    environment.
+                    television
+                    to on-demand streaming services, creating a powerful new arena for brands to make a meaningful impact.
+                    Over-the-Top (OTT) advertising allows you to connect with these highly engaged viewers directly on their
+                    favorite platforms, placing your brand message in a premium, non-skippable environment.
                 </p>
-                <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                <p class="text-base md:text-lg leading-relaxed">
                     Unlike traditional advertising, OTT provides unparalleled precision. We can reach specific households
                     based on their interests, viewing habits, and demographics, ensuring your message is not only seen but
-                    is also relevant. From the biggest screen in the living room to the mobile devices they carry
-                    everywhere, our solutions are designed to capture attention where it matters most.
+                    also relevant. From the biggest screen in the living room to the mobile devices they carry everywhere,
+                    our solutions are designed to capture attention where it matters most.
                 </p>
             </div>
 
@@ -101,20 +99,18 @@
     </section>
 
     {{-- Section 3 --}}
-    <section class="py-20 bg-white font-rubik">
+    <section class="py-20 bg-white font-rubik text-[#666666]">
         <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 text-center">
 
-            {{-- Top Icons (Horizontal Layout) --}}
+            {{-- Top Icons --}}
             <div class="flex flex-wrap justify-center gap-10 mb-12">
                 <div class="flex items-start space-x-3 max-w-xs text-left">
                     <div class="w-10 h-10 flex items-center justify-center rounded bg-red-300 flex-shrink-0">
                         <i class="fas fa-tv text-white text-lg"></i>
                     </div>
                     <div>
-                        <p class="font-semibold text-gray-800">Connected TV</p>
-                        <p class="text-sm text-gray-600 leading-snug">
-                            The premium, high impact living room experience.
-                        </p>
+                        <p class="font-semibold">Connected TV</p>
+                        <p class="text-sm leading-snug">The premium, high impact living room experience.</p>
                     </div>
                 </div>
 
@@ -123,10 +119,8 @@
                         <i class="fas fa-mobile-alt text-white text-lg"></i>
                     </div>
                     <div>
-                        <p class="font-semibold text-gray-800">Mobile & Tablet</p>
-                        <p class="text-sm text-gray-600 leading-snug">
-                            Reach viewers on the go.
-                        </p>
+                        <p class="font-semibold">Mobile & Tablet</p>
+                        <p class="text-sm leading-snug">Reach viewers on the go.</p>
                     </div>
                 </div>
 
@@ -135,10 +129,8 @@
                         <i class="fas fa-desktop text-white text-lg"></i>
                     </div>
                     <div>
-                        <p class="font-semibold text-gray-800">Desktop & Web</p>
-                        <p class="text-sm text-gray-600 leading-snug">
-                            Engage audiences wherever they work and play.
-                        </p>
+                        <p class="font-semibold">Desktop & Web</p>
+                        <p class="text-sm leading-snug">Engage audiences wherever they work and play.</p>
                     </div>
                 </div>
             </div>
@@ -154,9 +146,16 @@
             </div>
 
             {{-- Title --}}
-            <h3 class="tracking-widest text-gray-800 font-semibold mb-10 uppercase">
-                Engineered For<br>Measurable Results
-            </h3>
+            <div class="text-center mb-10">
+                <h3
+                    class="text-2xl sm:text-3xl md:text-4xl text-[#666666] font-poppins font-normal mb-2
+                {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}
+                leading-tight uppercase">
+                    E N G I N E E R E D &nbsp; F O R<br>M E A S U R A B L E &nbsp; R E S U L T S
+                </h3>
+            </div>
+
+            <br />
 
             {{-- Three Images / Features --}}
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 text-left">
@@ -167,9 +166,8 @@
                     @else
                         <div class="w-full h-56 bg-red-300 rounded-xl"></div>
                     @endif
-                    <h3 class="text-xl font-semibold text-black mb-4">{{ $landing->title_text1 ?? 'High Impact Formats' }}
-                    </h3>
-                    <p class="text-gray-700 font-rubik leading-relaxed">
+                    <h3 class="text-xl font-semibold mb-4">{{ $landing->title_text1 ?? 'High Impact Formats' }}</h3>
+                    <p class="leading-relaxed">
                         {{ $landing->description1 ?? 'Capture attention with unskippable, full screen video ads and interactive formats that invite viewer engagement.' }}
                     </p>
                 </div>
@@ -181,9 +179,9 @@
                     @else
                         <div class="w-full h-56 bg-red-300 rounded-xl"></div>
                     @endif
-                    <h3 class="text-xl font-semibold text-black mb-4">
+                    <h3 class="text-xl font-semibold mb-4">
                         {{ $landing->title_text2 ?? 'Multi Device Retargeting' }}</h3>
-                    <p class="text-gray-700 font-rubik leading-relaxed">
+                    <p class="leading-relaxed">
                         {{ $landing->description2 ?? 'Engage a viewer on their Smart TV and follow up with a personalized ad on their mobile device to drive action.' }}
                     </p>
                 </div>
@@ -195,25 +193,30 @@
                     @else
                         <div class="w-full h-56 bg-red-300 rounded-xl"></div>
                     @endif
-                    <h3 class="text-xl font-semibold text-black mb-4">
+                    <h3 class="text-xl font-semibold mb-4">
                         {{ $landing->title_text3 ?? 'Advanced Audience Targeting' }}</h3>
-                    <p class="text-gray-700 font-rubik leading-relaxed">
+                    <p class="leading-relaxed">
                         {{ $landing->description3 ?? 'Move beyond basic demographics with over 78 distinct data segments to find your perfect audience.' }}
                     </p>
                 </div>
             </div>
 
             {{-- Footer Text --}}
-            <h4 class="tracking-widest text-gray-800 font-semibold mb-4 uppercase">
-                Ready To Dominate In<br>This New Era?
-            </h4>
-            <p class="text-gray-600 text-base">
+            <div class="text-center mb-4">
+                <h4
+                    class="text-2xl sm:text-3xl md:text-4xl text-[#666666] font-poppins font-normal
+                {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}
+                leading-tight uppercase">
+                    Ready To Dominate In<br>This New Era?
+                </h4>
+            </div>
+
+            <p class="text-base text-[#666666]">
                 Let’s build a strategy that places your brand on the screens that matter most.
             </p>
 
         </div>
     </section>
-
     {{-- Services Grid Section with Proper Spacing --}}
     {{-- <section class="w-full py-8 bg-white relative z-10">
         <div class="max-w-6xl mx-auto px-4 text-center">
@@ -337,7 +340,7 @@
                     {{ __('home/cta.description') }}
                 </p>
                 <a href="{{ route('contact.index') }}"
-                    class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
+                    class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-white-200 transition">
                     {{ __('home/cta.button') }}
                 </a>
             </div>
@@ -360,7 +363,6 @@
                 </p>
             </div>
 
-
             <!-- Wrapper for Desktop (with arrows) -->
             <div class="hidden sm:flex items-center space-x-6">
                 <!-- Prev Button -->
@@ -376,9 +378,8 @@
                             class="snap-center min-w-[280px] sm:min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
                             <p class="text-sm text-gray-500">{{ $blog->category }}</p>
                             <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
-                                <h3
-                                    class="text-base sm:text-lg font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[72px] mb-4">
-                                    {{ $blog->title }}
+                                <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
+                                    <strong>{{ $blog->title }}</strong>
                                 </h3>
                             </a>
                             @if ($blog->headline_img)

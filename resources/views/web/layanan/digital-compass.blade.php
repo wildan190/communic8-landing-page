@@ -1,90 +1,96 @@
 @extends('layouts.web')
 
 @section('content')
-{{-- Hero Section --}}
-<section class="relative w-full h-[80vh] flex items-end bg-cover bg-center"
-    style="background-image: url('{{ asset('assets/img/digicompass.png') }}')">
+    {{-- Hero Section --}}
+    <section class="relative w-full h-[80vh] flex items-end bg-cover bg-center"
+        style="background-image: url('{{ asset('assets/img/digicompass.png') }}')">
 
-    <div class="w-full pb-20">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 flex justify-start">
-            <div class="max-w-xl text-left">
-                <h1 class="text-4xl md:text-5xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
-                    D I G I T A L <br> S T A N D
-                </h1>
-                <h2 class="mt-6 text-lg md:text-xl font-bold font-rubik text-black">
-                    Amplify Your Reach, Accelerate Your Growth
-                </h2>
-                <p class="mt-4 text-gray-700 text-base md:text-lg font-rubik leading-relaxed max-w-md">
-                    Communic 8 delivers targeted digital marketing that cuts through the noise.
-                    We guide your brand to effectively reach and engage your audience across Asia,
-                    transforming digital complexity into measurable results.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-{{-- Explanation + Gallery Section --}}
-<section class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
-        {{-- Grid 2 kolom: text + gambar lebih besar --}}
-        <div class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr] gap-20 items-stretch">
-
-            {{-- 📝 Text Section (kiri) --}}
-            <div class="text-gray-800 font-rubik leading-relaxed space-y-6 flex flex-col justify-between">
-                <div>
-                    <p>
-                        In the digital era, visibility alone is not enough — brands need precision, performance, and adaptability.
-                        That’s where Communic 8 comes in. Our digital marketing solutions are designed to not only put your brand
-                        in front of the right audiences, but also to ensure every interaction delivers measurable value.
-                    </p>
-
-                    <p class="font-semibold text-lg mt-4">We provide a full suite of services, including:</p>
-                    <ul class="list-disc list-inside space-y-2">
-                        <li>Website & Landing Page Optimization – turning visits into conversions.</li>
-                        <li>Ads Performance Optimization (PPC & Paid Social) – maximizing every ad dollar.</li>
-                        <li>Content & SEO Optimization – making your brand discoverable and relevant.</li>
-                        <li>Automation & Tooling – ensuring efficiency and scalability.</li>
-                        <li>Social Media Optimization & Retargeting – engaging the right audience at the right time.</li>
-                        <li>Campaign Real-Time Monitoring & Adjustment – keeping strategies agile and performance-driven.</li>
-                    </ul>
-
-                    <p>
-                        The goal is clear: to help brands achieve sustainable growth through data-driven, ROI-focused digital
-                        strategies. For us, the best digital marketing is not about doing more, but about doing what works —
-                        combining creative storytelling, smart targeting, and continuous optimization to deliver impact that lasts.
-                    </p>
-
-                    <p>
-                        With Communic 8, digital marketing isn’t just about reach — it’s about results that matter.
+        <div class="w-full pb-20">
+            <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 flex justify-start">
+                <div class="max-w-xl text-left">
+                    <h1 class="text-4xl md:text-5xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
+                        D I G I T A L <br> S T A N D
+                    </h1>
+                    <h2 class="mt-6 text-lg md:text-xl font-bold font-rubik text-black">
+                        Amplify Your Reach, Accelerate Your Growth
+                    </h2>
+                    <p class="mt-4 text-gray-700 text-base md:text-lg font-rubik leading-relaxed max-w-md">
+                        Communic 8 delivers targeted digital marketing that cuts through the noise.
+                        We guide your brand to effectively reach and engage your audience across Asia,
+                        transforming digital complexity into measurable results.
                     </p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            {{-- 🖼️ Gallery Section (kanan) --}}
-            <div class="flex justify-center md:justify-end">
-                <div class="w-full relative max-w-none">
-                    {{-- Wrapper persegi --}}
-                    <div class="w-full relative" style="padding-top:100%; border-radius:1rem; overflow:hidden; background-color:#EE9A96;">
-                        @if ($digitalCompassContent && $digitalCompassContent->head_img)
-                            <img src="{{ Storage::url($digitalCompassContent->head_img) }}" 
-                                 alt="Gallery"
-                                 class="absolute top-0 left-0 w-full h-full object-cover">
-                        @else
-                            <img src="{{ asset('assets/img/gallery1.png') }}" 
-                                 alt="Gallery"
-                                 class="absolute top-0 left-0 w-full h-full object-cover opacity-0">
-                        @endif
+    {{-- Explanation + Gallery Section --}}
+    <section class="py-24 bg-white text-[#666666]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
+            {{-- Grid 2 kolom: text + gambar --}}
+            <div class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr] gap-20 items-stretch">
+
+                {{-- 📝 Text Section (kiri) --}}
+                <div class="font-rubik leading-relaxed space-y-6 flex flex-col justify-between">
+                    <div>
+                        <p>
+                            In the digital era, visibility alone is not enough — brands need precision, performance, and
+                            adaptability.
+                            That’s where Communic 8 comes in. Our digital marketing solutions are designed to not only put
+                            your brand
+                            in front of the right audiences, but also to ensure every interaction delivers measurable value.
+                        </p>
+
+                        <p class="font-semibold text-lg mt-4">We provide a full suite of services, including:</p>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Website & Landing Page Optimization – turning visits into conversions.</li>
+                            <li>Ads Performance Optimization (PPC & Paid Social) – maximizing every ad dollar.</li>
+                            <li>Content & SEO Optimization – making your brand discoverable and relevant.</li>
+                            <li>Automation & Tooling – ensuring efficiency and scalability.</li>
+                            <li>Social Media Optimization & Retargeting – engaging the right audience at the right time.
+                            </li>
+                            <li>Campaign Real-Time Monitoring & Adjustment – keeping strategies agile and
+                                performance-driven.</li>
+                        </ul>
+
+                        <p>
+                            The goal is clear: to help brands achieve sustainable growth through data-driven, ROI-focused
+                            digital
+                            strategies. For us, the best digital marketing is not about doing more, but about doing what
+                            works —
+                            combining creative storytelling, smart targeting, and continuous optimization to deliver impact
+                            that lasts.
+                        </p>
+
+                        <p>
+                            With Communic 8, digital marketing isn’t just about reach — it’s about results that matter.
+                        </p>
                     </div>
                 </div>
-            </div>
 
+                {{-- 🖼️ Gallery Section (kanan) --}}
+                <div class="flex justify-center md:justify-end">
+                    <div class="w-full relative max-w-none">
+                        {{-- Wrapper persegi --}}
+                        <div class="w-full relative"
+                            style="padding-top:100%; border-radius:1rem; overflow:hidden; background-color:#EE9A96;">
+                            @if ($digitalCompassContent && $digitalCompassContent->head_img)
+                                <img src="{{ Storage::url($digitalCompassContent->head_img) }}" alt="Gallery"
+                                    class="absolute top-0 left-0 w-full h-full object-cover">
+                            @else
+                                <img src="{{ asset('assets/img/gallery1.png') }}" alt="Gallery"
+                                    class="absolute top-0 left-0 w-full h-full object-cover opacity-0">
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     {{-- Section 1 --}}
-    <section class="w-full py-20 bg-white">
+    <section class="w-full py-20 bg-white text-[#666666]">
         <div class="max-w-7xl mx-auto px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
             {{-- Left Image --}}
@@ -107,7 +113,7 @@
                     @endphp
 
                     <div>
-                        <h3 class="text-lg font-semibold text-gray-900">
+                        <h3 class="text-lg font-semibold text-[#666666]">
                             {{ $title ??
                                 match ($i) {
                                     1 => 'REACH',
@@ -116,7 +122,7 @@
                                     4 => 'ENGAGE',
                                 } }}
                         </h3>
-                        <p class="text-gray-600 text-base leading-relaxed">
+                        <p class="text-[#666666] text-base leading-relaxed">
                             {{ $value ??
                                 match ($i) {
                                     1
@@ -131,11 +137,12 @@
             </div>
         </div>
     </section>
+
     {{-- Section 2: Digital Stand (Horizontal Scroll Grid Style) --}}
-    <section class="w-full py-8 bg-white">
+    <section class="w-full py-8 bg-white text-[#666666]">
         <div class="max-w-6xl mx-auto px-4">
             {{-- Judul --}}
-            <h2 class="text-center text-xl font-semibold text-gray-900 font-rubik mb-6">
+            <h2 class="text-center text-xl font-semibold font-rubik mb-6">
                 Digital Stand Services
             </h2>
 
@@ -147,47 +154,36 @@
             @endphp
 
             <div class="relative mt-6">
+                {{-- Slider --}}
                 <div id="digital-stand-slider"
                     class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
 
                     @forelse ($digitalCompassSubservices as $subservice)
-                        <div class="snap-start border border-gray-200 rounded-2xl p-4 flex flex-col relative group"
+                        <div class="snap-start relative group overflow-hidden rounded-2xl"
                             style="flex: 0 0 calc(33.333% - 1rem); min-width: 260px;">
 
-                            {{-- Nama Subservice --}}
-                            <h3 class="font-semibold text-gray-700 mb-3 text-sm md:text-base">
-                                {{ $subservice->name }}
-                            </h3>
+                            {{-- Image --}}
+                            <img src="{{ $subservice->picture_upload ? asset('storage/' . $subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
+                                alt="{{ $subservice->name }}"
+                                class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-105">
 
-                            {{-- Gambar --}}
-                            <div class="rounded-xl overflow-hidden relative">
-                                <img src="{{ $subservice->picture_upload
-                                    ? asset('storage/' . $subservice->picture_upload)
-                                    : asset('assets/img/dummy/dummy1.png') }}"
-                                    alt="{{ $subservice->name }}"
-                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-
-                                {{-- Overlay Detail --}}
-                                <div
-                                    class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
-                                    <h3 class="text-sm md:text-base font-semibold mb-2">{{ $subservice->name }}</h3>
-                                    @if ($subservice->description)
-                                        <p class="text-xs md:text-sm leading-snug">
-                                            {{ Str::limit($subservice->description, 120) }}
-                                        </p>
-                                    @else
-                                        <p class="text-xs md:text-sm italic opacity-80">
-                                            No additional details available.
-                                        </p>
-                                    @endif
-                                </div>
+                            {{-- Hover overlay --}}
+                            <div
+                                class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center rounded-2xl">
+                                <h3 class="text-sm md:text-base font-semibold mb-2">{{ $subservice->name }}</h3>
+                                @if ($subservice->description)
+                                    <p class="text-xs md:text-sm leading-snug">
+                                        {{ Str::limit($subservice->description, 120) }}
+                                    </p>
+                                @else
+                                    <p class="text-xs md:text-sm italic opacity-80">
+                                        No additional details available.
+                                    </p>
+                                @endif
                             </div>
-
-                            {{-- Nama bawah gambar --}}
-                            <p class="mt-2 text-gray-700 font-rubik text-xs">{{ $subservice->name }}</p>
                         </div>
                     @empty
-                        <p class="text-center text-gray-500 w-full">
+                        <p class="text-center w-full">
                             No Digital Stand subservices found.
                         </p>
                     @endforelse
@@ -195,18 +191,15 @@
 
                 {{-- Tombol Navigasi --}}
                 <button id="prevDigitalStand"
-                    class="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
+                    class="absolute -left-20 top-1/2 -translate-y-1/2 z-20 hidden md:flex hover:scale-110 transition">
+                    <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Previous"
+                        class="w-8 h-8 object-contain">
                 </button>
+
                 <button id="nextDigitalStand"
-                    class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
+                    class="absolute -right-20 top-1/2 -translate-y-1/2 z-20 hidden md:flex hover:scale-110 transition">
+                    <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next"
+                        class="w-8 h-8 object-contain">
                 </button>
             </div>
         </div>
@@ -276,7 +269,7 @@
                     {{ __('home/cta.description') }}
                 </p>
                 <a href="{{ route('contact.index') }}"
-                    class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
+                    class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-white-200 transition">
                     {{ __('home/cta.button') }}
                 </a>
             </div>
@@ -299,7 +292,6 @@
                 </p>
             </div>
 
-
             <!-- Wrapper for Desktop (with arrows) -->
             <div class="hidden sm:flex items-center space-x-6">
                 <!-- Prev Button -->
@@ -315,9 +307,8 @@
                             class="snap-center min-w-[280px] sm:min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
                             <p class="text-sm text-gray-500">{{ $blog->category }}</p>
                             <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
-                                <h3
-                                    class="text-base sm:text-lg font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[72px] mb-4">
-                                    {{ $blog->title }}
+                                <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
+                                    <strong>{{ $blog->title }}</strong>
                                 </h3>
                             </a>
                             @if ($blog->headline_img)
