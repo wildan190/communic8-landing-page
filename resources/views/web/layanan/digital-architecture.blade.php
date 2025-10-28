@@ -88,7 +88,7 @@
     @if ($digitalArchitectureContent)
         <section class="w-full bg-white py-16">
             <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 text-center text-[#666666]">
-                <p class="text-base md:text-base font-rubik max-w-5xl mx-auto font-semibold">
+                {{-- <p class="text-base md:text-base font-rubik max-w-5xl mx-auto font-semibold">
                     Strategic Placement for Maximum Impact
                 </p>
                 <br>
@@ -96,7 +96,7 @@
                     We bring the same strategic thinking and creative spirit to the real world that define our digital work.
                     Our approach and methodology to media placement is designed to ensure your brand connects with the right
                     audience in the right place.
-                </p>
+                </p> --}}
 
                 <div class="mt-12 flex justify-center">
                     <div class="w-full max-w-6xl rounded-2xl overflow-hidden">
@@ -113,6 +113,15 @@
         </section>
     @endif
 
+    <div class="text-center py-16 bg-white text-[#666666]">
+        <p class="text-base md:text-base font-rubik max-w-5xl mx-auto">
+            Digital Development is more than writing codes. It’s about constructing robust digital solutions that serve your business objective and power your digital transformation. 
+        </p>
+        <br>
+        <p class="text-base md:text-base font-rubik max-w-5xl mx-auto">
+            With collaborative and forward-thinking approach, every development is build with strategic intent.
+        </p>
+    </div>
     {{-- Section 1 --}}
     <section class="w-full py-20 bg-white">
         <div

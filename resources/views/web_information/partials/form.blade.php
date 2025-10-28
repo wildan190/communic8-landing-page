@@ -41,7 +41,7 @@
 
     <div>
         <label class="block text-gray-700 dark:text-gray-300 mb-1">
-            <i class="fa-brands fa-tiktok mr-1 text-gray-800 dark:text-gray-100"></i> TikTok
+            <i class="fa-brands fa-tiktok mr-1 text-gray-800 dark:text-gray-100"></i> Linkedin
         </label>
         <input type="url" name="tiktok" value="{{ old('tiktok', $webInformation->tiktok ?? '') }}"
                class="w-full rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500">
