@@ -9,6 +9,7 @@ use App\Models\BranchOffice;
 use App\Models\Client;
 use App\Models\Project;
 use App\Models\Testimoni;
+use App\Models\CardServices;
 use App\Models\WebInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -30,6 +31,7 @@ class HomeController extends Controller
 
         $webInformation = WebInformation::first();
         $branchOffices = BranchOffice::all();
+        $card_services = CardServices::orderBy('id')->get();
 
         $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
 
@@ -62,6 +64,6 @@ class HomeController extends Controller
             // log error jika mau
         }
 
-        return view('web.home.index', compact('blogs', 'categories', 'category', 'sliderBlogs', 'webInformation', 'branchOffices', 'insightCategories', 'trustedProjects', 'clients', 'testimonis', 'instagramPosts', 'abouts'));
+        return view('web.home.index', compact('blogs', 'categories', 'category', 'sliderBlogs', 'webInformation', 'branchOffices', 'insightCategories', 'trustedProjects', 'clients', 'testimonis', 'instagramPosts', 'abouts', 'card_services'));
     }
 }

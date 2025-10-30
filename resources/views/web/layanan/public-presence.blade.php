@@ -112,17 +112,13 @@
     </section>
 
     {{-- Services Grid Section: Public Presence --}}
-    <section class="w-full py-8 bg-white">
-        <div class="max-w-7xl mx-auto px-6 md:px-20 text-center">
+    <section class="w-full py-8 bg-white text-[#666666]">
+        <div class="max-w-7xl mx-auto px-6 md:px-20 text-center relative">
 
-            {{-- Top description --}}
-            <p class="text-gray-700 font-rubik text-sm leading-snug max-w-4xl mx-auto">
-                Communic 8's Brand Development service shapes every facet of your identity from foundational research to
-                brand design and activation.
-            </p>
-            <p class="mt-1 font-rubik font-semibold text-gray-900 text-sm">
-                Let us help you build a resilient brand that will stand through the test of time.
-            </p>
+            {{-- Title --}}
+            <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
+                OUR SERVICES
+            </h2>
 
             @php
                 $publicPresenceSubservices = \App\Models\SubService::with('service')
@@ -183,6 +179,8 @@
         </div>
     </section>
 
+    <br />
+    
     <script>
         // Public Presence Horizontal Scroll
         const ppSlider = document.getElementById('public-presence-slider');

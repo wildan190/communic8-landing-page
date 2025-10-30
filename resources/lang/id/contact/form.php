@@ -10,9 +10,9 @@ return [
     'phone_placeholder' => '812-3456-7890',
     'company_placeholder' => 'Nama perusahaan Anda...',
     'email_placeholder' => 'email.anda@domain.com',
-    'industry_placeholder' => '(Industri...)',
-    'service_placeholder' => '(Layanan yang Anda minati...)',
-    'find_us_placeholder' => '(Bagaimana Anda menemukan kami...)',
+    'industry_placeholder' => 'Industri...',
+    'service_placeholder' => 'Layanan yang Anda minati...',
+    'find_us_placeholder' => 'Bagaimana Anda menemukan kami...',
     'message_placeholder' => 'Ceritakan apa yang Anda butuhkan...',
 
     // Select options

@@ -11,9 +11,9 @@ Bring your project, we’ll bring you ideas and creativity.',
     'phone_placeholder' => '812-3456-7890',
     'company_placeholder' => 'Your company’s name...',
     'email_placeholder' => 'your.email@domain.com',
-    'industry_placeholder' => '(Industry...)',
-    'service_placeholder' => '(Which services interest you...)',
-    'find_us_placeholder' => '(How did you find us...)',
+    'industry_placeholder' => 'Industry...',
+    'service_placeholder' => 'Which services interest you...',
+    'find_us_placeholder' => 'How did you find us...',
     'message_placeholder' => 'Tell us what you need...',
 
     // Select options

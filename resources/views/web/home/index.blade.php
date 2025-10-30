@@ -23,10 +23,10 @@
             <div class="flex justify-center relative mt-8 group">
                 <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
                     class="w-auto h-auto max-w-[200px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[320px]
-                        relative z-10 transition-opacity duration-300 group-hover:opacity-0">
+                    relative z-10 transition-opacity duration-300 group-hover:opacity-0">
                 <img src="{{ asset('assets/img/lamphover.png') }}" alt="Lamp Hover"
                     class="w-auto h-auto max-w-[200px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[320px]
-                        absolute z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    absolute z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             </div>
 
             {{-- Bottom Row --}}
@@ -39,26 +39,23 @@
                     </p>
                     <button onclick="window.location='{{ route('about.index') }}'"
                         class="px-6 py-3 text-white bg-[#333333] rounded-full font-semibold
-           transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-white hover:scale-105">
+       transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-white hover:scale-105">
                         {{ __('home/hero.button') }}
                     </button>
-
                 </div>
 
                 {{-- Right Column: Animated Stats --}}
-                <div class="flex flex-col items-center md:items-end text-center md:text-right space-y-2 mt-10">
+                <div
+                    class="flex flex-col items-center md:items-end text-center md:text-right space-y-2 mt-10 overflow-hidden">
                     <h2 id="stat-text"
                         class="text-6xl sm:text-7xl md:text-8xl font-extrabold text-[#F97316]
-                           transition-all duration-700 opacity-100 transform translate-y-0">
+                       transition-transform duration-700 ease-out">
                         20+
                     </h2>
 
-                    {{-- Wrapper tambahan agar teks rata kiri tanpa pindah posisi --}}
                     <div class="text-left md:text-left">
                         <p id="stat-sub"
-                            class="text-[#666666] text-base sm:text-lg md:text-xl font-medium
-                              transition-all duration-700 opacity-100 transform translate-y-0
-                              leading-snug">
+                            class="text-[#666666] text-base sm:text-lg md:text-xl font-medium leading-snug transition-opacity duration-700">
                             <strong>Years</strong> of Experience
                         </p>
                     </div>
@@ -72,7 +69,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const stats = [{
                     main: "20+",
-                    sub: "<strong>Years of Experience</strong>"
+                    sub: "<strong>Years</strong> of Experience"
                 },
                 {
                     main: "500+",
@@ -84,23 +81,41 @@
                 }
             ];
 
-            let index = 0;
             const mainText = document.getElementById("stat-text");
             const subText = document.getElementById("stat-sub");
+            let index = 0;
+            let spinning = false;
+
+            function slotEffect(newVal, newSub) {
+                if (spinning) return;
+                spinning = true;
+
+                // Buat efek slot: angka berputar cepat beberapa kali
+                let spins = 0;
+                const spinInterval = setInterval(() => {
+                    mainText.textContent = Math.floor(Math.random() * 999);
+                    spins++;
+                    if (spins > 10) { // cepat saja, total ±0.8 detik
+                        clearInterval(spinInterval);
+                        mainText.textContent = newVal;
+                        subText.innerHTML = newSub;
+                        spinning = false;
+                    }
+                }, 60);
+
+                // Sedikit animasi naik-turun seperti slot berhenti
+                mainText.style.transform = "translateY(-20px)";
+                subText.style.opacity = 0;
+                setTimeout(() => {
+                    mainText.style.transform = "translateY(0)";
+                    subText.style.opacity = 1;
+                }, 500);
+            }
 
             setInterval(() => {
-                mainText.classList.add("opacity-0", "-translate-y-5");
-                subText.classList.add("opacity-0", "translate-y-5");
-
-                setTimeout(() => {
-                    index = (index + 1) % stats.length;
-                    mainText.textContent = stats[index].main;
-                    subText.innerHTML = stats[index].sub;
-
-                    mainText.classList.remove("opacity-0", "-translate-y-5");
-                    subText.classList.remove("opacity-0", "translate-y-5");
-                }, 600);
-            }, 3500);
+                index = (index + 1) % stats.length;
+                slotEffect(stats[index].main, stats[index].sub);
+            }, 4000);
         });
     </script>
 
@@ -136,17 +151,19 @@
     <section class="relative w-full bg-cover bg-center"
         style="background-image: url('{{ asset('assets/img/quotes.png') }}')">
         <div
-            class="w-full h-full bg-black bg-opacity-40 flex items-center justify-center text-center py-20 sm:py-24 md:py-32">
+            class="w-full h-full bg-black bg-opacity-40 flex items-center justify-center text-center py-32 sm:py-40 md:py-52 lg:py-60">
             <div class="text-white px-4 sm:px-6">
                 <h2
                     class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-[0.3em] sm:tracking-[0.3em] uppercase leading-tight">
-                    “C R E A T I V I T Y &nbsp; I S &nbsp; T H E &nbsp; B R I D G E <br /> B E T W E E N &nbsp; C U L T U R
-                    E &nbsp; A N D <br /> C O M M E R C E“
+                    “C R E A T I V I T Y &nbsp; I S &nbsp; T H E &nbsp; B R I D G E <br />
+                    B E T W E E N &nbsp; C U L T U R E &nbsp; A N D <br />
+                    C O M M E R C E“
                 </h2>
-                <p class="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base italic"> Communic 8</p>
+                <p class="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base italic">Communic 8</p>
             </div>
         </div>
     </section>
+
 
     {{-- Wrapper halaman --}}
     <div class="relative">
@@ -162,7 +179,7 @@
                     <div class="text-center mb-8">
                         <h2
                             class="font-poppins font-regular text-sm sm:text-2xl md:text-3xl 
-                        text-[#666666] tracking-normal sm:tracking-[0.6em] leading-snug mb-3 sm:mb-5 {{ app()->getLocale() == 'en' ? 'tracking-normal' : 'tracking-normal' }}">
+                    text-[#666666] tracking-normal sm:tracking-[0.6em] leading-snug mb-3 sm:mb-5 {{ app()->getLocale() == 'en' ? 'tracking-normal' : 'tracking-normal' }}">
                             B E H I N D &nbsp; T H E &nbsp; B R A N D
                             {!! __('home/glance.title') !!}
                         </h2>
@@ -176,15 +193,15 @@
 
                     {{-- Images Stack for Mobile --}}
                     <div class="flex justify-center space-x-8 sm:space-x-10">
-                        {{-- Gambar atas → tampil di bawah (lapisan bawah) --}}
-                        <div class="w-32 sm:w-40 h-36 sm:h-44 rounded-[32px] overflow-hidden shadow-2xl z-10 mt-0 sm:mt-0">
-                            <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 1"
+                        {{-- Gambar urutan ke-1 (imgstack2.png sekarang di bawah) --}}
+                        <div class="w-32 sm:w-40 h-36 sm:h-44 rounded-[32px] overflow-hidden shadow-2xl mt-6 sm:mt-8 z-20">
+                            <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
                                 class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
                         </div>
 
-                        {{-- Gambar bawah → tampil di depan (lapisan luar) --}}
-                        <div class="w-32 sm:w-40 h-36 sm:h-44 rounded-[32px] overflow-hidden shadow-2xl mt-6 sm:mt-8 z-20">
-                            <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 2"
+                        {{-- Gambar urutan ke-2 (imgstack1.png sekarang di atas) --}}
+                        <div class="w-32 sm:w-40 h-36 sm:h-44 rounded-[32px] overflow-hidden shadow-2xl z-10 mt-0 sm:mt-0">
+                            <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
                                 class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
                         </div>
                     </div>
@@ -194,17 +211,17 @@
                 <div class="hidden md:grid grid-cols-2 gap-12 items-start">
                     {{-- Floating Images --}}
                     <div class="relative w-full h-full">
-                        {{-- Gambar atas secara posisi tapi lapisan bawah --}}
+                        {{-- Gambar urutan ke-1 (imgstack2.png sekarang di bawah) --}}
                         <div
                             class="absolute -top-28 -left-16 w-[20rem] sm:w-[21rem] md:w-[22rem] rounded-[40px] overflow-hidden shadow-2xl z-20 pointer-events-auto">
-                            <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
+                            <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
                                 class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
                         </div>
 
-                        {{-- Gambar bawah secara posisi tapi lapisan luar (depan) --}}
+                        {{-- Gambar urutan ke-2 (imgstack1.png sekarang di atas) --}}
                         <div
                             class="absolute top-32 left-36 w-[20rem] sm:w-[21rem] md:w-[22rem] rounded-[40px] overflow-hidden shadow-2xl z-30 pointer-events-auto">
-                            <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
+                            <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
                                 class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
                         </div>
                     </div>
@@ -213,7 +230,7 @@
                     <div class="text-left flex flex-col justify-center">
                         <h2
                             class="text-2xl sm:text-3xl md:text-4xl text-[#666666] mb-6 leading-tight
-                        {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}">
+                    {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}">
                             {!! __('home/glance.title') !!}
                         </h2>
                         <p class="text-[#666666] leading-relaxed break-words">
@@ -231,7 +248,7 @@
     </div>
 
     {{-- Section Values / Achievements --}}
-    <section class="bg-white py-24 font-rubik">
+    <section class="bg-white py-16 font-rubik">
         <div class="container mx-auto px-4 sm:px-6 md:px-12">
 
             <br />
@@ -256,7 +273,7 @@
                     <div>
                         <div
                             class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-orange-500 tracking-tight mt-3 md:mt-0">
-                            {{ now()->year - 2005 }}+
+                            <span class="counter" data-target="{{ now()->year - 2005 }}">{{ now()->year - 2005 }}</span>+
                         </div>
                         <div class="text-gray-700 font-semibold text-sm sm:text-base">
                             {{ __('home/values.years_experience') }}
@@ -273,7 +290,7 @@
                     <div>
                         <div
                             class="text-5xl sm:text-6xl md:text-7xl font-black text-orange-500 tracking-tight mt-3 md:mt-0">
-                            300+
+                            <span class="counter" data-target="300">300</span>+
                         </div>
                         <div class="text-gray-700 font-semibold text-sm sm:text-base">
                             {{ __('home/values.brands_handled') }}
@@ -290,7 +307,7 @@
                     <div>
                         <div
                             class="text-5xl sm:text-6xl md:text-7xl font-black text-orange-500 tracking-tight mt-3 md:mt-0">
-                            8/10
+                            <span class="counter" data-target="8">8</span>/10
                         </div>
                         <div class="text-gray-700 font-semibold text-sm sm:text-base">
                             {{ __('home/values.clients_return') }}
@@ -308,16 +325,61 @@
         </div>
     </section>
 
+    <style>
+        .slot-number {
+            display: inline-block;
+            overflow: hidden;
+            height: 1em;
+            position: relative;
+        }
+
+        .slot-number span {
+            display: block;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            animation: slotRoll 1s linear infinite;
+        }
+
+        @keyframes slotRoll {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".counter").forEach(counter => {
+                const target = +counter.dataset.target;
+                let duration = 1000; // total animasi 1 detik
+                let startTime = null;
+
+                function animateSlot(time) {
+                    if (!startTime) startTime = time;
+                    const progress = Math.min((time - startTime) / duration, 1);
+                    const randomNum = Math.floor(Math.random() * target * 2);
+                    counter.textContent = progress < 1 ? randomNum : target;
+                    if (progress < 1) requestAnimationFrame(animateSlot);
+                }
+
+                requestAnimationFrame(animateSlot);
+            });
+        });
+    </script>
+
     {{-- Section WHAT WE CAN DO FOR YOU --}}
-    <section class="relative bg-white pt-16 sm:pt-20 md:pt-32 pb-16 sm:pb-20 md:pb-24">
+    <section class="relative bg-white pt-8 sm:pt-10 md:pt-14 pb-16 sm:pb-20 md:pb-244">
         <div class="container max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
 
             {{-- Title Section --}}
             <div class="text-center mb-16">
                 <h2
                     class="text-2xl sm:text-3xl md:text-4xl text-[#666666] mb-2
-                {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}
-                leading-tight">
+                {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }} leading-tight">
                     {!! __('home/what_we_do.title') !!}
                 </h2><br />
                 <p class="text-[#666666] text-base sm:text-lg md:text-xl">
@@ -326,98 +388,96 @@
             </div>
 
             @php
-                $cards = __('home/what_we_do.cards');
-                $routes = [
-                    'layanan.brand-land',
-                    'layanan.public-space-media',
-                    'layanan.digital-stand',
-                    'layanan.code-band',
-                    'layanan.ott-advertising',
-                ];
-
-                // Samakan gambar OTT Advertising dengan Digital Stand
-                $cards[4]['img'] = $cards[2]['img'];
+                $cards = $card_services; // diambil dari controller
             @endphp
 
-            {{-- Mobile: Single Column Stack --}}
+            {{-- Mobile: Single Column --}}
             <div class="md:hidden space-y-6">
-                @foreach ($cards as $index => $card)
+                @foreach ($cards as $card)
                     <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col mx-auto max-w-sm p-4">
-                        <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
+                        <img src="{{ asset('storage/' . $card->img) }}" alt="{{ $card->title_en }}"
                             class="w-full h-48 sm:h-60 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
 
                         <div class="flex flex-col items-center text-center w-full flex-1 pb-4">
-                            <h3
-                                class="font-bold text-gray-700 mb-3 break-words px-1
-                            {{ app()->getLocale() == 'en' ? 'text-lg sm:text-xl' : 'text-base sm:text-lg' }}">
-                                {{ $card['title'] }}
+                            <h3 class="font-bold text-gray-700 mb-3 break-words px-1 text-lg sm:text-xl">
+                                {{ app()->getLocale() == 'en' ? $card->title_en : $card->title_id }}
                             </h3>
-                            <p
-                                class="text-gray-600 leading-relaxed px-1 mb-6 flex-1 break-words hyphens-auto
-                            {{ app()->getLocale() == 'en' ? 'text-sm' : 'text-xs sm:text-sm' }}">
-                                {{ $card['desc'] }}
+
+                            <p class="text-gray-600 leading-relaxed px-1 mb-6 flex-1 text-sm">
+                                {{ app()->getLocale() == 'en' ? $card->desc_en : $card->desc_id }}
                             </p>
 
-                            {{-- Button dengan route dinamis --}}
-                            <a href="{{ route($routes[$index]) }}"
-                                class="bg-gray-800 text-white px-5 py-2 text-sm rounded-full hover:bg-gray-700 transition-colors inline-block text-center whitespace-nowrap">
-                                {{ $card['btn'] }}
+                            <a href="{{ route($card->route_name) }}"
+                                class="bg-gray-800 text-white px-5 py-2 text-sm rounded-full hover:bg-gray-700 transition-colors">
+                                {{ app()->getLocale() == 'en' ? $card->button_en : $card->button_id }}
                             </a>
                         </div>
                     </div>
                 @endforeach
             </div>
 
-            {{-- Desktop: 3-2 Layout --}}
+            {{-- Desktop Layout --}}
             <div class="hidden md:block">
-                {{-- Baris 1: 3 cards --}}
+                {{-- row 1 (3 cards) --}}
                 <div class="flex flex-wrap justify-center gap-6 mb-8">
-                    @for ($i = 0; $i < 3; $i++)
-                        @php $card = $cards[$i]; @endphp
+                    @foreach ($cards->take(3) as $card)
                         <div
                             class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-64 p-4 min-h-[480px] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-                            <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
-                                class="w-full h-52 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
-                            <div class="flex flex-col items-center text-center w-full flex-1">
-                                <h3 class="text-base font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
-                                <p class="text-gray-600 text-sm mb-4 flex-1">{{ $card['desc'] }}</p>
-                                <a href="{{ route($routes[$i]) }}"
-                                    class="bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors inline-block text-center text-sm">
-                                    {{ $card['btn'] }}
+                            <img src="{{ asset('storage/' . $card->img) }}"
+                                class="w-full h-52 object-cover rounded-[12px] mb-4">
+
+                            <div class="flex flex-col items-center text-center flex-1">
+                                <h3 class="text-base font-bold text-gray-700 mb-3">
+                                    {{ app()->getLocale() == 'en' ? $card->title_en : $card->title_id }}
+                                </h3>
+
+                                <p class="text-gray-600 text-sm mb-4 flex-1">
+                                    {{ app()->getLocale() == 'en' ? $card->desc_en : $card->desc_id }}
+                                </p>
+
+                                <a href="{{ route($card->route_name) }}"
+                                    class="bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 mt-auto text-sm">
+                                    {{ app()->getLocale() == 'en' ? $card->button_en : $card->button_id }}
                                 </a>
                             </div>
                         </div>
-                    @endfor
+                    @endforeach
                 </div>
 
-                {{-- Baris 2: 2 cards --}}
+                {{-- row 2 (2 cards) --}}
                 <div class="flex flex-wrap justify-center gap-6">
-                    @for ($i = 3; $i < 5; $i++)
-                        @php $card = $cards[$i]; @endphp
+                    @foreach ($cards->skip(3) as $card)
                         <div
                             class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-72 p-4 min-h-[480px] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-                            <img src="{{ asset('assets/img/' . $card['img']) }}" alt="{{ $card['title'] }}"
-                                class="w-full h-56 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
-                            <div class="flex flex-col items-center text-center w-full flex-1">
-                                <h3 class="text-lg font-bold text-gray-700 mb-3">{{ $card['title'] }}</h3>
-                                <p class="text-gray-600 text-sm mb-4 flex-1">{{ $card['desc'] }}</p>
-                                <a href="{{ route($routes[$i]) }}"
-                                    class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 mt-auto transition-colors inline-block text-center text-sm">
-                                    {{ $card['btn'] }}
+                            <img src="{{ asset('storage/' . $card->img) }}"
+                                class="w-full h-56 object-cover rounded-[12px] mb-4">
+
+                            <div class="flex flex-col items-center text-center flex-1">
+                                <h3 class="text-lg font-bold text-gray-700 mb-3">
+                                    {{ app()->getLocale() == 'en' ? $card->title_en : $card->title_id }}
+                                </h3>
+
+                                <p class="text-gray-600 text-sm mb-4 flex-1">
+                                    {{ app()->getLocale() == 'en' ? $card->desc_en : $card->desc_id }}
+                                </p>
+
+                                <a href="{{ route($card->route_name) }}"
+                                    class="bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 mt-auto text-sm">
+                                    {{ app()->getLocale() == 'en' ? $card->button_en : $card->button_id }}
                                 </a>
                             </div>
                         </div>
-                    @endfor
+                    @endforeach
                 </div>
             </div>
+
         </div>
     </section>
-
 
     {{-- Section Divider --}}
     <section
         class="relative bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center text-center
-           py-24 md:py-32 px-6"
+       py-24 md:py-32 px-6"
         style="background-image: url('{{ asset('assets/img/cta-bg.png') }}');">
 
         {{-- Overlay agar teks lebih kontras --}}
@@ -426,7 +486,8 @@
         {{-- Konten utama --}}
         <div class="relative z-10 max-w-3xl mx-auto">
             <h2
-                class="text-white font-poppins font-semibold tracking-[0.5em] text-lg sm:text-xl md:text-2xl uppercase mb-4">
+                class="text-white font-poppins font-semibold tracking-[0.5em]
+                   text-2xl sm:text-3xl md:text-4xl lg:text-4xl uppercase mb-4">
                 BRAND WE EMPOWER
             </h2>
             <p class="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed">
@@ -435,6 +496,7 @@
             </p>
         </div>
     </section>
+
 
     {{-- ============================= --}}
     {{-- Section TRUSTED BY --}}

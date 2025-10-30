@@ -24,14 +24,42 @@
                         class="w-full px-4 py-3 rounded-lg border border-transparent focus:border-[#666666] focus:ring-0 placeholder-[#666666] text-[#666666]">
 
                     <!-- Phone -->
-                    <div class="flex items-center bg-white rounded-lg overflow-hidden">
-                        <select
-                            class="px-3 py-3 bg-white text-[#666666] text-sm focus:outline-none focus:ring-0 appearance-none">
-                            <option>+62</option>
-                            <option>+86</option>
+                    <div class="flex items-center rounded-lg">
+                        <select name="country_code"
+                            class="px-3 py-3 rounded-l-lg border-r-0 border border-transparent focus:border-[#666666] focus:ring-0 text-[#666666] text-sm appearance-none bg-white">
+                            <option value="+1" data-country="US/Canada">+1</option>
+                            <option value="+44" data-country="UK">+44</option>
+                            <option value="+62" data-country="Indonesia">+62</option>
+                            <option value="+65" data-country="Singapore">+65</option>
+                            <option value="+60" data-country="Malaysia">+60</option>
+                            <option value="+86" data-country="China">+86</option>
+                            <option value="+81" data-country="Japan">+81</option>
+                            <option value="+82" data-country="South Korea">+82</option>
+                            <option value="+91" data-country="India">+91</option>
+                            <option value="+61" data-country="Australia">+61</option>
+                            <option value="+64" data-country="New Zealand">+64</option>
+                            <option value="+66" data-country="Thailand">+66</option>
+                            <option value="+84" data-country="Vietnam">+84</option>
+                            <option value="+63" data-country="Philippines">+63</option>
+                            <option value="+95" data-country="Myanmar">+95</option>
+                            <option value="+855" data-country="Cambodia">+855</option>
+                            <option value="+856" data-country="Laos">+856</option>
+                            <option value="+673" data-country="Brunei">+673</option>
+                            <option value="+852" data-country="Hong Kong">+852</option>
+                            <option value="+853" data-country="Macau">+853</option>
+                            <option value="+886" data-country="Taiwan">+886</option>
+                            <option value="+49" data-country="Germany">+49</option>
+                            <option value="+33" data-country="France">+33</option>
+                            <option value="+39" data-country="Italy">+39</option>
+                            <option value="+34" data-country="Spain">+34</option>
+                            <option value="+31" data-country="Netherlands">+31</option>
+                            <option value="+47" data-country="Norway">+47</option>
+                            <option value="+46" data-country="Sweden">+46</option>
+                            <option value="+45" data-country="Denmark">+45</option>
+                            <option value="+358" data-country="Finland">+358</option>
                         </select>
                         <input type="text" name="phone" placeholder="{{ __('contact/form.phone_placeholder') }}"
-                            class="w-full px-4 py-3 bg-white focus:ring-0 focus:outline-none placeholder-[#666666] text-[#666666]">
+                            class="w-full px-4 py-3 rounded-r-lg border border-transparent focus:border-[#666666] focus:ring-0 placeholder-[#666666] text-[#666666]">
                     </div>
                 </div>
 
@@ -48,9 +76,31 @@
                     <select name="industry"
                         class="w-full px-4 py-3 rounded-lg border border-transparent focus:border-[#666666] focus:ring-0 text-[#666666]">
                         <option value="">{{ __('contact/form.industry_placeholder') }}</option>
-                        @foreach (__('contact/form.industries') as $value => $label)
-                            <option value="{{ $value }}">{{ $label }}</option>
-                        @endforeach
+                        <option value="Finance">Finance</option>
+                        <option value="Telekomunikasi">Telekomunikasi</option>
+                        <option value="FnB">FnB</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Oil & Gas">Oil & Gas</option>
+                        <option value="Transportation">Transportation</option>
+                        <option value="Hotel">Hotel</option>
+                        <option value="Otomotif">Otomotif</option>
+                        <option value="Media">Media</option>
+                        <option value="Elektronik">Elektronik</option>
+                        <option value="Banking">Banking</option>
+                        <option value="Insurance">Insurance</option>
+                        <option value="Manufacture">Manufacture</option>
+                        <option value="Entertaiment & Leisure">Entertaiment & Leisure</option>
+                        <option value="Plantation">Plantation</option>
+                        <option value="Education & learning">Education & learning</option>
+                        <option value="Travel or Accomodation">Travel or Accomodation</option>
+                        <option value="Services">Services</option>
+                        <option value="Community & Public Services">Community & Public Services</option>
+                        <option value="Real Estate">Real Estate</option>
+                        <option value="Gaming">Gaming</option>
+                        <option value="Government">Government</option>
+                        <option value="Pharmaceutical">Pharmaceutical</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Cosmetics">Cosmetics</option>
                     </select>
                     <select name="services"
                         class="w-full px-4 py-3 rounded-lg border border-transparent focus:border-[#666666] focus:ring-0 text-[#666666]">
@@ -183,38 +233,6 @@
                         {{ __('contact/form.no_branch') }}
                     </p>
                 @endforelse
-            </div>
-        </div>
-    </section>
-
-    {{-- CTA Section --}}
-    <section class="relative bg-cover bg-center text-white font-poppins"
-        style="background-image: url('/assets/img/cta-bg.png');">
-        <div class="absolute inset-0 bg-black/40"></div> {{-- Overlay biar teks jelas --}}
-
-        <div
-            class="relative max-w-screen-xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center md:items-start justify-between">
-
-            {{-- Left Big Text --}}
-            <div class="mb-12 md:mb-0 text-center md:text-left">
-                <h2 class="text-4xl md:text-6xl leading-relaxed tracking-[0.5em]">
-                    <span class="font-thin block">{{ __('home/cta.dream') }}</span>
-                    <span class="font-bold block">{{ __('home/cta.bolder') }}</span>
-                    <span class="font-thin block">{{ __('home/cta.achieve') }}</span>
-                    <span class="font-bold block">{{ __('home/cta.bigger') }}</span>
-                </h2>
-            </div>
-
-            {{-- Right Content --}}
-            <div class="max-w-lg text-center md:text-left">
-                <h3 class="text-2xl md:text-3xl font-semibold mb-4">{{ __('home/cta.title') }}</h3>
-                <p class="text-base md:text-lg mb-6 leading-relaxed">
-                    {{ __('home/cta.description') }}
-                </p>
-                <a href="{{ route('contact.index') }}"
-                    class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-white-200 transition">
-                    {{ __('home/cta.button') }}
-                </a>
             </div>
         </div>
     </section>

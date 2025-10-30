@@ -88,15 +88,6 @@
     @if ($digitalArchitectureContent)
         <section class="w-full bg-white py-16">
             <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 text-center text-[#666666]">
-                {{-- <p class="text-base md:text-base font-rubik max-w-5xl mx-auto font-semibold">
-                    Strategic Placement for Maximum Impact
-                </p>
-                <br>
-                <p class="text-base md:text-base font-rubik max-w-5xl mx-auto">
-                    We bring the same strategic thinking and creative spirit to the real world that define our digital work.
-                    Our approach and methodology to media placement is designed to ensure your brand connects with the right
-                    audience in the right place.
-                </p> --}}
 
                 <div class="mt-12 flex justify-center">
                     <div class="w-full max-w-6xl rounded-2xl overflow-hidden">
@@ -115,13 +106,15 @@
 
     <div class="text-center py-16 bg-white text-[#666666]">
         <p class="text-base md:text-base font-rubik max-w-5xl mx-auto">
-            Digital Development is more than writing codes. It’s about constructing robust digital solutions that serve your business objective and power your digital transformation. 
+            Digital Development is more than writing codes. It’s about constructing robust digital solutions that serve your
+            business objective and power your digital transformation.
         </p>
         <br>
         <p class="text-base md:text-base font-rubik max-w-5xl mx-auto">
             With collaborative and forward-thinking approach, every development is build with strategic intent.
         </p>
     </div>
+
     {{-- Section 1 --}}
     <section class="w-full py-20 bg-white">
         <div
@@ -158,6 +151,11 @@
     {{-- Services Grid Section: Digital Architecture --}}
     <section class="w-full py-8 bg-white relative z-10 text-[#666666]">
         <div class="max-w-6xl mx-auto px-4 text-center relative">
+
+            {{-- Title Added --}}
+            <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
+                OUR SERVICES
+            </h2>
 
             @php
                 $digitalArchitectureSubservices = \App\Models\SubService::with('service')
@@ -211,7 +209,6 @@
         </div>
     </section>
 
-
     {{-- JS for Brand Forge Slider --}}
     <script>
         const brandforgeSlider = document.getElementById('brandforge-slider');
@@ -250,6 +247,8 @@
         window.addEventListener('resize', checkBrandforgeSlider);
         window.addEventListener('load', checkBrandforgeSlider);
     </script>
+
+    <br />
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"

@@ -140,10 +140,11 @@
 
     {{-- Section 2: Digital Stand (Horizontal Scroll Grid Style) --}}
     <section class="w-full py-8 bg-white text-[#666666]">
-        <div class="max-w-6xl mx-auto px-4">
-            {{-- Judul --}}
-            <h2 class="text-center text-xl font-semibold font-rubik mb-6">
-                Digital Stand Services
+        <div class="max-w-6xl mx-auto px-4 text-center relative">
+
+            {{-- Title --}}
+            <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
+                OUR SERVICES
             </h2>
 
             @php
@@ -153,7 +154,7 @@
                     ->get();
             @endphp
 
-            <div class="relative mt-6">
+            <div class="relative mt-10">
                 {{-- Slider --}}
                 <div id="digital-stand-slider"
                     class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
@@ -183,9 +184,7 @@
                             </div>
                         </div>
                     @empty
-                        <p class="text-center w-full">
-                            No Digital Stand subservices found.
-                        </p>
+                        <p class="text-center w-full">No Digital Stand subservices found.</p>
                     @endforelse
                 </div>
 
@@ -204,6 +203,7 @@
             </div>
         </div>
     </section>
+
 
     <script>
         // Digital Stand Horizontal Scroll
@@ -243,6 +243,8 @@
         window.addEventListener('resize', checkDSSlider);
         window.addEventListener('load', checkDSSlider);
     </script>
+
+    <br />
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"

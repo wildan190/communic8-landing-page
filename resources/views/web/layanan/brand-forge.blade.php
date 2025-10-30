@@ -90,44 +90,25 @@
     </section>
 
     {{-- Framework Section --}}
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
-                {{-- Left Image --}}
-                <div>
-                    @if ($brandForgeContent && $brandForgeContent->img_framework)
+    @if ($brandForgeContent && $brandForgeContent->img_framework)
+        <section class="w-full bg-white py-16">
+            <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+                <div class="flex justify-center">
+                    <div class="w-full max-w-6xl rounded-2xl overflow-hidden">
                         <img src="{{ asset('storage/' . $brandForgeContent->img_framework) }}" alt="Framework Image"
-                            class="w-full h-auto rounded-[32px] object-cover">
-                    @else
-                        <div class="w-full h-[400px] rounded-[32px] bg-[#EF9A9A]"></div>
-                    @endif
-                </div>
-
-                {{-- Right Text --}}
-                <div class="text-[#0000000] font-rubik leading-relaxed space-y-6">
-                    <h2 class="text-2xl md:text-3xl font-semibold font-poppins text-[#000000]">
-                        Framework for Enduring Brand Value
-                    </h2>
-
-                    <div class="space-y-6">
-                        @if ($brandForgeContent && $brandForgeContent->align_strategic_foundation)
-                            <p>{!! $brandForgeContent->align_strategic_foundation !!}</p>
-                        @endif
-
-                        @if ($brandForgeContent && $brandForgeContent->build_constructing_the_brand_world)
-                            <p>{!! $brandForgeContent->build_constructing_the_brand_world !!}</p>
-                        @endif
-
-                        @if ($brandForgeContent && $brandForgeContent->maintain_ensuring_lasting_relevance)
-                            <p>{!! $brandForgeContent->maintain_ensuring_lasting_relevance !!}</p>
-                        @endif
+                            class="w-full h-auto object-cover transition-transform duration-500 hover:scale-105 rounded-2xl">
                     </div>
                 </div>
-
             </div>
-        </div>
-    </section>
+        </section>
+    @else
+        <section class="w-full bg-white py-16">
+            <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+                <div class="w-full max-w-6xl mx-auto h-[400px] bg-gray-200 rounded-2xl"></div>
+            </div>
+        </section>
+    @endif
+
 
     {{-- Strategy Section --}}
     <section class="w-full py-24 bg-white">
@@ -190,13 +171,10 @@
     <section class="w-full py-8 bg-white relative z-10 text-[#666666]">
         <div class="max-w-6xl mx-auto px-4 text-center">
 
-            <p class="font-rubik text-sm leading-snug max-w-xl mx-auto">
-                Communic 8's Brand Development service shapes every facet of your identity from
-                foundational research to brand design and activation.
-            </p>
-            <p class="mt-1 font-rubik font-semibold text-sm">
-                Let us help you build a resilient brand that will stand through the test of time.
-            </p>
+            {{-- Title Updated --}}
+            <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
+                OUR SERVICES
+            </h2>
 
             {{-- Grid Projects --}}
             @php
@@ -293,6 +271,7 @@
         window.addEventListener('load', checkBrandforgeSlider);
     </script>
 
+    <br />
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"

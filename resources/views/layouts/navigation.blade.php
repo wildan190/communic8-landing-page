@@ -74,6 +74,11 @@
                             <x-dropdown-link :href="route('landing.index')" :active="request()->routeIs('landing.index')">
                                 {{ __('OTT Advertising') }}
                             </x-dropdown-link>
+
+                            <div class="border-t my-2 border-gray-200 dark:border-gray-600"></div>
+                            <x-dropdown-link :href="route('card-services.index')" :active="request()->routeIs('card-services.*')">
+                                {{ __('Card Services') }}
+                            </x-dropdown-link>
                         </div>
                     </div>
                 </div>
