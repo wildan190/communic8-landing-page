@@ -538,8 +538,8 @@
                         class="font-poppins font-light text-2xl sm:text-3xl md:text-4xl text-[#666666] tracking-[0.3em] leading-snug mb-3 sm:mb-5">
                         I D E A S &nbsp; I N &nbsp; A C T I O N
                     </h2>
-                    <p class="text-[#666666] text-base sm:text-lg md:text-base leading-relaxed max-w-2xl mx-auto">
-                        A showcase of campaigns, stories, and experiences that create real connections
+                    <p class="text-xs md:text-sm leading-snug line-clamp-3">
+                        {{ $project->description ?? '' }}
                     </p>
                 </div>
             </div>
@@ -562,8 +562,8 @@
                                 <div
                                     class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center rounded-2xl">
                                     <h3 class="text-sm md:text-base font-semibold mb-2">{{ $project->name }}</h3>
-                                    <p class="text-xs md:text-sm leading-snug">
-                                        A showcase of campaigns, stories, and experiences that create real connections.
+                                    <p class="text-xs md:text-sm leading-snug line-clamp-3">
+                                        {{ $project->description ?? '' }}
                                     </p>
                                 </div>
                             </div>

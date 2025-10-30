@@ -38,9 +38,10 @@
                         <div
                             class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-6 text-center rounded-2xl">
                             <h3 class="text-lg md:text-xl font-semibold mb-2">{{ $project->name }}</h3>
-                            <p class="text-xs md:text-sm leading-snug">
-                                {!! $project->description ?? 'A showcase of campaigns, stories, and experiences that create real connections.' !!}
+                            <p class="text-xs md:text-sm leading-snug line-clamp-3">
+                                {{ $project->description ?? '' }}
                             </p>
+
                         </div>
                     </div>
                 @endforeach
@@ -58,9 +59,10 @@
                         <div
                             class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center rounded-2xl">
                             <h3 class="text-sm md:text-base font-semibold mb-2">{{ $project->name }}</h3>
-                            <p class="text-xs md:text-sm leading-snug">
-                                A showcase of campaigns, stories, and experiences that create real connections.
+                            <p class="text-xs md:text-sm leading-snug line-clamp-3">
+                                {{ $project->description ?? '' }}
                             </p>
+
                         </div>
                     </div>
                 @endforeach
@@ -78,9 +80,10 @@
                         <div
                             class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center rounded-2xl">
                             <h3 class="text-sm md:text-base font-semibold mb-2">{{ $project->name }}</h3>
-                            <p class="text-xs md:text-sm leading-snug">
-                                A showcase of campaigns, stories, and experiences that create real connections.
+                            <p class="text-xs md:text-sm leading-snug line-clamp-3">
+                                {{ $project->description ?? '' }}
                             </p>
+
                         </div>
                     </div>
                 @endforeach

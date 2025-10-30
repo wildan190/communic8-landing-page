@@ -9,36 +9,50 @@
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form method="POST" action="{{ route('projects.store') }}" enctype="multipart/form-data" class="space-y-6">
+                    <form method="POST" action="{{ route('projects.store') }}" enctype="multipart/form-data"
+                        class="space-y-6">
                         @csrf
 
                         <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+                            <label for="name"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
                             <input type="text" name="name" id="name" value="{{ old('name') }}" required
                                 class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:border-indigo-500 focus:ring-indigo-500">
                         </div>
 
                         <div>
-                            <label for="client" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Client</label>
+                            <label for="client"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300">Client</label>
                             <input type="text" name="client" id="client" value="{{ old('client') }}"
                                 class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:border-indigo-500 focus:ring-indigo-500">
                         </div>
 
                         <div>
-                            <label for="project_img" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Project Image</label>
+                            <label for="project_img"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300">Project Image</label>
                             <input type="file" name="project_img" id="project_img"
                                 class="mt-1 block w-full text-sm rounded-md border-gray-300 dark:border-gray-700 shadow-sm text-gray-700 dark:text-gray-300 focus:ring-indigo-500 focus:border-indigo-500">
                         </div>
 
                         <div>
-                            <label for="project_url" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Project URL</label>
+                            <label for="description"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300">Description</label>
+                            <textarea name="description" id="description" rows="4"
+                                class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:border-indigo-500 focus:ring-indigo-500">{{ old('description') }}</textarea>
+                        </div>
+
+
+                        <div>
+                            <label for="project_url"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300">Project URL</label>
                             <input type="url" name="project_url" id="project_url" value="{{ old('project_url') }}"
                                 class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:border-indigo-500 focus:ring-indigo-500">
                         </div>
 
                         <div class="block">
                             <label for="is_highlighted" class="inline-flex items-center">
-                                <input type="checkbox" name="is_highlighted" id="is_highlighted" value="1" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800"
+                                <input type="checkbox" name="is_highlighted" id="is_highlighted" value="1"
+                                    class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800"
                                     {{ old('is_highlighted') ? 'checked' : '' }}>
                                 <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">Highlight Project</span>
                             </label>

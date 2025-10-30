@@ -15,5 +15,6 @@ class Project extends Model
         'project_img',
         'project_url',
         'is_highlighted',
+        'description', // ✅ add this
     ];
 }
