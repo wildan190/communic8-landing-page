@@ -1,7 +1,6 @@
 @extends('layouts.web')
 
 @section('content')
-
     <section class="relative w-full min-h-[85vh] bg-cover bg-center"
         style="background-image: url('{{ asset('assets/img/sectionhero.png') }}')">
         <div
@@ -504,20 +503,31 @@
     <section class="relative bg-white py-12 md:py-20">
         <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
+            {{-- THREE SLIDER BASED ON CLIENT CATEGORY --}}
             @for ($i = 1; $i <= 3; $i++)
+                @php
+                    $sliderClients = $clients->where('category', $i);
+                @endphp
+
                 <div class="relative mb-10">
-                    {{-- Slider container --}}
+
+                    {{-- SLIDER CONTAINER --}}
                     <div id="logos-row-{{ $i }}"
                         class="flex gap-8 md:gap-12 items-center py-4 px-2 md:px-4 overflow-x-auto scrollbar-hide scroll-smooth relative">
-                        @foreach ($clients as $client)
+
+                        @forelse ($sliderClients as $client)
                             <div class="flex-shrink-0 flex justify-center items-center w-2/5 sm:w-1/3 md:w-[16%]">
                                 <img src="{{ asset('storage/' . $client->logo) }}" alt="{{ $client->company_name }}"
                                     class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
                             </div>
-                        @endforeach
+                        @empty
+                            <div class="text-gray-400 text-sm italic">
+                                No client in category {{ $i }}
+                            </div>
+                        @endforelse
                     </div>
 
-                    {{-- Tombol navigasi floating di luar slider --}}
+                    {{-- SLIDER BUTTONS --}}
                     <button id="prev-logos-{{ $i }}"
                         class="absolute left-[-40px] top-1/2 -translate-y-1/2 p-2 flex items-center justify-center z-20">
                         <img src="{{ asset('assets/img/blog-slider-left.png') }}" class="w-6 h-6 invert" alt="Prev">
@@ -532,6 +542,7 @@
             @endfor
 
 
+            {{-- SECTION TITLE --}}
             <div class="relative w-full py-16">
                 <div class="container max-w-7xl mx-auto px-4 sm:px-6 text-center">
                     <h2
@@ -548,17 +559,18 @@
                 $projects = $trustedProjects->where('is_highlighted', false)->values();
             @endphp
 
+            {{-- PROJECT SLIDER --}}
             <div class="relative mb-8 md:mb-12 px-0 md:px-0">
                 <div class="swiper projects-swiper overflow-hidden relative">
                     <div class="swiper-wrapper">
                         @foreach ($projects as $project)
                             <div class="swiper-slide relative group overflow-hidden rounded-2xl aspect-square p-2">
-                                {{-- Gambar Project --}}
+
                                 <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
                                     class="w-full h-full object-cover transition duration-500 group-hover:scale-105 rounded-2xl"
                                     alt="{{ $project->name }}">
 
-                                {{-- Hover overlay --}}
+                                {{-- HOVER DESCRIPT --}}
                                 <div
                                     class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center rounded-2xl">
                                     <h3 class="text-sm md:text-base font-semibold mb-2">{{ $project->name }}</h3>
@@ -571,7 +583,7 @@
                     </div>
                 </div>
 
-                {{-- Navigasi Carousel Project --}}
+                {{-- NAV --}}
                 <button id="my-prev"
                     class="hidden lg:flex absolute left-[-80px] top-1/2 -translate-y-1/2 p-2 flex items-center justify-center z-50">
                     <img src="{{ asset('assets/img/blog-slider-left.png') }}" class="w-10 h-10 invert" alt="Previous">
@@ -584,11 +596,11 @@
                 <div class="swiper-pagination lg:hidden mt-6"></div>
             </div>
 
-            {{-- Tombol Explore More --}}
+            {{-- BUTTON --}}
             <div class="text-center mt-10">
                 <a href="{{ route('portofolio.index') }}"
                     class="inline-block px-8 py-3 text-sm md:text-base font-semibold text-white bg-black rounded-full
-           transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-black hover:scale-105">
+            transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-black hover:scale-105">
                     Explore More
                 </a>
             </div>
@@ -598,7 +610,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Untuk setiap baris logo (ada 3)
             for (let i = 1; i <= 3; i++) {
                 const row = document.getElementById(`logos-row-${i}`);
                 const next = document.getElementById(`next-logos-${i}`);
@@ -623,6 +634,7 @@
             }
         });
     </script>
+
 
     {{-- Swiper JS --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
