@@ -15,6 +15,7 @@ class SubService extends Model
         'service_id',
         'name',
         'picture_upload',
+        'description', // ✅ tambahkan ini
     ];
 
     // Relasi ke Service

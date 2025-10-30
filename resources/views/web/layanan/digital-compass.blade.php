@@ -204,7 +204,6 @@
         </div>
     </section>
 
-
     <script>
         // Digital Stand Horizontal Scroll
         const dsSlider = document.getElementById('digital-stand-slider');

@@ -3,12 +3,14 @@
 use App\Http\Controllers\AboutController as AdminAboutController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BranchOfficeController;
 use App\Http\Controllers\BrandForgeContentController;
 use App\Http\Controllers\CardServicesController;
 use App\Http\Controllers\DigitalArchitectureContentController;
 use App\Http\Controllers\DigitalCompassContentController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HeroAboutController;
+use App\Http\Controllers\HeroHomeController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
@@ -46,6 +48,9 @@ Route::get('/insight', [InsightController::class, 'index'])->name('insight.index
 Route::get('/insight/{slug}', [InsightController::class, 'show'])
     ->name('insight.show')
     ->middleware('track.pageview');
+
+// Branch Offices route
+Route::get('/branch-offices', [BranchOfficeController::class, 'index'])->name('branch-offices.index');
 
 // Rute Kontak dengan throttle
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
@@ -234,7 +239,10 @@ Route::prefix('admin')
 
         Route::get('heroes-about/edit', [HeroAboutController::class, 'edit'])->name('admin.heroes-about.edit');
         Route::post('heroes-about/update', [HeroAboutController::class, 'update'])->name('admin.heroes-about.update');
-        
+
+        Route::get('/hero-home', [HeroHomeController::class, 'index'])->name('hero.index');
+        Route::post('/hero-home/save', [HeroHomeController::class, 'save'])->name('hero.save');
+
         Route::prefix('card-services')->group(function () {
             Route::get('/', [CardServicesController::class, 'index'])->name('card-services.index');
             Route::get('/create', [CardServicesController::class, 'create'])->name('card-services.create');

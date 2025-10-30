@@ -44,6 +44,7 @@ class HomeController extends Controller
         $testimonis = Testimoni::latest()->get();
 
         $abouts = About::all();
+        $hero = \App\Models\HeroHome::first();
 
         // ✅ Ambil postingan Instagram terbaru (misal 6 postingan)
         $accessToken = config('services.instagram.token');
@@ -64,6 +65,6 @@ class HomeController extends Controller
             // log error jika mau
         }
 
-        return view('web.home.index', compact('blogs', 'categories', 'category', 'sliderBlogs', 'webInformation', 'branchOffices', 'insightCategories', 'trustedProjects', 'clients', 'testimonis', 'instagramPosts', 'abouts', 'card_services'));
+        return view('web.home.index', compact('hero' ,'blogs', 'categories', 'category', 'sliderBlogs', 'webInformation', 'branchOffices', 'insightCategories', 'trustedProjects', 'clients', 'testimonis', 'instagramPosts', 'abouts', 'card_services'));
     }
 }
