@@ -12,7 +12,8 @@
         @endif
 
         <div class="bg-white dark:bg-gray-800 shadow-sm rounded-xl p-6 space-y-8">
-            <form action="{{ route('digital.compass.save') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
+            <form action="{{ route('digital.compass.save') }}" method="POST" enctype="multipart/form-data"
+                class="space-y-8">
                 @csrf
 
                 {{-- Head Image --}}
@@ -27,11 +28,22 @@
 
                 {{-- Services Image --}}
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Services Image</label>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Services
+                        Image</label>
                     @if ($content && $content->img_services)
                         <img src="{{ Storage::url($content->img_services) }}" class="w-48 rounded-lg mb-3 shadow">
                     @endif
                     <input type="file" name="img_services"
+                        class="w-full text-sm text-gray-900 dark:text-gray-200 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-300 dark:border-gray-600 cursor-pointer focus:outline-none">
+                </div>
+
+                {{-- Photo Image --}}
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Photo Image</label>
+                    @if ($content && $content->img_photo)
+                        <img src="{{ Storage::url($content->img_photo) }}" class="w-48 rounded-lg mb-3 shadow">
+                    @endif
+                    <input type="file" name="img_photo"
                         class="w-full text-sm text-gray-900 dark:text-gray-200 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-300 dark:border-gray-600 cursor-pointer focus:outline-none">
                 </div>
 
@@ -43,14 +55,14 @@
                                 Title {{ $i }}
                             </label>
                             <input type="text" name="title{{ $i }}"
-                                value="{{ $content->{'title'.$i} ?? '' }}"
+                                value="{{ $content->{'title' . $i} ?? '' }}"
                                 class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500">
 
                             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mt-2">
                                 Value Title {{ $i }}
                             </label>
                             <textarea name="value_title{{ $i }}" rows="3"
-                                class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500">{{ $content->{'value_title'.$i} ?? '' }}</textarea>
+                                class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500">{{ $content->{'value_title' . $i} ?? '' }}</textarea>
                         </div>
                     @endfor
                 </div>

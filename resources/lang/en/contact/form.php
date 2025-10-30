@@ -8,7 +8,7 @@ Bring your project, we’ll bring you ideas and creativity.',
 
     // Form placeholders
     'name_placeholder' => 'Your name...',
-    'phone_placeholder' => '812-3456-7890',
+    'phone_placeholder' => 'Your mobile phone number',
     'company_placeholder' => 'Your company’s name...',
     'email_placeholder' => 'your.email@domain.com',
     'industry_placeholder' => 'Industry...',

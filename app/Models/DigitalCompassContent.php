@@ -11,6 +11,7 @@ class DigitalCompassContent extends Model
 
     protected $fillable = [
         'head_img',
+        'img_photo',
         'img_services',
         'title1',
         'value_title1',
