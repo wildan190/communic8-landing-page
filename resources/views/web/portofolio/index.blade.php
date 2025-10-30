@@ -12,12 +12,12 @@
         <div class="relative z-10 max-w-7xl mx-auto px-6">
             <!-- Title -->
             <div class="text-center mb-16">
-                <h1 class="font-poppins text-2xl md:text-4xl lg:text-5xl tracking-[0.3em] text-gray-800">
-                    <span class="font-light">PARTNERED</span>
-                    <span class="font-bold">FOR THE BETTER</span>
+                <h1 class="font-poppins font-regular text-2xl md:text-4xl lg:text-5xl tracking-[0.3em] text-gray-700">
+                    B R A N D S &nbsp; W E &nbsp; E M P O W E R
                 </h1>
                 <p class="mt-6 text-gray-600 max-w-2xl mx-auto">
-                    Dive into our portfolio and see the energy we bring to every project.
+                    From local pioneers to global leaders, we’ve been trusted to bring visions to life, creating impact on
+                    both local and global scales.
                 </p>
             </div>
 
@@ -26,110 +26,70 @@
                 $nonHighlightedProjects = $projects->where('is_highlighted', false)->values();
             @endphp
 
-            {{-- ======================== --}}
-            {{-- 2 Highlighted Projects (PERSEGI + Frame + Title/Client) --}}
-            {{-- ======================== --}}
+            {{-- Highlighted Projects --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                 @foreach ($highlightedProjects as $project)
-                    <div class="rounded-2xl border border-gray-200 p-4 flex flex-col group bg-white">
-                        <!-- Client & Name -->
-                        <div class="flex justify-between items-center mb-2">
-                            <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
-                            @if ($project->project_url)
-                                <a href="{{ $project->project_url }}" target="_blank">
-                                    <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-4 h-4">
-                                </a>
-                            @endif
-                        </div>
+                    <div class="relative group overflow-hidden rounded-2xl aspect-square">
+                        <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
+                            alt="{{ $project->name }}"
+                            class="w-full h-full object-cover transition duration-500 group-hover:scale-105 rounded-2xl">
 
-                        <h3 class="font-semibold text-gray-700 mb-3 text-lg">{{ $project->name }}</h3>
+                        {{-- Hover overlay --}}
+                        <div
+                            class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-6 text-center rounded-2xl">
+                            <h3 class="text-lg md:text-xl font-semibold mb-2">{{ $project->name }}</h3>
+                            <p class="text-xs md:text-sm leading-snug line-clamp-3">
+                                {{ $project->description ?? '' }}
+                            </p>
 
-                        <!-- Image (aspect-square agar tidak terpotong, object-cover agar fit penuh) -->
-                        <div class="relative rounded-xl overflow-hidden aspect-square bg-gray-50">
-                            <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
-                                alt="{{ $project->name }}"
-                                class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                            <div
-                                class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-6 text-center">
-                                <h3 class="text-lg md:text-xl font-semibold mb-2">Ideas in Action</h3>
-                                <p class="text-xs md:text-sm leading-snug">
-                                    {!! $project->description ?? 'A showcase of campaigns, stories, and experiences that create real connections.' !!}
-                                </p>
-                            </div>
                         </div>
                     </div>
                 @endforeach
             </div>
 
-            {{-- ======================== --}}
-            {{-- 3 Normal Projects --}}
-            {{-- ======================== --}}
+            {{-- Normal Projects --}}
             <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach ($nonHighlightedProjects->take(3) as $project)
-                    <div class="rounded-2xl border border-gray-200 p-4 flex flex-col group bg-white">
-                        <div class="flex justify-between items-center mb-2">
-                            <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
-                            @if ($project->project_url)
-                                <a href="{{ $project->project_url }}" target="_blank">
-                                    <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-4 h-4">
-                                </a>
-                            @endif
-                        </div>
+                    <div class="relative group overflow-hidden rounded-2xl aspect-square">
+                        <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
+                            alt="{{ $project->name }}"
+                            class="w-full h-full object-cover transition duration-500 group-hover:scale-105 rounded-2xl">
 
-                        <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
+                        {{-- Hover overlay --}}
+                        <div
+                            class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center rounded-2xl">
+                            <h3 class="text-sm md:text-base font-semibold mb-2">{{ $project->name }}</h3>
+                            <p class="text-xs md:text-sm leading-snug line-clamp-3">
+                                {{ $project->description ?? '' }}
+                            </p>
 
-                        <div class="rounded-xl overflow-hidden relative aspect-square bg-gray-50">
-                            <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
-                                alt="{{ $project->name }}"
-                                class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                            <div
-                                class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
-                                <h3 class="text-sm md:text-base font-semibold mb-2">Ideas in Action</h3>
-                                <p class="text-xs md:text-sm leading-snug">
-                                    A showcase of campaigns, stories, and experiences that create real connections.
-                                </p>
-                            </div>
                         </div>
                     </div>
                 @endforeach
             </div>
 
-            {{-- ======================== --}}
             {{-- Hidden Extra Projects --}}
-            {{-- ======================== --}}
             <div id="more-projects" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 hidden">
                 @foreach ($nonHighlightedProjects->slice(3) as $project)
-                    <div class="rounded-2xl border border-gray-200 p-4 flex flex-col group bg-white">
-                        <div class="flex justify-between items-center mb-2">
-                            <p class="text-xs text-gray-500">{{ $project->client ?? 'Unknown Client' }}</p>
-                            @if ($project->project_url)
-                                <a href="{{ $project->project_url }}" target="_blank">
-                                    <img src="/assets/img/icon/iconlink.png" alt="External Link" class="w-4 h-4">
-                                </a>
-                            @endif
-                        </div>
+                    <div class="relative group overflow-hidden rounded-2xl aspect-square">
+                        <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
+                            alt="{{ $project->name }}"
+                            class="w-full h-full object-cover transition duration-500 group-hover:scale-105 rounded-2xl">
 
-                        <h3 class="font-semibold text-gray-700 mb-3">{{ $project->name }}</h3>
+                        {{-- Hover overlay --}}
+                        <div
+                            class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center rounded-2xl">
+                            <h3 class="text-sm md:text-base font-semibold mb-2">{{ $project->name }}</h3>
+                            <p class="text-xs md:text-sm leading-snug line-clamp-3">
+                                {{ $project->description ?? '' }}
+                            </p>
 
-                        <div class="rounded-xl overflow-hidden relative aspect-square bg-gray-50">
-                            <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
-                                alt="{{ $project->name }}"
-                                class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                            <div
-                                class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
-                                <h3 class="text-sm md:text-base font-semibold mb-2">Ideas in Action</h3>
-                                <p class="text-xs md:text-sm leading-snug">
-                                    A showcase of campaigns, stories, and experiences that create real connections.
-                                </p>
-                            </div>
                         </div>
                     </div>
                 @endforeach
             </div>
 
-            {{-- ======================== --}}
             {{-- Explore More Button --}}
-            {{-- ======================== --}}
             <div class="text-center mt-10">
                 <button id="exploreMoreBtn"
                     class="inline-block px-8 py-3 text-sm md:text-base font-semibold text-white bg-black rounded-full
@@ -175,7 +135,7 @@
                     {{ __('home/cta.description') }}
                 </p>
                 <a href="{{ route('contact.index') }}"
-                    class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
+                    class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-white-200 transition">
                     {{ __('home/cta.button') }}
                 </a>
             </div>
@@ -190,11 +150,12 @@
             <div class="text-center mb-12 sm:mb-16">
                 <h2
                     class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
-               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
-                    I N S I G H T S &nbsp; F O R
-                    <span class="hidden sm:inline"><br /></span>
-                    S T R A T E G I C &nbsp; M I N D
+           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                    {!! __('home/insights.title') !!}
                 </h2>
+                <p class="text-gray-600 text-base sm:text-lg mt-2">
+                    {{ __('home/insights.description') }}
+                </p>
             </div>
 
             <!-- Wrapper for Desktop (with arrows) -->
@@ -212,9 +173,8 @@
                             class="snap-center min-w-[280px] sm:min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
                             <p class="text-sm text-gray-500">{{ $blog->category }}</p>
                             <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
-                                <h3
-                                    class="text-base sm:text-lg font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[72px] mb-4">
-                                    {{ $blog->title }}
+                                <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
+                                    <strong>{{ $blog->title }}</strong>
                                 </h3>
                             </a>
                             @if ($blog->headline_img)

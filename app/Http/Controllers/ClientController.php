@@ -24,6 +24,7 @@ class ClientController extends Controller
         $request->validate([
             'company_name' => 'required|string|max:255',
             'industry' => 'required|string|max:255',
+            'category' => 'required|in:1,2,3', // ✅
             'logo' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
@@ -31,11 +32,11 @@ class ClientController extends Controller
 
         if ($request->hasFile('logo')) {
             $file = $request->file('logo');
-            $filename = time().'_'.$file->getClientOriginalName();
+            $filename = time() . '_' . $file->getClientOriginalName();
 
             // Pastikan folder tujuan ada
             $destinationPath = public_path('storage/clients');
-            if (! file_exists($destinationPath)) {
+            if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0755, true);
             }
 
@@ -43,12 +44,13 @@ class ClientController extends Controller
             $file->move($destinationPath, $filename);
 
             // Simpan path relatif
-            $logoPath = 'clients/'.$filename;
+            $logoPath = 'clients/' . $filename;
         }
 
         Client::create([
             'company_name' => $request->company_name,
             'industry' => $request->industry,
+            'category' => $request->category, // ✅
             'logo' => $logoPath,
         ]);
 
@@ -65,33 +67,34 @@ class ClientController extends Controller
         $request->validate([
             'company_name' => 'required|string|max:255',
             'industry' => 'required|string|max:255',
+            'category' => 'required|in:1,2,3',
             'logo' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        $data = $request->only(['company_name', 'industry']);
+        // Ambil field kecuali logo dulu
+        $data = $request->only(['company_name', 'industry', 'category']);
 
+        // Upload logo jika ada file baru
         if ($request->hasFile('logo')) {
-            // Hapus logo lama kalau ada
-            if ($client->logo && file_exists(public_path('storage/'.$client->logo))) {
-                unlink(public_path('storage/'.$client->logo));
+            // hapus logo lama
+            if ($client->logo && file_exists(public_path('storage/' . $client->logo))) {
+                unlink(public_path('storage/' . $client->logo));
             }
 
             $file = $request->file('logo');
-            $filename = time().'_'.$file->getClientOriginalName();
+            $filename = time() . '_' . $file->getClientOriginalName();
 
             $destinationPath = public_path('storage/clients');
-            if (! file_exists($destinationPath)) {
+            if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0755, true);
             }
 
             $file->move($destinationPath, $filename);
 
-            $data['logo'] = 'clients/'.$filename;
-        } else {
-            // Tetap pakai logo lama kalau tidak upload baru
-            $data['logo'] = $client->logo;
+            $data['logo'] = 'clients/' . $filename;
         }
 
+        // ✅ SIMPAN UPDATE KE DB
         $client->update($data);
 
         return redirect()->route('clients.index')->with('success', 'Client berhasil diperbarui.');
@@ -99,8 +102,8 @@ class ClientController extends Controller
 
     public function destroy(Client $client)
     {
-        if ($client->logo && file_exists(public_path('storage/'.$client->logo))) {
-            unlink(public_path('storage/'.$client->logo));
+        if ($client->logo && file_exists(public_path('storage/' . $client->logo))) {
+            unlink(public_path('storage/' . $client->logo));
         }
 
         $client->delete();

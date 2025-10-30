@@ -65,47 +65,51 @@
             </div>
         </section>
 
-        {{-- THE PHILOSOPHY --}}
+        {{-- PHILOSOPHY IN ACTION --}}
         <section
             class="relative overflow-visible z-10 bg-gradient-to-r from-gray-400 to-gray-600 py-16 md:py-20 transition-colors duration-500 hover:from-orange-500 hover:to-orange-600 group">
 
-            <div class="container max-w-5xl mx-auto px-4 sm:px-6 md:px-12 relative text-center">
+            {{-- Container utama: full width & center --}}
+            <div class="w-full flex justify-center relative">
 
-                {{-- Lamp (sekarang di dalam section & center) --}}
-                <div class="mx-auto mb-12 w-[280px] sm:w-[340px] md:w-[400px] lg:w-[460px] relative">
-                    <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
-                        class="w-full h-auto drop-shadow-2xl transition-all duration-500 group-hover:opacity-0 object-contain mx-auto" />
-                    <img src="{{ asset('assets/img/lamphover.png') }}" alt="Lamp Hover"
-                        class="w-full h-auto drop-shadow-2xl absolute top-0 left-0 opacity-0 transition-all duration-500 group-hover:opacity-100 object-contain mx-auto" />
+                {{-- Grid (gambar + teks) sedikit bergeser ke kanan --}}
+                <div class="flex items-center gap-x-8 ml-12">
+
+                    {{-- Left: Lamp --}}
+                    <div class="relative flex justify-center md:justify-end">
+                        <div class="relative w-[360px] sm:w-[400px] md:w-[440px] lg:w-[480px] -translate-y-[300px]">
+                            {{-- Gambar dasar --}}
+                            <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
+                                class="w-full h-auto object-contain drop-shadow-2xl absolute top-[-200%] left-0 -mb-8 transition-all duration-500 group-hover:opacity-0" />
+                            {{-- Gambar hover --}}
+                            <img src="{{ asset('assets/img/lamphover.png') }}" alt="Lamp Hover"
+                                class="w-full h-auto object-contain drop-shadow-2xl absolute top-[-200%] left-0 -mb-8 opacity-0 transition-all duration-500 group-hover:opacity-100" />
+                        </div>
+                    </div>
+
+                    {{-- Right: Text --}}
+                    <div
+                        class="text-white transition-colors duration-500 text-center md:text-left w-full md:w-[100%] max-w-[720px] px-0 relative z-10">
+
+                        {{-- Title --}}
+                        <h2 class="font-poppins font-normal text-xl sm:text-2xl md:text-3xl mb-3"
+                            style="letter-spacing: 0.3em; line-height: 1.2;">
+                            {!! __('about/philosophy.title') !!}
+                        </h2>
+
+                        {{-- Paragraphs --}}
+                        <div
+                            class="space-y-2 leading-relaxed opacity-95 text-[14px] sm:text-[15px] md:text-[16px] tracking-normal font-rubik">
+                            @foreach (explode("\n\n", __('about/philosophy.text')) as $paragraph)
+                                <p>{{ $paragraph }}</p>
+                            @endforeach
+                        </div>
+                    </div>
+
                 </div>
-
-                {{-- Text (tanpa slider) --}}
-                <div class="text-white transition-colors duration-500 text-center">
-                    <h2 class="font-poppins text-2xl sm:text-3xl md:text-4xl tracking-[0.35em] font-semibold mb-12">
-                        {{ __('about/philosophy.title') }}
-                    </h2>
-
-                    {{-- Slide 1 --}}
-                    <div class="mb-12 max-w-3xl mx-auto">
-                        <h3 class="text-xl font-semibold mb-4">{{ __('about/philosophy.slide_1_title') }}</h3>
-                        <p class="leading-relaxed opacity-95">{{ __('about/philosophy.slide_1_text') }}</p>
-                    </div>
-
-                    {{-- Slide 2 --}}
-                    <div class="mb-12 max-w-3xl mx-auto">
-                        <h3 class="text-xl font-semibold mb-4">{{ __('about/philosophy.slide_2_title') }}</h3>
-                        <p class="leading-relaxed opacity-95">{{ __('about/philosophy.slide_2_text') }}</p>
-                    </div>
-
-                    {{-- Slide 3 --}}
-                    <div class="max-w-3xl mx-auto">
-                        <h3 class="text-xl font-semibold mb-4">{{ __('about/philosophy.slide_3_title') }}</h3>
-                        <p class="leading-relaxed opacity-95">{{ __('about/philosophy.slide_3_text') }}</p>
-                    </div>
-                </div>
-
             </div>
         </section>
+
 
         {{-- WHY OUR PARTNER CHOOSE US --}}
         <section class="relative pt-24 sm:pt-32 md:pt-40 pb-16 sm:pb-20 md:pb-24 bg-white">
@@ -129,8 +133,7 @@
                 @if (isset($abouts) && $abouts->count() > 0)
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                         @foreach ($abouts as $about)
-                            <div
-                                class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
+                            <div class="bg-white rounded-2xl transition-shadow duration-300 overflow-hidden flex flex-col">
 
                                 {{-- Gambar --}}
                                 @if ($about->img)
@@ -282,9 +285,10 @@
                 {{-- Title --}}
                 <h2
                     class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal mb-4 sm:mb-6 
-            text-[#2C2C2C] tracking-[0.35em] leading-snug uppercase">
+           text-[#666666] tracking-[0.35em] leading-snug uppercase">
                     {!! __('about/trusted_by_many_section.title') !!}
                 </h2>
+
 
                 {{-- Subtitle --}}
                 <p
@@ -366,7 +370,7 @@
                         {{ __('home/cta.description') }}
                     </p>
                     <a href="{{ route('contact.index') }}"
-                        class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
+                        class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-white-200 transition">
                         {{ __('home/cta.button') }}
                     </a>
                 </div>
@@ -404,9 +408,8 @@
                                 class="snap-center min-w-[280px] sm:min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
                                 <p class="text-sm text-gray-500">{{ $blog->category }}</p>
                                 <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
-                                    <h3
-                                        class="text-base sm:text-lg font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[72px] mb-4">
-                                        {{ $blog->title }}
+                                    <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
+                                        <strong>{{ $blog->title }}</strong>
                                     </h3>
                                 </a>
                                 @if ($blog->headline_img)

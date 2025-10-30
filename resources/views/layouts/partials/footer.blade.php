@@ -33,9 +33,9 @@
 
                 @if ($webInformation && $webInformation->tiktok)
                     <a href="{{ $webInformation->tiktok }}" target="_blank" class="group">
-                        <img src="{{ asset('assets/img/social/tiktok.png') }}" alt="TikTok"
+                        <img src="{{ asset('assets/img/social/linkedin.png') }}" alt="LinkedIn"
                             class="h-8 w-8 group-hover:hidden">
-                        <img src="{{ asset('assets/img/social/colored/tiktok.png') }}" alt="TikTok Colored"
+                        <img src="{{ asset('assets/img/social/colored/linkedin-colored.png') }}" alt="LinkedIn Colored"
                             class="h-8 w-8 hidden group-hover:block">
                     </a>
                 @endif

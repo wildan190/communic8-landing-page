@@ -8,10 +8,18 @@
         <div class="w-full pb-20">
             <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
                 <div class="max-w-xl text-left">
+                    {{-- Title --}}
                     <h1 class="text-4xl md:text-5xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
                         B R A N D <br> L A N D
                     </h1>
-                    <p class="mt-4 text-gray-800 text-base md:text-lg font-rubik leading-relaxed">
+
+                    {{-- Subtitle --}}
+                    <p class="mt-3 text-black text-base md:text-lg font-rubik font-bold tracking-[0.1em]">
+                        Crafting Identity with Creativity
+                    </p>
+
+                    {{-- Description --}}
+                    <p class="mt-4 text-black text-base md:text-lg font-rubik font-normal leading-relaxed">
                         We go beyond aesthetics to build and align your brand’s core quality, value, and trust.
                         Our comprehensive approach ensures a powerful consistent presence that resonates with your audience
                         in Asia.
@@ -24,11 +32,10 @@
     {{-- Explanation + Gallery Section --}}
     <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
-            {{-- Grid dengan text lebih lebar --}}
             <div class="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-16 lg:gap-24 items-center">
 
-                {{-- 📝 Text Section (kiri) --}}
-                <div class="text-gray-800 font-rubik leading-relaxed space-y-6 max-w-3xl">
+                {{-- 📝 Text Section --}}
+                <div class="text-[#666666] font-rubik leading-relaxed space-y-6 max-w-3xl">
                     <p>
                         At Communic 8, we specialize in helping brands unlock their full potential. Our services span the
                         entire brand journey — from building a strong identity, to amplifying it through creative campaigns,
@@ -45,9 +52,8 @@
                     <p>
                         A brand is more than just a name, logo, or visual identity — it is a promise of consistent quality
                         and values. True brand strength comes from continuously aligning what we do, what we deliver, and
-                        what
-                        we stand for with the principles that define the brand. This alignment is what earns trust, builds
-                        credibility, and sustains long-term relationships with stakeholders.
+                        what we stand for with the principles that define the brand. This alignment is what earns trust,
+                        builds credibility, and sustains long-term relationships with stakeholders.
                     </p>
 
                     <p>
@@ -66,7 +72,7 @@
                     </p>
                 </div>
 
-                {{-- 🖼️ Gallery (kanan) --}}
+                {{-- 🖼️ Gallery --}}
                 <div class="flex justify-center md:justify-end">
                     <div class="aspect-square w-full max-w-[500px] rounded-2xl overflow-hidden bg-[#EE9A96] lg:ml-auto">
                         @if ($brandForgeContent && $brandForgeContent->head_img)
@@ -83,67 +89,38 @@
         </div>
     </section>
 
-
     {{-- Framework Section --}}
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
-                {{-- Left Image --}}
-                <div>
-                    @if ($brandForgeContent && $brandForgeContent->img_framework)
+    @if ($brandForgeContent && $brandForgeContent->img_framework)
+        <section class="w-full bg-white py-16">
+            <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+                <div class="flex justify-center">
+                    <div class="w-full max-w-6xl rounded-2xl overflow-hidden">
                         <img src="{{ asset('storage/' . $brandForgeContent->img_framework) }}" alt="Framework Image"
-                            class="w-full h-auto rounded-[32px] object-cover">
-                    @else
-                        <div class="w-full h-[400px] rounded-[32px] bg-[#EF9A9A]"></div>
-                    @endif
-                </div>
-
-                {{-- Right Text --}}
-                <div class="text-gray-800 font-rubik leading-relaxed space-y-6">
-                    <h2 class="text-2xl md:text-3xl font-semibold text-black">
-                        Framework for Enduring Brand Value
-                    </h2>
-
-                    <div class="space-y-6">
-                        {{-- Point 1 --}}
-                        @if ($brandForgeContent && $brandForgeContent->align_strategic_foundation)
-                            <div>
-                                <p>{!! $brandForgeContent->align_strategic_foundation !!}</p>
-                            </div>
-                        @endif
-
-                        {{-- Point 2 --}}
-                        @if ($brandForgeContent && $brandForgeContent->build_constructing_the_brand_world)
-                            <div>
-                                <p>{!! $brandForgeContent->build_constructing_the_brand_world !!}</p>
-                            </div>
-                        @endif
-
-                        {{-- Point 3 --}}
-                        @if ($brandForgeContent && $brandForgeContent->maintain_ensuring_lasting_relevance)
-                            <div>
-                                <p>{!! $brandForgeContent->maintain_ensuring_lasting_relevance !!}</p>
-                            </div>
-                        @endif
+                            class="w-full h-auto object-cover transition-transform duration-500 hover:scale-105 rounded-2xl">
                     </div>
                 </div>
-
             </div>
-        </div>
-    </section>
+        </section>
+    @else
+        <section class="w-full bg-white py-16">
+            <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+                <div class="w-full max-w-6xl mx-auto h-[400px] bg-gray-200 rounded-2xl"></div>
+            </div>
+        </section>
+    @endif
+
 
     {{-- Strategy Section --}}
-    <section class="w-full py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20 space-y-16 md:space-y-24">
+    <section class="w-full py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20 space-y-16 md:space-y-24 text-[#666666]">
 
             {{-- Row 1 --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="text-left">
-                    <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase">
+                    <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
                         {!! $brandForgeContent->insight_strategy_driven ?? 'Insight-Driven<br>Strategy' !!}
                     </h2>
-                    <p class="mt-6 text-gray-700 font-rubik leading-relaxed text-sm md:text-base">
+                    <p class="mt-6 font-rubik leading-relaxed text-sm md:text-base text-[#666666]">
                         {!! $brandForgeContent->desc_insight_strategy_driven ??
                             'Every powerful brand is built on a foundation of deep understanding...' !!}
                     </p>
@@ -161,10 +138,10 @@
                         alt="Bold Creative Ideas" class="rounded-xl w-full max-w-md object-cover">
                 </div>
                 <div class="order-1 md:order-2 text-left">
-                    <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase">
+                    <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
                         {!! $brandForgeContent->bold_creative_ideas ?? 'Bold Creative<br>Ideas' !!}
                     </h2>
-                    <p class="mt-6 text-gray-700 font-rubik leading-relaxed text-sm md:text-base">
+                    <p class="mt-6 font-rubik leading-relaxed text-sm md:text-base text-[#666666]">
                         {!! $brandForgeContent->desc_bold_creative_ideas ??
                             'Strategy provides the direction, creativity makes the journey unforgettable...' !!}
                     </p>
@@ -174,10 +151,10 @@
             {{-- Row 3 --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="text-left">
-                    <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase">
+                    <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
                         {!! $brandForgeContent->impactful_visual_identity ?? 'Impactful<br>Visual Identity' !!}
                     </h2>
-                    <p class="mt-6 text-gray-700 font-rubik leading-relaxed text-sm md:text-base">
+                    <p class="mt-6 font-rubik leading-relaxed text-sm md:text-base text-[#666666]">
                         {!! $brandForgeContent->desc_impactful_visual_identity ??
                             'We bring your brand’s story to life through strong visuals...' !!}
                     </p>
@@ -190,20 +167,16 @@
         </div>
     </section>
 
-    {{-- Services Grid Section with Proper Spacing --}}
-    <section class="w-full py-8 bg-white relative z-10">
+    {{-- Services Grid Section --}}
+    <section class="w-full py-8 bg-white relative z-10 text-[#666666]">
         <div class="max-w-6xl mx-auto px-4 text-center">
 
-            {{-- Top description --}}
-            <p class="text-gray-700 font-rubik text-sm leading-snug max-w-xl mx-auto">
-                Communic 8's Brand Development service shapes every facet of your identity from
-                foundational research to brand design and activation.
-            </p>
-            <p class="mt-1 font-rubik font-semibold text-gray-900 text-sm">
-                Let us help you build a resilient brand that will stand through the test of time.
-            </p>
+            {{-- Title Updated --}}
+            <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
+                OUR SERVICES
+            </h2>
 
-            {{-- Grid Projects Style for Brand Forge Subservices --}}
+            {{-- Grid Projects --}}
             @php
                 $brandForgeSubservices = \App\Models\SubService::with('service')
                     ->whereHas('service', fn($q) => $q->where('name', 'Brand Forge'))
@@ -212,62 +185,52 @@
             @endphp
 
             <div class="relative mt-10">
+
+                {{-- Slider Container --}}
                 <div id="brandforge-slider"
                     class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
-
                     @forelse ($brandForgeSubservices as $subservice)
-                        <div class="snap-start border border-gray-200 rounded-2xl p-4 flex flex-col relative group"
+                        <div class="snap-start relative group overflow-hidden rounded-2xl"
                             style="flex: 0 0 calc(33.333% - 1rem); min-width: 260px;">
 
-                            {{-- Subservice Title --}}
-                            <h3 class="font-semibold text-gray-700 mb-3 text-sm md:text-base">{{ $subservice->name }}</h3>
-
                             {{-- Image --}}
-                            <div class="rounded-xl overflow-hidden relative">
-                                @if ($subservice->picture_upload)
-                                    <img src="{{ asset('storage/' . $subservice->picture_upload) }}"
-                                        alt="{{ $subservice->name }}" class="w-full object-cover">
-                                @else
-                                    <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="No Image"
-                                        class="w-full object-cover">
-                                @endif
+                            <img src="{{ $subservice->picture_upload ? asset('storage/' . $subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
+                                alt="{{ $subservice->name }}"
+                                class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
 
-                                {{-- Hover Overlay --}}
-                                <div
-                                    class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
-                                    <h3 class="text-sm md:text-base font-semibold mb-2">{{ $subservice->name }}</h3>
-                                    @if ($subservice->description)
-                                        <p class="text-xs md:text-sm leading-snug">
-                                            {{ Str::limit($subservice->description, 120) }}</p>
-                                    @else
-                                        <p class="text-xs md:text-sm italic opacity-80">No additional details available.</p>
-                                    @endif
-                                </div>
+                            {{-- Hover overlay --}}
+                            <div
+                                class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center rounded-2xl">
+                                <h3 class="text-sm md:text-base font-semibold mb-2">{{ $subservice->name }}</h3>
+                                @if ($subservice->description)
+                                    <p class="text-xs md:text-sm leading-snug">
+                                        {{ Str::limit($subservice->description, 120) }}</p>
+                                @else
+                                    <p class="text-xs md:text-sm italic opacity-80">No additional details available.</p>
+                                @endif
                             </div>
                         </div>
                     @empty
-                        <p class="text-center text-gray-500 w-full">No Brand Forge subservices found.</p>
+                        <p class="text-center text-[#666666] w-full">No Brand Forge subservices found.</p>
                     @endforelse
                 </div>
 
                 {{-- Slider Buttons --}}
                 <button id="prevBrandForge"
-                    class="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
+                    class="absolute -left-20 top-1/2 -translate-y-1/2 z-20 hidden md:flex hover:scale-110 transition">
+                    <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Previous"
+                        class="w-8 h-8 object-contain">
                 </button>
+
                 <button id="nextBrandForge"
-                    class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
+                    class="absolute -right-20 top-1/2 -translate-y-1/2 z-20 hidden md:flex hover:scale-110 transition">
+                    <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next"
+                        class="w-8 h-8 object-contain">
                 </button>
             </div>
         </div>
     </section>
+
 
     {{-- JS for Brand Forge Slider --}}
     <script>
@@ -277,7 +240,7 @@
 
         const getSlideWidth = () => {
             const first = brandforgeSlider.querySelector('.snap-start');
-            return first ? first.offsetWidth + 16 : 300; // jarak antar item
+            return first ? first.offsetWidth + 16 : 300;
         };
 
         prevBrandForge?.addEventListener('click', () => {
@@ -308,6 +271,8 @@
         window.addEventListener('load', checkBrandforgeSlider);
     </script>
 
+    <br />
+
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
         style="background-image: url('/assets/img/cta-bg.png');">
@@ -333,7 +298,7 @@
                     {{ __('home/cta.description') }}
                 </p>
                 <a href="{{ route('contact.index') }}"
-                    class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition">
+                    class="inline-block bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-white-200 transition">
                     {{ __('home/cta.button') }}
                 </a>
             </div>
@@ -356,7 +321,6 @@
                 </p>
             </div>
 
-
             <!-- Wrapper for Desktop (with arrows) -->
             <div class="hidden sm:flex items-center space-x-6">
                 <!-- Prev Button -->
@@ -372,9 +336,8 @@
                             class="snap-center min-w-[280px] sm:min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
                             <p class="text-sm text-gray-500">{{ $blog->category }}</p>
                             <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
-                                <h3
-                                    class="text-base sm:text-lg font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[72px] mb-4">
-                                    {{ $blog->title }}
+                                <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
+                                    <strong>{{ $blog->title }}</strong>
                                 </h3>
                             </a>
                             @if ($blog->headline_img)

@@ -10,5 +10,6 @@ class Client extends Model
         'logo',
         'company_name',
         'industry',
+        'category', // ✅ tambahkan ini
     ];
 }

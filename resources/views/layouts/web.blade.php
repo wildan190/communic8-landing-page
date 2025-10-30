@@ -5,22 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Jasa Digital Marketing & Brand Development - Communic8 Asia</title>
+    <title>Jasa Digital Marketing & Brand Development - Communic8  </title>
     <meta name="description"
-        content="Communic8 Asia adalah agensi kreatif di Jakarta yang fokus pada digital marketing, brand development, dan digital campaign. Kami bantu bisnis Anda tumbuh di era digital.">
+        content="Communic8   adalah agensi kreatif di Jakarta yang fokus pada digital marketing, brand development, dan digital campaign. Kami bantu bisnis Anda tumbuh di era digital.">
     <meta name="keywords" content="{{ $webInformation->meta_keywords ?? '' }}">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="{{ url()->current() }}" />
 
-    <meta property="og:title" content="Jasa Digital Marketing & Brand Development - Communic8 Asia">
+    <meta property="og:title" content="Jasa Digital Marketing & Brand Development - Communic8  ">
     <meta property="og:description"
-        content="Communic8 Asia, agensi kreatif di Jakarta. Kami menyediakan layanan digital marketing, brand development, dan web development untuk membantu bisnis Anda berkembang.">
+        content="Communic8  , agensi kreatif di Jakarta. Kami menyediakan layanan digital marketing, brand development, dan web development untuk membantu bisnis Anda berkembang.">
     <meta property="og:image" content="https://www.communic8agency.com/assets/img/og-image.jpg">
     <meta property="og:url" content="https://www.communic8agency.com/">
     <meta property="og:type" content="website">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Jasa Digital Marketing & Brand Development - Communic8 Asia">
+    <meta name="twitter:title" content="Jasa Digital Marketing & Brand Development - Communic8  ">
     <meta name="twitter:description"
         content="Kami adalah agensi digital kreatif di Jakarta yang menawarkan solusi lengkap untuk digital marketing dan branding.">
     <meta name="twitter:image" content="https://www.communic8agency.com/assets/img/twitter-image.jpg">

@@ -25,6 +25,7 @@ class ProjectController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'client' => 'nullable|string|max:255',
+            'description' => 'nullable|string', // ✅ add
             'project_img' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'project_url' => 'nullable|url',
             'is_highlighted' => 'nullable|boolean',
@@ -35,21 +36,23 @@ class ProjectController extends Controller
 
         // Cegah lebih dari 2 project highlight
         if ($validated['is_highlighted'] && Project::where('is_highlighted', true)->count() >= 2) {
-            return back()->withErrors(['is_highlighted' => 'Maximum 2 projects can be highlighted at a time.'])->withInput();
+            return back()
+                ->withErrors(['is_highlighted' => 'Maximum 2 projects can be highlighted at a time.'])
+                ->withInput();
         }
 
         // 📤 Upload gambar ke public/storage/projects
         if ($request->hasFile('project_img')) {
             $file = $request->file('project_img');
-            $filename = time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
+            $filename = time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
 
             $destinationPath = public_path('storage/projects');
-            if (! file_exists($destinationPath)) {
+            if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0755, true);
             }
 
             $file->move($destinationPath, $filename);
-            $validated['project_img'] = 'projects/'.$filename;
+            $validated['project_img'] = 'projects/' . $filename;
         }
 
         Project::create($validated);
@@ -67,6 +70,7 @@ class ProjectController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'client' => 'nullable|string|max:255',
+            'description' => 'nullable|string', // ✅ add
             'project_img' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'project_url' => 'nullable|url',
             'is_highlighted' => 'nullable|boolean',
@@ -76,26 +80,28 @@ class ProjectController extends Controller
 
         // Cegah lebih dari 2 highlight, kecuali project ini sendiri
         if ($validated['is_highlighted'] && Project::where('is_highlighted', true)->where('id', '!=', $project->id)->count() >= 2) {
-            return back()->withErrors(['is_highlighted' => 'Maximum 2 projects can be highlighted at a time.'])->withInput();
+            return back()
+                ->withErrors(['is_highlighted' => 'Maximum 2 projects can be highlighted at a time.'])
+                ->withInput();
         }
 
         // 📤 Upload baru jika ada file baru
         if ($request->hasFile('project_img')) {
             // Hapus gambar lama
-            if ($project->project_img && file_exists(public_path('storage/'.$project->project_img))) {
-                unlink(public_path('storage/'.$project->project_img));
+            if ($project->project_img && file_exists(public_path('storage/' . $project->project_img))) {
+                unlink(public_path('storage/' . $project->project_img));
             }
 
             $file = $request->file('project_img');
-            $filename = time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
+            $filename = time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
 
             $destinationPath = public_path('storage/projects');
-            if (! file_exists($destinationPath)) {
+            if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0755, true);
             }
 
             $file->move($destinationPath, $filename);
-            $validated['project_img'] = 'projects/'.$filename;
+            $validated['project_img'] = 'projects/' . $filename;
         }
 
         $project->update($validated);
@@ -106,8 +112,8 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         // 🧹 Hapus file fisik jika ada
-        if ($project->project_img && file_exists(public_path('storage/'.$project->project_img))) {
-            unlink(public_path('storage/'.$project->project_img));
+        if ($project->project_img && file_exists(public_path('storage/' . $project->project_img))) {
+            unlink(public_path('storage/' . $project->project_img));
         }
 
         $project->delete();

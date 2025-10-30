@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController as AdminAboutController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BrandForgeContentController;
+use App\Http\Controllers\CardServicesController;
 use App\Http\Controllers\DigitalArchitectureContentController;
 use App\Http\Controllers\DigitalCompassContentController;
 use App\Http\Controllers\GalleryController;
@@ -233,6 +234,15 @@ Route::prefix('admin')
 
         Route::get('heroes-about/edit', [HeroAboutController::class, 'edit'])->name('admin.heroes-about.edit');
         Route::post('heroes-about/update', [HeroAboutController::class, 'update'])->name('admin.heroes-about.update');
+        
+        Route::prefix('card-services')->group(function () {
+            Route::get('/', [CardServicesController::class, 'index'])->name('card-services.index');
+            Route::get('/create', [CardServicesController::class, 'create'])->name('card-services.create');
+            Route::post('/store', [CardServicesController::class, 'store'])->name('card-services.store');
+            Route::get('/{card_service}/edit', [CardServicesController::class, 'edit'])->name('card-services.edit');
+            Route::put('/{card_service}', [CardServicesController::class, 'update'])->name('card-services.update');
+            Route::delete('/{card_service}', [CardServicesController::class, 'destroy'])->name('card-services.destroy');
+        });
     });
 
 Route::get('lang/{locale}', function ($locale) {
@@ -244,4 +254,4 @@ Route::get('lang/{locale}', function ($locale) {
     return redirect()->back();
 })->name('lang.switch');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
