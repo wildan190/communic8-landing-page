@@ -122,7 +122,7 @@
 
             @php
                 $publicPresenceSubservices = \App\Models\SubService::with('service')
-                    ->whereHas('service', fn($q) => $q->where('name', 'Public Presence'))
+                    ->whereHas('service', fn($q) => $q->where('name', 'Public Space Media'))
                     ->latest()
                     ->get();
             @endphp

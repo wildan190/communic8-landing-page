@@ -26,6 +26,7 @@
                         <div class="py-1">
                             <x-dropdown-link :href="route('blogs.index')">{{ __('Blogs') }}</x-dropdown-link>
                             <x-dropdown-link :href="route('galleries.index')">{{ __('Galleries') }}</x-dropdown-link>
+                            <x-dropdown-link :href="route('branch-offices.index')">{{ __('Branch Offices') }}</x-dropdown-link>
                             <x-dropdown-link :href="route('messages.index')">{{ __('Messages') }}</x-dropdown-link>
                             <x-dropdown-link :href="route('testimonies.index')">{{ __('Testimonies') }}</x-dropdown-link>
                         </div>
@@ -58,6 +59,8 @@
                     </button>
                     <div x-show="open" @click.away="open = false" class="absolute mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5">
                         <div class="py-1">
+                            <x-dropdown-link :href="route('services.index')">{{ __('Services') }}</x-dropdown-link>
+                            <div class="border-t my-2 border-gray-200 dark:border-gray-600"></div>
                             <h4 class="px-3 py-1 text-xs uppercase font-semibold text-gray-500 dark:text-gray-300">Subservices</h4>
                             <x-dropdown-link :href="route('subservices.index')">{{ __('All Subservices') }}</x-dropdown-link>
                             <x-dropdown-link :href="route('subservices.create')">{{ __('Create Subservice') }}</x-dropdown-link>
@@ -108,6 +111,9 @@
                             </x-dropdown-link>
                             <x-dropdown-link :href="route('admin.heroes-about.edit')" :active="request()->routeIs('admin.heroes-about.edit')">
                                 {{ __('Hero About') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('hero.index')" :active="request()->routeIs('hero.index')">
+                                {{ __('Hero Home') }}
                             </x-dropdown-link>
                         </div>
                     </div>

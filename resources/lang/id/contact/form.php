@@ -7,7 +7,7 @@ return [
 
     // Form placeholders
     'name_placeholder' => 'Nama Anda...',
-    'phone_placeholder' => '812-3456-7890',
+    'phone_placeholder' => 'Nomor Telepon Anda',
     'company_placeholder' => 'Nama perusahaan Anda...',
     'email_placeholder' => 'email.anda@domain.com',
     'industry_placeholder' => 'Industri...',

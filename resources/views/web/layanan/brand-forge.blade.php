@@ -179,7 +179,7 @@
             {{-- Grid Projects --}}
             @php
                 $brandForgeSubservices = \App\Models\SubService::with('service')
-                    ->whereHas('service', fn($q) => $q->where('name', 'Brand Forge'))
+                    ->whereHas('service', fn($q) => $q->where('name', 'Brand Land'))
                     ->latest()
                     ->get();
             @endphp

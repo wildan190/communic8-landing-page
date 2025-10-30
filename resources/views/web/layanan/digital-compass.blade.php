@@ -89,6 +89,25 @@
         </div>
     </section>
 
+    {{-- 📌 Full Width Aligned With Other Sections --}}
+    <section class="w-full py-20 bg-white text-[#666666]">
+        <div class="max-w-7xl mx-auto px-20">
+
+            <div class="w-full flex justify-center">
+                <div class="aspect-[16/9] w-full max-w-[1200px] rounded-2xl overflow-hidden bg-[#EE9A96]">
+                    @if ($digitalCompassContent && $digitalCompassContent->img_photo)
+                        <img src="{{ Storage::url($digitalCompassContent->img_photo) }}" alt="Digital Compass"
+                            class="w-full h-full object-cover">
+                    @else
+                        <img src="{{ asset('assets/img/gallery1.png') }}" alt="Digital Compass"
+                            class="w-full h-full object-cover opacity-0">
+                    @endif
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     {{-- Section 1 --}}
     <section class="w-full py-20 bg-white text-[#666666]">
         <div class="max-w-7xl mx-auto px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -203,7 +222,6 @@
             </div>
         </div>
     </section>
-
 
     <script>
         // Digital Stand Horizontal Scroll

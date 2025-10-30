@@ -159,7 +159,7 @@
 
             @php
                 $digitalArchitectureSubservices = \App\Models\SubService::with('service')
-                    ->whereHas('service', fn($q) => $q->where('name', 'Digital Architecture'))
+                    ->whereHas('service', fn($q) => $q->where('name', 'Code Band'))
                     ->latest()
                     ->get();
             @endphp

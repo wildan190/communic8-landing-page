@@ -22,10 +22,10 @@
             <div class="flex justify-center relative mt-8 group">
                 <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
                     class="w-auto h-auto max-w-[200px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[320px]
-                    relative z-10 transition-opacity duration-300 group-hover:opacity-0">
+                relative z-10 transition-opacity duration-300 group-hover:opacity-0">
                 <img src="{{ asset('assets/img/lamphover.png') }}" alt="Lamp Hover"
                     class="w-auto h-auto max-w-[200px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[320px]
-                    absolute z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                absolute z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             </div>
 
             {{-- Bottom Row --}}
@@ -34,12 +34,12 @@
                 {{-- Left Column --}}
                 <div class="space-y-6">
                     <p class="text-gray-600 text-base sm:text-lg leading-relaxed max-w-md mx-auto md:mx-0">
-                        {{ __('home/hero.description') }}
+                        {{ $hero->description ?? '' }}
                     </p>
                     <button onclick="window.location='{{ route('about.index') }}'"
                         class="px-6 py-3 text-white bg-[#333333] rounded-full font-semibold
-       transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-white hover:scale-105">
-                        {{ __('home/hero.button') }}
+   transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-white hover:scale-105">
+                        Discover your opportunities
                     </button>
                 </div>
 
@@ -48,7 +48,7 @@
                     class="flex flex-col items-center md:items-end text-center md:text-right space-y-2 mt-10 overflow-hidden">
                     <h2 id="stat-text"
                         class="text-6xl sm:text-7xl md:text-8xl font-extrabold text-[#F97316]
-                       transition-transform duration-700 ease-out">
+                   transition-transform duration-700 ease-out">
                         20+
                     </h2>
 
@@ -63,6 +63,7 @@
             </div>
         </div>
     </section>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

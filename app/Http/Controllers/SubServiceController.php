@@ -31,20 +31,21 @@ class SubServiceController extends Controller
         $validated = $request->validate([
             'service_id' => 'required|exists:services,id',
             'name' => 'required|string|max:255',
+            'description' => 'nullable|string', // ✅
             'picture_upload' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
         if ($request->hasFile('picture_upload')) {
             $file = $request->file('picture_upload');
-            $filename = time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
+            $filename = time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
 
             $destinationPath = public_path('storage/subservices');
-            if (! file_exists($destinationPath)) {
+            if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0755, true);
             }
 
             $file->move($destinationPath, $filename);
-            $validated['picture_upload'] = 'subservices/'.$filename;
+            $validated['picture_upload'] = 'subservices/' . $filename;
         }
 
         SubService::create($validated);
@@ -66,25 +67,26 @@ class SubServiceController extends Controller
         $validated = $request->validate([
             'service_id' => 'required|exists:services,id',
             'name' => 'required|string|max:255',
+            'description' => 'nullable|string', // ✅
             'picture_upload' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
         if ($request->hasFile('picture_upload')) {
             // Hapus gambar lama jika ada
-            if ($subservice->picture_upload && file_exists(public_path('storage/'.$subservice->picture_upload))) {
-                unlink(public_path('storage/'.$subservice->picture_upload));
+            if ($subservice->picture_upload && file_exists(public_path('storage/' . $subservice->picture_upload))) {
+                unlink(public_path('storage/' . $subservice->picture_upload));
             }
 
             $file = $request->file('picture_upload');
-            $filename = time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
+            $filename = time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
 
             $destinationPath = public_path('storage/subservices');
-            if (! file_exists($destinationPath)) {
+            if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0755, true);
             }
 
             $file->move($destinationPath, $filename);
-            $validated['picture_upload'] = 'subservices/'.$filename;
+            $validated['picture_upload'] = 'subservices/' . $filename;
         } else {
             $validated['picture_upload'] = $subservice->picture_upload;
         }
@@ -97,8 +99,8 @@ class SubServiceController extends Controller
     // Destroy
     public function destroy(SubService $subservice)
     {
-        if ($subservice->picture_upload && file_exists(public_path('storage/'.$subservice->picture_upload))) {
-            unlink(public_path('storage/'.$subservice->picture_upload));
+        if ($subservice->picture_upload && file_exists(public_path('storage/' . $subservice->picture_upload))) {
+            unlink(public_path('storage/' . $subservice->picture_upload));
         }
 
         $subservice->delete();
