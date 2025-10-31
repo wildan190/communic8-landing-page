@@ -25,17 +25,18 @@ class AboutController extends Controller
             'img' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'title' => 'required|string|max:255',
             'description' => 'required|string',
+            'behind_the_brand' => 'nullable|string',
         ]);
 
-        $data = $request->only(['title', 'description']);
+        $data = $request->only(['title', 'description', 'behind_the_brand']);
 
         if ($request->hasFile('img')) {
             $file = $request->file('img');
-            $filename = time().'_'.$file->getClientOriginalName();
+            $filename = time() . '_' . $file->getClientOriginalName();
             $uploadPath = public_path('uploads/about');
 
             // Buat folder jika belum ada
-            if (! file_exists($uploadPath)) {
+            if (!file_exists($uploadPath)) {
                 mkdir($uploadPath, 0777, true);
             }
 
@@ -66,22 +67,23 @@ class AboutController extends Controller
             'img' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'title' => 'required|string|max:255',
             'description' => 'required|string',
+            'behind_the_brand' => 'nullable|string',
         ]);
 
-        $data = $request->only(['title', 'description']);
+        $data = $request->only(['title', 'description', 'behind_the_brand']);
 
         if ($request->hasFile('img')) {
             $file = $request->file('img');
-            $filename = time().'_'.$file->getClientOriginalName();
+            $filename = time() . '_' . $file->getClientOriginalName();
             $uploadPath = public_path('uploads/about');
 
-            if (! file_exists($uploadPath)) {
+            if (!file_exists($uploadPath)) {
                 mkdir($uploadPath, 0777, true);
             }
 
             // Hapus file lama jika ada
-            if ($about->img && file_exists($uploadPath.'/'.$about->img)) {
-                unlink($uploadPath.'/'.$about->img);
+            if ($about->img && file_exists($uploadPath . '/' . $about->img)) {
+                unlink($uploadPath . '/' . $about->img);
             }
 
             // Simpan file baru
@@ -99,8 +101,8 @@ class AboutController extends Controller
         $about = About::findOrFail($id);
         $uploadPath = public_path('uploads/about');
 
-        if ($about->img && file_exists($uploadPath.'/'.$about->img)) {
-            unlink($uploadPath.'/'.$about->img);
+        if ($about->img && file_exists($uploadPath . '/' . $about->img)) {
+            unlink($uploadPath . '/' . $about->img);
         }
 
         $about->delete();

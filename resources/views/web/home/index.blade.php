@@ -63,8 +63,7 @@
             </div>
         </div>
     </section>
-
-
+ 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const stats = [{
@@ -169,81 +168,75 @@
     <div class="relative">
 
         {{-- Section At a Glance --}}
-        <section
-            class="bg-white relative bg-white-100 pt-8 sm:pt-12 md:pt-16 pb-12 sm:pb-14 md:pb-16 z-10 overflow-visible">
-            <div class="container max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative">
+<section
+    class="bg-white relative bg-white-100 pt-8 sm:pt-12 md:pt-16 pb-12 sm:pb-14 md:pb-16 z-10 overflow-visible">
+    <div class="container max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative">
 
-                {{-- Mobile Layout --}}
-                <div class="md:hidden">
-                    {{-- Text Content First on Mobile --}}
-                    <div class="text-center mb-8">
-                        <h2
-                            class="font-poppins font-regular text-sm sm:text-2xl md:text-3xl 
+        {{-- Mobile Layout --}}
+        <div class="md:hidden">
+            {{-- Text Content First on Mobile --}}
+            <div class="text-center mb-8">
+                <h2
+                    class="font-poppins font-regular text-sm sm:text-2xl md:text-3xl 
                     text-[#666666] tracking-normal sm:tracking-[0.6em] leading-snug mb-3 sm:mb-5 {{ app()->getLocale() == 'en' ? 'tracking-normal' : 'tracking-normal' }}">
-                            B E H I N D &nbsp; T H E &nbsp; B R A N D
-                            {!! __('home/glance.title') !!}
-                        </h2>
-                        <p class="text-[#666666] leading-relaxed text-sm sm:text-base px-2">
-                            {{ __('home/glance.paragraph1') }}
-                        </p>
-                        <p class="mt-3 sm:mt-4 text-[#666666] leading-relaxed text-sm sm:text-base px-2">
-                            {{ __('home/glance.paragraph2') }}
-                        </p>
-                    </div>
-
-                    {{-- Images Stack for Mobile --}}
-                    <div class="flex justify-center space-x-8 sm:space-x-10">
-                        {{-- Gambar urutan ke-1 (imgstack2.png sekarang di bawah) --}}
-                        <div class="w-32 sm:w-40 h-36 sm:h-44 rounded-[32px] overflow-hidden shadow-2xl mt-6 sm:mt-8 z-20">
-                            <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
-                                class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
-                        </div>
-
-                        {{-- Gambar urutan ke-2 (imgstack1.png sekarang di atas) --}}
-                        <div class="w-32 sm:w-40 h-36 sm:h-44 rounded-[32px] overflow-hidden shadow-2xl z-10 mt-0 sm:mt-0">
-                            <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
-                                class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
-                        </div>
-                    </div>
-                </div>
-
-                {{-- Desktop Layout --}}
-                <div class="hidden md:grid grid-cols-2 gap-12 items-start">
-                    {{-- Floating Images --}}
-                    <div class="relative w-full h-full">
-                        {{-- Gambar urutan ke-1 (imgstack2.png sekarang di bawah) --}}
-                        <div
-                            class="absolute -top-28 -left-16 w-[20rem] sm:w-[21rem] md:w-[22rem] rounded-[40px] overflow-hidden shadow-2xl z-20 pointer-events-auto">
-                            <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
-                                class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
-                        </div>
-
-                        {{-- Gambar urutan ke-2 (imgstack1.png sekarang di atas) --}}
-                        <div
-                            class="absolute top-32 left-36 w-[20rem] sm:w-[21rem] md:w-[22rem] rounded-[40px] overflow-hidden shadow-2xl z-30 pointer-events-auto">
-                            <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
-                                class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
-                        </div>
-                    </div>
-
-                    {{-- Text --}}
-                    <div class="text-left flex flex-col justify-center">
-                        <h2
-                            class="text-2xl sm:text-3xl md:text-4xl text-[#666666] mb-6 leading-tight
-                    {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}">
-                            {!! __('home/glance.title') !!}
-                        </h2>
-                        <p class="text-[#666666] leading-relaxed break-words">
-                            {{ __('home/glance.paragraph1') }}
-                        </p>
-                        <p class="mt-4 text-[#666666] leading-relaxed break-words">
-                            {{ __('home/glance.paragraph2') }}
-                        </p>
-                    </div>
-                </div>
-
+                    B E H I N D &nbsp; T H E &nbsp; B R A N D
+                </h2>
+                <p class="text-[#666666] leading-relaxed text-sm sm:text-base px-2">
+                    {!! nl2br(e($about->behind_the_brand ?? '')) !!}
+                </p>
             </div>
-        </section>
+
+            {{-- Images Stack for Mobile --}}
+            <div class="flex justify-center space-x-8 sm:space-x-10">
+                {{-- Gambar urutan ke-1 --}}
+                <div class="w-32 sm:w-40 h-36 sm:h-44 rounded-[32px] overflow-hidden shadow-2xl mt-6 sm:mt-8 z-20">
+                    <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
+                        class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                </div>
+
+                {{-- Gambar urutan ke-2 --}}
+                <div class="w-32 sm:w-40 h-36 sm:h-44 rounded-[32px] overflow-hidden shadow-2xl z-10 mt-0 sm:mt-0">
+                    <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
+                        class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                </div>
+            </div>
+        </div>
+
+        {{-- Desktop Layout --}}
+        <div class="hidden md:grid grid-cols-2 gap-12 items-start">
+            {{-- Floating Images --}}
+            <div class="relative w-full h-full">
+                {{-- Gambar urutan ke-1 --}}
+                <div
+                    class="absolute -top-28 -left-16 w-[20rem] sm:w-[21rem] md:w-[22rem] rounded-[40px] overflow-hidden shadow-2xl z-20 pointer-events-auto">
+                    <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
+                        class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                </div>
+
+                {{-- Gambar urutan ke-2 --}}
+                <div
+                    class="absolute top-32 left-36 w-[20rem] sm:w-[21rem] md:w-[22rem] rounded-[40px] overflow-hidden shadow-2xl z-30 pointer-events-auto">
+                    <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
+                        class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                </div>
+            </div>
+
+            {{-- Text --}}
+            <div class="text-left flex flex-col justify-center">
+                <h2
+                    class="text-2xl sm:text-3xl md:text-4xl text-[#666666] mb-6 leading-tight
+                    {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}">
+                    BEHIND THE BRAND
+                </h2>
+                <p class="text-[#666666] leading-relaxed break-words">
+                    {!! nl2br(e($about->behind_the_brand ?? '')) !!}
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
 
     </div>
 
