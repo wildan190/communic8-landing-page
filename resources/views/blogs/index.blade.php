@@ -43,6 +43,7 @@
                                     <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Judul</th>
                                     <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Kategori</th>
                                     <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Status</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Highlighted</th>
                                     <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Tanggal</th>
                                     <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Aksi</th>
                                 </tr>
@@ -65,6 +66,9 @@
                                             </span>
                                         </td>
                                         <td class="px-4 py-3 text-gray-700 dark:text-gray-300">
+                                            {{ $blog->highlighted ? 'Yes' : 'No' }}
+                                        </td>
+                                        <td class="px-4 py-3 text-gray-700 dark:text-gray-300">
                                             {{ $blog->date->format('d M Y') }}
                                         </td>
                                         <td class="px-4 py-3 text-center">
@@ -81,7 +85,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="5" class="px-4 py-8 text-center text-gray-500 dark:text-gray-400">
+                                        <td colspan="6" class="px-4 py-8 text-center text-gray-500 dark:text-gray-400">
                                             Belum ada blog.
                                         </td>
                                     </tr>

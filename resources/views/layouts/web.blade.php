@@ -70,7 +70,7 @@
 
     <script>
         function toggleSidebar() {
-            document.getElementById('mobileMenu').classList.toggle('translate-x-0');
+            document.getElementById('mobileMenu').classList.toggle('translate-x-full');
         }
     </script>
 </head>

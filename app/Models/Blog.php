@@ -19,6 +19,7 @@ class Blog extends Model
         'headline_img_alt',
         'date',
         'status',
+        'highlighted',
     ];
 
     protected $casts = [

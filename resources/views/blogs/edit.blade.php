@@ -82,6 +82,13 @@
                                 </select>
                             </div>
 
+                            <!-- Highlighted -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Highlighted</label>
+                                <input type="checkbox" name="highlighted" value="1" {{ old('highlighted', $blog->highlighted) ? 'checked' : '' }}
+                                    class="mt-1 rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-900 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" />
+                            </div>
+
                             <!-- Keywords -->
                             <div>
                                 <label
@@ -191,13 +198,61 @@
 
             // sinkronisasi realtime ke hidden input
             quill.on('text-change', function() {
-                document.querySelector('#content').value = quill.root.innerHTML;
+                const html = quill.root.innerHTML;
+                document.querySelector('#content').value = html;
+                console.log('Quill content on text-change:', html);
             });
 
             // pastikan hidden input terisi sebelum submit
             document.querySelector('form').addEventListener('submit', function() {
-                document.querySelector('#content').value = quill.root.innerHTML;
+                const html = quill.root.innerHTML;
+                document.querySelector('#content').value = html;
+                console.log('Quill content on form submit:', html);
             });
+
+            // handle image upload
+            quill.getModule('toolbar').addHandler('image', function() {
+                selectLocalImage();
+            });
+
+            // handle drag and drop
+            quill.root.addEventListener('drop', function(e) {
+                e.preventDefault();
+                if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) {
+                    const file = e.dataTransfer.files[0];
+                    if (/^image\//.test(file.type)) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const range = quill.getSelection(true);
+                            quill.insertEmbed(range.index, 'image', e.target.result);
+                            quill.setSelection(range.index + 1);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                }
+            });
+
+            function selectLocalImage() {
+                const input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('accept', 'image/*');
+                input.click();
+
+                input.onchange = function() {
+                    const file = input.files[0];
+                    if (/^image\//.test(file.type)) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const range = quill.getSelection(true);
+                            quill.insertEmbed(range.index, 'image', e.target.result);
+                            quill.setSelection(range.index + 1);
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        console.warn('You could only upload images.');
+                    }
+                };
+            }
         });
     </script>
 </x-app-layout>

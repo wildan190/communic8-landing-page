@@ -26,7 +26,7 @@ class AboutController extends Controller
             ->paginate(10);
 
         $categories = Blog::select('category')->distinct()->pluck('category');
-        $sliderBlogs = Blog::latest()->take(10)->get();
+        $sliderBlogs = Blog::where('highlighted', true)->latest()->take(10)->get();
         $clients = Client::latest()->get();
 
         $galleries = Gallery::latest()->get();
