@@ -7,13 +7,13 @@
             class="container max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center justify-between min-h-[85vh] py-20 md:py-24 space-y-8">
 
             {{-- Hero Title --}}
-            <div class="relative z-10 pt-20 text-center">
+            <div class="relative z-10 pt-16 md:pt-20 text-center">
                 <h1 id="hero-line1"
-                    class="font-poppins font-light text-2xl sm:text-3xl md:text-4xl text-[#000000] tracking-[0.3em] leading-snug mb-3 sm:mb-5">
+                    class="font-poppins font-light text-2xl sm:text-3xl md:text-4xl text-[#000000] tracking-[0.2em] md:tracking-[0.3em] leading-snug mb-3 sm:mb-5">
                     CREATIVITY WITH
                 </h1>
                 <h1 id="hero-line2"
-                    class="font-poppins font-light text-2xl sm:text-3xl md:text-4xl text-[#000000] tracking-[0.3em] leading-snug">
+                    class="font-poppins font-light text-2xl sm:text-3xl md:text-4xl text-[#000000] tracking-[0.2em] md:tracking-[0.3em] leading-snug">
                     BUSINESS SENSE
                 </h1>
             </div>
@@ -21,10 +21,10 @@
             {{-- Lampu --}}
             <div class="flex justify-center relative mt-8 group">
                 <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
-                    class="w-auto h-auto max-w-[200px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[320px]
+                    class="w-auto h-auto max-w-[180px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[320px]
                 relative z-10 transition-opacity duration-300 group-hover:opacity-0">
                 <img src="{{ asset('assets/img/lamphover.png') }}" alt="Lamp Hover"
-                    class="w-auto h-auto max-w-[200px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[320px]
+                    class="w-auto h-auto max-w-[180px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[320px]
                 absolute z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             </div>
 
@@ -63,7 +63,7 @@
             </div>
         </div>
     </section>
- 
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const stats = [{
@@ -150,12 +150,12 @@
     <section class="relative w-full bg-cover bg-center"
         style="background-image: url('{{ asset('assets/img/quotes.png') }}')">
         <div
-            class="w-full h-full bg-black bg-opacity-40 flex items-center justify-center text-center py-32 sm:py-40 md:py-52 lg:py-60">
+            class="w-full h-full bg-black bg-opacity-40 flex items-center justify-center text-center py-24 sm:py-32 md:py-52">
             <div class="text-white px-4 sm:px-6">
                 <h2
-                    class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-[0.3em] sm:tracking-[0.3em] uppercase leading-tight">
-                    “C R E A T I V I T Y &nbsp; I S &nbsp; T H E &nbsp; B R I D G E <br />
-                    B E T W E E N &nbsp; C U L T U R E &nbsp; A N D <br />
+                    class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-[0.1em] sm:tracking-[0.2em] md:tracking-[0.3em] uppercase leading-tight">
+                    “C R E A T I V I T Y I S T H E B R I D G E <br />
+                    B E T W E E N C U L T U R E A N D <br />
                     C O M M E R C E“
                 </h2>
                 <p class="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base italic">Communic 8</p>
@@ -163,80 +163,77 @@
         </div>
     </section>
 
-
     {{-- Wrapper halaman --}}
     <div class="relative">
 
         {{-- Section At a Glance --}}
-<section
-    class="bg-white relative bg-white-100 pt-8 sm:pt-12 md:pt-16 pb-12 sm:pb-14 md:pb-16 z-10 overflow-visible">
-    <div class="container max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative">
+        <section class="bg-white relative bg-white-100 pt-8 sm:pt-12 md:pt-16 pb-12 sm:pb-14 md:pb-16 z-10 overflow-x-clip">
+            <div class="container max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative">
 
-        {{-- Mobile Layout --}}
-        <div class="md:hidden">
-            {{-- Text Content First on Mobile --}}
-            <div class="text-center mb-8">
-                <h2
-                    class="font-poppins font-regular text-sm sm:text-2xl md:text-3xl 
-                    text-[#666666] tracking-normal sm:tracking-[0.6em] leading-snug mb-3 sm:mb-5 {{ app()->getLocale() == 'en' ? 'tracking-normal' : 'tracking-normal' }}">
-                    B E H I N D &nbsp; T H E &nbsp; B R A N D
-                </h2>
-                <p class="text-[#666666] leading-relaxed text-sm sm:text-base px-2">
-                    {!! nl2br(e($about->behind_the_brand ?? '')) !!}
-                </p>
-            </div>
+                {{-- Mobile Layout --}}
+                <div class="md:hidden">
+                    {{-- Text Content First on Mobile --}}
+                    <div class="text-center mb-8 px-4">
+                        <h2
+                            class="font-poppins font-regular text-sm sm:text-2xl md:text-3xl 
+                    text-[#666666] tracking-widest sm:tracking-[0.6em] leading-snug mb-3 sm:mb-5">
+                            B E H I N D T H E B R A N D
+                        </h2>
+                        <p class="text-[#666666] leading-relaxed text-sm sm:text-base">
+                            {!! nl2br(e($about->behind_the_brand ?? '')) !!}
+                        </p>
+                    </div>
 
-            {{-- Images Stack for Mobile --}}
-            <div class="flex justify-center space-x-8 sm:space-x-10">
-                {{-- Gambar urutan ke-1 --}}
-                <div class="w-32 sm:w-40 h-36 sm:h-44 rounded-[32px] overflow-hidden shadow-2xl mt-6 sm:mt-8 z-20">
-                    <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
-                        class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                    {{-- Images Stack for Mobile --}}
+                    <div class="flex justify-center space-x-4 sm:space-x-6 mt-12">
+                        {{-- Gambar urutan ke-1 --}}
+                        <div class="w-32 sm:w-40 h-36 sm:h-44 rounded-[32px] overflow-hidden shadow-2xl mt-6 sm:mt-8 z-20">
+                            <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                        </div>
+
+                        {{-- Gambar urutan ke-2 --}}
+                        <div class="w-32 sm:w-40 h-36 sm:h-44 rounded-[32px] overflow-hidden shadow-2xl z-10">
+                            <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                        </div>
+                    </div>
                 </div>
 
-                {{-- Gambar urutan ke-2 --}}
-                <div class="w-32 sm:w-40 h-36 sm:h-44 rounded-[32px] overflow-hidden shadow-2xl z-10 mt-0 sm:mt-0">
-                    <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
-                        class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
-                </div>
-            </div>
-        </div>
+                {{-- Desktop Layout --}}
+                <div class="hidden md:grid grid-cols-2 gap-12 items-start">
+                    {{-- Floating Images --}}
+                    <div class="relative w-full h-full">
+                        {{-- Gambar urutan ke-1 --}}
+                        <div
+                            class="absolute -top-28 -left-16 w-[20rem] sm:w-[21rem] md:w-[22rem] rounded-[40px] overflow-hidden shadow-2xl z-20 pointer-events-auto">
+                            <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                        </div>
 
-        {{-- Desktop Layout --}}
-        <div class="hidden md:grid grid-cols-2 gap-12 items-start">
-            {{-- Floating Images --}}
-            <div class="relative w-full h-full">
-                {{-- Gambar urutan ke-1 --}}
-                <div
-                    class="absolute -top-28 -left-16 w-[20rem] sm:w-[21rem] md:w-[22rem] rounded-[40px] overflow-hidden shadow-2xl z-20 pointer-events-auto">
-                    <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
-                        class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
-                </div>
+                        {{-- Gambar urutan ke-2 --}}
+                        <div
+                            class="absolute top-32 left-36 w-[20rem] sm:w-[21rem] md:w-[22rem] rounded-[40px] overflow-hidden shadow-2xl z-30 pointer-events-auto">
+                            <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
+                        </div>
+                    </div>
 
-                {{-- Gambar urutan ke-2 --}}
-                <div
-                    class="absolute top-32 left-36 w-[20rem] sm:w-[21rem] md:w-[22rem] rounded-[40px] overflow-hidden shadow-2xl z-30 pointer-events-auto">
-                    <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
-                        class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
-                </div>
-            </div>
-
-            {{-- Text --}}
-            <div class="text-left flex flex-col justify-center">
-                <h2
-                    class="text-2xl sm:text-3xl md:text-4xl text-[#666666] mb-6 leading-tight
+                    {{-- Text --}}
+                    <div class="text-left flex flex-col justify-center">
+                        <h2
+                            class="text-2xl sm:text-3xl md:text-4xl text-[#666666] mb-6 leading-tight
                     {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}">
-                    BEHIND THE BRAND
-                </h2>
-                <p class="text-[#666666] leading-relaxed break-words">
-                    {!! nl2br(e($about->behind_the_brand ?? '')) !!}
-                </p>
+                            BEHIND THE BRAND
+                        </h2>
+                        <p class="text-[#666666] leading-relaxed break-words">
+                            {!! nl2br(e($about->behind_the_brand ?? '')) !!}
+                        </p>
+                    </div>
+                </div>
+
             </div>
-        </div>
-
-    </div>
-</section>
-
+        </section>
 
     </div>
 
@@ -523,12 +520,12 @@
 
                     {{-- SLIDER BUTTONS --}}
                     <button id="prev-logos-{{ $i }}"
-                        class="absolute left-[-40px] top-1/2 -translate-y-1/2 p-2 flex items-center justify-center z-20">
+                        class="absolute left-[-40px] top-1/2 -translate-y-1/2 p-2 hidden md:flex items-center justify-center z-20">
                         <img src="{{ asset('assets/img/blog-slider-left.png') }}" class="w-6 h-6 invert" alt="Prev">
                     </button>
 
                     <button id="next-logos-{{ $i }}"
-                        class="absolute right-[-40px] top-1/2 -translate-y-1/2 p-2 flex items-center justify-center z-20">
+                        class="absolute right-[-40px] top-1/2 -translate-y-1/2 p-2 hidden md:flex items-center justify-center z-20">
                         <img src="{{ asset('assets/img/blog-slider-right.png') }}" class="w-6 h-6 invert"
                             alt="Next">
                     </button>
@@ -668,10 +665,10 @@
         document.getElementById('my-next').addEventListener('click', () => swiper.slideNext());
     </script>
 
-    <section class="w-full bg-white relative min-h-[520px] flex items-center justify-center">
+    <section class="w-full bg-white relative min-h-[520px] flex items-center justify-center overflow-x-clip">
         <!-- Tombol kiri (di luar container) -->
         <button id="prev"
-            class="absolute left-[2cm] top-1/2 -translate-y-1/2 z-30 w-14 h-14 flex items-center justify-center">
+            class="absolute left-4 md:left-8 lg:left-[2cm] top-1/2 -translate-y-1/2 z-30 w-14 h-14 hidden md:flex items-center justify-center">
             <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Prev"
                 class="w-12 h-12 opacity-80 hover:opacity-100">
         </button>
@@ -724,11 +721,15 @@
 
                         <!-- FOTO COVER (mobile) -->
                         @if ($testimoni->photo_cover && file_exists(public_path('storage/' . $testimoni->photo_cover)))
-                            <img src="{{ asset('storage/' . $testimoni->photo_cover) }}" alt="Cover"
-                                class="md:hidden absolute inset-0 w-full h-full object-cover z-0">
+                            <div class="md:hidden absolute inset-0 w-full h-full bg-black/30 z-0">
+                                <img src="{{ asset('storage/' . $testimoni->photo_cover) }}" alt="Cover"
+                                    class="absolute inset-0 w-full h-full object-cover opacity-50">
+                            </div>
                         @else
-                            <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Cover"
-                                class="md:hidden absolute inset-0 w-full h-full object-cover z-0">
+                            <div class="md:hidden absolute inset-0 w-full h-full bg-black/30 z-0">
+                                <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="Cover"
+                                    class="absolute inset-0 w-full h-full object-cover opacity-50">
+                            </div>
                         @endif
                     </div>
                 @endforeach
@@ -737,7 +738,7 @@
 
         <!-- Tombol kanan (di luar container) -->
         <button id="next"
-            class="absolute right-[2cm] top-1/2 -translate-y-1/2 z-30 w-14 h-14 flex items-center justify-center">
+            class="absolute right-4 md:right-8 lg:right-[2cm] top-1/2 -translate-y-1/2 z-30 w-14 h-14 hidden md:flex items-center justify-center">
             <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next"
                 class="w-12 h-12 opacity-80 hover:opacity-100">
         </button>

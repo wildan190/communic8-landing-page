@@ -188,6 +188,50 @@
             document.querySelector('form').addEventListener('submit', function() {
                 document.querySelector('#content').value = quill.root.innerHTML;
             });
+
+            // handle image upload
+            quill.getModule('toolbar').addHandler('image', function() {
+                selectLocalImage();
+            });
+
+            // handle drag and drop
+            quill.root.addEventListener('drop', function(e) {
+                e.preventDefault();
+                if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) {
+                    const file = e.dataTransfer.files[0];
+                    if (/^image\//.test(file.type)) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const range = quill.getSelection(true);
+                            quill.insertEmbed(range.index, 'image', e.target.result);
+                            quill.setSelection(range.index + 1);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                }
+            });
+
+            function selectLocalImage() {
+                const input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('accept', 'image/*');
+                input.click();
+
+                input.onchange = function() {
+                    const file = input.files[0];
+                    if (/^image\//.test(file.type)) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const range = quill.getSelection(true);
+                            quill.insertEmbed(range.index, 'image', e.target.result);
+                            quill.setSelection(range.index + 1);
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        console.warn('You could only upload images.');
+                    }
+                };
+            }
         });
     </script>
 

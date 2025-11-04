@@ -9,7 +9,7 @@
             <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
                 <div class="max-w-2xl text-left">
                     <div class="max-w-2xl text-left space-y-6">
-                        <h1 class="text-4xl md:text-5xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
+                        <h1 class="text-4xl md:text-5xl font-light tracking-widest md:tracking-[0.5em] text-black font-poppins leading-snug">
                             OVER-THE-TOP<br>ADVERTISING
                         </h1>
 
@@ -149,7 +149,7 @@
             <div class="text-center mb-10">
                 <h3
                     class="text-2xl sm:text-3xl md:text-4xl text-[#666666] font-poppins font-normal mb-2
-                {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}
+                {{ app()->getLocale() == 'en' ? 'tracking-normal md:tracking-[0.3em]' : 'tracking-normal' }}
                 leading-tight uppercase">
                     E N G I N E E R E D &nbsp; F O R<br>M E A S U R A B L E &nbsp; R E S U L T S
                 </h3>
@@ -205,7 +205,7 @@
             <div class="text-center mb-4">
                 <h4
                     class="text-2xl sm:text-3xl md:text-4xl text-[#666666] font-poppins font-normal
-                {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}
+                {{ app()->getLocale() == 'en' ? 'tracking-normal md:tracking-[0.3em]' : 'tracking-normal' }}
                 leading-tight uppercase">
                     Ready To Dominate In<br>This New Era?
                 </h4>
@@ -325,7 +325,7 @@
 
             {{-- Left Big Text --}}
             <div class="mb-12 md:mb-0 text-center md:text-left">
-                <h2 class="text-4xl md:text-6xl leading-relaxed tracking-[0.5em]">
+                <h2 class="text-4xl md:text-6xl leading-relaxed tracking-widest md:tracking-[0.5em]">
                     <span class="font-thin block">{{ __('home/cta.dream') }}</span>
                     <span class="font-bold block">{{ __('home/cta.bolder') }}</span>
                     <span class="font-thin block">{{ __('home/cta.achieve') }}</span>

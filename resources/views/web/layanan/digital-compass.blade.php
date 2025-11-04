@@ -8,7 +8,7 @@
         <div class="w-full pb-20">
             <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 flex justify-start">
                 <div class="max-w-xl text-left">
-                    <h1 class="text-4xl md:text-5xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
+                    <h1 class="text-4xl md:text-5xl font-light tracking-widest md:tracking-[0.5em] text-black font-poppins leading-snug">
                         D I G I T A L <br> S T A N D
                     </h1>
                     <h2 class="mt-6 text-lg md:text-xl font-bold font-rubik text-black">
@@ -91,7 +91,7 @@
 
     {{-- 📌 Full Width Aligned With Other Sections --}}
     <section class="w-full py-20 bg-white text-[#666666]">
-        <div class="max-w-7xl mx-auto px-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div class="w-full flex justify-center">
                 <div class="aspect-[16/9] w-full max-w-[1200px] rounded-2xl overflow-hidden bg-[#EE9A96]">
@@ -110,7 +110,7 @@
 
     {{-- Section 1 --}}
     <section class="w-full py-20 bg-white text-[#666666]">
-        <div class="max-w-7xl mx-auto px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
             {{-- Left Image --}}
             <div>
@@ -208,17 +208,19 @@
                 </div>
 
                 {{-- Tombol Navigasi --}}
-                <button id="prevDigitalStand"
-                    class="absolute -left-20 top-1/2 -translate-y-1/2 z-20 hidden md:flex hover:scale-110 transition">
-                    <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Previous"
-                        class="w-8 h-8 object-contain">
-                </button>
+                <div class="hidden md:block">
+                    <button id="prevDigitalStand"
+                        class="absolute -left-20 top-1/2 -translate-y-1/2 z-20 flex hover:scale-110 transition">
+                        <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Previous"
+                            class="w-8 h-8 object-contain">
+                    </button>
 
-                <button id="nextDigitalStand"
-                    class="absolute -right-20 top-1/2 -translate-y-1/2 z-20 hidden md:flex hover:scale-110 transition">
-                    <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next"
-                        class="w-8 h-8 object-contain">
-                </button>
+                    <button id="nextDigitalStand"
+                        class="absolute -right-20 top-1/2 -translate-y-1/2 z-20 flex hover:scale-110 transition">
+                        <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next"
+                            class="w-8 h-8 object-contain">
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -274,7 +276,7 @@
 
             {{-- Left Big Text --}}
             <div class="mb-12 md:mb-0 text-center md:text-left">
-                <h2 class="text-4xl md:text-6xl leading-relaxed tracking-[0.5em]">
+                <h2 class="text-4xl md:text-6xl leading-relaxed tracking-widest md:tracking-[0.5em]">
                     <span class="font-thin block">{{ __('home/cta.dream') }}</span>
                     <span class="font-bold block">{{ __('home/cta.bolder') }}</span>
                     <span class="font-thin block">{{ __('home/cta.achieve') }}</span>

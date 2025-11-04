@@ -34,7 +34,7 @@ class BlogController extends Controller
         ]);
 
         $validated['slug'] = Str::slug($request->title);
-        $validated['content'] = clean($request->input('content'));
+        $validated['content'] = $request->input('content');
 
         // Upload image manual agar tidak perlu symbolic link
         if ($request->hasFile('headline_img')) {
@@ -83,7 +83,7 @@ class BlogController extends Controller
         }
 
         if ($request->has('content')) {
-            $validated['content'] = clean($request->input('content'));
+            $validated['content'] = $request->input('content');
         }
 
         // Handle update image

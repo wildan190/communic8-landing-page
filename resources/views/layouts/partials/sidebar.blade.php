@@ -52,10 +52,7 @@
 </div>
 
 <script>
-    function toggleSidebar() {
-        const sidebar = document.getElementById('mobileMenu');
-        sidebar.classList.toggle('translate-x-full');
-    }
+    
 
     function toggleMobileDropdown() {
         const dropdown = document.getElementById('mobileDropdown');
