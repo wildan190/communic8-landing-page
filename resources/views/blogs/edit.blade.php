@@ -82,6 +82,13 @@
                                 </select>
                             </div>
 
+                            <!-- Highlighted -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Highlighted</label>
+                                <input type="checkbox" name="highlighted" value="1" {{ old('highlighted', $blog->highlighted) ? 'checked' : '' }}
+                                    class="mt-1 rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-900 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" />
+                            </div>
+
                             <!-- Keywords -->
                             <div>
                                 <label
@@ -191,12 +198,16 @@
 
             // sinkronisasi realtime ke hidden input
             quill.on('text-change', function() {
-                document.querySelector('#content').value = quill.root.innerHTML;
+                const html = quill.root.innerHTML;
+                document.querySelector('#content').value = html;
+                console.log('Quill content on text-change:', html);
             });
 
             // pastikan hidden input terisi sebelum submit
             document.querySelector('form').addEventListener('submit', function() {
-                document.querySelector('#content').value = quill.root.innerHTML;
+                const html = quill.root.innerHTML;
+                document.querySelector('#content').value = html;
+                console.log('Quill content on form submit:', html);
             });
 
             // handle image upload

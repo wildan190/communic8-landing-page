@@ -20,7 +20,7 @@ class LayananController extends Controller
     public function brandLand()
     {
         $categories = Blog::select('category')->distinct()->pluck('category');
-        $sliderBlogs = Blog::latest()->take(10)->get();
+        $sliderBlogs = Blog::where('highlighted', true)->latest()->take(10)->get();
         $clients = Client::latest()->get();
         $galleries = Gallery::latest()->get();
         $webInfo = WebInformation::first();
@@ -37,7 +37,7 @@ class LayananController extends Controller
     public function digitalStand()
     {
         $categories = Blog::select('category')->distinct()->pluck('category');
-        $sliderBlogs = Blog::latest()->take(10)->get();
+        $sliderBlogs = Blog::where('highlighted', true)->latest()->take(10)->get();
         $clients = Client::latest()->get();
         $galleries = Gallery::latest()->get();
         $webInfo = WebInformation::first();
@@ -71,7 +71,7 @@ class LayananController extends Controller
     public function codeBand()
     {
         $categories = Blog::select('category')->distinct()->pluck('category');
-        $sliderBlogs = Blog::latest()->take(10)->get();
+        $sliderBlogs = Blog::where('highlighted', true)->latest()->take(10)->get();
         $clients = Client::latest()->get();
         $galleries = Gallery::latest()->get();
         $webInfo = WebInformation::first();
@@ -105,7 +105,7 @@ class LayananController extends Controller
     public function publicSpaceMedia()
     {
         $categories = Blog::select('category')->distinct()->pluck('category');
-        $sliderBlogs = Blog::latest()->take(10)->get();
+        $sliderBlogs = Blog::where('highlighted', true)->latest()->take(10)->get();
         $clients = Client::latest()->get();
         $galleries = Gallery::latest()->get();
         $webInfo = WebInformation::first();
@@ -139,7 +139,7 @@ class LayananController extends Controller
     public function ottAdvertising()
     {
         $categories = Blog::select('category')->distinct()->pluck('category');
-        $sliderBlogs = Blog::latest()->take(10)->get();
+        $sliderBlogs = Blog::where('highlighted', true)->latest()->take(10)->get();
         $clients = Client::latest()->get();
         $galleries = Gallery::latest()->get();
         $webInfo = WebInformation::first();

@@ -110,7 +110,6 @@
             </div>
         </section>
 
-
         {{-- WHY OUR PARTNER CHOOSE US --}}
         <section class="relative pt-24 sm:pt-32 md:pt-40 pb-16 sm:pb-20 md:pb-24 bg-white">
             <div class="container max-w-6xl mx-auto px-4 sm:px-6 md:px-12">

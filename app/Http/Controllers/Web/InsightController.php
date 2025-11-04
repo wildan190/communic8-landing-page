@@ -26,10 +26,10 @@ class InsightController extends Controller
         $categories = Blog::select('category')->distinct()->pluck('category');
 
         // Data untuk slider (10 terbaru)
-        $sliderBlogs = Blog::latest()->take(10)->get();
+        $sliderBlogs = Blog::where('highlighted', true)->latest()->take(10)->get();
 
         $categories = Blog::select('category')->distinct()->pluck('category');
-        $sliderBlogs = Blog::latest()->take(10)->get();
+        $highlightedBlogs = Blog::where('highlighted', true)->latest()->take(3)->get();
         $clients = Client::latest()->get();
 
         // 🔥 ambil semua data gallery terbaru
@@ -38,7 +38,7 @@ class InsightController extends Controller
         $branchOffices = BranchOffice::all();
         $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
 
-        return view('web.insight.index', compact('blogs', 'categories', 'category', 'sliderBlogs', 'webInfo', 'branchOffices', 'insightCategories', 'clients', 'galleries'));
+        return view('web.insight.index', compact('blogs', 'categories', 'category', 'sliderBlogs', 'webInfo', 'branchOffices', 'insightCategories', 'clients', 'galleries', 'highlightedBlogs'));
     }
 
     public function show($slug)
@@ -46,7 +46,7 @@ class InsightController extends Controller
         $blog = Blog::where('slug', $slug)->firstOrFail();
 
         // Data untuk slider (10 terbaru)
-        $sliderBlogs = Blog::latest()->take(10)->get();
+        $sliderBlogs = Blog::where('highlighted', true)->latest()->take(10)->get();
 
         $webInfo = WebInformation::first();
         $branchOffices = BranchOffice::all();

@@ -20,14 +20,16 @@ class HomeController extends Controller
     {
         $category = $request->get('category');
 
-        $blogs = Blog::when($category, function ($query, $category) {
+        $blogs = Blog::where('highlighted', true)->when($category, function ($query, $category) {
             $query->where('category', $category);
         })
         ->latest()
         ->paginate(10);
 
         $categories = Blog::select('category')->distinct()->pluck('category');
-        $sliderBlogs = Blog::latest()->take(10)->get();
+        $sliderBlogs = Blog::where('highlighted', true)->latest()->take(10)->get();
+
+        $highlightedBlogs = Blog::where('highlighted', true)->latest()->get();
 
         $webInformation = WebInformation::first();
         $branchOffices = BranchOffice::all();

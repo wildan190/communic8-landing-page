@@ -31,10 +31,12 @@ class BlogController extends Controller
             'headline_img_alt' => 'nullable|string|max:255',
             'date' => 'required|date',
             'status' => 'required|in:draft,published,archived',
+            'highlighted' => 'boolean',
         ]);
 
         $validated['slug'] = Str::slug($request->title);
         $validated['content'] = $request->input('content');
+        $validated['highlighted'] = $request->has('highlighted');
 
         // Upload image manual agar tidak perlu symbolic link
         if ($request->hasFile('headline_img')) {
@@ -76,6 +78,7 @@ class BlogController extends Controller
             'headline_img_alt' => 'nullable|string|max:255',
             'date' => 'sometimes|required|date',
             'status' => 'sometimes|required|in:draft,published,archived',
+            'highlighted' => 'boolean',
         ]);
 
         if ($request->has('title')) {
@@ -85,6 +88,9 @@ class BlogController extends Controller
         if ($request->has('content')) {
             $validated['content'] = $request->input('content');
         }
+
+        // Add this block for 'highlighted'
+        $validated['highlighted'] = $request->has('highlighted');
 
         // Handle update image
         if ($request->hasFile('headline_img')) {
