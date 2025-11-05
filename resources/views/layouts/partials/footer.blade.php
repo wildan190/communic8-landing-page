@@ -8,7 +8,7 @@
                     <img src="{{ asset('assets/img/logo-white.png') }}" alt="Logo" class="h-10">
                 </a>
                 <span class="text-white text-center md:text-left text-sm">
-                    © 2025 Communic8 Asia – All Right Reserved.
+                    © 2025 Communic8 – All Right Reserved.
                 </span>
             </div>
 
