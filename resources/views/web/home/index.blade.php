@@ -180,28 +180,39 @@
 
                 {{-- Mobile Layout --}}
                 <div class="md:hidden">
+
                     {{-- Text Content First on Mobile --}}
                     <div class="text-center mb-8 px-4">
+
+                        {{-- Compact title on mobile --}}
                         <h2
-                            class="font-poppins font-regular text-sm sm:text-2xl md:text-3xl 
-                    text-[#666666] tracking-widest sm:tracking-[0.6em] leading-snug mb-3 sm:mb-5">
-                            B E H I N D T H E B R A N D
+                            class="
+                    font-poppins 
+                    text-xs font-semibold 
+                    text-[#666666] 
+                    leading-relaxed 
+                    tracking-[0.15em] 
+                    sm:text-sm sm:tracking-[0.3em] 
+                    mb-2
+                ">
+                            B E H I N D &nbsp; T H E &nbsp; B R A N D
                         </h2>
-                        <p class="text-[#666666] leading-relaxed text-sm sm:text-base">
+
+                        <p class="text-[#666666] leading-relaxed text-xs sm:text-sm mt-2">
                             {!! nl2br(e($about->behind_the_brand ?? '')) !!}
                         </p>
                     </div>
 
                     {{-- Images Stack for Mobile --}}
-                    <div class="flex justify-center space-x-4 sm:space-x-6 mt-12">
+                    <div class="flex justify-center gap-3 sm:gap-6 mt-8">
                         {{-- Gambar urutan ke-1 --}}
-                        <div class="w-32 sm:w-40 h-36 sm:h-44 rounded-[32px] overflow-hidden shadow-2xl mt-6 sm:mt-8 z-20">
+                        <div class="w-28 sm:w-40 h-32 sm:h-44 rounded-[24px] overflow-hidden shadow-lg mt-6 sm:mt-8 z-20">
                             <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
                                 class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
                         </div>
 
                         {{-- Gambar urutan ke-2 --}}
-                        <div class="w-32 sm:w-40 h-36 sm:h-44 rounded-[32px] overflow-hidden shadow-2xl z-10">
+                        <div class="w-28 sm:w-40 h-32 sm:h-44 rounded-[24px] overflow-hidden shadow-lg z-10">
                             <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
                                 class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
                         </div>
@@ -210,6 +221,7 @@
 
                 {{-- Desktop Layout --}}
                 <div class="hidden md:grid grid-cols-2 gap-12 items-start">
+
                     {{-- Floating Images --}}
                     <div class="relative w-full h-full">
                         {{-- Gambar urutan ke-1 --}}
@@ -375,38 +387,46 @@
 
             {{-- Title Section --}}
             <div class="text-center mb-16">
+
+                {{-- Title Handling: compact on mobile, spaced on desktop --}}
                 <h2
-                    class="text-2xl sm:text-3xl md:text-4xl text-[#666666] mb-2
-                {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }} leading-tight">
-                    {!! __('home/what_we_do.title') !!}
-                </h2><br />
-                <p class="text-[#666666] text-base sm:text-lg md:text-xl">
+                    class="
+                text-base font-semibold leading-tight text-[#666666] mb-2 
+                sm:text-2xl 
+                md:text-4xl 
+                md:tracking-[0.3em]
+            ">
+                    <span class="md:hidden">{!! strip_tags(__('home/what_we_do.title')) !!}</span>
+                    <span class="hidden md:inline">{!! __('home/what_we_do.title') !!}</span>
+                </h2>
+
+                <br />
+
+                <p class="text-[#666666] text-xs sm:text-sm md:text-xl leading-relaxed">
                     {!! __('home/what_we_do.subtitle') !!}
                 </p>
             </div>
 
-            @php
-                $cards = $card_services; // diambil dari controller
-            @endphp
+            @php $cards = $card_services; @endphp
 
             {{-- Mobile: Single Column --}}
             <div class="md:hidden space-y-6">
                 @foreach ($cards as $card)
                     <div class="bg-white border border-gray-300 rounded-[16px] flex flex-col mx-auto max-w-sm p-4">
                         <img src="{{ asset('storage/' . $card->img) }}" alt="{{ $card->title_en }}"
-                            class="w-full h-48 sm:h-60 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 transition duration-500">
+                            class="w-full h-44 object-cover rounded-[12px] mb-3 filter grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
 
-                        <div class="flex flex-col items-center text-center w-full flex-1 pb-4">
-                            <h3 class="font-bold text-gray-700 mb-3 break-words px-1 text-lg sm:text-xl">
+                        <div class="flex flex-col items-center text-center w-full flex-1 pb-3">
+                            <h3 class="font-bold text-gray-700 mb-2 break-words text-base">
                                 {{ app()->getLocale() == 'en' ? $card->title_en : $card->title_id }}
                             </h3>
 
-                            <p class="text-gray-600 leading-relaxed px-1 mb-6 flex-1 text-sm">
+                            <p class="text-gray-600 leading-relaxed mb-4 text-xs">
                                 {{ app()->getLocale() == 'en' ? $card->desc_en : $card->desc_id }}
                             </p>
 
                             <a href="{{ route($card->route_name) }}"
-                                class="bg-gray-800 text-white px-5 py-2 text-sm rounded-full hover:bg-gray-700 transition-colors">
+                                class="bg-gray-800 text-white px-4 py-2 text-xs rounded-full hover:bg-gray-700 transition-colors">
                                 {{ app()->getLocale() == 'en' ? $card->button_en : $card->button_id }}
                             </a>
                         </div>
@@ -414,15 +434,15 @@
                 @endforeach
             </div>
 
-            {{-- Desktop Layout --}}
+            {{-- Desktop --}}
             <div class="hidden md:block">
-                {{-- row 1 (3 cards) --}}
                 <div class="flex flex-wrap justify-center gap-6 mb-8">
                     @foreach ($cards->take(3) as $card)
                         <div
                             class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-64 p-4 min-h-[480px] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+
                             <img src="{{ asset('storage/' . $card->img) }}"
-                                class="w-full h-52 object-cover rounded-[12px] mb-4">
+                                class="w-full h-52 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
 
                             <div class="flex flex-col items-center text-center flex-1">
                                 <h3 class="text-base font-bold text-gray-700 mb-3">
@@ -442,13 +462,13 @@
                     @endforeach
                 </div>
 
-                {{-- row 2 (2 cards) --}}
                 <div class="flex flex-wrap justify-center gap-6">
                     @foreach ($cards->skip(3) as $card)
                         <div
                             class="bg-white border border-gray-300 rounded-[16px] flex flex-col w-72 p-4 min-h-[480px] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+
                             <img src="{{ asset('storage/' . $card->img) }}"
-                                class="w-full h-56 object-cover rounded-[12px] mb-4">
+                                class="w-full h-56 object-cover rounded-[12px] mb-4 filter grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
 
                             <div class="flex flex-col items-center text-center flex-1">
                                 <h3 class="text-lg font-bold text-gray-700 mb-3">
@@ -494,7 +514,6 @@
             </p>
         </div>
     </section>
-
 
     {{-- ============================= --}}
     {{-- Section TRUSTED BY --}}
