@@ -280,7 +280,7 @@
                     <div>
                         <div
                             class="text-5xl sm:text-6xl md:text-7xl font-black text-orange-500 tracking-tight mt-3 md:mt-0">
-                            <span class="counter" data-target="300">300</span>+
+                            <span class="counter" data-target="500">500</span>+
                         </div>
                         <div class="text-gray-700 font-semibold text-sm sm:text-base">
                             {{ __('home/values.brands_handled') }}
