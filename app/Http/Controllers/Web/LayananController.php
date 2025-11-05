@@ -19,13 +19,13 @@ class LayananController extends Controller
 {
     public function brandLand()
     {
-        $categories = Blog::select('category')->distinct()->pluck('category');
+        $categories = \App\Models\Category::pluck('name', 'id');
         $sliderBlogs = Blog::where('highlighted', true)->latest()->take(10)->get();
         $clients = Client::latest()->get();
         $galleries = Gallery::latest()->get();
         $webInfo = WebInformation::first();
         $branchOffices = BranchOffice::all();
-        $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
+        $insightCategories = \App\Models\Category::take(5)->pluck('name', 'id');
 
         $brandForgeContent = BrandForgeContent::latest()->first();
 
@@ -36,13 +36,13 @@ class LayananController extends Controller
 
     public function digitalStand()
     {
-        $categories = Blog::select('category')->distinct()->pluck('category');
+        $categories = \App\Models\Category::pluck('name', 'id');
         $sliderBlogs = Blog::where('highlighted', true)->latest()->take(10)->get();
         $clients = Client::latest()->get();
         $galleries = Gallery::latest()->get();
         $webInfo = WebInformation::first();
         $branchOffices = BranchOffice::all();
-        $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
+        $insightCategories = \App\Models\Category::take(5)->pluck('name', 'id');
 
         // 🔥 Ambil semua SubService yang service name-nya "Digital Compass"
         $digitalCompassSubservices = SubService::whereHas('service', function ($query) {
@@ -70,13 +70,13 @@ class LayananController extends Controller
 
     public function codeBand()
     {
-        $categories = Blog::select('category')->distinct()->pluck('category');
+        $categories = \App\Models\Category::pluck('name', 'id');
         $sliderBlogs = Blog::where('highlighted', true)->latest()->take(10)->get();
         $clients = Client::latest()->get();
         $galleries = Gallery::latest()->get();
         $webInfo = WebInformation::first();
         $branchOffices = BranchOffice::all();
-        $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
+        $insightCategories = \App\Models\Category::take(5)->pluck('name', 'id');
 
         // 🔥 Ambil semua SubService yang service name-nya "Digital Architecture"
         $digitalArchitectureSubservices = SubService::whereHas('service', function ($query) {
@@ -104,13 +104,13 @@ class LayananController extends Controller
 
     public function publicSpaceMedia()
     {
-        $categories = Blog::select('category')->distinct()->pluck('category');
+        $categories = \App\Models\Category::pluck('name', 'id');
         $sliderBlogs = Blog::where('highlighted', true)->latest()->take(10)->get();
         $clients = Client::latest()->get();
         $galleries = Gallery::latest()->get();
         $webInfo = WebInformation::first();
         $branchOffices = BranchOffice::all();
-        $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
+        $insightCategories = \App\Models\Category::take(5)->pluck('name', 'id');
 
         // 🔥 Ambil semua SubService yang service name-nya "Public Presence"
         $publicPresenceSubservices = SubService::whereHas('service', function ($query) {
@@ -138,13 +138,13 @@ class LayananController extends Controller
 
     public function ottAdvertising()
     {
-        $categories = Blog::select('category')->distinct()->pluck('category');
+        $categories = \App\Models\Category::pluck('name', 'id');
         $sliderBlogs = Blog::where('highlighted', true)->latest()->take(10)->get();
         $clients = Client::latest()->get();
         $galleries = Gallery::latest()->get();
         $webInfo = WebInformation::first();
         $branchOffices = BranchOffice::all();
-        $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
+        $insightCategories = \App\Models\Category::take(5)->pluck('name', 'id');
 
         $ottAdvertisingSubservices = SubService::whereHas('service', function ($query) {
             $query->where('name', 'OTT Advertising');

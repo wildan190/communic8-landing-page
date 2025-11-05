@@ -26,25 +26,25 @@
             </div>
 
             {{-- Hero Content Wrapper --}}
-            <div class="relative z-10 w-full flex justify-center items-center mt-20 md:mt-32">
-                <div class="relative flex items-center justify-center w-[700px] md:w-[950px]">
+            <div class="relative z-10 w-full flex justify-center items-center mt-20 md:mt-32 px-4">
+                <div class="relative grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-screen-lg w-full items-center justify-center">
 
                     {{-- Transparent Grey Box --}}
                     <div
-                        class="relative z-10 bg-gray-400/70 text-white text-left
-                w-[320px] h-[220px] md:w-[460px] md:h-[280px]
-                flex items-center px-8 md:px-10 translate-x-[10%]">
+                        class="relative z-10 bg-gray-400/70 text-white text-left p-6 md:p-8 rounded-lg
+                        order-2 md:order-1
+                        w-full h-auto min-h-[180px] md:min-h-[220px] flex items-center justify-center md:justify-start">
                         <h2
                             class="font-poppins font-medium text-lg sm:text-2xl md:text-3xl
-                    tracking-[0.25em] leading-snug uppercase">
+                            tracking-[0.25em] leading-snug uppercase text-center md:text-left">
                             {!! __('about/hero.strategic_text') !!}
                         </h2>
                     </div>
 
                     {{-- Main Image --}}
                     <div
-                        class="relative z-20 w-[340px] h-[340px] md:w-[500px] md:h-[500px]
-                -translate-x-[10%] flex items-center justify-center overflow-visible">
+                        class="relative z-20 w-full h-auto aspect-square
+                        order-1 md:order-2 flex items-center justify-center overflow-visible">
                         <img src="{{ $heroAbout && $heroAbout->box_img ? asset($heroAbout->box_img) : asset('assets/img/dummy/dummy3.png') }}"
                             alt="Creative Visual" class="w-full h-auto object-contain rounded-lg" />
                     </div>
@@ -69,27 +69,33 @@
         <section
             class="relative overflow-visible z-10 bg-gradient-to-r from-gray-400 to-gray-600 py-16 md:py-20 transition-colors duration-500 hover:from-orange-500 hover:to-orange-600 group">
 
-            {{-- Container utama: full width & center --}}
+            {{-- Container utama --}}
             <div class="w-full flex justify-center relative">
 
-                {{-- Grid (gambar + teks) sedikit bergeser ke kanan --}}
-                <div class="flex items-center gap-x-8 ml-12">
+                {{-- Grid --}}
+                <div
+                    class="flex items-center gap-x-8 ml-12
+            max-md:flex-col max-md:ml-0 max-md:text-center max-md:gap-y-8">
 
-                    {{-- Left: Lamp --}}
-                    <div class="relative flex justify-center md:justify-end">
+                    {{-- Left: Lamp (HIDE ON MOBILE) --}}
+                    <div class="relative justify-center md:justify-end hidden md:flex">
                         <div class="relative w-[360px] sm:w-[400px] md:w-[440px] lg:w-[480px] -translate-y-[300px]">
+
                             {{-- Gambar dasar --}}
                             <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
-                                class="w-full h-auto object-contain drop-shadow-2xl absolute top-[-200%] left-0 -mb-8 transition-all duration-500 group-hover:opacity-0" />
+                                class="w-full h-auto object-contain drop-shadow-2xl absolute top-[-200%] left-0 -mb-8
+                        transition-all duration-500 group-hover:opacity-0" />
+
                             {{-- Gambar hover --}}
                             <img src="{{ asset('assets/img/lamphover.png') }}" alt="Lamp Hover"
-                                class="w-full h-auto object-contain drop-shadow-2xl absolute top-[-200%] left-0 -mb-8 opacity-0 transition-all duration-500 group-hover:opacity-100" />
+                                class="w-full h-auto object-contain drop-shadow-2xl absolute top-[-200%] left-0 -mb-8 opacity-0
+                        transition-all duration-500 group-hover:opacity-100" />
                         </div>
                     </div>
 
                     {{-- Right: Text --}}
                     <div
-                        class="text-white transition-colors duration-500 text-center md:text-left w-full md:w-[100%] max-w-[720px] px-0 relative z-10">
+                        class="text-white transition-colors duration-500 text-center md:text-left w-full md:w-[100%] max-w-[720px] px-0 relative z-10 max-md:px-4">
 
                         {{-- Title --}}
                         <h2 class="font-poppins font-normal text-xl sm:text-2xl md:text-3xl mb-3"
@@ -384,7 +390,7 @@
                 <div class="text-center mb-12 sm:mb-16">
                     <h2
                         class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
-           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
                         {!! __('home/insights.title') !!}
                     </h2>
                     <p class="text-gray-600 text-base sm:text-lg mt-2">
@@ -405,7 +411,7 @@
                         @foreach ($sliderBlogs as $blog)
                             <div
                                 class="snap-center min-w-[280px] sm:min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
-                                <p class="text-sm text-gray-500">{{ $blog->category }}</p>
+                                <p class="text-sm text-gray-500">{{ $blog->category->name }}</p>
                                 <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
                                     <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
                                         <strong>{{ $blog->title }}</strong>
@@ -436,7 +442,7 @@
                         @foreach ($sliderBlogs as $blog)
                             <div
                                 class="snap-center min-w-[260px] bg-white rounded-2xl shadow-sm p-4 border border-gray-200 flex flex-col">
-                                <p class="text-xs text-gray-500">{{ $blog->category }}</p>
+                                <p class="text-xs text-gray-500">{{ $blog->category->name }}</p>
                                 <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
                                     <h3
                                         class="text-base font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[60px] mb-3">

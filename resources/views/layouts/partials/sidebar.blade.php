@@ -20,12 +20,25 @@
                 </svg>
             </button>
 
-            <div id="mobileDropdown" class="hidden flex-col ml-4 mt-2 space-y-2 text-gray-600">
-                <a href="{{ route('layanan.brand-land') }}" class="hover:text-orange-500">{{ __('navbar.brand_land') }}</a>
-                <a href="{{ route('layanan.digital-stand') }}" class="hover:text-orange-500">{{ __('navbar.digital_stand') }}</a>
-                <a href="{{ route('layanan.code-band') }}" class="hover:text-orange-500">{{ __('navbar.code_band') }}</a>
-                <a href="{{ route('layanan.public-space-media') }}" class="hover:text-orange-500">{{ __('navbar.public_space_media') }}</a>
-                <a href="{{ route('layanan.ott-advertising') }}" class="hover:text-orange-500">{{ __('navbar.ott_advertising') }}</a>
+            {{-- Dropdown List --}}
+            <div id="mobileDropdown"
+                class="hidden flex-col mt-2 pl-4 border-l border-gray-200 space-y-3 text-gray-700 font-normal transition-all duration-300 overflow-hidden max-h-0">
+
+                <a href="{{ route('layanan.brand-land') }}" class="block hover:text-orange-500">
+                    {{ __('navbar.brand_land') }}
+                </a>
+                <a href="{{ route('layanan.digital-stand') }}" class="block hover:text-orange-500">
+                    {{ __('navbar.digital_stand') }}
+                </a>
+                <a href="{{ route('layanan.code-band') }}" class="block hover:text-orange-500">
+                    {{ __('navbar.code_band') }}
+                </a>
+                <a href="{{ route('layanan.public-space-media') }}" class="block hover:text-orange-500">
+                    {{ __('navbar.public_space_media') }}
+                </a>
+                <a href="{{ route('layanan.ott-advertising') }}" class="block hover:text-orange-500">
+                    {{ __('navbar.ott_advertising') }}
+                </a>
             </div>
         </div>
 
@@ -52,12 +65,13 @@
 </div>
 
 <script>
-    
-
     function toggleMobileDropdown() {
         const dropdown = document.getElementById('mobileDropdown');
         const icon = document.getElementById('dropdownIcon');
+
         dropdown.classList.toggle('hidden');
+        dropdown.classList.toggle('max-h-0');
+        dropdown.classList.toggle('max-h-96');
         icon.classList.toggle('rotate-180');
     }
 </script>

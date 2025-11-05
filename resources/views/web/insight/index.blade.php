@@ -40,7 +40,7 @@
     </section>
 
     <!-- Highlighted Blogs Section -->
-    <section class="py-20 bg-gray-50">
+    {{-- <section class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="font-poppins text-3xl md:text-4xl tracking-[0.3em] text-[#666666] font-normal text-center mb-12">
                 I N S I G H T S T H A T<br />
@@ -50,7 +50,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 @foreach ($highlightedBlogs as $blog)
                     <div class="bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
-                        <p class="text-sm text-gray-500">{{ $blog->category }}</p>
+                        <p class="text-sm text-gray-500">{{ $blog->category->name }}</p>
                         <a href="{{ route('insight.show', $blog->slug) }}">
                             <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
                                 {{ $blog->title }}
@@ -67,7 +67,7 @@
                 @endforeach
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- Masonry Grid Section -->
     <section class="py-20 bg-white relative z-10">
@@ -78,7 +78,7 @@
 
                 @foreach ($blogs as $blog)
                     <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
-                        <p class="text-sm text-gray-500">{{ $blog->category }}</p>
+                        <p class="text-sm text-gray-500">{{ $blog->category->name }}</p>
                         <a href="{{ route('insight.show', $blog->slug) }}">
                             <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
                                 {{ $blog->title }}

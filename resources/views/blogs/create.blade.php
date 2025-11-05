@@ -37,23 +37,14 @@
                             <div>
                                 <label
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-300">Kategori</label>
-                                <select name="category"
+                                <select name="category_id"
                                     class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:border-indigo-500 focus:ring-indigo-500">
                                     <option value="">-- Pilih Kategori --</option>
-                                    <option value="Communic8" {{ old('category') == 'Communic8' ? 'selected' : '' }}>
-                                        Communic8</option>
-                                    <option value="Travel" {{ old('category') == 'Travel' ? 'selected' : '' }}>Travel
-                                    </option>
-                                    <option value="Sport" {{ old('category') == 'Sport' ? 'selected' : '' }}>Sport
-                                    </option>
-                                    <option value="Automotive" {{ old('category') == 'Automotive' ? 'selected' : '' }}>
-                                        Automotive</option>
-                                    <option value="Lifestyle" {{ old('category') == 'Lifestyle' ? 'selected' : '' }}>
-                                        Lifestyle</option>
-                                    <option value="Politics" {{ old('category') == 'Politics' ? 'selected' : '' }}>
-                                        Politics</option>
-                                    <option value="Economy" {{ old('category') == 'Economy' ? 'selected' : '' }}>
-                                        Economy</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
 

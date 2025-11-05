@@ -152,7 +152,7 @@
     <section class="w-full py-8 bg-white relative z-10 text-[#666666]">
         <div class="max-w-6xl mx-auto px-4 text-center relative">
 
-            {{-- Title Added --}}
+            {{-- Title --}}
             <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
                 OUR SERVICES
             </h2>
@@ -166,11 +166,11 @@
 
             <div class="relative mt-10">
                 <div id="digital-architecture-slider"
-                    class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
+                    class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth px-4">
 
                     @forelse ($digitalArchitectureSubservices as $subservice)
-                        <div class="snap-start relative group overflow-hidden rounded-2xl"
-                            style="flex: 0 0 calc(33.333% - 1rem); min-width: 260px;">
+                        <div class="snap-start relative group overflow-hidden rounded-2xl flex-shrink-0"
+                            style="width: calc(70vw - 1rem); min-width: 200px; max-width: 300px;">
 
                             {{-- Image --}}
                             <img src="{{ $subservice->picture_upload ? asset('storage/' . $subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
@@ -198,12 +198,12 @@
 
             {{-- Slider Buttons --}}
             <button id="prevDigitalArchitecture"
-                class="absolute -left-20 top-1/2 -translate-y-1/2 z-20 hidden md:flex hover:scale-110 transition">
+                class="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-20 hidden md:flex hover:scale-110 transition">
                 <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Previous" class="w-8 h-8 object-contain">
             </button>
 
             <button id="nextDigitalArchitecture"
-                class="absolute -right-20 top-1/2 -translate-y-1/2 z-20 hidden md:flex hover:scale-110 transition">
+                class="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-20 hidden md:flex hover:scale-110 transition">
                 <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next" class="w-8 h-8 object-contain">
             </button>
         </div>
@@ -311,7 +311,7 @@
                     @foreach ($sliderBlogs as $blog)
                         <div
                             class="snap-center min-w-[280px] sm:min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
-                            <p class="text-sm text-gray-500">{{ $blog->category }}</p>
+                            <p class="text-sm text-gray-500">{{ $blog->category->name }}</p>
                             <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
                                 <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
                                     <strong>{{ $blog->title }}</strong>
@@ -342,7 +342,7 @@
                     @foreach ($sliderBlogs as $blog)
                         <div
                             class="snap-center min-w-[260px] bg-white rounded-2xl shadow-sm p-4 border border-gray-200 flex flex-col">
-                            <p class="text-xs text-gray-500">{{ $blog->category }}</p>
+                            <p class="text-xs text-gray-500">{{ $blog->category->name }}</p>
                             <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
                                 <h3
                                     class="text-base font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[60px] mb-3">

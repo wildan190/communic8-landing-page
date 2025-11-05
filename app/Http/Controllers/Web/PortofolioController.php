@@ -15,37 +15,26 @@ class PortofolioController extends Controller
 {
     public function index(Request $request)
     {
-                $category = $request->get('category');
-        
-                $blogs = Blog::when($category, function ($query, $category) {
-                    $query->where('category', $category);
-                })
-                    ->latest()
-                    ->paginate(10);
-        
-                $categories = Blog::select('category')->distinct()->pluck('category');
-                $sliderBlogs = Blog::where('highlighted', true)->latest()->take(10)->get();
-                $clients = Client::latest()->get();
-        
-                $galleries = Gallery::latest()->get();
+        $category = $request->get('category');
+
+        $blogs = Blog::when($category, function ($query, $category) {
+            $query->where('category', $category);
+        })
+            ->latest()
+            ->paginate(10);
+
+        $categories = \App\Models\Category::pluck('name', 'id');
+        $sliderBlogs = Blog::where('highlighted', true)->latest()->take(10)->get();
+        $clients = Client::latest()->get();
+
+        $galleries = Gallery::latest()->get();
         $webInfo = WebInformation::first();
         $branchOffices = BranchOffice::all();
-        $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
+        $insightCategories = \App\Models\Category::take(5)->pluck('name', 'id');
 
         // 🔥 ambil max 5 project terbaru
         $projects = Project::latest()->get();
 
-        return view('web.portofolio.index', compact(
-            'blogs',
-            'categories',
-            'category',
-            'sliderBlogs',
-            'webInfo',
-            'branchOffices',
-            'insightCategories',
-            'clients',
-            'galleries',
-            'projects'
-        ));
+        return view('web.portofolio.index', compact('blogs', 'categories', 'category', 'sliderBlogs', 'webInfo', 'branchOffices', 'insightCategories', 'clients', 'galleries', 'projects'));
     }
 }

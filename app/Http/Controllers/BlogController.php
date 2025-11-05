@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -10,21 +11,22 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $blogs = Blog::latest()->paginate(10);
+        $blogs = Blog::with('category')->latest()->paginate(10);
 
         return view('blogs.index', compact('blogs'));
     }
 
     public function create()
     {
-        return view('blogs.create');
+        $categories = Category::all();
+        return view('blogs.create', compact('categories'));
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'category' => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id',
             'content' => 'required',
             'keywords' => 'nullable|string',
             'headline_img' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
@@ -64,14 +66,15 @@ class BlogController extends Controller
 
     public function edit(Blog $blog)
     {
-        return view('blogs.edit', compact('blog'));
+        $categories = Category::all();
+        return view('blogs.edit', compact('blog', 'categories'));
     }
 
     public function update(Request $request, Blog $blog)
     {
         $validated = $request->validate([
             'title' => 'sometimes|required|string|max:255',
-            'category' => 'sometimes|required|string|max:255',
+            'category_id' => 'sometimes|required|exists:categories,id',
             'content' => 'sometimes|required',
             'keywords' => 'nullable|string',
             'headline_img' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048',

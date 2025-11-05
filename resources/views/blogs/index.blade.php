@@ -56,7 +56,7 @@
                                                 {{ $blog->title }}
                                             </a>
                                         </td>
-                                        <td class="px-4 py-3 text-gray-700 dark:text-gray-300">{{ $blog->category }}</td>
+                                        <td class="px-4 py-3 text-gray-700 dark:text-gray-300">{{ $blog->category->name ?? 'N/A' }}</td>
                                         <td class="px-4 py-3">
                                             <span class="px-2 py-1 rounded text-xs
                                                 @if($blog->status === 'published') bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-200

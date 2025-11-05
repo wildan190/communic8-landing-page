@@ -9,7 +9,8 @@
             <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
                 <div class="max-w-2xl text-left">
                     <div class="max-w-2xl text-left space-y-6">
-                        <h1 class="text-4xl md:text-5xl font-light tracking-widest md:tracking-[0.5em] text-black font-poppins leading-snug">
+                        <h1
+                            class="text-4xl md:text-5xl font-light tracking-widest md:tracking-[0.5em] text-black font-poppins leading-snug">
                             OVER-THE-TOP<br>ADVERTISING
                         </h1>
 
@@ -217,74 +218,71 @@
 
         </div>
     </section>
-    {{-- Services Grid Section with Proper Spacing --}}
-    {{-- <section class="w-full py-8 bg-white relative z-10">
+    
+    {{-- Services Grid Section: OTT Advertising --}}
+    <section class="w-full py-8 bg-white relative z-10 text-[#666666]">
         <div class="max-w-6xl mx-auto px-4 text-center">
+
+            {{-- Title --}}
+            <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
+                OUR SERVICES
+            </h2>
 
             <div class="relative mt-10">
                 <div id="ott-slider"
-                    class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
+                    class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth px-4">
 
                     @forelse ($ottAdvertisingSubservices as $subservice)
-                        <div class="snap-start border border-gray-200 rounded-2xl p-4 flex flex-col relative group"
-                            style="flex: 0 0 calc(33.333% - 1rem); min-width: 260px;">
+                        <div class="snap-center relative group overflow-hidden rounded-2xl flex-shrink-0"
+                            style="min-width: 200px; width: calc(70vw - 1rem); max-width: 300px;">
 
-                            <h3 class="font-semibold text-gray-700 mb-3 text-sm md:text-base">{{ $subservice->name }}</h3>
+                            {{-- Image --}}
+                            <img src="{{ $subservice->picture_upload ? asset('storage/' . $subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
+                                alt="{{ $subservice->name }}"
+                                class="w-full h-full object-cover rounded-2xl transition duration-500 group-hover:scale-105">
 
-                            <div class="rounded-xl overflow-hidden relative">
-                                @if ($subservice->picture_upload)
-                                    <img src="{{ asset('storage/' . $subservice->picture_upload) }}"
-                                        alt="{{ $subservice->name }}" class="w-full object-cover">
+                            {{-- Hover overlay --}}
+                            <div
+                                class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center rounded-2xl">
+                                <h3 class="text-sm md:text-base font-semibold mb-2">{{ $subservice->name }}</h3>
+                                @if ($subservice->description)
+                                    <p class="text-xs md:text-sm leading-snug">
+                                        {{ Str::limit($subservice->description, 120) }}
+                                    </p>
                                 @else
-                                    <img src="{{ asset('assets/img/dummy/dummy1.png') }}" alt="No Image"
-                                        class="w-full object-cover">
+                                    <p class="text-xs md:text-sm italic opacity-80">No additional details available.</p>
                                 @endif
-
-                                <div
-                                    class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center">
-                                    <h3 class="text-sm md:text-base font-semibold mb-2">{{ $subservice->name }}</h3>
-                                    @if ($subservice->description)
-                                        <p class="text-xs md:text-sm leading-snug">
-                                            {{ Str::limit($subservice->description, 120) }}</p>
-                                    @else
-                                        <p class="text-xs md:text-sm italic opacity-80">No additional details available.
-                                        </p>
-                                    @endif
-                                </div>
                             </div>
                         </div>
                     @empty
-                        <p class="text-center text-gray-500 w-full">No OTT Advertising subservices found.</p>
+                        <p class="text-center text-[#666666] w-full">No OTT Advertising subservices found.</p>
                     @endforelse
                 </div>
 
+                {{-- Slider Buttons --}}
                 <button id="prevOtt"
-                    class="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
+                    class="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-20 hidden md:flex hover:scale-110 transition">
+                    <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Previous"
+                        class="w-8 h-8 object-contain">
                 </button>
                 <button id="nextOtt"
-                    class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 hover:bg-gray-100 z-10 hidden md:flex">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
+                    class="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-20 hidden md:flex hover:scale-110 transition">
+                    <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next"
+                        class="w-8 h-8 object-contain">
                 </button>
             </div>
         </div>
-    </section> --}}
+    </section>
 
     {{-- JS for OTT Slider --}}
-    {{-- <script>
+    <script>
         const ottSlider = document.getElementById('ott-slider');
         const prevOtt = document.getElementById('prevOtt');
         const nextOtt = document.getElementById('nextOtt');
 
         const getSlideWidthOtt = () => {
-            const first = ottSlider.querySelector('.snap-start');
-            return first ? first.offsetWidth + 16 : 300; // jarak antar item
+            const first = ottSlider.querySelector('.snap-center');
+            return first ? first.offsetWidth + 16 : 300; // 16 = spacing (gap)
         };
 
         prevOtt?.addEventListener('click', () => {
@@ -313,7 +311,8 @@
 
         window.addEventListener('resize', checkOttSlider);
         window.addEventListener('load', checkOttSlider);
-    </script> --}}
+    </script>
+
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
@@ -356,7 +355,7 @@
                 <h2
                     class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
            text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
-                    {!! __('home/insights.title') !!}
+                    {{ __('home/insights.title') }}
                 </h2>
                 <p class="text-gray-600 text-base sm:text-lg mt-2">
                     {{ __('home/insights.description') }}
@@ -376,7 +375,7 @@
                     @foreach ($sliderBlogs as $blog)
                         <div
                             class="snap-center min-w-[280px] sm:min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
-                            <p class="text-sm text-gray-500">{{ $blog->category }}</p>
+                            <p class="text-sm text-gray-500">{{ $blog->category->name }}</p>
                             <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
                                 <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
                                     <strong>{{ $blog->title }}</strong>
@@ -407,7 +406,7 @@
                     @foreach ($sliderBlogs as $blog)
                         <div
                             class="snap-center min-w-[260px] bg-white rounded-2xl shadow-sm p-4 border border-gray-200 flex flex-col">
-                            <p class="text-xs text-gray-500">{{ $blog->category }}</p>
+                            <p class="text-xs text-gray-500">{{ $blog->category->name }}</p>
                             <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
                                 <h3
                                     class="text-base font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[60px] mb-3">

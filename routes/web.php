@@ -50,7 +50,7 @@ Route::get('/insight/{slug}', [InsightController::class, 'show'])
     ->middleware('track.pageview');
 
 // Branch Offices route
-Route::get('/branch-offices', [BranchOfficeController::class, 'index'])->name('branch-offices.index');
+// Route::get('/branch-offices', [BranchOfficeController::class, 'index'])->name('branch-offices.index');
 
 // Rute Kontak dengan throttle
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
@@ -136,6 +136,8 @@ Route::prefix('admin')
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+        Route::resource('/categories', App\Http\Controllers\CategoryController::class)->except(['show']);
 
         Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
         Route::get('/blogs/create', [BlogController::class, 'create'])->name('blogs.create');

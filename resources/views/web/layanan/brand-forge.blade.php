@@ -9,7 +9,8 @@
             <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
                 <div class="max-w-xl text-left">
                     {{-- Title --}}
-                    <h1 class="text-4xl md:text-5xl font-light tracking-[0.2em] md:tracking-[0.5em] text-black font-poppins leading-snug">
+                    <h1
+                        class="text-4xl md:text-5xl font-light tracking-[0.2em] md:tracking-[0.5em] text-black font-poppins leading-snug">
                         B R A N D <br> L A N D
                     </h1>
 
@@ -117,7 +118,8 @@
             {{-- Row 1 --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="text-left">
-                    <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.2em] md:tracking-[0.5em] uppercase text-[#666666]">
+                    <h2
+                        class="text-2xl md:text-3xl font-light font-poppins tracking-[0.2em] md:tracking-[0.5em] uppercase text-[#666666]">
                         {!! $brandForgeContent->insight_strategy_driven ?? 'Insight-Driven<br>Strategy' !!}
                     </h2>
                     <p class="mt-6 font-rubik leading-relaxed text-sm md:text-base text-[#666666]">
@@ -138,7 +140,8 @@
                         alt="Bold Creative Ideas" class="rounded-xl w-full max-w-md object-cover">
                 </div>
                 <div class="order-1 md:order-2 text-left">
-                    <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.2em] md:tracking-[0.5em] uppercase text-[#666666]">
+                    <h2
+                        class="text-2xl md:text-3xl font-light font-poppins tracking-[0.2em] md:tracking-[0.5em] uppercase text-[#666666]">
                         {!! $brandForgeContent->bold_creative_ideas ?? 'Bold Creative<br>Ideas' !!}
                     </h2>
                     <p class="mt-6 font-rubik leading-relaxed text-sm md:text-base text-[#666666]">
@@ -151,7 +154,8 @@
             {{-- Row 3 --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="text-left">
-                    <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.2em] md:tracking-[0.5em] uppercase text-[#666666]">
+                    <h2
+                        class="text-2xl md:text-3xl font-light font-poppins tracking-[0.2em] md:tracking-[0.5em] uppercase text-[#666666]">
                         {!! $brandForgeContent->impactful_visual_identity ?? 'Impactful<br>Visual Identity' !!}
                     </h2>
                     <p class="mt-6 font-rubik leading-relaxed text-sm md:text-base text-[#666666]">
@@ -171,7 +175,7 @@
     <section class="w-full py-8 bg-white relative z-10 text-[#666666]">
         <div class="max-w-6xl mx-auto px-4 text-center">
 
-            {{-- Title Updated --}}
+            {{-- Title --}}
             <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
                 OUR SERVICES
             </h2>
@@ -190,8 +194,8 @@
                 <div id="brandforge-slider"
                     class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth px-4">
                     @forelse ($brandForgeSubservices as $subservice)
-                        <div class="snap-center relative group overflow-hidden rounded-2xl w-[80vw] sm:w-[40vw] md:w-[30vw] flex-shrink-0"
-                            style="min-width: 260px;">
+                        <div class="snap-center relative group overflow-hidden rounded-2xl flex-shrink-0"
+                            style="min-width: 200px; width: calc(70vw - 1rem); max-width: 300px;">
 
                             {{-- Image --}}
                             <img src="{{ $subservice->picture_upload ? asset('storage/' . $subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
@@ -204,7 +208,7 @@
                                 <h3 class="text-sm md:text-base font-semibold mb-2">{{ $subservice->name }}</h3>
                                 @if ($subservice->description)
                                     <p class="text-xs md:text-sm leading-snug">
-                                        {{ Str::limit($subservice->description, 120) }}</p>
+                                        {{ $subservice->description }}</p>
                                 @else
                                     <p class="text-xs md:text-sm italic opacity-80">No additional details available.</p>
                                 @endif
@@ -230,7 +234,6 @@
             </div>
         </div>
     </section>
-
 
     {{-- JS for Brand Forge Slider --}}
     <script>
@@ -334,7 +337,7 @@
                     @foreach ($sliderBlogs as $blog)
                         <div
                             class="snap-center min-w-[280px] sm:min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
-                            <p class="text-sm text-gray-500">{{ $blog->category }}</p>
+                            <p class="text-sm text-gray-500">{{ $blog->category->name }}</p>
                             <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
                                 <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
                                     <strong>{{ $blog->title }}</strong>
@@ -365,7 +368,7 @@
                     @foreach ($sliderBlogs as $blog)
                         <div
                             class="snap-center min-w-[260px] bg-white rounded-2xl shadow-sm p-4 border border-gray-200 flex flex-col">
-                            <p class="text-xs text-gray-500">{{ $blog->category }}</p>
+                            <p class="text-xs text-gray-500">{{ $blog->category->name }}</p>
                             <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
                                 <h3
                                     class="text-base font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[60px] mb-3">

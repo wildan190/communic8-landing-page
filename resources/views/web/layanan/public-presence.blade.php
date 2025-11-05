@@ -2,13 +2,14 @@
 
 @section('content')
     {{-- Hero Section --}}
-    <section class="relative w-full h-[80vh] flex items-end bg-cover bg-center"
+    <section class="relative w-full min-h-[60vh] sm:min-h-[80vh] flex items-end bg-cover bg-center"
         style="background-image: url('{{ asset('assets/img/ott-hero.png') }}')">
 
         <div class="w-full pb-20">
             <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
                 <div class="max-w-xl text-left">
-                    <h1 class="text-2xl md:text-2xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
+                    <h1
+                        class="text-2xl md:text-2xl font-light tracking-normal sm:tracking-[0.5em] text-black font-poppins leading-snug">
                         P U B L I C<br />S P A C E &nbsp; M E D I A
                     </h1>
                     <h2 class="mt-6 text-lg md:text-xl font-bold font-rubik text-black">
@@ -58,17 +59,19 @@
 
     {{-- Strategy Section --}}
     <section class="w-full bg-white py-24">
-        <div class="max-w-7xl mx-auto px-6 md:px-20 space-y-24">
+        <div class="max-w-7xl mx-auto px-6 md:px-20 space-y-12 md:space-y-24">
 
             <div class="text-center">
-                <h2 class="font-poppins text-lg md:text-xl tracking-[1em] uppercase text-[#666666] font-normal">
+                <h2
+                    class="font-poppins text-lg md:text-xl tracking-normal sm:tracking-[1em] uppercase text-[#666666] font-normal">
                     O U R &nbsp; A P P R O A C H
                 </h2>
             </div>
             {{-- Row 1 --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="text-left">
-                    <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
+                    <h2
+                        class="text-2xl md:text-3xl font-light font-poppins tracking-normal sm:tracking-[0.5em] uppercase text-[#666666]">
                         {{ $publicPresenceContent->INSIGHT_DRIVEN_STRATEGY ?? 'INSIGHT-DRIVEN STRATEGY' }}
                     </h2>
                     <p class="mt-6 font-rubik leading-relaxed text-sm md:text-base text-[#666666]">
@@ -99,7 +102,8 @@
                     @endif
                 </div>
                 <div class="order-1 md:order-2 text-left">
-                    <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
+                    <h2
+                        class="text-2xl md:text-3xl font-light font-poppins tracking-normal sm:tracking-[0.5em] uppercase text-[#666666]">
                         {{ $publicPresenceContent->Creative_and_Channel_Synergy ?? 'Creative and Channel Synergy' }}
                     </h2>
                     <p class="mt-6 font-rubik leading-relaxed text-sm md:text-base text-[#666666]">
@@ -113,10 +117,11 @@
 
     {{-- Services Grid Section: Public Presence --}}
     <section class="w-full py-8 bg-white text-[#666666]">
-        <div class="max-w-7xl mx-auto px-6 md:px-20 text-center relative">
+        <div class="max-w-7xl mx-auto px-4 md:px-20 text-center relative">
 
             {{-- Title --}}
-            <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
+            <h2
+                class="text-2xl md:text-3xl font-light font-poppins tracking-normal sm:tracking-[0.5em] uppercase text-[#666666]">
                 OUR SERVICES
             </h2>
 
@@ -130,11 +135,11 @@
             {{-- Horizontal Scroll Grid --}}
             <div class="relative mt-10">
                 <div id="public-presence-slider"
-                    class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
+                    class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth px-4">
 
                     @forelse ($publicPresenceSubservices as $subservice)
-                        <div class="snap-start relative group overflow-hidden rounded-2xl"
-                            style="flex: 0 0 calc(33.333% - 1rem); min-width: 260px;">
+                        <div class="snap-start relative group overflow-hidden rounded-2xl flex-shrink-0"
+                            style="width: calc(70vw - 1rem); min-width: 200px; max-width: 300px;">
 
                             {{-- Image --}}
                             <img src="{{ $subservice->picture_upload ? asset('storage/' . $subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
@@ -165,13 +170,13 @@
 
                 {{-- Slider Buttons (nav chevron) --}}
                 <button id="prevPublicPresence"
-                    class="absolute -left-16 top-1/2 -translate-y-1/2 z-20 hidden md:flex hover:scale-110 transition">
+                    class="absolute -left-4 md:-left-16 top-1/2 -translate-y-1/2 z-20 hidden md:flex hover:scale-110 transition">
                     <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Previous"
                         class="w-8 h-8 object-contain">
                 </button>
 
                 <button id="nextPublicPresence"
-                    class="absolute -right-16 top-1/2 -translate-y-1/2 z-20 hidden md:flex hover:scale-110 transition">
+                    class="absolute -right-4 md:-right-16 top-1/2 -translate-y-1/2 z-20 hidden md:flex hover:scale-110 transition">
                     <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next"
                         class="w-8 h-8 object-contain">
                 </button>
@@ -180,7 +185,7 @@
     </section>
 
     <br />
-    
+
     <script>
         // Public Presence Horizontal Scroll
         const ppSlider = document.getElementById('public-presence-slider');
@@ -261,7 +266,7 @@
                 <h2
                     class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
            text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
-                    {!! __('home/insights.title') !!}
+                    {{ __('home/insights.title') }}
                 </h2>
                 <p class="text-gray-600 text-base sm:text-lg mt-2">
                     {{ __('home/insights.description') }}
@@ -281,7 +286,7 @@
                     @foreach ($sliderBlogs as $blog)
                         <div
                             class="snap-center min-w-[280px] sm:min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
-                            <p class="text-sm text-gray-500">{{ $blog->category }}</p>
+                            <p class="text-sm text-gray-500">{{ $blog->category->name }}</p>
                             <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
                                 <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
                                     <strong>{{ $blog->title }}</strong>
@@ -312,7 +317,7 @@
                     @foreach ($sliderBlogs as $blog)
                         <div
                             class="snap-center min-w-[260px] bg-white rounded-2xl shadow-sm p-4 border border-gray-200 flex flex-col">
-                            <p class="text-xs text-gray-500">{{ $blog->category }}</p>
+                            <p class="text-xs text-gray-500">{{ $blog->category->name }}</p>
                             <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
                                 <h3
                                     class="text-base font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[60px] mb-3">

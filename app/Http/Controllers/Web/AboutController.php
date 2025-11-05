@@ -25,14 +25,14 @@ class AboutController extends Controller
             ->latest()
             ->paginate(10);
 
-        $categories = Blog::select('category')->distinct()->pluck('category');
+        $categories = \App\Models\Category::pluck('name', 'id');
         $sliderBlogs = Blog::where('highlighted', true)->latest()->take(10)->get();
         $clients = Client::latest()->get();
 
         $galleries = Gallery::latest()->get();
         $webInfo = WebInformation::first();
         $branchOffices = BranchOffice::all();
-        $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
+        $insightCategories = \App\Models\Category::take(5)->pluck('name', 'id');
         $abouts = About::all();
 
         // 🔥 ambil semua data Activity terbaru

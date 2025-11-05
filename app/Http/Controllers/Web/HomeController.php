@@ -21,12 +21,14 @@ class HomeController extends Controller
         $category = $request->get('category');
 
         $blogs = Blog::where('highlighted', true)->when($category, function ($query, $category) {
-            $query->where('category', $category);
+            $query->whereHas('category', function ($q) use ($category) {
+                $q->where('id', $category);
+            });
         })
         ->latest()
         ->paginate(10);
 
-        $categories = Blog::select('category')->distinct()->pluck('category');
+        $categories = \App\Models\Category::pluck('name', 'id');
         $sliderBlogs = Blog::where('highlighted', true)->latest()->take(10)->get();
 
         $highlightedBlogs = Blog::where('highlighted', true)->latest()->get();
@@ -35,7 +37,7 @@ class HomeController extends Controller
         $branchOffices = BranchOffice::all();
         $card_services = CardServices::orderBy('id')->get();
 
-        $insightCategories = Blog::select('category')->distinct()->take(5)->pluck('category');
+        $insightCategories = \App\Models\Category::take(5)->pluck('name', 'id');
 
         $trustedProjects = Project::latest()->get();
         $clients = Client::latest()->get();

@@ -23,7 +23,7 @@ class ContactController extends Controller
             ->latest()
             ->paginate(10);
 
-        $categories = Blog::select('category')->distinct()->pluck('category');
+        $categories = \App\Models\Category::pluck('name', 'id');
         $sliderBlogs = Blog::where('highlighted', true)->latest()->take(10)->get();
         $clients = Client::latest()->get();
 
@@ -31,10 +31,7 @@ class ContactController extends Controller
         $galleries = Gallery::latest()->get();
         $webInfo = WebInformation::first();
         $branchOffices = BranchOffice::all();
-        $insightCategories = Blog::select('category')
-            ->distinct()
-            ->take(5)
-            ->pluck('category');
+        $insightCategories = \App\Models\Category::take(5)->pluck('name', 'id');
 
         return view('web.contact.index', compact('blogs', 'categories', 'category', 'sliderBlogs', 'webInfo', 'branchOffices', 'insightCategories', 'clients', 'galleries'));
     }

@@ -157,73 +157,74 @@
         </div>
     </section>
 
-    {{-- Section 2: Digital Stand (Horizontal Scroll Grid Style) --}}
-    <section class="w-full py-8 bg-white text-[#666666]">
-        <div class="max-w-6xl mx-auto px-4 text-center relative">
+{{-- Section 2: Digital Stand (Horizontal Scroll Grid Style) --}}
+<section class="w-full py-8 bg-white text-[#666666]">
+    <div class="max-w-6xl mx-auto px-4 text-center relative">
 
-            {{-- Title --}}
-            <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
-                OUR SERVICES
-            </h2>
+        {{-- Title --}}
+        <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
+            OUR SERVICES
+        </h2>
 
-            @php
-                $digitalCompassSubservices = \App\Models\SubService::with('service')
-                    ->whereHas('service', fn($q) => $q->where('name', 'Digital Stand'))
-                    ->latest()
-                    ->get();
-            @endphp
+        @php
+            $digitalCompassSubservices = \App\Models\SubService::with('service')
+                ->whereHas('service', fn($q) => $q->where('name', 'Digital Stand'))
+                ->latest()
+                ->get();
+        @endphp
 
-            <div class="relative mt-10">
-                {{-- Slider --}}
-                <div id="digital-stand-slider"
-                    class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
+        <div class="relative mt-10">
+            {{-- Slider --}}
+            <div id="digital-stand-slider"
+                class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth px-4">
 
-                    @forelse ($digitalCompassSubservices as $subservice)
-                        <div class="snap-start relative group overflow-hidden rounded-2xl"
-                            style="flex: 0 0 calc(33.333% - 1rem); min-width: 260px;">
+                @forelse ($digitalCompassSubservices as $subservice)
+                    <div class="snap-start relative group overflow-hidden rounded-2xl flex-shrink-0"
+                        style="width: calc(70vw - 1rem); min-width: 200px; max-width: 300px;">
 
-                            {{-- Image --}}
-                            <img src="{{ $subservice->picture_upload ? asset('storage/' . $subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
-                                alt="{{ $subservice->name }}"
-                                class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-105">
+                        {{-- Image --}}
+                        <img src="{{ $subservice->picture_upload ? asset('storage/' . $subservice->picture_upload) : asset('assets/img/dummy/dummy1.png') }}"
+                            alt="{{ $subservice->name }}"
+                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-105">
 
-                            {{-- Hover overlay --}}
-                            <div
-                                class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center rounded-2xl">
-                                <h3 class="text-sm md:text-base font-semibold mb-2">{{ $subservice->name }}</h3>
-                                @if ($subservice->description)
-                                    <p class="text-xs md:text-sm leading-snug">
-                                        {{ Str::limit($subservice->description, 120) }}
-                                    </p>
-                                @else
-                                    <p class="text-xs md:text-sm italic opacity-80">
-                                        No additional details available.
-                                    </p>
-                                @endif
-                            </div>
+                        {{-- Hover overlay --}}
+                        <div
+                            class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center rounded-2xl">
+                            <h3 class="text-sm md:text-base font-semibold mb-2">{{ $subservice->name }}</h3>
+                            @if ($subservice->description)
+                                <p class="text-xs md:text-sm leading-snug">
+                                    {{ Str::limit($subservice->description, 120) }}
+                                </p>
+                            @else
+                                <p class="text-xs md:text-sm italic opacity-80">
+                                    No additional details available.
+                                </p>
+                            @endif
                         </div>
-                    @empty
-                        <p class="text-center w-full">No Digital Stand subservices found.</p>
-                    @endforelse
-                </div>
+                    </div>
+                @empty
+                    <p class="text-center w-full">No Digital Stand subservices found.</p>
+                @endforelse
+            </div>
 
-                {{-- Tombol Navigasi --}}
-                <div class="hidden md:block">
-                    <button id="prevDigitalStand"
-                        class="absolute -left-20 top-1/2 -translate-y-1/2 z-20 flex hover:scale-110 transition">
-                        <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Previous"
-                            class="w-8 h-8 object-contain">
-                    </button>
+            {{-- Tombol Navigasi --}}
+            <div class="hidden md:block">
+                <button id="prevDigitalStand"
+                    class="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-20 flex hover:scale-110 transition">
+                    <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Previous"
+                        class="w-8 h-8 object-contain">
+                </button>
 
-                    <button id="nextDigitalStand"
-                        class="absolute -right-20 top-1/2 -translate-y-1/2 z-20 flex hover:scale-110 transition">
-                        <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next"
-                            class="w-8 h-8 object-contain">
-                    </button>
-                </div>
+                <button id="nextDigitalStand"
+                    class="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-20 flex hover:scale-110 transition">
+                    <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next"
+                        class="w-8 h-8 object-contain">
+                </button>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <script>
         // Digital Stand Horizontal Scroll
@@ -327,7 +328,7 @@
                     @foreach ($sliderBlogs as $blog)
                         <div
                             class="snap-center min-w-[280px] sm:min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
-                            <p class="text-sm text-gray-500">{{ $blog->category }}</p>
+                            <p class="text-sm text-gray-500">{{ $blog->category->name }}</p>
                             <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
                                 <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
                                     <strong>{{ $blog->title }}</strong>
@@ -358,7 +359,7 @@
                     @foreach ($sliderBlogs as $blog)
                         <div
                             class="snap-center min-w-[260px] bg-white rounded-2xl shadow-sm p-4 border border-gray-200 flex flex-col">
-                            <p class="text-xs text-gray-500">{{ $blog->category }}</p>
+                            <p class="text-xs text-gray-500">{{ $blog->category->name }}</p>
                             <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
                                 <h3
                                     class="text-base font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[60px] mb-3">

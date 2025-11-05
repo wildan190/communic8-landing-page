@@ -25,6 +25,7 @@
                     <div x-show="open" @click.away="open = false" class="absolute mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5">
                         <div class="py-1">
                             <x-dropdown-link :href="route('blogs.index')">{{ __('Blogs') }}</x-dropdown-link>
+                            <x-dropdown-link :href="route('categories.index')">{{ __('Categories') }}</x-dropdown-link>
                             <x-dropdown-link :href="route('galleries.index')">{{ __('Galleries') }}</x-dropdown-link>
                             <x-dropdown-link :href="route('branch-offices.index')">{{ __('Branch Offices') }}</x-dropdown-link>
                             <x-dropdown-link :href="route('messages.index')">{{ __('Messages') }}</x-dropdown-link>

@@ -9,11 +9,20 @@
             {{-- Hero Title --}}
             <div class="relative z-10 pt-16 md:pt-20 text-center">
                 <h1 id="hero-line1"
-                    class="font-poppins font-light text-2xl sm:text-3xl md:text-4xl text-[#000000] tracking-[0.2em] md:tracking-[0.3em] leading-snug mb-3 sm:mb-5">
+                    class="font-poppins font-light
+                       text-base xs:text-lg sm:text-3xl md:text-4xl
+                       text-black
+                       tracking-[0.08em] xs:tracking-[0.12em] md:tracking-[0.3em]
+                       leading-snug mb-2 sm:mb-5">
                     CREATIVITY WITH
                 </h1>
+
                 <h1 id="hero-line2"
-                    class="font-poppins font-light text-2xl sm:text-3xl md:text-4xl text-[#000000] tracking-[0.2em] md:tracking-[0.3em] leading-snug">
+                    class="font-poppins font-light
+                       text-base xs:text-lg sm:text-3xl md:text-4xl
+                       text-black
+                       tracking-[0.08em] xs:tracking-[0.12em] md:tracking-[0.3em]
+                       leading-snug">
                     BUSINESS SENSE
                 </h1>
             </div>
@@ -21,11 +30,12 @@
             {{-- Lampu --}}
             <div class="flex justify-center relative mt-8 group">
                 <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
-                    class="w-auto h-auto max-w-[180px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[320px]
-                relative z-10 transition-opacity duration-300 group-hover:opacity-0">
+                    class="w-auto h-auto max-w-[130px] xs:max-w-[160px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[320px]
+                       relative z-10 transition-opacity duration-300 group-hover:opacity-0">
+
                 <img src="{{ asset('assets/img/lamphover.png') }}" alt="Lamp Hover"
-                    class="w-auto h-auto max-w-[180px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[320px]
-                absolute z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    class="w-auto h-auto max-w-[130px] xs:max-w-[160px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[320px]
+                       absolute z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             </div>
 
             {{-- Bottom Row --}}
@@ -33,31 +43,29 @@
 
                 {{-- Left Column --}}
                 <div class="space-y-6">
-                    <p class="text-gray-600 text-base sm:text-lg leading-relaxed max-w-md mx-auto md:mx-0">
+                    <p class="text-gray-600 text-sm xs:text-base sm:text-lg leading-relaxed max-w-md mx-auto md:mx-0">
                         {{ $hero->description ?? '' }}
                     </p>
+
                     <button onclick="window.location='{{ route('about.index') }}'"
-                        class="px-6 py-3 text-white bg-[#333333] rounded-full font-semibold
-   transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-white hover:scale-105">
+                        class="px-5 xs:px-6 py-3 text-sm xs:text-base text-white bg-[#333333] rounded-full font-semibold
+                           transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-white hover:scale-105">
                         Discover your opportunities
                     </button>
                 </div>
 
-                {{-- Right Column: Animated Stats --}}
+                {{-- Right Column: Stats --}}
                 <div
                     class="flex flex-col items-center md:items-end text-center md:text-right space-y-2 mt-10 overflow-hidden">
                     <h2 id="stat-text"
-                        class="text-6xl sm:text-7xl md:text-8xl font-extrabold text-[#F97316]
-                   transition-transform duration-700 ease-out">
+                        class="text-4xl xs:text-5xl sm:text-7xl md:text-8xl font-extrabold text-[#F97316]
+                           transition-transform duration-700 ease-out">
                         20+
                     </h2>
-
-                    <div class="text-left md:text-left">
-                        <p id="stat-sub"
-                            class="text-[#666666] text-base sm:text-lg md:text-xl font-medium leading-snug transition-opacity duration-700">
-                            <strong>Years</strong> of Experience
-                        </p>
-                    </div>
+                    <p id="stat-sub"
+                        class="text-[#666666] text-sm xs:text-base sm:text-lg md:text-xl font-medium leading-snug transition-opacity duration-700">
+                        <strong>Years</strong> of Experience
+                    </p>
                 </div>
 
             </div>
@@ -866,7 +874,7 @@
             <div class="columns-1 md:columns-3 gap-6 space-y-6">
                 @foreach ($blogs as $blog)
                     <div class="break-inside-avoid bg-white rounded-2xl shadow-sm p-5 border border-gray-200 space-y-4">
-                        <p class="text-sm text-gray-500">{{ $blog->category }}</p>
+                        <p class="text-sm text-gray-500">{{ $blog->category->name }}</p>
                         <a href="{{ route('insight.show', $blog->slug) }}" class="block">
                             <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
                                 <strong>{{ $blog->title }}</strong>

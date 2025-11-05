@@ -12,7 +12,7 @@ class Blog extends Model
     protected $fillable = [
         'title',
         'slug',
-        'category',
+        'category_id',
         'content',
         'keywords',
         'headline_img',
@@ -25,4 +25,9 @@ class Blog extends Model
     protected $casts = [
         'date' => 'date',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
