@@ -1,7 +1,6 @@
 @extends('layouts.web')
 
 @section('content')
-
     {{-- Hero Section --}}
     <section class="relative w-full h-[80vh] flex items-end bg-cover bg-center"
         style="background-image: url('{{ asset('assets/img/digicompass.png') }}')">
@@ -317,7 +316,7 @@
                             <p class="text-sm text-gray-500">{{ $blog->category->name }}</p>
                             <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
                                 <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
-                                    <strong>{{ $blog->title }}</strong>
+                                    <strong>{{ app()->getLocale() == 'id' ? $blog->title_id : $blog->title }}</strong>
                                 </h3>
                             </a>
                             @if ($blog->headline_img)

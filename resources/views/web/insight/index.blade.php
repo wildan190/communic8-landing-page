@@ -49,8 +49,8 @@
                         <p class="text-sm text-gray-500">{{ $blog->category->name ?? '' }}</p>
 
                         <a href="{{ route('insight.show', $blog->slug) }}">
-                            <h3 class="text-lg font-medium text-gray-800 hover:text-gray-600 transition">
-                                {{ $blog->title }}
+                            <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
+                                <strong>{{ app()->getLocale() == 'id' ? $blog->title_id : $blog->title }}</strong>
                             </h3>
                         </a>
 

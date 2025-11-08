@@ -27,7 +27,9 @@ class BlogController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'category_id' => 'required|exists:categories,id',
+            'title_id' => 'nullable|string|max:255',
             'content' => 'required',
+            'content_id' => 'required|string',
             'keywords' => 'nullable|string',
             'headline_img' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
             'headline_img_alt' => 'nullable|string|max:255',
@@ -61,7 +63,11 @@ class BlogController extends Controller
 
     public function show(Blog $blog)
     {
-        return view('blogs.show', compact('blog'));
+        $locale = app()->getLocale();
+        $blogTitle = ($locale === 'id' && !empty($blog->title_id)) ? $blog->title_id : $blog->title;
+        $blogContent = ($locale === 'id' && !empty($blog->content_id)) ? $blog->content_id : $blog->content;
+
+        return view('blogs.show', compact('blog', 'blogTitle', 'blogContent'));
     }
 
     public function edit(Blog $blog)
@@ -74,8 +80,10 @@ class BlogController extends Controller
     {
         $validated = $request->validate([
             'title' => 'sometimes|required|string|max:255',
+            'title_id' => 'sometimes|nullable|string|max:255',
             'category_id' => 'sometimes|required|exists:categories,id',
             'content' => 'sometimes|required',
+            'content_id' => 'sometimes|required|string',
             'keywords' => 'nullable|string',
             'headline_img' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
             'headline_img_alt' => 'nullable|string|max:255',

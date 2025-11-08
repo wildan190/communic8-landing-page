@@ -216,7 +216,7 @@
 
         </div>
     </section>
-    
+
     {{-- Services Grid Section: OTT Advertising --}}
     <section class="w-full py-8 bg-white relative z-10 text-[#666666]">
         <div class="max-w-6xl mx-auto px-4 text-center">
@@ -353,7 +353,7 @@
                 <h2
                     class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
            text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
-                    {{ __('home/insights.title') }}
+                    {!! __('home/insights.title') !!}
                 </h2>
                 <p class="text-gray-600 text-base sm:text-lg mt-2">
                     {{ __('home/insights.description') }}
@@ -376,7 +376,7 @@
                             <p class="text-sm text-gray-500">{{ $blog->category->name }}</p>
                             <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
                                 <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
-                                    <strong>{{ $blog->title }}</strong>
+                                    <strong>{{ app()->getLocale() == 'id' ? $blog->title_id : $blog->title }}</strong>
                                 </h3>
                             </a>
                             @if ($blog->headline_img)

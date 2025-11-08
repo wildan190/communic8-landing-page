@@ -33,6 +33,15 @@
                                     class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:border-indigo-500 focus:ring-indigo-500" />
                             </div>
 
+                            <!-- Judul (ID) -->
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Judul (ID)</label>
+                                <input type="text" name="title_id" value="{{ old('title_id') }}"
+                                    class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:border-indigo-500 focus:ring-indigo-500" />
+                            </div>
+
+
+
                             <!-- Kategori -->
                             <div>
                                 <label
@@ -108,6 +117,18 @@
                                     class="mt-1 min-h-[250px] mb-6 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
                                 </div>
                                 <input type="hidden" name="content" id="content" value="{{ old('content') }}">
+                            </div>
+
+                            <br />
+                            <br />
+
+                            <!-- Konten (ID) dengan Quill -->
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Konten (ID)</label>
+                                <div id="editor_id"
+                                    class="mt-1 min-h-[250px] mb-6 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+                                </div>
+                                <input type="hidden" name="content_id" id="content_id" value="{{ old('content_id') }}">
                             </div>
                         </div>
 
@@ -227,6 +248,97 @@
                             const range = quill.getSelection(true);
                             quill.insertEmbed(range.index, 'image', e.target.result);
                             quill.setSelection(range.index + 1);
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        console.warn('You could only upload images.');
+                    }
+                };
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var quillId = new Quill('#editor_id', {
+                theme: 'snow',
+                placeholder: 'Tulis konten blog (ID) di sini...',
+                modules: {
+                    toolbar: [
+                        [{
+                            header: [1, 2, 3, false]
+                        }],
+                        ['bold', 'italic', 'underline'],
+                        ['link', 'blockquote', 'code-block', 'image'],
+                        [{
+                            list: 'ordered'
+                        }, {
+                            list: 'bullet'
+                        }],
+                        [{
+                            align: []
+                        }],
+                        ['clean']
+                    ]
+                }
+            });
+
+            // isi editor dari old value
+            let oldContentId = {!! json_encode(old('content_id')) !!};
+            if (oldContentId) {
+                quillId.root.innerHTML = oldContentId;
+            }
+
+            // sinkronisasi realtime ke hidden input
+            quillId.on('text-change', function() {
+                const html = quillId.root.innerHTML;
+                document.querySelector('#content_id').value = html;
+                console.log('Quill content (ID) on text-change:', html);
+            });
+
+            // pastikan hidden input terisi sebelum submit
+            document.querySelector('form').addEventListener('submit', function() {
+                const html = quillId.root.innerHTML;
+                document.querySelector('#content_id').value = html;
+                console.log('Quill content (ID) on form submit:', html);
+            });
+
+            // handle image upload
+            quillId.getModule('toolbar').addHandler('image', function() {
+                selectLocalImageId();
+            });
+
+            // handle drag and drop
+            quillId.root.addEventListener('drop', function(e) {
+                e.preventDefault();
+                if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) {
+                    const file = e.dataTransfer.files[0];
+                    if (/^image\//.test(file.type)) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const range = quillId.getSelection(true);
+                            quillId.insertEmbed(range.index, 'image', e.target.result);
+                            quillId.setSelection(range.index + 1);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                }
+            });
+
+            function selectLocalImageId() {
+                const input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('accept', 'image/*');
+                input.click();
+
+                input.onchange = function() {
+                    const file = input.files[0];
+                    if (/^image\//.test(file.type)) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const range = quillId.getSelection(true);
+                            quillId.insertEmbed(range.index, 'image', e.target.result);
+                            quillId.setSelection(range.index + 1);
                         };
                         reader.readAsDataURL(file);
                     } else {

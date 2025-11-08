@@ -507,12 +507,16 @@
         {{-- Konten utama --}}
         <div class="relative z-10 max-w-3xl mx-auto">
             <h2
-                class="text-white font-poppins font-semibold tracking-[0.5em]
-            text-2xl sm:text-3xl md:text-4xl lg:text-4xl uppercase mb-4">
-                {!! app()->getLocale() == 'en' ? 'B R A N D &nbsp; W E &nbsp; E M P O W E R' : __('home/divider.title') !!}
+                class="text-white font-poppins font-semibold uppercase 
+                   text-base sm:text-2xl md:text-3xl lg:text-4xl 
+                   tracking-[0.3em] sm:tracking-[0.4em] md:tracking-[0.2em] 
+                   leading-tight text-center mb-4 whitespace-nowrap">
+                {!! app()->getLocale() == 'en'
+                    ? '<span class="block md:inline">B R A N D &nbsp; W E &nbsp;</span><span class="block md:hidden"></span> E M P O W E R'
+                    : __('home/divider.title') !!}
             </h2>
 
-            <p class="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed">
+            <p class="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed text-center">
                 @if (app()->getLocale() == 'en')
                     From local pioneers to global leaders, we’ve been trusted to bring visions to life,
                     creating impact on both local and global scales.
@@ -904,7 +908,7 @@
                         <p class="text-sm text-gray-500">{{ $blog->category->name }}</p>
                         <a href="{{ route('insight.show', $blog->slug) }}" class="block">
                             <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
-                                <strong>{{ $blog->title }}</strong>
+                                <strong>{{ app()->getLocale() == 'id' ? $blog->title_id : $blog->title }}</strong>
                             </h3>
                         </a>
                         @if ($blog->headline_img)

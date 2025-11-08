@@ -175,7 +175,7 @@
                             <p class="text-sm text-gray-500">{{ $blog->category->name }}</p>
                             <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
                                 <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
-                                    <strong>{{ $blog->title }}</strong>
+                                    <strong>{{ app()->getLocale() == 'id' ? $blog->title_id : $blog->title }}</strong>
                                 </h3>
                             </a>
                             @if ($blog->headline_img)
@@ -205,10 +205,9 @@
                             class="snap-center min-w-[260px] bg-white rounded-2xl shadow-sm p-4 border border-gray-200 flex flex-col">
                             <p class="text-xs text-gray-500">{{ $blog->category->name }}</p>
                             <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
-                                <h3
-                                    class="text-base font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[60px] mb-3">
-                                    {{ $blog->title }}
-                                </h3>
+                                <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
+                                <strong>{{ app()->getLocale() == 'id' ? $blog->title_id : $blog->title }}</strong>
+                            </h3>
                             </a>
                             @if ($blog->headline_img)
                                 <img src="{{ asset('storage/' . $blog->headline_img) }}"
