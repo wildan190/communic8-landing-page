@@ -13,11 +13,14 @@
             <!-- Title -->
             <div class="text-center mb-16">
                 <h1 class="font-poppins font-regular text-2xl md:text-4xl lg:text-5xl tracking-[0.3em] text-gray-700">
-                    B R A N D S &nbsp; W E &nbsp; E M P O W E R
+                    {!! app()->getLocale() == 'en'
+                        ? 'B R A N D S &nbsp; W E &nbsp; E M P O W E R'
+                        : __('portofolio/portofolio.title') !!}
                 </h1>
                 <p class="mt-6 text-gray-600 max-w-2xl mx-auto">
-                    From local pioneers to global leaders, we’ve been trusted to bring visions to life, creating impact on
-                    both local and global scales.
+                    {{ app()->getLocale() == 'en'
+                        ? 'From local pioneers to global leaders, we’ve been trusted to bring visions to life, creating impact on both local and global scales.'
+                        : __('portofolio/portofolio.subtitle') }}
                 </p>
             </div>
 
@@ -41,7 +44,6 @@
                             <p class="text-xs md:text-sm leading-snug line-clamp-3">
                                 {{ $project->description ?? '' }}
                             </p>
-
                         </div>
                     </div>
                 @endforeach
@@ -62,7 +64,6 @@
                             <p class="text-xs md:text-sm leading-snug line-clamp-3">
                                 {{ $project->description ?? '' }}
                             </p>
-
                         </div>
                     </div>
                 @endforeach
@@ -83,7 +84,6 @@
                             <p class="text-xs md:text-sm leading-snug line-clamp-3">
                                 {{ $project->description ?? '' }}
                             </p>
-
                         </div>
                     </div>
                 @endforeach
@@ -94,11 +94,12 @@
                 <button id="exploreMoreBtn"
                     class="inline-block px-8 py-3 text-sm md:text-base font-semibold text-white bg-black rounded-full
                    transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-black hover:scale-105">
-                    Explore More
+                    {{ app()->getLocale() == 'en' ? 'Explore More' : __('portofolio.button_explore') }}
                 </button>
             </div>
         </div>
     </section>
+
 
     {{-- JS: Toggle More Projects --}}
     <script>

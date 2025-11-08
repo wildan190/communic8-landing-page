@@ -9,6 +9,7 @@ use App\Models\BranchOffice;
 use App\Models\Client;
 use App\Models\Project;
 use App\Models\Testimoni;
+use App\Models\Value;
 use App\Models\CardServices;
 use App\Models\WebInformation;
 use Illuminate\Http\Request;
@@ -48,6 +49,8 @@ class HomeController extends Controller
 
         $hero = \App\Models\HeroHome::first();
 
+        $values = Value::all();
+
         $accessToken = config('services.instagram.token');
         $userId = config('services.instagram.user_id');
 
@@ -78,7 +81,8 @@ class HomeController extends Controller
             'testimonis',
             'instagramPosts',
             'about', 
-            'card_services'
+            'card_services',
+            'values'
         ));
     }
 }

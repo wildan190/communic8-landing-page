@@ -10,7 +10,7 @@
         </div>
 
         {{-- Desktop Menu --}}
-        <nav class="hidden md:flex items-center space-x-8 text-gray-700 font-medium relative">
+        <nav class="hidden md:flex items-center space-x-8 text-gray-700 font-normal relative">
             <a href="{{ url('/') }}" class="hover:text-orange-500 {{ request()->is('/') ? 'text-orange-500' : '' }}">
                 {{ __('navbar.home') }}
             </a>
@@ -20,7 +20,7 @@
 
             {{-- Dropdown Services --}}
             <div class="relative group">
-                <button class="hover:text-orange-500 flex items-center gap-1 {{ request()->routeIs('layanan.*') ? 'text-orange-500' : '' }}">
+                <button class="hover:text-orange-500 flex items-center gap-1 {{ request()->routeIs('layanan.*') ? 'text-orange-500' : '' }} font-normal">
                     {{ __('navbar.services') }}
                     <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
@@ -28,11 +28,11 @@
                 </button>
 
                 <div class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                    <a href="{{ route('layanan.brand-land') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">{{ __('navbar.brand_land') }}</a>
-                    <a href="{{ route('layanan.digital-stand') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">{{ __('navbar.digital_stand') }}</a>
-                    <a href="{{ route('layanan.code-band') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">{{ __('navbar.code_band') }}</a>
-                    <a href="{{ route('layanan.public-space-media') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">{{ __('navbar.public_space_media') }}</a>
-                    <a href="{{ route('layanan.ott-advertising') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">{{ __('navbar.ott_advertising') }}</a>
+                    <a href="{{ route('layanan.brand-land') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500 font-normal">{{ __('navbar.brand_land') }}</a>
+                    <a href="{{ route('layanan.digital-stand') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500 font-normal">{{ __('navbar.digital_stand') }}</a>
+                    <a href="{{ route('layanan.code-band') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500 font-normal">{{ __('navbar.code_band') }}</a>
+                    <a href="{{ route('layanan.public-space-media') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500 font-normal">{{ __('navbar.public_space_media') }}</a>
+                    <a href="{{ route('layanan.ott-advertising') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500 font-normal">{{ __('navbar.ott_advertising') }}</a>
                 </div>
             </div>
 
@@ -42,19 +42,19 @@
             <a href="{{ route('insight.index') }}" class="hover:text-orange-500 {{ request()->routeIs('insight.index') ? 'text-orange-500' : '' }}">
                 {{ __('navbar.insight') }}
             </a>
-            <a href="{{ route('contact.index') }}" class="btn-contact bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700">
+            <a href="{{ route('contact.index') }}" class="btn-contact bg-gray-800 text-white px-5 py-2 rounded-full hover:bg-gray-700 font-normal">
                 {{ __('navbar.contact') }}
             </a>
 
             {{-- Language Switcher --}}
             <div class="relative group">
-                <button class="flex items-center gap-2 bg-white text-gray-700 font-semibold px-4 py-2 rounded-full shadow hover:bg-orange-500 hover:text-white transition">
+                <button class="flex items-center gap-2 bg-white text-gray-700 font-normal px-4 py-2 rounded-full shadow hover:bg-orange-500 hover:text-white transition">
                     🌐 {{ strtoupper(app()->getLocale()) }}
                 </button>
 
                 <div class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                    <a href="{{ route('lang.switch','en') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">🇬🇧 English</a>
-                    <a href="{{ route('lang.switch','id') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500">🇮🇩 Bahasa</a>
+                    <a href="{{ route('lang.switch','en') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500 font-normal">🇬🇧 English</a>
+                    <a href="{{ route('lang.switch','id') }}" class="block px-4 py-2 hover:bg-orange-50 hover:text-orange-500 font-normal">🇮🇩 Bahasa</a>
                 </div>
             </div>
         </nav>

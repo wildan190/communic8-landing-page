@@ -5,12 +5,13 @@
         <div class="max-w-5xl mx-auto px-6 text-center">
             <!-- Title -->
             <h1
-                class="font-poppins font-light text-3xl md:text-4xl tracking-[0.35em] uppercase text-[#666666] leading-relaxed">
+                class="font-poppins font-light text-base md:text-3xl lg:text-4xl tracking-[0.05em] md:tracking-[0.35em] uppercase text-[#666666] leading-relaxed">
                 {!! __('contact/form.title') !!}
             </h1>
-            <p class="mt-6 text-[#666666] max-w-3xl mx-auto">
+            <p class="mt-6 text-[#666666] max-w-3xl mx-auto text-sm md:text-base">
                 {{ __('contact/form.subtitle') }}
             </p>
+
         </div>
 
         <!-- Contact Form -->

@@ -1,48 +1,51 @@
 @extends('layouts.web')
 
 @section('content')
-    {{-- Hero Section --}}
-    <section class="relative w-full min-h-[60vh] sm:min-h-[80vh] flex items-end bg-cover bg-center"
-        style="background-image: url('{{ asset('assets/img/ott-hero.png') }}')">
-
+    <section class="relative w-full flex items-end bg-cover bg-center pt-24 sm:pt-0"
+        style="background-image: url('{{ asset('assets/img/ott-hero.png') }}'); min-height:60vh; sm:min-height:80vh;">
         <div class="w-full pb-20">
             <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
                 <div class="max-w-xl text-left">
+                    {{-- Title (tidak diterjemahkan) --}}
                     <h1
                         class="text-2xl md:text-2xl font-light tracking-normal sm:tracking-[0.5em] text-black font-poppins leading-snug">
                         P U B L I C<br />S P A C E &nbsp; M E D I A
                     </h1>
+
+                    {{-- Subtitle --}}
                     <h2 class="mt-6 text-lg md:text-xl font-bold font-rubik text-black">
-                        Be Seen Where It Matters Most
+                        {{ __('layanan/publicspace.hero.subtitle') }}
                     </h2>
+
+                    {{-- Description --}}
                     <p class="mt-4 text-sm md:text-base text-gray-800 font-rubik leading-relaxed">
-                        Move beyond digital noise. We deliver your brand directly into the daily lives of your target
-                        audience
-                        through powerful, unmissable real-world displays.
+                        {{ __('layanan/publicspace.hero.description') }}
                     </p>
-                    <p>
-                        <i>*This service is currently only available in Indonesia</i>
+
+                    {{-- Note --}}
+                    <p class="mt-2 text-sm text-gray-600 italic">
+                        {{ __('layanan/publicspace.hero.note') }}
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
+
     {{-- Gallery Section --}}
     <section class="w-full bg-white py-16">
         <div class="max-w-7xl mx-auto px-6 md:px-20 text-center">
-            {{-- Text lebih lebar --}}
-            <p class="text-base md:text-base font-rubik text-[#666666] max-w-5xl mx-auto">
-                <b>Strategic Placement for Maximum Impact</b>
+            {{-- Gallery Title --}}
+            <p class="text-base md:text-base font-rubik text-[#666666] max-w-5xl mx-auto font-bold">
+                {{ __('layanan/publicspace.gallery.title') }}
             </p>
             <br>
+            {{-- Gallery Description --}}
             <p class="text-base md:text-base font-rubik text-[#666666] max-w-5xl mx-auto">
-                We bring the same strategic thinking and creative spirit to the real world that define our digital work.
-                Our approach and methodology to media placement is designed to ensure your brand connects with the right
-                audience in the right place.
+                {{ __('layanan/publicspace.gallery.description') }}
             </p>
 
-            {{-- ✅ Wrapper gambar lebih besar, tetap segaris --}}
+            {{-- Gallery Image --}}
             <div class="mt-12 flex justify-center">
                 <div class="w-full bg-white max-w-6xl rounded-2xl overflow-hidden">
                     @if ($publicPresenceContent && $publicPresenceContent->head_img)

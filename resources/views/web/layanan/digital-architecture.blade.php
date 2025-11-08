@@ -7,22 +7,24 @@
         <div class="w-full pb-20">
             <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 flex justify-start">
                 <div class="max-w-xl text-left">
+                    {{-- Title (tidak diterjemahkan) --}}
                     <h1 class="text-2xl md:text-2xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
                         C O D E &nbsp; B A N D
                     </h1>
 
+                    {{-- Subtitle --}}
                     <h2 class="mt-6 text-lg md:text-xl font-bold font-rubik text-black">
-                        Building Meaningful, Scalable, Future-Ready Platforms
+                        {{ __('layanan/codeband.hero.subtitle') }}
                     </h2>
 
+                    {{-- Tagline --}}
                     <h3 class="mt-4 text-md md:text-lg font-medium text-gray-800 font-rubik">
-                        Expertly Developed, Flawlessly Delivered
+                        {{ __('layanan/codeband.hero.tagline') }}
                     </h3>
 
+                    {{-- Description --}}
                     <p class="mt-3 text-sm md:text-base text-gray-700 font-rubik leading-relaxed max-w-md">
-                        Communic 8 brings creativity and code together to develop engaging websites, intuitive applications,
-                        and
-                        powerful platforms designed not just to meet your needs, but to enchant your users.
+                        {{ __('layanan/codeband.hero.description') }}
                     </p>
                 </div>
             </div>
@@ -37,30 +39,9 @@
                 {{-- Text Section (kiri) --}}
                 <div class="font-rubik leading-relaxed space-y-6 flex flex-col justify-between text-[#666666]">
                     <div>
-                        <p>
-                            In the digital-first era, your brand’s online presence is more than a touchpoint — it’s the
-                            foundation of how audiences experience and connect with you. That’s why at Communic 8, our
-                            Digital Development solutions are designed not just to build digital assets, but to create
-                            experiences that are meaningful, scalable, and future-ready.
-                        </p>
-
-                        <p>
-                            Our process begins with strategic planning and research, ensuring every solution is grounded in
-                            business objectives and market insights. We then move into UX research and information
-                            architecture, structuring intuitive user journeys that make every interaction seamless. From
-                            there, our team designs elegant and functional UI/UX interfaces before translating them into
-                            reliable, high-performing platforms through application development and coding. Each product
-                            undergoes rigorous testing and quality assurance to guarantee stability and usability, followed
-                            by precise deployment and launch to ensure readiness for the market.
-                        </p>
-
-                        <p>
-                            The goal is clear: to help brands create digital ecosystems that strengthen identity, improve
-                            engagement, and accelerate growth. For us, the best digital development goes beyond coding and
-                            design. It’s about aligning technology dengan brand strategy, ensuring every platform is not
-                            only
-                            functional but also truly impactful.
-                        </p>
+                        <p>{{ __('layanan/codeband.explanation.p1') }}</p>
+                        <p>{{ __('layanan/codeband.explanation.p2') }}</p>
+                        <p>{{ __('layanan/codeband.explanation.p3') }}</p>
                     </div>
                 </div>
 
@@ -84,6 +65,7 @@
         </div>
     </section>
 
+
     {{-- Gallery Section --}}
     @if ($digitalArchitectureContent)
         <section class="w-full bg-white py-16">
@@ -106,14 +88,14 @@
 
     <div class="text-center py-16 bg-white text-[#666666]">
         <p class="text-base md:text-base font-rubik max-w-5xl mx-auto">
-            Digital Development is more than writing codes. It’s about constructing robust digital solutions that serve your
-            business objective and power your digital transformation.
+            {{ __('layanan/codeband.additional.p1') }}
         </p>
         <br>
         <p class="text-base md:text-base font-rubik max-w-5xl mx-auto">
-            With collaborative and forward-thinking approach, every development is build with strategic intent.
+            {{ __('layanan/codeband.additional.p2') }}
         </p>
     </div>
+
 
     {{-- Section 1 --}}
     <section class="w-full py-20 bg-white">

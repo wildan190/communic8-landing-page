@@ -19,6 +19,7 @@ use App\Http\Controllers\PublicPresenceContentController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SubServiceController;
 use App\Http\Controllers\TestimoniController;
+use App\Http\Controllers\ValueController;
 use App\Http\Controllers\Web\AboutController;
 use App\Http\Controllers\Web\ContactController;
 use App\Http\Controllers\Web\HomeController;
@@ -253,6 +254,8 @@ Route::prefix('admin')
             Route::put('/{card_service}', [CardServicesController::class, 'update'])->name('card-services.update');
             Route::delete('/{card_service}', [CardServicesController::class, 'destroy'])->name('card-services.destroy');
         });
+
+        Route::resource('values', ValueController::class);
     });
 
 Route::get('lang/{locale}', function ($locale) {

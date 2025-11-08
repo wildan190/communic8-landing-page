@@ -17,6 +17,7 @@ class HeroHomeController extends Controller
     {
         $data = $request->validate([
             'description' => 'required|string',
+            'description_en' => 'required|string',
         ]);
 
         $hero = HeroHome::first();

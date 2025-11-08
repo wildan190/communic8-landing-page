@@ -18,33 +18,27 @@
             {{-- Hero Title --}}
             <div class="relative z-10 pt-32 md:pt-40">
                 <h1
-                    class="font-poppins font-bold text-[#000000] leading-snug mb-4 sm:mb-6
-            text-xl sm:text-3xl md:text-4xl
-            {{ app()->getLocale() == 'en' ? 'tracking-normal sm:tracking-[0.35em]' : 'tracking-normal' }}">
+                    class="font-poppins font-bold text-[#000000] leading-snug mb-4 sm:mb-6 text-xl sm:text-3xl md:text-4xl {{ app()->getLocale() == 'en' ? 'tracking-normal sm:tracking-[0.35em]' : 'tracking-normal' }}">
                     {!! __('about/hero.headline') !!}
                 </h1>
             </div>
 
             {{-- Hero Content Wrapper --}}
-            <div class="relative z-10 w-full flex justify-center items-center mt-20 md:mt-32 px-4">
-                <div class="relative grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-screen-lg w-full items-center justify-center">
+            <div class="relative z-10 w-full flex justify-center items-center mt-20 md:mt-32">
+                <div class="relative flex items-center justify-center w-[700px] md:w-[950px]">
 
                     {{-- Transparent Grey Box --}}
                     <div
-                        class="relative z-10 bg-gray-400/70 text-white text-left p-6 md:p-8 rounded-lg
-                        order-2 md:order-1
-                        w-full h-auto min-h-[180px] md:min-h-[220px] flex items-center justify-center md:justify-start">
+                        class="relative z-10 bg-gray-400/70 text-white text-left w-[320px] h-[220px] md:w-[460px] md:h-[280px] flex items-center px-8 md:px-10 translate-x-[10%]">
                         <h2
-                            class="font-poppins font-medium text-lg sm:text-2xl md:text-3xl
-                            tracking-[0.25em] leading-snug uppercase text-center md:text-left">
+                            class="font-poppins font-normal text-lg sm:text-2xl md:text-3xl tracking-[0.25em] leading-snug uppercase">
                             {!! __('about/hero.strategic_text') !!}
                         </h2>
                     </div>
 
                     {{-- Main Image --}}
                     <div
-                        class="relative z-20 w-full h-auto aspect-square
-                        order-1 md:order-2 flex items-center justify-center overflow-visible">
+                        class="relative z-20 w-[340px] h-[340px] md:w-[500px] md:h-[500px] -translate-x-[10%] flex items-center justify-center overflow-visible">
                         <img src="{{ $heroAbout && $heroAbout->box_img ? asset($heroAbout->box_img) : asset('assets/img/dummy/dummy3.png') }}"
                             alt="Creative Visual" class="w-full h-auto object-contain rounded-lg" />
                     </div>
@@ -55,7 +49,7 @@
             {{-- About Us Section --}}
             <div class="relative z-10 max-w-3xl pb-12 md:pb-20 mt-8 md:mt-16">
                 <h2
-                    class="font-poppins font-extrabold uppercase tracking-[0.4em] text-[32px] md:text-[40px] text-[#666666] text-center">
+                    class="font-poppins font-normal uppercase tracking-[0.4em] text-[32px] md:text-[40px] text-[#666666] text-center">
                     ABOUT US
                 </h2>
 
@@ -64,6 +58,7 @@
                 </p>
             </div>
         </section>
+
 
         {{-- PHILOSOPHY IN ACTION --}}
         <section
@@ -284,29 +279,118 @@
         </script>
 
         {{-- Brands We Empower Section --}}
-        <section class="relative bg-white py-24">
+        {{-- <section class="relative bg-white py-24">
             <div class="container max-w-7xl mx-auto px-6 text-center">
 
-                {{-- Title --}}
                 <h2
-                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal mb-4 sm:mb-6 
-           text-[#666666] tracking-[0.35em] leading-snug uppercase">
+                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal mb-4 sm:mb-6
+            text-[#666666] tracking-[0.35em] leading-snug uppercase">
                     {!! __('about/trusted_by_many_section.title') !!}
                 </h2>
 
-
-                {{-- Subtitle --}}
                 <p
                     class="font-poppins text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-12 sm:mb-16 leading-relaxed">
                     {{ __('about/trusted_by_many_section.subtitle') }}
                 </p>
 
-                {{-- Logos Grid --}}
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-7 gap-10 items-center justify-center">
-                    @foreach ($clients as $client)
-                        <img src="{{ $client->logo ? asset('storage/' . $client->logo) : asset('assets/img/default-logo.png') }}"
-                            alt="{{ $client->company_name }}" class="max-h-14 mx-auto">
-                    @endforeach
+
+                @for ($i = 1; $i <= 3; $i++)
+                    @php $sliderClients = $clients->where('category', $i); @endphp
+
+                    <div class="relative mb-10">
+
+                        <div id="logos-row-{{ $i }}"
+                            class="flex gap-8 md:gap-12 items-center py-4 px-2 md:px-4 overflow-x-auto scrollbar-hide scroll-smooth">
+
+                            @forelse ($sliderClients as $client)
+                                <div class="flex-shrink-0 flex justify-center items-center w-2/5 sm:w-1/3 md:w-[16%]">
+                                    <img src="{{ asset('storage/' . $client->logo) }}" alt="{{ $client->company_name }}"
+                                        class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
+                                </div>
+                            @empty
+                                <div class="text-gray-400 text-sm italic">
+                                    No client in category {{ $i }}
+                                </div>
+                            @endforelse
+                        </div>
+
+                        <button id="prev-logos-{{ $i }}"
+                            class="absolute left-[-40px] top-1/2 -translate-y-1/2 p-2 hidden lg:flex items-center justify-center z-20">
+                            <img src="{{ asset('assets/img/blog-slider-left.png') }}" class="w-6 h-6 invert"
+                                alt="Prev">
+                        </button>
+
+                        <button id="next-logos-{{ $i }}"
+                            class="absolute right-[-40px] top-1/2 -translate-y-1/2 p-2 hidden lg:flex items-center justify-center z-20">
+                            <img src="{{ asset('assets/img/blog-slider-right.png') }}" class="w-6 h-6 invert"
+                                alt="Next">
+                        </button>
+
+                    </div>
+                @endfor
+            </div>
+        </section>
+        <script>
+            for (let i = 1; i <= 3; i++) {
+                const row = document.getElementById(`logos-row-${i}`);
+                const prev = document.getElementById(`prev-logos-${i}`);
+                const next = document.getElementById(`next-logos-${i}`);
+
+                if (!row) continue;
+
+                const scrollAmount = 200;
+
+                prev?.addEventListener("click", () => {
+                    row.scrollBy({
+                        left: -scrollAmount,
+                        behavior: "smooth"
+                    });
+                });
+
+                next?.addEventListener("click", () => {
+                    row.scrollBy({
+                        left: scrollAmount,
+                        behavior: "smooth"
+                    });
+                });
+            }
+        </script> --}}
+
+        <!-- Our Partners Section -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-4 md:px-20 text-center">
+
+                <!-- Title -->
+                <div class="relative z-10 mb-12 sm:mb-16">
+                    <h1
+                        class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
+               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                        O U R &nbsp; P A R T N E R S
+                    </h1>
+                    <p class="text-gray-500 text-base sm:text-lg">
+                        We collaborate with top-tier partners in the industry to deliver comprehensive and integrated
+                        solutions.
+                    </p>
+                </div>
+
+                <!-- Partner Logos -->
+                <div class="flex flex-wrap justify-center items-center gap-10 sm:gap-16">
+                    <div class="w-44 h-20 bg-transparent flex items-center justify-center overflow-hidden">
+                        <img src="{{ asset('assets/img/partner/partner1.png') }}" alt="Partner 1"
+                            class="w-full h-full object-contain scale-90">
+                    </div>
+                    <div class="w-44 h-20 bg-transparent flex items-center justify-center overflow-hidden">
+                        <img src="{{ asset('assets/img/partner/partner2.png') }}" alt="Partner 2"
+                            class="w-full h-full object-contain scale-90">
+                    </div>
+                    <div class="w-44 h-20 bg-transparent flex items-center justify-center overflow-hidden">
+                        <img src="{{ asset('assets/img/partner/partner3.png') }}" alt="Partner 3"
+                            class="w-full h-full object-contain scale-90">
+                    </div>
+                    <div class="w-44 h-20 bg-transparent flex items-center justify-center overflow-hidden">
+                        <img src="{{ asset('assets/img/partner/partner4.png') }}" alt="Partner 4"
+                            class="w-full h-full object-contain scale-90">
+                    </div>
                 </div>
 
             </div>
@@ -320,13 +404,17 @@
                 <div class="relative z-10 mb-12 sm:mb-16">
                     <h1
                         class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
-               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
-                        S T A Y &nbsp; C O N N E C T E D &nbsp; W I T H
+                text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                        {!! app()->getLocale() == 'en'
+                            ? 'S T A Y &nbsp; C O N N E C T E D &nbsp; W I T H'
+                            : __('about/activity.title_line1') !!}
                     </h1>
                     <h1
                         class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
-               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug">
-                        O U R &nbsp; L A T E S T &nbsp; A C T I V I T Y
+                text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug">
+                        {!! app()->getLocale() == 'en'
+                            ? 'O U R &nbsp; L A T E S T &nbsp; A C T I V I T Y'
+                            : __('about/activity.title_line2') !!}
                     </h1>
                 </div>
 
@@ -344,11 +432,12 @@
                 <a href="https://www.instagram.com" target="_blank"
                     class="inline-flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-700 transition">
                     <i class="fab fa-instagram text-lg"></i>
-                    Visit our Instagram
+                    {{ app()->getLocale() == 'en' ? 'Visit our Instagram' : __('about/activity.button_instagram') }}
                 </a>
 
             </div>
         </section>
+
 
         {{-- CTA Section --}}
         <section class="relative bg-cover bg-center text-white font-poppins"

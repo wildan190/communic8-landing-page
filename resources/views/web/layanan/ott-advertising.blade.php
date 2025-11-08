@@ -103,8 +103,7 @@
     <section class="py-20 bg-white font-rubik text-[#666666]">
         <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 text-center">
 
-            {{-- Top Icons --}}
-            <div class="flex flex-wrap justify-center gap-10 mb-12">
+            {{-- <div class="flex flex-wrap justify-center gap-10 mb-12">
                 <div class="flex items-start space-x-3 max-w-xs text-left">
                     <div class="w-10 h-10 flex items-center justify-center rounded bg-red-300 flex-shrink-0">
                         <i class="fas fa-tv text-white text-lg"></i>
@@ -134,9 +133,8 @@
                         <p class="text-sm leading-snug">Engage audiences wherever they work and play.</p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
-            {{-- Main Image --}}
             <div class="mb-16">
                 @if ($landing && $landing->img)
                     <img src="{{ asset($landing->img) }}" alt="Main Image"
@@ -203,7 +201,7 @@
             </div>
 
             {{-- Footer Text --}}
-            <div class="text-center mb-4">
+            {{-- <div class="text-center mb-4">
                 <h4
                     class="text-2xl sm:text-3xl md:text-4xl text-[#666666] font-poppins font-normal
                 {{ app()->getLocale() == 'en' ? 'tracking-normal md:tracking-[0.3em]' : 'tracking-normal' }}
@@ -214,7 +212,7 @@
 
             <p class="text-base text-[#666666]">
                 Let’s build a strategy that places your brand on the screens that matter most.
-            </p>
+            </p> --}}
 
         </div>
     </section>

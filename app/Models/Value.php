@@ -5,11 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class HeroHome extends Model
+class Value extends Model
 {
     use HasFactory;
 
-    protected $table = 'hero_home';
-
-    protected $fillable = ['description', 'description_en'];
+    protected $fillable = [
+        'key',
+        'title',
+        'value',
+        'icon',
+    ];
 }

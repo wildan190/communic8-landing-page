@@ -8,7 +8,7 @@
         <div class="w-full pb-20">
             <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
                 <div class="max-w-xl text-left">
-                    {{-- Title --}}
+                    {{-- Title (tidak diterjemahkan) --}}
                     <h1
                         class="text-4xl md:text-5xl font-light tracking-[0.2em] md:tracking-[0.5em] text-black font-poppins leading-snug">
                         B R A N D <br> L A N D
@@ -16,14 +16,12 @@
 
                     {{-- Subtitle --}}
                     <p class="mt-3 text-black text-base md:text-lg font-rubik font-bold tracking-[0.1em]">
-                        Crafting Identity with Creativity
+                        {{ __('layanan/brandland.hero.subtitle') }}
                     </p>
 
                     {{-- Description --}}
                     <p class="mt-4 text-black text-base md:text-lg font-rubik font-normal leading-relaxed">
-                        We go beyond aesthetics to build and align your brand’s core quality, value, and trust.
-                        Our comprehensive approach ensures a powerful consistent presence that resonates with your audience
-                        in Asia.
+                        {{ __('layanan/brandland.hero.description') }}
                     </p>
                 </div>
             </div>
@@ -35,45 +33,24 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
             <div class="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-16 lg:gap-24 items-center">
 
-                {{-- 📝 Text Section --}}
+                {{-- Text Section --}}
                 <div class="text-[#666666] font-rubik leading-relaxed space-y-6 max-w-3xl">
-                    <p>
-                        At Communic 8, we specialize in helping brands unlock their full potential. Our services span the
-                        entire brand journey — from building a strong identity, to amplifying it through creative campaigns,
-                        endorsements, and other impactful executions.
-                    </p>
 
-                    <p>
-                        What sets us apart is our ability to combine a global mindset with a local touch. For brands looking
-                        to expand into Indonesia, this is our strongest advantage: we help you build solid brand equity by
-                        understanding global standards while staying deeply connected to local culture, values, and consumer
-                        behavior.
-                    </p>
-
-                    <p>
-                        A brand is more than just a name, logo, or visual identity — it is a promise of consistent quality
-                        and values. True brand strength comes from continuously aligning what we do, what we deliver, and
-                        what we stand for with the principles that define the brand. This alignment is what earns trust,
-                        builds credibility, and sustains long-term relationships with stakeholders.
-                    </p>
-
-                    <p>
-                        In essence, building a brand means building a system of trust:
-                    </p>
+                    <p>{{ __('layanan/brandland.explanation.p1') }}</p>
+                    <p>{{ __('layanan/brandland.explanation.p2') }}</p>
+                    <p>{{ __('layanan/brandland.explanation.p3') }}</p>
+                    <p>{{ __('layanan/brandland.explanation.p4') }}</p>
 
                     <ul class="list-decimal list-inside space-y-2 ml-2">
-                        <li>Consistently delivering quality in every interaction.</li>
-                        <li>Staying true to core values, even as markets evolve.</li>
-                        <li>Fostering meaningful connections that extend beyond transactions.</li>
+                        <li>{{ __('layanan/brandland.explanation.li1') }}</li>
+                        <li>{{ __('layanan/brandland.explanation.li2') }}</li>
+                        <li>{{ __('layanan/brandland.explanation.li3') }}</li>
                     </ul>
 
-                    <p>
-                        A brand that achieves this does more than stand out in the market — it becomes a lasting force that
-                        inspires confidence, loyalty, and meaningful engagement from all who experience it.
-                    </p>
+                    <p>{{ __('layanan/brandland.explanation.p5') }}</p>
                 </div>
 
-                {{-- 🖼️ Gallery --}}
+                {{-- Gallery --}}
                 <div class="flex justify-center md:justify-end">
                     <div class="aspect-square w-full max-w-[500px] rounded-2xl overflow-hidden bg-[#EE9A96] lg:ml-auto">
                         @if ($brandForgeContent && $brandForgeContent->head_img)

@@ -6,23 +6,23 @@
         <div
             class="container max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center justify-between min-h-[85vh] py-20 md:py-24 space-y-8">
 
-            {{-- Hero Title --}}
+            {{-- Hero Title (tidak diubah) --}}
             <div class="relative z-10 pt-16 md:pt-20 text-center">
                 <h1 id="hero-line1"
                     class="font-poppins font-light
-                       text-base xs:text-lg sm:text-3xl md:text-4xl
-                       text-black
-                       tracking-[0.08em] xs:tracking-[0.12em] md:tracking-[0.3em]
-                       leading-snug mb-2 sm:mb-5">
+                    text-base xs:text-lg sm:text-3xl md:text-4xl
+                    text-black
+                    tracking-[0.08em] xs:tracking-[0.12em] md:tracking-[0.3em]
+                    leading-snug mb-2 sm:mb-5">
                     CREATIVITY WITH
                 </h1>
 
                 <h1 id="hero-line2"
                     class="font-poppins font-light
-                       text-base xs:text-lg sm:text-3xl md:text-4xl
-                       text-black
-                       tracking-[0.08em] xs:tracking-[0.12em] md:tracking-[0.3em]
-                       leading-snug">
+                    text-base xs:text-lg sm:text-3xl md:text-4xl
+                    text-black
+                    tracking-[0.08em] xs:tracking-[0.12em] md:tracking-[0.3em]
+                    leading-snug">
                     BUSINESS SENSE
                 </h1>
             </div>
@@ -31,11 +31,11 @@
             <div class="flex justify-center relative mt-8 group">
                 <img src="{{ asset('assets/img/lamp.png') }}" alt="Lamp"
                     class="w-auto h-auto max-w-[130px] xs:max-w-[160px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[320px]
-                       relative z-10 transition-opacity duration-300 group-hover:opacity-0">
+                    relative z-10 transition-opacity duration-300 group-hover:opacity-0">
 
                 <img src="{{ asset('assets/img/lamphover.png') }}" alt="Lamp Hover"
                     class="w-auto h-auto max-w-[130px] xs:max-w-[160px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[320px]
-                       absolute z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    absolute z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             </div>
 
             {{-- Bottom Row --}}
@@ -43,14 +43,16 @@
 
                 {{-- Left Column --}}
                 <div class="space-y-6">
+                    {{-- Description (tidak diubah) --}}
                     <p class="text-gray-600 text-sm xs:text-base sm:text-lg leading-relaxed max-w-md mx-auto md:mx-0">
-                        {{ $hero->description ?? '' }}
+                        {{ app()->getLocale() == 'en' ? $hero->description_en ?? '' : $hero->description ?? '' }}
                     </p>
 
+                    {{-- Tombol (pakai translasi) --}}
                     <button onclick="window.location='{{ route('about.index') }}'"
                         class="px-5 xs:px-6 py-3 text-sm xs:text-base text-white bg-[#333333] rounded-full font-semibold
-                           transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-white hover:scale-105">
-                        Discover your opportunities
+                        transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-white hover:scale-105">
+                        {{ app()->getLocale() == 'en' ? 'Discover your opportunities' : __('home/hero.button') }}
                     </button>
                 </div>
 
@@ -59,12 +61,13 @@
                     class="flex flex-col items-center md:items-end text-center md:text-right space-y-2 mt-10 overflow-hidden">
                     <h2 id="stat-text"
                         class="text-4xl xs:text-5xl sm:text-7xl md:text-8xl font-extrabold text-[#F97316]
-                           transition-transform duration-700 ease-out">
+                        transition-transform duration-700 ease-out">
                         20+
                     </h2>
                     <p id="stat-sub"
                         class="text-[#666666] text-sm xs:text-base sm:text-lg md:text-xl font-medium leading-snug transition-opacity duration-700">
-                        <strong>Years</strong> of Experience
+                        <strong>{{ app()->getLocale() == 'en' ? 'Years' : 'Tahun' }}</strong>
+                        {{ app()->getLocale() == 'en' ? 'of Experience' : 'pengalaman' }}
                     </p>
                 </div>
 
@@ -161,12 +164,12 @@
             class="w-full h-full bg-black bg-opacity-40 flex items-center justify-center text-center py-24 sm:py-32 md:py-52">
             <div class="text-white px-4 sm:px-6">
                 <h2
-                    class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-[0.1em] sm:tracking-[0.2em] md:tracking-[0.3em] uppercase leading-tight">
-                    “C R E A T I V I T Y I S T H E B R I D G E <br />
-                    B E T W E E N C U L T U R E A N D <br />
+                    class="text-sm sm:text-xl md:text-3xl lg:text-4xl font-light tracking-[0.05em] sm:tracking-[0.2em] md:tracking-[0.3em] uppercase leading-tight">
+                    “C R E A T I V I T Y &nbsp; I S &nbsp; T H E &nbsp; B R I D G E <br />
+                    B E T W E E N &nbsp; C U L T U R E &nbsp; A N D <br />
                     C O M M E R C E“
                 </h2>
-                <p class="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base italic">Communic 8</p>
+                <p class="mt-2 sm:mt-4 text-[10px] sm:text-sm md:text-base italic">Communic 8</p>
             </div>
         </div>
     </section>
@@ -174,7 +177,7 @@
     {{-- Wrapper halaman --}}
     <div class="relative">
 
-        {{-- Section At a Glance --}}
+        {{-- Section At a Glance / Behind the Brand --}}
         <section class="bg-white relative bg-white-100 pt-8 sm:pt-12 md:pt-16 pb-12 sm:pb-14 md:pb-16 z-10 overflow-x-clip">
             <div class="container max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative">
 
@@ -186,20 +189,17 @@
 
                         {{-- Compact title on mobile --}}
                         <h2
-                            class="
-                    font-poppins 
-                    text-xs font-semibold 
-                    text-[#666666] 
-                    leading-relaxed 
-                    tracking-[0.15em] 
-                    sm:text-sm sm:tracking-[0.3em] 
-                    mb-2
-                ">
-                            B E H I N D &nbsp; T H E &nbsp; B R A N D
+                            class="font-poppins text-xs font-semibold text-[#666666] leading-relaxed tracking-[0.15em] sm:text-sm sm:tracking-[0.3em] mb-2">
+                            {!! app()->getLocale() == 'en' ? 'B E H I N D &nbsp; T H E &nbsp; B R A N D' : __('home/behindthebrand.title') !!}
                         </h2>
 
                         <p class="text-[#666666] leading-relaxed text-xs sm:text-sm mt-2">
-                            {!! nl2br(e($about->behind_the_brand ?? '')) !!}
+                            @if (app()->getLocale() == 'en')
+                                {!! nl2br(e($about->behind_the_brand ?? '')) !!}
+                            @else
+                                {!! __('home/behindthebrand.paragraph1') !!}<br><br>
+                                {!! __('home/behindthebrand.paragraph2') !!}
+                            @endif
                         </p>
                     </div>
 
@@ -244,11 +244,19 @@
                         <h2
                             class="text-2xl sm:text-3xl md:text-4xl text-[#666666] mb-6 leading-tight
                     {{ app()->getLocale() == 'en' ? 'tracking-[0.3em]' : 'tracking-normal' }}">
-                            BEHIND THE BRAND
+                            {!! app()->getLocale() == 'en' ? 'B E H I N D &nbsp; T H E &nbsp; B R A N D' : __('home/glance.title') !!}
                         </h2>
-                        <p class="text-[#666666] leading-relaxed break-words">
-                            {!! nl2br(e($about->behind_the_brand ?? '')) !!}
-                        </p>
+
+                        @if (app()->getLocale() == 'en')
+                            <p class="text-[#666666] leading-relaxed break-words">
+                                {!! nl2br(e($about->behind_the_brand ?? '')) !!}
+                            </p>
+                        @else
+                            <p class="text-[#666666] leading-relaxed break-words">
+                                {!! __('home/glance.paragraph1') !!}<br><br>
+                                {!! __('home/glance.paragraph2') !!}
+                            </p>
+                        @endif
                     </div>
                 </div>
 
@@ -300,7 +308,7 @@
                     <div>
                         <div
                             class="text-5xl sm:text-6xl md:text-7xl font-black text-orange-500 tracking-tight mt-3 md:mt-0">
-                            <span class="counter" data-target="300">300</span>+
+                            <span class="counter" data-target="500">500</span>+
                         </div>
                         <div class="text-gray-700 font-semibold text-sm sm:text-base">
                             {{ __('home/values.brands_handled') }}
@@ -390,15 +398,11 @@
 
                 {{-- Title Handling: compact on mobile, spaced on desktop --}}
                 <h2
-                    class="
-                text-base font-semibold leading-tight text-[#666666] mb-2 
-                sm:text-2xl 
-                md:text-4xl 
-                md:tracking-[0.3em]
-            ">
+                    class="text-base font-normal leading-tight text-[#666666] mb-2 sm:text-2xl md:text-4xl md:tracking-[0.3em]">
                     <span class="md:hidden">{!! strip_tags(__('home/what_we_do.title')) !!}</span>
                     <span class="hidden md:inline">{!! __('home/what_we_do.title') !!}</span>
                 </h2>
+
 
                 <br />
 
@@ -494,8 +498,7 @@
 
     {{-- Section Divider --}}
     <section
-        class="relative bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center text-center
-       py-24 md:py-32 px-6"
+        class="relative bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center text-center py-24 md:py-32 px-6"
         style="background-image: url('{{ asset('assets/img/cta-bg.png') }}');">
 
         {{-- Overlay agar teks lebih kontras --}}
@@ -505,12 +508,17 @@
         <div class="relative z-10 max-w-3xl mx-auto">
             <h2
                 class="text-white font-poppins font-semibold tracking-[0.5em]
-                   text-2xl sm:text-3xl md:text-4xl lg:text-4xl uppercase mb-4">
-                BRAND WE EMPOWER
+            text-2xl sm:text-3xl md:text-4xl lg:text-4xl uppercase mb-4">
+                {!! app()->getLocale() == 'en' ? 'B R A N D &nbsp; W E &nbsp; E M P O W E R' : __('home/divider.title') !!}
             </h2>
+
             <p class="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed">
-                From local pioneers to global leaders, we’ve been trusted to bring visions to life,
-                creating impact on both local and global scales.
+                @if (app()->getLocale() == 'en')
+                    From local pioneers to global leaders, we’ve been trusted to bring visions to life,
+                    creating impact on both local and global scales.
+                @else
+                    {!! __('home/divider.description') !!}
+                @endif
             </p>
         </div>
     </section>
@@ -528,7 +536,6 @@
                 @endphp
 
                 <div class="relative mb-10">
-
                     {{-- SLIDER CONTAINER --}}
                     <div id="logos-row-{{ $i }}"
                         class="flex gap-8 md:gap-12 items-center py-4 px-2 md:px-4 overflow-x-auto scrollbar-hide scroll-smooth relative">
@@ -540,7 +547,7 @@
                             </div>
                         @empty
                             <div class="text-gray-400 text-sm italic">
-                                No client in category {{ $i }}
+                                {{ app()->getLocale() == 'en' ? 'No client in category ' . $i : 'Belum ada klien di kategori ' . $i }}
                             </div>
                         @endforelse
                     </div>
@@ -559,16 +566,18 @@
                 </div>
             @endfor
 
-
             {{-- SECTION TITLE --}}
             <div class="relative w-full py-16">
                 <div class="container max-w-7xl mx-auto px-4 sm:px-6 text-center">
                     <h2
-                        class="font-poppins font-light text-2xl sm:text-3xl md:text-4xl text-[#666666] tracking-[0.3em] leading-snug mb-3 sm:mb-5">
-                        I D E A S &nbsp; I N &nbsp; A C T I O N
+                        class="font-poppins font-light text-sm sm:text-xl md:text-4xl text-[#666666] tracking-[0.3em] leading-snug mb-3 sm:mb-5">
+                        {!! app()->getLocale() == 'en' ? 'I D E A S &nbsp; I N &nbsp; A C T I O N' : __('home/trusted_by.title') !!}
                     </h2>
-                    <p class="text-xs md:text-sm leading-snug line-clamp-3">
-                        {{ $project->description ?? '' }}
+
+                    <p class="text-xs md:text-sm leading-snug">
+                        {{ app()->getLocale() == 'en'
+                            ? 'A showcase of campaigns, stories, and experiences that create real connections'
+                            : __('home/trusted_by.subtitle') }}
                     </p>
                 </div>
             </div>
@@ -583,12 +592,11 @@
                     <div class="swiper-wrapper">
                         @foreach ($projects as $project)
                             <div class="swiper-slide relative group overflow-hidden rounded-2xl aspect-square p-2">
-
                                 <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
                                     class="w-full h-full object-cover transition duration-500 group-hover:scale-105 rounded-2xl"
                                     alt="{{ $project->name }}">
 
-                                {{-- HOVER DESCRIPT --}}
+                                {{-- HOVER DESCRIPTION --}}
                                 <div
                                     class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center rounded-2xl">
                                     <h3 class="text-sm md:text-base font-semibold mb-2">{{ $project->name }}</h3>
@@ -601,7 +609,7 @@
                     </div>
                 </div>
 
-                {{-- NAV --}}
+                {{-- NAVIGATION BUTTONS --}}
                 <button id="my-prev"
                     class="hidden lg:flex absolute left-[-80px] top-1/2 -translate-y-1/2 p-2 flex items-center justify-center z-50">
                     <img src="{{ asset('assets/img/blog-slider-left.png') }}" class="w-10 h-10 invert" alt="Previous">
@@ -618,8 +626,8 @@
             <div class="text-center mt-10">
                 <a href="{{ route('portofolio.index') }}"
                     class="inline-block px-8 py-3 text-sm md:text-base font-semibold text-white bg-black rounded-full
-            transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-black hover:scale-105">
-                    Explore More
+        transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-black hover:scale-105">
+                    {{ app()->getLocale() == 'en' ? 'Explore More' : __('home/trusted_by.button_more') }}
                 </a>
             </div>
 

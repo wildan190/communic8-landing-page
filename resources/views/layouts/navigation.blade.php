@@ -116,6 +116,9 @@
                             <x-dropdown-link :href="route('hero.index')" :active="request()->routeIs('hero.index')">
                                 {{ __('Hero Home') }}
                             </x-dropdown-link>
+                            <x-dropdown-link :href="route('values.index')" :active="request()->routeIs('values.index')">
+                                {{ __('Values') }}
+                            </x-dropdown-link>
                         </div>
                     </div>
                 </div>
