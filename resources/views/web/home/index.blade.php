@@ -527,9 +527,7 @@
         </div>
     </section>
 
-    {{-- ============================= --}}
     {{-- Section TRUSTED BY --}}
-    {{-- ============================= --}}
     <section class="relative bg-white py-12 md:py-20">
         <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -541,8 +539,7 @@
 
                 <div class="relative mb-10">
                     {{-- SLIDER CONTAINER --}}
-                    <div id="logos-row-{{ $i }}"
-                        class="flex gap-8 md:gap-12 items-center py-4 px-2 md:px-4 overflow-x-auto scrollbar-hide scroll-smooth relative">
+                    <div id="logos-row-{{ $i }}" class="flex gap-8 md:gap-12 items-center py-4 px-2 md:px-4 overflow-x-auto scrollbar-hide scroll-smooth relative">
 
                         @forelse ($sliderClients as $client)
                             <div class="flex-shrink-0 flex justify-center items-center w-2/5 sm:w-1/3 md:w-[16%]">
@@ -562,8 +559,7 @@
                         <img src="{{ asset('assets/img/blog-slider-left.png') }}" class="w-6 h-6 invert" alt="Prev">
                     </button>
 
-                    <button id="next-logos-{{ $i }}"
-                        class="absolute right-[-40px] top-1/2 -translate-y-1/2 p-2 hidden md:flex items-center justify-center z-20">
+                    <button id="next-logos-{{ $i }}" class="absolute right-[-40px] top-1/2 -translate-y-1/2 p-2 hidden md:flex items-center justify-center z-20">
                         <img src="{{ asset('assets/img/blog-slider-right.png') }}" class="w-6 h-6 invert"
                             alt="Next">
                     </button>
@@ -855,12 +851,10 @@
     </script>
 
     {{-- CTA Section --}}
-    <section class="relative bg-cover bg-center text-white font-poppins"
-        style="background-image: url('/assets/img/cta-bg.png');">
+    <section class="relative bg-cover bg-center text-white font-poppins" style="background-image: url('/assets/img/cta-bg.png');">
         <div class="absolute inset-0 bg-black/40"></div> {{-- Overlay biar teks jelas --}}
 
-        <div
-            class="relative max-w-screen-xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center md:items-start justify-between">
+        <div class="relative max-w-screen-xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center md:items-start justify-between">
 
             {{-- Left Big Text --}}
             <div class="mb-12 md:mb-0 text-center md:text-left">
