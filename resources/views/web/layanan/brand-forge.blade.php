@@ -154,8 +154,14 @@
 
             {{-- Title --}}
             <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
-                OUR SERVICES
+                End-to-End Brand Solutions
             </h2>
+
+            {{-- Subhead --}}
+            <p class="mt-4 text-sm md:text-base text-[#666666] max-w-3xl mx-auto font-light">
+                From defining your brand’s core purpose to designing its creative expression,
+                our complete suite of services covers every aspect of your brand's journey.
+            </p>
 
             {{-- Grid Projects --}}
             @php

@@ -223,8 +223,14 @@
 
             {{-- Title --}}
             <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
-                OUR SERVICES
+                End-to-End Brand Solutions
             </h2>
+
+            {{-- Subhead --}}
+            <p class="mt-4 text-sm md:text-base text-[#666666] max-w-3xl mx-auto font-light">
+                From defining your brand’s core purpose to designing its creative expression,
+                our complete suite of services covers every aspect of your brand's journey.
+            </p>
 
             <div class="relative mt-10">
                 <div id="ott-slider"
@@ -248,12 +254,16 @@
                                         {{ Str::limit($subservice->description, 120) }}
                                     </p>
                                 @else
-                                    <p class="text-xs md:text-sm italic opacity-80">No additional details available.</p>
+                                    <p class="text-xs md:text-sm italic opacity-80">
+                                        No additional details available.
+                                    </p>
                                 @endif
                             </div>
                         </div>
                     @empty
-                        <p class="text-center text-[#666666] w-full">No OTT Advertising subservices found.</p>
+                        <p class="text-center text-[#666666] w-full">
+                            No OTT Advertising subservices found.
+                        </p>
                     @endforelse
                 </div>
 
@@ -263,6 +273,7 @@
                     <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Previous"
                         class="w-8 h-8 object-contain">
                 </button>
+
                 <button id="nextOtt"
                     class="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-20 hidden md:flex hover:scale-110 transition">
                     <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next"

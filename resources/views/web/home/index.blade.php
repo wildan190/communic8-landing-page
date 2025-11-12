@@ -274,7 +274,7 @@
 
             {{-- Title --}}
             <div class="text-center mb-16">
-                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-600 leading-relaxed">
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-600 leading-relaxed">
                     {!! __('home/values.title') !!}
                 </h2>
             </div>
@@ -289,11 +289,10 @@
                         <i class="fas fa-briefcase"></i>
                     </div>
                     <div>
-                        <div
-                            class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-orange-500 tracking-tight mt-3 md:mt-0">
+                        <div class="text-5xl sm:text-6xl md:text-7xl font-bold text-orange-500 tracking-tight mt-3 md:mt-0">
                             <span class="counter" data-target="{{ now()->year - 2005 }}">{{ now()->year - 2005 }}</span>+
                         </div>
-                        <div class="text-gray-700 font-semibold text-sm sm:text-base">
+                        <div class="text-gray-700 font-medium text-sm sm:text-base">
                             {{ __('home/values.years_experience') }}
                         </div>
                     </div>
@@ -306,11 +305,10 @@
                         <i class="fas fa-layer-group"></i>
                     </div>
                     <div>
-                        <div
-                            class="text-5xl sm:text-6xl md:text-7xl font-black text-orange-500 tracking-tight mt-3 md:mt-0">
+                        <div class="text-5xl sm:text-6xl md:text-7xl font-bold text-orange-500 tracking-tight mt-3 md:mt-0">
                             <span class="counter" data-target="500">500</span>+
                         </div>
-                        <div class="text-gray-700 font-semibold text-sm sm:text-base">
+                        <div class="text-gray-700 font-medium text-sm sm:text-base">
                             {{ __('home/values.brands_handled') }}
                         </div>
                     </div>
@@ -323,11 +321,10 @@
                         <i class="fas fa-handshake"></i>
                     </div>
                     <div>
-                        <div
-                            class="text-5xl sm:text-6xl md:text-7xl font-black text-orange-500 tracking-tight mt-3 md:mt-0">
+                        <div class="text-5xl sm:text-6xl md:text-7xl font-bold text-orange-500 tracking-tight mt-3 md:mt-0">
                             <span class="counter" data-target="8">8</span>/10
                         </div>
-                        <div class="text-gray-700 font-semibold text-sm sm:text-base">
+                        <div class="text-gray-700 font-medium text-sm sm:text-base">
                             {{ __('home/values.clients_return') }}
                         </div>
                     </div>
@@ -369,6 +366,7 @@
             }
         }
     </style>
+    
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             document.querySelectorAll(".counter").forEach(counter => {
@@ -539,7 +537,8 @@
 
                 <div class="relative mb-10">
                     {{-- SLIDER CONTAINER --}}
-                    <div id="logos-row-{{ $i }}" class="flex gap-8 md:gap-12 items-center py-4 px-2 md:px-4 overflow-x-auto scrollbar-hide scroll-smooth relative">
+                    <div id="logos-row-{{ $i }}"
+                        class="flex gap-8 md:gap-12 items-center py-4 px-2 md:px-4 overflow-x-auto scrollbar-hide scroll-smooth relative">
 
                         @forelse ($sliderClients as $client)
                             <div class="flex-shrink-0 flex justify-center items-center w-2/5 sm:w-1/3 md:w-[16%]">
@@ -559,7 +558,8 @@
                         <img src="{{ asset('assets/img/blog-slider-left.png') }}" class="w-6 h-6 invert" alt="Prev">
                     </button>
 
-                    <button id="next-logos-{{ $i }}" class="absolute right-[-40px] top-1/2 -translate-y-1/2 p-2 hidden md:flex items-center justify-center z-20">
+                    <button id="next-logos-{{ $i }}"
+                        class="absolute right-[-40px] top-1/2 -translate-y-1/2 p-2 hidden md:flex items-center justify-center z-20">
                         <img src="{{ asset('assets/img/blog-slider-right.png') }}" class="w-6 h-6 invert"
                             alt="Next">
                     </button>
@@ -851,10 +851,12 @@
     </script>
 
     {{-- CTA Section --}}
-    <section class="relative bg-cover bg-center text-white font-poppins" style="background-image: url('/assets/img/cta-bg.png');">
+    <section class="relative bg-cover bg-center text-white font-poppins"
+        style="background-image: url('/assets/img/cta-bg.png');">
         <div class="absolute inset-0 bg-black/40"></div> {{-- Overlay biar teks jelas --}}
 
-        <div class="relative max-w-screen-xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center md:items-start justify-between">
+        <div
+            class="relative max-w-screen-xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center md:items-start justify-between">
 
             {{-- Left Big Text --}}
             <div class="mb-12 md:mb-0 text-center md:text-left">
