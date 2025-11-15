@@ -223,13 +223,13 @@
 
             {{-- Title --}}
             <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
-                End-to-End Brand Solutions
+                Our OTT Solutions
             </h2>
 
             {{-- Subhead --}}
             <p class="mt-4 text-sm md:text-base text-[#666666] max-w-3xl mx-auto font-light">
-                From defining your brand’s core purpose to designing its creative expression,
-                our complete suite of services covers every aspect of your brand's journey.
+                From Connected TVs to mobile devices, these are the services we use to engage your audience
+                across the entire streaming ecosystem.
             </p>
 
             <div class="relative mt-10">
@@ -321,7 +321,6 @@
         window.addEventListener('resize', checkOttSlider);
         window.addEventListener('load', checkOttSlider);
     </script>
-
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"

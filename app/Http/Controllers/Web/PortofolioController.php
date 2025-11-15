@@ -9,6 +9,8 @@ use App\Models\Client;
 use App\Models\Gallery;
 use App\Models\Project;
 use App\Models\WebInformation;
+use App\Models\PortfolioDetail;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class PortofolioController extends Controller
@@ -32,9 +34,32 @@ class PortofolioController extends Controller
         $branchOffices = BranchOffice::all();
         $insightCategories = \App\Models\Category::take(5)->pluck('name', 'id');
 
-        // 🔥 ambil max 5 project terbaru
+        // 🔥 Ambil semua project portfolio
         $projects = Project::latest()->get();
 
-        return view('web.portofolio.index', compact('blogs', 'categories', 'category', 'sliderBlogs', 'webInfo', 'branchOffices', 'insightCategories', 'clients', 'galleries', 'projects'));
+        return view('web.portofolio.index', compact(
+            'blogs',
+            'categories',
+            'category',
+            'sliderBlogs',
+            'webInfo',
+            'branchOffices',
+            'insightCategories',
+            'clients',
+            'galleries',
+            'projects'
+        ));
     }
+
+public function show($slug)
+{
+    $client = Client::whereRaw("LOWER(REPLACE(company_name, ' ', '-')) = ?", [$slug])
+                    ->firstOrFail();
+
+    $projects = Project::where('client_id', $client->id)->get();
+
+    return view('portofolio.show', compact('client', 'projects'));
+}
+
+
 }

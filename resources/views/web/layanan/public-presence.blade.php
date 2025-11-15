@@ -125,13 +125,13 @@
             {{-- Title --}}
             <h2
                 class="text-2xl md:text-3xl font-light font-poppins tracking-normal sm:tracking-[0.5em] uppercase text-[#666666]">
-                End-to-End Brand Solutions
+                Beyond the Screen, Into the World
             </h2>
 
             {{-- Subhead --}}
             <p class="mt-4 text-sm md:text-base text-[#666666] max-w-3xl mx-auto font-light">
-                From defining your brand’s core purpose to designing its creative expression,
-                our complete suite of services covers every aspect of your brand's journey.
+                Our suite of public space media solutions, designed to place your brand in the daily lives of your audience
+                for unmissable, real-world impact.
             </p>
 
             @php
@@ -192,6 +192,7 @@
             </div>
         </div>
     </section>
+
 
     <br />
 

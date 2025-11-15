@@ -149,13 +149,13 @@
 
             {{-- Title --}}
             <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
-                End-to-End Brand Solutions
+                Activating Your Digital Presence
             </h2>
 
             {{-- Subhead --}}
             <p class="mt-4 text-sm md:text-base text-[#666666] max-w-3xl mx-auto font-light">
-                From defining your brand’s core purpose to designing its creative expression,
-                our complete suite of services covers every aspect of your brand's journey.
+                Our full suite of performance-driven services, designed to connect you with your audience
+                and convert their interest into measurable action.
             </p>
 
             @php
@@ -216,6 +216,7 @@
             </div>
         </div>
     </section>
+
 
     <script>
         // Digital Stand Horizontal Scroll

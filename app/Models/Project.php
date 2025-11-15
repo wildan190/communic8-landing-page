@@ -17,4 +17,14 @@ class Project extends Model
         'is_highlighted',
         'description', // ✅ add this
     ];
+
+    public function portfolioDetail()
+    {
+        return $this->hasOne(PortfolioDetail::class);
+    }
+
+    public function client()
+    {
+        return $this->hasOne(Client::class, 'company_name', 'client_id');
+    }
 }

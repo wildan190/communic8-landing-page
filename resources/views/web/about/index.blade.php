@@ -364,7 +364,7 @@
                 <div class="relative z-10 mb-12 sm:mb-16">
                     <h1
                         class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
-               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
                         O U R &nbsp; P A R T N E R S
                     </h1>
                     <p class="text-gray-500 text-base sm:text-lg">
@@ -375,22 +375,14 @@
 
                 <!-- Partner Logos -->
                 <div class="flex flex-wrap justify-center items-center gap-10 sm:gap-16">
-                    <div class="w-44 h-20 bg-transparent flex items-center justify-center overflow-hidden">
-                        <img src="{{ asset('assets/img/partner/partner1.png') }}" alt="Partner 1"
-                            class="w-full h-full object-contain scale-90">
-                    </div>
-                    <div class="w-44 h-20 bg-transparent flex items-center justify-center overflow-hidden">
-                        <img src="{{ asset('assets/img/partner/partner2.png') }}" alt="Partner 2"
-                            class="w-full h-full object-contain scale-90">
-                    </div>
-                    <div class="w-44 h-20 bg-transparent flex items-center justify-center overflow-hidden">
-                        <img src="{{ asset('assets/img/partner/partner3.png') }}" alt="Partner 3"
-                            class="w-full h-full object-contain scale-90">
-                    </div>
-                    <div class="w-44 h-20 bg-transparent flex items-center justify-center overflow-hidden">
-                        <img src="{{ asset('assets/img/partner/partner4.png') }}" alt="Partner 4"
-                            class="w-full h-full object-contain scale-90">
-                    </div>
+                    @foreach (['partner1.png', 'partner2.png', 'partner3.png', 'partner4.png'] as $partner)
+                        <div
+                            class="w-40 h-24 sm:w-48 sm:h-28 bg-transparent 
+                    flex items-center justify-center overflow-hidden rounded-xl">
+                            <img src="{{ asset('assets/img/partner/' . $partner) }}" alt="Partner Logo"
+                                class="w-3/4 h-3/4 object-contain">
+                        </div>
+                    @endforeach
                 </div>
 
             </div>
@@ -439,8 +431,7 @@
         </section>
 
         {{-- CTA Section --}}
-        <section class="relative bg-cover bg-center text-white font-poppins"
-            style="background-image: url('/assets/img/cta-bg.png');">
+        <section class="relative bg-cover bg-center text-white font-poppins" style="background-image: url('/assets/img/cta-bg.png');">
             <div class="absolute inset-0 bg-black/40"></div> {{-- Overlay biar teks jelas --}}
 
             <div

@@ -46,6 +46,9 @@
                         <div class="py-1">
                             <x-dropdown-link :href="route('projects.index')">{{ __('Projects') }}</x-dropdown-link>
                             <x-dropdown-link :href="route('activities.index')">{{ __('Activities') }}</x-dropdown-link>
+                            <x-dropdown-link :href="route('portfolio-detail.index')" :active="request()->routeIs('portfolio-detail.*')">
+                                {{ __('Portfolio Details') }}
+                            </x-dropdown-link>
                         </div>
                     </div>
                 </div>

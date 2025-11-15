@@ -123,7 +123,7 @@
                     </select>
 
                     <!-- Radio -->
-                    <div class="text-left">
+                    {{-- <div class="text-left">
                         <p class="text-sm text-[#666666] mb-2 font-medium">
                             {{ __('contact/form.radio_title') }}
                         </p>
@@ -135,7 +135,7 @@
                                 </label>
                             @endforeach
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <!-- Message -->

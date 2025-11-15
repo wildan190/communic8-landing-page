@@ -13,6 +13,7 @@ use App\Http\Controllers\HeroAboutController;
 use App\Http\Controllers\HeroHomeController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PortfolioDetailController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\PublicPresenceContentController;
@@ -45,6 +46,8 @@ Route::get('/', [HomeController::class, 'index'])
     ->middleware('track.pageview');
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/portofolio', [PortofolioController::class, 'index'])->name('portofolio.index');
+Route::get('/portofolio/{slug}', [PortofolioController::class, 'show'])
+    ->name('portofolio.show');
 Route::get('/insight', [InsightController::class, 'index'])->name('insight.index');
 Route::get('/insight/{slug}', [InsightController::class, 'show'])
     ->name('insight.show')
@@ -254,6 +257,13 @@ Route::prefix('admin')
             Route::put('/{card_service}', [CardServicesController::class, 'update'])->name('card-services.update');
             Route::delete('/{card_service}', [CardServicesController::class, 'destroy'])->name('card-services.destroy');
         });
+
+        Route::get('/portfolio-detail', [PortfolioDetailController::class, 'index'])->name('portfolio-detail.index');
+        Route::get('/portfolio-detail/create', [PortfolioDetailController::class, 'create'])->name('portfolio-detail.create');
+        Route::post('/portfolio-detail', [PortfolioDetailController::class, 'store'])->name('portfolio-detail.store');
+        Route::get('/portfolio-detail/{id}/edit', [PortfolioDetailController::class, 'edit'])->name('portfolio-detail.edit');
+        Route::put('/portfolio-detail/{id}', [PortfolioDetailController::class, 'update'])->name('portfolio-detail.update');
+        Route::delete('/portfolio-detail/{id}', [PortfolioDetailController::class, 'destroy'])->name('portfolio-detail.destroy');
 
         Route::resource('values', ValueController::class);
     });
