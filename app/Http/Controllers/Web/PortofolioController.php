@@ -51,14 +51,16 @@ class PortofolioController extends Controller
         ));
     }
 
-public function show($slug)
+public function show($name)
 {
-    $client = Client::whereRaw("LOWER(REPLACE(company_name, ' ', '-')) = ?", [$slug])
-                    ->firstOrFail();
+    // Temukan proyek berdasarkan nama, atau gagal jika tidak ditemukan
+    $project = Project::where('name', $name)->firstOrFail();
 
-    $projects = Project::where('client_id', $client->id)->get();
+    // Dapatkan detail portofolio yang terkait dengan proyek
+    $portfolioDetail = PortfolioDetail::where('project_id', $project->id)->first();
 
-    return view('portofolio.show', compact('client', 'projects'));
+    // Kembalikan tampilan dengan data proyek dan detail portofolio
+    return view('web.portofolio.project-show', compact('project', 'portfolioDetail'));
 }
 
 

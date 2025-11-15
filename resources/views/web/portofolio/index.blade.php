@@ -32,60 +32,66 @@
             {{-- Highlighted Projects --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                 @foreach ($highlightedProjects as $project)
-                    <div class="relative group overflow-hidden rounded-2xl aspect-square">
-                        <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
-                            alt="{{ $project->name }}"
-                            class="w-full h-full object-cover transition duration-500 group-hover:scale-105 rounded-2xl">
+                    <a href="{{ route('portofolio.show', ['name' => $project->name]) }}">
+                        <div class="relative group overflow-hidden rounded-2xl aspect-square">
+                            <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
+                                alt="{{ $project->name }}"
+                                class="w-full h-full object-cover transition duration-500 group-hover:scale-105 rounded-2xl">
 
-                        {{-- Hover overlay --}}
-                        <div
-                            class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-6 text-center rounded-2xl">
-                            <h3 class="text-lg md:text-xl font-semibold mb-2">{{ $project->name }}</h3>
-                            <p class="text-xs md:text-sm leading-snug line-clamp-3">
-                                {{ $project->description ?? '' }}
-                            </p>
+                            {{-- Hover overlay --}}
+                            <div
+                                class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-6 text-center rounded-2xl">
+                                <h3 class="text-lg md:text-xl font-semibold mb-2">{{ $project->name }}</h3>
+                                <p class="text-xs md:text-sm leading-snug line-clamp-3">
+                                    {{ $project->description ?? '' }}
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
 
             {{-- Normal Projects --}}
             <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach ($nonHighlightedProjects->take(3) as $project)
-                    <div class="relative group overflow-hidden rounded-2xl aspect-square">
-                        <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
-                            alt="{{ $project->name }}"
-                            class="w-full h-full object-cover transition duration-500 group-hover:scale-105 rounded-2xl">
+                    <a href="{{ route('portofolio.show', ['name' => $project->name]) }}">
+                        <div class="relative group overflow-hidden rounded-2xl aspect-square">
+                            <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
+                                alt="{{ $project->name }}"
+                                class="w-full h-full object-cover transition duration-500 group-hover:scale-105 rounded-2xl">
 
-                        {{-- Hover overlay --}}
-                        <div
-                            class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center rounded-2xl">
-                            <h3 class="text-sm md:text-base font-semibold mb-2">{{ $project->name }}</h3>
-                            <p class="text-xs md:text-sm leading-snug line-clamp-3">
-                                {{ $project->description ?? '' }}
-                            </p>
+                            {{-- Hover overlay --}}
+                            <div
+                                class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center rounded-2xl">
+                                <h3 class="text-sm md:text-base font-semibold mb-2">{{ $project->name }}</h3>
+                                <p class="text-xs md:text-sm leading-snug line-clamp-3">
+                                    {{ $project->description ?? '' }}
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
 
             {{-- Hidden Extra Projects --}}
             <div id="more-projects" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 hidden">
                 @foreach ($nonHighlightedProjects->slice(3) as $project)
-                    <div class="relative group overflow-hidden rounded-2xl aspect-square">
-                        <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
-                            alt="{{ $project->name }}"
-                            class="w-full h-full object-cover transition duration-500 group-hover:scale-105 rounded-2xl">
+                    <a href="{{ route('portofolio.show', ['name' => $project->name]) }}">
+                        <div class="relative group overflow-hidden rounded-2xl aspect-square">
+                            <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
+                                alt="{{ $project->name }}"
+                                class="w-full h-full object-cover transition duration-500 group-hover:scale-105 rounded-2xl">
 
-                        {{-- Hover overlay --}}
-                        <div
-                            class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center rounded-2xl">
-                            <h3 class="text-sm md:text-base font-semibold mb-2">{{ $project->name }}</h3>
-                            <p class="text-xs md:text-sm leading-snug line-clamp-3">
-                                {{ $project->description ?? '' }}
-                            </p>
+                            {{-- Hover overlay --}}
+                            <div
+                                class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center rounded-2xl">
+                                <h3 class="text-sm md:text-base font-semibold mb-2">{{ $project->name }}</h3>
+                                <p class="text-xs md:text-sm leading-snug line-clamp-3">
+                                    {{ $project->description ?? '' }}
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
 

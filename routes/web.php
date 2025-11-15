@@ -46,7 +46,7 @@ Route::get('/', [HomeController::class, 'index'])
     ->middleware('track.pageview');
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/portofolio', [PortofolioController::class, 'index'])->name('portofolio.index');
-Route::get('/portofolio/{slug}', [PortofolioController::class, 'show'])
+Route::get('/portofolio/{name}', [PortofolioController::class, 'show'])
     ->name('portofolio.show');
 Route::get('/insight', [InsightController::class, 'index'])->name('insight.index');
 Route::get('/insight/{slug}', [InsightController::class, 'show'])
