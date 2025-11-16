@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PortfolioDetail;
+use App\Models\Project;
 use App\Models\ProjectResult;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,9 @@ class PortfolioDetailController extends Controller
 
     public function create()
     {
-        $clients = \App\Models\Client::all(); // ambil semua client
-        return view('portfolio-detail.create', compact('clients'));
+        $clients = \App\Models\Client::all(); 
+        $projects = Project::all();
+        return view('portfolio-detail.create', compact('clients', 'projects'));
     }
 
     public function store(Request $request)
@@ -25,12 +27,15 @@ class PortfolioDetailController extends Controller
         $validated = $request->validate([
             'hero_title' => 'required|string|max:255',
             'client_id' => 'nullable|integer',
+            'project_id' => 'nullable|exists:projects,id',
             'description' => 'nullable|string',
             'delivery' => 'nullable|string',
             'project_analysis' => 'nullable|string',
             'challenges_and_insight' => 'nullable|string',
             'bg_hero' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'img' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'img_project_analysis' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'img_challenges_and_insight' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
 
             // project results
             'results.*.name' => 'nullable|string|max:255',
@@ -38,9 +43,9 @@ class PortfolioDetailController extends Controller
             'results.*.result_img' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        // === Upload untuk bg_hero dan img ===
-        foreach (['bg_hero', 'img'] as $field) {
+        foreach (['bg_hero', 'img', 'img_project_analysis', 'img_challenges_and_insight'] as $field) {
             if ($request->hasFile($field)) {
+
                 $file = $request->file($field);
                 $filename = time() . '_' . $file->getClientOriginalName();
 
@@ -54,13 +59,18 @@ class PortfolioDetailController extends Controller
             }
         }
 
-        // Simpan PortfolioDetail utama
+        // Simpan PortfolioDetail
         $portfolioDetail = PortfolioDetail::create($validated);
 
-        // === Simpan Project Results (jika ada) ===
+        // Simpan Project Results
         if ($request->has('results')) {
-            foreach ($request->results as $index => $resultData) {
-                if (empty($resultData['name']) && empty($resultData['description']) && empty($resultData['result_img'])) {
+            foreach ($request->results as $resultData) {
+
+                if (
+                    empty($resultData['name']) &&
+                    empty($resultData['description']) &&
+                    empty($resultData['result_img'])
+                ) {
                     continue;
                 }
 
@@ -70,8 +80,11 @@ class PortfolioDetailController extends Controller
                     'portfolio_detail_id' => $portfolioDetail->id,
                 ];
 
-                // upload result_img
-                if (isset($resultData['result_img']) && $resultData['result_img'] instanceof \Illuminate\Http\UploadedFile) {
+                if (
+                    isset($resultData['result_img']) &&
+                    $resultData['result_img'] instanceof \Illuminate\Http\UploadedFile
+                ) {
+
                     $file = $resultData['result_img'];
                     $filename = time() . '_' . $file->getClientOriginalName();
 
@@ -95,7 +108,8 @@ class PortfolioDetailController extends Controller
     {
         $portfolioDetail = PortfolioDetail::with('projectResults')->findOrFail($id);
         $clients = \App\Models\Client::all();
-        return view('portfolio-detail.edit', compact('portfolioDetail', 'clients'));
+        $projects = Project::all();
+        return view('portfolio-detail.edit', compact('portfolioDetail', 'clients', 'projects'));
     }
 
     public function update(Request $request, $id)
@@ -105,17 +119,22 @@ class PortfolioDetailController extends Controller
         $validated = $request->validate([
             'hero_title' => 'required|string|max:255',
             'client_id' => 'nullable|integer',
+            'project_id' => 'nullable|exists:projects,id',
             'description' => 'nullable|string',
             'delivery' => 'nullable|string',
             'project_analysis' => 'nullable|string',
             'challenges_and_insight' => 'nullable|string',
             'bg_hero' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'img' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'img_project_analysis' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'img_challenges_and_insight' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        foreach (['bg_hero', 'img'] as $field) {
+        foreach (['bg_hero', 'img', 'img_project_analysis', 'img_challenges_and_insight'] as $field) {
+
             if ($request->hasFile($field)) {
-                // Hapus file lama jika ada
+
+                // hapus file lama
                 if (!empty($portfolioDetail->$field) && file_exists(public_path('storage/' . $portfolioDetail->$field))) {
                     unlink(public_path('storage/' . $portfolioDetail->$field));
                 }
@@ -141,8 +160,7 @@ class PortfolioDetailController extends Controller
     {
         $portfolioDetail = PortfolioDetail::findOrFail($id);
 
-        // Hapus file gambar jika ada
-        foreach (['bg_hero', 'img'] as $field) {
+        foreach (['bg_hero', 'img', 'img_project_analysis', 'img_challenges_and_insight'] as $field) {
             if (!empty($portfolioDetail->$field) && file_exists(public_path('storage/' . $portfolioDetail->$field))) {
                 unlink(public_path('storage/' . $portfolioDetail->$field));
             }

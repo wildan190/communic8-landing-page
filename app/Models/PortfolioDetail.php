@@ -17,7 +17,10 @@ class PortfolioDetail extends Model
         'delivery',
         'img',
         'project_analysis',
+        'img_project_analysis',
         'challenges_and_insight',
+        'img_challenges_and_insight',
+        'project_id',
     ];
 
     public function projectResults()
@@ -28,6 +31,11 @@ class PortfolioDetail extends Model
     public function client()
     {
         return $this->belongsTo(Client::class);
+    }
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
     }
 
 }

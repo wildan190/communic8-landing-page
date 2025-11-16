@@ -36,6 +36,16 @@
                     </div>
 
                     <div>
+                        <label for="project_id" class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Project</label>
+                        <select name="project_id" id="project_id" class="w-full border-gray-300 rounded-md shadow-sm">
+                            <option value="">Select a project</option>
+                            @foreach($projects as $project)
+                                <option value="{{ $project->id }}">{{ $project->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div>
                         <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Description</label>
                         <textarea name="description" class="w-full border-gray-300 rounded-md shadow-sm"></textarea>
                     </div>
@@ -51,8 +61,18 @@
                     </div>
 
                     <div>
+                        <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Image Project Analysis</label>
+                        <input type="file" name="img_project_analysis" class="w-full border-gray-300 rounded-md shadow-sm">
+                    </div>
+
+                    <div>
                         <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Challenges & Insight</label>
                         <textarea name="challenges_and_insight" class="w-full border-gray-300 rounded-md shadow-sm"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Image Challenges & Insight</label>
+                        <input type="file" name="img_challenges_and_insight" class="w-full border-gray-300 rounded-md shadow-sm">
                     </div>
 
                     <div>
