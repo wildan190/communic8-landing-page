@@ -29,16 +29,22 @@
 
                     {{-- Transparent Grey Box --}}
                     <div
-                        class="relative z-10 bg-gray-400/70 text-white text-left w-[320px] h-[220px] md:w-[460px] md:h-[280px] flex items-center px-8 md:px-10 translate-x-[10%]">
+                        class="relative z-10 bg-gray-400/70 text-white text-left 
+                w-[320px] h-[220px] 
+                md:w-[460px] md:h-[280px] 
+                flex items-center px-8 md:px-10 
+                translate-x-0 md:translate-x-[10%]">
                         <h2
                             class="font-poppins font-normal text-lg sm:text-2xl md:text-3xl tracking-[0.25em] leading-snug uppercase">
                             {!! __('about/hero.strategic_text') !!}
                         </h2>
                     </div>
 
-                    {{-- Main Image --}}
+                    {{-- Main Image (HILANG di MOBILE, MUNCUL mulai MD) --}}
                     <div
-                        class="relative z-20 w-[340px] h-[340px] md:w-[500px] md:h-[500px] -translate-x-[10%] flex items-center justify-center overflow-visible">
+                        class="hidden md:flex relative z-20
+                w-[340px] h-[340px] md:w-[500px] md:h-[500px]
+                -translate-x-[10%] items-center justify-center overflow-visible">
                         <img src="{{ $heroAbout && $heroAbout->box_img ? asset($heroAbout->box_img) : asset('assets/img/dummy/dummy3.png') }}"
                             alt="Creative Visual" class="w-full h-auto object-contain rounded-lg" />
                     </div>
@@ -58,7 +64,6 @@
                 </p>
             </div>
         </section>
-
 
         {{-- PHILOSOPHY IN ACTION --}}
         <section
@@ -361,26 +366,27 @@
             <div class="container mx-auto px-4 md:px-20 text-center">
 
                 <!-- Title -->
-                <div class="relative z-10 mb-12 sm:mb-16">
+                <div class="relative z-10 mb-10 sm:mb-14">
                     <h1
                         class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
-                text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
-                        O U R &nbsp; P A R T N E R S
+text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-2 sm:mb-4">
+                        {!! __('about/ourpartner.title') !!}
                     </h1>
+
                     <p class="text-gray-500 text-base sm:text-lg">
-                        We collaborate with top-tier partners in the industry to deliver comprehensive and integrated
-                        solutions.
+                        {!! __('about/ourpartner.description') !!}
                     </p>
                 </div>
 
-                <!-- Partner Logos -->
-                <div class="flex flex-wrap justify-center items-center gap-10 sm:gap-16">
-                    @foreach (['partner1.png', 'partner2.png', 'partner3.png', 'partner4.png'] as $partner)
-                        <div
-                            class="w-40 h-24 sm:w-48 sm:h-28 bg-transparent 
-                    flex items-center justify-center overflow-hidden rounded-xl">
+                <!-- Partner Logos (SUPER RAPAT + Partner 4 lebih besar) -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-0 place-items-center">
+                    @foreach (['partner1.png', 'partner3.png', 'partner2.png', 'partner4.png'] as $index => $partner)
+                        <div class="w-32 h-20 sm:w-40 sm:h-24 md:w-48 md:h-28 flex items-center justify-center">
                             <img src="{{ asset('assets/img/partner/' . $partner) }}" alt="Partner Logo"
-                                class="w-3/4 h-3/4 object-contain">
+                                class="object-contain 
+                    w-full h-full
+                    {{ $index == 3 ? 'scale-125' : '' }}   <!-- Partner 4 lebih besar -->
+                ">
                         </div>
                     @endforeach
                 </div>
@@ -431,7 +437,8 @@
         </section>
 
         {{-- CTA Section --}}
-        <section class="relative bg-cover bg-center text-white font-poppins" style="background-image: url('/assets/img/cta-bg.png');">
+        <section class="relative bg-cover bg-center text-white font-poppins"
+            style="background-image: url('/assets/img/cta-bg.png');">
             <div class="absolute inset-0 bg-black/40"></div> {{-- Overlay biar teks jelas --}}
 
             <div

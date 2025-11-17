@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Blog;
+use App\Models\Project;
 use Illuminate\Console\Command;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
@@ -39,6 +40,16 @@ class GenerateSitemap extends Command
                     ->setLastModificationDate($blog->updated_at)
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                     ->setPriority(0.7)
+            );
+        });
+
+        // Portfolio detail pages
+        \App\Models\Project::all()->each(function (\App\Models\Project $project) use ($sitemap) {
+            $sitemap->add(
+                Url::create("/portofolio/{$project->name}")
+                    ->setLastModificationDate($project->updated_at)
+                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+                    ->setPriority(0.8)
             );
         });
 
