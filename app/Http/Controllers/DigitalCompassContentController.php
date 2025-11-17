@@ -20,7 +20,7 @@ class DigitalCompassContentController extends Controller
         $validated = $request->validate([
             'head_img' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'img_services' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'img_photo' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048', // ✅ baru
+            'img_photo' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'title1' => 'nullable|string|max:255',
             'value_title1' => 'nullable|string',
             'title2' => 'nullable|string|max:255',
@@ -33,13 +33,49 @@ class DigitalCompassContentController extends Controller
 
         $content = DigitalCompassContent::first() ?? new DigitalCompassContent();
 
+        // Folder tujuan
         $destinationPath = public_path('storage/digital-compass');
         if (!file_exists($destinationPath)) {
             mkdir($destinationPath, 0755, true);
         }
 
-        // ✅ Upload photo baru
+        // -------------------------------
+        // ✅ Upload head_img
+        // -------------------------------
+        if ($request->hasFile('head_img')) {
+
+            if ($content->head_img && file_exists(public_path('storage/' . $content->head_img))) {
+                unlink(public_path('storage/' . $content->head_img));
+            }
+
+            $file = $request->file('head_img');
+            $filename = time() . '_head_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
+            $file->move($destinationPath, $filename);
+
+            $content->head_img = 'digital-compass/' . $filename;
+        }
+
+        // -------------------------------
+        // ✅ Upload img_services
+        // -------------------------------
+        if ($request->hasFile('img_services')) {
+
+            if ($content->img_services && file_exists(public_path('storage/' . $content->img_services))) {
+                unlink(public_path('storage/' . $content->img_services));
+            }
+
+            $file = $request->file('img_services');
+            $filename = time() . '_services_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
+            $file->move($destinationPath, $filename);
+
+            $content->img_services = 'digital-compass/' . $filename;
+        }
+
+        // -------------------------------
+        // ✅ Upload img_photo
+        // -------------------------------
         if ($request->hasFile('img_photo')) {
+
             if ($content->img_photo && file_exists(public_path('storage/' . $content->img_photo))) {
                 unlink(public_path('storage/' . $content->img_photo));
             }
@@ -47,18 +83,19 @@ class DigitalCompassContentController extends Controller
             $file = $request->file('img_photo');
             $filename = time() . '_photo_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
             $file->move($destinationPath, $filename);
+
             $content->img_photo = 'digital-compass/' . $filename;
         }
 
-        // ✅ Existing image handlers (head_img & img_services)
-        // (tetap seperti sebelumnya — kode tidak dihapus)
-
-        // ✅ Save text values
+        // -------------------------------
+        // ✅ Save Titles & Values
+        // -------------------------------
         for ($i = 1; $i <= 4; $i++) {
             $content->{'title' . $i} = $request->{'title' . $i};
             $content->{'value_title' . $i} = $request->{'value_title' . $i};
         }
 
+        // Save database
         $content->save();
 
         return redirect()->back()->with('success', 'Digital Compass Content berhasil disimpan!');
