@@ -8,7 +8,8 @@
     <div class="py-6">
         <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg p-6">
-                <form action="{{ route('portfolio-detail.update', $portfolioDetail->id) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+                <form action="{{ route('portfolio-detail.update', $portfolioDetail->id) }}" method="POST"
+                    enctype="multipart/form-data" class="space-y-6">
                     @csrf
                     @method('PUT')
 
@@ -17,32 +18,38 @@
                     ====================== --}}
                     <div>
                         <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Hero Title</label>
-                        <input type="text" name="hero_title" value="{{ old('hero_title', $portfolioDetail->hero_title) }}" class="w-full border-gray-300 rounded-md shadow-sm" required>
+                        <input type="text" name="hero_title"
+                            value="{{ old('hero_title', $portfolioDetail->hero_title) }}"
+                            class="w-full border-gray-300 rounded-md shadow-sm" required>
                     </div>
 
                     {{-- CLIENT SELECT MODAL --}}
                     <div>
                         <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Client</label>
 
-                        <input type="hidden" name="client_id" id="client_id" value="{{ old('client_id', $portfolioDetail->client_id) }}">
+                        <input type="hidden" name="client_id" id="client_id"
+                            value="{{ old('client_id', $portfolioDetail->client_id) }}">
 
                         <div class="flex items-center space-x-3">
-                            <input type="text" id="client_name" 
-                                   value="{{ old('client_name', $portfolioDetail->client->company_name ?? '') }}"
-                                   class="w-full border-gray-300 rounded-md shadow-sm bg-gray-100 dark:bg-gray-700"
-                                   placeholder="Pilih client..." readonly>
-                            <button type="button" id="openClientModal" class="bg-blue-600 text-white px-3 py-2 rounded-md hover:bg-blue-700">
+                            <input type="text" id="client_name"
+                                value="{{ old('client_name', $portfolioDetail->client->company_name ?? '') }}"
+                                class="w-full border-gray-300 rounded-md shadow-sm bg-gray-100 dark:bg-gray-700"
+                                placeholder="Pilih client..." readonly>
+                            <button type="button" id="openClientModal"
+                                class="bg-blue-600 text-white px-3 py-2 rounded-md hover:bg-blue-700">
                                 Pilih
                             </button>
                         </div>
                     </div>
 
                     <div>
-                        <label for="project_id" class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Project</label>
+                        <label for="project_id"
+                            class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Project</label>
                         <select name="project_id" id="project_id" class="w-full border-gray-300 rounded-md shadow-sm">
                             <option value="">Select a project</option>
-                            @foreach($projects as $project)
-                                <option value="{{ $project->id }}" @if($portfolioDetail->project_id == $project->id) selected @endif>{{ $project->name }}</option>
+                            @foreach ($projects as $project)
+                                <option value="{{ $project->id }}" @if ($portfolioDetail->project_id == $project->id) selected @endif>
+                                    {{ $project->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -54,41 +61,51 @@
 
                     <div>
                         <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Delivery</label>
-                        <input type="text" name="delivery" value="{{ old('delivery', $portfolioDetail->delivery) }}" class="w-full border-gray-300 rounded-md shadow-sm">
+                        <input type="text" name="delivery" value="{{ old('delivery', $portfolioDetail->delivery) }}"
+                            class="w-full border-gray-300 rounded-md shadow-sm">
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Project Analysis</label>
+                        <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Project
+                            Analysis</label>
                         <textarea name="project_analysis" class="w-full border-gray-300 rounded-md shadow-sm">{{ old('project_analysis', $portfolioDetail->project_analysis) }}</textarea>
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Image Project Analysis</label>
-                        @if($portfolioDetail->img_project_analysis)
-                            <img src="{{ asset('storage/' . $portfolioDetail->img_project_analysis) }}" alt="" class="h-32 rounded-md mb-2 object-cover">
+                        <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Image Project
+                            Analysis</label>
+                        @if ($portfolioDetail->img_project_analysis)
+                            <img src="{{ asset('storage/' . $portfolioDetail->img_project_analysis) }}" alt=""
+                                class="h-32 rounded-md mb-2 object-cover">
                         @endif
-                        <input type="file" name="img_project_analysis" class="w-full border-gray-300 rounded-md shadow-sm">
+                        <input type="file" name="img_project_analysis"
+                            class="w-full border-gray-300 rounded-md shadow-sm">
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Challenges & Insight</label>
+                        <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Challenges &
+                            Insight</label>
                         <textarea name="challenges_and_insight" class="w-full border-gray-300 rounded-md shadow-sm">{{ old('challenges_and_insight', $portfolioDetail->challenges_and_insight) }}</textarea>
                     </div>
 
                     {{-- Image Challenges & Insight --}}
                     <div>
-                        <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Image Challenges & Insight</label>
-                        @if($portfolioDetail->img_challenges_and_insight)
-                            <img src="{{ asset('storage/' . $portfolioDetail->img_challenges_and_insight) }}" alt="" class="h-32 rounded-md mb-2 object-cover">
+                        <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Image Challenges &
+                            Insight</label>
+                        @if ($portfolioDetail->img_challenges_and_insight)
+                            <img src="{{ asset('storage/' . $portfolioDetail->img_challenges_and_insight) }}"
+                                alt="" class="h-32 rounded-md mb-2 object-cover">
                         @endif
-                        <input type="file" name="img_challenges_and_insight" class="w-full border-gray-300 rounded-md shadow-sm">
+                        <input type="file" name="img_challenges_and_insight"
+                            class="w-full border-gray-300 rounded-md shadow-sm">
                     </div>
 
                     {{-- Background Hero --}}
                     <div>
                         <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Background Hero</label>
-                        @if($portfolioDetail->bg_hero)
-                            <img src="{{ asset('storage/' . $portfolioDetail->bg_hero) }}" alt="" class="h-32 rounded-md mb-2 object-cover">
+                        @if ($portfolioDetail->bg_hero)
+                            <img src="{{ asset('storage/' . $portfolioDetail->bg_hero) }}" alt=""
+                                class="h-32 rounded-md mb-2 object-cover">
                         @endif
                         <input type="file" name="bg_hero" class="w-full border-gray-300 rounded-md shadow-sm">
                     </div>
@@ -96,8 +113,9 @@
                     {{-- Main Image --}}
                     <div>
                         <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Main Image</label>
-                        @if($portfolioDetail->img)
-                            <img src="{{ asset('storage/' . $portfolioDetail->img) }}" alt="" class="h-32 rounded-md mb-2 object-cover">
+                        @if ($portfolioDetail->img)
+                            <img src="{{ asset('storage/' . $portfolioDetail->img) }}" alt=""
+                                class="h-32 rounded-md mb-2 object-cover">
                         @endif
                         <input type="file" name="img" class="w-full border-gray-300 rounded-md shadow-sm">
                     </div>
@@ -110,34 +128,45 @@
                     <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Project Results</h3>
 
                     <div id="results-wrapper" class="space-y-4">
-                        @foreach($portfolioDetail->projectResults as $index => $result)
+                        @foreach ($portfolioDetail->projectResults as $index => $result)
                             <div class="result-item border p-4 rounded-md bg-gray-50 dark:bg-gray-900">
-                                <input type="hidden" name="results[{{ $index }}][id]" value="{{ $result->id }}">
+                                <input type="hidden" name="results[{{ $index }}][id]"
+                                    value="{{ $result->id }}">
                                 <div class="flex justify-between items-center">
-                                    <h4 class="text-gray-800 dark:text-gray-200 font-semibold">Result #{{ $index + 1 }}</h4>
-                                    <button type="button" class="text-red-600 hover:text-red-800 text-sm remove-result">Remove</button>
+                                    <h4 class="text-gray-800 dark:text-gray-200 font-semibold">Result
+                                        #{{ $index + 1 }}</h4>
+                                    <button type="button"
+                                        class="text-red-600 hover:text-red-800 text-sm remove-result">Remove</button>
                                 </div>
                                 <div class="mt-2">
-                                    <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Result Name</label>
-                                    <input type="text" name="results[{{ $index }}][name]" value="{{ $result->name }}" class="w-full border-gray-300 rounded-md shadow-sm">
+                                    <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Result
+                                        Name</label>
+                                    <input type="text" name="results[{{ $index }}][name]"
+                                        value="{{ $result->name }}"
+                                        class="w-full border-gray-300 rounded-md shadow-sm">
                                 </div>
                                 <div class="mt-3">
-                                    <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Description</label>
+                                    <label
+                                        class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Description</label>
                                     <textarea name="results[{{ $index }}][description]" class="w-full border-gray-300 rounded-md shadow-sm">{{ $result->description }}</textarea>
                                 </div>
                                 <div class="mt-3">
-                                    <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Result Image</label>
-                                    @if($result->result_img)
-                                        <img src="{{ asset('storage/' . $result->result_img) }}" alt="" class="h-24 mb-2 rounded-md object-cover">
+                                    <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Result
+                                        Image</label>
+                                    @if ($result->result_img)
+                                        <img src="{{ asset('storage/' . $result->result_img) }}" alt=""
+                                            class="h-24 mb-2 rounded-md object-cover">
                                     @endif
-                                    <input type="file" name="results[{{ $index }}][result_img]" class="w-full border-gray-300 rounded-md shadow-sm">
+                                    <input type="file" name="results[{{ $index }}][result_img]"
+                                        class="w-full border-gray-300 rounded-md shadow-sm">
                                 </div>
                             </div>
                         @endforeach
                     </div>
 
                     <div class="pt-2">
-                        <button type="button" id="add-result" class="bg-green-600 text-white px-3 py-2 rounded-md hover:bg-green-700">
+                        <button type="button" id="add-result"
+                            class="bg-green-600 text-white px-3 py-2 rounded-md hover:bg-green-700">
                             + Add Another Result
                         </button>
                     </div>
@@ -156,17 +185,27 @@
     </div>
 
     {{-- =====================
-        CLIENT MODAL
-    ====================== --}}
+    CLIENT MODAL
+====================== --}}
     <div id="clientModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
         <div class="bg-white dark:bg-gray-800 w-full max-w-5xl rounded-lg shadow-lg p-6">
+
+            {{-- HEADER --}}
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Pilih Client</h3>
-                <button id="closeClientModal" class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">✕</button>
+                <button id="closeClientModal"
+                    class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">✕</button>
             </div>
 
+            {{-- SEARCH INPUT --}}
+            <div class="mb-4">
+                <input type="text" id="clientSearch" placeholder="Cari nama perusahaan..."
+                    class="w-full px-4 py-2 border rounded-md bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+            </div>
+
+            {{-- TABLE --}}
             <div class="overflow-x-auto">
-                <table class="min-w-full text-sm text-gray-800 dark:text-gray-200">
+                <table class="min-w-full text-sm text-gray-800 dark:text-gray-200" id="clientTable">
                     <thead>
                         <tr class="border-b border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-700">
                             <th class="py-3 px-4 text-left">Logo</th>
@@ -176,31 +215,45 @@
                             <th class="py-3 px-4 text-center">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @foreach($clients as $client)
-                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+
+                    <tbody id="clientTableBody">
+                        @foreach ($clients as $client)
+                            <tr class="client-row border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+                                data-name="{{ strtolower($client->company_name) }}">
                                 <td class="py-3 px-4">
-                                    @if($client->logo)
-                                        <img src="{{ asset('storage/' . $client->logo) }}" alt="{{ $client->company_name }}" class="h-10 w-10 rounded-md object-cover">
+                                    @if ($client->logo)
+                                        <img src="{{ asset('storage/' . $client->logo) }}"
+                                            class="h-10 w-10 rounded-md object-cover">
                                     @else
-                                        <div class="h-10 w-10 rounded-md bg-gray-300 dark:bg-gray-600 flex items-center justify-center text-gray-500">N/A</div>
+                                        <div
+                                            class="h-10 w-10 rounded-md bg-gray-300 dark:bg-gray-600 flex items-center justify-center text-gray-500">
+                                            N/A</div>
                                     @endif
                                 </td>
                                 <td class="py-3 px-4 font-medium">{{ $client->company_name }}</td>
                                 <td class="py-3 px-4">{{ $client->industry }}</td>
                                 <td class="py-3 px-4">
                                     @switch($client->category)
-                                        @case(1) <span class="text-blue-600 font-semibold">Corporate</span> @break
-                                        @case(2) <span class="text-green-600 font-semibold">Startup</span> @break
-                                        @case(3) <span class="text-yellow-600 font-semibold">Agency</span> @break
-                                        @default <span class="text-gray-500">Unknown</span>
+                                        @case(1)
+                                            <span class="text-blue-600 font-semibold">Corporate</span>
+                                        @break
+
+                                        @case(2)
+                                            <span class="text-green-600 font-semibold">Startup</span>
+                                        @break
+
+                                        @case(3)
+                                            <span class="text-yellow-600 font-semibold">Agency</span>
+                                        @break
+
+                                        @default
+                                            <span class="text-gray-500">Unknown</span>
                                     @endswitch
                                 </td>
                                 <td class="py-3 px-4 text-center">
                                     <button type="button"
                                         class="select-client bg-blue-600 text-white px-3 py-1 rounded-md hover:bg-blue-700 text-sm"
-                                        data-id="{{ $client->id }}"
-                                        data-name="{{ $client->company_name }}">
+                                        data-id="{{ $client->id }}" data-name="{{ $client->company_name }}">
                                         Pilih
                                     </button>
                                 </td>
@@ -209,8 +262,17 @@
                     </tbody>
                 </table>
             </div>
+
+            {{-- PAGINATION --}}
+            <div class="flex justify-between items-center mt-4">
+                <button id="prevPage"
+                    class="px-4 py-2 bg-gray-300 dark:bg-gray-700 rounded-md text-sm">Previous</button>
+                <span id="pageInfo" class="text-gray-700 dark:text-gray-300 text-sm"></span>
+                <button id="nextPage" class="px-4 py-2 bg-gray-300 dark:bg-gray-700 rounded-md text-sm">Next</button>
+            </div>
         </div>
     </div>
+
 
     {{-- =====================
         JAVASCRIPT SECTION
@@ -239,7 +301,8 @@
         document.getElementById('add-result').addEventListener('click', function() {
             const wrapper = document.getElementById('results-wrapper');
             const newItem = document.createElement('div');
-            newItem.classList.add('result-item', 'border', 'p-4', 'rounded-md', 'bg-gray-50', 'dark:bg-gray-900', 'mt-4');
+            newItem.classList.add('result-item', 'border', 'p-4', 'rounded-md', 'bg-gray-50', 'dark:bg-gray-900',
+                'mt-4');
             newItem.innerHTML = `
                 <div class="flex justify-between items-center">
                     <h4 class="text-gray-800 dark:text-gray-200 font-semibold">New Result</h4>
@@ -267,5 +330,60 @@
                 e.target.closest('.result-item').remove();
             }
         });
+        // ===============================
+        // SEARCH & PAGINATION FOR CLIENT
+        // ===============================
+
+        const rows = Array.from(document.querySelectorAll(".client-row"));
+        const rowsPerPage = 5;
+        let currentPage = 1;
+
+        // Filter + paginate together
+        function updateTable() {
+            const searchTerm = document.getElementById("clientSearch").value.toLowerCase();
+
+            const filtered = rows.filter(row =>
+                row.dataset.name.includes(searchTerm)
+            );
+
+            const totalPages = Math.ceil(filtered.length / rowsPerPage);
+            if (currentPage > totalPages) currentPage = totalPages || 1;
+
+            filtered.forEach((row, index) => {
+                row.style.display =
+                    index >= (currentPage - 1) * rowsPerPage &&
+                    index < currentPage * rowsPerPage ?
+                    "" :
+                    "none";
+            });
+
+            document.getElementById("pageInfo").innerText =
+                `Page ${currentPage} of ${totalPages || 1}`;
+        }
+
+        document.getElementById("clientSearch").addEventListener("input", () => {
+            currentPage = 1;
+            updateTable();
+        });
+
+        document.getElementById("prevPage").addEventListener("click", () => {
+            if (currentPage > 1) {
+                currentPage--;
+                updateTable();
+            }
+        });
+
+        document.getElementById("nextPage").addEventListener("click", () => {
+            const searchTerm = document.getElementById("clientSearch").value.toLowerCase();
+            const totalPages = Math.ceil(
+                rows.filter(r => r.dataset.name.includes(searchTerm)).length / rowsPerPage
+            );
+            if (currentPage < totalPages) {
+                currentPage++;
+                updateTable();
+            }
+        });
+
+        updateTable();
     </script>
 </x-app-layout>

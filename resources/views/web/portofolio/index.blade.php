@@ -106,7 +106,6 @@
         </div>
     </section>
 
-
     {{-- JS: Toggle More Projects --}}
     <script>
         document.getElementById('exploreMoreBtn').addEventListener('click', function() {

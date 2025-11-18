@@ -9,15 +9,14 @@ class ProjectResult extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'portfolio_detail_id',
-        'description',
-        'result_img',
-    ];
+    protected $fillable = ['name', 'portfolio_detail_id', 'description', 'result_img'];
 
     public function portfolioDetail()
     {
         return $this->belongsTo(PortfolioDetail::class);
+    }
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
     }
 }

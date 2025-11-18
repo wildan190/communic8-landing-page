@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 class Client extends Model
 {
-    protected $fillable = ['logo', 'company_name', 'industry', 'category', 'slug'];
+    protected $fillable = ['logo', 'company_name', 'industry', 'category'];
 
     public function portfolioDetail()
     {
@@ -18,8 +18,17 @@ class Client extends Model
     {
         parent::boot();
 
+        // EVENT TETAP ADA, tapi tidak menyentuh attribute apa pun
         static::saving(function ($client) {
-            $client->slug = Str::slug($client->company_name);
+            // Event tetap ada, tidak melakukan apa-apa untuk slug
         });
+    }
+
+    /**
+     * Accessor untuk slug (virtual, tidak disimpan di DB)
+     */
+    public function getSlugAttribute()
+    {
+        return Str::slug($this->company_name);
     }
 }

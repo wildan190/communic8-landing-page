@@ -27,4 +27,9 @@ class Project extends Model
     {
         return $this->hasOne(Client::class, 'company_name', 'client_id');
     }
+
+    public function results()
+    {
+        return $this->hasMany(ProjectResult::class);
+    }
 }

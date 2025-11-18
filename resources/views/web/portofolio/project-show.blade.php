@@ -84,9 +84,6 @@
         </section>
     @endif
 
-    {{-- =======================
-    PROJECT ANALYSIS & CHALLENGES (ZIG-ZAG)
-======================== --}}
     <section class="w-full py-24 px-6 md:px-0 max-w-6xl mx-auto">
 
         {{-- PROJECT ANALYSIS --}}
@@ -141,9 +138,7 @@
         </div>
 
     </section>
-    {{-- =======================
-    PROJECT RESULT
-======================== --}}
+
     @if ($projectResults->count() > 0)
         <section class="w-full py-24 px-6 md:px-0 max-w-7xl mx-auto">
 
