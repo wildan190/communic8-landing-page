@@ -114,8 +114,16 @@
             <div class="space-y-6 font-rubik">
                 @foreach (['1', '2', '3', '4'] as $i)
                     @php
-                        $title = $digitalArchitectureContent ? $digitalArchitectureContent->{'title' . $i} : null;
-                        $value = $digitalArchitectureContent ? $digitalArchitectureContent->{'value_title' . $i} : null;
+                        $title = $digitalArchitectureContent
+                            ? (app()->getLocale() == 'id' && $digitalArchitectureContent->{'title' . $i . '_id'}
+                                ? $digitalArchitectureContent->{'title' . $i . '_id'}
+                                : $digitalArchitectureContent->{'title' . $i})
+                            : null;
+                        $value = $digitalArchitectureContent
+                            ? (app()->getLocale() == 'id' && $digitalArchitectureContent->{'value_title' . $i . '_id'}
+                                ? $digitalArchitectureContent->{'value_title' . $i . '_id'}
+                                : $digitalArchitectureContent->{'value_title' . $i})
+                            : null;
                     @endphp
                     @if ($title || $value)
                         <div>
@@ -134,15 +142,12 @@
     <section class="w-full py-8 bg-white relative z-10 text-[#666666]">
         <div class="max-w-6xl mx-auto px-4 text-center relative">
 
-            {{-- Title --}}
             <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
-                Engineering Your Digital Solutions
+                {{ __('layanan/codeband.services_grid.title') }}
             </h2>
 
-            {{-- Subhead --}}
             <p class="mt-4 text-sm md:text-base text-[#666666] max-w-3xl mx-auto font-light">
-                From complex web platforms to custom-built apps, these are the services we use to build the technology
-                that drives your growth.
+                {{ __('layanan/codeband.services_grid.description') }}
             </p>
 
             @php
@@ -196,7 +201,6 @@
             </button>
         </div>
     </section>
-
 
     {{-- JS for Brand Forge Slider --}}
     <script>

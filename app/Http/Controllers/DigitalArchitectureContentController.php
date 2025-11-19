@@ -31,6 +31,14 @@ class DigitalArchitectureContentController extends Controller
             'value_title3' => 'nullable|string',
             'title4' => 'nullable|string|max:255',
             'value_title4' => 'nullable|string',
+            'title1_id' => 'nullable|string|max:255',
+            'value_title1_id' => 'nullable|string',
+            'title2_id' => 'nullable|string|max:255',
+            'value_title2_id' => 'nullable|string',
+            'title3_id' => 'nullable|string|max:255',
+            'value_title3_id' => 'nullable|string',
+            'title4_id' => 'nullable|string|max:255',
+            'value_title4_id' => 'nullable|string',
         ]);
 
         $content = DigitalArchitectureContent::first() ?? new DigitalArchitectureContent;
@@ -90,6 +98,14 @@ class DigitalArchitectureContentController extends Controller
         $content->value_title3 = $request->value_title3;
         $content->title4 = $request->title4;
         $content->value_title4 = $request->value_title4;
+        $content->title1_id = $request->title1_id;
+        $content->value_title1_id = $request->value_title1_id;
+        $content->title2_id = $request->title2_id;
+        $content->value_title2_id = $request->value_title2_id;
+        $content->title3_id = $request->title3_id;
+        $content->value_title3_id = $request->value_title3_id;
+        $content->title4_id = $request->title4_id;
+        $content->value_title4_id = $request->value_title4_id;
 
         $content->save();
 

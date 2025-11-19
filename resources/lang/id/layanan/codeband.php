@@ -17,4 +17,9 @@ return [
         'p1' => 'Pengembangan Digital lebih dari sekadar menulis kode. Ini tentang membangun solusi digital yang kokoh untuk mendukung tujuan bisnis Anda dan mempercepat transformasi digital Anda.',
         'p2' => 'Dengan pendekatan kolaboratif dan berpikiran maju, setiap pengembangan dibangun dengan tujuan strategis.',
     ],
+
+    'services_grid' => [
+        'title' => 'Merekayasa Solusi Digital Anda',
+        'description' => 'Dari platform web yang kompleks hingga aplikasi yang dibangun khusus, inilah layanan yang kami gunakan untuk membangun teknologi yang mendorong pertumbuhan bisnis Anda.',
+    ],
 ];

@@ -17,4 +17,10 @@ return [
         'p1' => 'Digital Development is more than writing codes. It’s about constructing robust digital solutions that serve your business objective and power your digital transformation.',
         'p2' => 'With collaborative and forward-thinking approach, every development is built with strategic intent.',
     ],
+
+    'services_grid' => [
+        'title' => 'Engineering Your Digital Solutions',
+        'description' => 'From complex web platforms to custom-built apps, these are the services we use to build the technology that drives your growth.',
+    ],
+
 ];
