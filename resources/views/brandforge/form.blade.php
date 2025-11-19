@@ -56,9 +56,22 @@
                     </div>
 
                     <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Insight Strategy Driven (ID)</label>
+                        <input type="text" name="insight_strategy_driven_id"
+                            class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500"
+                            value="{{ old('insight_strategy_driven_id', $content->insight_strategy_driven_id ?? '') }}">
+                    </div>
+
+                    <div>
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Deskripsi Insight Strategy Driven</label>
                         <textarea name="desc_insight_strategy_driven" rows="4"
                             class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500">{{ old('desc_insight_strategy_driven', $content->desc_insight_strategy_driven ?? '') }}</textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Deskripsi Insight Strategy Driven (ID)</label>
+                        <textarea name="desc_insight_strategy_driven_id" rows="4"
+                            class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500">{{ old('desc_insight_strategy_driven_id', $content->desc_insight_strategy_driven_id ?? '') }}</textarea>
                     </div>
 
                     {{-- 📸 Gambar Insight --}}
@@ -77,9 +90,22 @@
                     </div>
 
                     <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Bold Creative Ideas (ID)</label>
+                        <input type="text" name="bold_creative_ideas_id"
+                            class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500"
+                            value="{{ old('bold_creative_ideas_id', $content->bold_creative_ideas_id ?? '') }}">
+                    </div>
+
+                    <div>
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Deskripsi Bold Creative Ideas</label>
                         <textarea name="desc_bold_creative_ideas" rows="4"
                             class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500">{{ old('desc_bold_creative_ideas', $content->desc_bold_creative_ideas ?? '') }}</textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Deskripsi Bold Creative Ideas (ID)</label>
+                        <textarea name="desc_bold_creative_ideas_id" rows="4"
+                            class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500">{{ old('desc_bold_creative_ideas_id', $content->desc_bold_creative_ideas_id ?? '') }}</textarea>
                     </div>
 
                     {{-- 📸 Gambar Bold --}}
@@ -98,9 +124,22 @@
                     </div>
 
                     <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Impactful Visual Identity (ID)</label>
+                        <input type="text" name="impactful_visual_identity_id"
+                            class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500"
+                            value="{{ old('impactful_visual_identity_id', $content->impactful_visual_identity_id ?? '') }}">
+                    </div>
+
+                    <div>
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Deskripsi Impactful Visual Identity</label>
                         <textarea name="desc_impactful_visual_identity" rows="4"
                             class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500">{{ old('desc_impactful_visual_identity', $content->desc_impactful_visual_identity ?? '') }}</textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Deskripsi Impactful Visual Identity (ID)</label>
+                        <textarea name="desc_impactful_visual_identity_id" rows="4"
+                            class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500">{{ old('desc_impactful_visual_identity_id', $content->desc_impactful_visual_identity_id ?? '') }}</textarea>
                     </div>
 
                     {{-- 📸 Gambar Impactful --}}
@@ -124,6 +163,12 @@
                             class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500">{{ old('align_strategic_foundation', $content->align_strategic_foundation ?? '') }}</textarea>
                     </div>
 
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Align Strategic Foundation (ID)</label>
+                        <textarea name="align_strategic_foundation_id" rows="4"
+                            class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500">{{ old('align_strategic_foundation_id', $content->align_strategic_foundation_id ?? '') }}</textarea>
+                    </div>
+
                     {{-- 🏗️ Build Constructing the Brand World --}}
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Build Constructing The Brand World</label>
@@ -131,11 +176,23 @@
                             class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500">{{ old('build_constructing_the_brand_world', $content->build_constructing_the_brand_world ?? '') }}</textarea>
                     </div>
 
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Build Constructing The Brand World (ID)</label>
+                        <textarea name="build_constructing_the_brand_world_id" rows="4"
+                            class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500">{{ old('build_constructing_the_brand_world_id', $content->build_constructing_the_brand_world_id ?? '') }}</textarea>
+                    </div>
+
                     {{-- ♻️ Maintain Ensuring Lasting Relevance --}}
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Maintain Ensuring Lasting Relevance</label>
                         <textarea name="maintain_ensuring_lasting_relevance" rows="4"
                             class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500">{{ old('maintain_ensuring_lasting_relevance', $content->maintain_ensuring_lasting_relevance ?? '') }}</textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Maintain Ensuring Lasting Relevance (ID)</label>
+                        <textarea name="maintain_ensuring_lasting_relevance_id" rows="4"
+                            class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500">{{ old('maintain_ensuring_lasting_relevance_id', $content->maintain_ensuring_lasting_relevance_id ?? '') }}</textarea>
                     </div>
 
                     <div class="flex justify-end pt-6">

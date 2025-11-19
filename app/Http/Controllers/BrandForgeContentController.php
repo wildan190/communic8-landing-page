@@ -35,6 +35,17 @@ class BrandForgeContentController extends Controller
             'align_strategic_foundation' => 'nullable|string',
             'build_constructing_the_brand_world' => 'nullable|string',
             'maintain_ensuring_lasting_relevance' => 'nullable|string',
+
+            // ✅ Tambahan Bahasa Indonesia
+            'insight_strategy_driven_id' => 'nullable|string|max:255',
+            'desc_insight_strategy_driven_id' => 'nullable|string',
+            'bold_creative_ideas_id' => 'nullable|string|max:255',
+            'desc_bold_creative_ideas_id' => 'nullable|string',
+            'impactful_visual_identity_id' => 'nullable|string|max:255',
+            'desc_impactful_visual_identity_id' => 'nullable|string',
+            'align_strategic_foundation_id' => 'nullable|string',
+            'build_constructing_the_brand_world_id' => 'nullable|string',
+            'maintain_ensuring_lasting_relevance_id' => 'nullable|string',
         ]);
 
         // Ambil konten pertama atau buat baru
@@ -83,6 +94,17 @@ class BrandForgeContentController extends Controller
         $content->align_strategic_foundation = clean($request->input('align_strategic_foundation'));
         $content->build_constructing_the_brand_world = clean($request->input('build_constructing_the_brand_world'));
         $content->maintain_ensuring_lasting_relevance = clean($request->input('maintain_ensuring_lasting_relevance'));
+
+        // Sanitize field Bahasa Indonesia
+        $content->insight_strategy_driven_id = clean($request->input('insight_strategy_driven_id'));
+        $content->desc_insight_strategy_driven_id = clean($request->input('desc_insight_strategy_driven_id'));
+        $content->bold_creative_ideas_id = clean($request->input('bold_creative_ideas_id'));
+        $content->desc_bold_creative_ideas_id = clean($request->input('desc_bold_creative_ideas_id'));
+        $content->impactful_visual_identity_id = clean($request->input('impactful_visual_identity_id'));
+        $content->desc_impactful_visual_identity_id = clean($request->input('desc_impactful_visual_identity_id'));
+        $content->align_strategic_foundation_id = clean($request->input('align_strategic_foundation_id'));
+        $content->build_constructing_the_brand_world_id = clean($request->input('build_constructing_the_brand_world_id'));
+        $content->maintain_ensuring_lasting_relevance_id = clean($request->input('maintain_ensuring_lasting_relevance_id'));
 
         $content->save();
 
