@@ -117,9 +117,6 @@
     @endif
 
 
-    {{-- =======================
-    CHALLENGES & INSIGHT
-======================== --}}
     @if ($portfolioDetail && ($portfolioDetail->challenges_and_insight || $portfolioDetail->img_challenges_and_insight))
         <section class="w-full py-24 px-6 md:px-0 max-w-6xl mx-auto">
 
@@ -152,9 +149,6 @@
     @endif
 
 
-    {{-- =======================
-    PROJECT RESULT
-======================== --}}
     @if ($projectResults && $projectResults->count() > 0)
         <section class="w-full py-24 px-6 md:px-0 max-w-7xl mx-auto">
 
@@ -226,6 +220,7 @@
             </div>
         </div>
     </section>
+    
     <!-- Ideas Action Slider Section -->
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
@@ -254,26 +249,25 @@
                     class="flex overflow-x-auto space-x-6 scrollbar-hide snap-x snap-mandatory scroll-smooth w-full">
 
                     @foreach ($projects as $idea)
-                        <div class="relative snap-center min-w-[330px] md:min-w-[380px] rounded-2xl overflow-hidden group">
+                        <a href="{{ route('portofolio.show', ['name' => $idea->name]) }}"
+                            class="relative snap-center min-w-[330px] md:min-w-[380px] rounded-2xl overflow-hidden group block">
 
-                            <!-- IMAGE — NO CROPPING, NO FRAME -->
+                            <!-- IMAGE — NO CROP -->
                             <img src="{{ $idea->project_img ? asset('storage/' . $idea->project_img) : asset('assets/img/dummy/dummy1.png') }}"
                                 class="w-full h-full object-contain bg-black transition duration-500 group-hover:scale-105">
 
                             <!-- HOVER OVERLAY -->
                             <div
                                 class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 
-                                   transition duration-500 flex flex-col justify-center items-center text-white 
-                                   text-center px-6">
+                               transition duration-500 flex flex-col justify-center items-center text-white 
+                               text-center px-6">
 
                                 <h3 class="text-lg font-semibold mb-2">{{ $idea->name }}</h3>
-                                <p class="text-sm leading-snug max-w-xs">
-                                    {{ $idea->description }}
-                                </p>
+                                <p class="text-sm leading-snug max-w-xs">{{ $idea->description }}</p>
 
                             </div>
 
-                        </div>
+                        </a>
                     @endforeach
 
                 </div>
@@ -291,7 +285,8 @@
                     class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
 
                     @foreach ($projects as $idea)
-                        <div class="relative snap-center min-w-[260px] rounded-2xl overflow-hidden group">
+                        <a href="{{ route('portofolio.show', ['name' => $idea->name]) }}"
+                            class="relative snap-center min-w-[260px] rounded-2xl overflow-hidden group block">
 
                             <!-- IMAGE -->
                             <img src="{{ $idea->project_img ? asset('storage/' . $idea->project_img) : asset('assets/img/dummy/dummy1.png') }}"
@@ -300,16 +295,14 @@
                             <!-- HOVER -->
                             <div
                                 class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 
-                                   transition duration-500 flex flex-col justify-center items-center text-white px-6 text-center">
+                               transition duration-500 flex flex-col justify-center items-center text-white px-6 text-center">
 
                                 <h3 class="text-base font-semibold mb-2">{{ $idea->name }}</h3>
-                                <p class="text-xs leading-snug">
-                                    {{ $idea->description }}
-                                </p>
+                                <p class="text-xs leading-snug">{{ $idea->description }}</p>
 
                             </div>
 
-                        </div>
+                        </a>
                     @endforeach
 
                 </div>
@@ -335,6 +328,7 @@
 
         </div>
     </section>
+
 
     <!-- JS -->
     <script>
