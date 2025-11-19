@@ -18,4 +18,9 @@ return [
         'p3' => 'The goal is clear: to help brands achieve sustainable growth through data-driven, ROI-focused digital strategies. For us, the best digital marketing is not about doing more, but about doing what works — combining creative storytelling, smart targeting, and continuous optimization to deliver impact that lasts.',
         'p4' => 'With Communic 8, digital marketing isn’t just about reach — it’s about results that matter.',
     ],
+
+    'services_grid' => [
+        'title' => 'Activating Your Digital Presence',
+        'description' => 'Our full suite of performance-driven services, designed to connect you with your audience and convert their interest into measurable action.',
+    ],
 ];

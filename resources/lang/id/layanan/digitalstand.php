@@ -18,4 +18,9 @@ return [
         'p3' => 'Tujuannya jelas: membantu merek mencapai pertumbuhan yang berkelanjutan melalui strategi digital berbasis data dan ROI. Bagi kami, digital marketing terbaik bukan tentang melakukan lebih banyak, tetapi tentang melakukan apa yang efektif — menggabungkan storytelling kreatif, penargetan cerdas, dan optimisasi berkelanjutan untuk memberikan dampak yang bertahan lama.',
         'p4' => 'Dengan Communic 8, digital marketing bukan hanya soal jangkauan — tetapi tentang hasil yang berarti.',
     ],
+
+    'services_grid' => [
+        'title' => 'Mengaktifkan Kehadiran Digital Anda',
+        'description' => 'Rangkaian lengkap layanan berbasis performa yang dirancang untuk menghubungkan Anda dengan audiens dan mengubah ketertarikan mereka menjadi tindakan yang terukur.',
+    ],
 ];

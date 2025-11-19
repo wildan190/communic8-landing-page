@@ -100,7 +100,7 @@
                 <button id="exploreMoreBtn"
                     class="inline-block px-8 py-3 text-sm md:text-base font-semibold text-white bg-black rounded-full
                    transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-black hover:scale-105">
-                    {{ app()->getLocale() == 'en' ? 'Explore More' : __('portofolio.button_explore') }}
+                    {{-- {{ app()->getLocale() == 'en' ? 'Explore More' : __('portofolio.button_explore') }} --}}Explore More
                 </button>
             </div>
         </div>

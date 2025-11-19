@@ -118,8 +118,14 @@
                 @for ($i = 1; $i <= 4; $i++)
                     @php
                         $locale = app()->getLocale();
-                        $title = $digitalCompassContent ? ($digitalCompassContent->{'title' . $i . ($locale == 'id' ? '_id' : '')} ?? $digitalCompassContent->{'title' . $i}) : null;
-                        $value = $digitalCompassContent ? ($digitalCompassContent->{'value_title' . $i . ($locale == 'id' ? '_id' : '')} ?? $digitalCompassContent->{'value_title' . $i}) : null;
+                        $title = $digitalCompassContent
+                            ? $digitalCompassContent->{'title' . $i . ($locale == 'id' ? '_id' : '')} ??
+                                $digitalCompassContent->{'title' . $i}
+                            : null;
+                        $value = $digitalCompassContent
+                            ? $digitalCompassContent->{'value_title' . $i . ($locale == 'id' ? '_id' : '')} ??
+                                $digitalCompassContent->{'value_title' . $i}
+                            : null;
                     @endphp
 
                     <div>
@@ -152,15 +158,12 @@
     <section class="w-full py-8 bg-white text-[#666666]">
         <div class="max-w-6xl mx-auto px-4 text-center relative">
 
-            {{-- Title --}}
             <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
-                Activating Your Digital Presence
+                {{ __('layanan/digitalstand.services_grid.title') }}
             </h2>
 
-            {{-- Subhead --}}
             <p class="mt-4 text-sm md:text-base text-[#666666] max-w-3xl mx-auto font-light">
-                Our full suite of performance-driven services, designed to connect you with your audience
-                and convert their interest into measurable action.
+                {{ __('layanan/digitalstand.services_grid.description') }}
             </p>
 
             @php
