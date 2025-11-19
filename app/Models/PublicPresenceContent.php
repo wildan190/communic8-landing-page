@@ -19,5 +19,10 @@ class PublicPresenceContent extends Model
         'Creative_and_Channel_Synergy',
         'desc_Creative_and_Channel_Synergy',
         'img_Creative_and_Channel_Synergy',
+        // Indonesian translations
+        'INSIGHT_DRIVEN_STRATEGY_id',
+        'desc_INSIGHT_DRIVEN_STRATEGY_id',
+        'Creative_and_Channel_Synergy_id',
+        'desc_Creative_and_Channel_Synergy_id',
     ];
 }

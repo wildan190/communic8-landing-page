@@ -11,4 +11,9 @@ return [
         'title' => 'Strategic Placement for Maximum Impact',
         'description' => 'We bring the same strategic thinking and creative spirit to the real world that define our digital work. Our approach and methodology to media placement is designed to ensure your brand connects with the right audience in the right place.',
     ],
+
+    'services_grid' => [
+        'title' => 'Beyond the Screen, Into the World',
+        'description' => 'Our suite of public space media solutions, designed to place your brand in the daily lives of your audience for unmissable, real-world impact.',
+    ],
 ];

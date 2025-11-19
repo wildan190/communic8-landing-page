@@ -23,6 +23,16 @@ class PublicPresenceContentController extends Controller
             'head_img' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'img_INSIGHT_DRIVEN_STRATEGY' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'img_Creative_and_Channel_Synergy' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'INSIGHT_DRIVEN_STRATEGY' => 'nullable|string|max:255',
+            'desc_INSIGHT_DRIVEN_STRATEGY' => 'nullable|string',
+            'Creative_and_Channel_Synergy' => 'nullable|string|max:255',
+            'desc_Creative_and_Channel_Synergy' => 'nullable|string',
+
+            // Indonesian fields
+            'INSIGHT_DRIVEN_STRATEGY_id' => 'nullable|string|max:255',
+            'desc_INSIGHT_DRIVEN_STRATEGY_id' => 'nullable|string',
+            'Creative_and_Channel_Synergy_id' => 'nullable|string|max:255',
+            'desc_Creative_and_Channel_Synergy_id' => 'nullable|string',
         ]);
 
         $content = PublicPresenceContent::first() ?? new PublicPresenceContent;
@@ -86,6 +96,12 @@ class PublicPresenceContentController extends Controller
         $content->desc_INSIGHT_DRIVEN_STRATEGY = $request->desc_INSIGHT_DRIVEN_STRATEGY;
         $content->Creative_and_Channel_Synergy = $request->Creative_and_Channel_Synergy;
         $content->desc_Creative_and_Channel_Synergy = $request->desc_Creative_and_Channel_Synergy;
+
+        // 📝 Simpan Indonesian text fields
+        $content->INSIGHT_DRIVEN_STRATEGY_id = $request->INSIGHT_DRIVEN_STRATEGY_id;
+        $content->desc_INSIGHT_DRIVEN_STRATEGY_id = $request->desc_INSIGHT_DRIVEN_STRATEGY_id;
+        $content->Creative_and_Channel_Synergy_id = $request->Creative_and_Channel_Synergy_id;
+        $content->desc_Creative_and_Channel_Synergy_id = $request->desc_Creative_and_Channel_Synergy_id;
 
         $content->save();
 

@@ -75,11 +75,10 @@
                 <div class="text-left">
                     <h2
                         class="text-2xl md:text-3xl font-light font-poppins tracking-normal sm:tracking-[0.5em] uppercase text-[#666666]">
-                        {{ $publicPresenceContent->INSIGHT_DRIVEN_STRATEGY ?? 'INSIGHT-DRIVEN STRATEGY' }}
+                        {{ app()->getLocale() == 'id' ? $publicPresenceContent->INSIGHT_DRIVEN_STRATEGY_id ?? ($publicPresenceContent->INSIGHT_DRIVEN_STRATEGY ?? 'INSIGHT-DRIVEN STRATEGY') : $publicPresenceContent->INSIGHT_DRIVEN_STRATEGY ?? 'INSIGHT-DRIVEN STRATEGY' }}
                     </h2>
                     <p class="mt-6 font-rubik leading-relaxed text-sm md:text-base text-[#666666]">
-                        {{ $publicPresenceContent->desc_INSIGHT_DRIVEN_STRATEGY ??
-                            'Every powerful brand is built on a foundation of deep understanding. Our process begins with comprehensive analysis, where we dive into your market, competitive landscape, and audience behavior. This strategic thinking ensures your brand’s positioning is not only unique but also precisely aligned with your business objectives for maximum effectiveness.' }}
+                        {{ app()->getLocale() == 'id' ? $publicPresenceContent->desc_INSIGHT_DRIVEN_STRATEGY_id ?? ($publicPresenceContent->desc_INSIGHT_DRIVEN_STRATEGY ?? 'Every powerful brand is built on a foundation of deep understanding. Our process begins with comprehensive analysis, where we dive into your market, competitive landscape, and audience behavior. This strategic thinking ensures your brand’s positioning is not only unique but also precisely aligned with your business objectives for maximum effectiveness.') : $publicPresenceContent->desc_INSIGHT_DRIVEN_STRATEGY ?? 'Every powerful brand is built on a foundation of deep understanding. Our process begins with comprehensive analysis, where we dive into your market, competitive landscape, and audience behavior. This strategic thinking ensures your brand’s positioning is not only unique but also precisely aligned with your business objectives for maximum effectiveness.' }}
                     </p>
                 </div>
                 <div class="flex justify-center">
@@ -107,11 +106,10 @@
                 <div class="order-1 md:order-2 text-left">
                     <h2
                         class="text-2xl md:text-3xl font-light font-poppins tracking-normal sm:tracking-[0.5em] uppercase text-[#666666]">
-                        {{ $publicPresenceContent->Creative_and_Channel_Synergy ?? 'Creative and Channel Synergy' }}
+                        {{ app()->getLocale() == 'id' ? $publicPresenceContent->Creative_and_Channel_Synergy_id ?? ($publicPresenceContent->Creative_and_Channel_Synergy ?? 'Creative and Channel Synergy') : $publicPresenceContent->Creative_and_Channel_Synergy ?? 'Creative and Channel Synergy' }}
                     </h2>
                     <p class="mt-6 font-rubik leading-relaxed text-sm md:text-base text-[#666666]">
-                        {{ $publicPresenceContent->desc_Creative_and_Channel_Synergy ??
-                            'Strategy provides the direction, creativity makes the journey unforgettable. We translate strategic insights into bold ideas and out-of-the-box concepts with creative and different thinking. This is where we craft the unique personality and compelling narrative that gives your brand a distinctive voice.' }}
+                        {{ app()->getLocale() == 'id' ? $publicPresenceContent->desc_Creative_and_Channel_Synergy_id ?? ($publicPresenceContent->desc_Creative_and_Channel_Synergy ?? 'Strategy provides the direction, creativity makes the journey unforgettable. We translate strategic insights into bold ideas and out-of-the-box concepts with creative and different thinking. This is where we craft the unique personality and compelling narrative that gives your brand a distinctive voice.') : $publicPresenceContent->desc_Creative_and_Channel_Synergy ?? 'Strategy provides the direction, creativity makes the journey unforgettable. We translate strategic insights into bold ideas and out-of-the-box concepts with creative and different thinking. This is where we craft the unique personality and compelling narrative that gives your brand a distinctive voice.' }}
                     </p>
                 </div>
             </div>
@@ -122,16 +120,13 @@
     <section class="w-full py-8 bg-white text-[#666666]">
         <div class="max-w-7xl mx-auto px-4 md:px-20 text-center relative">
 
-            {{-- Title --}}
             <h2
                 class="text-2xl md:text-3xl font-light font-poppins tracking-normal sm:tracking-[0.5em] uppercase text-[#666666]">
-                Beyond the Screen, Into the World
+                {{ __('layanan/publicspace.services_grid.title') }}
             </h2>
 
-            {{-- Subhead --}}
             <p class="mt-4 text-sm md:text-base text-[#666666] max-w-3xl mx-auto font-light">
-                Our suite of public space media solutions, designed to place your brand in the daily lives of your audience
-                for unmissable, real-world impact.
+                {{ __('layanan/publicspace.services_grid.description') }}
             </p>
 
             @php
@@ -192,7 +187,6 @@
             </div>
         </div>
     </section>
-
 
     <br />
 

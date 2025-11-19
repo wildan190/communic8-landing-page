@@ -11,4 +11,9 @@ return [
         'title' => 'Penempatan Strategis untuk Dampak Maksimal',
         'description' => 'Kami membawa pemikiran strategis dan semangat kreatif yang sama ke dunia nyata seperti yang mendefinisikan karya digital kami. Pendekatan dan metodologi kami dalam penempatan media dirancang untuk memastikan merek Anda terhubung dengan audiens yang tepat di tempat yang tepat.',
     ],
+
+    'services_grid' => [
+        'title' => 'Melampaui Layar, Hadir di Dunia Nyata',
+        'description' => 'Rangkaian solusi media ruang publik kami dirancang untuk menempatkan brand Anda ke dalam kehidupan sehari-hari audiens demi dampak nyata yang tak terlewatkan.',
+    ],
 ];
