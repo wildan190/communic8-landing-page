@@ -67,8 +67,10 @@ class PortofolioController extends Controller
         $portfolioDetail = PortfolioDetail::where('project_id', $project->id)->first();
 
         $projectResults = ProjectResult::where('portfolio_detail_id', $portfolioDetail->id)->get();
+        $ideasActions = \App\Models\IdeasAction::where('portfolio_detail_id', $portfolioDetail->id)->get();
+
 
         // Kembalikan tampilan dengan data proyek dan detail portofolio
-        return view('web.portofolio.project-show', compact('project', 'portfolioDetail', 'projectResults', 'blogs', 'categories', 'category', 'sliderBlogs', 'webInfo', 'branchOffices', 'insightCategories', 'clients', 'galleries'));
+        return view('web.portofolio.project-show', compact('project', 'portfolioDetail', 'projectResults', 'blogs', 'categories', 'category', 'sliderBlogs', 'webInfo', 'branchOffices', 'insightCategories', 'clients', 'galleries', 'ideasActions'));
     }
 }

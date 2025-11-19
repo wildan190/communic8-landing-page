@@ -219,138 +219,141 @@
         </div>
     </section>
 
-    <!-- Blog Slider Section -->
+    <!-- Ideas Action Slider Section -->
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
             <!-- Section Title -->
             <div class="text-center mb-12 sm:mb-16">
-                <h2
-                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
-           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
-                    {!! __('home/insights.title') !!}
+                <h2 class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                    M O R E &nbsp; I D E A S <br> I N &nbsp; A C T I O N
                 </h2>
-                <p class="text-gray-600 text-base sm:text-lg mt-2">
-                    {{ __('home/insights.description') }}
+                <p class="text-gray-600 text-base sm:text-lg mt-2 max-w-2xl mx-auto">
+                    A showcase of campaigns, stories, and experiences that create real connections
                 </p>
             </div>
 
             <!-- Wrapper for Desktop (with arrows) -->
             <div class="hidden sm:flex items-center space-x-6">
+
                 <!-- Prev Button -->
-                <button id="prevBtn" class="shrink-0">
+                <button id="prevIdeas" class="shrink-0">
                     <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Prev" class="w-10 h-10">
                 </button>
 
                 <!-- Slider Container -->
-                <div id="blog-slider"
+                <div id="ideas-slider"
                     class="flex overflow-x-auto space-x-6 scrollbar-hide snap-x snap-mandatory scroll-smooth w-full">
-                    @foreach ($sliderBlogs as $blog)
+
+                    @foreach ($ideasActions as $idea)
                         <div
-                            class="snap-center min-w-[280px] sm:min-w-[320px] md:min-w-[360px] bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
-                            <p class="text-sm text-gray-500">{{ $blog->category->name }}</p>
-                            <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
-                                <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
-                                    <strong>{{ app()->getLocale() == 'id' ? $blog->title_id : $blog->title }}</strong>
-                                </h3>
-                            </a>
-                            @if ($blog->headline_img)
-                                <img src="{{ asset('storage/' . $blog->headline_img) }}"
-                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}"
+                            class="snap-center min-w-[280px] sm:min-w-[320px] md:min-w-[360px] 
+                        bg-white rounded-2xl shadow-sm p-5 border border-gray-200 flex flex-col">
+
+                            <h3 class="text-lg font-medium text-[#666666] mb-2">
+                                <strong>{{ $idea->name }}</strong>
+                            </h3>
+
+                            <p class="text-sm text-gray-600 mb-3">
+                                {{ $idea->description }}
+                            </p>
+
+                            @if ($idea->img_upload)
+                                <img src="{{ asset('uploads/ideas/' . $idea->img_upload) }}"
                                     class="w-full h-48 object-cover rounded-xl">
                             @else
-                                <img src="{{ asset('assets/img/blog1.png') }}" alt="Default Image"
+                                <img src="{{ asset('assets/img/default.png') }}"
                                     class="w-full h-48 object-cover rounded-xl">
                             @endif
+
                         </div>
                     @endforeach
+
                 </div>
 
                 <!-- Next Button -->
-                <button id="nextBtn" class="shrink-0">
+                <button id="nextIdeas" class="shrink-0">
                     <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next" class="w-10 h-10">
                 </button>
             </div>
 
-            <!-- Mobile: Slider full width, arrows below -->
+            <!-- Mobile Version -->
             <div class="sm:hidden">
-                <div id="blog-slider-mobile"
+
+                <div id="ideas-slider-mobile"
                     class="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
-                    @foreach ($sliderBlogs as $blog)
+
+                    @foreach ($ideasActions as $idea)
                         <div
-                            class="snap-center min-w-[260px] bg-white rounded-2xl shadow-sm p-4 border border-gray-200 flex flex-col">
-                            <p class="text-xs text-gray-500">{{ $blog->category->name }}</p>
-                            <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
-                                <h3
-                                    class="text-base font-medium text-gray-800 hover:text-gray-600 transition line-clamp-3 min-h-[60px] mb-3">
-                                    {{ $blog->title }}
-                                </h3>
-                            </a>
-                            @if ($blog->headline_img)
-                                <img src="{{ asset('storage/' . $blog->headline_img) }}"
-                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}"
+                            class="snap-center min-w-[260px] bg-white rounded-2xl shadow-sm 
+                        p-4 border border-gray-200 flex flex-col">
+
+                            <h3 class="text-base font-medium text-gray-800 mb-2">
+                                {{ $idea->name }}
+                            </h3>
+
+                            <p class="text-xs text-gray-600 mb-3">
+                                {{ $idea->description }}
+                            </p>
+
+                            @if ($idea->img_upload)
+                                <img src="{{ asset('uploads/ideas/' . $idea->img_upload) }}"
                                     class="w-full h-40 object-cover rounded-xl">
                             @else
-                                <img src="{{ asset('assets/img/blog1.png') }}" alt="Default Image"
+                                <img src="{{ asset('assets/img/default.png') }}"
                                     class="w-full h-40 object-cover rounded-xl">
                             @endif
                         </div>
                     @endforeach
+
                 </div>
 
                 <!-- Arrows below slider -->
                 <div class="flex justify-center space-x-6 mt-6">
-                    <button id="prevBtnMobile">
+                    <button id="prevIdeasMobile">
                         <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Prev" class="w-8 h-8">
                     </button>
-                    <button id="nextBtnMobile">
+                    <button id="nextIdeasMobile">
                         <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next" class="w-8 h-8">
                     </button>
                 </div>
             </div>
 
-            <!-- Read More Button -->
-            <div class="text-center mt-12">
-                <a href="{{ route('insight.index') }}"
-                    class="inline-block bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition">
-                    Read More
-                </a>
-            </div>
-
         </div>
     </section>
 
-    <!-- JS for slider scroll -->
+    <!-- JS -->
     <script>
         // Desktop
-        const slider = document.getElementById('blog-slider');
-        document.getElementById('prevBtn').addEventListener('click', () => {
-            slider.scrollBy({
+        const ideasSlider = document.getElementById('ideas-slider');
+        document.getElementById('prevIdeas').addEventListener('click', () => {
+            ideasSlider.scrollBy({
                 left: -400,
                 behavior: 'smooth'
             });
         });
-        document.getElementById('nextBtn').addEventListener('click', () => {
-            slider.scrollBy({
+        document.getElementById('nextIdeas').addEventListener('click', () => {
+            ideasSlider.scrollBy({
                 left: 400,
                 behavior: 'smooth'
             });
         });
 
         // Mobile
-        const sliderMobile = document.getElementById('blog-slider-mobile');
-        document.getElementById('prevBtnMobile').addEventListener('click', () => {
-            sliderMobile.scrollBy({
+        const ideasSliderMobile = document.getElementById('ideas-slider-mobile');
+        document.getElementById('prevIdeasMobile').addEventListener('click', () => {
+            ideasSliderMobile.scrollBy({
                 left: -300,
                 behavior: 'smooth'
             });
         });
-        document.getElementById('nextBtnMobile').addEventListener('click', () => {
-            sliderMobile.scrollBy({
+        document.getElementById('nextIdeasMobile').addEventListener('click', () => {
+            ideasSliderMobile.scrollBy({
                 left: 300,
                 behavior: 'smooth'
             });
         });
     </script>
+
 
 @endsection

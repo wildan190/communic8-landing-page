@@ -49,6 +49,9 @@
                             <x-dropdown-link :href="route('portfolio-detail.index')" :active="request()->routeIs('portfolio-detail.*')">
                                 {{ __('Portfolio Details') }}
                             </x-dropdown-link>
+                            <x-dropdown-link :href="route('ideas-actions.index')" :active="request()->routeIs('ideas-actions.index')">
+                                {{ __('Ideas & Actions') }}
+                            </x-dropdown-link>
                         </div>
                     </div>
                 </div>

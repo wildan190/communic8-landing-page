@@ -11,6 +11,7 @@ use App\Http\Controllers\DigitalCompassContentController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HeroAboutController;
 use App\Http\Controllers\HeroHomeController;
+use App\Http\Controllers\IdeasActionController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PortfolioDetailController;
@@ -46,8 +47,7 @@ Route::get('/', [HomeController::class, 'index'])
     ->middleware('track.pageview');
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/portofolio', [PortofolioController::class, 'index'])->name('portofolio.index');
-Route::get('/portofolio/{name}', [PortofolioController::class, 'show'])
-    ->name('portofolio.show');
+Route::get('/portofolio/{name}', [PortofolioController::class, 'show'])->name('portofolio.show');
 Route::get('/insight', [InsightController::class, 'index'])->name('insight.index');
 Route::get('/insight/{slug}', [InsightController::class, 'show'])
     ->name('insight.show')
@@ -264,6 +264,13 @@ Route::prefix('admin')
         Route::get('/portfolio-detail/{id}/edit', [PortfolioDetailController::class, 'edit'])->name('portfolio-detail.edit');
         Route::put('/portfolio-detail/{id}', [PortfolioDetailController::class, 'update'])->name('portfolio-detail.update');
         Route::delete('/portfolio-detail/{id}', [PortfolioDetailController::class, 'destroy'])->name('portfolio-detail.destroy');
+
+        Route::get('/ideas-actions', [IdeasActionController::class, 'index'])->name('ideas-actions.index');
+        Route::get('/ideas-actions/create', [IdeasActionController::class, 'create'])->name('ideas-actions.create');
+        Route::post('/ideas-actions/store', [IdeasActionController::class, 'store'])->name('ideas-actions.store');
+        Route::get('/ideas-actions/{id}/edit', [IdeasActionController::class, 'edit'])->name('ideas-actions.edit');
+        Route::post('/ideas-actions/{id}/update', [IdeasActionController::class, 'update'])->name('ideas-actions.update');
+        Route::get('/ideas-actions/{id}/delete', [IdeasActionController::class, 'delete'])->name('ideas-actions.delete');
 
         Route::resource('values', ValueController::class);
     });
