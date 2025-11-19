@@ -47,24 +47,72 @@
                         class="w-full text-sm text-gray-900 dark:text-gray-200 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-300 dark:border-gray-600 cursor-pointer focus:outline-none">
                 </div>
 
-                {{-- Dynamic Titles --}}
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    @for ($i = 1; $i <= 4; $i++)
-                        <div class="space-y-2">
-                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Title {{ $i }}
-                            </label>
-                            <input type="text" name="title{{ $i }}"
-                                value="{{ $content->{'title' . $i} ?? '' }}"
-                                class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500">
+                {{-- Dynamic Titles with Tabs --}}
+                <div x-data="{ tab: 'en' }">
+                    <div class="border-b border-gray-200 dark:border-gray-700">
+                        <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                            <button @click.prevent="tab = 'en'"
+                                :class="{
+                                    'border-indigo-500 text-indigo-600': tab === 'en',
+                                    'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300': tab !==
+                                        'en'
+                                }"
+                                class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                                English
+                            </button>
+                            <button @click.prevent="tab = 'id'"
+                                :class="{
+                                    'border-indigo-500 text-indigo-600': tab === 'id',
+                                    'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300': tab !==
+                                        'id'
+                                }"
+                                class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                                Indonesian
+                            </button>
+                        </nav>
+                    </div>
 
-                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mt-2">
-                                Value Title {{ $i }}
-                            </label>
-                            <textarea name="value_title{{ $i }}" rows="3"
-                                class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500">{{ $content->{'value_title' . $i} ?? '' }}</textarea>
+                    <div x-show="tab === 'en'" class="pt-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            @for ($i = 1; $i <= 4; $i++)
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                        Title {{ $i }} (EN)
+                                    </label>
+                                    <input type="text" name="title{{ $i }}"
+                                        value="{{ $content->{'title' . $i} ?? '' }}"
+                                        class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500">
+
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mt-2">
+                                        Value Title {{ $i }} (EN)
+                                    </label>
+                                    <textarea name="value_title{{ $i }}" rows="3"
+                                        class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500">{{ $content->{'value_title' . $i} ?? '' }}</textarea>
+                                </div>
+                            @endfor
                         </div>
-                    @endfor
+                    </div>
+
+                    <div x-show="tab === 'id'" class="pt-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            @for ($i = 1; $i <= 4; $i++)
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                        Title {{ $i }} (ID)
+                                    </label>
+                                    <input type="text" name="title{{ $i }}_id"
+                                        value="{{ $content->{'title' . $i . '_id'} ?? '' }}"
+                                        class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500">
+
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mt-2">
+                                        Value Title {{ $i }} (ID)
+                                    </label>
+                                    <textarea name="value_title{{ $i }}_id" rows="3"
+                                        class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500">{{ $content->{'value_title' . $i . '_id'} ?? '' }}</textarea>
+                                </div>
+                            @endfor
+                        </div>
+                    </div>
                 </div>
 
                 <div class="flex justify-end">

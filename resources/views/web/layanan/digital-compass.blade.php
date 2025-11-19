@@ -117,8 +117,9 @@
             <div class="space-y-6 font-rubik">
                 @for ($i = 1; $i <= 4; $i++)
                     @php
-                        $title = $digitalCompassContent->{'title' . $i} ?? null;
-                        $value = $digitalCompassContent->{'value_title' . $i} ?? null;
+                        $locale = app()->getLocale();
+                        $title = $digitalCompassContent ? ($digitalCompassContent->{'title' . $i . ($locale == 'id' ? '_id' : '')} ?? $digitalCompassContent->{'title' . $i}) : null;
+                        $value = $digitalCompassContent ? ($digitalCompassContent->{'value_title' . $i . ($locale == 'id' ? '_id' : '')} ?? $digitalCompassContent->{'value_title' . $i}) : null;
                     @endphp
 
                     <div>

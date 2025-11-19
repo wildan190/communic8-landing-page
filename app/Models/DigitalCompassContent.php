@@ -21,5 +21,13 @@ class DigitalCompassContent extends Model
         'value_title3',
         'title4',
         'value_title4',
+        'title1_id',
+        'value_title1_id',
+        'title2_id',
+        'value_title2_id',
+        'title3_id',
+        'value_title3_id',
+        'title4_id',
+        'value_title4_id',
     ];
 }
