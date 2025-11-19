@@ -41,36 +41,48 @@ class PortofolioController extends Controller
         return view('web.portofolio.index', compact('blogs', 'categories', 'category', 'sliderBlogs', 'webInfo', 'branchOffices', 'insightCategories', 'clients', 'galleries', 'projects'));
     }
 
-    public function show($name, Request $request)
-    {
-        $category = $request->get('category');
+public function show($name, Request $request)
+{
+    $category = $request->get('category');
 
-        $blogs = Blog::when($category, function ($query, $category) {
-            $query->where('category', $category);
-        })
-            ->latest()
-            ->paginate(10);
+    $blogs = Blog::when($category, function ($query, $category) {
+        $query->where('category', $category);
+    })
+        ->latest()
+        ->paginate(10);
 
-        $categories = \App\Models\Category::pluck('name', 'id');
-        $sliderBlogs = Blog::where('highlighted', true)->latest()->take(10)->get();
-        $clients = Client::latest()->get();
+    $categories = \App\Models\Category::pluck('name', 'id');
+    $sliderBlogs = Blog::where('highlighted', true)->latest()->take(10)->get();
+    $clients = Client::latest()->get();
+    $galleries = Gallery::latest()->get();
+    $webInfo = WebInformation::first();
+    $branchOffices = BranchOffice::all();
+    $insightCategories = \App\Models\Category::take(5)->pluck('name', 'id');
 
-        $galleries = Gallery::latest()->get();
-        $webInfo = WebInformation::first();
-        $branchOffices = BranchOffice::all();
-        $insightCategories = \App\Models\Category::take(5)->pluck('name', 'id');
+    // Proyek detail sesuai URL
+    $project = Project::where('name', $name)->firstOrFail();
 
-        // Temukan proyek berdasarkan nama, atau gagal jika tidak ditemukan
-        $project = Project::where('name', $name)->firstOrFail();
+    $portfolioDetail = PortfolioDetail::where('project_id', $project->id)->first();
+    $projectResults = ProjectResult::where('portfolio_detail_id', optional($portfolioDetail)->id)->get();
 
-        // Dapatkan detail portofolio yang terkait dengan proyek
-        $portfolioDetail = PortfolioDetail::where('project_id', $project->id)->first();
+    // 🚀 AMBIL SEMUA PROJECT UNTUK SLIDER
+    $projects = Project::latest()->get();
 
-        $projectResults = ProjectResult::where('portfolio_detail_id', $portfolioDetail->id)->get();
-        $ideasActions = \App\Models\IdeasAction::where('portfolio_detail_id', $portfolioDetail->id)->get();
+    return view('web.portofolio.project-show', compact(
+        'project',
+        'portfolioDetail',
+        'projectResults',
+        'blogs',
+        'categories',
+        'category',
+        'sliderBlogs',
+        'webInfo',
+        'branchOffices',
+        'insightCategories',
+        'clients',
+        'galleries',
+        'projects'
+    ));
+}
 
-
-        // Kembalikan tampilan dengan data proyek dan detail portofolio
-        return view('web.portofolio.project-show', compact('project', 'portfolioDetail', 'projectResults', 'blogs', 'categories', 'category', 'sliderBlogs', 'webInfo', 'branchOffices', 'insightCategories', 'clients', 'galleries', 'ideasActions'));
-    }
 }

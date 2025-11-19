@@ -366,7 +366,7 @@
             }
         }
     </style>
-    
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             document.querySelectorAll(".counter").forEach(counter => {
@@ -583,29 +583,40 @@
             </div>
 
             @php
-                $projects = $trustedProjects->where('is_highlighted', false)->values();
+                // ONLY SHOW HIGHLIGHTED PROJECTS
+                $projects = $trustedProjects->where('is_highlighted', true)->values();
             @endphp
 
             {{-- PROJECT SLIDER --}}
             <div class="relative mb-8 md:mb-12 px-0 md:px-0">
                 <div class="swiper projects-swiper overflow-hidden relative">
                     <div class="swiper-wrapper">
+
                         @foreach ($projects as $project)
                             <div class="swiper-slide relative group overflow-hidden rounded-2xl aspect-square p-2">
-                                <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
-                                    class="w-full h-full object-cover transition duration-500 group-hover:scale-105 rounded-2xl"
-                                    alt="{{ $project->name }}">
 
-                                {{-- HOVER DESCRIPTION --}}
-                                <div
-                                    class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center rounded-2xl">
-                                    <h3 class="text-sm md:text-base font-semibold mb-2">{{ $project->name }}</h3>
-                                    <p class="text-xs md:text-sm leading-snug line-clamp-3">
-                                        {{ $project->description ?? '' }}
-                                    </p>
-                                </div>
+                                {{-- ADD HREF HERE --}}
+                                <a href="{{ route('portofolio.show', ['name' => $project->name]) }}"
+                                    class="block relative w-full h-full">
+
+                                    {{-- IMAGE --}}
+                                    <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
+                                        class="w-full h-full object-cover transition duration-500 group-hover:scale-105 rounded-2xl"
+                                        alt="{{ $project->name }}">
+
+                                    {{-- HOVER OVERLAY --}}
+                                    <div
+                                        class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-6 text-center rounded-2xl">
+                                        <h3 class="text-base md:text-lg font-semibold mb-2">{{ $project->name }}</h3>
+                                        <p class="text-xs md:text-sm leading-snug line-clamp-3">
+                                            {{ $project->description ?? '' }}
+                                        </p>
+                                    </div>
+
+                                </a>
                             </div>
                         @endforeach
+
                     </div>
                 </div>
 
@@ -626,7 +637,7 @@
             <div class="text-center mt-10">
                 <a href="{{ route('portofolio.index') }}"
                     class="inline-block px-8 py-3 text-sm md:text-base font-semibold text-white bg-black rounded-full
-        transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-black hover:scale-105">
+                   transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-black hover:scale-105">
                     {{ app()->getLocale() == 'en' ? 'Explore More' : __('home/trusted_by.button_more') }}
                 </a>
             </div>
