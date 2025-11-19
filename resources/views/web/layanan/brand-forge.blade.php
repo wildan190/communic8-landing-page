@@ -98,15 +98,15 @@
                     <h2
                         class="text-2xl md:text-3xl font-light font-poppins tracking-[0.2em] md:tracking-[0.5em] uppercase text-[#666666]">
                         {!! app()->getLocale() == 'id'
-                            ? ($brandForgeContent->insight_strategy_driven_id ?? 'Strategi Berbasis<br>Wawasan')
-                            : ($brandForgeContent->insight_strategy_driven ?? 'Insight-Driven<br>Strategy') !!}
+                            ? $brandForgeContent->insight_strategy_driven_id ?? 'Strategi Berbasis<br>Wawasan'
+                            : $brandForgeContent->insight_strategy_driven ?? 'Insight-Driven<br>Strategy' !!}
                     </h2>
                     <p class="mt-6 font-rubik leading-relaxed text-sm md:text-base text-[#666666]">
                         {!! app()->getLocale() == 'id'
-                            ? ($brandForgeContent->desc_insight_strategy_driven_id ??
-                                'Setiap merek yang kuat dibangun di atas landasan pemahaman yang mendalam...')
-                            : ($brandForgeContent->desc_insight_strategy_driven ??
-                                'Every powerful brand is built on a foundation of deep understanding...') !!}
+                            ? $brandForgeContent->desc_insight_strategy_driven_id ??
+                                'Setiap merek yang kuat dibangun di atas landasan pemahaman yang mendalam...'
+                            : $brandForgeContent->desc_insight_strategy_driven ??
+                                'Every powerful brand is built on a foundation of deep understanding...' !!}
                     </p>
                 </div>
                 <div class="flex justify-center">
@@ -125,15 +125,15 @@
                     <h2
                         class="text-2xl md:text-3xl font-light font-poppins tracking-[0.2em] md:tracking-[0.5em] uppercase text-[#666666]">
                         {!! app()->getLocale() == 'id'
-                            ? ($brandForgeContent->bold_creative_ideas_id ?? 'Ide Kreatif<br>yang Berani')
-                            : ($brandForgeContent->bold_creative_ideas ?? 'Bold Creative<br>Ideas') !!}
+                            ? $brandForgeContent->bold_creative_ideas_id ?? 'Ide Kreatif<br>yang Berani'
+                            : $brandForgeContent->bold_creative_ideas ?? 'Bold Creative<br>Ideas' !!}
                     </h2>
                     <p class="mt-6 font-rubik leading-relaxed text-sm md:text-base text-[#666666]">
                         {!! app()->getLocale() == 'id'
-                            ? ($brandForgeContent->desc_bold_creative_ideas_id ??
-                                'Strategi memberikan arah, kreativitas membuat perjalanan tak terlupakan...')
-                            : ($brandForgeContent->desc_bold_creative_ideas ??
-                                'Strategy provides the direction, creativity makes the journey unforgettable...') !!}
+                            ? $brandForgeContent->desc_bold_creative_ideas_id ??
+                                'Strategi memberikan arah, kreativitas membuat perjalanan tak terlupakan...'
+                            : $brandForgeContent->desc_bold_creative_ideas ??
+                                'Strategy provides the direction, creativity makes the journey unforgettable...' !!}
                     </p>
                 </div>
             </div>
@@ -144,15 +144,15 @@
                     <h2
                         class="text-2xl md:text-3xl font-light font-poppins tracking-[0.2em] md:tracking-[0.5em] uppercase text-[#666666]">
                         {!! app()->getLocale() == 'id'
-                            ? ($brandForgeContent->impactful_visual_identity_id ?? 'Identitas Visual<br>yang Berdampak')
-                            : ($brandForgeContent->impactful_visual_identity ?? 'Impactful<br>Visual Identity') !!}
+                            ? $brandForgeContent->impactful_visual_identity_id ?? 'Identitas Visual<br>yang Berdampak'
+                            : $brandForgeContent->impactful_visual_identity ?? 'Impactful<br>Visual Identity' !!}
                     </h2>
                     <p class="mt-6 font-rubik leading-relaxed text-sm md:text-base text-[#666666]">
                         {!! app()->getLocale() == 'id'
-                            ? ($brandForgeContent->desc_impactful_visual_identity_id ??
-                                'Kami menghidupkan cerita merek Anda melalui visual yang kuat...')
-                            : ($brandForgeContent->desc_impactful_visual_identity ??
-                                'We bring your brand’s story to life through strong visuals...') !!}
+                            ? $brandForgeContent->desc_impactful_visual_identity_id ??
+                                'Kami menghidupkan cerita merek Anda melalui visual yang kuat...'
+                            : $brandForgeContent->desc_impactful_visual_identity ??
+                                'We bring your brand’s story to life through strong visuals...' !!}
                     </p>
                 </div>
                 <div class="flex justify-center">
@@ -167,15 +167,12 @@
     <section class="w-full py-8 bg-white relative z-10 text-[#666666]">
         <div class="max-w-6xl mx-auto px-4 text-center">
 
-            {{-- Title --}}
             <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
-                End-to-End Brand Solutions
+                {{ __('layanan/brandland.services_grid.title') }}
             </h2>
 
-            {{-- Subhead --}}
             <p class="mt-4 text-sm md:text-base text-[#666666] max-w-3xl mx-auto font-light">
-                From defining your brand’s core purpose to designing its creative expression,
-                our complete suite of services covers every aspect of your brand's journey.
+                {{ __('layanan/brandland.services_grid.description') }}
             </p>
 
             {{-- Grid Projects --}}

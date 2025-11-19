@@ -156,8 +156,7 @@
                         'preview' => $content->img_framework ?? null
                     ])
 
-                    {{-- ⚖️ Align Strategic Foundation --}}
-                    <div>
+                    {{-- <div>
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Align Strategic Foundation</label>
                         <textarea name="align_strategic_foundation" rows="4"
                             class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500">{{ old('align_strategic_foundation', $content->align_strategic_foundation ?? '') }}</textarea>
@@ -169,7 +168,6 @@
                             class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500">{{ old('align_strategic_foundation_id', $content->align_strategic_foundation_id ?? '') }}</textarea>
                     </div>
 
-                    {{-- 🏗️ Build Constructing the Brand World --}}
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Build Constructing The Brand World</label>
                         <textarea name="build_constructing_the_brand_world" rows="4"
@@ -182,7 +180,6 @@
                             class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500">{{ old('build_constructing_the_brand_world_id', $content->build_constructing_the_brand_world_id ?? '') }}</textarea>
                     </div>
 
-                    {{-- ♻️ Maintain Ensuring Lasting Relevance --}}
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Maintain Ensuring Lasting Relevance</label>
                         <textarea name="maintain_ensuring_lasting_relevance" rows="4"
@@ -193,7 +190,7 @@
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Maintain Ensuring Lasting Relevance (ID)</label>
                         <textarea name="maintain_ensuring_lasting_relevance_id" rows="4"
                             class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500">{{ old('maintain_ensuring_lasting_relevance_id', $content->maintain_ensuring_lasting_relevance_id ?? '') }}</textarea>
-                    </div>
+                    </div> --}}
 
                     <div class="flex justify-end pt-6">
                         <button type="submit" class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-400 transition">

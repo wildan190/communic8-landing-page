@@ -18,4 +18,9 @@ return [
         'li2' => 'Staying true to core values, even as markets evolve.',
         'li3' => 'Fostering meaningful connections that extend beyond transactions.',
     ],
+
+    'services_grid' => [
+        'title' => 'End-to-End Brand Solutions',
+        'description' => 'From defining your brand’s core purpose to designing its creative expression, our complete suite of services covers every aspect of your brand\'s journey.',
+    ],
 ];
