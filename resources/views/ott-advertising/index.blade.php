@@ -19,26 +19,44 @@
 
                     {{-- Title --}}
                     <div>
-                        <label class="block font-semibold mb-1">Title</label>
+                        <label class="block font-semibold mb-1">Title (English)</label>
                         <input type="text" name="title"
                             value="{{ old('title', $landing->title ?? '') }}"
+                            class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500">
+                    </div>
+                    <div>
+                        <label class="block font-semibold mb-1">Title (Indonesian)</label>
+                        <input type="text" name="title_id"
+                            value="{{ old('title_id', $landing->title_id ?? '') }}"
                             class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500">
                     </div>
 
                     {{-- Subtitle --}}
                     <div>
-                        <label class="block font-semibold mb-1">Subtitle</label>
+                        <label class="block font-semibold mb-1">Subtitle (English)</label>
                         <input type="text" name="subtitle"
                             value="{{ old('subtitle', $landing->subtitle ?? '') }}"
+                            class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500">
+                    </div>
+                    <div>
+                        <label class="block font-semibold mb-1">Subtitle (Indonesian)</label>
+                        <input type="text" name="subtitle_id"
+                            value="{{ old('subtitle_id', $landing->subtitle_id ?? '') }}"
                             class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500">
                     </div>
 
                     {{-- Banner Text --}}
                     <div>
-                        <label class="block font-semibold mb-1">Banner Text</label>
+                        <label class="block font-semibold mb-1">Banner Text (English)</label>
                         <textarea name="banner_text"
                             class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500"
                             rows="3">{{ old('banner_text', $landing->banner_text ?? '') }}</textarea>
+                    </div>
+                    <div>
+                        <label class="block font-semibold mb-1">Banner Text (Indonesian)</label>
+                        <textarea name="banner_text_id"
+                            class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500"
+                            rows="3">{{ old('banner_text_id', $landing->banner_text_id ?? '') }}</textarea>
                     </div>
 
                     {{-- Banner Image --}}
@@ -69,44 +87,80 @@
 
                     {{-- Text 1 --}}
                     <div>
-                        <label class="block font-semibold mb-1">Title Text 1</label>
+                        <label class="block font-semibold mb-1">Title Text 1 (English)</label>
                         <input type="text" name="title_text1"
                             value="{{ old('title_text1', $landing->title_text1 ?? '') }}"
                             class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500">
                     </div>
                     <div>
-                        <label class="block font-semibold mb-1">Description 1</label>
+                        <label class="block font-semibold mb-1">Title Text 1 (Indonesian)</label>
+                        <input type="text" name="title_text1_id"
+                            value="{{ old('title_text1_id', $landing->title_text1_id ?? '') }}"
+                            class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500">
+                    </div>
+                    <div>
+                        <label class="block font-semibold mb-1">Description 1 (English)</label>
                         <textarea name="description1"
                             class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500"
                             rows="3">{{ old('description1', $landing->description1 ?? '') }}</textarea>
                     </div>
+                    <div>
+                        <label class="block font-semibold mb-1">Description 1 (Indonesian)</label>
+                        <textarea name="description1_id"
+                            class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500"
+                            rows="3">{{ old('description1_id', $landing->description1_id ?? '') }}</textarea>
+                    </div>
 
                     {{-- Text 2 --}}
                     <div>
-                        <label class="block font-semibold mb-1">Title Text 2</label>
+                        <label class="block font-semibold mb-1">Title Text 2 (English)</label>
                         <input type="text" name="title_text2"
                             value="{{ old('title_text2', $landing->title_text2 ?? '') }}"
                             class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500">
                     </div>
                     <div>
-                        <label class="block font-semibold mb-1">Description 2</label>
+                        <label class="block font-semibold mb-1">Title Text 2 (Indonesian)</label>
+                        <input type="text" name="title_text2_id"
+                            value="{{ old('title_text2_id', $landing->title_text2_id ?? '') }}"
+                            class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500">
+                    </div>
+                    <div>
+                        <label class="block font-semibold mb-1">Description 2 (English)</label>
                         <textarea name="description2"
                             class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500"
                             rows="3">{{ old('description2', $landing->description2 ?? '') }}</textarea>
                     </div>
+                    <div>
+                        <label class="block font-semibold mb-1">Description 2 (Indonesian)</label>
+                        <textarea name="description2_id"
+                            class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500"
+                            rows="3">{{ old('description2_id', $landing->description2_id ?? '') }}</textarea>
+                    </div>
 
                     {{-- Text 3 --}}
                     <div>
-                        <label class="block font-semibold mb-1">Title Text 3</label>
+                        <label class="block font-semibold mb-1">Title Text 3 (English)</label>
                         <input type="text" name="title_text3"
                             value="{{ old('title_text3', $landing->title_text3 ?? '') }}"
                             class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500">
                     </div>
                     <div>
-                        <label class="block font-semibold mb-1">Description 3</label>
+                        <label class="block font-semibold mb-1">Title Text 3 (Indonesian)</label>
+                        <input type="text" name="title_text3_id"
+                            value="{{ old('title_text3_id', $landing->title_text3_id ?? '') }}"
+                            class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500">
+                    </div>
+                    <div>
+                        <label class="block font-semibold mb-1">Description 3 (English)</label>
                         <textarea name="description3"
                             class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500"
                             rows="3">{{ old('description3', $landing->description3 ?? '') }}</textarea>
+                    </div>
+                    <div>
+                        <label class="block font-semibold mb-1">Description 3 (Indonesian)</label>
+                        <textarea name="description3_id"
+                            class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500"
+                            rows="3">{{ old('description3_id', $landing->description3_id ?? '') }}</textarea>
                     </div>
 
                     {{-- Submit --}}

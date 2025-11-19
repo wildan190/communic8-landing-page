@@ -23,8 +23,11 @@ class LandingPageController extends Controller
     {
         $validated = $request->validate([
             'title' => 'nullable|string|max:255',
+            'title_id' => 'nullable|string|max:255',
             'subtitle' => 'nullable|string|max:255',
+            'subtitle_id' => 'nullable|string|max:255',
             'banner_text' => 'nullable|string',
+            'banner_text_id' => 'nullable|string',
             'img' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'img_1' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'img_2' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
@@ -32,11 +35,17 @@ class LandingPageController extends Controller
             'img_4' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'img_5' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'title_text1' => 'nullable|string|max:255',
+            'title_text1_id' => 'nullable|string|max:255',
             'description1' => 'nullable|string',
+            'description1_id' => 'nullable|string',
             'title_text2' => 'nullable|string|max:255',
+            'title_text2_id' => 'nullable|string|max:255',
             'description2' => 'nullable|string',
+            'description2_id' => 'nullable|string',
             'title_text3' => 'nullable|string|max:255',
+            'title_text3_id' => 'nullable|string',
             'description3' => 'nullable|string',
+            'description3_id' => 'nullable|string',
         ]);
 
         $landing = LandingPage::first();

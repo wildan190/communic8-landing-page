@@ -11,18 +11,17 @@
                     <div class="max-w-2xl text-left space-y-6">
                         <h1
                             class="text-4xl md:text-5xl font-light tracking-widest md:tracking-[0.5em] text-black font-poppins leading-snug">
-                            OVER-THE-TOP<br>ADVERTISING
+                            {{ app()->getLocale() == 'id' ? $landing->title_id ?? 'OVER-THE-TOP ADVERTISING' : $landing->title ?? 'OVER-THE-TOP ADVERTISING' }}
                         </h1>
 
                         <p class="text-gray-800 text-lg md:text-xl font-bold font-poppins leading-relaxed">
-                            Reach Your Audience Everywhere They Stream
+                            {{ app()->getLocale() == 'id' ? $landing->subtitle_id ?? 'Reach Your Audience Everywhere They Stream' : $landing->subtitle ?? 'Reach Your Audience Everywhere They Stream' }}
                         </p>
 
                         <p class="text-gray-800 text-base md:text-lg font-rubik leading-relaxed">
-                            From the largest screen in the living room to the smartphone in their hands, our OTT Advertising
-                            solutions place your brand at the center of modern media consumption.
-                            *This service is currently only available in Indonesia
+                            {{ app()->getLocale() == 'id' ? $landing->banner_text_id ?? 'From the largest screen in the living room to the smartphone in their hands, our OTT Advertising solutions place your brand at the center of modern media consumption.' : $landing->banner_text ?? 'From the largest screen in the living room to the smartphone in their hands, our OTT Advertising solutions place your brand at the center of modern media consumption.' }}
                         </p>
+                        <br />
                         <i>*This service is currently only available in Indonesia</i>
                     </div>
 
@@ -38,16 +37,18 @@
 
             {{-- Text Section --}}
             <div class="space-y-6 font-rubik text-[#666666]">
-                <h3 class="text-lg md:text-xl font-semibold">The Media Landscape Has Changed. Has Your Strategy?</h3>
+                <h3 class="text-lg md:text-xl font-semibold">
+                    {{ __('layanan/ott-advertising.section1.title') }}
+                </h3>
+
                 <p class="text-base md:text-lg leading-relaxed">
-                    Viewers now curate their own entertainment, consuming over 3.5 billion hours of OTT content every month
-                    across Southeast Asia.
+                    {{ __('layanan/ott-advertising.section1.p1') }}
                 </p>
+
                 <p class="text-base md:text-lg leading-relaxed">
-                    A majority now prefer streaming services to watch their favorite shows. This isn’t just a trend, it’s a
-                    fundamental shift in media behavior. To win in this new era, your brand must be present and relevant in
-                    the streaming world.
+                    {{ __('layanan/ott-advertising.section1.p2') }}
                 </p>
+
             </div>
 
             {{-- Image Section --}}
@@ -80,20 +81,18 @@
 
             {{-- Text Section --}}
             <div class="space-y-6 font-rubik text-[#666666] order-1 lg:order-2">
-                <h3 class="text-lg md:text-xl font-semibold">Our OTT Advertising Solutions</h3>
+                <h3 class="text-lg md:text-xl font-semibold">
+                    {{ __('layanan/ott-advertising.section2.title') }}
+                </h3>
+
                 <p class="text-base md:text-lg leading-relaxed">
-                    The media landscape has fundamentally shifted. Audiences have moved from traditional broadcast
-                    television
-                    to on-demand streaming services, creating a powerful new arena for brands to make a meaningful impact.
-                    Over-the-Top (OTT) advertising allows you to connect with these highly engaged viewers directly on their
-                    favorite platforms, placing your brand message in a premium, non-skippable environment.
+                    {{ __('layanan/ott-advertising.section2.p1') }}
                 </p>
+
                 <p class="text-base md:text-lg leading-relaxed">
-                    Unlike traditional advertising, OTT provides unparalleled precision. We can reach specific households
-                    based on their interests, viewing habits, and demographics, ensuring your message is not only seen but
-                    also relevant. From the biggest screen in the living room to the mobile devices they carry everywhere,
-                    our solutions are designed to capture attention where it matters most.
+                    {{ __('layanan/ott-advertising.section2.p2') }}
                 </p>
+
             </div>
 
         </div>
@@ -165,9 +164,11 @@
                     @else
                         <div class="w-full h-56 bg-red-300 rounded-xl"></div>
                     @endif
-                    <h3 class="text-xl font-semibold mb-4">{{ $landing->title_text1 ?? 'High Impact Formats' }}</h3>
+                    <h3 class="text-xl font-semibold mb-4">
+                        {{ app()->getLocale() == 'id' ? $landing->title_text1_id ?? 'High Impact Formats' : $landing->title_text1 ?? 'High Impact Formats' }}
+                    </h3>
                     <p class="leading-relaxed">
-                        {{ $landing->description1 ?? 'Capture attention with unskippable, full screen video ads and interactive formats that invite viewer engagement.' }}
+                        {{ app()->getLocale() == 'id' ? $landing->description1_id ?? 'Capture attention with unskippable, full screen video ads and interactive formats that invite viewer engagement.' : $landing->description1 ?? 'Capture attention with unskippable, full screen video ads and interactive formats that invite viewer engagement.' }}
                     </p>
                 </div>
 
@@ -179,9 +180,10 @@
                         <div class="w-full h-56 bg-red-300 rounded-xl"></div>
                     @endif
                     <h3 class="text-xl font-semibold mb-4">
-                        {{ $landing->title_text2 ?? 'Multi Device Retargeting' }}</h3>
+                        {{ app()->getLocale() == 'id' ? $landing->title_text2_id ?? 'Multi Device Retargeting' : $landing->title_text2 ?? 'Multi Device Retargeting' }}
+                    </h3>
                     <p class="leading-relaxed">
-                        {{ $landing->description2 ?? 'Engage a viewer on their Smart TV and follow up with a personalized ad on their mobile device to drive action.' }}
+                        {{ app()->getLocale() == 'id' ? $landing->description2_id ?? 'Engage a viewer on their Smart TV and follow up with a personalized ad on their mobile device to drive action.' : $landing->description2 ?? 'Engage a viewer on their Smart TV and follow up with a personalized ad on their mobile device to drive action.' }}
                     </p>
                 </div>
 
@@ -193,9 +195,10 @@
                         <div class="w-full h-56 bg-red-300 rounded-xl"></div>
                     @endif
                     <h3 class="text-xl font-semibold mb-4">
-                        {{ $landing->title_text3 ?? 'Advanced Audience Targeting' }}</h3>
+                        {{ app()->getLocale() == 'id' ? $landing->title_text3_id ?? 'Advanced Audience Targeting' : $landing->title_text3 ?? 'Advanced Audience Targeting' }}
+                    </h3>
                     <p class="leading-relaxed">
-                        {{ $landing->description3 ?? 'Move beyond basic demographics with over 78 distinct data segments to find your perfect audience.' }}
+                        {{ app()->getLocale() == 'id' ? $landing->description3_id ?? 'Move beyond basic demographics with over 78 distinct data segments to find your perfect audience.' : $landing->description3 ?? 'Move beyond basic demographics with over 78 distinct data segments to find your perfect audience.' }}
                     </p>
                 </div>
             </div>
@@ -223,14 +226,14 @@
 
             {{-- Title --}}
             <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
-                Our OTT Solutions
+                {{ __('layanan/ott-advertising.grid.title') }}
             </h2>
 
             {{-- Subhead --}}
             <p class="mt-4 text-sm md:text-base text-[#666666] max-w-3xl mx-auto font-light">
-                From Connected TVs to mobile devices, these are the services we use to engage your audience
-                across the entire streaming ecosystem.
+                {{ __('layanan/ott-advertising.grid.description') }}
             </p>
+
 
             <div class="relative mt-10">
                 <div id="ott-slider"
@@ -255,14 +258,14 @@
                                     </p>
                                 @else
                                     <p class="text-xs md:text-sm italic opacity-80">
-                                        No additional details available.
+                                        {{ __('layanan/ott-advertising.grid.no_details') }}
                                     </p>
                                 @endif
                             </div>
                         </div>
                     @empty
                         <p class="text-center text-[#666666] w-full">
-                            No OTT Advertising subservices found.
+                            {{ __('layanan/ott-advertising.grid.empty') }}
                         </p>
                     @endforelse
                 </div>
