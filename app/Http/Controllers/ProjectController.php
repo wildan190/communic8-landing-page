@@ -34,13 +34,6 @@ class ProjectController extends Controller
         // Boolean highlight
         $validated['is_highlighted'] = $request->has('is_highlighted');
 
-        // Cegah lebih dari 2 project highlight
-        if ($validated['is_highlighted'] && Project::where('is_highlighted', true)->count() >= 2) {
-            return back()
-                ->withErrors(['is_highlighted' => 'Maximum 2 projects can be highlighted at a time.'])
-                ->withInput();
-        }
-
         // 📤 Upload gambar ke public/storage/projects
         if ($request->hasFile('project_img')) {
             $file = $request->file('project_img');
@@ -77,13 +70,6 @@ class ProjectController extends Controller
         ]);
 
         $validated['is_highlighted'] = $request->has('is_highlighted');
-
-        // Cegah lebih dari 2 highlight, kecuali project ini sendiri
-        if ($validated['is_highlighted'] && Project::where('is_highlighted', true)->where('id', '!=', $project->id)->count() >= 2) {
-            return back()
-                ->withErrors(['is_highlighted' => 'Maximum 2 projects can be highlighted at a time.'])
-                ->withInput();
-        }
 
         // 📤 Upload baru jika ada file baru
         if ($request->hasFile('project_img')) {
