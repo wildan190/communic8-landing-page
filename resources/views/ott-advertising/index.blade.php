@@ -163,6 +163,96 @@
                             rows="3">{{ old('description3_id', $landing->description3_id ?? '') }}</textarea>
                     </div>
 
+                    {{-- Section 1 --}}
+                    <div class="space-y-4 border p-4 rounded-md">
+                        <h3 class="text-lg font-semibold">Section 1</h3>
+                        @php
+                            $section1_en = json_decode($landing->section1_en ?? '{}');
+                            $section1_id = json_decode($landing->section1_id ?? '{}');
+                        @endphp
+                        <div>
+                            <label class="block font-semibold mb-1">Title (English)</label>
+                            <input type="text" name="section1_en_title"
+                                value="{{ old('section1_en_title', $section1_en->title ?? '') }}"
+                                class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500">
+                        </div>
+                        <div>
+                            <label class="block font-semibold mb-1">Paragraph 1 (English)</label>
+                            <textarea name="section1_en_p1"
+                                class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500"
+                                rows="3">{{ old('section1_en_p1', $section1_en->p1 ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block font-semibold mb-1">Paragraph 2 (English)</label>
+                            <textarea name="section1_en_p2"
+                                class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500"
+                                rows="3">{{ old('section1_en_p2', $section1_en->p2 ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block font-semibold mb-1">Title (Indonesian)</label>
+                            <input type="text" name="section1_id_title"
+                                value="{{ old('section1_id_title', $section1_id->title ?? '') }}"
+                                class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500">
+                        </div>
+                        <div>
+                            <label class="block font-semibold mb-1">Paragraph 1 (Indonesian)</label>
+                            <textarea name="section1_id_p1"
+                                class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500"
+                                rows="3">{{ old('section1_id_p1', $section1_id->p1 ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block font-semibold mb-1">Paragraph 2 (Indonesian)</label>
+                            <textarea name="section1_id_p2"
+                                class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500"
+                                rows="3">{{ old('section1_id_p2', $section1_id->p2 ?? '') }}</textarea>
+                        </div>
+                    </div>
+
+                    {{-- Section 2 --}}
+                    <div class="space-y-4 border p-4 rounded-md">
+                        <h3 class="text-lg font-semibold">Section 2</h3>
+                        @php
+                            $section2_en = json_decode($landing->section2_en ?? '{}');
+                            $section2_id = json_decode($landing->section2_id ?? '{}');
+                        @endphp
+                        <div>
+                            <label class="block font-semibold mb-1">Title (English)</label>
+                            <input type="text" name="section2_en_title"
+                                value="{{ old('section2_en_title', $section2_en->title ?? '') }}"
+                                class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500">
+                        </div>
+                        <div>
+                            <label class="block font-semibold mb-1">Paragraph 1 (English)</label>
+                            <textarea name="section2_en_p1"
+                                class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500"
+                                rows="3">{{ old('section2_en_p1', $section2_en->p1 ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block font-semibold mb-1">Paragraph 2 (English)</label>
+                            <textarea name="section2_en_p2"
+                                class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500"
+                                rows="3">{{ old('section2_en_p2', $section2_en->p2 ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block font-semibold mb-1">Title (Indonesian)</label>
+                            <input type="text" name="section2_id_title"
+                                value="{{ old('section2_id_title', $section2_id->title ?? '') }}"
+                                class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500">
+                        </div>
+                        <div>
+                            <label class="block font-semibold mb-1">Paragraph 1 (Indonesian)</label>
+                            <textarea name="section2_id_p1"
+                                class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500"
+                                rows="3">{{ old('section2_id_p1', $section2_id->p1 ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block font-semibold mb-1">Paragraph 2 (Indonesian)</label>
+                            <textarea name="section2_id_p2"
+                                class="w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500"
+                                rows="3">{{ old('section2_id_p2', $section2_id->p2 ?? '') }}</textarea>
+                        </div>
+                    </div>
+
                     {{-- Submit --}}
                     <div class="pt-4">
                         <button type="submit"

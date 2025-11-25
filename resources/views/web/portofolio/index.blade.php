@@ -25,13 +25,13 @@
             </div>
 
             @php
-                $highlightedProjects = $projects->where('is_highlighted', true)->values();
-                $nonHighlightedProjects = $projects->where('is_highlighted', false)->values();
+                $firstTwoProjects = $projects->take(2);
+                $otherProjects = $projects->slice(2);
             @endphp
 
-            {{-- Highlighted Projects --}}
+            {{-- Top 2 Large Projects --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-                @foreach ($highlightedProjects as $project)
+                @foreach ($firstTwoProjects as $project)
                     <a href="{{ route('portofolio.show', ['name' => $project->name]) }}">
                         <div class="relative group overflow-hidden rounded-2xl aspect-square">
                             <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
@@ -51,9 +51,9 @@
                 @endforeach
             </div>
 
-            {{-- Normal Projects --}}
+            {{-- Normal Grid Projects --}}
             <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                @foreach ($nonHighlightedProjects->take(3) as $project)
+                @foreach ($otherProjects->take(3) as $project)
                     <a href="{{ route('portofolio.show', ['name' => $project->name]) }}">
                         <div class="relative group overflow-hidden rounded-2xl aspect-square">
                             <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
@@ -75,7 +75,7 @@
 
             {{-- Hidden Extra Projects --}}
             <div id="more-projects" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 hidden">
-                @foreach ($nonHighlightedProjects->slice(3) as $project)
+                @foreach ($otherProjects->slice(3) as $project)
                     <a href="{{ route('portofolio.show', ['name' => $project->name]) }}">
                         <div class="relative group overflow-hidden rounded-2xl aspect-square">
                             <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
@@ -99,12 +99,14 @@
             <div class="text-center mt-10">
                 <button id="exploreMoreBtn"
                     class="inline-block px-8 py-3 text-sm md:text-base font-semibold text-white bg-black rounded-full
-                   transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-black hover:scale-105">
-                    {{-- {{ app()->getLocale() == 'en' ? 'Explore More' : __('portofolio.button_explore') }} --}}Explore More
+               transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-black hover:scale-105">
+                    Explore More
                 </button>
             </div>
         </div>
     </section>
+
+
 
     {{-- JS: Toggle More Projects --}}
     <script>
@@ -211,8 +213,8 @@
                             <p class="text-xs text-gray-500">{{ $blog->category->name }}</p>
                             <a href="{{ route('insight.show', $blog->slug) }}" class="block flex-grow">
                                 <h3 class="text-lg font-medium text-[#666666] hover:text-[#666666] transition">
-                                <strong>{{ app()->getLocale() == 'id' ? $blog->title_id : $blog->title }}</strong>
-                            </h3>
+                                    <strong>{{ app()->getLocale() == 'id' ? $blog->title_id : $blog->title }}</strong>
+                                </h3>
                             </a>
                             @if ($blog->headline_img)
                                 <img src="{{ asset('storage/' . $blog->headline_img) }}"

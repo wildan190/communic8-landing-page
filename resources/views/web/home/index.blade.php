@@ -510,7 +510,7 @@
                    tracking-[0.3em] sm:tracking-[0.4em] md:tracking-[0.2em] 
                    leading-tight text-center mb-4 whitespace-nowrap">
                 {!! app()->getLocale() == 'en'
-                    ? '<span class="block md:inline">B R A N D &nbsp; W E &nbsp;</span><span class="block md:hidden"></span> E M P O W E R'
+                    ? '<span class="block md:inline">B R A N D S &nbsp; W E &nbsp;</span><span class="block md:hidden"></span> E M P O W E R'
                     : __('home/divider.title') !!}
             </h2>
 

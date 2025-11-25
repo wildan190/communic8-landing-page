@@ -46,6 +46,18 @@ class LandingPageController extends Controller
             'title_text3_id' => 'nullable|string',
             'description3' => 'nullable|string',
             'description3_id' => 'nullable|string',
+            'section1_en_title' => 'nullable|string',
+            'section1_en_p1' => 'nullable|string',
+            'section1_en_p2' => 'nullable|string',
+            'section1_id_title' => 'nullable|string',
+            'section1_id_p1' => 'nullable|string',
+            'section1_id_p2' => 'nullable|string',
+            'section2_en_title' => 'nullable|string',
+            'section2_en_p1' => 'nullable|string',
+            'section2_en_p2' => 'nullable|string',
+            'section2_id_title' => 'nullable|string',
+            'section2_id_p1' => 'nullable|string',
+            'section2_id_p2' => 'nullable|string',
         ]);
 
         $landing = LandingPage::first();
@@ -78,6 +90,29 @@ class LandingPageController extends Controller
                 $validated['img_'.$i] = 'uploads/landing/'.$filename;
             }
         }
+
+        // Process sections
+        $validated['section1_en'] = json_encode([
+            'title' => $request->section1_en_title,
+            'p1' => $request->section1_en_p1,
+            'p2' => $request->section1_en_p2,
+        ]);
+        $validated['section1_id'] = json_encode([
+            'title' => $request->section1_id_title,
+            'p1' => $request->section1_id_p1,
+            'p2' => $request->section1_id_p2,
+        ]);
+        $validated['section2_en'] = json_encode([
+            'title' => $request->section2_en_title,
+            'p1' => $request->section2_en_p1,
+            'p2' => $request->section2_en_p2,
+        ]);
+        $validated['section2_id'] = json_encode([
+            'title' => $request->section2_id_title,
+            'p1' => $request->section2_id_p1,
+            'p2' => $request->section2_id_p2,
+        ]);
+
 
         // Update atau create
         if ($landing) {

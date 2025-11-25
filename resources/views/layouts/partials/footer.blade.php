@@ -8,7 +8,7 @@
                     <img src="{{ asset('assets/img/logo-white.png') }}" alt="Logo" class="h-10">
                 </a>
                 <span class="text-white text-center md:text-left text-sm">
-                    © 2025 Communic8 Asia – All Right Reserved.
+                    © 2025 Communic8 – All Right Reserved.
                 </span>
             </div>
 
@@ -88,8 +88,11 @@
                 <div>
                     <h4 class="font-semibold mb-2">{{ $office->name }}</h4>
                     <p class="text-sm text-gray-600">
-                        {!! nl2br(e($office->address)) !!} <br>
-                        <span class="block mt-1">Phone number: {{ $office->phone }}</span>
+                        {!! nl2br(e($office->address)) !!}
+                        <span class="flex items-center mt-1">
+                            <i class="fas fa-phone-alt mr-2"></i>
+                            <span>{{ $office->phone }}</span>
+                        </span>
                     </p>
                 </div>
             @endforeach
