@@ -12,13 +12,17 @@ class PortfolioDetail extends Model
     protected $fillable = [
         'bg_hero',
         'hero_title',
+        'hero_title_id',
         'client_id',
         'description',
+        'description_id',
         'delivery',
         'img',
         'project_analysis',
+        'project_analysis_id',
         'img_project_analysis',
         'challenges_and_insight',
+        'challenges_and_insight_id',
         'img_challenges_and_insight',
         'project_id',
     ];

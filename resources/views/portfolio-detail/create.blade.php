@@ -16,9 +16,14 @@
                         PORTFOLIO DETAIL FORM
                     ====================== --}}
                     <div>
-                        <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Hero Title</label>
+                        <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Hero Title (EN)</label>
                         <input type="text" name="hero_title" class="w-full border-gray-300 rounded-md shadow-sm"
                             required>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Hero Title (ID)</label>
+                        <input type="text" name="hero_title_id" class="w-full border-gray-300 rounded-md shadow-sm">
                     </div>
 
                     {{-- CLIENT SELECT MODAL --}}
@@ -52,8 +57,13 @@
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Description</label>
+                        <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Description (EN)</label>
                         <textarea name="description" class="w-full border-gray-300 rounded-md shadow-sm"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Description (ID)</label>
+                        <textarea name="description_id" class="w-full border-gray-300 rounded-md shadow-sm"></textarea>
                     </div>
 
                     <div>
@@ -63,8 +73,14 @@
 
                     <div>
                         <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Project
-                            Analysis</label>
+                            Analysis (EN)</label>
                         <textarea name="project_analysis" class="w-full border-gray-300 rounded-md shadow-sm"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Project
+                            Analysis (ID)</label>
+                        <textarea name="project_analysis_id" class="w-full border-gray-300 rounded-md shadow-sm"></textarea>
                     </div>
 
                     <div>
@@ -76,8 +92,14 @@
 
                     <div>
                         <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Challenges &
-                            Insight</label>
+                            Insight (EN)</label>
                         <textarea name="challenges_and_insight" class="w-full border-gray-300 rounded-md shadow-sm"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 dark:text-gray-300 font-semibold mb-1">Challenges &
+                            Insight (ID)</label>
+                        <textarea name="challenges_and_insight_id" class="w-full border-gray-300 rounded-md shadow-sm"></textarea>
                     </div>
 
                     <div>

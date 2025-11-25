@@ -15,7 +15,11 @@
             <div class="absolute inset-0 bg-black/30"></div>
 
             <h1 class="relative z-10 text-white text-5xl md:text-6xl font-light tracking-[0.4em] text-center uppercase">
-                {{ $portfolioDetail->hero_title ?? '' }}
+                @if (app()->getLocale() == 'id' && $portfolioDetail->hero_title_id)
+                    {{ $portfolioDetail->hero_title_id ?? '' }}
+                @else
+                    {{ $portfolioDetail->hero_title ?? '' }}
+                @endif
             </h1>
         </section>
 
@@ -32,10 +36,16 @@
                 @endif
 
                 {{-- DESCRIPTION --}}
-                @if ($portfolioDetail->description)
+                @if (app()->getLocale() == 'id' && $portfolioDetail->description_id)
                     <div class="text-gray-700 leading-relaxed">
-                        {!! nl2br(e($portfolioDetail->description)) !!}
+                        {!! nl2br(e($portfolioDetail->description_id)) !!}
                     </div>
+                @else
+                    @if ($portfolioDetail->description)
+                        <div class="text-gray-700 leading-relaxed">
+                            {!! nl2br(e($portfolioDetail->description)) !!}
+                        </div>
+                    @endif
                 @endif
             </div>
 
@@ -94,11 +104,18 @@
 
                 {{-- Text --}}
                 <div>
-                    @if ($portfolioDetail->project_analysis)
-                        <h2 class="tracking-[0.4em] uppercase text-gray-900 text-xl mb-4">Project Analysis</h2>
+                    @if (app()->getLocale() == 'id' && $portfolioDetail->project_analysis_id)
+                        <h2 class="tracking-[0.4em] uppercase text-gray-900 text-xl mb-4">Analisis Proyek</h2>
                         <p class="text-gray-700 leading-relaxed">
-                            {!! nl2br(e($portfolioDetail->project_analysis)) !!}
+                            {!! nl2br(e($portfolioDetail->project_analysis_id)) !!}
                         </p>
+                    @else
+                        @if ($portfolioDetail->project_analysis)
+                            <h2 class="tracking-[0.4em] uppercase text-gray-900 text-xl mb-4">Project Analysis</h2>
+                            <p class="text-gray-700 leading-relaxed">
+                                {!! nl2br(e($portfolioDetail->project_analysis)) !!}
+                            </p>
+                        @endif
                     @endif
                 </div>
 
@@ -135,11 +152,18 @@
 
                 {{-- Text --}}
                 <div class="order-first md:order-last">
-                    @if ($portfolioDetail->challenges_and_insight)
-                        <h2 class="tracking-[0.4em] uppercase text-gray-900 text-xl mb-4">Challenges and Insight</h2>
+                    @if (app()->getLocale() == 'id' && $portfolioDetail->challenges_and_insight_id)
+                        <h2 class="tracking-[0.4em] uppercase text-gray-900 text-xl mb-4">Tantangan dan Wawasan</h2>
                         <p class="text-gray-700 leading-relaxed">
-                            {!! nl2br(e($portfolioDetail->challenges_and_insight)) !!}
+                            {!! nl2br(e($portfolioDetail->challenges_and_insight_id)) !!}
                         </p>
+                    @else
+                        @if ($portfolioDetail->challenges_and_insight)
+                            <h2 class="tracking-[0.4em] uppercase text-gray-900 text-xl mb-4">Challenges and Insight</h2>
+                            <p class="text-gray-700 leading-relaxed">
+                                {!! nl2br(e($portfolioDetail->challenges_and_insight)) !!}
+                            </p>
+                        @endif
                     @endif
                 </div>
 

@@ -26,12 +26,16 @@ class PortfolioDetailController extends Controller
     {
         $validated = $request->validate([
             'hero_title' => 'required|string|max:255',
+            'hero_title_id' => 'nullable|string|max:255',
             'client_id' => 'nullable|integer',
             'project_id' => 'nullable|exists:projects,id',
             'description' => 'nullable|string',
+            'description_id' => 'nullable|string',
             'delivery' => 'nullable|string',
             'project_analysis' => 'nullable|string',
+            'project_analysis_id' => 'nullable|string',
             'challenges_and_insight' => 'nullable|string',
+            'challenges_and_insight_id' => 'nullable|string',
             'bg_hero' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'img' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'img_project_analysis' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
@@ -111,12 +115,16 @@ class PortfolioDetailController extends Controller
         // ============================
         $validated = $request->validate([
             'hero_title' => 'required|string|max:255',
+            'hero_title_id' => 'nullable|string|max:255',
             'client_id' => 'nullable|integer',
             'project_id' => 'nullable|exists:projects,id',
             'description' => 'nullable|string',
+            'description_id' => 'nullable|string',
             'delivery' => 'nullable|string',
             'project_analysis' => 'nullable|string',
+            'project_analysis_id' => 'nullable|string',
             'challenges_and_insight' => 'nullable|string',
+            'challenges_and_insight_id' => 'nullable|string',
             'bg_hero' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'img' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'img_project_analysis' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
