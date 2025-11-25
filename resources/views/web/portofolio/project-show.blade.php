@@ -98,7 +98,7 @@
     @endif
 
     @if ($portfolioDetail && ($portfolioDetail->project_analysis || $portfolioDetail->img_project_analysis))
-        <section class="w-full py-24 px-6 md:px-0 max-w-6xl mx-auto">
+        <section class="w-full py-24 px-6 md:px-0 max-w-6xl mx-auto" data-aos="fade-up">
 
             <div class="grid md:grid-cols-2 gap-10 items-center mb-24">
 
@@ -133,9 +133,8 @@
         </section>
     @endif
 
-
     @if ($portfolioDetail && ($portfolioDetail->challenges_and_insight || $portfolioDetail->img_challenges_and_insight))
-        <section class="w-full py-24 px-6 md:px-0 max-w-6xl mx-auto">
+        <section class="w-full py-24 px-6 md:px-0 max-w-6xl mx-auto" data-aos="fade-up">
 
             <div class="grid md:grid-cols-2 gap-10 items-center">
 
@@ -172,9 +171,8 @@
         </section>
     @endif
 
-
     @if ($projectResults && $projectResults->count() > 0)
-        <section class="w-full py-24 px-6 md:px-0 max-w-7xl mx-auto">
+        <section class="w-full py-24 px-6 md:px-0 max-w-7xl mx-auto" data-aos="fade-up">
 
             <h2 class="tracking-[0.4em] uppercase text-center text-gray-900 text-xl mb-6">
                 {{ __('portofolio/project-show.title') }}
@@ -214,7 +212,7 @@
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
-        style="background-image: url('/assets/img/cta-bg.png');">
+        style="background-image: url('/assets/img/cta-bg.png'); data-aos="fade-up">
         <div class="absolute inset-0 bg-black/40"></div> {{-- Overlay biar teks jelas --}}
 
         <div
@@ -245,7 +243,8 @@
     </section>
 
     <!-- Ideas Action Slider Section -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-white" data-aos="fade-up">
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
             <!-- Section Title -->

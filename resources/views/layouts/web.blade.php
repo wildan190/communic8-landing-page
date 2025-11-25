@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Jasa Digital Marketing & Brand Development - Communic8  </title>
+    <title>Jasa Digital Marketing & Brand Development - Communic8 </title>
     <meta name="description"
         content="Communic8   adalah agensi kreatif di Jakarta yang fokus pada digital marketing, brand development, dan digital campaign. Kami bantu bisnis Anda tumbuh di era digital.">
     <meta name="keywords" content="{{ $webInformation->meta_keywords ?? '' }}">
@@ -28,21 +28,35 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5K355TZ5DN"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-5K355TZ5DN');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-5K355TZ5DN');
     </script>
 
-    <meta name="google-site-verification"  content="gQws9V4QvN7fayoSwPBoBvmn2k-IRYV_sKqld94nD00" />
+    <meta name="google-site-verification" content="gQws9V4QvN7fayoSwPBoBvmn2k-IRYV_sKqld94nD00" />
 
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5D23JXFF');</script>
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5D23JXFF');
+    </script>
     <!-- End Google Tag Manager -->
 
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
@@ -73,13 +87,17 @@
             document.getElementById('mobileMenu').classList.toggle('translate-x-full');
         }
     </script>
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 </head>
 
 <body class="antialiased bg-gray-50">
 
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5D23JXFF"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5D23JXFF" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     @if ($webInformation && $webInformation->schema_markup)
@@ -141,6 +159,16 @@
                 // Hide the banner
                 document.getElementById('cookie-consent-banner').style.display = 'none';
             });
+        });
+    </script>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 900, // durasi animasi
+            easing: 'ease-out',
+            once: true, // animasi hanya sekali
         });
     </script>
 

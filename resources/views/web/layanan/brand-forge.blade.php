@@ -29,7 +29,7 @@
     </section>
 
     {{-- Explanation + Gallery Section --}}
-    <section class="py-24 bg-white">
+    <section class="py-24 bg-white" data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
             <div class="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-16 lg:gap-24 items-center">
 
@@ -80,16 +80,15 @@
             </div>
         </section>
     @else
-        <section class="w-full bg-white py-16">
+        <section class="w-full bg-white py-16" data-aos="fade-up">
             <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
                 <div class="w-full max-w-6xl mx-auto h-[400px] bg-gray-200 rounded-2xl"></div>
             </div>
         </section>
     @endif
 
-
     {{-- Strategy Section --}}
-    <section class="w-full py-24 bg-white">
+    <section class="w-full py-24 bg-white" data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20 space-y-16 md:space-y-24 text-[#666666]">
 
             {{-- Row 1 --}}
@@ -164,7 +163,7 @@
     </section>
 
     {{-- Services Grid Section --}}
-    <section class="w-full py-8 bg-white relative z-10 text-[#666666]">
+    <section class="w-full py-8 bg-white relative z-10 text-[#666666]" data-aos="fade-up">
         <div class="max-w-6xl mx-auto px-4 text-center">
 
             <h2 class="text-2xl md:text-3xl font-light font-poppins tracking-[0.5em] uppercase text-[#666666]">
@@ -273,7 +272,7 @@
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
-        style="background-image: url('/assets/img/cta-bg.png');">
+        style="background-image: url('/assets/img/cta-bg.png');" data-aos="fade-up">
         <div class="absolute inset-0 bg-black/40"></div> {{-- Overlay biar teks jelas --}}
 
         <div
@@ -304,7 +303,7 @@
     </section>
 
     <!-- Blog Slider Section -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-white" data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
             <!-- Section Title -->

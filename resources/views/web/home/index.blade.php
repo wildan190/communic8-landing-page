@@ -1,7 +1,7 @@
 @extends('layouts.web')
 
 @section('content')
-    <section class="relative w-full min-h-[85vh] bg-cover bg-center"
+    <section class="relative w-full min-h-[85vh] bg-cover bg-center parallax-bg"
         style="background-image: url('{{ asset('assets/img/sectionhero.png') }}')">
         <div
             class="container max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center justify-between min-h-[85vh] py-20 md:py-24 space-y-8">
@@ -157,9 +157,39 @@
         });
     </script>
 
+    <style>
+        .parallax-bg {
+            background-attachment: scroll;
+            /* default untuk mobile */
+            background-size: cover;
+            background-position: center;
+            will-change: background-position;
+        }
+
+        @media (min-width: 768px) {
+            .parallax-bg {
+                background-attachment: fixed;
+                /* aktifkan efek parallax penuh pada desktop */
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener("scroll", () => {
+            const section = document.querySelector(".parallax-bg");
+            const scrolled = window.pageYOffset;
+
+            // Kecepatan parallax
+            const speed = 0.35;
+
+            // Perhitungan posisi Y background
+            section.style.backgroundPositionY = -(scrolled * speed) + "px";
+        });
+    </script>
+
     {{-- Section Quotes --}}
     <section class="relative w-full bg-cover bg-center"
-        style="background-image: url('{{ asset('assets/img/quotes.png') }}')">
+        style="background-image: url('{{ asset('assets/img/quotes.png') }}')" data-aos="fade-up">
         <div
             class="w-full h-full bg-black bg-opacity-40 flex items-center justify-center text-center py-24 sm:py-32 md:py-52">
             <div class="text-white px-4 sm:px-6">
@@ -178,7 +208,8 @@
     <div class="relative">
 
         {{-- Section At a Glance / Behind the Brand --}}
-        <section class="bg-white relative bg-white-100 pt-8 sm:pt-12 md:pt-16 pb-12 sm:pb-14 md:pb-16 z-10 overflow-x-clip">
+        <section class="bg-white relative bg-white-100 pt-8 sm:pt-12 md:pt-16 pb-12 sm:pb-14 md:pb-16 z-10 overflow-x-clip"
+            data-aos="fade-up">
             <div class="container max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative">
 
                 {{-- Mobile Layout --}}
@@ -204,19 +235,22 @@
                     </div>
 
                     {{-- Images Stack for Mobile --}}
-                    <div class="flex justify-center gap-3 sm:gap-6 mt-8">
-                        {{-- Gambar urutan ke-1 --}}
-                        <div class="w-28 sm:w-40 h-32 sm:h-44 rounded-[24px] overflow-hidden shadow-lg mt-6 sm:mt-8 z-20">
+                    <div class="flex sm:hidden justify-center gap-4 mt-8">
+
+                        {{-- Gambar Kiri --}}
+                        <div class="w-32 h-32 rounded-2xl overflow-hidden shadow-lg">
                             <img src="{{ asset('assets/img/imgstack2.png') }}" alt="Stack 2"
                                 class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
                         </div>
 
-                        {{-- Gambar urutan ke-2 --}}
-                        <div class="w-28 sm:w-40 h-32 sm:h-44 rounded-[24px] overflow-hidden shadow-lg z-10">
+                        {{-- Gambar Kanan --}}
+                        <div class="w-32 h-32 rounded-2xl overflow-hidden shadow-lg">
                             <img src="{{ asset('assets/img/imgstack1.png') }}" alt="Stack 1"
                                 class="w-full h-full object-cover grayscale hover:grayscale-0 hover:saturate-150 transition duration-500">
                         </div>
+
                     </div>
+
                 </div>
 
                 {{-- Desktop Layout --}}
@@ -266,7 +300,7 @@
     </div>
 
     {{-- Section Values / Achievements --}}
-    <section class="bg-white py-16 font-rubik">
+    <section class="bg-white py-16 font-rubik" data-aos="fade-up">
         <div class="container mx-auto px-4 sm:px-6 md:px-12">
 
             <br />
@@ -388,7 +422,7 @@
     </script>
 
     {{-- Section WHAT WE CAN DO FOR YOU --}}
-    <section class="relative bg-white pt-8 sm:pt-10 md:pt-14 pb-16 sm:pb-20 md:pb-244">
+    <section class="relative bg-white pt-8 sm:pt-10 md:pt-14 pb-16 sm:pb-20 md:pb-244" data-aos="fade-up">
         <div class="container max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
 
             {{-- Title Section --}}
@@ -497,7 +531,7 @@
     {{-- Section Divider --}}
     <section
         class="relative bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center text-center py-24 md:py-32 px-6"
-        style="background-image: url('{{ asset('assets/img/cta-bg.png') }}');">
+        style="background-image: url('{{ asset('assets/img/cta-bg.png') }}');" data-aos="fade-up">
 
         {{-- Overlay agar teks lebih kontras --}}
         <div class="absolute inset-0 bg-black/30"></div>
@@ -526,7 +560,7 @@
     </section>
 
     {{-- Section TRUSTED BY --}}
-    <section class="relative bg-white py-12 md:py-20">
+    <section class="relative bg-white py-12 md:py-20" data-aos="fade-up">
         <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             {{-- THREE SLIDER BASED ON CLIENT CATEGORY --}}
@@ -710,7 +744,43 @@
         document.getElementById('my-next').addEventListener('click', () => swiper.slideNext());
     </script>
 
-    <section class="w-full bg-white relative min-h-[520px] flex items-center justify-center overflow-x-clip">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            function initAutoScrollMobile() {
+                if (window.innerWidth >= 768) return; // ❌ Jangan jalan di desktop
+
+                for (let i = 1; i <= 3; i++) {
+                    const row = document.getElementById(`logos-row-${i}`);
+                    if (!row) continue;
+
+                    let scrollAmount = 0;
+
+                    setInterval(() => {
+                        // Jika sudah mencapai akhir, scroll balik dari awal
+                        if (scrollAmount >= row.scrollWidth - row.clientWidth) {
+                            scrollAmount = 0;
+                            row.scrollTo({
+                                left: 0,
+                                behavior: "smooth"
+                            });
+                        } else {
+                            scrollAmount += 2; // speed scroll
+                            row.scrollBy({
+                                left: 2,
+                                behavior: "smooth"
+                            });
+                        }
+                    }, 30); // interval speed
+                }
+            }
+
+            initAutoScrollMobile();
+        });
+    </script>
+
+    <section class="w-full bg-white relative min-h-[520px] flex items-center justify-center overflow-x-clip"
+        data-aos="fade-up">
         <!-- Tombol kiri (di luar container) -->
         <button id="prev"
             class="absolute left-4 md:left-8 lg:left-[2cm] top-1/2 -translate-y-1/2 z-30 w-14 h-14 hidden md:flex items-center justify-center">
@@ -892,7 +962,7 @@
         </div>
     </section>
 
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-white" data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-6">
 
             <!-- Section Title -->
