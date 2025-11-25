@@ -308,9 +308,7 @@
 
             <!-- Section Title -->
             <div class="text-center mb-12 sm:mb-16">
-                <h2
-                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
-           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                <h2 class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
                     {!! __('home/insights.title') !!}
                 </h2>
                 <p class="text-gray-600 text-base sm:text-lg mt-2">
