@@ -177,12 +177,12 @@
         <section class="w-full py-24 px-6 md:px-0 max-w-7xl mx-auto">
 
             <h2 class="tracking-[0.4em] uppercase text-center text-gray-900 text-xl mb-6">
-                Project Result
+                {{ __('portofolio/project-show.title') }}
             </h2>
 
             <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">
-                Communic8 Brand Development Services shaped every aspect of the identity.
-                <strong>Here are the results of the work we did.</strong>
+                {{ __('portofolio/project-show.subtitle') }}
+                <strong>{{ __('portofolio/project-show.subtitle_strong') }}</strong>
             </p>
 
             <div class="grid md:grid-cols-3 gap-8">
@@ -199,7 +199,7 @@
                         {{-- HOVER OVERLAY --}}
                         <div
                             class="absolute inset-0 rounded-2xl bg-black/70 opacity-0 group-hover:opacity-100 
-                    transition-all duration-500 flex flex-col items-center justify-center text-white p-6 text-center">
+                        transition-all duration-500 flex flex-col items-center justify-center text-white p-6 text-center">
 
                             <h3 class="text-lg font-semibold mb-2">{{ $result->name }}</h3>
                             <p class="text-sm leading-relaxed">{{ $result->description }}</p>
@@ -211,7 +211,6 @@
 
         </section>
     @endif
-
 
     {{-- CTA Section --}}
     <section class="relative bg-cover bg-center text-white font-poppins"
@@ -244,7 +243,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Ideas Action Slider Section -->
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
@@ -253,10 +252,12 @@
             <div class="text-center mb-12 sm:mb-16">
                 <h2
                     class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
-                    M O R E &nbsp; I D E A S <br> I N &nbsp; A C T I O N
+                    {{ __('portofolio/ideas.title_line_1') }} <br>
+                    {{ __('portofolio/ideas.title_line_2') }}
                 </h2>
+
                 <p class="text-gray-600 text-base sm:text-lg mt-2 max-w-2xl mx-auto">
-                    A showcase of campaigns, stories, and experiences that create real connections
+                    {{ __('portofolio/ideas.subtitle') }}
                 </p>
             </div>
 
@@ -283,8 +284,8 @@
                             <!-- HOVER OVERLAY -->
                             <div
                                 class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 
-                               transition duration-500 flex flex-col justify-center items-center text-white 
-                               text-center px-6">
+                            transition duration-500 flex flex-col justify-center items-center text-white 
+                            text-center px-6">
 
                                 <h3 class="text-lg font-semibold mb-2">{{ $idea->name }}</h3>
                                 <p class="text-sm leading-snug max-w-xs">{{ $idea->description }}</p>
@@ -319,7 +320,7 @@
                             <!-- HOVER -->
                             <div
                                 class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 
-                               transition duration-500 flex flex-col justify-center items-center text-white px-6 text-center">
+                            transition duration-500 flex flex-col justify-center items-center text-white px-6 text-center">
 
                                 <h3 class="text-base font-semibold mb-2">{{ $idea->name }}</h3>
                                 <p class="text-xs leading-snug">{{ $idea->description }}</p>
@@ -346,13 +347,12 @@
             <div class="text-center mt-12">
                 <a href="{{ route('portofolio.index') }}"
                     class="inline-block bg-gray-800 text-white px-8 py-3 rounded-full hover:bg-gray-700 transition">
-                    More
+                    {{ __('portofolio/ideas.more_button') }}
                 </a>
             </div>
 
         </div>
     </section>
-
 
     <!-- JS -->
     <script>
