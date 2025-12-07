@@ -8,8 +8,9 @@
             <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 flex justify-start">
                 <div class="max-w-xl text-left">
                     {{-- Title (tidak diterjemahkan) --}}
-                    <h1 class="text-2xl md:text-2xl font-light tracking-[0.5em] text-black font-poppins leading-snug">
-                        C O D E &nbsp; B A N D
+                    <h1
+                        class="text-4xl md:text-5xl font-light tracking-[0.2em] md:tracking-[0.5em] text-black font-poppins leading-snug">
+                        C O D E <br /> B A N D
                     </h1>
 
                     {{-- Subtitle --}}
@@ -105,9 +106,8 @@
             {{-- Left Image --}}
             <div>
                 <img src="{{ $digitalArchitectureContent && $digitalArchitectureContent->img_services
-                    ? Storage::url($digitalArchitectureContent->img_services)
-                    : asset('assets/img/dummy/dummy2.png') }}"
-                    alt="Code Band" class="rounded-xl w-full object-cover shadow-lg">
+        ? Storage::url($digitalArchitectureContent->img_services)
+        : asset('assets/img/dummy/dummy2.png') }}" alt="Code Band" class="rounded-xl w-full object-cover shadow-lg">
             </div>
 
             {{-- Right Text --}}
@@ -281,9 +281,8 @@
 
             <!-- Section Title -->
             <div class="text-center mb-12 sm:mb-16">
-                <h2
-                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
-           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                <h2 class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
+                   text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
                     {!! __('home/insights.title') !!}
                 </h2>
                 <p class="text-gray-600 text-base sm:text-lg mt-2">
@@ -312,8 +311,7 @@
                             </a>
                             @if ($blog->headline_img)
                                 <img src="{{ asset('storage/' . $blog->headline_img) }}"
-                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}"
-                                    class="w-full h-48 object-cover rounded-xl">
+                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}" class="w-full h-48 object-cover rounded-xl">
                             @else
                                 <img src="{{ asset('assets/img/blog1.png') }}" alt="Default Image"
                                     class="w-full h-48 object-cover rounded-xl">
@@ -344,8 +342,7 @@
                             </a>
                             @if ($blog->headline_img)
                                 <img src="{{ asset('storage/' . $blog->headline_img) }}"
-                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}"
-                                    class="w-full h-40 object-cover rounded-xl">
+                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}" class="w-full h-40 object-cover rounded-xl">
                             @else
                                 <img src="{{ asset('assets/img/blog1.png') }}" alt="Default Image"
                                     class="w-full h-40 object-cover rounded-xl">

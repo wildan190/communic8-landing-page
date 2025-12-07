@@ -8,8 +8,8 @@
                 <div class="max-w-xl text-left">
                     {{-- Title (tidak diterjemahkan) --}}
                     <h1
-                        class="text-2xl md:text-2xl font-light tracking-normal sm:tracking-[0.5em] text-black font-poppins leading-snug">
-                        P U B L I C<br />S P A C E &nbsp; M E D I A
+                        class="text-4xl md:text-5xl font-light tracking-[0.2em] md:tracking-[0.5em] text-black font-poppins leading-snug">
+                        P U B L I C <br />S P A C E <br />M E D I A
                     </h1>
 
                     {{-- Subtitle --}}
@@ -175,14 +175,12 @@
                 {{-- Slider Buttons (nav chevron) --}}
                 <button id="prevPublicPresence"
                     class="absolute -left-4 md:-left-16 top-1/2 -translate-y-1/2 z-20 hidden md:flex hover:scale-110 transition">
-                    <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Previous"
-                        class="w-8 h-8 object-contain">
+                    <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Previous" class="w-8 h-8 object-contain">
                 </button>
 
                 <button id="nextPublicPresence"
                     class="absolute -right-4 md:-right-16 top-1/2 -translate-y-1/2 z-20 hidden md:flex hover:scale-110 transition">
-                    <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next"
-                        class="w-8 h-8 object-contain">
+                    <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next" class="w-8 h-8 object-contain">
                 </button>
             </div>
         </div>
@@ -267,9 +265,8 @@
 
             <!-- Section Title -->
             <div class="text-center mb-12 sm:mb-16">
-                <h2
-                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
-           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                <h2 class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
+                                   text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
                     {!! __('home/insights.title') !!}
                 </h2>
                 <p class="text-gray-600 text-base sm:text-lg mt-2">
@@ -298,8 +295,7 @@
                             </a>
                             @if ($blog->headline_img)
                                 <img src="{{ asset('storage/' . $blog->headline_img) }}"
-                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}"
-                                    class="w-full h-48 object-cover rounded-xl">
+                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}" class="w-full h-48 object-cover rounded-xl">
                             @else
                                 <img src="{{ asset('assets/img/blog1.png') }}" alt="Default Image"
                                     class="w-full h-48 object-cover rounded-xl">
@@ -330,8 +326,7 @@
                             </a>
                             @if ($blog->headline_img)
                                 <img src="{{ asset('storage/' . $blog->headline_img) }}"
-                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}"
-                                    class="w-full h-40 object-cover rounded-xl">
+                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}" class="w-full h-40 object-cover rounded-xl">
                             @else
                                 <img src="{{ asset('assets/img/blog1.png') }}" alt="Default Image"
                                     class="w-full h-40 object-cover rounded-xl">

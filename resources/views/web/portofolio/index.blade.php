@@ -2,25 +2,28 @@
 
 @section('content')
     <!-- Portfolio Section -->
-    <section class="relative pt-56 pb-20">
-        <!-- Background image flipped -->
-        <div class="absolute inset-0 top-0">
+    <section class="relative pt-56 pb-20 overflow-x-hidden">
+
+        <!-- Background -->
+        <div class="absolute inset-0 overflow-hidden">
             <img src="{{ asset('assets/img/heroporto.png') }}" alt="Hero Background"
-                class="w-full h-[70vh] md:h-[80vh] object-cover transform scale-x-[-1] opacity-30">
+                class="w-full max-w-none h-[70vh] md:h-[80vh] object-cover transform scale-x-[-1] opacity-30">
         </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-6">
+        <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 overflow-x-hidden">
+
             <!-- Title -->
             <div class="text-center mb-16">
                 <h1 class="font-poppins font-regular text-2xl md:text-4xl lg:text-5xl tracking-[0.3em] text-gray-700">
                     {!! app()->getLocale() == 'en'
-                        ? 'B R A N D S &nbsp; W E &nbsp; E M P O W E R'
-                        : __('portofolio/portofolio.title') !!}
+        ? 'B R A N D S &nbsp; W E &nbsp; E M P O W E R'
+        : __('portofolio/portofolio.title') !!}
                 </h1>
+
                 <p class="mt-6 text-gray-600 max-w-2xl mx-auto">
                     {{ app()->getLocale() == 'en'
-                        ? 'From local pioneers to global leaders, we’ve been trusted to bring visions to life, creating impact on both local and global scales.'
-                        : __('portofolio/portofolio.subtitle') }}
+        ? 'From local pioneers to global leaders, we’ve been trusted to bring visions to life, creating impact on both local and global scales.'
+        : __('portofolio/portofolio.subtitle') }}
                 </p>
             </div>
 
@@ -29,91 +32,118 @@
                 $otherProjects = $projects->slice(2);
             @endphp
 
-            {{-- Top 2 Large Projects --}}
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+            <!-- Top 2 Large Projects -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-10">
                 @foreach ($firstTwoProjects as $project)
-                    <a href="{{ route('portofolio.show', ['name' => $project->name]) }}">
+                    <a href="{{ route('portofolio.show', ['name' => str_replace(' ', '-', $project->name)]) }}"
+                        data-aos="{{ $loop->iteration % 2 == 0 ? 'fade-left' : 'fade-right' }}"
+                        data-aos-delay="{{ $loop->iteration * 100 }}">
+
                         <div class="relative group overflow-hidden rounded-2xl aspect-square">
                             <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
                                 alt="{{ $project->name }}"
                                 class="w-full h-full object-cover transition duration-500 group-hover:scale-105 rounded-2xl">
 
-                            {{-- Hover overlay --}}
-                            <div
-                                class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-6 text-center rounded-2xl">
+                            <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 
+                                            transition-opacity duration-500 flex flex-col justify-center items-center 
+                                            text-white px-6 text-center rounded-2xl">
                                 <h3 class="text-lg md:text-xl font-semibold mb-2">{{ $project->name }}</h3>
-                                <p class="text-xs md:text-sm leading-snug line-clamp-3">
-                                    {{ $project->description ?? '' }}
-                                </p>
+                                <p class="text-xs md:text-sm leading-snug line-clamp-3">{{ $project->description ?? '' }}</p>
                             </div>
                         </div>
+
                     </a>
                 @endforeach
             </div>
 
-            {{-- Normal Grid Projects --}}
-            <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Normal Grid Projects -->
+            <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 @foreach ($otherProjects->take(3) as $project)
-                    <a href="{{ route('portofolio.show', ['name' => $project->name]) }}">
+                    @php
+                        $aosAnimation = 'fade-up';
+                        if ($loop->iteration % 3 == 1)
+                            $aosAnimation = 'fade-right';
+                        elseif ($loop->iteration % 3 == 0)
+                            $aosAnimation = 'fade-left';
+                    @endphp
+
+                    <a href="{{ route('portofolio.show', ['name' => str_replace(' ', '-', $project->name)]) }}"
+                        data-aos="{{ $aosAnimation }}" data-aos-delay="{{ $loop->iteration * 100 }}">
+
                         <div class="relative group overflow-hidden rounded-2xl aspect-square">
                             <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
                                 alt="{{ $project->name }}"
                                 class="w-full h-full object-cover transition duration-500 group-hover:scale-105 rounded-2xl">
 
-                            {{-- Hover overlay --}}
-                            <div
-                                class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center rounded-2xl">
+                            <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 
+                                            transition-opacity duration-500 flex flex-col justify-center items-center 
+                                            text-white px-4 text-center rounded-2xl">
                                 <h3 class="text-sm md:text-base font-semibold mb-2">{{ $project->name }}</h3>
-                                <p class="text-xs md:text-sm leading-snug line-clamp-3">
-                                    {{ $project->description ?? '' }}
-                                </p>
+                                <p class="text-xs md:text-sm leading-snug line-clamp-3">{{ $project->description ?? '' }}</p>
                             </div>
                         </div>
+
                     </a>
                 @endforeach
             </div>
 
-            {{-- Hidden Extra Projects --}}
-            <div id="more-projects" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 hidden">
+            <!-- Hidden Extra Projects -->
+            <div id="more-projects" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-8 hidden">
                 @foreach ($otherProjects->slice(3) as $project)
-                    <a href="{{ route('portofolio.show', ['name' => $project->name]) }}">
+                    @php
+                        $aosAnimation = 'fade-up';
+                        if ($loop->iteration % 3 == 1)
+                            $aosAnimation = 'fade-right';
+                        elseif ($loop->iteration % 3 == 0)
+                            $aosAnimation = 'fade-left';
+                    @endphp
+
+                    <a href="{{ route('portofolio.show', ['name' => str_replace(' ', '-', $project->name)]) }}"
+                        data-aos="{{ $aosAnimation }}" data-aos-delay="{{ $loop->iteration * 100 }}">
+
                         <div class="relative group overflow-hidden rounded-2xl aspect-square">
                             <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : asset('assets/img/dummy/dummy1.png') }}"
                                 alt="{{ $project->name }}"
                                 class="w-full h-full object-cover transition duration-500 group-hover:scale-105 rounded-2xl">
 
-                            {{-- Hover overlay --}}
-                            <div
-                                class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-white px-4 text-center rounded-2xl">
+                            <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 
+                                            transition-opacity duration-500 flex flex-col justify-center items-center 
+                                            text-white px-4 text-center rounded-2xl">
                                 <h3 class="text-sm md:text-base font-semibold mb-2">{{ $project->name }}</h3>
-                                <p class="text-xs md:text-sm leading-snug line-clamp-3">
-                                    {{ $project->description ?? '' }}
-                                </p>
+                                <p class="text-xs md:text-sm leading-snug line-clamp-3">{{ $project->description ?? '' }}</p>
                             </div>
                         </div>
+
                     </a>
                 @endforeach
             </div>
 
-            {{-- Explore More Button --}}
+            <!-- Button -->
             <div class="text-center mt-10">
-                <button id="exploreMoreBtn"
-                    class="inline-block px-8 py-3 text-sm md:text-base font-semibold text-white bg-black rounded-full
-               transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 hover:text-black hover:scale-105">
+                <button id="exploreMoreBtn" class="inline-block px-8 py-3 text-sm md:text-base font-semibold text-white bg-black rounded-full
+                           transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400 
+                           hover:text-black hover:scale-105">
                     Explore More
                 </button>
             </div>
+
         </div>
     </section>
 
 
-
     {{-- JS: Toggle More Projects --}}
     <script>
-        document.getElementById('exploreMoreBtn').addEventListener('click', function() {
+        document.getElementById('exploreMoreBtn').addEventListener('click', function () {
             const moreSection = document.getElementById('more-projects');
             moreSection.classList.toggle('hidden');
             this.textContent = moreSection.classList.contains('hidden') ? 'Explore More' : 'Show Less';
+
+            // Refresh AOS to detect new elements
+            if (!moreSection.classList.contains('hidden')) {
+                setTimeout(() => {
+                    AOS.refresh();
+                }, 100);
+            }
         });
     </script>
 
@@ -151,14 +181,13 @@
     </section>
 
     <!-- Blog Slider Section -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-white" data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
             <!-- Section Title -->
             <div class="text-center mb-12 sm:mb-16">
-                <h2
-                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
-           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                <h2 class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
+                           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
                     {!! __('home/insights.title') !!}
                 </h2>
                 <p class="text-gray-600 text-base sm:text-lg mt-2">
@@ -187,8 +216,7 @@
                             </a>
                             @if ($blog->headline_img)
                                 <img src="{{ asset('storage/' . $blog->headline_img) }}"
-                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}"
-                                    class="w-full h-48 object-cover rounded-xl">
+                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}" class="w-full h-48 object-cover rounded-xl">
                             @else
                                 <img src="{{ asset('assets/img/blog1.png') }}" alt="Default Image"
                                     class="w-full h-48 object-cover rounded-xl">
@@ -218,8 +246,7 @@
                             </a>
                             @if ($blog->headline_img)
                                 <img src="{{ asset('storage/' . $blog->headline_img) }}"
-                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}"
-                                    class="w-full h-40 object-cover rounded-xl">
+                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}" class="w-full h-40 object-cover rounded-xl">
                             @else
                                 <img src="{{ asset('assets/img/blog1.png') }}" alt="Default Image"
                                     class="w-full h-40 object-cover rounded-xl">

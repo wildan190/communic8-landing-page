@@ -1,5 +1,9 @@
 @extends('layouts.web')
 
+@push('head')
+    <link rel="preload" as="image" href="{{ asset('assets/img/sectionhero.png') }}">
+@endpush
+
 @section('content')
     <section class="relative w-full min-h-[85vh] bg-cover bg-center parallax-bg"
         style="background-image: url('{{ asset('assets/img/sectionhero.png') }}')">

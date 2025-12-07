@@ -10,7 +10,7 @@
                 <div class="max-w-2xl text-left">
                     <div class="max-w-2xl text-left space-y-6">
                         <h1
-                            class="text-4xl md:text-5xl font-light tracking-widest md:tracking-[0.5em] text-black font-poppins leading-snug">
+                            class="text-4xl md:text-5xl font-light tracking-[0.2em] md:tracking-[0.5em] text-black font-poppins leading-snug">
                             {{ app()->getLocale() == 'id' ? $landing->title_id ?? 'OVER-THE-TOP ADVERTISING' : $landing->title ?? 'OVER-THE-TOP ADVERTISING' }}
                         </h1>
 
@@ -119,10 +119,9 @@
 
             {{-- Title --}}
             <div class="text-center mb-10">
-                <h3
-                    class="text-2xl sm:text-3xl md:text-4xl text-[#666666] font-poppins font-normal mb-2
-                {{ app()->getLocale() == 'en' ? 'tracking-normal md:tracking-[0.3em]' : 'tracking-normal' }}
-                leading-tight uppercase">
+                <h3 class="text-2xl sm:text-3xl md:text-4xl text-[#666666] font-poppins font-normal mb-2
+                    {{ app()->getLocale() == 'en' ? 'tracking-normal md:tracking-[0.3em]' : 'tracking-normal' }}
+                    leading-tight uppercase">
                     E N G I N E E R E D &nbsp; F O R<br>M E A S U R A B L E &nbsp; R E S U L T S
                 </h3>
             </div>
@@ -233,14 +232,12 @@
                 {{-- Slider Buttons --}}
                 <button id="prevOtt"
                     class="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-20 hidden md:flex hover:scale-110 transition">
-                    <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Previous"
-                        class="w-8 h-8 object-contain">
+                    <img src="{{ asset('assets/img/blog-slider-left.png') }}" alt="Previous" class="w-8 h-8 object-contain">
                 </button>
 
                 <button id="nextOtt"
                     class="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-20 hidden md:flex hover:scale-110 transition">
-                    <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next"
-                        class="w-8 h-8 object-contain">
+                    <img src="{{ asset('assets/img/blog-slider-right.png') }}" alt="Next" class="w-8 h-8 object-contain">
                 </button>
             </div>
         </div>
@@ -323,9 +320,8 @@
 
             <!-- Section Title -->
             <div class="text-center mb-12 sm:mb-16">
-                <h2
-                    class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
-           text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
+                <h2 class="font-poppins text-xl sm:text-3xl md:text-4xl font-normal 
+               text-[#666666] tracking-normal sm:tracking-[0.35em] leading-snug mb-4 sm:mb-6">
                     {!! __('home/insights.title') !!}
                 </h2>
                 <p class="text-gray-600 text-base sm:text-lg mt-2">
@@ -354,8 +350,7 @@
                             </a>
                             @if ($blog->headline_img)
                                 <img src="{{ asset('storage/' . $blog->headline_img) }}"
-                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}"
-                                    class="w-full h-48 object-cover rounded-xl">
+                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}" class="w-full h-48 object-cover rounded-xl">
                             @else
                                 <img src="{{ asset('assets/img/blog1.png') }}" alt="Default Image"
                                     class="w-full h-48 object-cover rounded-xl">
@@ -386,8 +381,7 @@
                             </a>
                             @if ($blog->headline_img)
                                 <img src="{{ asset('storage/' . $blog->headline_img) }}"
-                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}"
-                                    class="w-full h-40 object-cover rounded-xl">
+                                    alt="{{ $blog->headline_img_alt ?? $blog->title }}" class="w-full h-40 object-cover rounded-xl">
                             @else
                                 <img src="{{ asset('assets/img/blog1.png') }}" alt="Default Image"
                                     class="w-full h-40 object-cover rounded-xl">

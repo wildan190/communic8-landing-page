@@ -42,7 +42,7 @@
 
     <!-- Google Tag Manager -->
     <script>
-        (function(w, d, s, l, i) {
+        (function (w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
                 'gtm.start': new Date().getTime(),
@@ -59,7 +59,8 @@
     </script>
     <!-- End Google Tag Manager -->
 
-    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
+    {{--
+    <script src="https://cdn.tailwindcss.com"></script> --}}
     {{-- vite --}}
     @vite('resources/css/app.css')
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -91,9 +92,10 @@
     <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    @stack('head')
 </head>
 
-<body class="antialiased bg-gray-50">
+<body class="antialiased bg-gray-50 overflow-x-hidden">
 
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5D23JXFF" height="0" width="0"
@@ -140,14 +142,14 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Check if the cookie consent has already been accepted
             if (!document.cookie.split(';').some((item) => item.trim().startsWith('cookie_consent_accepted='))) {
                 document.getElementById('cookie-consent-banner').style.display = 'block';
             }
 
             // Add event listener to the accept button
-            document.getElementById('cookie-consent-button').addEventListener('click', function(e) {
+            document.getElementById('cookie-consent-button').addEventListener('click', function (e) {
                 e.preventDefault();
 
                 // Set a cookie to remember that the user has accepted, expiring in 1 year
